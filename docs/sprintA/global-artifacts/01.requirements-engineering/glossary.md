@@ -1,19 +1,21 @@
 # Glossary
 
-**Terms, Expressions and Acronyms (TEA) must be organized alphabetically.**
 
-(To complete according the provided example)
-
-| **_TEA_** (EN) | **_Description_** (EN)                                                                    |                                       
-|:---------------|:------------------------------------------------------------------------------------------|
-| **Clerk**      | Person responsible for carrying out various business supporting activities on the system. |
-| **CLK**        | Acronym for _Clerk_.                                                                      |
-| **...**        | ...                                                                                       |
-
-
-
-
-
-
+| **_TEA_** (EN)                      | **_Description_** (EN)                                                                                                                                                                                                       |                                       
+|:------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **(Real estate) Agent**             | REU worker who interacts with its clients.                                                                                                                                                                                   |
+| **Branch**                          | One of REU's stores.                                                                                                                                                                                                         |
+| **Client** | REU's customers; Buyer/Renter/Seller.                                                                                                                                                                                        |
+| **Clerk**                           | Person responsible for carrying out various business supporting activities on the system.                                                                                                                                    |
+| **CLK**                             | Acronym for _Clerk_.                                                                                                                                                                                                         |
+| **Commission**                      | REU’s cut of a given sale. Can be a fixed amount or a percentage.                                                                                                                                                            |
+| **Network**                         | Set of REU's branches.                                                                                                                                                                                                       |
+| **Network Manager**                 | REU worker who "intends to analyze the performance of each of the branches and the global behavior of the network on a daily basis".                                                                                         |
+| **Order**                           | Request from a client to sell/buy/rent a property.                                                                                                                                                                           |
+| **Property**                        | REU's main product. Clients contact REU in order to sell, buy and/or rent properties.                                                                                                                                        |
+| **Real Estate USA (REU)**           | Client company.                                                                                                                                                                                                              |
+| **Store Manager**                   | REU worker whose main function is to "monitor and streamline the branch with the aim of getting to know better the business carried out and to analyze and evaluate the performance of employees".                           |
+| **System Administrator**            | REU worker who is "responsible for  registering all employees and branches of the network, as well as preparing the system in order to facilitate the insertion of advertisements and the use of the application".            |
+| **Visit**                           | Appointment for a potential client to inspect a property accompanied by an agent.                                                                                                                                            |
 
 
