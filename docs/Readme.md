@@ -4,12 +4,14 @@
 
 The teams consists of students identified in the following table.
 
-| Student Number | Name              |
-|----------------|-------------------|
-| **1XXXXXX**    | Name of student 1 |
-| **1XXXXXX**    | Name of student 2 |
-| **1XXXXXX**    | Name of student 3 |
-| **1XXXXXX**    | Name of student 4 |
+| Student Number | Name                                       |
+|---------------|--------------------------------------------|
+| **1170504**   | Hugo Miguel Augusto Nogueira               |
+| **1191583**   | Tiago Borges Sousa                         |
+| **1210789**   | Diogo João Almeida Queiroz                 |
+| **1211273**   | Vítor Domingues Fardilha                   |
+| **1211742**   | Tiago Henrique Fonseca De Oliveira Correia |
+| **1221792**   | Nilsa Patricia Costa Gil                   |
 
 # 2. Task Distribution ###
 
