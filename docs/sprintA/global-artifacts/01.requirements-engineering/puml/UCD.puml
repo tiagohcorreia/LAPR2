@@ -1,0 +1,22 @@
+@startuml
+
+:System Administrator: as Admin
+:Unregistered User: as UnregUser
+:Agent: as Agent
+:Owner: as Owner
+
+Left to right direction
+
+UnregUser --> (US1: display listed properties)
+
+Agent --> (US2: publish any sale announcement on the system)
+
+Admin --> (US3: register a new employee)
+
+Owner --> (US4: submit a request for listing a property sale or rent, choosing the responsible agent)
+
+Admin --> (US5: register a store)
+
+Admin --> (US6: specify districts, municipalities, and parishes in the system)
+
+@enduml
