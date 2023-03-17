@@ -7,6 +7,26 @@ _Specifies functionalities that:_
 - _are common across several US/UC;_
 - _are not related to US/UC, namely: Audit, Reporting and Security._
 
+	SprintA
+-(Unregistered user) Display listed properties
+-(Agent)Publish sale annoucement
+-(System Administrator) Register employee
+-(Owner) Submit a request for listing a property to an agent
+-(System administrator) Register a store
+
+-(Company employee) Publication of rental and sale advertisements
+-(Company employee) Registration of a business
+-(Company employee) Scheduling and registration of visits to the property
+-(Agent) Setting commission of the request by the owner
+-(Agent) Publishing the offer in the system
+-(Client) Requesting a visit to a real state agent for a specific property
+-(Agent) Sends a response about the visit to the client
+-(Client) Accepts or rejects the visit and automatically schedule in the system
+-(Agent) Register a record of the visit
+-(Client) Request for purchase/lease of the property to the agent
+-(Agent) Accepts or rejects the purchase/lease request (if accepted remove from listed propeties)
+-(System administrator) Registers all employees
+-(System administrator) Registers the branches of the network
 
 (fill in here)
 
@@ -57,6 +77,11 @@ _Specifies or constraints the system design process. Examples may include: progr
 _Specifies or constraints the code or construction of a system such
 such as: mandatory standards/patterns, implementation languages,
 database integrity, resource limits, operating system._
+
+-Must be developed in Java
+-Must be developed using IntelliJ or NetBeans
+-Interface must be developed in JavaFX 11
+
 
 
 (fill in here )
