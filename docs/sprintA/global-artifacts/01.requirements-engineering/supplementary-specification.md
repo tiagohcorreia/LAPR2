@@ -14,21 +14,20 @@ _Specifies functionalities that:_
 -(Owner) Submit a request for listing a property to an agent
 -(System administrator) Register a store
 
--(Company employee) Publication of rental and sale advertisements
--(Company employee) Registration of a business
--(Company employee) Scheduling and registration of visits to the property
--(Agent) Setting commission of the request by the owner
--(Agent) Publishing the offer in the system
--(Client) Requesting a visit to a real state agent for a specific property
--(Agent) Sends a response about the visit to the client
--(Client) Accepts or rejects the visit and automatically schedule in the system
--(Agent) Register a record of the visit
--(Client) Request for purchase/lease of the property to the agent
--(Agent) Accepts or rejects the purchase/lease request (if accepted remove from listed propeties)
--(System administrator) Registers all employees
--(System administrator) Registers the branches of the network
+* (Company employee) Publication of rental and sale advertisements
+* (Company employee) Registration of a business
+* (Company employee) Scheduling and registration of visits to the property
+* (Agent) Setting commission of the request by the owner
+* (Agent) Publishing the offer in the system
+* (Client) Requesting a visit to a real state agent for a specific property
+* (Agent) Sends a response about the visit to the client
+* (Client) Accepts or rejects the visit and automatically schedule in the system
+* (Agent) Register a record of the visit
+* (Client) Request for purchase/lease of the property to the agent
+* (Agent) Accepts or rejects the purchase/lease request (if accepted remove from listed propeties)
+* (System administrator) Registers all employees
+* (System administrator) Registers the branches of the network
 
-(fill in here)
 
 
 ## Usability 
@@ -38,7 +37,18 @@ among them: error prevention; interface aesthetics and design; help and
 documentation; consistency and standards._
 
 
-(fill in here )
+**Error Prevention**
+* The agent must validate the request of rent or sell the property;
+* If the request is a sale of a property the owner provides the information and the system must validate it. The type of property(apartment, house or land),the area in m2, the location, the distance of the center, the requested price, and one or more photographs;
+* If the property is an apartment or a house, the system also must validate the number of bathrooms, parking spaces and the available equipment.
+* The system must validate the name, citizen's card number, the tax number, the address, the email address, the phone number and the agency of a new employee registered by the system administrator; And the branches of the network (destination, location, and local manager);
+
+**Interface Aesthetics and Design**
+
+**Help and Documentation**
+
+**Consistency and Standards**
+
 
 ## Reliability
 _Refers to the integrity, compliance and interoperability of the software. The requirements to be considered are: frequency and severity of failure, possibility of recovery, possibility of prediction, accuracy, average time between failures._
