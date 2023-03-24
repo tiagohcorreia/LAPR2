@@ -1,0 +1,39 @@
+@startuml
+
+actor ADMINISTRATOR as adm
+participant SYSTEM as ui
+
+
+adm -> ui: starts registering a new employee
+
+adm <- ui: requests employee name
+
+adm -> ui: types employee name
+
+adm <- ui: requests employee citizen's card number
+
+adm -> ui: types citizen's card number
+
+adm <- ui: requests employee tax number
+
+adm -> ui: types tax number
+
+adm <- ui: requests employee e-mail address
+
+adm -> ui: types e-mail address
+
+adm <- ui: requests employee telephone number
+
+adm -> ui: types telephone number
+
+adm <- ui: requests employee agency
+
+adm -> ui: types employee agency
+
+adm <- ui: shows the data for the employee and asks confirmation
+
+adm -> ui: confirms the data
+
+adm <- ui: informs operation sucess
+
+@enduml
