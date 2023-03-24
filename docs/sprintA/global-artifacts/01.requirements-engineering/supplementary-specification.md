@@ -8,25 +8,25 @@ _Specifies functionalities that:_
 - _are not related to US/UC, namely: Audit, Reporting and Security._
 
 	SprintA
--(Unregistered user) Display listed properties
--(Agent)Publish sale annoucement
--(System Administrator) Register employee
--(Owner) Submit a request for listing a property to an agent
--(System administrator) Register a store
+* (Unregistered user) Display listed properties;
+* (Agent)Publish sale annoucement;
+* (System Administrator) Register employee;
+* (Owner) Submit a request for listing a property to an agent;
+* (System administrator) Register a store;
 
-* (Company employee) Publication of rental and sale advertisements
-* (Company employee) Registration of a business
-* (Company employee) Scheduling and registration of visits to the property
-* (Agent) Setting commission of the request by the owner
-* (Agent) Publishing the offer in the system
-* (Client) Requesting a visit to a real state agent for a specific property
-* (Agent) Sends a response about the visit to the client
-* (Client) Accepts or rejects the visit and automatically schedule in the system
-* (Agent) Register a record of the visit
-* (Client) Request for purchase/lease of the property to the agent
-* (Agent) Accepts or rejects the purchase/lease request (if accepted remove from listed propeties)
-* (System administrator) Registers all employees
-* (System administrator) Registers the branches of the network
+* (Company employee) Publication of rental and sale advertisements;
+* (Company employee) Registration of a business;
+* (Company employee) Scheduling and registration of visits to the property;
+* (Agent) Setting commission of the request by the owner;
+* (Agent) Publishing the offer in the system;
+* (Client) Requesting a visit to a real state agent for a specific property;
+* (Agent) Sends a response about the visit to the client; 
+* (Client) Accepts or rejects the visit and automatically schedule in the system;
+* (Agent) Register a record of the visit;
+* (Client) Request for purchase/lease of the property to the agent;
+* (Agent) Accepts or rejects the purchase/lease request (if accepted remove from listed propeties);
+* (System administrator) Registers all employees;
+* (System administrator) Registers the branches of the network.
 
 
 
@@ -37,17 +37,20 @@ among them: error prevention; interface aesthetics and design; help and
 documentation; consistency and standards._
 
 
-**Error Prevention**
+**Error Prevention By the User**
 * The agent must validate the request of rent or sell the property;
 * If the request is a sale of a property the owner provides the information and the system must validate it. The type of property(apartment, house or land),the area in m2, the location, the distance of the center, the requested price, and one or more photographs;
-* If the property is an apartment or a house, the system also must validate the number of bathrooms, parking spaces and the available equipment.
-* The system must validate the name, citizen's card number, the tax number, the address, the email address, the phone number and the agency of a new employee registered by the system administrator; And the branches of the network (destination, location, and local manager);
+* If the property is an apartment or a house, the system also must validate the number of bathrooms, parking spaces and the available equipment;
+* The system must validate the name, citizen's card number, the tax number, the address, the email address, the phone number and the agency of a new employee registered by the system administrator; And the branches of the network (destination, location, and local manager).
 
-**Interface Aesthetics and Design**
+**Interface aesthetics and design**
+* When the app is initialized, shows a menu with 2 options; 1- The user can see the list of properties; 2- The user can login in the app;
+* If the user choose option 1, he will see the list of properties availables;
+* If the user choose option 2, the app identifies if the user is a client, an agent, an owner or a system administrator;
+* In case the user is a system administrator, shows a sub-menu with the options of register a new employee, register a store, and specify districts, municipalities and parishes;
+* In case the user is an owner, shows the option of submit a request for listing a property sale or rent, choosing the responsible agent;
+* In case the user is an agent, shows the option of publishing any a sale announcement on the system.
 
-**Help and Documentation**
-
-**Consistency and Standards**
 
 
 ## Reliability
