@@ -56,8 +56,13 @@ documentation; consistency and standards._
 ## Reliability
 _Refers to the integrity, compliance and interoperability of the software. The requirements to be considered are: frequency and severity of failure, possibility of recovery, possibility of prediction, accuracy, average time between failures._
 
+**Frequency and severity of failure**
+* This app is a "small" project, so we didn't predict any failure.
 
-(fill in here )
+**Possibility of recovery**
+* As recovery, we write in a file all the information introduced.
+
+
 
 ## Performance
 _Evaluates the performance requirements of the software, namely: response time, start-up time, recovery time, memory consumption, CPU usage, load capacity and application availability._
