@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US2 - PUBLISH ANY ANNOUNCEMENT ON THE SYSTEM
 
 [Requirements Engineering](01.requirements-engineering/Requirements-Engineering.md)
 
