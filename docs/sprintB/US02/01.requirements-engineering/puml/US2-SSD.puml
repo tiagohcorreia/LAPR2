@@ -7,7 +7,7 @@ title System Sequence Diagram (SSD)
 
 autonumber
 
-actor "Organization Employee" as Employee
+actor "Agent" as Employee
 participant ":System" as System
 
 activate Employee
@@ -25,7 +25,7 @@ activate Employee
 
     deactivate System
 
-    Employee -> System : insert the requested data (size, location, distance from the city center, number of bedrooms, number of bathrooms, price commission)
+    Employee -> System : insert the requested data (size, location, distance from the city center, number of bedrooms, number of bathrooms, price, commission)
     activate System
 
         System --> Employee : validate the data
