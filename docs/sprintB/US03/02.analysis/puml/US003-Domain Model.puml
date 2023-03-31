@@ -1,0 +1,38 @@
+@startuml
+
+class SystemAdministrator {
+}
+
+class Employee {
+    - String name
+    - int taxNumber
+    - int taxNumber
+    - String address
+    - String emailAddress
+    - int telephoneNumber
+    - String agency
+}
+
+SystemAdministrator -> Employee: Registers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

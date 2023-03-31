@@ -36,18 +36,8 @@ U
 %docs/sprintB/US02/03.design/Readme.md,4\9\49af90e9de0cea647c5cb1d73ec3a36f0be614a5
 g
 7docs/sprintB/US02/04.tests-and-implementation/Readme.md,a\0\a0067f0596d428c111ba8f06fe29a23ac9b4975e
-“
-cdocs/sprintB/US03/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-one.svg,4\8\48429af278f7fa1e1834e3eb328aa4225e6c4450
-“
-cdocs/sprintB/US03/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-two.svg,1\d\1dbdd610ef92403911bea5aa6386a394f749ff97
-•
-edocs/sprintB/US03/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-two.puml,9\a\9aa282dbe4793772cd5fe0f020e94ff198ea4eb6
-•
-edocs/sprintB/US03/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-one.puml,d\c\dc59c111b33fc34db0d4622d522356fa650d2468
 h
 8docs/sprintB/US03/02.analysis/svg/us006-domain-model.svg,2\f\2fdb4470345d78c8e9ae2b6c82581c4c18a76824
-j
-:docs/sprintB/US03/02.analysis/puml/us006-domain-model.puml,3\5\3501c45cf2ac149b7d3548039a29f0a0df35d919
 g
 7docs/sprintB/US03/03.design/svg/us006-class-diagram.svg,6\b\6b1a6c6916254b81e757ab30e23a7b136743431c
 p
@@ -294,10 +284,6 @@ N
 docs/auth/AuthClassDiagram.svg,2\4\24947e90cd9b540185909542370aac3c18d67644
 M
 docs/auth/AuthDomainModel.svg,4\e\4edb3374e4fcfa06a857d26e0090060943a27473
-U
-%docs/sprintB/US03/03.design/Readme.md,2\1\217f25f91c0120639248788c12b5aed86c6f7061
-W
-'docs/sprintB/US03/02.analysis/Readme.md,2\6\26adbb2c0d367d8781516c4ccbd6f7c8e70d5438
 g
 7docs/sprintB/US03/04.tests-and-implementation/Readme.md,9\4\942c9a974f80e712ca3bb2d8ca6a83e800f1d8c6
 u
@@ -308,8 +294,6 @@ F
 docs/sprintA/Readme.md,1\5\1500bb7dbbd1c523ac1c6fa3d5b976542df0bffe
 W
 'docs/sprintA/global-artifacts/Readme.md,c\2\c20267e3c53a05b64e720d5d8fe5ee80f1364523
-a
-1docs/sprintA/global-artifacts/03.design/readme.md,a\1\a1965a2fe65cb67aeb3207df3fa9026bf76a7e46
 K
 docs/sprintB/US01/Readme.md,6\3\633dbb8b61929e7436874038b20d2189977b57c3
 K
@@ -340,11 +324,17 @@ Lsrc/test/java/pt/ipp/isep/dei/esoft/project/repository/RepositoriesTest.java,3
 Vsrc/test/java/pt/ipp/isep/dei/esoft/project/repository/TaskCategoryRepositoryTest.java,b\0\b0c687f7351228248124305baf130391eb62e619
 |
 Ldocs/sprintA/global-artifacts/01.requirements-engineering/vision-document.md,5\e\5e6bf67fe01b7ddf46acdbf83b1c05a8c0c004d3
-x
-Hdocs/sprintA/global-artifacts/02.analysis/puml/project-domain-model.puml,a\1\a1214a7f8973500e410fe904a491bf5ef9e219d8
 v
 Fdocs/sprintA/global-artifacts/02.analysis/svg/project-domain-model.svg,d\0\d00007f07857c34bb8837c2cbbaa14cc8fcc9e2d
 ˆ
 Xdocs/sprintA/global-artifacts/01.requirements-engineering/supplementary-specification.md,d\7\d7894be413a5a0d1e3a00021597bdd323a6b6b0d
 u
 Edocs/sprintA/global-artifacts/01.requirements-engineering/glossary.md,9\d\9d65c84c956ae8992c8496969047c927af536e4a
+}
+Mdocs/sprintA/global-artifacts/01.requirements-engineering/use-case-diagram.md,c\3\c3862a3add91ea74d6d83bbce4d41663bf171d44
+w
+Gdocs/sprintA/global-artifacts/01.requirements-engineering/puml/UCD.puml,a\4\a4edc0fe2d1c25589b277344190435d0186a99ad
+k
+;docs/sprintB/US03/01.requirements-engineering/puml/SSD.puml,7\4\74d5450036ac5ada1ee815238f5c50b1f696e8a0
+i
+9docs/sprintB/US03/01.requirements-engineering/svg/SSD.svg,b\4\b4bf777612af735b6ab0638fdfdd5980b26df4ff

@@ -24,12 +24,6 @@ Pdocs/sprintB/US02/03.design/puml/us006-sequence-diagram-partial-create-task.pum
 [docs/sprintB/US02/03.design/puml/us006-sequence-diagram-partial-get-task-category-list.puml,3\3\331edf78cecb856d0d7d67aebc33fcd990b00496
 †
 Vdocs/sprintB/US02/03.design/puml/us006-sequence-diagram-partial-get-task-category.puml,2\5\259076e5ec6c9c30f87eaee8f0a91f418b72fd31
-•
-edocs/sprintB/US03/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-two.puml,9\a\9aa282dbe4793772cd5fe0f020e94ff198ea4eb6
-•
-edocs/sprintB/US03/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-one.puml,d\c\dc59c111b33fc34db0d4622d522356fa650d2468
-j
-:docs/sprintB/US03/02.analysis/puml/us006-domain-model.puml,3\5\3501c45cf2ac149b7d3548039a29f0a0df35d919
 i
 9docs/sprintB/US03/03.design/puml/us006-class-diagram.puml,d\d\dd4f5ad1c81cbf5ee869271e7b6ae6d8c8320fa5
 r
@@ -271,8 +265,6 @@ cdocs/sprintB/US01/01.requirements-engineering/svg/us006-system-sequence-diagram
 “
 cdocs/sprintB/US02/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-one.svg,8\7\87f23bd571529dbd20bc15843e43f9500b3731aa
 “
-cdocs/sprintB/US03/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-one.svg,4\8\48429af278f7fa1e1834e3eb328aa4225e6c4450
-“
 cdocs/sprintB/US04/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-one.svg,2\4\249ae559a50e1966d8ec2932c75fcf2f622bb8c5
 “
 cdocs/sprintB/US05/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-one.svg,d\2\d2399f858dfc36f1bcb846cbbac8c8497b12219d
@@ -283,8 +275,6 @@ cdocs/sprintB/US01/01.requirements-engineering/svg/us006-system-sequence-diagram
 “
 cdocs/sprintB/US02/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-two.svg,d\5\d571e36e78543c3698c2c0a1c3b63d97de7de854
 “
-cdocs/sprintB/US03/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-two.svg,1\d\1dbdd610ef92403911bea5aa6386a394f749ff97
-“
 cdocs/sprintB/US04/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-two.svg,7\b\7bc2b60d5f877c4f3e734c831ac069e78f59d659
 “
 cdocs/sprintB/US05/01.requirements-engineering/svg/us006-system-sequence-diagram-alternative-two.svg,6\7\677d718b17b4e3e77ddae8fc782bd835986e00a6
@@ -294,20 +284,14 @@ N
 docs/auth/AuthClassDiagram.svg,2\4\24947e90cd9b540185909542370aac3c18d67644
 M
 docs/auth/AuthDomainModel.svg,4\e\4edb3374e4fcfa06a857d26e0090060943a27473
-U
-%docs/sprintB/US03/03.design/Readme.md,2\1\217f25f91c0120639248788c12b5aed86c6f7061
 g
 7docs/sprintB/US03/04.tests-and-implementation/Readme.md,9\4\942c9a974f80e712ca3bb2d8ca6a83e800f1d8c6
-W
-'docs/sprintB/US03/02.analysis/Readme.md,2\6\26adbb2c0d367d8781516c4ccbd6f7c8e70d5438
 u
 Edocs/sprintA/global-artifacts/01.requirements-engineering/svg/UCD.svg,0\9\09b643748c87194739c87bd3ae884cb8c9fb2f5e
 L
 docs/sprintA/us006/Readme.md,0\7\076e5695d8459d43042f14ded565d63dea4aef0d
 W
 'docs/sprintA/global-artifacts/Readme.md,c\2\c20267e3c53a05b64e720d5d8fe5ee80f1364523
-a
-1docs/sprintA/global-artifacts/03.design/readme.md,a\1\a1965a2fe65cb67aeb3207df3fa9026bf76a7e46
 F
 docs/sprintA/Readme.md,1\5\1500bb7dbbd1c523ac1c6fa3d5b976542df0bffe
 K
@@ -338,8 +322,6 @@ Hsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/OrganizationTest.java,5\d\5
 Lsrc/test/java/pt/ipp/isep/dei/esoft/project/repository/RepositoriesTest.java,3\5\35a47914cd772ef5e619f56611ca6a83e5340324
 †
 Vsrc/test/java/pt/ipp/isep/dei/esoft/project/repository/TaskCategoryRepositoryTest.java,b\0\b0c687f7351228248124305baf130391eb62e619
-x
-Hdocs/sprintA/global-artifacts/02.analysis/puml/project-domain-model.puml,a\1\a1214a7f8973500e410fe904a491bf5ef9e219d8
 |
 Ldocs/sprintA/global-artifacts/01.requirements-engineering/vision-document.md,5\e\5e6bf67fe01b7ddf46acdbf83b1c05a8c0c004d3
 v
@@ -348,3 +330,11 @@ u
 Edocs/sprintA/global-artifacts/01.requirements-engineering/glossary.md,9\d\9d65c84c956ae8992c8496969047c927af536e4a
 ˆ
 Xdocs/sprintA/global-artifacts/01.requirements-engineering/supplementary-specification.md,d\7\d7894be413a5a0d1e3a00021597bdd323a6b6b0d
+}
+Mdocs/sprintA/global-artifacts/01.requirements-engineering/use-case-diagram.md,c\3\c3862a3add91ea74d6d83bbce4d41663bf171d44
+w
+Gdocs/sprintA/global-artifacts/01.requirements-engineering/puml/UCD.puml,a\4\a4edc0fe2d1c25589b277344190435d0186a99ad
+k
+;docs/sprintB/US03/01.requirements-engineering/puml/SSD.puml,7\4\74d5450036ac5ada1ee815238f5c50b1f696e8a0
+i
+9docs/sprintB/US03/01.requirements-engineering/svg/SSD.svg,b\4\b4bf777612af735b6ab0638fdfdd5980b26df4ff
