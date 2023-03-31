@@ -284,8 +284,6 @@ N
 docs/auth/AuthClassDiagram.svg,2\4\24947e90cd9b540185909542370aac3c18d67644
 M
 docs/auth/AuthDomainModel.svg,4\e\4edb3374e4fcfa06a857d26e0090060943a27473
-g
-7docs/sprintB/US03/04.tests-and-implementation/Readme.md,9\4\942c9a974f80e712ca3bb2d8ca6a83e800f1d8c6
 u
 Edocs/sprintA/global-artifacts/01.requirements-engineering/svg/UCD.svg,0\9\09b643748c87194739c87bd3ae884cb8c9fb2f5e
 L

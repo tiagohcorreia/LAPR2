@@ -1,0 +1,72 @@
+@startuml
+
+actor Administrator as adm
+participant ":RegisterEmployeeUI" as ui
+participant ":RegisterEmployeeController" as ctr
+participant Employee as em
+participant ":EmployeeRepository" as rp
+
+autonumber
+
+activate adm
+
+        adm -> ui: starts registering a new employee
+
+        activate ui
+
+        ui -> ctr** : create
+
+        deactivate ui
+
+        adm <- ui: requests employee data
+
+        activate ui
+
+        adm -> ui: types employee data
+
+        ui -> ctr: registerEmployee
+
+        deactivate ui
+        activate ctr
+
+        ctr -> em: createEmployee(name,\n citizenCardNumber,\n tax number, address, e-mail,\n telephoneNumber, agency)
+
+            deactivate ctr
+            activate em
+
+        em -> rp: saveEmployee()
+
+        deactivate em
+
+        activate rp
+
+
+        rp -> ctr: return RegisteredEmployee
+
+        deactivate rp
+
+        activate ctr
+
+        ctr -> ui: return RegisteredEmployee
+
+
+        deactivate ctr
+        activate ui
+
+
+        adm <- ui: shows employee data and asks confirmation
+
+        deactivate ui
+
+        adm -> ui: confirms the data
+
+        activate ui
+
+        adm <- ui: informs operation sucess
+
+        deactivate ui
+
+deactivate adm
+
+
+@enduml
