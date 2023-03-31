@@ -3,37 +3,73 @@
 actor ADMINISTRATOR as adm
 participant SYSTEM as ui
 
+autonumber
+
+activate adm
 
 adm -> ui: starts registering a new employee
 
+activate ui
+
 adm <- ui: requests employee name
+
+deactivate ui
 
 adm -> ui: types employee name
 
+activate ui
+
 adm <- ui: requests employee citizen's card number
+
+deactivate ui
 
 adm -> ui: types citizen's card number
 
+activate ui
+
 adm <- ui: requests employee tax number
+
+deactivate ui
 
 adm -> ui: types tax number
 
+activate ui
+
 adm <- ui: requests employee e-mail address
+
+deactivate ui
 
 adm -> ui: types e-mail address
 
+activate ui
+
 adm <- ui: requests employee telephone number
+
+deactivate ui
 
 adm -> ui: types telephone number
 
+activate ui
+
 adm <- ui: requests employee agency
+
+deactivate ui
 
 adm -> ui: types employee agency
 
+activate ui
+
 adm <- ui: shows the data for the employee and asks confirmation
+
+deactivate ui
 
 adm -> ui: confirms the data
 
+activate ui
+
 adm <- ui: informs operation sucess
+
+deactivate adm
+deactivate ui
 
 @enduml

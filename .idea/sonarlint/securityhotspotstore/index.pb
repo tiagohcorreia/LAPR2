@@ -334,7 +334,3 @@ Edocs/sprintA/global-artifacts/01.requirements-engineering/glossary.md,9\d\9d65
 Mdocs/sprintA/global-artifacts/01.requirements-engineering/use-case-diagram.md,c\3\c3862a3add91ea74d6d83bbce4d41663bf171d44
 w
 Gdocs/sprintA/global-artifacts/01.requirements-engineering/puml/UCD.puml,a\4\a4edc0fe2d1c25589b277344190435d0186a99ad
-k
-;docs/sprintB/US03/01.requirements-engineering/puml/SSD.puml,7\4\74d5450036ac5ada1ee815238f5c50b1f696e8a0
-i
-9docs/sprintB/US03/01.requirements-engineering/svg/SSD.svg,b\4\b4bf777612af735b6ab0638fdfdd5980b26df4ff
