@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 001 - Display listed properties
 
 ## 2. Analysis
 
