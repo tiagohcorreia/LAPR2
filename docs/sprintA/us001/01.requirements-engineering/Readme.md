@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 001 - Display listed properties
 
 ## 1. Requirements Engineering
 
@@ -109,7 +109,7 @@ If the client does not select the type of business, the type of property and the
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram](svg/sd.svg)
+![System Sequence Diagram](svg/ssd.svg)
 
 ### 1.7 Other Relevant Remarks
 
