@@ -1,0 +1,32 @@
+@startuml
+
+class Employee {
+    - String name
+    - int citizenCardNumber
+    - int taxNumber
+    - String address
+    - String emailAddress
+    - int telephoneNumber
+    - String agency
+
+    + saveEmployee()
+
+}
+
+class RegeisterEmployeeUI {
+    + registerEmployee()
+
+}
+
+class RegeisterEmployeeController {
+    + createEmployee()
+}
+
+class EmployeeRepository {
+    + showEmployee()
+
+}
+
+
+
+@enduml
