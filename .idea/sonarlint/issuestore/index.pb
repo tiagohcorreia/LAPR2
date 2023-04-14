@@ -6,8 +6,6 @@ U
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-N
-src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 l
 <src/main/resources/com/example/lei232s1dmg61/hello-view.fxml,0\b\0b101a1e2ffa6b45688d5ac38be89920d923ef80
 i
@@ -24,20 +22,6 @@ Pdocs/sprintB/US02/03.design/puml/us006-sequence-diagram-partial-create-task.pum
 [docs/sprintB/US02/03.design/puml/us006-sequence-diagram-partial-get-task-category-list.puml,3\3\331edf78cecb856d0d7d67aebc33fcd990b00496
 †
 Vdocs/sprintB/US02/03.design/puml/us006-sequence-diagram-partial-get-task-category.puml,2\5\259076e5ec6c9c30f87eaee8f0a91f418b72fd31
-i
-9docs/sprintB/US03/03.design/puml/us006-class-diagram.puml,d\d\dd4f5ad1c81cbf5ee869271e7b6ae6d8c8320fa5
-r
-Bdocs/sprintB/US03/03.design/puml/us006-sequence-diagram-split.puml,4\0\40602f486aa4ca4594a5f0c9ab85f010eaf20b67
-q
-Adocs/sprintB/US03/03.design/puml/us006-sequence-diagram-full.puml,1\4\14798a894013cff5dc20d1638d5dcb17118aeef0
-
-Qdocs/sprintB/US03/03.design/puml/us006-sequence-diagram-partial-get-employee.puml,3\6\36ce3e9f9803e6229e68357dc450bbc41ae27d17
-€
-Pdocs/sprintB/US03/03.design/puml/us006-sequence-diagram-partial-create-task.puml,5\e\5e911f0a6f158cd99fdfbf7d22feb85643a8a847
-‹
-[docs/sprintB/US03/03.design/puml/us006-sequence-diagram-partial-get-task-category-list.puml,1\c\1c15d0dd1a9c8feab6d6679658b89b78fd6fe329
-†
-Vdocs/sprintB/US03/03.design/puml/us006-sequence-diagram-partial-get-task-category.puml,2\c\2c0d8271a329a2775880211f6c1f3622bf36e561
 •
 edocs/sprintB/US04/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-two.puml,4\8\48b3def86d193c20c00239d114cef05a8064eccc
 •
@@ -120,8 +104,6 @@ Pdocs/sprintB/US01/03.design/puml/us006-sequence-diagram-partial-create-task.pum
 Vdocs/sprintB/US01/03.design/puml/us006-sequence-diagram-partial-get-task-category.puml,c\9\c9ae7e6db203cad019c398131c4dfa1034d54ce3
 •
 edocs/sprintB/US02/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-two.puml,0\a\0aef41773662684b5483ecb605bbada578b9cf6d
-•
-edocs/sprintB/US02/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-one.puml,b\e\bef2df19ef2c2f23e5b09e3a178c01c01b6774a0
 j
 :docs/sprintB/US02/02.analysis/puml/us006-domain-model.puml,f\a\fab73b3e1fa5ef32585ab9a56f5084be54d7eba9
 g
@@ -132,8 +114,6 @@ U
 %docs/sprintB/US01/03.design/Readme.md,8\f\8f2748f292ece3ed670bb72d51b47ae136095aa1
 g
 7docs/sprintB/US01/04.tests-and-implementation/Readme.md,8\c\8c05c5f3f4f181bc796b1bf1f0283ce8cb386118
-g
-7docs/sprintB/US02/01.requirements-engineering/Readme.md,a\7\a709e4607a32b3438c606eb84b331ca6ec56acf7
 W
 'docs/sprintB/US02/02.analysis/Readme.md,e\d\ed9d0ba772613acb0bdb91fb73b9923343bfb361
 U
@@ -169,8 +149,6 @@ g
 g
 7docs/sprintB/US02/03.design/svg/us006-class-diagram.svg,9\9\994b01dda37e8ee9559fcd797bb2023c0c03d143
 g
-7docs/sprintB/US03/03.design/svg/us006-class-diagram.svg,6\b\6b1a6c6916254b81e757ab30e23a7b136743431c
-g
 7docs/sprintB/US04/03.design/svg/us006-class-diagram.svg,f\c\fc5a0901fe661fd819eb32290165fedb1c56655f
 g
 7docs/sprintB/US05/03.design/svg/us006-class-diagram.svg,1\5\153dfaa2ceb006bbdc9e573702c0271fb4d3efee
@@ -180,8 +158,6 @@ h
 8docs/sprintB/US01/02.analysis/svg/us006-domain-model.svg,4\8\4833cfd25ec9d1c3c89a2a77b5d763be2d56d955
 h
 8docs/sprintB/US02/02.analysis/svg/us006-domain-model.svg,4\c\4c1fdb3e9bf90ed574a53dca96a4816494a92a7c
-h
-8docs/sprintB/US03/02.analysis/svg/us006-domain-model.svg,2\f\2fdb4470345d78c8e9ae2b6c82581c4c18a76824
 h
 8docs/sprintB/US04/02.analysis/svg/us006-domain-model.svg,8\7\87167e346153a79dd0ed859a0c5588f6bc953409
 h
@@ -193,8 +169,6 @@ o
 o
 ?docs/sprintB/US02/03.design/svg/us006-sequence-diagram-full.svg,6\4\642cf2cbbdc4bf2032c02771edddac3c33f0f8e3
 o
-?docs/sprintB/US03/03.design/svg/us006-sequence-diagram-full.svg,6\0\60f99bb7c04b34e994316bee9f85015dcb1513fc
-o
 ?docs/sprintB/US04/03.design/svg/us006-sequence-diagram-full.svg,f\8\f85b9af623cb1fdf56ebd5682ef25afe2f567872
 o
 ?docs/sprintB/US05/03.design/svg/us006-sequence-diagram-full.svg,c\f\cf9993b1f448a6a774d3feb79dedd7abe4904807
@@ -204,8 +178,6 @@ o
 Ndocs/sprintB/US01/03.design/svg/us006-sequence-diagram-partial-create-task.svg,1\c\1c92584454672c3f128d30276a863841405e7a87
 ~
 Ndocs/sprintB/US02/03.design/svg/us006-sequence-diagram-partial-create-task.svg,7\3\73bf50f831beed1d03c70b6fe96d2db0034abd2d
-~
-Ndocs/sprintB/US03/03.design/svg/us006-sequence-diagram-partial-create-task.svg,5\a\5ac8e3072787b4c03a23f4e913e8b36f15da11dd
 ~
 Ndocs/sprintB/US04/03.design/svg/us006-sequence-diagram-partial-create-task.svg,1\4\1413a85820aecaba2f76c03cc4b337138b5833a7
 ~
@@ -217,8 +189,6 @@ Odocs/sprintB/US01/03.design/svg/us006-sequence-diagram-partial-get-employee.svg
 
 Odocs/sprintB/US02/03.design/svg/us006-sequence-diagram-partial-get-employee.svg,d\f\df2721c5caf3ad617a08f445dc55bf8bed9ffd0b
 
-Odocs/sprintB/US03/03.design/svg/us006-sequence-diagram-partial-get-employee.svg,4\2\42d8e7e43723367326009e341c49295d0ccd3f94
-
 Odocs/sprintB/US04/03.design/svg/us006-sequence-diagram-partial-get-employee.svg,7\7\770d083c94158743d70c8330c3e7849c826f21d1
 
 Odocs/sprintB/US05/03.design/svg/us006-sequence-diagram-partial-get-employee.svg,5\2\52869072ebf8f78626a06b43688334a17dfcdf54
@@ -228,8 +198,6 @@ Odocs/sprintB/US06/03.design/svg/us006-sequence-diagram-partial-get-employee.svg
 Tdocs/sprintB/US01/03.design/svg/us006-sequence-diagram-partial-get-task-category.svg,a\0\a0a00e94c32cb8bb2d6a2c91a95fdde04c3b97d1
 „
 Tdocs/sprintB/US02/03.design/svg/us006-sequence-diagram-partial-get-task-category.svg,8\2\82ae9082456e88685f3ece709b4f95a2e4b5af21
-„
-Tdocs/sprintB/US03/03.design/svg/us006-sequence-diagram-partial-get-task-category.svg,6\2\620883fde581ade61f374e6223360f91188b0d00
 „
 Tdocs/sprintB/US04/03.design/svg/us006-sequence-diagram-partial-get-task-category.svg,8\4\8440dca46d0708c38814d5e69e6c4f055654debc
 „
@@ -241,8 +209,6 @@ Ydocs/sprintB/US01/03.design/svg/us006-sequence-diagram-partial-get-task-categor
 ‰
 Ydocs/sprintB/US02/03.design/svg/us006-sequence-diagram-partial-get-task-category-list.svg,7\8\78dd844ea8e8407ac8bb9ab7f70188a412e427a9
 ‰
-Ydocs/sprintB/US03/03.design/svg/us006-sequence-diagram-partial-get-task-category-list.svg,0\d\0d2ac63cc0831c1b5bc2d3f9f060189b8be26b80
-‰
 Ydocs/sprintB/US04/03.design/svg/us006-sequence-diagram-partial-get-task-category-list.svg,e\4\e4ed74ff6f19c90bc35df8a0bfa1547202380793
 ‰
 Ydocs/sprintB/US05/03.design/svg/us006-sequence-diagram-partial-get-task-category-list.svg,6\f\6fff9e396508ead9116c76404f0e31759fd33acd
@@ -252,8 +218,6 @@ p
 @docs/sprintB/US01/03.design/svg/us006-sequence-diagram-split.svg,5\7\575643b31a5d3396ee817a4c7127d461e88868cd
 p
 @docs/sprintB/US02/03.design/svg/us006-sequence-diagram-split.svg,1\9\199010814d0fa3f54a293441d788b68d16e0b6f3
-p
-@docs/sprintB/US03/03.design/svg/us006-sequence-diagram-split.svg,1\4\1461fc745de7fe441762d7e6ce163561fd44b53a
 p
 @docs/sprintB/US04/03.design/svg/us006-sequence-diagram-split.svg,4\8\48ae8fbc4780760e2ab8eeb89d3fd624bfb13dbc
 p
@@ -332,3 +296,49 @@ Xdocs/sprintA/global-artifacts/01.requirements-engineering/supplementary-specifi
 Mdocs/sprintA/global-artifacts/01.requirements-engineering/use-case-diagram.md,c\3\c3862a3add91ea74d6d83bbce4d41663bf171d44
 w
 Gdocs/sprintA/global-artifacts/01.requirements-engineering/puml/UCD.puml,a\4\a4edc0fe2d1c25589b277344190435d0186a99ad
+y
+Idocs/sprintB/US02/01.requirements-engineering/Requirements-Engineering.md,5\0\5020f62a891a2d4499fa5e8c4b10ea278d7b0aa1
+x
+Hdocs/sprintA/global-artifacts/02.analysis/puml/project-domain-model.puml,a\1\a1214a7f8973500e410fe904a491bf5ef9e219d8
+c
+3docs/sprintA/global-artifacts/02.analysis/Readme.md,9\a\9a9df7036a5d82c70ad1754da7571d3ec2c2c1fe
+I
+docs/sprintA/us001/req.md,f\6\f675d46a484ed71837f33f42f64ddc4933066c8c
+a
+1docs/sprintA/global-artifacts/03.design/readme.md,a\1\a1965a2fe65cb67aeb3207df3fa9026bf76a7e46
+j
+:docs/sprintB/US03/02.analysis/puml/US003-Domain Model.puml,7\c\7c43b99fb684605716e51655f3834f4c9c90aec4
+h
+8docs/sprintB/US03/02.analysis/svg/US003-Domain Model.svg,7\9\7924a127cbfac63df7089c67bc6505913e18cc2d
+–
+fdocs/sprintA/us006/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-one.puml,7\d\7d43e122be2126d0f14f83d7c40c1c41bcd87f13
+–
+fdocs/sprintA/us006/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-two.puml,d\5\d50daef0d26d71d87bbb6bee20b0762ea984ff0d
+Y
+)docs/sprintB/US03/02.analysis/Analysis.md,b\b\bbbde2e9afc80d1fe0e8dd417ae110319fe424bb
+i
+9docs/sprintB/US03/01.requirements-engineering/svg/SSD.svg,b\4\b4bf777612af735b6ab0638fdfdd5980b26df4ff
+n
+>docs/sprintA/global-artifacts/02.analysis/svg/Domain_Model.svg,d\9\d93a729723d5ca00b7f7a86b3d192eed7d3789c9
+g
+7docs/sprintB/US03/04.tests-and-implementation/Readme.md,9\4\942c9a974f80e712ca3bb2d8ca6a83e800f1d8c6
+k
+;docs/sprintB/US03/01.requirements-engineering/puml/SSD.puml,7\4\74d5450036ac5ada1ee815238f5c50b1f696e8a0
+y
+Idocs/sprintB/US03/01.requirements-engineering/Requirements Engineering.md,c\0\c05b040ab17f1c130ddd8c1a1d956e0bb938e989
+V
+&docs/sprintB/US03/03.design/svg/SD.svg,5\0\502f258b8052d37d085abbe4bcde4800392ed94a
+V
+&docs/sprintB/US03/03.design/svg/CD.svg,7\3\73784104df2edc79cbcbdd30a774c3720ed1c76b
+K
+docs/sprintB/US03/Readme.md,e\7\e77eafe0b1009e14a2fec3993b12e64afa1d7720
+N
+src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
+m
+=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
+r
+Bdocs/sprintA/us006/03.design/puml/us006-sequence-diagram-full.puml,f\d\fdaf54f318ea1d5920a4bce84d8a23c6b4b872e9
+X
+(docs/sprintB/US03/03.design/puml/SD.puml,8\4\8414bfd05e8091aef57e6ec74a11e62078f519ec
+X
+(docs/sprintB/US03/03.design/puml/CD.puml,9\8\98ddecf6f6adb833d6ce2187a7c88a936091586d
