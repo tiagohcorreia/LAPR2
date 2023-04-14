@@ -21,16 +21,42 @@ As a system administrator, I want to register a new employee
 **From the client clarifications:**
 
 
-> **Question:** As a system administrator, I want to register a new employee
+> **Question:** "When registering a new employee, will the administrator set the respective employee password?"
 >  
-> **Answer:** The password should have eight characters in length and should be generated automatically. The password is sent to the employee by e-mail.
+> **Answer:** "The password should have eight characters in length and should be generated automatically. The password 
+              is sent to the employee by e-mail."
+ 
+> **Question:** "You have stated before that name, cc number, tax number, email address, phone number and the assigned
+                  agency of the employee are the mandatory requirements to register a new one, leaving out the 
+                  employee's adress and role. This confused me, because it wasn't clear whether leaving out those 
+                  two characteristics from the answer was intentional or not. Futhermore, the role of the employee 
+                  seems like too much of an important piece of information to be left out. My request is, then, for 
+                  you to state whether or not that was a conscious decision in your answer."
+>
+> **Answer:** "The role is required"
 
+> **Question:** "When registering a new employee, all the required data (name, citizen's card number, etc...) 
+                 have to be filled or exists not mandatory data?"
+>
+> **Answer:** "Required/Mandatory data that should be filled when registering an employee: name, the citizen's card number, 
+               the tax number, the email address, the contact telephone number and the agency to which it is assigned"
+
+> **Question:** "Does the system administrator select the agency to which the employee is assigned and his role from
+                a list? Or does he just type that data?"
+>
+> **Answer:** "The System Administrator should select."
+ 
+>  **Question:**
+>
+> **Answer:**
 
 
 ### 1.3. Acceptance Criteria
 
-
-* N/A
+* AC01: The name can't be empthy
+* AC02: Telephone number must be a positive 9 digits number, and also an integer number
+* AC03: E-mail address must have an "@"
+* AC04: All requested data must be filled (name, telephone number, ...)
 
 
 ### 1.4. Found out Dependencies
@@ -45,21 +71,23 @@ As a system administrator, I want to register a new employee
 **Input Data:**
 
 * Typed data:
+
 	*  name 
 	*  citizen's card number
 	*  tax number
 	*  address
 	*  e-mail address
 	*  contact telephone number
-	*  agency
+    *  role
 	
 * Selected data:
 
-    * N/A 
+    * agency 
 
 **Output Data:**
 
 *  Employee data (name, cizen's card number, tax number, address,  e-mail address, contact telephone number and agency)
+*  Agencies list
 *  Request confirmation
 *  Success of the operation
 	
