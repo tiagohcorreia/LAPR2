@@ -25,7 +25,7 @@ buy or rent the property.
 
 **From the client clarifications:**
 
-> **Question:** In the project's documentation it's mentioned that "All those who wish to use the application must be authenticated", but in the US1 it's said that an unregistered user can see a list of properties. Can users who aren't authenticated do this?
+> **Question:** In the project's documentation it's mentioned that "All those who wish to use the app must be authenticated", but in the US1 it's said that an unregistered user can see a list of properties. Can users who aren't authenticated do this?
 >  
 > **Answer:** Non-authenticated users can only list properties.
 
@@ -38,7 +38,7 @@ buy or rent the property.
 > **Question:** In the project description it is stated that "the client is, then, responsible for being able to consult the properties by type, number of rooms, and sort by criteria such as price or the parish where the property is located.". Is the client able to sort properties by only these 4 criteria or is he able to sort properties by any of the properties' characteristics?
 >
 > **Answer:** The client should be able to select the type of business (renting or buying), the type of property and the number of rooms. Then, the client should be able to sort properties by price or by parish where the property is located.
-If the client does not select the type of business, the type of property and the number of rooms, the application should allow the client to sort all properties that are on sale or on renting.
+If the client does not select the type of business, the type of property and the number of rooms, the app should allow the client to sort all properties that are on sale or on renting.
 
 
 > **Question:** An unregistered user can only see sale announcements or he is able to contact the agency agents to make a purchase request?
@@ -46,7 +46,7 @@ If the client does not select the type of business, the type of property and the
 > **Answer:** From the project description: "As an unregistered user, I want to display listed properties". For now this is the only functionality of the system that the non-registered user can use.
 
 
-> **Question:** When an unregistered user opens the application, are there already properties being listed? If the answer is "YES": then by default, by which criteria are the properties listed? If the answer is "NO": is it mandatory for the user to choose an option (type, number of rooms) or can he/her simply request to view a list of properties that will be automatically ordered, for example, by "most recent"?
+> **Question:** When an unregistered user opens the app, are there already properties being listed? If the answer is "YES": then by default, by which criteria are the properties listed? If the answer is "NO": is it mandatory for the user to choose an option (type, number of rooms) or can he/her simply request to view a list of properties that will be automatically ordered, for example, by "most recent"?
 >
 > **Answer:** If the system does not contain any properties, the system should show an empty list of properties.
 
