@@ -51,11 +51,19 @@ adm -> ui: types telephone number
 
 activate ui
 
-adm <- ui: requests employee agency
+adm <- ui: shows a list of roles and requests the user to select one
 
 deactivate ui
 
-adm -> ui: types employee agency
+adm -> ui: choose employee role
+
+activate ui
+
+adm <- ui: shows a list of agencies and requests the user to select one
+
+deactivate ui
+
+adm -> ui: choose employee agency
 
 activate ui
 
