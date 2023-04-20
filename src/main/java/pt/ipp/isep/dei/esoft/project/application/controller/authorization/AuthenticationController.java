@@ -1,3 +1,4 @@
+/*
 package pt.ipp.isep.dei.esoft.project.application.controller.authorization;
 
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
@@ -6,9 +7,11 @@ import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
 import java.util.List;
 
+*/
 /**
  * @author Paulo Maio pam@isep.ipp.pt
- */
+ *//*
+
 public class AuthenticationController {
 
     public static final String ROLE_ADMIN = "ADMINISTRATOR";
@@ -40,3 +43,4 @@ public class AuthenticationController {
         authenticationRepository.doLogout();
     }
 }
+*/

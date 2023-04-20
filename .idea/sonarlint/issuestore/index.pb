@@ -22,8 +22,6 @@ F
 docs/sprintA/Readme.md,1\5\1500bb7dbbd1c523ac1c6fa3d5b976542df0bffe
 o
 ?docs/sprintA/global-artifacts/03.design/puml/class-diagram.puml,7\6\7602392d2b1f971d4372d8210c89227c99c17439
-ž
-nsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/authorization/AuthenticationController.java,9\2\924cc26509fe56f70bcb36cee23fcc0cfec42aff
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 9
@@ -58,7 +56,5 @@ fdocs/sprintA/us006/01.requirements-engineering/puml/us006-system-sequence-diagr
 fdocs/sprintA/us006/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-two.puml,d\5\d50daef0d26d71d87bbb6bee20b0762ea984ff0d
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
-m
-=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
 r
 Bdocs/sprintA/us006/03.design/puml/us006-sequence-diagram-full.puml,f\d\fdaf54f318ea1d5920a4bce84d8a23c6b4b872e9
