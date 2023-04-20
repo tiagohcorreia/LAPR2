@@ -24,7 +24,7 @@ activate Owner
             activate System
                 Owner-> System: types the number of bathrooms
             deactivate System
-            System -> Owner: requests the number of parkings spaces, available equipment \n(ex: centre heating or air conditioning))
+            System -> Owner: requests the number of parkings spaces
             activate System
                 Owner-> System: types the number of parkings spaces
             deactivate System
