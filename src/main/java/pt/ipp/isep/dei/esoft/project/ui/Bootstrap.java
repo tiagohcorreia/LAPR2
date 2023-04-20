@@ -1,5 +1,4 @@
-/*
-package pt.ipp.isep.dei.esoft.project.ui;
+/*package pt.ipp.isep.dei.esoft.project.ui;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.ipp.isep.dei.esoft.project.domain.Employee;
@@ -58,5 +57,4 @@ public class Bootstrap implements Runnable {
     }
 
 
-}
-*/
+}*/

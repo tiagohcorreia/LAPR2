@@ -1,12 +1,6 @@
-package pt.ipp.isep.dei.esoft.project.ui.console.menu;
-
-//import org.apache.commons.lang3.StringUtils;
+package app.ui.console.menu;
 
 import java.util.Objects;
-
-/**
- * @author Paulo Maio pam@isep.ipp.pt
- */
 
 public class MenuItem {
     private final String description;
