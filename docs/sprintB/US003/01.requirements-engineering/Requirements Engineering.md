@@ -83,16 +83,17 @@ As a system administrator, I want to register a new employee
 	*  address
 	*  e-mail address
 	*  contact telephone number
-    *  role
-	
+
 * Selected data:
 
+    *  role
     * agency 
 
 **Output Data:**
 
 *  Employee data (name, cizen's card number, tax number, address,  e-mail address, contact telephone number and agency)
 *  Agencies list
+*  Roles list
 *  Request confirmation
 *  Success of the operation
 	
