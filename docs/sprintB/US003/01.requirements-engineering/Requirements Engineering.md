@@ -46,6 +46,11 @@ As a system administrator, I want to register a new employee
 >
 > **Answer:** "The System Administrator should select."
  
+> **Question:** "According to the the statement, the administrator has to clarify the citizen's card number, but what 
+>                 card is it? In the US, there is no identification card, so is it referring to the passport?"
+>
+> **Answer:** "You are correct. The citizen card number should be replaced by the passport card number"
+
 >  **Question:**
 >
 > **Answer:**
