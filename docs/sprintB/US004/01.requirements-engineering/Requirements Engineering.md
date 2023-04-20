@@ -61,15 +61,16 @@ basement, an inhabitable loft, and sun exposure must be registered as well.
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** All required fiels must be filled in.
-* **AC2:** Task reference must have at least 5 alphanumeric chars.
-* **AC3:** When creating a task with an already existing reference, the system must reject such operation and the user must have the change to modify the typed reference.
+* **AC1:** All requested data must be filled (type of property, number of bedrooms, ...)
+* **AC2:** The type of property only can be an apartment, house or land 
+* **AC3:** Only can be submitted 30 photos
+* **AC4:** The minimum of comission is 0% or 0€. There is no maximum.
 
 
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
+* No dependency were found.
 
 
 ### 1.5 Input and Output Data
@@ -78,34 +79,40 @@ basement, an inhabitable loft, and sun exposure must be registered as well.
 **Input Data:**
 
 * Typed data:
-	* a reference, 
-	* a designation, 
-	* an informal description
-	* a technical description
-	* an estimated duration
-	* an estimated cost
+	* number of bedrooms
+    * number of bathrooms
+    * parking spaces
+    * available equipment
+    * existence of a basement
+	* existence of an inhabitable loft
+	* sun exposure
+    * area in m2
+    * location of the property
+    * distance of the centre 
+    * price
+    * photos
+  
 	
 * Selected data:
-	* Classifying task category 
+	* rent or sell a property
+    * type of property (land, house or apartment)
+    * responsible agent
 
 
 **Output Data:**
 
-* List of existing task categories
-* (In)Success of the operation
+*  Property data
+*  Responsible agent
+*  Sell or rent
+*  Request confirmation
+*  Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
 
-**Other alternatives might exist.**
+![SSD_04-US04___System_Sequence_Diagram__SSD_.svg](svg%2FSSD_04-US04___System_Sequence_Diagram__SSD_.svg)
 
-#### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
-
-#### Alternative Two
-
-![System Sequence Diagram - Alternative Two](svg/us006-system-sequence-diagram-alternative-two.svg)
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* N/A
