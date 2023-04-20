@@ -10,7 +10,8 @@ class Employee {
     - String address
     - String emailAddress
     - int telephoneNumber
-    - String agency
+    - Role role
+    - Angency agency
 }
 
 SystemAdministrator -> Employee: Registers
