@@ -1,0 +1,99 @@
+@startuml
+title US04 - System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Property Owner" as Owner
+participant ":System" as System
+
+activate Owner
+
+    Owner -> System : choose whether to rent or sell a property
+    activate System
+
+        System -> Owner : requests the type of property
+    deactivate System
+        Owner -> System: selects the type of property
+    activate System
+        alt The property is an apartment
+            System -> Owner: requests the number of bedrooms
+            activate System
+                Owner-> System: types the number of bedrooms
+            deactivate System
+                System -> Owner: requests the number of bathrooms
+            activate System
+                Owner-> System: types the number of bathrooms
+            deactivate System
+            System -> Owner: requests the number of parkings spaces, available equipment \n(ex: centre heating or air conditioning))
+            activate System
+                Owner-> System: types the number of parkings spaces
+            deactivate System
+                System -> Owner: requests the available equipment (ex: centre heating or air conditioning))
+            activate System
+                Owner-> System: types the available equipment
+            deactivate System
+        else The property is a house
+                System -> Owner: requests the number of bedrooms
+            activate System
+                Owner-> System: types the number of bedrooms
+            deactivate System
+                System -> Owner: requests the number of bathrooms
+            activate System
+                Owner-> System: types the number of bathrooms
+            deactivate System
+                System -> Owner: requests the number of parkings spaces, available equipment \n(ex: centre heating or air conditioning))
+            activate System
+                Owner-> System: types the number of parkings spaces
+            deactivate System
+                System -> Owner: requests the available equipment (ex: centre heating or air conditioning))
+            activate System
+                Owner-> System: types the available equipment
+            deactivate System
+                System -> Owner: checks the existence of a basement
+            activate System
+                Owner-> System: confirms the existence of a basement
+            deactivate System
+                System -> Owner: checks the existence of an inhabitable loft
+            activate System
+                Owner-> System: confirms the existence of an inhabitable loft
+            deactivate System
+                System -> Owner: checks if the house has sun exposure
+            activate System
+                Owner-> System: confirms that the house has sun exposure
+            deactivate System
+
+        end
+        System-> Owner:requests the area in m2
+    deactivate System
+        Owner->System: types the area in m2
+    activate System
+        System-> Owner: requests the location of the property
+    deactivate System
+        Owner-> System: types the location of the property
+    activate System
+        System-> Owner: requests the distance of the centre
+    deactivate System
+        Owner-> System: types the distance of the centre
+    activate System
+        System-> Owner: requests the price
+    deactivate System
+        Owner -> System: types the price
+    activate System
+        System-> Owner: requests one or more photographs
+    deactivate System
+        Owner-> System: inserts one or more photographs
+    activate System
+        System-> Owner: requests the responsible agent
+    deactivate System
+        Owner -> System: selects the responsible agent
+    activate System
+        System-> Owner: shows the data and asks confirmation
+    deactivate System
+        Owner->System: confirms data
+    activate System
+        System -> Owner: informs operation success
+    deactivate System
+
+
+
+@enduml
