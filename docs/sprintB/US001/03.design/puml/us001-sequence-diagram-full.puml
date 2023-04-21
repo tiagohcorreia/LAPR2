@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Unregistered User" as UR
+participant "DisplayListingsUI" as UI
+participant "DisplayListingsController" as CTRL
+UR -> UI: starts listing announcements
+activate UI
+UI -> CTRL**: create
+UI -> CTRL: getAvailableFields()
+activate CTRL
+CTRL -> UI: availableFields
+UI -> UR: asks to select data ()
+
+
+
+@enduml

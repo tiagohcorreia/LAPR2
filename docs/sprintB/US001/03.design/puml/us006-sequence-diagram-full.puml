@@ -6,7 +6,7 @@ skinparam shadowing false
 autonumber
 
 'hide footbox
-actor "Organization Employee" as ADM
+actor "Unregistered User" as ADM
 participant ":CreateTaskUI" as UI
 participant ":CreateTaskController" as CTRL
 participant ":Repositories" as RepositorySingleton
@@ -21,7 +21,7 @@ participant "task\n:Task" as TAREFA
 
 activate ADM
 
-        ADM -> UI : asks to create a new task
+        ADM -> UI : starts listing properties
 
         activate UI
 
