@@ -19,17 +19,15 @@ class Property {
     - int bathrooms
     - int parking
     - String equipment
-    - bool basement
-    - bool inhabitalLoft
-    - bool sunExposure
+    - boolean basement
+    - boolean inhabitalLoft
+    - boolean sunExposure
     - int area
     - String location
     - int  centreDistance
     - double price
     - String photographs
     - Agent agentList
-    - Role role
-    - Angency agency
 }
 
 Owner "1" - "*" Property: registers >
