@@ -56,8 +56,6 @@ N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 Z
 *docs/sprintB/US003/02.analysis/Analysis.md,c\c\cc078aee3a736bde889e11e0318a1bf7a7dfe2f9
-i
-9docs/sprintB/US003/02.analysis/svg/US003-Domain Model.svg,b\7\b794e4ef5c7b1eca23dfd725f73d4db8873be9f0
 j
 :docs/sprintB/US003/01.requirements-engineering/svg/SSD.svg,a\c\ac065268af5d22c8a6b17bf1f6925761516c7263
 p
@@ -66,26 +64,14 @@ p
 Psrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/UserSession.java,3\a\3ad8f79dc5d9e6193112010503c93310b92234d1
 l
 <src/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/Readme.md,d\c\dc39a93105e346f11afedb3793424d0f9efae8c2
-Z
-*src/main/java/app/domain/model/Agency.java,d\3\d31fb0ab6825f536b3445d0286abbf8c28134a87
-\
-,src/main/java/app/domain/model/Employee.java,1\7\172c090ab1c754bae4d9ce2efae5056312661a20
 ž
 nsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/authorization/AuthenticationController.java,9\2\924cc26509fe56f70bcb36cee23fcc0cfec42aff
-l
-<src/main/java/app/controller/RegisterEmployeeController.java,a\7\a7a46266d73376633f802e31465ba57f12cf1fca
 N
 src/main/java/app/ui/Main.java,7\7\774d0aff326a0164e53c11cda4e3afaaa607428f
-Y
-)src/main/java/app/domain/model/Roles.java,2\7\279a9244db750a1009b17dc2e42c78db8c3210df
 d
 4src/main/java/app/ui/console/RegisterEmployeeUI.java,a\1\a1a56e751c5c5851ce9c6a54018743d5eedcf261
-f
-6src/main/java/app/domain/shared/PasswordGenerator.java,c\1\c1b9e02792b110d0da275688783966d3dd00d7da
 h
 8docs/sprintA/us001/01.requirements-engineering/Readme.md,b\2\b206f7765e422a8045b8c03027f43efe82c58d0c
-s
-Csrc/main/java/app/domain/repository/RegisterEmployeeRepository.java,3\b\3bdd0aecc09503884e4a4f9e0c478c2abd5c677b
 u
 Esrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/DevTeamUI.java,d\7\d7b5acbaae573049afdb084a7f16b394d9c548ef
 x
