@@ -1,0 +1,72 @@
+@startuml
+
+actor Owner as owner
+participant ":RegisterPropertyUI" as ui
+participant ":RegisterPropertyController" as ctr
+participant Property as property
+participant ":PropertyRepository" as rp
+
+autonumber
+
+activate owner
+
+        owner -> ui: starts the requests for listing a property sale or rent
+
+        activate ui
+
+        ui -> ctr** : create
+
+        deactivate ui
+
+        owner <- ui: requests the property data
+
+        activate ui
+
+        owner -> ui: types property data
+
+        ui -> ctr: registerProperty
+
+        deactivate ui
+        activate ctr
+
+        ctr -> property: createProperty(sellOrRent,typeProperty,\n bedrooms, bathrooms, parking,\n equipment, basement, inhabitalLoft,\n sunExposure, area, location, centreDistantance,\n price, photographs, agent)
+
+            deactivate ctr
+            activate property
+
+        property -> rp: saveProperty()
+
+        deactivate property
+
+        activate rp
+
+
+        rp -> ctr: return RegisteredProperty
+
+        deactivate rp
+
+        activate ctr
+
+        ctr -> ui: return RegisteredProperty
+
+
+        deactivate ctr
+        activate ui
+
+
+        owner <- ui: shows property data and asks confirmation
+
+        deactivate ui
+
+        owner -> ui: confirms the data
+
+        activate ui
+
+        owner <- ui: informs operation sucess
+
+        deactivate ui
+
+deactivate owner
+
+
+@enduml
