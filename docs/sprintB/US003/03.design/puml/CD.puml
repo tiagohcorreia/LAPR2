@@ -1,5 +1,7 @@
 @startuml
 
+@startuml
+
 class Employee {
     - String name
     - int citizenCardNumber
@@ -8,7 +10,6 @@ class Employee {
     - String emailAddress
     - int telephoneNumber
     - String agency
-
     + saveEmployee()
 
 }
@@ -27,6 +28,24 @@ class EmployeeRepository {
 
 }
 
+Enum Role {
+
+    ADMINISTRATOR
+    MANAGER
+}
+
+Enum Agency {
+
+    AGENCY1
+    AGENCY2
+    AGENCY3
+}
+
+RegeisterEmployeeUI --> RegeisterEmployeeController
+RegeisterEmployeeController --> Employee
+Employee --> Role
+Employee --> Agency
+Employee --> EmployeeRepository
 
 
 @enduml
