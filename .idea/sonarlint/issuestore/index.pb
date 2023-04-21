@@ -52,8 +52,6 @@ a
 fdocs/sprintA/us006/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-one.puml,7\d\7d43e122be2126d0f14f83d7c40c1c41bcd87f13
 –
 fdocs/sprintA/us006/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-two.puml,d\5\d50daef0d26d71d87bbb6bee20b0762ea984ff0d
-N
-src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 j
 :docs/sprintB/US003/01.requirements-engineering/svg/SSD.svg,a\c\ac065268af5d22c8a6b17bf1f6925761516c7263
 Z
@@ -66,8 +64,6 @@ l
 <src/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/Readme.md,d\c\dc39a93105e346f11afedb3793424d0f9efae8c2
 ž
 nsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/authorization/AuthenticationController.java,9\2\924cc26509fe56f70bcb36cee23fcc0cfec42aff
-d
-4src/main/java/app/ui/console/RegisterEmployeeUI.java,a\1\a1a56e751c5c5851ce9c6a54018743d5eedcf261
 h
 8docs/sprintA/us001/01.requirements-engineering/Readme.md,b\2\b206f7765e422a8045b8c03027f43efe82c58d0c
 N
@@ -92,10 +88,6 @@ Isrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MenuItem.java,4\4\
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 v
 Fsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/ShowTextUI.java,b\2\b226a82df28353d3caf85e70d4caffc14d09008f
-]
--src/main/java/app/ui/console/utils/Utils.java,0\b\0b7375dbea1ab3a7b99a2948cea2f45e61f6840d
-w
-Gsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/utils/Utils.java,4\7\47b9d33bd8a0fd938bcc084cafee57a55d924ff0
 x
 Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AdminUI.java,5\6\56e0b5ce6530e817cb5beddc7029295eb5a8cfb0
 h
