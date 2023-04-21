@@ -16,46 +16,74 @@ hide methods
 '  -description
 '}
 
-class Organization {
+class Agent {
+    citizen card
+    tax number
+    address
+    phone number
+    agency
+}
+
+class Advertisement {
+    property description
+}
+
+
+
+class House {
+     number of bedrooms
+     number of bathroom
+     number of parking spaces
+     available equipment
+     existence of a basement
+     inhabitable loft
+     sun exposure
+}
+
+class Apartment {
+     number of bedrooms
+     number of bathroom
+     number of parking spaces
+     available equipment
+}
+class Land {
+     description
+}
+
+class Commission {
+    commission value
+}
+
+class Property {
+     type of property
+     area
+     location
+     distance from the city centre
+     price
+     photographs
+}
+
+class User {
     name
-    vatNumber
-    website
-    phoneNumber
-    email
+    e-mail
+    password
+
 }
 
-class Task {
-    reference
-    description
-    informalDesc
-    technicalDesc
-    duration
-    cost
+class PropertyOwner {
+    phone number
+
 }
 
-class Category {
-    description
-}
 
-class Employee {
-    name
-    email
-    position
-    phone
-}
+Advertisement "*" -- "*" Property: contains >
+PropertyOwner "*" --"*" Property: it has >
+User "*" - "*" PropertyOwner: can be >
+Agent "*" - "*" Property: register >
+Agent "*" - "*" Advertisement: publish >
+User "*"  - "*" Agent: can be >
+House "*" - "*" Property: is >
+Apartment"*" - "*" Property: is >
 
-'class User {
-'    name
-'    email
-'    password
-'}
 
-'Platform "1" -- "*" Organization : has registered >
-'Platform "1" -- "*" Category : defines >
-Organization "1" - "0..*" Employee : has >
-Organization "1" - "0..*" Task: owns >
-'Task "*" -- "1" Employee: created by >
-Employee "1" -- "*" Task : creates >
-'Employee "0..1" -- "1" User: acts as >
-Task "*" - "1" Category: cataloged as >
 @enduml
