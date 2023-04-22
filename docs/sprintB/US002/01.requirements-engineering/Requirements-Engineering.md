@@ -89,12 +89,14 @@ As an agent, I can publish any sale announcement on the system.
   * Sun exposure - Depends on the type of property
 	
 * Selected data:
-	* o	Type of property
+	* Type of property
+        * House
+        * Apartment
+        * Land
 
 
 **Output Data:**
 
-* •	List of published properties
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
