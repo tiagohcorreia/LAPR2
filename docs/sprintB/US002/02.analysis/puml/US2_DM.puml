@@ -77,13 +77,17 @@ class PropertyOwner {
 
 
 Advertisement "*" -- "*" Property: contains >
-PropertyOwner "*" --"*" Property: it has >
-User "*" - "*" PropertyOwner: can be >
-Agent "*" - "*" Property: register >
-Agent "*" - "*" Advertisement: publish >
-User "*"  - "*" Agent: can be >
-House "*" - "*" Property: is >
-Apartment"*" - "*" Property: is >
+PropertyOwner "1" --"*" Property: it has >
+User "1" - "1" PropertyOwner: can be >
+Agent "1" - "*" Property: register >
+Agent "1" -- "*" Advertisement: publish >
+User "1"  - "1" Agent: can be >
+House "1" --"1" Property: is >
+Apartment"1" -- "1" Property: is >
+Land"1" - "1" Property: is >
+Advertisement"1" - "1" Commission: it has >
+
+
 
 
 @enduml
