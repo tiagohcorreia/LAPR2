@@ -4,6 +4,8 @@ actor Administrator as adm
 participant ":RegisterEmployeeUI" as ui
 participant ":RegisterEmployeeController" as ctr
 participant Employee as em
+participant Role as role
+participant Agency as agency
 participant ":EmployeeRepository" as rp
 
 autonumber
@@ -29,30 +31,84 @@ activate adm
         deactivate ui
         activate ctr
 
-        ctr -> em: createEmployee(name,\n citizenCardNumber,\n tax number, address, e-mail,\n telephoneNumber, agency)
+        ctr -> em: createEmployee(name,\n passportNumber,\n tax number, address, e-mail,\n telephoneNumber)
 
             deactivate ctr
             activate em
 
-        em -> rp: saveEmployee()
+            em -> em: validate data
+
+        ui -> ctr: getRoleList()
+
+        activate ui
+        activate ctr
+        deactivate em
+
+        ctr -> role: getRoleList()
+        activate role
+        deactivate ui
+
+        role -> ctr: return Role list
+
+        deactivate role
+
+        ctr -> ui: return Role list
+        deactivate ctr
+
+        activate ui
+
+        ui -> adm: shows role list and asks the user to select one
+
+        adm -> ui: select a role
+
+        ui -> ctr: saveEmployeeRole
+        deactivate ui
+        activate ctr
+
+        ctr -> em: saveEmployeeRole
+
+        activate em
+
+        ui -> ctr: getAgencyList()
+
+        activate ui
 
         deactivate em
 
-        activate rp
+        ctr -> agency: getAgencyList()
 
+        activate agency
+        deactivate ui
 
-        rp -> ctr: return RegisteredEmployee
+        agency -> ctr: return Agency list
 
-        deactivate rp
+        deactivate agency
 
-        activate ctr
-
-        ctr -> ui: return RegisteredEmployee
-
+        ctr -> ui: return Agency list
 
         deactivate ctr
         activate ui
 
+        ui -> adm: shows agency list and asks the user to select one
+
+        adm -> ui: select agency
+
+        ui -> ctr: saveEmployeeAgency()
+
+        deactivate ui
+
+        ctr -> em: saveEmployeeAgency()
+        activate ctr
+        activate em
+
+        deactivate em
+
+        deactivate rp
+
+        ctr -> ui: return RegisteredEmployee
+
+        deactivate ctr
+        activate ui
 
         adm <- ui: shows employee data and asks confirmation
 
@@ -62,7 +118,19 @@ activate adm
 
         activate ui
 
+        ui -> ctr: saveEmployee()
+
+        activate ctr
+        deactivate ui
+
+        ctr -> rp: saveEmployee()
+
+        activate rp
+        deactivate rp
+
         adm <- ui: informs operation sucess
+
+        activate ui
 
         deactivate ui
 

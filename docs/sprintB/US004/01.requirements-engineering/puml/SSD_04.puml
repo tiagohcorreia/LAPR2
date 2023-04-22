@@ -89,9 +89,9 @@ activate Owner
     activate System
         System-> Owner: shows the data and asks confirmation
     deactivate System
-        Owner->System: confirms data
+        Owner->System: confirms data and do the request for listing a property
     activate System
-        System -> Owner: informs operation success
+        System -> Owner: confirms the request and informs operation success
     deactivate System
 
 

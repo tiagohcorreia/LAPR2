@@ -1,0 +1,49 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+class Property{
+    - String sellOrRent
+    - String typeProperty
+    - int bedrooms
+    - int bathrooms
+    - int parking
+    - String equipment
+    - boolean basement
+    - boolean inhabitalLoft
+    - boolean sunExposure
+    - int area
+    - String location
+    - int  centreDistance
+    - double price
+    - String photographs
+    - String agent
+    + saveProperty()
+
+}
+
+class RegisterPropertyUI {
+    + registerProperty()
+
+}
+
+class RegisterPropertyController {
+    + createProperty()
+}
+
+class PropertyRepository {
+    + saveProperty()
+
+}
+
+
+RegisterPropertyUI .> RegisterPropertyController
+RegisterPropertyController .> Property
+Property .> PropertyRepository
+
+@enduml

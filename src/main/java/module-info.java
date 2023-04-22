@@ -1,3 +1,4 @@
+/*
 module com.example.lei232s1dmg61 {
     requires javafx.controls;
     requires javafx.fxml;
@@ -10,7 +11,8 @@ module com.example.lei232s1dmg61 {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.logging;
 
     opens com.example.lei232s1dmg61 to javafx.fxml;
     exports com.example.lei232s1dmg61;
-}
+}*/

@@ -1,10 +1,10 @@
-# US 006 - To create a Task 
+# US 004 - To create a Task 
 
 ## 2. Analysis
 
 ### 2.1. Relevant Domain Model Excerpt 
 
-![Domain Model](svg/us006-domain-model.svg)
+![US004-Domain-Model.svg](svg%2FUS004-Domain-Model.svg)
 
 ### 2.2. Other Remarks
 

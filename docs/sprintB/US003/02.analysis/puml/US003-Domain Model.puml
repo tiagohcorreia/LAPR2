@@ -1,39 +1,12 @@
 @startuml
 
-class SystemAdministrator {
-}
+object Employee
+object Role
+object Agency
+object Administrator
 
-class Employee {
-    - String name
-    - int taxNumber
-    - int taxNumber
-    - String address
-    - String emailAddress
-    - int telephoneNumber
-    - Role role
-    - Angency agency
-}
-
-SystemAdministrator -> Employee: Registers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Administrator -> Employee: Registers
+Employee --> Role: has a
+Employee --> Agency: has a
 
 @enduml

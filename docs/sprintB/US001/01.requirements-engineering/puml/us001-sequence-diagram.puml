@@ -1,0 +1,19 @@
+@startuml
+
+"Unregistered User" -> SYSTEM: Starts listing available properties
+"Unregistered User" <-- SYSTEM: Requests data selection (type of property, buy/rent, no. of rooms)
+
+alt
+    loop
+    "Unregistered User" -> SYSTEM: Selects required data (type of property, buy/rent, no. of rooms)
+    "Unregistered User" <-- SYSTEM: Shows matching announcements
+    end
+else
+    "Unregistered User" -> SYSTEM: Doesn't select any data
+    "Unregistered User" <-- SYSTEM: Shows all announcements
+end
+"Unregistered User" -> SYSTEM: Selects sorting order (price or location)
+"Unregistered User" <-- SYSTEM: Sorts data as requested
+
+
+@enduml
