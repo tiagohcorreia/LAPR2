@@ -77,7 +77,7 @@ class PropertyOwner {
 
 
 Advertisement "*" -- "*" Property: contains >
-PropertyOwner "1" --"*" Property: it has >
+PropertyOwner "1" --"1..*" Property: it has >
 User "1" - "1" PropertyOwner: can be >
 Agent "1" - "*" Property: register >
 Agent "1" -- "*" Advertisement: publish >
