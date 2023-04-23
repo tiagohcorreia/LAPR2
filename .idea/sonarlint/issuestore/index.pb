@@ -92,8 +92,6 @@ x
 Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AdminUI.java,5\6\56e0b5ce6530e817cb5beddc7029295eb5a8cfb0
 h
 8src/main/java/pt/ipp/isep/dei/esoft/project/ui/Main.java,c\9\c94ae3eefc44bf4778c1b1c7de640658b9d015a7
-h
-8docs/sprintB/US004/01.requirements-engineering/Readme.md,e\2\e2316a8111678cb183f5825f24d6859793320baa
 z
 Jdocs/sprintB/US003/01.requirements-engineering/Requirements Engineering.md,3\b\3be04e392fbb8432e5c4bd034062cd8de1d0c41d
 l
