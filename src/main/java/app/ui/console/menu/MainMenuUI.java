@@ -1,8 +1,9 @@
 package app.ui.console.menu;
 
 import app.ui.console.DevTeamUI;
+import app.ui.console.authorization.AuthenticationUI;
 import app.ui.console.utils.Utils;
-import pt.ipp.isep.dei.esoft.project.ui.console.authorization.AuthenticationUI;
+
 
 import java.util.ArrayList;
 import java.util.List;
