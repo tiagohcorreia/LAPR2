@@ -30,12 +30,12 @@ public class Main {
         int option;
 
         while (true) {
-            System.out.println("Bem-vindo ao Sistema de Gerenciamento Geográfico!");
-            System.out.println("Escolha uma opção:");
-            System.out.println("1. Gerenciar Cidades");
-            System.out.println("2. Gerenciar Distritos");
-            System.out.println("3. Gerenciar Estados");
-            System.out.println("4. Sair");
+            System.out.println("Welcome to the Real State USA Company System!");
+            System.out.println("Choose an option:");
+            System.out.println("1. Manage Cities");
+            System.out.println("2. Manage Districts");
+            System.out.println("3. Manage States");
+            System.out.println("4. Exit");
 
             option = scanner.nextInt();
 
@@ -50,10 +50,10 @@ public class Main {
                     stateUI.run();
                     break;
                 case 4:
-                    System.out.println("Saindo do sistema...");
+                    System.out.println("Getting out of the system...");
                     System.exit(0);
                 default:
-                    System.out.println("Opção inválida. Por favor, tente novamente.");
+                    System.out.println("Invalid option. Please try again.");
             }
         }
     }
