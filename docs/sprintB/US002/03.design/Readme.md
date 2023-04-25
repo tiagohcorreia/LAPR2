@@ -18,21 +18,20 @@
 | Step 5  		     | 	...saving the inputted data?                              | Announcement                 | IE: object created in step 1 has its own data.                                                                |
 | Step 6  		     | 	...verifying the data?						                              |                              |                                                                                                               |              
 | Step 7  		     | 	...validating the data locally (mandatory data)?          | Announcement                 | IE: The object created has its own data.                                                                      | 
-| 			  		        | 	... validating all data (global validation)?              | Agency                       | IE: knows all its announcements.                                                                              | 
-| 			  		        | 	... saving the created announcement?                      | Agency                       | IE: owns all its announcements.                                                                               | 
+| 			  		        | 	... validating all data (global validation)?              | AnnouncementRepository       | IE: knows all its announcements.                                                                              | 
+| 			  		        | 	... saving the created announcement?                      |AnnouncementRepository                    | IE: owns all its announcements.                                                                               | 
 | Step 8  		     | 	... informing operation success?                          | PublishAnnouncementUI        | Pure Fabrication.                                                                                             | 
 
 ### Systematization ##
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * Agency
  * Announcement
  * Agent
  * Property
 
 Other software classes (i.e. Pure Fabrication) identified: 
-
+ * AnnouncementRepository
  * PublishAnnouncementUI  
  * PublishAnnouncementController
 
