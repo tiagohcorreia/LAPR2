@@ -7,16 +7,112 @@ autonumber
 
 'hide footbox
 actor "Unregistered User" as UR
-participant "DisplayListingsUI" as UI
-participant "DisplayListingsController" as CTRL
-UR -> UI: starts listing announcements
-activate UI
-UI -> CTRL**: create
-UI -> CTRL: getAvailableFields()
-activate CTRL
-CTRL -> UI: availableFields
-UI -> UR: asks to select data ()
+participant ":DisplayListingsUI" as UI
+participant ":DisplayListingsUI" as UI
+participant ":DisplayListingsController" as CTRL
+participant ":Repositories" as reposclass
+participant "repositories\n:Repositories" as repositories
+participant "listingRepo\n:ListingRepository" as LRepo
+participant "listing\n:Listing" as listing
 
+
+
+activate UR
+UR -> UI: starts listing announcements
+    activate UI
+    UI -> CTRL**: create
+UI -> CTRL: getAvailableFields()
+        activate CTRL
+
+        CTRL -> reposclass: getInstance()
+            activate reposclass
+            reposclass --> CTRL: repositories
+            deactivate reposclass
+        CTRL -> repositories: getListingsRepository()
+            activate repositories
+            repositories --> CTRL: listingsRepository
+            deactivate repositories
+        CTRL -> LRepo: getAvailableFields()
+            activate LRepo
+            loop for each listing
+                alt listing is visible/published
+                'LRepo -> listing: getBusinessType()
+                LRepo -> listing: getListing()
+                    activate listing
+                    return listing
+                'listing --> LRepo: businessType
+                'LRepo -> listing: getPropertyType()
+                'listing --> LRepo: propertyType
+                'LRepo -> listing: getNumberOfRooms()
+                'listing --> LRepo: numberOfRooms
+                    deactivate listing
+                end
+            end
+            LRepo --> CTRL: availableFields
+            deactivate LRepo
+
+            CTRL -> UI: availableFields
+            deactivate CTRL
+
+            UI --> UR: shows available fields and\nrequests data selection
+        alt
+            UR -> UI: selects required data
+            UI -> CTRL: getListings(businessType,\npropertyType, numberOfRooms)
+            activate CTRL
+            CTRL -> LRepo: getListings(businessType,\npropertyType, numberOfRooms)
+            activate LRepo
+            loop for each listing
+            LRepo -> listing: isVisible()
+            activate listing
+            return true/false
+            deactivate listing
+            LRepo -> listing: businessTypeIs(businessType)
+            activate listing
+            return true/false
+            deactivate listing
+
+            LRepo -> listing: propertyTypeIs(propertyType)
+            activate listing
+            return true/false
+            deactivate listing
+
+            LRepo -> listing: numberOfRoomsIs(numberOfRooms)
+            activate listing
+            return true/false
+            deactivate listing
+
+
+            end
+
+LRepo --> CTRL: matchingListings
+deactivate LRepo
+CTRL --> UI: matchingListings
+UI --> UR: shows matching announcements
+deactivate CTRL
+else
+UR -> UI: doesn't select any data
+UI -> CTRL: getAllListings()
+activate CTRL
+CTRL -> LRepo: getVisibleListings()
+activate LRepo
+loop for each listing
+    LRepo -> listing: isVisible()
+    activate listing
+    return true/false
+    deactivate listing
+end
+LRepo --> CTRL: listings
+deactivate LRepo
+
+CTRL --> UI: listings
+deactivate CTRL
+UI --> UR: shows all announcements
+
+end 'ALT fragment end
+
+UR -> UI: selects sorting order
+UI -> UI: sort(mode)
+UI --> UR: displays sorted data
 
 
 @enduml

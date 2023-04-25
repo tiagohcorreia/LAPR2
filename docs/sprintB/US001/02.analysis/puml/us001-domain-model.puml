@@ -64,18 +64,18 @@ class "Unregistered User" {
 }'/
 
 
-House "1" --|> "1" Property
-Apartment "1" --|> "1" Property
-Land "1" --|> "1" Property
+House --|> Property
+Apartment --|> Property
+Land --|> Property
 Listing "1" -- "1" Property: includes >
 
-Agent "1" --|> "1" Employee
+Agent --|> Employee
 'Employee -|> User
 Agent "1" -- "*" Listing: validates >
 'Client "0..1" - "*" Property: owns >
-Property "*" - "0..1" Client : owns <
+Property "*" - "1" Client : owns <
 'Client "*" -|> "1" User
-Client "0..1" -- "*" Listing: creates >
+Client "1" -- "*" Listing: creates >
 '"Unregistered User" "1" ---|> "1" User
 "Unregistered User" "1" -- "*" Listing: browses >
 
