@@ -5,18 +5,28 @@ public class Listing {
     private int listingID;
     private boolean visible;
     private int price;
+    private float commission;
     private TypeOfBusiness typeOfBusiness;
     private Property property;
     private Employee agent;
 
     //Full constructor
-    public Listing(int listingID, boolean visible, int price, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
+    public Listing(int listingID, boolean visible, int price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
         this.listingID = listingID;
         this.visible = visible;
         this.price = price;
+        this.commission = commission;
         this.typeOfBusiness = typeOfBusiness;
         this.property = property;
         this.agent = agent;
+    }
+
+    public float getCommission() {
+        return commission;
+    }
+
+    public void setCommission(float commission) {
+        this.commission = commission;
     }
 
     //Default constructor
@@ -24,6 +34,7 @@ public class Listing {
         this.listingID = 0;
         this.visible = false;
         this.price = 0;
+        this.commission = 0;
         this.typeOfBusiness = TypeOfBusiness.BUY;
         this.property = null;
         this.agent = null;
@@ -34,6 +45,7 @@ public class Listing {
         listingID = anotherListing.listingID;
         visible = anotherListing.visible;
         price = anotherListing.price;
+        commission = anotherListing.commission;
         typeOfBusiness = anotherListing.typeOfBusiness;
         property = anotherListing.property;
         agent = anotherListing.agent;
