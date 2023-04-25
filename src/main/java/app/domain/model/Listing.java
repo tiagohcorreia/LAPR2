@@ -21,12 +21,12 @@ public class Listing {
 
     //Default constructor
     public Listing(){
-        this.listingID=0;
-        this.visible=false;
-        this.price=0;
-        this.typeOfBusiness=TypeOfBusiness.BUY;
-        this.property=null;
-        this.agent=null;
+        this.listingID = 0;
+        this.visible = false;
+        this.price = 0;
+        this.typeOfBusiness = TypeOfBusiness.BUY;
+        this.property = null;
+        this.agent = null;
     }
 
     //Copy constructor
@@ -41,6 +41,13 @@ public class Listing {
 
     public Listing getListing() {return new Listing(this);}
 
+    public Listing getListing(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
+        if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getTypeProperty()) && numberOfBedrooms == this.property.getBedrooms()){
+            return new Listing(this);
+        }
+        else
+            return null;
+    }
     public int getListingID() {
         return listingID;
     }
@@ -88,4 +95,9 @@ public class Listing {
     public void setAgent(Employee agent) {
         this.agent = agent;
     }
+
+    //TODO
+    /*public String toString(){
+        return String.format();
+    }*/
 }
