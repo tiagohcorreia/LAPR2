@@ -112,7 +112,7 @@ If the client does not select the type of business, the type of property and the
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram](svg/ssd.svg)
+![System Sequence Diagram](svg/us001-system-sequence-diagram.svg)
 
 ### 1.7 Other Relevant Remarks
 
