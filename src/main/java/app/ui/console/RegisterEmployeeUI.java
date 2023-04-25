@@ -35,13 +35,17 @@ public class RegisterEmployeeUI implements Runnable {
         Integer telephoneNumber = Utils.readIntegerFromConsole("Insert Telephone Number: ");
 
         //Role
+        String Role = this.controller.getRole();
+        Integer pos1 = Utils.readIntegerFromConsole("Choose a Role for the Employee: ");
 
         //Agency
+        String Agency = this.controller.getAgency();
+        Integer pos2 = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");
 
 
         int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
-        if(optValidation == 1) {
+        if (optValidation == 1) {
             /*this.controller.createEmployee(emplyeeName, employeePassportNumber,
                     address, address, eMail, telephoneNumber,role,agency);*/
 

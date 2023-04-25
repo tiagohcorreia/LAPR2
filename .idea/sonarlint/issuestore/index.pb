@@ -80,3 +80,11 @@ x
 Hsrc/main/java/app/controller/authorization/AuthenticationController.java,e\6\e69bd7718745d231e3148dfd6b792ba2554c6323
 S
 #src/main/java/app/ui/Bootstrap.java,d\f\dfbd5637c449264bb89228bdbcf293c1f532e9ba
+]
+-src/main/java/app/ui/console/utils/Utils.java,0\b\0b7375dbea1ab3a7b99a2948cea2f45e61f6840d
+N
+src/main/java/app/ui/Main.java,7\7\774d0aff326a0164e53c11cda4e3afaaa607428f
+l
+<docs/sprintB/US006/01.requirements-engineering/puml/ssd.puml,4\4\44dd28db68e46e3cbbc3358987915bc2706d04df
+d
+4src/main/java/app/ui/console/RegisterPropertyUI.java,0\f\0f25219359eb38206bea09d7d7284b9fc3e2db16
