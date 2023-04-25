@@ -39,9 +39,13 @@ LRepo -> listing: isVisible()
 activate listing
 return true/false
 'LRepo -> listing: getBusinessType()
+alt true
 LRepo -> listing: getListing()
 activate listing
 return listing
+else false
+listing --> LRepo: null
+end
 'listing --> LRepo: businessType
 'LRepo -> listing: getPropertyType()
 'listing --> LRepo: propertyType
