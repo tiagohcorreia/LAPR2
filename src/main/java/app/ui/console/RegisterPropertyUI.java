@@ -3,6 +3,7 @@ package app.ui.console;
 import app.controller.RegisterPropertyController;
 import app.domain.model.Employee;
 import app.ui.console.utils.Utils;
+import org.apache.commons.lang3.ObjectUtils;
 
 
 import java.util.ArrayList;
@@ -36,7 +37,8 @@ public class RegisterPropertyUI implements Runnable {
         ArrayList<String> photographs = new ArrayList();
         String photo;
         int numberPhotos=1;
-        Employee agent;
+        String agent;
+        Employee choosedAgent;
 
         //Sell or Rent a property
         sellOrRent = Utils.readLineFromConsole("Insert 'S' if you want to sell a property. Insert 'R' if you want rent a property: ");
@@ -90,12 +92,16 @@ public class RegisterPropertyUI implements Runnable {
         }
 
         //agent
+        String agentsList = this.controller.getAgent().toString();
+        agent = Utils.readLineFromConsole("Insert the Name of the responsible agent: ");
+        choosedAgent= this.controller.getEmployee(agent);
 
 
         int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
         if(optValidation == 1) {
-            //this.controller.createProperty(sellOrRent,bedrooms,bathrooms, parking, equipmentList,basement,inhabitalLoft,sunExposure,area,location,centreDistance,price,photographs,agent);
+            this.controller.createProperty(sellOrRent,typeProperty,bedrooms,bathrooms, parking, equipmentList,basement,inhabitalLoft,
+                    sunExposure,area,location,centreDistance,price,photographs,choosedAgent);
 
             System.out.println("(S)ell or (R)ent: " + sellOrRent);
             System.out.println("Type of property: " + typeProperty);
@@ -115,7 +121,7 @@ public class RegisterPropertyUI implements Runnable {
             System.out.println("Location: "+ location);
             System.out.println("Distance of Centre: "+ centreDistance);
             System.out.println("Price: "+ price);
-            //System.out.println("Responsible Agent: "+ agent);
+            System.out.println("Responsible Agent: "+ agent);
 
         } else {
             System.err.println("Operation Canceled!");
