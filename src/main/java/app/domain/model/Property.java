@@ -18,9 +18,10 @@ public class Property {
     private int centreDistance;
     private double price;
     private ArrayList<String> photographs;
+    private Employee agent;
 
     //Constructor
-    public Property(String sellOrRent, String typeProperty, int bedrooms, int bathrooms, int parking, ArrayList<String> equipmentList, String basement, String inhabitalLoft, String sunExposure, int area, String location, int centreDistance, double price, ArrayList<String> photographs) {
+    public Property(String sellOrRent, String typeProperty, int bedrooms, int bathrooms, int parking, ArrayList<String> equipmentList, String basement, String inhabitalLoft, String sunExposure, int area, String location, int centreDistance, double price, ArrayList<String> photographs,Employee agent) {
         this.sellOrRent = sellOrRent;
         this.typeProperty = typeProperty;
         this.bedrooms = bedrooms;
@@ -35,6 +36,7 @@ public class Property {
         this.centreDistance = centreDistance;
         this.price = price;
         this.photographs = photographs;
+        this.agent=agent;
     }
     //Getters ans setters
     public String getSellOrRent() {
@@ -71,6 +73,14 @@ public class Property {
 
     public int getParking() {
         return parking;
+    }
+
+    public Employee getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Employee agent) {
+        this.agent = agent;
     }
 
     public void setParking(int parking) {
@@ -151,6 +161,7 @@ public class Property {
 
     //toString()
 
+
     @Override
     public String toString() {
         return "Property{" +
@@ -159,16 +170,30 @@ public class Property {
                 ", bedrooms=" + bedrooms +
                 ", bathrooms=" + bathrooms +
                 ", parking=" + parking +
-                ", equipment='" + equipmentList + '\'' +
-                ", basement=" + basement +
-                ", inhabitalLoft=" + inhabitalLoft +
-                ", sunExposure=" + sunExposure +
+                ", equipmentList=" + equipmentList +
+                ", basement='" + basement + '\'' +
+                ", inhabitalLoft='" + inhabitalLoft + '\'' +
+                ", sunExposure='" + sunExposure + '\'' +
                 ", area=" + area +
                 ", location='" + location + '\'' +
                 ", centreDistance=" + centreDistance +
                 ", price=" + price +
                 ", photographs=" + photographs +
+                ", agent=" + agent +
                 '}';
     }
 
+    //equals
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Property property = (Property) o;
+        return bedrooms == property.bedrooms && bathrooms == property.bathrooms && parking == property.parking && area == property.area && centreDistance == property.centreDistance && Double.compare(property.price, price) == 0 && Objects.equals(sellOrRent, property.sellOrRent) && Objects.equals(typeProperty, property.typeProperty) && Objects.equals(equipmentList, property.equipmentList) && Objects.equals(basement, property.basement) && Objects.equals(inhabitalLoft, property.inhabitalLoft) && Objects.equals(sunExposure, property.sunExposure) && Objects.equals(location, property.location) && Objects.equals(photographs, property.photographs) && Objects.equals(agent, property.agent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sellOrRent, typeProperty, bedrooms, bathrooms, parking, equipmentList, basement, inhabitalLoft, sunExposure, area, location, centreDistance, price, photographs, agent);
+    }
 }
