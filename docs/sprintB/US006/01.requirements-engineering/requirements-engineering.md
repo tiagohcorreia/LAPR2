@@ -25,6 +25,15 @@ As a system administrator, I want to specify states, districts and cities in the
 >
 > Answer:  The goal is to specify in the system information that can be used/selected to fill the location of the property. An example of the store location is: 71 ST. NICHOLAS DRIVE, NORTH POLE, FAIRBANKS NORTH STAR, AK, 99705.
            For instance, if the information about the existing US states is specified in the system, then the user only selects AK and does not need to write this information.
+           
+           This message is to clarify the format of the address "71 ST. NICHOLAS DRIVE, NORTH POLE, FAIRBANKS NORTH STAR, AK, 99705". In this address we have the:
+           Street: 71 ST. NICHOLAS DRIVE;
+           City: NORTH POLE;
+           District: Fairbanks North Star (this is opcional);
+           State: AK;
+           Zipcode: 99705.
+
+In the USA, the addresses will not include municipalities or parishes.
 
 
 ### 1.3. Acceptance Criteria
