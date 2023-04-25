@@ -63,25 +63,11 @@ class Property {
      photographs
 }
 
-class User {
-    name
-    e-mail
-    password
 
-}
-
-class PropertyOwner {
-    phone number
-
-}
 
 
 Advertisement "*" -- "*" Property: contains >
-PropertyOwner "1" --"1..*" Property: it has >
-User "1" - "1" PropertyOwner: can be >
-Agent "1" - "*" Property: register >
 Agent "1" -- "*" Advertisement: publish >
-User "1"  - "1" Agent: can be >
 House "1" --"1" Property: is >
 Apartment"1" -- "1" Property: is >
 Land"1" - "1" Property: is >
