@@ -49,7 +49,7 @@ public class RegisterEmployeeRepository {
         return new ArrayList<>(employeeList);
     }
 
-    public Employee getEmployee(String employeeID) {
+    public static Employee getEmployee(String employeeID) {
 
         for(Employee employee : employeeList) {
 
@@ -71,5 +71,15 @@ public class RegisterEmployeeRepository {
 
         }
         return stringBuilder.toString();
+    }
+    public List<Employee> getAgent() {
+        List<Employee> agent= new ArrayList();
+        for(Employee employee : employeeList) {
+
+            if(employee.getRole().equals("AGENT")) {
+                agent.add(employee);
+            }
+        }
+        return agent;
     }
 }
