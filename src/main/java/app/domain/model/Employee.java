@@ -25,6 +25,9 @@ public class Employee {
         this.agency = agency;
     }
 
+    public Employee(String employeeName) {
+    }
+
     public String getName() {
         return name;
     }

@@ -9,25 +9,24 @@ public class Property {
     private int bedrooms;
     private int bathrooms;
     private int parking;
-    private String equipment;
-    private boolean basement;
-    private boolean inhabitalLoft;
-    private boolean sunExposure;
+    private ArrayList<String> equipmentList;
+    private String basement;
+    private String inhabitalLoft;
+    private String sunExposure;
     private int area;
     private String location;
     private int centreDistance;
     private double price;
     private ArrayList<String> photographs;
-    private Agent agent;
 
     //Constructor
-    public Property(String sellOrRent, String typeProperty, int bedrooms, int bathrooms, int parking, String equipment, boolean basement, boolean inhabitalLoft, boolean sunExposure, int area, String location, int centreDistance, double price, ArrayList<String> photographs, Agent agent) {
+    public Property(String sellOrRent, String typeProperty, int bedrooms, int bathrooms, int parking, ArrayList<String> equipmentList, String basement, String inhabitalLoft, String sunExposure, int area, String location, int centreDistance, double price, ArrayList<String> photographs) {
         this.sellOrRent = sellOrRent;
         this.typeProperty = typeProperty;
         this.bedrooms = bedrooms;
         this.bathrooms = bathrooms;
         this.parking = parking;
-        this.equipment = equipment;
+        this.equipmentList = equipmentList;
         this.basement = basement;
         this.inhabitalLoft = inhabitalLoft;
         this.sunExposure = sunExposure;
@@ -36,7 +35,6 @@ public class Property {
         this.centreDistance = centreDistance;
         this.price = price;
         this.photographs = photographs;
-        this.agent = agent;
     }
     //Getters ans setters
     public String getSellOrRent() {
@@ -79,35 +77,35 @@ public class Property {
         this.parking = parking;
     }
 
-    public String getEquipment() {
-        return equipment;
+    public ArrayList<String> getEquipment() {
+        return equipmentList;
     }
 
-    public void setEquipment(String equipment) {
-        this.equipment = equipment;
+    public void setEquipment(ArrayList<String> equipment) {
+        this.equipmentList = equipmentList;
     }
 
-    public boolean isBasement() {
+    public String getBasement() {
         return basement;
     }
 
-    public void setBasement(boolean basement) {
+    public void setBasement(String basement) {
         this.basement = basement;
     }
 
-    public boolean isInhabitalLoft() {
+    public String getInhabitalLoft() {
         return inhabitalLoft;
     }
 
-    public void setInhabitalLoft(boolean inhabitalLoft) {
+    public void setInhabitalLoft(String inhabitalLoft) {
         this.inhabitalLoft = inhabitalLoft;
     }
 
-    public boolean isSunExposure() {
+    public String getSunExposure() {
         return sunExposure;
     }
 
-    public void setSunExposure(boolean sunExposure) {
+    public void setSunExposure(String sunExposure) {
         this.sunExposure = sunExposure;
     }
 
@@ -151,13 +149,6 @@ public class Property {
         this.photographs = photographs;
     }
 
-    public Agent getAgent() {
-        return agent;
-    }
-
-    public void setAgent(Agent agent) {
-        this.agent = agent;
-    }
     //toString()
 
     @Override
@@ -168,7 +159,7 @@ public class Property {
                 ", bedrooms=" + bedrooms +
                 ", bathrooms=" + bathrooms +
                 ", parking=" + parking +
-                ", equipment='" + equipment + '\'' +
+                ", equipment='" + equipmentList + '\'' +
                 ", basement=" + basement +
                 ", inhabitalLoft=" + inhabitalLoft +
                 ", sunExposure=" + sunExposure +
@@ -177,7 +168,6 @@ public class Property {
                 ", centreDistance=" + centreDistance +
                 ", price=" + price +
                 ", photographs=" + photographs +
-                ", agent=" + agent +
                 '}';
     }
 
