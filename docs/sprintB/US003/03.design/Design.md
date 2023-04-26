@@ -6,28 +6,26 @@
 
 
 | Interaction ID | Question: Which class is responsible for...   | Answer                     | Justification (with patterns)                                                                                 |
-|:-------------  |:----------------------------------------------|:---------------------------|:--------------------------------------------------------------------------------------------------------------|
-| Step 1  		 | 	... interacting with the actor?              | RegisterEmployeeUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
-| 			  		 | 	... coordinating the US?                     | RegisterEmployeeController | Controller                                                                                                    |
-| 			  		 | 	... instantiating a new Employee?            | Employee                   |                                                                                                               |
-| 			  		 | ... knowing the user using the system?        | UserSession                | IE: cf. A&A component documentation.                                                                          |
-| 			  		 | 							                                       | Organization               | IE: knows/has its own Employees                                                                               |
-| 			  		 | 							                                       | Employee                   | IE: knows its own data (e.g. email)                                                                           |
-| Step 2  		 | 							                                       |                            |                                                                                                               |
-| Step 3  		 | 	...saving the inputted data?                 | Employee                   | IE: object created in step 1 has its own data.                                                                |
-| Step 4  		 | 	...knowing the task categories to show?      | System                     | IE: Task Categories are defined by the Administrators.                                                        |
-| Step 5  		 | 	... saving the selected category?            | Eployee                    | IE: object created in step 1 is classified in one Category.                                                   |
-| Step 6  		 | 							                                       |                            |                                                                                                               |              
-| Step 7  		 | 	... validating all data (local validation)?  | Task                       | IE: owns its data.                                                                                            | 
-| 			  		 | 	... validating all data (global validation)? | Organization               | IE: knows all its tasks.                                                                                      | 
-| 			  		 | 	... saving the created employee?             | Employee                   | IE: owns all its tasks.                                                                                       | 
-| Step 8  		 | 	... informing operation success?             | RegisterEmployeeUI         | IE: is responsible for user interactions.                                                                     | 
+|:---------------|:----------------------------------------------|:---------------------------|:--------------------------------------------------------------------------------------------------------------|
+| Step 1  		     | 	... interacting with the actor?              | RegisterEmployeeUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
+| 			  		        | 	... coordinating the US?                     | RegisterEmployeeController | Controller                                                                                                    |
+| 			  		        | 	... instantiating a new Employee?            | Employee                   |                                                                                                               |
+| 			  		        | ... knowing the user using the system?        | UserSession                | IE: cf. A&A component documentation.                                                                          |
+| 			  		        | 							                                       | Employee                   | IE: knows its own data (e.g. employee name)                                                                   |
+| Step 2  		     | 	...saving the inputted data?                 | Employee                   | IE: object created in step 1 has its own data.                                                                |
+| Step 3  		     | 	...knowing the task categories to show?      | System                     | IE: Task Categories are defined by the Administrators.                                                        |
+| Step 4  		     | 	... saving the selected category?            | Employee                   | IE: object created in step 1 is classified in one Category.                                                   |
+| Step 5  		     | 	... validating all data (local validation)?  | Employee                   | IE: owns its data.                                                                                            |
+| 		             | 	... saving the created employee?             | RegisterEmployeeRepository | IE: owns all its employees.                                                                                   | 
+| Step 6  		     | 	... informing operation success?             | RegisterEmployeeUI         | IE: is responsible for user interactions.                                                                     | 
 
 ### Systematization ##
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
  * Employee
+ * Role
+ * Agency
 
 Other software classes (i.e. Pure Fabrication) identified: 
 
