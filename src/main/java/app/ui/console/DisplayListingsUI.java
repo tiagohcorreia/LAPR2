@@ -5,8 +5,6 @@ import app.domain.shared.ListingPriceComparator;
 import app.ui.console.utils.Utils;
 import app.controller.DisplayListingsController;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -50,29 +48,31 @@ public class DisplayListingsUI implements Runnable{
 
             String selectedTypeOfBusiness;
             do {
-                selectedTypeOfBusiness = Utils.readLineFromConsole("Type of business: ");
-                selectedTypeOfBusiness = selectedTypeOfBusiness.toUpperCase(Locale.ROOT);
+                selectedTypeOfBusiness = Utils.readLineFromConsole("Type of business: ").toUpperCase();
             } while (!availableFields.get(0).toString().contains(selectedTypeOfBusiness));
 
             String selectedTypeOfProperty;
             do {
-                selectedTypeOfProperty = Utils.readLineFromConsole("Type of property: ");
-                selectedTypeOfProperty = selectedTypeOfProperty.toUpperCase(Locale.ROOT);
+                selectedTypeOfProperty = Utils.readLineFromConsole("Type of property: ").toUpperCase();
             } while (!availableFields.get(1).toString().contains(selectedTypeOfProperty));
-
 
             int selectedNumberOfBedrooms;
             do {
                 selectedNumberOfBedrooms = Utils.readIntegerFromConsole("Number of bedrooms: ");
             } while (!availableFields.get(2).contains(selectedNumberOfBedrooms));
 
-            List<Listing> matchingListings = controller.getListings(selectedTypeOfBusiness, selectedTypeOfProperty, selectedNumberOfBedrooms);
 
-            for (Listing matchingListing : matchingListings) {
-                System.out.println(matchingListing);
+            List<Listing> listings;
+            //TO-FIX
+            if (selectedTypeOfBusiness.equals("") && selectedTypeOfProperty.equals("") && selectedNumberOfBedrooms == 0){
+                listings = controller.getAllVisibleListings();
+            } else {
+                listings = controller.getListings(selectedTypeOfBusiness, selectedTypeOfProperty, selectedNumberOfBedrooms);
             }
 
-
+            for (Listing listing : listings) {
+                System.out.println(listing);
+            }
 //            while (sortingMode != 0) {
 //
 //                do {
@@ -108,9 +108,9 @@ public class DisplayListingsUI implements Runnable{
 
                 if (sortingMode == 1) {
                     ListingPriceComparator listingPriceComparator = new ListingPriceComparator();
-                    matchingListings.sort(listingPriceComparator);
-                    for (Listing matchingListing : matchingListings) {
-                        System.out.println(matchingListing);
+                    listings.sort(listingPriceComparator);
+                    for (Listing listing : listings) {
+                        System.out.println(listing);
                     }
                 } else if (sortingMode == 2){
                     //TODO

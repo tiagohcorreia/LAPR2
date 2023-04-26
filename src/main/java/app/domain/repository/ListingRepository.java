@@ -12,7 +12,15 @@ public class ListingRepository {
         return listings.add(listing.getListing());
     }
 
-    public List<Listing> getAll() { return new ArrayList<>(listings); }
+    public List<Listing> getAllVisibleListings() {
+        List<Listing> allVisibleListings = new ArrayList<>();
+        for(Listing listing: listings){
+            if (listing.isVisible()){
+                allVisibleListings.add(listing.getListing());
+            }
+        }
+        return allVisibleListings;
+    }
 
     public List<List<Object>> getAvailableFields(){
         List<List<Object>> availableFields = new ArrayList<>();
