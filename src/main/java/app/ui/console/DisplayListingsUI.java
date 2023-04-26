@@ -4,9 +4,7 @@ import app.domain.model.Listing;
 import app.domain.shared.ListingPriceComparator;
 import app.ui.console.utils.Utils;
 import app.controller.DisplayListingsController;
-
 import java.util.List;
-import java.util.Locale;
 
 public class DisplayListingsUI implements Runnable{
 

@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.domain.model.City;
 import app.domain.model.District;
 import app.domain.repository.DistrictRepository;
 
@@ -24,4 +25,8 @@ public class DistrictController {
     public List<District> getAllDistricts() {
         return districtRepository.findAll();
     }
+    public void addCityToDistrict(String districtName, City city) {
+        districtRepository.addCity(districtName, city);
+    }
+
 }

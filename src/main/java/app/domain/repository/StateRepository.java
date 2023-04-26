@@ -1,5 +1,6 @@
 package app.domain.repository;
 
+import app.domain.model.District;
 import app.domain.model.State;
 
 import java.util.ArrayList;
@@ -33,6 +34,11 @@ public class StateRepository {
 
     public boolean isEmpty() {
         return states.isEmpty();
+    }
+    public void addDistrictToState(State state, District district) {
+        if (state != null && district != null) {
+            state.getDistricts().add(district);
+        }
     }
 }
 

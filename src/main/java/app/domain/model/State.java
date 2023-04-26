@@ -29,10 +29,18 @@ public class State {
 
     @Override
     public String toString() {
-        return "State{" +
-                "name='" + name + '\'' +
-                ", districts=" + districts +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("State: ").append(name).append("\n");
+        sb.append("Districts:\n");
+
+        if (districts.isEmpty()) {
+            sb.append("No districts in this state.\n");
+        } else {
+            for (District district : districts) {
+                sb.append("- ").append(district.getName()).append("\n");
+            }
+        }
+        return sb.toString();
     }
 
     @Override
@@ -42,5 +50,4 @@ public class State {
         State state = (State) otherObject;
         return name.equals(state.name);
     }
-
 }

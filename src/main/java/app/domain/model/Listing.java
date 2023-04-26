@@ -1,6 +1,8 @@
 package app.domain.model;
 import app.domain.shared.TypeOfBusiness;
 
+import java.util.NoSuchElementException;
+
 public class Listing {
     private int listingID;
     private boolean visible;
@@ -12,13 +14,13 @@ public class Listing {
 
     //Full constructor
     public Listing(int listingID, boolean visible, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
-        this.listingID = listingID;
-        this.visible = visible;
-        this.price = price;
-        this.commission = commission;
-        this.typeOfBusiness = typeOfBusiness;
-        this.property = property;
-        this.agent = agent;
+        this.setListingID(listingID);
+        this.setVisible(visible);
+        this.setPrice(price);
+        this.setCommission(commission);
+        this.setTypeOfBusiness(typeOfBusiness);
+        this.setProperty(property);
+        this.setAgent(agent);
     }
 
     public float getCommission() {
@@ -26,50 +28,51 @@ public class Listing {
     }
 
     public void setCommission(float commission) {
+        if (price < 0){
+            throw new IllegalArgumentException("Invalid commission value.");
+        }
         this.commission = commission;
     }
 
     //Default constructor
     public Listing(){
-        this.listingID = 0;
-        this.visible = false;
-        this.price = 0;
-        this.commission = 0;
-        this.typeOfBusiness = TypeOfBusiness.BUY;
-        this.property = null;
-        this.agent = null;
+        this.setListingID(0);
+        this.setVisible(false);
+        this.setPrice(0);
+        this.setCommission(0);
+        this.setTypeOfBusiness(TypeOfBusiness.BUY);
+        this.setProperty(null);
+        this.setAgent(null);
     }
 
     //Copy constructor
     public Listing(Listing anotherListing){
-        this.listingID = anotherListing.listingID;
-        this.visible = anotherListing.visible;
-        this.price = anotherListing.price;
-        this.commission = anotherListing.commission;
-        this.typeOfBusiness = anotherListing.typeOfBusiness;
-        this.property = anotherListing.property;
-        this.agent = anotherListing.agent;
+        this.setListingID(anotherListing.getListingID());
+        this.setVisible(anotherListing.isVisible());
+        this.setPrice(anotherListing.getPrice());
+        this.setCommission(anotherListing.getCommission());
+        this.setTypeOfBusiness(anotherListing.getTypeOfBusiness());
+        this.setProperty(anotherListing.getProperty());
+        this.setAgent(anotherListing.getAgent());
     }
 
-    public Listing getListing() {return new Listing(this);}
+    public Listing getListing() { return new Listing(this); }
 
     public Listing getListing(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
         if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getTypeProperty()) && numberOfBedrooms == this.property.getBedrooms()){
             return new Listing(this);
         }
         else
-            return null;
+            throw new NoSuchElementException("No entries found.");
     }
     public int getListingID() {
         return listingID;
     }
 
-    public void setListingID(int listingID) {
-        this.listingID = listingID;
-    }
+    public void setListingID(int listingID) { this.listingID = listingID; }
 
     public boolean isVisible() {
-        return visible;
+        return this.visible;
     }
 
     public void setVisible(boolean visible) {
@@ -81,6 +84,9 @@ public class Listing {
     }
 
     public void setPrice(float price) {
+        if (price < 0){
+            throw new IllegalArgumentException("Invalid price value.");
+        }
         this.price = price;
     }
 
@@ -108,8 +114,22 @@ public class Listing {
         this.agent = agent;
     }
 
-    //TODO
-    /*public String toString(){
-        return String.format();
-    }*/
+    //TO-FIX
+    public String toString(){
+        return String.format("Listing - " +
+                "ID: %d\t" +
+                "Visible: %s\t" +
+                "Business Type: %s\t" +
+                "Property: %s\t" +
+                "Price: %f\t" +
+                "Commission: %f\t" +
+                "Agent: %s\t",
+                this.listingID,
+                "true",
+                this.typeOfBusiness.toString(),
+                this.property.toString(),
+                this.price,
+                this.commission,
+                this.agent.toString());
+    }
 }
