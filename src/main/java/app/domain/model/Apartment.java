@@ -9,8 +9,8 @@ public class Apartment extends Property{
     private ArrayList<String> equipment;
 
     //Constructor
-    public Apartment(int propertyID, float area, String address, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment) {
-        super(propertyID, area, address, cityCentreDistance, photographs);
+    public Apartment(int propertyID, float area, City address, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment) {
+        super(area, address, cityCentreDistance, photographs);
         this.numberOfBedrooms=numberOfBedrooms;
         this.numberOfBathrooms=numberOfBathrooms;
         this.numberOfParkingSpaces=numberOfParkingSpaces;

@@ -57,6 +57,8 @@ activate AG
 
                    UI --> AG : validate data
 
+                   AG -> UI : submits data
+
                    UI -> CTRL : createAnnouncement (size, location,\n distance from the city \n center, price, commission)
 
                 CTRL -> AnnouncementREP: createAnnouncement(size, location,\n distance from the city \n center, price, commission)

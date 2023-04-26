@@ -13,8 +13,8 @@ public class House extends Property{
     private boolean hasInhabitableLoft;
     SunExposure sunExposure;
 
-    public House(int propertyID, float area, String address, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
-        super(propertyID, area, address, cityCentreDistance, photographs);
+    public House(int propertyID, float area, City address, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
+        super(area, address, cityCentreDistance, photographs);
         this.numberOfBedrooms=numberOfBedrooms;
         this.numberOfBathrooms=numberOfBathrooms;
         this.numberOfParkingSpaces=numberOfParkingSpaces;

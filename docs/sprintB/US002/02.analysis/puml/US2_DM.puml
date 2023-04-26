@@ -10,11 +10,6 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-'title Domain Model
-
-'class Platform {
-'  -description
-'}
 
 class Agent {
     citizen card
@@ -23,6 +18,17 @@ class Agent {
     phone number
     agency
 }
+
+class City {
+
+}
+
+class District{
+}
+
+class State{
+}
+
 
 class Advertisement {
     property description
@@ -72,6 +78,9 @@ House "1" --"1" Property: is >
 Apartment"1" -- "1" Property: is >
 Land"1" - "1" Property: is >
 Advertisement"1" - "1" Commission: it has >
+Property"1" - "1" City: it has >
+City"1" - "1" District: it has >
+District"1" - "1" State: it has >
 
 
 
