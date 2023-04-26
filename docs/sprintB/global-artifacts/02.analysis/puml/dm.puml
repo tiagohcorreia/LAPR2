@@ -109,7 +109,7 @@ TypeOfBusiness typeOfBusiness
 class Property{
 int propertyID
 float area
-String address
+City city
 float cityCenterDistance
 List<Image> photograph
 }
