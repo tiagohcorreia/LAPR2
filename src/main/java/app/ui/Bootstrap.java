@@ -53,6 +53,9 @@ public class Bootstrap implements Runnable {
         authenticationRepository.addUserWithRole("Main Administrator", "admin@this.app", "admin",
                 AuthenticationController.ROLE_ADMIN);
 
+        authenticationRepository.addUserWithRole("Main Administrator", "1211742@isep.ipp.pt", "1211742",
+                AuthenticationController.ROLE_ADMIN);
+
         authenticationRepository.addUserWithRole("Employee", "employee@this.app", "pwd",
                 AuthenticationController.ROLE_EMPLOYEE);
     }

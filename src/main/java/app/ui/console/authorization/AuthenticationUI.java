@@ -2,8 +2,8 @@ package app.ui.console.authorization;
 
 import app.controller.authorization.AuthenticationController;
 import app.ui.console.utils.Utils;
-import pt.ipp.isep.dei.esoft.project.ui.console.menu.AdminUI;
-import pt.ipp.isep.dei.esoft.project.ui.console.menu.MenuItem;
+import app.ui.console.menu.AdminUI;
+import app.ui.console.menu.MenuItem;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -3,8 +3,6 @@ package app.ui.console;
 import app.controller.RegisterEmployeeController;
 import app.ui.console.utils.Utils;
 
-import javax.management.relation.Role;
-
 public class RegisterEmployeeUI implements Runnable {
 
     private RegisterEmployeeController controller;
@@ -12,7 +10,6 @@ public class RegisterEmployeeUI implements Runnable {
     public RegisterEmployeeUI(RegisterEmployeeController controller) {
         this.controller = controller;
     }
-
     @Override
     public void run() {
 
