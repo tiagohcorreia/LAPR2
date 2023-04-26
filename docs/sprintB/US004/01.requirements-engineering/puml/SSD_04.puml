@@ -82,6 +82,10 @@ activate Owner
     deactivate System
         Owner-> System: types the price of the property
     activate System
+        System-> Owner: requests the Owner wants to rent or sell the property
+    deactivate System
+        Owner -> System: inserts if wants to rent or sell the property
+    activate System
         System-> Owner: requests the responsible agent
     deactivate System
         Owner -> System: selects the responsible agent
@@ -90,7 +94,7 @@ activate Owner
     deactivate System
         Owner->System: confirms data
     activate System
-        System -> Owner: confirms the request and informs operation success
+        System -> Owner: informs operation success
     deactivate System
 
 
