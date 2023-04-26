@@ -58,8 +58,6 @@ j
 :docs/sprintB/US003/01.requirements-engineering/svg/SSD.svg,a\c\ac065268af5d22c8a6b17bf1f6925761516c7263
 p
 @src/main/java/pt/ipp/isep/dei/esoft/project/domain/Employee.java,d\6\d6a9205b2dbee76e44f3c4c862501a1bcd3869ad
-€
-Psrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/UserSession.java,3\a\3ad8f79dc5d9e6193112010503c93310b92234d1
 ž
 nsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/authorization/AuthenticationController.java,9\2\924cc26509fe56f70bcb36cee23fcc0cfec42aff
 h
