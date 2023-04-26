@@ -72,14 +72,4 @@ public class RegisterEmployeeRepository {
         }
         return stringBuilder.toString();
     }
-    public List<Employee> getAgent() {
-        List<Employee> agent= new ArrayList();
-        for(Employee employee : employeeList) {
-
-            if(employee.getRole().equals("AGENT")) {
-                agent.add(employee);
-            }
-        }
-        return agent;
-    }
 }
