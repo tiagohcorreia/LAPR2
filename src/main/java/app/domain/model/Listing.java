@@ -4,14 +4,14 @@ import app.domain.shared.TypeOfBusiness;
 public class Listing {
     private int listingID;
     private boolean visible;
-    private int price;
+    private float price;
     private float commission;
     private TypeOfBusiness typeOfBusiness;
     private Property property;
     private Employee agent;
 
     //Full constructor
-    public Listing(int listingID, boolean visible, int price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
+    public Listing(int listingID, boolean visible, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
         this.listingID = listingID;
         this.visible = visible;
         this.price = price;
@@ -76,11 +76,11 @@ public class Listing {
         this.visible = visible;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
