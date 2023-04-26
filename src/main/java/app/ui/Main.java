@@ -10,6 +10,7 @@ import app.ui.console.CityUI;
 import app.ui.console.DistrictUI;
 import app.ui.console.StateUI;
 import app.ui.console.DisplayListingsUI;
+import app.ui.console.menu.AdminUI;
 
 import java.util.Scanner;
 
@@ -38,6 +39,7 @@ public class Main {
             System.out.println("2. Manage Districts");
             System.out.println("3. Manage States");
             System.out.println("4. Display listings");
+            System.out.println("5. Login");
             System.out.println("0. Exit");
 
             option = scanner.nextInt();
@@ -55,6 +57,8 @@ public class Main {
                 case 4:
                     displayListingsUI.run();
                     break;
+                case 5:
+                    //AdminUI.run();
                 case 0:
                     System.out.println("Getting out of the system...");
                     System.exit(0);
