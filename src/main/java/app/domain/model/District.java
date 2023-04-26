@@ -30,10 +30,18 @@ public class District {
 
     @Override
     public String toString() {
-        return "District{" +
-                "name='" + name + '\'' +
-                ", cities=" + cities +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("District: ").append(name).append("\n");
+        sb.append("Cities:\n");
+
+        if (cities.isEmpty()) {
+            sb.append("No cities in this district.\n");
+        } else {
+            for (City city : cities) {
+                sb.append("- ").append(city.getName()).append("\n");
+            }
+        }
+        return sb.toString();
     }
 
     @Override

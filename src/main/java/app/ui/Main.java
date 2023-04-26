@@ -25,8 +25,8 @@ public class Main {
         StateController stateController = new StateController(stateRepository);
 
         CityUI cityUI = new CityUI(cityController);
-        DistrictUI districtUI = new DistrictUI(districtController);
-        StateUI stateUI = new StateUI(stateController);
+        DistrictUI districtUI = new DistrictUI(districtController, cityController);
+        StateUI stateUI = new StateUI(stateController, districtController);
         DisplayListingsUI displayListingsUI = new DisplayListingsUI();
 
         Scanner scanner = new Scanner(System.in);

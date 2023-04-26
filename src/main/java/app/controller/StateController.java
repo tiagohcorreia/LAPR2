@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.domain.model.District;
 import app.domain.model.State;
 import app.domain.repository.StateRepository;
 
@@ -24,5 +25,8 @@ public class StateController {
 
     public List<State> getAllStates() {
         return stateRepository.findAll();
+    }
+    public void addDistrictToState(State state, District district) {
+        stateRepository.addDistrictToState(state, district);
     }
 }

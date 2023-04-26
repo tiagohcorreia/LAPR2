@@ -1,16 +1,20 @@
 package app.ui.console;
 
+import app.controller.CityController;
 import app.controller.DistrictController;
+import app.domain.model.City;
 import app.domain.model.District;
 
 import java.util.Scanner;
 
 public class DistrictUI {
     private final DistrictController districtController;
+    private final CityController cityController;
     private final Scanner scanner;
 
-    public DistrictUI(DistrictController districtController) {
+    public DistrictUI(DistrictController districtController, CityController cityController) {
         this.districtController = districtController;
+        this.cityController = cityController;
         this.scanner = new Scanner(System.in);
     }
 
@@ -22,6 +26,7 @@ public class DistrictUI {
             System.out.println("1. Add District");
             System.out.println("2. Find District");
             System.out.println("3. List Districts");
+            System.out.println("4. Add City to District");
             System.out.println("0. Back");
 
             int choice = scanner.nextInt();
@@ -36,6 +41,9 @@ public class DistrictUI {
                     break;
                 case 3:
                     listDistricts();
+                    break;
+                case 4:
+                    addCityToDistrict();
                     break;
                 case 0:
                     running = false;
@@ -69,5 +77,24 @@ public class DistrictUI {
         for (District district : districtController.getAllDistricts()) {
             System.out.println(district);
         }
+    }
+
+    private void addCityToDistrict() {
+        System.out.println("Enter the district name:");
+        String districtName = scanner.nextLine();
+
+        System.out.println("Enter the city name:");
+        String cityName = scanner.nextLine();
+
+        City city = cityController.findCityByName(cityName);
+
+        if (city == null) {
+            System.out.println("City not found. Creating a new city.");
+            cityController.addCity(cityName);
+            city = cityController.findCityByName(cityName);
+        }
+
+        districtController.addCityToDistrict(districtName, city);
+        System.out.println("City added to district successfully.");
     }
 }
