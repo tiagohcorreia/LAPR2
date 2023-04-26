@@ -32,6 +32,8 @@ Other software classes (i.e. Pure Fabrication) identified:
  * RegisterPropertyUI  
  * RegisterPropertyController
  * PropertyRepository
+ * Repositories
+ * RegisterEmployeeRepository
 
 
 ## 3.2. Sequence Diagram (SD)
