@@ -22,37 +22,47 @@ public class Property {
 
     //Constructor
     public Property(String sellOrRent, String typeProperty, int bedrooms, int bathrooms, int parking, ArrayList<String> equipmentList, String basement, String inhabitalLoft, String sunExposure, int area, String location, int centreDistance, double price, ArrayList<String> photographs,Employee agent) {
-        this.sellOrRent = sellOrRent;
-        this.typeProperty = typeProperty;
+
+        verifyDataNull(sellOrRent, typeProperty, bedrooms, bathrooms, parking, equipmentList, basement, inhabitalLoft, sunExposure, area, location, centreDistance, price, photographs, agent);
+
+        this.sellOrRent = setSellOrRent(sellOrRent);
+        this.typeProperty = setTypeProperty(typeProperty);
         this.bedrooms = bedrooms;
         this.bathrooms = bathrooms;
         this.parking = parking;
         this.equipmentList = equipmentList;
-        this.basement = basement;
-        this.inhabitalLoft = inhabitalLoft;
-        this.sunExposure = sunExposure;
+        this.basement = setBasement(basement);
+        this.inhabitalLoft = setInhabitalLoft(inhabitalLoft);
+        this.sunExposure = setSunExposure(sunExposure);
         this.area = area;
         this.location = location;
         this.centreDistance = centreDistance;
         this.price = price;
-        this.photographs = photographs;
+        this.photographs = setPhotographs(photographs);
         this.agent=agent;
     }
     //Getters ans setters
     public String getSellOrRent() {
         return sellOrRent;
     }
+    public String setSellOrRent(String sellOrRent) {
 
-    public void setSellOrRent(String sellOrRent) {
-        this.sellOrRent = sellOrRent;
+        if(sellOrRent != "S" || sellOrRent != "R") {
+            throw new IllegalArgumentException("You must insert 'S' if you want to sell or 'R' if you want to rent the property.");
+        }
+        return sellOrRent = sellOrRent;
+
     }
 
     public String getTypeProperty() {
         return typeProperty;
     }
 
-    public void setTypeProperty(String typeProperty) {
-        this.typeProperty = typeProperty;
+    public String setTypeProperty(String typeProperty) {
+        if(typeProperty != "A" || typeProperty != "H" || typeProperty != "L") {
+            throw new IllegalArgumentException("You must insert 'A' if your property is an apartment, 'H' if it's a house or 'L' if it's a land.");
+        }
+        return typeProperty = typeProperty;
     }
 
     public int getBedrooms() {
@@ -99,24 +109,35 @@ public class Property {
         return basement;
     }
 
-    public void setBasement(String basement) {
-        this.basement = basement;
+    public String setBasement(String basement) {
+        if(basement!= "Y" || basement != "y" || basement != "N" || basement != "n") {
+            throw new IllegalArgumentException("Please insert 'Y' if the property has basement and 'N' if the property hasn't basement.");
+        }
+        return basement = basement;
     }
 
     public String getInhabitalLoft() {
         return inhabitalLoft;
     }
 
-    public void setInhabitalLoft(String inhabitalLoft) {
-        this.inhabitalLoft = inhabitalLoft;
+    public String setInhabitalLoft(String inhabitalLoft) {
+        if(inhabitalLoft!= "Y" || inhabitalLoft != "y" || inhabitalLoft != "N" || inhabitalLoft != "n") {
+            throw new IllegalArgumentException("Please insert 'Y' if the property has inhabital loft and 'N' if the property hasn't inhabital loft.");
+        }
+        return inhabitalLoft = inhabitalLoft;
+
     }
 
     public String getSunExposure() {
         return sunExposure;
     }
 
-    public void setSunExposure(String sunExposure) {
-        this.sunExposure = sunExposure;
+    public String setSunExposure(String sunExposure) {
+        if(sunExposure!= "Y" || sunExposure != "y" || sunExposure != "N" || sunExposure != "n") {
+            throw new IllegalArgumentException("Please insert 'Y' if the property has Sun Exposure and 'N' if the property hasn't Sun Exposure.");
+        }
+        return sunExposure = sunExposure;
+
     }
 
     public int getArea() {
@@ -155,12 +176,15 @@ public class Property {
         return photographs;
     }
 
-    public void setPhotographs(ArrayList<String> photographs) {
-        this.photographs = photographs;
+    public ArrayList<String> setPhotographs(ArrayList<String> photographs) {
+        if(photographs.size() < 1 && photographs.size() > 30) {
+            throw new IllegalArgumentException("Please insert at least 1 photograph with a maximum of 30 photographs.");
+        }
+        return photographs = photographs;
+
     }
 
     //toString()
-
 
     @Override
     public String toString() {
@@ -195,5 +219,11 @@ public class Property {
     @Override
     public int hashCode() {
         return Objects.hash(sellOrRent, typeProperty, bedrooms, bathrooms, parking, equipmentList, basement, inhabitalLoft, sunExposure, area, location, centreDistance, price, photographs, agent);
+    }
+
+    private void verifyDataNull(String sellOrRent, String typeProperty, int bedrooms, int bathrooms, int parking, ArrayList<String> equipmentList, String basement, String inhabitalLoft, String sunExposure, int area, String location, int centreDistance, double price, ArrayList<String> photographs,Employee agent){
+        if (sellOrRent == null || typeProperty == null || bedrooms==0 || bathrooms==0 || parking==0 || equipmentList.size()<=0 || basement == null || inhabitalLoft == null || sunExposure ==null || area == 0 || location == null || centreDistance==0 || price==0 || photographs.size()<=0 || agent == null){
+            throw new NullPointerException("Property data can't be empty, please insert all the required information.");
+        }
     }
 }
