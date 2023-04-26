@@ -1,72 +1,81 @@
 @startuml
-
-actor Owner as owner
-participant ":RegisterPropertyUI" as ui
-participant ":RegisterPropertyController" as ctr
-participant Property as property
-participant ":PropertyRepository" as rp
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
 
 autonumber
 
+'hide footbox
+actor Owner as owner
+participant ":RegisterPropertyUI" as ui
+participant ":RegisterPropertyController" as ctrl
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as rep
+participant ":RegisterEmployeeRepository" as repEmp
+participant ":PropertyRepository" as repProp
+participant ":Property" as property
+
 activate owner
 
-        owner -> ui: starts the requests for listing a property sale or rent
+        owner -> ui : starts the request for listing a property
 
         activate ui
 
-        ui -> ctr** : create
+        ui--> owner : requests to select the type of property
 
-        deactivate ui
+        owner -> ui: selects the type of property
 
-        owner <- ui: requests the property data
+        ui -> ctrl** : create
 
-        activate ui
+        ui-> ctrl: getAgent()
 
-        owner -> ui: types property data
+        activate ctrl
 
-        ui -> ctr: registerProperty
+        ctrl -> RepositorySingleton: getInstance()
+        activate RepositorySingleton
+        RepositorySingleton --> ctrl: repositories
+        deactivate RepositorySingleton
 
-        deactivate ui
-        activate ctr
+        ctrl -> rep: getEmployeeRepository()
+        activate rep
+        rep--> ctrl: RegisterEmployeeRepository
+        deactivate rep
 
-        ctr -> property: createProperty(sellOrRent,typeProperty,\n bedrooms, bathrooms, parking,\n equipment, basement, inhabitalLoft,\n sunExposure, area, location, centreDistantance,\n price, photographs, agent)
+        ctrl ->repEmp: getAgents()
+        activate repEmp
+        repEmp -> ctrl: agentsList
+        deactivate repEmp
 
-            deactivate ctr
-            activate property
+        ctrl-> ui: agentsList
 
-        property -> rp: saveProperty()
+        ui --> owner : requests listing and property data
 
-        deactivate property
+        owner -> ui : inserts the property data
 
-        activate rp
+        ui-> owner: validates data
 
+        ui -> ctrl: createProperty()
+        ctrl -> repProp: createProperty()
+        activate repProp
 
-        rp -> ctr: return RegisteredProperty
+        repProp -> property **:
+        repProp -> repProp: addProperty (Property)
+        activate repProp
+            repProp -> repProp: validateProperty(Property))
+            activate repProp
+                repProp --> repProp
+            deactivate repProp
+            repProp --> repProp
+        deactivate repProp
 
-        deactivate rp
+        deactivate repProp
 
-        activate ctr
-
-        ctr -> ui: return RegisteredProperty
-
-
-        deactivate ctr
-        activate ui
-
-
-        owner <- ui: shows property data and asks confirmation
-
-        deactivate ui
-
-        owner -> ui: confirms the data
-
-        activate ui
-
-        owner <- ui: informs operation sucess
-
+            ctrl --> ui: Announcement
+        deactivate ctrl
+            ui --> owner: informs operation success
         deactivate ui
 
 deactivate owner
 
 
-@enduml
+          @enduml

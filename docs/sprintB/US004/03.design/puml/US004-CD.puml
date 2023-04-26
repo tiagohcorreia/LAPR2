@@ -1,49 +1,63 @@
 @startuml
-'skinparam monochrome true
-skinparam packageStyle rectangle
-skinparam shadowing false
-skinparam linetype polyline
-'skinparam linetype orto
 
-skinparam classAttributeIconSize 0
+@startuml
 
+
+class Repositories{
+}
+class RegisterEmployeeRepository{
+}
 class Property{
-    - String sellOrRent
-    - String typeProperty
-    - int bedrooms
-    - int bathrooms
-    - int parking
-    - String equipment
-    - boolean basement
-    - boolean inhabitalLoft
-    - boolean sunExposure
-    - int area
-    - String location
-    - int  centreDistance
-    - double price
-    - String photographs
-    - String agent
-    + saveProperty()
+    - int propertyID
+    - float area
+    - String address
+    - float cityCentreDistance
+    - Arraylist<String> photographs
+}
+class House{
+    - int numberOfBedrooms
+    - int numberOfBathrooms
+    - int numberOfParkingSpaces
+    - Arraylist<String> equipment
+    - boolean hasBasement
+    - boolean hasInhabitableLoft
+    - SunExposure sunExposure
+}
+class Apartment{
+    - int numberOfBedrooms
+    - int numberOfBathrooms
+    - int numberOfParkingSpaces
+    - Arraylist<String> equipment
+}
+class Land{
 
 }
-
 class RegisterPropertyUI {
-    + registerProperty()
+    + getAgent()
+    + createProperty()
 
 }
 
 class RegisterPropertyController {
+    + getInstance()
+    + getEmployeeRepository()
+    + getAgents()
     + createProperty()
 }
 
 class PropertyRepository {
-    + saveProperty()
-
+    + addProperty()
+    + validateProperty()
 }
 
 
-RegisterPropertyUI .> RegisterPropertyController
-RegisterPropertyController .> Property
-Property .> PropertyRepository
+RegisterPropertyUI --> RegisterPropertyController
+RegisterPropertyController --> Repositories
+RegisterPropertyController --> RegisterEmployeeRepository
+RegisterPropertyController --> PropertyRepository
+PropertyRepository --> Property
+House --> Property
+Apartment --> Property
+Land --> Property
 
 @enduml
