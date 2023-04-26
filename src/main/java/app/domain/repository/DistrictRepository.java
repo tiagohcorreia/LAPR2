@@ -1,5 +1,6 @@
 package app.domain.repository;
 
+import app.domain.model.City;
 import app.domain.model.District;
 
 import java.util.ArrayList;
@@ -33,6 +34,13 @@ public class DistrictRepository {
 
     public boolean isEmpty() {
         return districts.isEmpty();
+    }
+
+    public void addCity(String districtName, City city) {
+        District district = findByName(districtName);
+        if (district != null && city != null && !district.getCities().contains(city)) {
+            district.getCities().add(city);
+        }
     }
 }
 

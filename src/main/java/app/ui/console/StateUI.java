@@ -1,16 +1,20 @@
 package app.ui.console;
 
 import app.controller.StateController;
+import app.controller.DistrictController;
 import app.domain.model.State;
+import app.domain.model.District;
 
 import java.util.Scanner;
 
 public class StateUI {
     private final StateController stateController;
+    private final DistrictController districtController;
     private final Scanner scanner;
 
-    public StateUI(StateController stateController) {
+    public StateUI(StateController stateController, DistrictController districtController) {
         this.stateController = stateController;
+        this.districtController = districtController;
         this.scanner = new Scanner(System.in);
     }
 
@@ -22,6 +26,7 @@ public class StateUI {
             System.out.println("1. Add State");
             System.out.println("2. Find State");
             System.out.println("3. List States");
+            System.out.println("4. Add District to State");
             System.out.println("0. Back");
 
             int choice = scanner.nextInt();
@@ -36,6 +41,9 @@ public class StateUI {
                     break;
                 case 3:
                     listStates();
+                    break;
+                case 4:
+                    addDistrictToState();
                     break;
                 case 0:
                     running = false;
@@ -70,5 +78,23 @@ public class StateUI {
             System.out.println(state);
         }
     }
-}
 
+    private void addDistrictToState() {
+        System.out.println("Enter the state name:");
+        String stateName = scanner.nextLine();
+        State state = stateController.findStateByName(stateName);
+        if (state != null) {
+            System.out.println("Enter the district name:");
+            String districtName = scanner.nextLine();
+            District district = districtController.findDistrictByName(districtName);
+            if (district != null) {
+                stateController.addDistrictToState(state, district);
+                System.out.println("District added to the state successfully.");
+            } else {
+                System.out.println("District not found.");
+            }
+        } else {
+            System.out.println("State not found.");
+        }
+    }
+}

@@ -1,6 +1,7 @@
 package app.ui.console.menu;
 
 import app.ui.console.DevTeamUI;
+import app.ui.console.UnregisteredUserUI;
 import app.ui.console.authorization.AuthenticationUI;
 import app.ui.console.utils.Utils;
 
@@ -16,6 +17,7 @@ public class MainMenuUI implements Runnable {
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
         options.add(new MenuItem("Do Login", new AuthenticationUI()));
+        options.add(new MenuItem("Use application as a unregistered user", new UnregisteredUserUI()));
         options.add(new MenuItem("Know the Development Team", new DevTeamUI()));
         int option = 0;
         do {

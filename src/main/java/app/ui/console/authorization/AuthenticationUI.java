@@ -2,8 +2,8 @@ package app.ui.console.authorization;
 
 import app.controller.authorization.AuthenticationController;
 import app.ui.console.utils.Utils;
-import pt.ipp.isep.dei.esoft.project.ui.console.menu.AdminUI;
-import pt.ipp.isep.dei.esoft.project.ui.console.menu.MenuItem;
+import app.ui.console.menu.AdminUI;
+import app.ui.console.menu.MenuItem;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,17 +18,27 @@ public class AuthenticationUI implements Runnable {
     }
 
     public void run() {
+
         boolean success = doLogin();
 
         if (success) {
+
             List<UserRoleDTO> roles = this.ctrl.getUserRoles();
+
             if ((roles == null) || (roles.isEmpty())) {
+
                 System.out.println("No role assigned to user.");
+
             } else {
+
                 UserRoleDTO role = selectsRole(roles);
+
                 if (!Objects.isNull(role)) {
+
                     List<MenuItem> rolesUI = getMenuItemForRoles();
+
                     this.redirectToRoleUI(rolesUI, role);
+
                 } else {
                     System.out.println("No role selected.");
                 }
@@ -38,7 +48,9 @@ public class AuthenticationUI implements Runnable {
     }
 
     private List<MenuItem> getMenuItemForRoles() {
+
         List<MenuItem> rolesUI = new ArrayList<>();
+
         rolesUI.add(new MenuItem(AuthenticationController.ROLE_ADMIN, new AdminUI()));
 
         //TODO: Complete with other user roles and related RoleUI
@@ -46,6 +58,7 @@ public class AuthenticationUI implements Runnable {
     }
 
     private boolean doLogin() {
+
         System.out.println("\nLogin UI:");
 
         int maxAttempts = 3;
@@ -69,11 +82,16 @@ public class AuthenticationUI implements Runnable {
     }
 
     private void redirectToRoleUI(List<MenuItem> rolesUI, UserRoleDTO role) {
+
         boolean found = false;
+
         Iterator<MenuItem> it = rolesUI.iterator();
+
         while (it.hasNext() && !found) {
+
             MenuItem item = it.next();
             found = item.hasDescription(role.getDescription());
+
             if (found) {
                 item.run();
             }
@@ -84,8 +102,11 @@ public class AuthenticationUI implements Runnable {
     }
 
     private UserRoleDTO selectsRole(List<UserRoleDTO> roles) {
+
         if (roles.size() == 1) {
+
             return roles.get(0);
+
         } else {
             return (UserRoleDTO) Utils.showAndSelectOne(roles, "Select the role you want to adopt in this session:");
         }

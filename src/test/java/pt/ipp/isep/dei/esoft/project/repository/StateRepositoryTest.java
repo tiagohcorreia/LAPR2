@@ -31,7 +31,7 @@ class StateRepositoryTest {
         State foundState = stateRepository.findByName("New York");
         assertEquals(newState, foundState);
     }
-
+ 
     @Test
     void findByName() {
         City newYorkCity = new City("New York");
