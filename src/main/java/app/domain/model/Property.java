@@ -5,17 +5,17 @@ import java.util.Objects;
 
 public class Property {
     private float area;
-    City location;
+    City address;
     float cityCentreDistance;
     private ArrayList<String> photographs;
 
 
     //Constructor
 
-    public Property(float area, City location, float cityCentreDistance, ArrayList<String> photographs) {
+    public Property(float area, float cityCentreDistance, City address, ArrayList<String> photographs) {
         this.area = area;
-        this.location = location;
         this.cityCentreDistance = cityCentreDistance;
+        this.address = address;
         this.photographs = photographs;
     }
     // Getters and Setters
@@ -28,12 +28,12 @@ public class Property {
         this.area = area;
     }
 
-    public City getLocation() {
-        return location;
+    public City getAddress() {
+        return address;
     }
 
-    public void setLocation(City location) {
-        this.location = location;
+    public void setAddress(City location) {
+        this.address = location;
     }
 
     public float getCityCentreDistance() {
@@ -57,23 +57,24 @@ public class Property {
     public String toString() {
         return "Property{" +
                 ", area=" + area +
-                ", address='" + location + '\'' +
+                ", address='" + address + '\'' +
                 ", cityCentreDistance=" + cityCentreDistance +
                 ", photographs=" + photographs +
                 '}';
     }
     //equals
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Property property = (Property) o;
-        return Float.compare(property.area, area) == 0 && Float.compare(property.cityCentreDistance, cityCentreDistance) == 0 && Objects.equals(location, property.location) && Objects.equals(photographs, property.photographs);
+        return Float.compare(property.area, area) == 0 && Float.compare(property.cityCentreDistance, cityCentreDistance) == 0 && Objects.equals(address, property.address) && Objects.equals(photographs, property.photographs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(area, location, cityCentreDistance, photographs);
+        return Objects.hash(area, address, cityCentreDistance, photographs);
     }
-
 }
