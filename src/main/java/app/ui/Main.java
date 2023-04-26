@@ -9,6 +9,7 @@ import app.domain.repository.StateRepository;
 import app.ui.console.CityUI;
 import app.ui.console.DistrictUI;
 import app.ui.console.StateUI;
+import app.ui.console.DisplayListingsUI;
 
 import java.util.Scanner;
 
@@ -25,6 +26,7 @@ public class Main {
         CityUI cityUI = new CityUI(cityController);
         DistrictUI districtUI = new DistrictUI(districtController);
         StateUI stateUI = new StateUI(stateController);
+        DisplayListingsUI displayListingsUI = new DisplayListingsUI();
 
         Scanner scanner = new Scanner(System.in);
         int option;
@@ -35,7 +37,8 @@ public class Main {
             System.out.println("1. Manage Cities");
             System.out.println("2. Manage Districts");
             System.out.println("3. Manage States");
-            System.out.println("4. Exit");
+            System.out.println("4. Display listings");
+            System.out.println("0. Exit");
 
             option = scanner.nextInt();
 
@@ -50,6 +53,9 @@ public class Main {
                     stateUI.run();
                     break;
                 case 4:
+                    displayListingsUI.run();
+                    break;
+                case 0:
                     System.out.println("Getting out of the system...");
                     System.exit(0);
                 default:

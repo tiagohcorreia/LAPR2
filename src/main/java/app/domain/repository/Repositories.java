@@ -24,7 +24,9 @@ public class Repositories
 
     // private constructor to force use of
     // getInstance() to create Repositories object
-    private Repositories() {}
+    private Repositories() {
+        this.listingRepository = new ListingRepository();
+    }
 
     public static Repositories getInstance()
     {
