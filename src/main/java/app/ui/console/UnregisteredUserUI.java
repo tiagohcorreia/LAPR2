@@ -6,7 +6,6 @@ import app.controller.StateController;
 import app.domain.repository.CityRepository;
 import app.domain.repository.DistrictRepository;
 import app.domain.repository.StateRepository;
-import app.ui.console.menu.MainMenuUI;
 
 import java.util.Scanner;
 
