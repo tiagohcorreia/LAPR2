@@ -12,7 +12,7 @@ participant ":DisplayListingsUI" as UI
 participant ":DisplayListingsController" as CTRL
 participant ":Repositories" as reposclass
 participant "repositories\n:Repositories" as repositories
-participant "listingRepo\n:ListingRepository" as LRepo
+participant "listingRepository\n:ListingRepository" as LRepo
 participant "listing\n:Listing" as listing
 
 
@@ -89,16 +89,16 @@ deactivate listing
 
 end
 
-LRepo --> CTRL: matchingListings
+LRepo --> CTRL: listings
 deactivate LRepo
-CTRL --> UI: matchingListings
+CTRL --> UI: listings
 deactivate CTRL
 UI --> UR: shows matching announcements
 else
 UR -> UI: doesn't select any data
-UI -> CTRL: getAllListings()
+UI -> CTRL: getAllVisibleListings()
 activate CTRL
-CTRL -> LRepo: getVisibleListings()
+CTRL -> LRepo: getAllVisibleListings()
 activate LRepo
 loop for each listing
 LRepo -> listing: isVisible()
