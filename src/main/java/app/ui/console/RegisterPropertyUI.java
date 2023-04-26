@@ -40,11 +40,25 @@ public class RegisterPropertyUI implements Runnable {
         String agent;
         Employee choosedAgent;
 
-        //Sell or Rent a property
-        sellOrRent = Utils.readLineFromConsole("Insert 'S' if you want to sell a property. Insert 'R' if you want rent a property: ");
 
         //Type of property
         typeProperty = Utils.readLineFromConsole("Insert the type of property (A)partment, (H)ouse or (L)and : ");
+
+        //area in m2
+        area = Utils.readIntegerFromConsole("Insert area in m2: ");
+
+        //Location
+        location = Utils.readLineFromConsole("Insert the location: ");
+
+        //area in m2
+        centreDistance = Utils.readIntegerFromConsole("Insert the distance from the centre: ");
+
+        //Photographs
+        numberPhotos=Utils.readIntegerFromConsole("Insert how many photos you want to add: ");
+        for (int i=0;i<numberPhotos;i++){
+            photo = Utils.readLineFromConsole("Insert the path of the photo "+i+1+": ");
+            photographs.add(photo);
+        }
 
         if (typeProperty=="A" || typeProperty=="H"){
 
@@ -63,7 +77,6 @@ public class RegisterPropertyUI implements Runnable {
                 equipment = Utils.readLineFromConsole("Insert the equipment: ");
                 equipmentList.add(equipment);
             }
-
         }
         if (typeProperty=="H") {
 
@@ -72,30 +85,17 @@ public class RegisterPropertyUI implements Runnable {
             sunExposure = Utils.readLineFromConsole("The house has sun exposure? (Y/N)");
         }
 
-        //area in m2
-        area = Utils.readIntegerFromConsole("Insert area in m2: ");
-
-        //Location
-        location = Utils.readLineFromConsole("Insert the location: ");
-
-        //area in m2
-        centreDistance = Utils.readIntegerFromConsole("Insert the distance of the centre: ");
 
         //price
         price=Utils.readDoubleFromConsole("Insert the price of the property: ");
-
-        //Photographs
-        numberPhotos=Utils.readIntegerFromConsole("Insert how many photos you want to add: ");
-        for (int i=0;i<numberPhotos;i++){
-            photo = Utils.readLineFromConsole("Insert the path of the photo "+i+1+": ");
-            photographs.add(photo);
-        }
 
         //agent
         String agentsList = this.controller.getAgent().toString();
         agent = Utils.readLineFromConsole("Insert the Name of the responsible agent: ");
         choosedAgent= this.controller.getEmployee(agent);
 
+        //Sell or Rent a property
+        sellOrRent = Utils.readLineFromConsole("Insert 'S' if you want to sell a property. Insert 'R' if you want rent a property: ");
 
         int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
@@ -121,7 +121,7 @@ public class RegisterPropertyUI implements Runnable {
             System.out.println("Location: "+ location);
             System.out.println("Distance of Centre: "+ centreDistance);
             System.out.println("Price: "+ price);
-            System.out.println("Responsible Agent: "+ agent);
+            System.out.println("Responsible Agent: "+ choosedAgent.getName());
 
         } else {
             System.err.println("Operation Canceled!");
