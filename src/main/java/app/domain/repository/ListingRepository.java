@@ -6,14 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListingRepository {
-    private List<Listing> listings = new ArrayList<>();
+    List<Listing> listings = new ArrayList<>();
 
     public boolean save(Listing listing) {
-        return listings.add(listing);
+        return listings.add(listing.getListing());
     }
 
     public List<Listing> getAll() { return new ArrayList<>(listings); }
-
 
     public List<List<Object>> getAvailableFields(){
         List<List<Object>> availableFields = new ArrayList<>();

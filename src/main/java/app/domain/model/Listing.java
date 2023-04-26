@@ -42,13 +42,13 @@ public class Listing {
 
     //Copy constructor
     public Listing(Listing anotherListing){
-        listingID = anotherListing.listingID;
-        visible = anotherListing.visible;
-        price = anotherListing.price;
-        commission = anotherListing.commission;
-        typeOfBusiness = anotherListing.typeOfBusiness;
-        property = anotherListing.property;
-        agent = anotherListing.agent;
+        this.listingID = anotherListing.listingID;
+        this.visible = anotherListing.visible;
+        this.price = anotherListing.price;
+        this.commission = anotherListing.commission;
+        this.typeOfBusiness = anotherListing.typeOfBusiness;
+        this.property = anotherListing.property;
+        this.agent = anotherListing.agent;
     }
 
     public Listing getListing() {return new Listing(this);}
