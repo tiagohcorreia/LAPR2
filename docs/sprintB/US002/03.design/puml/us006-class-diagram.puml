@@ -9,122 +9,77 @@ skinparam classAttributeIconSize 0
 
 'left to right direction
 
-class ApplicationSession
-{
-    + static getInstance()
-    + getCurrentSession()
+class PublishAnnouncementUI{
 }
 
-class UserSession
-{
-    + getUserEmail()
-}
+class PublishAnnouncementController {
+    + PublishAnnouncementControllerController(propertyRepository, AnnouncementRepository)
+    + getProperty(property_type)
+    + createAnnouncment(size,location,distance_from_the_city_center,\nprice,commission)
 
-class Employee {
-    - name
-    - email
-    - position
-    - phone
-}
-
-class Task {
-    - String reference
-    - String description
-    - String informalDescription
-    - String technicalDescription
-    - Integer duration
-    - Double cost
-
-    + Task(reference, description,\ninformalDescription, technicalDescription,\nduration, cost, createdBy, taskCategory)
-}
-
-class TaskCategory {
-    - String description
-
-    + TaskCategory(description)
-}
-
-class Organization {
-    - String name
-    - String vatNumber
-    - String website
-    - String phone
-    - String email
-
-    - addTask(task)
-    - validateTask(task)
-    + anyEmployeeHasEmail(email)
-    + Organization(name, vatNumber, webSite, phone, email, postalAddress, manager)
-    + createTask(reference, description, informalDesccription,\ntechnicalDescription, duration, cost, taskCategoryDescription)
-    - getEmployeeByEmail(email)
-
-'  +saveTask(task)
-}
-
-class TaskCategoryRepository {
-    + getTaskCategoryByDescription(description)
-}
-
-class OrganizationRepository {
-    + getOrganizationByEmployeeEmail(email)
 }
 
 class Repositories {
     - Repositories()
     + getInstance() : Repositories
-    + getTaskCategoryRepository()
-    + getOrganizationRepository()
+    + getPropertyRepository()
+    + getAnnouncementRepository()
 }
 
-class CreateTaskController {
-    + CreateTaskController(organizationRepository, taskCategoryRepository)
-    + getTaskCategories()
-    + createTask(userEmail, reference, description,\ninformalDescription, technicalDescription,\nduration, cost, categoryDescription)
-    - getTaskCategoryByDescription(taskCategoryDescription)
-    - getEmployeeFromSession()
+class PropertyRepository{
+    +getProperty()
 }
 
-note right of CreateTaskController
-    - userEmail is obtained
-    from the user session
-    - categoryDescription
-    is retrieved from selected data
-end note
-
-note bottom of TaskCategoryRepository
-    - used for displaying
-    the category list
-end note
-
-class CreateTaskUI {
+class AnnouncementRepository{
+    +getAnnouncement()
 }
+
+class Announcement{
+    + Announcement(size,location,distance_from_the_city_center,\nprice,commission)
+    +getProperty(property_type)
+}
+
+class Property{
+  -float size
+  -string location
+  -float distance_from_the_city_center
+  -float price
+  -float commission
+  +getPropertyType()
+}
+
+
+
+class Agent {
+    -citizen card
+    -tax number
+    -address
+    -phone number
+    -agency
+    +publishAnnouncement(size,location,distance_from_the_city_center,\nprice,commission)
+}
+
 
 Repositories -> Repositories : instance
-ApplicationSession -> ApplicationSession : instance
 
-CreateTaskUI .> CreateTaskController
+PublishAnnouncementUI .> PublishAnnouncementController
 
-CreateTaskController .> Repositories : repositories
+PublishAnnouncementController .> Repositories : repositories
 
-Repositories -> "1" TaskCategoryRepository
+Repositories --> "1" PropertyRepository
 
-CreateTaskController ..> TaskCategory
-CreateTaskController ..> OrganizationRepository : organizationRepository
-CreateTaskController ..> TaskCategoryRepository : TaskCategoryRepository
+PublishAnnouncementController ..> Property
 
-Repositories --> "1" OrganizationRepository
+PublishAnnouncementController ..> AnnouncementRepository : AnnouncementRepository
 
-OrganizationRepository --> "*" Organization
-ApplicationSession --> "1" UserSession : userSession
+Repositories --> "1" AnnouncementRepository
 
-CreateTaskController ..> "1" Organization : organization
-CreateTaskController ..> ApplicationSession
-CreateTaskController ..> UserSession
-Task "*" --> "1" TaskCategory : taskCategory
-TaskCategoryRepository "1" --> "*" TaskCategory : taskCategory
-Organization "1" --> "*" Task : tasks
-Task --> Employee : createdBy
+AnnouncementRepository --> "*" Announcement
 
-Organization --> "*" Employee : employs
+Announcement "1" --> "1" Property: property
 
+PropertyRepository "1" --> "*"Property : property
+
+'Organiza "1" --> "*" Task : tasks
+Announcement --> Agent : publishedBy
 @enduml

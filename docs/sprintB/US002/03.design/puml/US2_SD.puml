@@ -42,7 +42,7 @@ activate AG
                         REP --> CTRL: PropertyRepository
                           deactivate REP
 
-                           CTRL -> PropertyREP : getPropertyPropertyRepository()
+                           CTRL -> PropertyREP : getProperty()
                              activate PropertyREP
 
                                PropertyREP --> CTRL: Property
