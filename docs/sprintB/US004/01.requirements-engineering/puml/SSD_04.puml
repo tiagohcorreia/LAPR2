@@ -8,62 +8,13 @@ participant ":System" as System
 
 activate Owner
 
-    Owner -> System : choose whether to rent or sell a property
+    Owner -> System : starts listing a new property
     activate System
-
         System -> Owner : requests the type of property
     deactivate System
         Owner -> System: selects the type of property
     activate System
-        alt The property is an apartment
-            System -> Owner: requests the number of bedrooms
-            activate System
-                Owner-> System: types the number of bedrooms
-            deactivate System
-                System -> Owner: requests the number of bathrooms
-            activate System
-                Owner-> System: types the number of bathrooms
-            deactivate System
-            System -> Owner: requests the number of parkings spaces
-            activate System
-                Owner-> System: types the number of parkings spaces
-            deactivate System
-                System -> Owner: requests the available equipment (ex: centre heating or air conditioning))
-            activate System
-                Owner-> System: types the available equipment
-            deactivate System
-        else The property is a house
-                System -> Owner: requests the number of bedrooms
-            activate System
-                Owner-> System: types the number of bedrooms
-            deactivate System
-                System -> Owner: requests the number of bathrooms
-            activate System
-                Owner-> System: types the number of bathrooms
-            deactivate System
-                System -> Owner: requests the number of parkings spaces, available equipment \n(ex: centre heating or air conditioning))
-            activate System
-                Owner-> System: types the number of parkings spaces
-            deactivate System
-                System -> Owner: requests the available equipment (ex: centre heating or air conditioning))
-            activate System
-                Owner-> System: types the available equipment
-            deactivate System
-                System -> Owner: checks the existence of a basement
-            activate System
-                Owner-> System: confirms the existence of a basement
-            deactivate System
-                System -> Owner: checks the existence of an inhabitable loft
-            activate System
-                Owner-> System: confirms the existence of an inhabitable loft
-            deactivate System
-                System -> Owner: checks if the house has sun exposure
-            activate System
-                Owner-> System: confirms that the house has sun exposure
-            deactivate System
-
-        end
-        System-> Owner:requests the area in m2
+    System-> Owner:requests the area in m2
     deactivate System
         Owner->System: types the area in m2
     activate System
@@ -75,13 +26,65 @@ activate Owner
     deactivate System
         Owner-> System: types the distance of the centre
     activate System
-        System-> Owner: requests the price
-    deactivate System
-        Owner -> System: types the price
-    activate System
         System-> Owner: requests one or more photographs
     deactivate System
         Owner-> System: inserts one or more photographs
+    activate System
+        alt The property is an apartment
+                System -> Owner: requests the number of bedrooms
+            deactivate System
+                Owner-> System: types the number of bedrooms
+            activate System
+                System -> Owner: requests the number of bathrooms
+            deactivate System
+                Owner-> System: types the number of bathrooms
+            activate System
+            System -> Owner: requests the number of parkings spaces
+            deactivate System
+                Owner-> System: types the number of parkings spaces
+            activate System
+                System -> Owner: requests the available equipment
+            deactivate System
+                Owner-> System: types the available equipment
+            activate System
+        else The property is a house
+                System -> Owner: requests the number of bedrooms
+            deactivate System
+                Owner-> System: types the number of bedrooms
+            activate System
+                System -> Owner: requests the number of bathrooms
+            deactivate System
+                Owner-> System: types the number of bathrooms
+            activate System
+                System -> Owner: requests the number of parkings spaces, available equipment \n(ex: centre heating or air conditioning))
+            deactivate System
+                Owner-> System: types the number of parkings spaces
+            activate System
+                System -> Owner: requests the available equipment (ex: centre heating or air conditioning))
+            deactivate System
+                Owner-> System: types the available equipment
+            activate System
+                System -> Owner: checks the existence of a basement
+            deactivate System
+                Owner-> System: confirms the existence of a basement
+            activate System
+                System -> Owner: checks the existence of an inhabitable loft
+            deactivate System
+                Owner-> System: confirms the existence of an inhabitable loft
+            activate System
+                System -> Owner: checks if the house has sun exposure
+            deactivate System
+                Owner-> System: confirms that the house has sun exposure
+            activate System
+
+        end
+        System -> Owner: requests the price of the property
+    deactivate System
+        Owner-> System: types the price of the property
+    activate System
+        System-> Owner: requests the Owner wants to rent or sell the property
+    deactivate System
+        Owner -> System: inserts if wants to rent or sell the property
     activate System
         System-> Owner: requests the responsible agent
     deactivate System
@@ -89,9 +92,9 @@ activate Owner
     activate System
         System-> Owner: shows the data and asks confirmation
     deactivate System
-        Owner->System: confirms data and do the request for listing a property
+        Owner->System: confirms data
     activate System
-        System -> Owner: confirms the request and informs operation success
+        System -> Owner: informs operation success
     deactivate System
 
 

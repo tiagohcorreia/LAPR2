@@ -3,32 +3,93 @@ skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
+'left to right direction
 
 skinparam classAttributeIconSize 0
 
 hide circle
 hide methods
 
+'title Domain Model
+
+'class Platform {
+'  -description
+'}
+
 class Owner {
 }
+class Agent{
 
+}
+class Employee{
+    name
+    CC Number
+    tax Number
+    address
+    email
+    phone number
+}
+class Listing{
+    propertyID
+    price
+    sellOrRent
+
+}
 class Property {
-    - String sellOrRent
-    - String typeProperty
-    - int bedrooms
-    - int bathrooms
-    - int parking
-    - String equipment
-    - boolean basement
-    - boolean inhabitalLoft
-    - boolean sunExposure
-    - int area
-    - String location
-    - int  centreDistance
-    - double price
-    - String photographs
-    - Agent agentList
+     type of property
+     area
+     location
+     distance from the city centre
+     price
+     photographs
+}
+class House {
+     number of bedrooms
+     number of bathroom
+     number of parking spaces
+     available equipment
+     existence of a basement
+     inhabitable loft
+     sun exposure
 }
 
-Owner "1" - "*" Property: registers >
+class Apartment {
+     number of bedrooms
+     number of bathroom
+     number of parking spaces
+     available equipment
+}
+class Land {
+     description
+}
+
+class City{
+    name
+}
+class District{
+    name
+}
+class State{
+    name
+}
+
+
+
+Listing "*" -- "*" Property: contains >
+Owner "1" -- "*" Listing: creates >
+Owner "1" -- "*" Property: owns >
+House "1" --"1" Property: is >
+Apartment"1" -- "1" Property: is >
+Land"1" - "1" Property: is >
+Property "1" - "1" City: located in >
+City "*" - "1" District: located in >
+District "*" - "1" State: located in >
+Owner "1" - "1" Agent: chooses >
+Agent "1" - "1" Employee: is an >
+
+
+
+
+
+
 @enduml

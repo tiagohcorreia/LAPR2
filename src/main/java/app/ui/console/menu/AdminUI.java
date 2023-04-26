@@ -1,7 +1,11 @@
 package app.ui.console.menu;
 
+import app.controller.RegisterEmployeeController;
+import app.domain.repository.RegisterEmployeeRepository;
+import app.ui.console.DistrictUI;
 import app.ui.console.RegisterEmployeeUI;
 import app.ui.console.ShowTextUI;
+import app.ui.console.StateUI;
 import app.ui.console.utils.Utils;
 import app.ui.console.menu.MenuItem;
 
@@ -16,8 +20,8 @@ public class AdminUI implements Runnable {
 
         List<MenuItem> options = new ArrayList<MenuItem>();
 
-        //options.add(new MenuItem("Register Employee", new RegisterEmployeeUI()));
-        options.add(new MenuItem("Option 1 ", new ShowTextUI("You have chosen Option A.")));
+        options.add(new MenuItem("Register Employee", new RegisterEmployeeUI(new RegisterEmployeeController(new RegisterEmployeeRepository()))));
+        //options.add(new MenuItem("Specify states, districts or cities", new DistrictUI(), new StateUI));
         options.add(new MenuItem("Option 2 ", new ShowTextUI("You have chosen Option B.")));
 
         int option = 0;
