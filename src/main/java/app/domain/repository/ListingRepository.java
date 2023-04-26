@@ -24,9 +24,9 @@ public class ListingRepository {
 
     public List<List<Object>> getAvailableFields(){
         List<List<Object>> availableFields = new ArrayList<>();
-        availableFields.add(null);
-        availableFields.add(null);
-        availableFields.add(null);
+        availableFields.add(new ArrayList<>());
+        availableFields.add(new ArrayList<>());
+        availableFields.add(new ArrayList<>());
 
         for(Listing listing : listings){
             if ( listing != null && listing.isVisible()){

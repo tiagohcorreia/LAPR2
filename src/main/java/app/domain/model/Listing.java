@@ -1,6 +1,8 @@
 package app.domain.model;
 import app.domain.shared.TypeOfBusiness;
 
+import java.util.NoSuchElementException;
+
 public class Listing {
     private int listingID;
     private boolean visible;
@@ -54,14 +56,14 @@ public class Listing {
         this.setAgent(anotherListing.getAgent());
     }
 
-    public Listing getListing() {return new Listing(this);}
+    public Listing getListing() { return new Listing(this); }
 
     public Listing getListing(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
         if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getTypeProperty()) && numberOfBedrooms == this.property.getBedrooms()){
             return new Listing(this);
         }
         else
-            return null;
+            throw new NoSuchElementException("No entries found.");
     }
     public int getListingID() {
         return listingID;
