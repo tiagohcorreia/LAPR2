@@ -4,7 +4,13 @@ import java.util.ArrayList;
 
 public class Land extends Property{
 
-    public Land(float area, City address, float cityCentreDistance, ArrayList<String> photographs) {
-        super(area, address, cityCentreDistance, photographs);
+    public Land(float area, City location, float cityCentreDistance, ArrayList<String> photographs) {
+        super(area, location, cityCentreDistance, photographs);
+    }
+
+    @Override
+    public String toString() {
+        return "Land{"+super.toString()+
+                "}";
     }
 }

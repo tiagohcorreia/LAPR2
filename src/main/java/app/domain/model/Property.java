@@ -3,9 +3,9 @@ package app.domain.model;
 import java.util.ArrayList;
 import java.util.Objects;
 
-//ASK como implementar superclasses e subclasses cujos metodos estejam implementados apenas na subclasse
+
 public abstract class Property {
-    //ASK about consts as default values
+
     private static final float DEFAULT_AREA = 1;
     private static final City DEFAULT_LOCATION = new City();
     private static final float DEFAULT_CITY_CENTER_DISTANCE = 10;
@@ -16,13 +16,10 @@ public abstract class Property {
     float cityCentreDistance;
     private ArrayList<String> photographs;
 
-    //ASK utilidade de implementar construtores de copia e construtores por omissão para além do contrutor completo
-    //Complete constructor
 
     //Full constructor
     public Property(float area, City location, float cityCentreDistance, ArrayList<String> photographs) {
-        //ASK quando devemos utilizar os setters para inicializar atributos; e em relação aos getters? Devemos utilizar
-        //ambos num construtor de cópia?
+
         this.area = area;
         this.cityCentreDistance = cityCentreDistance;
         this.location = location;
@@ -63,6 +60,7 @@ public abstract class Property {
         this.location = location;
     }
 
+
     public float getCityCentreDistance() {
         return cityCentreDistance;
     }
@@ -82,12 +80,10 @@ public abstract class Property {
     //ToString()
     @Override
     public String toString() {
-        return "Property{" +
-                ", area=" + area +
+        return " area=" + area +
                 ", address='" + location + '\'' +
                 ", cityCentreDistance=" + cityCentreDistance +
-                ", photographs=" + photographs +
-                '}';
+                ", photographs=" + photographs;
     }
     //equals
 

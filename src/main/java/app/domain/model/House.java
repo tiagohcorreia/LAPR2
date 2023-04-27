@@ -12,10 +12,10 @@ public class House extends Property{
 
     private boolean hasBasement;
     private boolean hasInhabitableLoft;
-    private SunExposure sunExposure;
+    SunExposure sunExposure;
 
-    public House(float area, City address, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
-        super(area, address, cityCentreDistance, photographs);
+    public House(float area, City location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
+        super(area, location, cityCentreDistance, photographs);
         this.numberOfBedrooms=numberOfBedrooms;
         this.numberOfBathrooms=numberOfBathrooms;
         this.numberOfParkingSpaces=numberOfParkingSpaces;
@@ -85,8 +85,8 @@ public class House extends Property{
 
     @Override
     public String toString() {
-        return "House{" +
-                "numberOfBedrooms=" + numberOfBedrooms +
+        return "House{" +super.toString()+
+                ", numberOfBedrooms=" + numberOfBedrooms +
                 ", numberOfBathrooms=" + numberOfBathrooms +
                 ", numberOfParkingSpaces=" + numberOfParkingSpaces +
                 ", equipment=" + equipment +
