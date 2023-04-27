@@ -1,19 +1,19 @@
 package app.domain.repository;
 
-//import app.domain.repository.ListingRepository;
+//import app.domain.repository.AnnouncementRepository;
 
 //v1
 //public class Repositories {
 //
-//    private ListingRepository listingRepository;
+//    private AnnouncementRepository announcementRepository;
 //
 //    private Repositories() {
-//        this.listingRepository = new ListingRepository();
+//        this.announcementRepository = new AnnouncementRepository();
 //    }
 //
 //
 //    public static Repositories getInstance(){ return new Repositories(); }
-//    public ListingRepository getListingRepository(){ return this.listingRepository; }
+//    public AnnouncementRepository getListingRepository(){ return this.announcementRepository; }
 //
 //
 //}
@@ -22,12 +22,12 @@ package app.domain.repository;
 //public class Repositories
 //{
 //    private static Repositories obj;
-//    private ListingRepository listingRepository;
+//    private AnnouncementRepository announcementRepository;
 //
 //    // private constructor to force use of
 //    // getInstance() to create Repositories object
 //    private Repositories() {
-//        this.listingRepository = new ListingRepository();
+//        this.announcementRepository = new AnnouncementRepository();
 //    }
 //
 //    public static Repositories getInstance()
@@ -37,17 +37,15 @@ package app.domain.repository;
 //        return obj;
 //    }
 //
-//    public ListingRepository getListingRepository(){ return this.listingRepository; }
+//    public AnnouncementRepository getListingRepository(){ return this.announcementRepository; }
 //}
 
-
-import app.domain.model.Employee;
 
 //v3
 public class Repositories {
 
     private static final app.domain.repository.Repositories instance = new app.domain.repository.Repositories();
-    ListingRepository listingRepository = new ListingRepository();
+    AnnouncementRepository announcementRepository = new AnnouncementRepository();
     RegisterEmployeeRepository employeeRepository = new RegisterEmployeeRepository();
 
     private Repositories() {
@@ -57,7 +55,7 @@ public class Repositories {
         return instance;
     }
 
-    public ListingRepository getListingRepository() {return  listingRepository;}
+    public AnnouncementRepository getListingRepository() {return announcementRepository;}
 
     public RegisterEmployeeRepository getEmployeeRepository() {return  employeeRepository;}
 

@@ -24,7 +24,7 @@ public class UnregisteredUserUI implements Runnable {
         CityUI cityUI = new CityUI(cityController);
         DistrictUI districtUI = new DistrictUI(districtController, cityController);
         StateUI stateUI = new StateUI(stateController, districtController);
-        DisplayListingsUI displayListingsUI = new DisplayListingsUI();
+        DisplayAnnouncementsUI displayAnnouncementsUI = new DisplayAnnouncementsUI();
 
         Scanner scanner = new Scanner(System.in);
         int option;
@@ -51,7 +51,7 @@ public class UnregisteredUserUI implements Runnable {
                     stateUI.run();
                     break;
                 case 4:
-                    displayListingsUI.run();
+                    displayAnnouncementsUI.run();
                     break;
                 case 0:
                     System.out.println("Getting out of the system...");

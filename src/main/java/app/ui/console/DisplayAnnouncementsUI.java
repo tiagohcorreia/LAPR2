@@ -1,12 +1,12 @@
 package app.ui.console;
 
-import app.domain.model.Listing;
+import app.domain.model.Announcement;
 import app.domain.shared.ListingPriceComparator;
 import app.ui.console.utils.Utils;
 import app.controller.DisplayListingsController;
 import java.util.List;
 
-public class DisplayListingsUI implements Runnable{
+public class DisplayAnnouncementsUI implements Runnable{
 
     @Override
     public void run() {
@@ -60,16 +60,16 @@ public class DisplayListingsUI implements Runnable{
             } while (!availableFields.get(2).contains(selectedNumberOfBedrooms));
 
 
-            List<Listing> listings;
+            List<Announcement> announcements;
             //TO-FIX
             if (selectedTypeOfBusiness.equals("") && selectedTypeOfProperty.equals("") && selectedNumberOfBedrooms == 0){
-                listings = controller.getAllVisibleListings();
+                announcements = controller.getAllVisibleListings();
             } else {
-                listings = controller.getListings(selectedTypeOfBusiness, selectedTypeOfProperty, selectedNumberOfBedrooms);
+                announcements = controller.getListings(selectedTypeOfBusiness, selectedTypeOfProperty, selectedNumberOfBedrooms);
             }
 
-            for (Listing listing : listings) {
-                System.out.println(listing);
+            for (Announcement announcement : announcements) {
+                System.out.println(announcement);
             }
 //            while (sortingMode != 0) {
 //
@@ -83,7 +83,7 @@ public class DisplayListingsUI implements Runnable{
 //                if (sortingMode == 1) {
 //                    ListingPriceComparator listingPriceComparator = new ListingPriceComparator();
 //                    matchingListings.sort(listingPriceComparator);
-//                    for (Listing matchingListing : matchingListings) {
+//                    for (Announcement matchingListing : matchingListings) {
 //                        System.out.println(matchingListing);
 //                    }
 //                } else {
@@ -106,9 +106,9 @@ public class DisplayListingsUI implements Runnable{
 
                 if (sortingMode == 1) {
                     ListingPriceComparator listingPriceComparator = new ListingPriceComparator();
-                    listings.sort(listingPriceComparator);
-                    for (Listing listing : listings) {
-                        System.out.println(listing);
+                    announcements.sort(listingPriceComparator);
+                    for (Announcement announcement : announcements) {
+                        System.out.println(announcement);
                     }
                 } else if (sortingMode == 2){
                     //TODO

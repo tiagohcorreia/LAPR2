@@ -11,7 +11,7 @@ _Specifies functionalities that:_
 * (Unregistered user) Display listed properties;
 * (Agent)Publish sale annoucement;
 * (System Administrator) Register employee;
-* (Owner) Submit a request for listing a property to an agent;
+* (Owner) Submit a request for announcement a property to an agent;
 * (System administrator) Register a store;
 
 * (Company employee) Publication of rental and sale advertisements;
@@ -48,7 +48,7 @@ documentation; consistency and standards._
 * If the user choose option 1, he will see the list of properties availables;
 * If the user choose option 2, the app identifies if the user is a client, an agent, an owner or a system administrator;
 * In case the user is a system administrator, shows a sub-menu with the options of register a new employee, register a store, and specify districts, municipalities and parishes;
-* In case the user is an owner, shows the option of submit a request for listing a property sale or rent, choosing the responsible agent;
+* In case the user is an owner, shows the option of submit a request for announcement a property sale or rent, choosing the responsible agent;
 * In case the user is an agent, shows the option of publishing any a sale announcement on the system.
 
 

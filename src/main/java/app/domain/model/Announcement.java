@@ -3,7 +3,7 @@ import app.domain.shared.TypeOfBusiness;
 
 import java.util.NoSuchElementException;
 
-public class Listing {
+public class Announcement {
     private int listingID;
     private boolean visible;
     private float price;
@@ -13,7 +13,7 @@ public class Listing {
     private Employee agent;
 
     //Full constructor
-    public Listing(int listingID, boolean visible, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
+    public Announcement(int listingID, boolean visible, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
         this.setListingID(listingID);
         this.setVisible(visible);
         this.setPrice(price);
@@ -35,7 +35,7 @@ public class Listing {
     }
 
     //Default constructor
-    public Listing(){
+    public Announcement(){
         this.setListingID(0);
         this.setVisible(false);
         this.setPrice(0);
@@ -46,22 +46,22 @@ public class Listing {
     }
 
     //Copy constructor
-    public Listing(Listing anotherListing){
-        this.setListingID(anotherListing.getListingID());
-        this.setVisible(anotherListing.isVisible());
-        this.setPrice(anotherListing.getPrice());
-        this.setCommission(anotherListing.getCommission());
-        this.setTypeOfBusiness(anotherListing.getTypeOfBusiness());
-        this.setProperty(anotherListing.getProperty());
-        this.setAgent(anotherListing.getAgent());
+    public Announcement(Announcement anotherAnnouncement){
+        this.setListingID(anotherAnnouncement.getListingID());
+        this.setVisible(anotherAnnouncement.isVisible());
+        this.setPrice(anotherAnnouncement.getPrice());
+        this.setCommission(anotherAnnouncement.getCommission());
+        this.setTypeOfBusiness(anotherAnnouncement.getTypeOfBusiness());
+        this.setProperty(anotherAnnouncement.getProperty());
+        this.setAgent(anotherAnnouncement.getAgent());
     }
 
-    public Listing getListing() { return new Listing(this); }
+    public Announcement getListing() { return new Announcement(this); }
 
-    public Listing getListing(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
+    public Announcement getListing(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
         if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getClass().getSimpleName()) && numberOfBedrooms == 300){
         //if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getClass().getSimpleName()) && numberOfBedrooms == this.property.getBedrooms()){
-            return new Listing(this);
+            return new Announcement(this);
         }
         else
             throw new NoSuchElementException("No entries found.");
@@ -117,7 +117,7 @@ public class Listing {
 
     //TO-FIX
     public String toString(){
-        return String.format("Listing - " +
+        return String.format("Announcement - " +
                 "ID: %d\t" +
                 "Visible: %s\t" +
                 "Business Type: %s\t" +
