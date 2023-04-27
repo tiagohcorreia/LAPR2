@@ -9,7 +9,7 @@ import app.domain.repository.StateRepository;
 
 import java.util.Scanner;
 
-public class UnregisteredUserUI implements Runnable {
+public class SpecifyStatesDistrictsCitiesUI implements Runnable {
 
     @Override
     public void run() {
