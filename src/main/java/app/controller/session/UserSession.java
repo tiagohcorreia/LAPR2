@@ -6,14 +6,18 @@ import java.util.List;
 
 public class UserSession {
 
-    private pt.isep.lei.esoft.auth.UserSession userSession;
+    private UserSession userSession;
 
-    public UserSession(pt.isep.lei.esoft.auth.UserSession userSession) {
+    public UserSession(UserSession userSession) {
         this.userSession = userSession;
     }
 
-    public String getUserEmail(){
+   /* public String getUserEmail(){
         return userSession.getUserId().getEmail();
+    }*/
+
+    public String getUserEmail() {
+        return userSession.getUserEmail();
     }
 
     public String getUserName(){

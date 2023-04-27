@@ -19,8 +19,8 @@ public class ApplicationSession {
         Properties props = getProperties();
     }
 
-    public UserSession getCurrentSession(){
-        pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();
+    public UserSession getCurrentSession(UserSession userSession) {
+        //this.authenticationRepository = Repositories.getInstance().get
         return new UserSession(userSession);
     }
 

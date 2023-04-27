@@ -2,18 +2,17 @@ package app.ui.console.menu;
 
 import app.controller.RegisterEmployeeController;
 import app.domain.repository.RegisterEmployeeRepository;
-import app.ui.console.DistrictUI;
 import app.ui.console.RegisterEmployeeUI;
 import app.ui.console.ShowTextUI;
-import app.ui.console.StateUI;
 import app.ui.console.utils.Utils;
-import app.ui.console.menu.MenuItem;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdminUI implements Runnable {
     public AdminUI() {
+
     }
 
     public void run() {
