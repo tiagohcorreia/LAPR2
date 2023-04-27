@@ -7,12 +7,17 @@ class Repositories{
 }
 class RegisterEmployeeRepository{
 }
+class Announcement{
+    + validateAnnouncement()
+    + addAnnouncement()
+}
 class Property{
     - int propertyID
     - float area
     - String address
     - float cityCentreDistance
     - Arraylist<String> photographs
+    + validateProperty()
 }
 class House{
     - int numberOfBedrooms
@@ -34,7 +39,7 @@ class Land{
 }
 class RegisterPropertyUI {
     + getAgent()
-    + createProperty()
+    + createAnnouncement()
 
 }
 
@@ -43,21 +48,23 @@ class RegisterPropertyController {
     + getEmployeeRepository()
     + getAgents()
     + createProperty()
+    + createAnnouncement()
 }
 
-class PropertyRepository {
-    + addProperty()
-    + validateProperty()
+class AnnouncementRepository {
+    + createAnnouncement()
 }
 
 
 RegisterPropertyUI --> RegisterPropertyController
 RegisterPropertyController --> Repositories
 RegisterPropertyController --> RegisterEmployeeRepository
-RegisterPropertyController --> PropertyRepository
-PropertyRepository --> Property
+RegisterPropertyController --> AnnouncementRepository
+RegisterPropertyController --> Property
+
 House --> Property
 Apartment --> Property
 Land --> Property
+AnnouncementRepository --> Announcement
 
 @enduml
