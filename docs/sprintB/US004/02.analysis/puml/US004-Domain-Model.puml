@@ -22,12 +22,12 @@ class Agent{
 
 }
 class Employee{
-    name
-    CC Number
-    tax Number
-    address
-    email
-    phone number
+    String name
+    int cCNumber
+    int taxNumber
+    String address
+    String email
+    String phoneNumber
 }
 class Listing{
     propertyID
@@ -36,30 +36,33 @@ class Listing{
 
 }
 class Property {
-     area
-     location
-     distance from the city centre
-     price
-     photographs
+    float area
+    City city
+    float cityCenterDistance
+    List<Image> photograph
 }
 class House {
-     number of bedrooms
-     number of bathroom
-     number of parking spaces
-     available equipment
-     existence of a basement
-     inhabitable loft
-     sun exposure
+     int numberOfBedrooms
+     int numberOfBathrooms
+     int numberOfParkingSpaces
+     List<String> equipment
+     bool hasBasement
+     bool hasInhabitableLoft
+     SunExposure sunExposure
 }
 
 class Apartment {
-     number of bedrooms
-     number of bathroom
-     number of parking spaces
-     available equipment
+     int numberOfBedrooms
+     int numberOfBathrooms
+     int numberOfParkingSpaces
+     List<String> equipment
 }
 class Land {
-     description
+    int listingID
+    bool visible
+    float price
+    float commission
+    TypeOfBusiness typeOfBusiness
 }
 
 class City{
@@ -85,7 +88,7 @@ City "*" - "1" District: located in >
 District "*" - "1" State: located in >
 Owner "1" - "1" Agent: chooses >
 Agent "1" - "1" Employee: is an >
-
+Agent "1" - "*" Listing: validates >
 
 
 
