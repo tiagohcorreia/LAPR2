@@ -1,4 +1,4 @@
-# US 004 - To create a Task 
+# US 004 - Listing a Property
 
 ## 1. Requirements Engineering
 
@@ -63,8 +63,9 @@ basement, an inhabitable loft, and sun exposure must be registered as well.
 
 * **AC1:** All requested data must be filled (type of property, number of bedrooms, ...)
 * **AC2:** The type of property only can be an apartment, house or land 
-* **AC3:** Only can be submitted 30 photos
-* **AC4:** The minimum of comission is 0% or 0€. There is no maximum.
+* **AC3:** A property and an announcement can't be duplicated
+* **AC4:** Only can be submitted 30 photos with a minimum of 1 photograph
+* **AC5:** The minimum of comission is 0% or 0€. There is no maximum.
 
 
 ### 1.4. Found out Dependencies
@@ -87,25 +88,26 @@ basement, an inhabitable loft, and sun exposure must be registered as well.
 	* existence of an inhabitable loft
 	* sun exposure
     * area in m2
-    * location of the property
     * distance of the centre 
     * price
     * photos
   
 	
 * Selected data:
+    * location of the property
 	* rent or sell a property
     * type of property (land, house or apartment)
     * responsible agent
 
 
 **Output Data:**
-
-*  Property data
-*  Responsible agent
-*  Sell or rent
-*  Request confirmation
-*  Success of the operation
+* Agents List
+* States, Districts and Cities
+* Property data
+* Responsible agent
+* Sell Or Rent the property
+* Price
+* Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
 
