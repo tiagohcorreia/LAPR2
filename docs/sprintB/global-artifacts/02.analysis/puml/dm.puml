@@ -107,7 +107,6 @@ TypeOfBusiness typeOfBusiness
 
 
 class Property{
-int propertyID
 float area
 City city
 float cityCenterDistance

@@ -6,6 +6,10 @@ public class City {
     public City(String name) {
         this.name = name;
     }
+    public City() {
+        this.name = "Default City";
+    }
+
 
     public String getName() {
         return name;
