@@ -59,7 +59,8 @@ public class Listing {
     public Listing getListing() { return new Listing(this); }
 
     public Listing getListing(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
-        if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getTypeProperty()) && numberOfBedrooms == this.property.getBedrooms()){
+        if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getClass().getSimpleName()) && numberOfBedrooms == 300){
+        //if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getClass().getSimpleName()) && numberOfBedrooms == this.property.getBedrooms()){
             return new Listing(this);
         }
         else
