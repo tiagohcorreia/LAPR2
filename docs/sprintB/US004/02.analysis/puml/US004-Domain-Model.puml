@@ -36,7 +36,6 @@ class Listing{
 
 }
 class Property {
-     type of property
      area
      location
      distance from the city centre
