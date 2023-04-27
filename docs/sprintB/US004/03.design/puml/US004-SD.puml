@@ -12,8 +12,9 @@ participant ":RegisterPropertyController" as ctrl
 participant ":Repositories" as RepositorySingleton
 participant "repositories\n:Repositories" as rep
 participant ":RegisterEmployeeRepository" as repEmp
-participant ":PropertyRepository" as repProp
-participant ":Property" as property
+participant ":AnnouncementRepository" as repAnounc
+participant "newProperty\n:Property" as property
+participant "newAnnouncement\n:Announcement" as announcement
 
 activate owner
 
@@ -54,21 +55,28 @@ activate owner
 
         ui-> owner: validates data
 
-        ui -> ctrl: createProperty()
-        ctrl -> repProp: createProperty()
-        activate repProp
-
-        repProp -> property **:
-        repProp -> repProp: addProperty (Property)
-        activate repProp
-            repProp -> repProp: validateProperty(Property))
-            activate repProp
-                repProp --> repProp
-            deactivate repProp
-            repProp --> repProp
-        deactivate repProp
-
-        deactivate repProp
+        ui -> ctrl: createAnnouncement()
+        ctrl -> property**: createProperty()
+        activate repAnounc
+        property -> property: validateProperty(Property)
+        activate property
+        property -> repAnounc: Property
+        deactivate property
+        repAnounc-> ctrl: Property
+        deactivate repAnounc
+        deactivate repAnounc
+        ctrl -> repAnounc: createAnnouncement()
+        activate repAnounc
+        repAnounc-> announcement**: createAnnouncement()
+        announcement -> announcement: validateAnnouncement(Announcement)
+        activate announcement
+        deactivate announcement
+        announcement -> announcement:AddAnnouncement(Announcement)
+        activate announcement
+        announcement->repAnounc: Announcement
+        deactivate announcement
+        repAnounc ->ctrl: Announcement
+        deactivate repAnounc
 
             ctrl --> ui: Announcement
         deactivate ctrl
