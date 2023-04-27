@@ -78,7 +78,7 @@ Property <|-- Land
 
 Announcement "1" -- "1" Property: includes >
 
-Branch -- Announcement: publishes >
+Branch "1" -- "0..*" Announcement: publishes >
 
 Agent "*" - "1" Branch: assigned to >
 Agent --|> Employee
