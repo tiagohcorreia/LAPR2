@@ -5,34 +5,47 @@ import java.util.List;
 
 public enum Agency {
 
-    AGENCY1, AGENCY2, AGENCY3;
+    AGENCY1(1) {
+        @Override
+        public String toString() {
+            return String.format("AGENCY1");
+        }
 
-    public static String asString() {
+    }, AGENCY2(2) {
+        @Override
+        public String toString() {
+            return String.format("AGENCY2");
+        }
 
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("0").append(AGENCY1.toString()).append("\n");
-        stringBuilder.append("1").append(AGENCY2.toString()).append("\n");
-        stringBuilder.append("2").append(AGENCY3.toString()).append("\n");
+    }, AGENCY3(3) {
+        @Override
+        public String toString() {
+            return String.format("AGENCY3");
+        }
+    };
 
-        return stringBuilder.toString();
+    private final int valor;
+
+    Agency(int valor) {
+        this.valor = valor;
     }
 
-    public static List<Agency> getAgencyAsList() {
-
-        List<Agency> agency = new ArrayList<>();
-
-        agency.add(AGENCY1); //0
-        agency.add(AGENCY2); //1
-        agency.add(AGENCY3); //2
-
-        return agency;
+    public int getAgencyID() {
+        return this.valor;
     }
 
-    public static Agency getRolebyID(int position) {
+    public static Agency getAgencyById(int id) {
 
-        List<Agency> aux = getAgencyAsList();
+        Agency[] array = Agency.values();
 
-        return aux.get(position);
+        for (int i = 0; i < array.length; i++) {
+
+            if (id == array[i].getAgencyID()) {
+
+                return array[i];
+            }
+        }
+        return null;
     }
 
 }
