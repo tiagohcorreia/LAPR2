@@ -2,7 +2,6 @@ package app.controller;
 
 import app.domain.model.Employee;
 import app.domain.repository.AnnouncementRepository;
-import app.domain.repository.PropertyRepository;
 import app.domain.repository.RegisterEmployeeRepository;
 import app.domain.repository.Repositories;
 
