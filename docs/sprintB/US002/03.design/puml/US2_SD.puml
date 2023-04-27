@@ -77,7 +77,7 @@ activate AG
                     AnnouncementREP --> AnnouncementREP
                 deactivate AnnouncementREP
 
-                AnnouncementREP --> CTRL : task
+                AnnouncementREP --> CTRL : Announcement
 
                 deactivate AnnouncementREP
 
