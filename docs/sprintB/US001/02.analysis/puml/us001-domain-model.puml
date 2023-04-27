@@ -5,6 +5,9 @@ skinparam shadowing false
 
 'left to right direction
 
+'skinparam linetype ortho
+skinparam groupInheritance 2
+
 skinparam classAttributeIconSize 0
 
 hide circle
@@ -12,16 +15,15 @@ hide methods
 
 'title Domain Model
 
-'class Platform {
-'  -description
-'}
+class Branch {
+}
 
 
 class Employee {
-    name
-    email
-    position
-    phone
+    'name
+    'email
+    'position
+    'phone
 }
 
 
@@ -64,19 +66,31 @@ class "Unregistered User" {
 }'/
 
 
-House --|> Property
-Apartment --|> Property
-Land --|> Property
-Listing "1" -- "1" Property: includes >
+'House --|> Property
+'Apartment --|> Property
+'Land --|> Property
 
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+
+Announcement "1" -- "1" Property: includes >
+
+Branch -- Announcement: publishes >
+
+Agent "*" - "1" Branch: assigned to >
 Agent --|> Employee
 'Employee -|> User
-Agent "1" -- "*" Listing: validates >
+Agent "1" -- "*" Announcement: validates >
 'Client "0..1" - "*" Property: owns >
-Property "*" - "1" Client : owns <
+Property "*" -- "1" Client : owns <
 'Client "*" -|> "1" User
-Client "1" -- "*" Listing: creates >
+Client "1" -- "*" Announcement: creates >
 '"Unregistered User" "1" ---|> "1" User
-"Unregistered User" "1" -- "*" Listing: browses >
+"Unregistered User" "1" -- "*" Announcement: browses >
+
+
 
 @enduml
