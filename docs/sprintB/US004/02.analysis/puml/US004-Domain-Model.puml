@@ -36,7 +36,6 @@ class Listing{
 
 }
 class Property {
-     type of property
      area
      location
      distance from the city centre
@@ -78,9 +77,9 @@ class State{
 Listing "*" -- "*" Property: contains >
 Owner "1" -- "*" Listing: creates >
 Owner "1" -- "*" Property: owns >
-House "1" --"1" Property: is >
-Apartment"1" -- "1" Property: is >
-Land"1" - "1" Property: is >
+House -|> Property
+Apartment -|> Property
+Land -|> Property
 Property "1" - "1" City: located in >
 City "*" - "1" District: located in >
 District "*" - "1" State: located in >
