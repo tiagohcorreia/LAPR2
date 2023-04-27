@@ -1,6 +1,7 @@
 package app.ui.console;
 
 import app.ui.console.menu.AdminUI;
+import app.ui.console.menu.OwnerUI;
 import app.ui.console.utils.Utils;
 
 public class ChooseRoleUI implements Runnable {
@@ -22,6 +23,8 @@ public class ChooseRoleUI implements Runnable {
 
             case 2:
                 //TO DO - Create a UI for the owner
+                OwnerUI ownerUI = new OwnerUI();
+                ownerUI.run();
 
             case 3:
                 //TO DO - Create a UI for the agent

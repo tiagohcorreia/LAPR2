@@ -1,6 +1,9 @@
 package app.domain.repository;
 
 import app.domain.model.Announcement;
+import app.domain.model.Employee;
+import app.domain.model.Property;
+import app.domain.shared.TypeOfBusiness;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +13,35 @@ public class AnnouncementRepository {
 
     public boolean save(Announcement announcement) {
         return announcements.add(announcement.getListing());
+    }
+
+    public boolean createAnnouncement (Announcement announcement) {
+
+        if(validateAnnouncement(announcement)) {
+
+            return addAnnouncement(announcement);
+        }
+        return false;
+    }
+    public boolean validateAnnouncement(Announcement announcement) {
+
+        for(Announcement announcement1 : announcements) {
+
+            if(announcement.equals(announcement)) {
+
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean addAnnouncement(Announcement announcement) {
+
+        if(announcement != null && validateAnnouncement(announcement)) {
+
+            return this.announcements.add(announcement);
+        }
+        return false;
     }
 
     public List<Announcement> getAllVisibleListings() {
