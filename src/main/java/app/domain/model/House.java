@@ -9,11 +9,12 @@ public class House extends Property{
     private int numberOfBathrooms;
     private int numberOfParkingSpaces;
     private ArrayList<String> equipment;
+
     private boolean hasBasement;
     private boolean hasInhabitableLoft;
-    SunExposure sunExposure;
+    private SunExposure sunExposure;
 
-    public House(int propertyID, float area, City address, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
+    public House(float area, City address, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
         super(area, address, cityCentreDistance, photographs);
         this.numberOfBedrooms=numberOfBedrooms;
         this.numberOfBathrooms=numberOfBathrooms;

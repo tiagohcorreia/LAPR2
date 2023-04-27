@@ -41,11 +41,14 @@ package app.domain.repository;
 //}
 
 
+import app.domain.model.Employee;
+
 //v3
 public class Repositories {
 
     private static final app.domain.repository.Repositories instance = new app.domain.repository.Repositories();
     ListingRepository listingRepository = new ListingRepository();
+    RegisterEmployeeRepository employeeRepository = new RegisterEmployeeRepository();
 
     private Repositories() {
     }
@@ -56,5 +59,6 @@ public class Repositories {
 
     public ListingRepository getListingRepository() {return  listingRepository;}
 
+    public RegisterEmployeeRepository getEmployeeRepository() {return  employeeRepository;}
 
 }

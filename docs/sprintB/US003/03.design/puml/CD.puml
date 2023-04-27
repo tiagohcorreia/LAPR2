@@ -1,8 +1,7 @@
 @startuml
 
-@startuml
-
 class Employee {
+
     - String name
     - int citizenCardNumber
     - int taxNumber
@@ -10,28 +9,45 @@ class Employee {
     - String emailAddress
     - int telephoneNumber
     - String agency
+    - verifyIfEmployeeDataIsNotNull()
     + saveEmployee()
 
 }
 
 class RegeisterEmployeeUI {
+
+    - controller
     + registerEmployee()
 
 }
 
 class RegeisterEmployeeController {
+
+    - employeeRepository
+    + getRole()
+    + getAgency()
     + createEmployee()
 }
 
 class EmployeeRepository {
-    + showEmployee()
 
+    + employeeList
+    + addEmployee(employee)
+    + validateEmployee(employee)
+    + getEmployeeList()
+    + getEmployee(employeeID)
+    + getEmployeeListAsString()
+    + showEmployee()
 }
 
 Enum Role {
 
     ADMINISTRATOR
     MANAGER
+    AGENT
+    + asString()
+    + getRolesAsList()
+    + getRoleByID(position)
 }
 
 Enum Agency {
@@ -39,8 +55,16 @@ Enum Agency {
     AGENCY1
     AGENCY2
     AGENCY3
+    + asString()
+    + getAgencyAsList()
+    + getRolebyID(position)
 }
 
+Interface Runnable {
+    + run()
+}
+
+Runnable -left-|> RegeisterEmployeeUI
 RegeisterEmployeeUI --> RegeisterEmployeeController
 RegeisterEmployeeController --> Employee
 Employee --> Role

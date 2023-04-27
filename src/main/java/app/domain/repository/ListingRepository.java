@@ -28,16 +28,19 @@ public class ListingRepository {
         availableFields.add(new ArrayList<>());
         availableFields.add(new ArrayList<>());
 
+        //TO-FIX
         for(Listing listing : listings){
             if ( listing != null && listing.isVisible()){
                 if (!availableFields.get(0).contains(listing.getTypeOfBusiness())){
                     availableFields.get(0).add(listing.getTypeOfBusiness());
                 }
-                if (!availableFields.get(1).contains(listing.getProperty().getTypeProperty())){
-                    availableFields.get(1).add(listing.getProperty().getTypeProperty());
+                if (!availableFields.get(1).contains(listing.getProperty().getClass().getSimpleName())){
+                    availableFields.get(1).add(listing.getProperty().getClass().getSimpleName());
                 }
-                if (!availableFields.get(2).contains(listing.getProperty().getBedrooms())){
-                    availableFields.get(2).add(listing.getProperty().getBedrooms());
+                if (listing.getProperty().getClass().getSimpleName().equals("Land") && true){
+                //if (listing.getProperty().getClass().getSimpleName().equals("Land") && !availableFields.get(2).contains(listing.getProperty().getNumberOfBedrooms())){
+                    availableFields.get(2).add(300);
+                    //availableFields.get(2).add(listing.getProperty().getBedrooms());
                 }
             }
         }

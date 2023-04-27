@@ -3,21 +3,48 @@ package app.domain.model;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Property {
+//ASK como implementar superclasses e subclasses cujos metodos estejam implementados apenas na subclasse
+public abstract class Property {
+    //ASK about consts as default values
+    private static final float DEFAULT_AREA = 1;
+    private static final City DEFAULT_LOCATION = new City();
+    private static final float DEFAULT_CITY_CENTER_DISTANCE = 10;
+    private static final ArrayList<String> DEFAULT_PHOTOGRAPHS = new ArrayList<>();
+
     private float area;
     City location;
     float cityCentreDistance;
     private ArrayList<String> photographs;
 
+    //ASK utilidade de implementar construtores de copia e construtores por omissão para além do contrutor completo
+    //Complete constructor
 
-    //Constructor
-
+    //Full constructor
     public Property(float area, City location, float cityCentreDistance, ArrayList<String> photographs) {
+        //ASK quando devemos utilizar os setters para inicializar atributos; e em relação aos getters? Devemos utilizar
+        //ambos num construtor de cópia?
         this.area = area;
-        this.location = location;
         this.cityCentreDistance = cityCentreDistance;
+        this.location = location;
         this.photographs = photographs;
     }
+
+    //Default constructor
+    public Property(){
+        this.area = DEFAULT_AREA;
+        this.location = DEFAULT_LOCATION;
+        this.cityCentreDistance = DEFAULT_CITY_CENTER_DISTANCE;
+        this.photographs = DEFAULT_PHOTOGRAPHS;
+    }
+
+    //Copy constructor
+    public Property(Property anotherProperty){
+        this.setArea(anotherProperty.getArea());
+        this.setLocation(anotherProperty.getLocation());
+        this.setCityCentreDistance(anotherProperty.getCityCentreDistance());
+        this.setPhotographs(anotherProperty.getPhotographs());
+    }
+
     // Getters and Setters
 
     public float getArea() {
@@ -63,6 +90,8 @@ public class Property {
                 '}';
     }
     //equals
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,5 +104,4 @@ public class Property {
     public int hashCode() {
         return Objects.hash(area, location, cityCentreDistance, photographs);
     }
-
 }

@@ -51,17 +51,14 @@ As a system administrator, I want to register a new employee
 >
 > **Answer:** "You are correct. The citizen card number should be replaced by the passport card number"
 
->  **Question:**
->
-> **Answer:**
-
 
 ### 1.3. Acceptance Criteria
 
-* AC01: The name can't be empthy
-* AC02: Telephone number must be a positive 9 digits number, and also an integer number
-* AC03: E-mail address must have an "@"
-* AC04: All requested data must be filled (name, telephone number, ...)
+* AC01: Telephone number must be a positive 10 digits number, and also an integer number
+* AC02: E-mail address must have an "@"
+* AC03: All requested data must be filled (name, telephone number, ...)
+* AC04: Tax number must have 9 digit positive number
+* AC05: Passport number must be 9 digit positive number
 
 
 ### 1.4. Found out Dependencies
