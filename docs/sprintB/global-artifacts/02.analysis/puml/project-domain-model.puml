@@ -1,84 +1,149 @@
 @startuml
+'https://plantuml.com/class-diagram
+
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
+
 'skinparam linetype ortho
 'left to right direction
 skinparam classAttributeIconSize 0
+skinparam groupInheritance 1
 hide circle
 hide methods
 
-'title Domain Model
 
-'class Platform {
-'  -description
-'}
+Network "1" -- "*" Branch: owns >
+Branch "1" -- "*" Listing: publishes >
+Listing "1" -- "1" Property: contains >
 
-class Organization {
-    name
-    vatNumber
-    website
-    phoneNumber
-    email
+Network "1" -- "*" Employee: employs >
+
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+
+"System Administrator" --|> Employee
+"Network Manager" --|> Employee
+"Store Manager" --|> Employee
+Agent --|> Employee
+
+Employee "1" - "1" Branch: works at a >
+
+"System Administrator" "1" --> "*" Employee: registers >
+"System Administrator" "1" -> "*" Branch: registers >
+
+
+"System Administrator" "1" -> "*" State: specifies >
+"System Administrator" "1" -> "*" District: specifies >
+"System Administrator" "1" -> "*" City: specifies >
+
+
+together {
+Buyer --|> Client
+Seller --|> Client
 }
 
-class Task {
-    reference
-    description
-    informalDesc
-    technicalDesc
-    duration
-    cost
+Seller "1" - "*" Property: owns >
+Seller "1" - "*" Listing: creates >
+Agent "1" - "*" Listing: validates >
+Visit "1" - "1" Buyer: requests <
+Visit "1" - "1" Agent: scheduled by >
+
+together {
+Property "1" -- "1" City: located in >
+District "1" -- "*" City: located in <
+State "1" -- "*" District: located in <
 }
 
-class Category {
-    description
+
+class Network{
+
 }
 
-class Employee {
-    name
-    email
-    position
-    phone
+class Branch{
+name:String
+address:String
+email:String
+phoneNumber:String
 }
 
-class TechnicalSkill{
-    shortDescription
-    fullDescription
+class Employee{
+String name
+int cCNumber
+int taxNumber
+String address
+String email
+String phoneNumber
 }
 
-class ActivityArea{
-    shortDescription
-    fullDescription
+together {
+class "System Administrator"
+
+class "Network Manager"
+
+class "Store Manager"
+
+class Agent
 }
 
-class FeatureTS{
-    mandatory
+class Client
+class Buyer
+class Seller
+
+class Visit{
+
 }
 
-'class User {
-'    name
-'    email
-'    password
-'}
-class PostalAddress{
-    street
-    zipCode
-    city
+class Listing{
+int listingID
+bool visible
+float price
+float commission
+TypeOfBusiness typeOfBusiness
 }
-'Platform "1" -- "*" Organization : has registered >
-'Platform "1" -- "*" Category : defines >
-Organization "1" - "0..*" Employee : has >
-Organization "1" - "0..*" Task: owns >
-'Task "*" -- "1" Employee: created by >
-Employee "1" -- "*" Task : creates >
-'Employee "0..1" -- "1" User: acts as >
-Task "*" - "1" Category: cataloged as >
-TechnicalSkill "*" - "1" ActivityArea: regarding an >
 
-Category "*" - "*" TechnicalSkill :  : requires >
-(Category, TechnicalSkill) . FeatureTS
 
-Organization "1" -left "1" PostalAddress : located At >
+class Property{
+float area
+City city
+float cityCenterDistance
+List<Image> photograph
+}
+
+class House{
+int numberOfBedrooms
+int numberOfBathrooms
+int numberOfParkingSpaces
+List<String> equipment
+bool hasBasement
+
+bool hasInhabitableLoft
+SunExposure sunExposure
+}
+
+class Apartment{
+int numberOfBedrooms
+int numberOfBathrooms
+int numberOfParkingSpaces
+List<String> equipment
+}
+
+class Land{
+}
+
+class State{
+String name
+}
+class District{
+String name
+}
+class City{
+String name
+}
+
+
 
 @enduml
