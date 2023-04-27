@@ -54,8 +54,6 @@ fdocs/sprintA/us006/01.requirements-engineering/puml/us006-system-sequence-diagr
 fdocs/sprintA/us006/01.requirements-engineering/puml/us006-system-sequence-diagram-alternative-two.puml,d\5\d50daef0d26d71d87bbb6bee20b0762ea984ff0d
 j
 :docs/sprintB/US003/01.requirements-engineering/svg/SSD.svg,a\c\ac065268af5d22c8a6b17bf1f6925761516c7263
-Z
-*docs/sprintB/US003/02.analysis/Analysis.md,c\c\cc078aee3a736bde889e11e0318a1bf7a7dfe2f9
 p
 @src/main/java/pt/ipp/isep/dei/esoft/project/domain/Employee.java,d\6\d6a9205b2dbee76e44f3c4c862501a1bcd3869ad
 ž
@@ -64,14 +62,10 @@ h
 8docs/sprintA/us001/01.requirements-engineering/Readme.md,b\2\b206f7765e422a8045b8c03027f43efe82c58d0c
 [
 +src/main/java/app/ui/console/DevTeamUI.java,a\9\a9b206d349decc3b757bfdc7d54e6b72df8bbce8
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 v
 Fsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/ShowTextUI.java,b\2\b226a82df28353d3caf85e70d4caffc14d09008f
 h
 8src/main/java/pt/ipp/isep/dei/esoft/project/ui/Main.java,c\9\c94ae3eefc44bf4778c1b1c7de640658b9d015a7
-z
-Jdocs/sprintB/US003/01.requirements-engineering/Requirements Engineering.md,3\b\3be04e392fbb8432e5c4bd034062cd8de1d0c41d
 l
 <docs/sprintB/US003/01.requirements-engineering/puml/SSD.puml,1\f\1fe42d4d60f482c3a36cca079add0889b551f62e
 ]

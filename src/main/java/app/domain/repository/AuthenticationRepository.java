@@ -15,9 +15,11 @@ public class AuthenticationRepository {
         authenticationFacade.doLogout();
     }
 
+
     public UserSession getCurrentUserSession() {
         return authenticationFacade.getCurrentUserSession();
     }
+
 
     public boolean addUserRole(String id, String description) {
         return authenticationFacade.addUserRole(id, description);

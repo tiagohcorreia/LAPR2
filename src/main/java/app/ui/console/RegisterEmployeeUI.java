@@ -1,14 +1,19 @@
 package app.ui.console;
 
 import app.controller.RegisterEmployeeController;
+import app.domain.model.Agency;
+import app.domain.model.Role;
+import app.domain.repository.RegisterEmployeeRepository;
 import app.ui.console.utils.Utils;
+
+import java.util.List;
 
 public class RegisterEmployeeUI implements Runnable {
 
-    private RegisterEmployeeController controller;
+    private RegisterEmployeeController controller = new RegisterEmployeeController(new RegisterEmployeeRepository());
 
     public RegisterEmployeeUI(RegisterEmployeeController controller) {
-        this.controller = controller;
+        //this.controller = controller;
     }
     @Override
     public void run() {
@@ -32,30 +37,34 @@ public class RegisterEmployeeUI implements Runnable {
         Integer telephoneNumber = Utils.readIntegerFromConsole("Insert Telephone Number: ");
 
         //Role
-        String Role = this.controller.getRole();
-        Integer pos1 = Utils.readIntegerFromConsole("Choose a Role for the Employee: ");
+        List<Role> x = this.controller.getRolesAsList();
+        Utils.showList(x,"Roles");
+        Integer posRole = Utils.readIntegerFromConsole("Choose a Role for the Employee: ");
 
         //Agency
-        String Agency = this.controller.getAgency();
-        Integer pos2 = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");
+        List<Agency> y = this.controller.getAgency();
+        Utils.showList(y,"Agency");
+        Integer posAgency = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");
 
 
         int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
         if (optValidation == 1) {
-            /*this.controller.createEmployee(emplyeeName, employeePassportNumber,
-                    address, address, eMail, telephoneNumber,role,agency);*/
+
+            this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber,posRole,posAgency);
 
             System.out.println("Employee name: " + emplyeeName);
             System.out.println("Employee Passport Number: " + employeePassportNumber);
             System.out.println("Employee Address: " + address);
             System.out.println("Employee E-mail: " + eMail);
             System.out.println("Employee Telephone Number: " + telephoneNumber);
-            //System.out.println("Employee Role: " + );
-            //System.out.println("Employee Agency: " + );
+            System.out.println("Employee Role: " + Role.getRoleById(posRole));
+            System.out.println("Employee Agency: "+ Agency.getAgencyById(posAgency));
 
         } else {
+
             System.err.println("Operation Canceled!");
+
         }
 
     }
