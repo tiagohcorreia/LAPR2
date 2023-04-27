@@ -5,7 +5,7 @@
 
 ### 1.1. User Story Description
 
-As an owner, I intend to submit a request for announcement a property sale or rent,
+As an owner, I intend to submit a request for listing a property sale or rent,
 choosing the responsible agent.
 
 
@@ -39,7 +39,7 @@ basement, an inhabitable loft, and sun exposure must be registered as well.
 >
 > **Answer:** The owner should input the URI of each file/photograph.
  
-> **Question:** In the case of announcement a land property, shall the owner refer if there is a building permit already approved?
+> **Question:** In the case of listing a land property, shall the owner refer if there is a building permit already approved?
 >
 > **Answer:** No.
  
@@ -49,12 +49,12 @@ basement, an inhabitable loft, and sun exposure must be registered as well.
 > **Answer:** There is no maximum and the minimum is 0.
 
 
-> **Question:** When assigning an agent to a property announcement, are the available agents shown by the system for the owner to pick? Or does the owner need to provide the agent's information (name, agency,etc)?
+> **Question:** When assigning an agent to a property listing, are the available agents shown by the system for the owner to pick? Or does the owner need to provide the agent's information (name, agency,etc)?
 >
 > **Answer:** The owner should select one agent from a list of agents that work in the selected agency. The owner should select the agency before selecting the agent.
 
 
-> **Question:** Does an owner need to be registered in the system to submit a request for a property announcement?
+> **Question:** Does an owner need to be registered in the system to submit a request for a property listing?
 >
 > **Answer:** No. When making the request to list a property, the owner should introduce his own data. The Owner attributes are: the name, the citizen's card number, the tax number, the address, the email address and the telephone number.
 
