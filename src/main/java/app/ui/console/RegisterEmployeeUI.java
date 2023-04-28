@@ -15,6 +15,7 @@ public class RegisterEmployeeUI implements Runnable {
     public RegisterEmployeeUI(RegisterEmployeeController controller) {
         //this.controller = controller;
     }
+
     @Override
     public void run() {
 
@@ -38,12 +39,12 @@ public class RegisterEmployeeUI implements Runnable {
 
         //Role
         List<Role> x = this.controller.getRolesAsList();
-        Utils.showList(x,"Roles");
+        Utils.showList(x, "Roles");
         Integer posRole = Utils.readIntegerFromConsole("Choose a Role for the Employee: ");
 
         //Agency
         List<Agency> y = this.controller.getAgency();
-        Utils.showList(y,"Agency");
+        Utils.showList(y, "Agency");
         Integer posAgency = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");
 
 
@@ -51,7 +52,22 @@ public class RegisterEmployeeUI implements Runnable {
 
         if (optValidation == 1) {
 
-            this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber,posRole,posAgency);
+            try {
+
+                this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber, posRole, posAgency);
+
+            } catch (IllegalArgumentException e) {
+
+                e.getMessage();
+                System.err.println("Invalid data ");
+
+
+            } catch (NullPointerException e) {
+
+                e.getMessage();
+                System.err.println("Data can't be null ");
+
+            }
 
             System.out.println("Employee name: " + emplyeeName);
             System.out.println("Employee Passport Number: " + employeePassportNumber);
@@ -59,7 +75,7 @@ public class RegisterEmployeeUI implements Runnable {
             System.out.println("Employee E-mail: " + eMail);
             System.out.println("Employee Telephone Number: " + telephoneNumber);
             System.out.println("Employee Role: " + Role.getRoleById(posRole));
-            System.out.println("Employee Agency: "+ Agency.getAgencyById(posAgency));
+            System.out.println("Employee Agency: " + Agency.getAgencyById(posAgency));
 
         } else {
 
