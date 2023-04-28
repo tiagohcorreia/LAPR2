@@ -16,10 +16,10 @@ public class House extends Property{
 
     public House(float area, City location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
         super(area, location, cityCentreDistance, photographs);
-        this.numberOfBedrooms=numberOfBedrooms;
-        this.numberOfBathrooms=numberOfBathrooms;
-        this.numberOfParkingSpaces=numberOfParkingSpaces;
-        this.equipment=equipment;
+        this.numberOfBedrooms=setNumberOfBedrooms(numberOfBedrooms);
+        this.numberOfBathrooms=setNumberOfBathrooms(numberOfBathrooms);
+        this.numberOfParkingSpaces=setNumberOfParkingSpaces(numberOfParkingSpaces);
+        this.equipment=setEquipment(equipment);
         this.hasBasement=hasBasement;
         this.hasInhabitableLoft=hasInhabitableLoft;
         this.sunExposure=sunExposure;
@@ -29,57 +29,78 @@ public class House extends Property{
         return numberOfBedrooms;
     }
 
-    public void setNumberOfBedrooms(int numberOfBedrooms) {
-        this.numberOfBedrooms = numberOfBedrooms;
-    }
+
 
     public int getNumberOfBathrooms() {
         return numberOfBathrooms;
     }
 
-    public void setNumberOfBathrooms(int numberOfBathrooms) {
-        this.numberOfBathrooms = numberOfBathrooms;
-    }
+
 
     public int getNumberOfParkingSpaces() {
         return numberOfParkingSpaces;
     }
 
-    public void setNumberOfParkingSpaces(int numberOfParkingSpaces) {
-        this.numberOfParkingSpaces = numberOfParkingSpaces;
-    }
+
 
     public ArrayList<String> getEquipment() {
         return equipment;
     }
 
-    public void setEquipment(ArrayList<String> equipment) {
-        this.equipment = equipment;
-    }
+
 
     public boolean isHasBasement() {
         return hasBasement;
     }
 
-    public void setHasBasement(boolean hasBasement) {
-        this.hasBasement = hasBasement;
-    }
+
 
     public boolean isHasInhabitableLoft() {
         return hasInhabitableLoft;
     }
 
-    public void setHasInhabitableLoft(boolean hasInhabitableLoft) {
-        this.hasInhabitableLoft = hasInhabitableLoft;
-    }
+
 
     public SunExposure getSunExposure() {
         return sunExposure;
     }
 
+    public int setNumberOfBedrooms(int numberOfBedrooms) {
+        if (numberOfBedrooms<0){
+            throw new IllegalArgumentException("Please insert a number >=0");
+        }
+        return numberOfBedrooms;
+    }
+    public int setNumberOfBathrooms(int numberOfBathrooms) {
+        if (numberOfBathrooms<0){
+            throw new IllegalArgumentException("Please insert a number >=0");
+        }
+        return numberOfBathrooms;
+    }
+    public int setNumberOfParkingSpaces(int numberOfParkingSpaces) {
+        if (numberOfParkingSpaces<0){
+            throw new IllegalArgumentException("Please insert a number >=0");
+        }
+        return numberOfParkingSpaces;
+    }
     public void setSunExposure(SunExposure sunExposure) {
         this.sunExposure = sunExposure;
     }
+    public void setHasInhabitableLoft(boolean hasInhabitableLoft) {
+
+        this.hasInhabitableLoft = hasInhabitableLoft;
+    }
+    public void setHasBasement(boolean hasBasement) {
+        this.hasBasement = hasBasement;
+    }
+    public ArrayList<String> setEquipment(ArrayList<String> equipment) {
+        if (equipment == null) {
+            throw new NullPointerException("You need to insert at least 1 equipment.");
+        }
+        return equipment;
+    }
+
+
 
     //toString()
 
