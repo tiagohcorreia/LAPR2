@@ -1,17 +1,91 @@
 package app.controller;
 
-import app.domain.repository.AnnouncementRepository;
+import app.domain.model.*;
+import app.domain.repository.*;
+import app.domain.shared.SunExposure;
+import app.domain.shared.TypeOfBusiness;
+import app.domain.shared.TypeOfProperty;
 
-public class PublishAnnouncementController {
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/*public class PublishAnnouncementController {
+
+    private List<Announcement> announcements;
+    private List<TypeOfProperty> typesOfProperty;
+    private List<City> cities;
+    private List<SunExposure> sunExposures;
+    private List<TypeOfBusiness> typesOfBusiness;
+
     private AnnouncementRepository announcementRepository;
-    public PublishAnnouncementController(AnnouncementRepository announcementRepository){
+    Repositories repositories = Repositories.getInstance();
+    RegisterEmployeeRepository employeeRepository = repositories.getEmployeeRepository();
+    StateRepository stateRepository = repositories.getStateRepository();
+    DistrictRepository districtRepository = repositories.getDistrictRepository();
+    CityRepository cityRepository = repositories.getCityRepository();
+
+ /*   public PublishAnnouncementController(AnnouncementRepository announcementRepository) {
         this.announcementRepository = announcementRepository;
+    }
 
 
-
-        //public void createAnnouncement(Property property)
+    public void createAnnouncement(TypeOfBusiness sellOrRent, int posTypeOfProperty, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
+                                   ArrayList<String> equipmentList,boolean hasBasement, boolean hasInhabitalLoft, SunExposure sunExposure,
+                                   int area, City location, int cityCentreDistance, float price, ArrayList<String> photographs, Employee agent){
+        if (posTypeOfProperty == 2) {
+            Property property = new Apartment(area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipmentList);
+            Announcement announcement = new Announcement(false, price, 0, sellOrRent, property, agent);
+            this.announcementRepository.createAnnouncement(announcement);
+        } else if (posTypeOfProperty == 1) {
+            Property property = new House(area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipmentList, hasBasement, hasInhabitalLoft, sunExposure);
+            Announcement announcement = new Announcement(false, price, 0, sellOrRent, property, agent);
+            this.announcementRepository.createAnnouncement(announcement);
+        } else {
+            Property property = new Land(area, location, cityCentreDistance, photographs);
+            Announcement announcement = new Announcement(false, price, 0, sellOrRent, property, agent);
+            this.announcementRepository.createAnnouncement(announcement);
+        }
 
 
     }
-}
+
+
+    }
+
+
+    public City getCity (String city){
+        return cityRepository.findByName(city);
+    }
+    public List<SunExposure> getSunExposureAsList () {
+        return Arrays.stream(SunExposure.values()).toList();
+    }
+
+    public List<TypeOfProperty> getTypeOfPropertyAsList () {
+        return Arrays.stream(TypeOfProperty.values()).toList();
+    }
+
+    public List<TypeOfBusiness> getTypeOfBusinessAsList () {
+        return Arrays.stream(TypeOfBusiness.values()).toList();
+    }
+
+    public List<Employee> getAgent() {
+        List<Employee> agent= new ArrayList();
+        for(Employee employee : employeeRepository.getEmployeeList()) {
+
+            if(employee.getRole().equals("Agent")) {
+                agent.add(employee);
+            }
+        }
+        return agent;
+
+    }
+    public Employee getEmployee(String name){
+        return employeeRepository.getEmployee(name);
+    }
+
+} */
+
 
