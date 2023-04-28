@@ -1,0 +1,223 @@
+@startuml
+autonumber
+title User specifies a new location
+
+actor User
+participant UI
+participant Controller
+participant Repository
+
+activate User
+User -> UI: Starts the program and selects 'New Location'
+activate UI
+UI --> User: Requests the state from the user
+deactivate UI
+User -> UI : inputs state
+activate UI
+activate Controller
+UI -> Controller: createState(state)
+deactivate UI
+activate Repository
+Controller ->Repository : validateState(state)
+deactivate Controller
+Repository -> Controller : returns outcome of the operation
+deactivate Repository
+
+deactivate UI
+alt Invalid input
+    activate Controller
+    Controller -> UI: displayErrorMessage("Invalid state input. Please try again.")
+    deactivate Controller
+    loop until valid input provided
+        User -> UI: inputs state
+        activate UI
+        UI -> Controller: createState(state)
+        deactivate UI
+        activate Controller
+        activate Repository
+        Controller -> Repository : validate(state)
+        Repository -> Controller : returns outcome of the operation
+        deactivate Repository
+
+    end
+end
+
+Repository --> Controller: save(state)
+deactivate Repository
+
+deactivate Controller
+
+activate UI
+UI --> User: Requests the city from the user
+deactivate UI
+User -> UI : inputs city
+activate UI
+activate Controller
+UI -> Controller: createCity(city)
+deactivate UI
+activate Repository
+Controller ->Repository : validateCity(city)
+deactivate Controller
+Repository -> Controller : returns outcome of the operation
+deactivate Repository
+
+deactivate UI
+alt Invalid input
+    activate Controller
+    Controller -> UI: displayErrorMessage("Invalid city input. Please try again.")
+    deactivate Controller
+    loop until valid input provided
+        User -> UI: inputs city
+        activate UI
+        UI -> Controller: createCity(city)
+        deactivate UI
+        activate Controller
+        activate Repository
+        Controller -> Repository : validate(city)
+        Repository -> Controller : returns outcome of the operation
+        deactivate Repository
+
+    end
+end
+
+Repository --> Controller: save(city)
+deactivate Repository
+
+deactivate Controller
+
+activate UI
+UI --> User: Requests the district from the user
+deactivate UI
+User -> UI : inputs district
+activate UI
+activate Controller
+UI -> Controller: createDistrict(district)
+deactivate UI
+activate Repository
+Controller ->Repository : validateDistrict(district)
+deactivate Controller
+Repository -> Controller : returns outcome of the operation
+deactivate Repository
+
+deactivate UI
+alt Invalid input
+    activate Controller
+    Controller -> UI: displayErrorMessage("Invalid district input. Please try again.")
+    deactivate Controller
+    loop until valid input provided
+        User -> UI: inputs district
+        activate UI
+        UI -> Controller: createDistrict(district)
+        deactivate UI
+        activate Controller
+        activate Repository
+        Controller -> Repository : validate(district)
+        Repository -> Controller : returns outcome of the operation
+        deactivate Repository
+
+    end
+end
+
+Repository --> Controller: save(district)
+deactivate Repository
+
+deactivate Controller
+
+activate UI
+UI --> User: Requests the street from the user
+deactivate UI
+User -> UI : inputs street
+activate UI
+activate Controller
+UI -> Controller: createStreet(street)
+deactivate UI
+activate Repository
+Controller ->Repository : validateStreet(street)
+deactivate Controller
+Repository -> Controller : returns outcome of the operation
+deactivate Repository
+
+deactivate UI
+alt Invalid input
+    activate Controller
+    Controller -> UI: displayErrorMessage("Invalid street input. Please try again.")
+    deactivate Controller
+    loop until valid input provided
+        User -> UI: inputs street
+        activate UI
+        UI -> Controller: createStreet(street)
+        deactivate UI
+        activate Controller
+        activate Repository
+        Controller -> Repository : validate(street)
+        Repository -> Controller : returns outcome of the operation
+        deactivate Repository
+
+    end
+end
+
+Repository --> Controller: save(street)
+deactivate Repository
+
+deactivate Controller
+
+activate UI
+UI --> User: Requests the zipcode from the user
+deactivate UI
+User -> UI : inputs zipcode
+activate UI
+activate Controller
+UI -> Controller: createZipcode(zipcode)
+deactivate UI
+activate Repository
+Controller ->Repository : validateZipcode(zipcode))
+deactivate Controller
+Repository -> Controller : returns outcome of the operation
+deactivate Repository
+
+deactivate UI
+alt Invalid input
+    activate Controller
+    Controller -> UI: displayErrorMessage("Invalid zipcode input. Please try again.")
+    deactivate Controller
+    loop until valid input provided
+        User -> UI: inputs zipcode
+        activate UI
+        UI -> Controller: createZipcode(zipcode)
+        deactivate UI
+        activate Controller
+        activate Repository
+        Controller -> Repository : validate(zipcode)
+        Repository -> Controller : returns outcome of the operation
+        deactivate Repository
+
+    end
+end
+
+Repository --> Controller: save(zipcode)
+deactivate Repository
+
+deactivate Controller
+
+
+activate UI
+UI -> Controller : createLocation(street,city,district,state,zipcode)
+activate Controller
+deactivate UI
+Controller -> Location : createLocation(street,city,district,state,zipcode)
+deactivate Controller
+activate UI
+User -> UI : confirms
+activate Controller
+UI --> Controller: saveLocation(street,city,district,state,zipcode)
+activate Repository
+deactivate UI
+Controller --> Repository: saveLocation(Location)
+deactivate Controller
+deactivate Repository
+activate UI
+UI -> User: Shows the created Location to the user
+deactivate UI
+User -> UI: Exits the program
+deactivate User
+@enduml
