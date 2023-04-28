@@ -9,11 +9,10 @@ autonumber
 actor "Agent" as AG
 participant ":PublishAnnouncementUI" as UI
 participant ":PublishAnnouncementController" as CTRL
-participant ":Repositories" as RepositorySingleton
-participant "repositories\n:Repositories" as REP
+participant "new Property\n:Property" as Property
 participant ":AnnouncementRepository" as AnnouncementREP
-participant ":PropertyRepository" as PropertyREP
-participant ":Announcement" as Announcement
+participant "new Announcement\n:Announcement" as Announcement
+
 
 activate AG
 
@@ -24,60 +23,55 @@ activate AG
 
         AG -> UI : select the property type
 
+        UI --> AG : presents the data to be\n filled in by the type of porperty
+
+        AG -> UI : insert the requested data (size, location, distance \nfrom the city center, price, commission)
+
+        UI --> AG : validate data
+
+        AG -> UI : submits data
+
+
                UI -> CTRL** : create
 
-               UI -> CTRL : getProperty()
+               UI -> CTRL : createAnnouncement((size, location,\n distance from the city \n center, price, commission))
 
                  activate CTRL
 
-                  CTRL -> RepositorySingleton : getInstance()
-                  activate RepositorySingleton
+                   CTRL -> Property** : create
 
-                  RepositorySingleton --> CTRL: repositories
-                  deactivate RepositorySingleton
+                   activate Property
+                   Property -> Property: validateProperty(Property)
 
-                   CTRL -> REP : getPropertyRepository()
-                       activate REP
+                   Property -> CTRL: Property
+                   deactivate Property
 
-                        REP --> CTRL: PropertyRepository
-                          deactivate REP
-
-                           CTRL -> PropertyREP : getProperty()
-                             activate PropertyREP
-
-                               PropertyREP --> CTRL: Property
-                                 deactivate PropertyREP
-
-
-                   CTRL --> UI : Property
-
-                   UI --> AG : presents the data to be\n filled in by the type of porperty
-
-                   AG -> UI : insert the requested data (size, location, distance \nfrom the city center, price, commission)
-
-                   UI --> AG : validate data
-
-                   AG -> UI : submits data
-
-                   UI -> CTRL : createAnnouncement (size, location,\n distance from the city \n center, price, commission)
-
-                CTRL -> AnnouncementREP: createAnnouncement(size, location,\n distance from the city \n center, price, commission)
-            activate AnnouncementREP
-
-                AnnouncementREP -> Announcement**: create(size, location,\n distance from the city \n center, price, commission)
-                AnnouncementREP -> AnnouncementREP: addAnnouncement (Announcement)
-
-
+                CTRL -> AnnouncementREP**: createAnnouncement(Announcement))
                 activate AnnouncementREP
-                    AnnouncementREP -> AnnouncementREP: validateAnnouncement(Announcement))
-                    activate AnnouncementREP
-                        AnnouncementREP --> AnnouncementREP
+
+            AnnouncementREP -> Announcement**: create(Announcement)
+
+            activate Announcement
+
+            Announcement -> Announcement: validateAnnouncement(Announcement)
+
+            Announcement -> AnnouncementREP: Announcement(Announcement)
+
+            deactivate Announcement
+
+
+               activate AnnouncementREP
+                   AnnouncementREP -> AnnouncementREP: validateAnnouncement(Announcement))
+                   activate AnnouncementREP
+                    AnnouncementREP -> AnnouncementREP: addAnnouncement (Announcement)
+
+                     AnnouncementREP --> AnnouncementREP
                     deactivate AnnouncementREP
 
                     AnnouncementREP --> AnnouncementREP
                 deactivate AnnouncementREP
 
-                AnnouncementREP --> CTRL : task
+                AnnouncementREP --> CTRL : Announcement
 
                 deactivate AnnouncementREP
 

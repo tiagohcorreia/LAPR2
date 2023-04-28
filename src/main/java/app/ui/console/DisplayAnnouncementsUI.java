@@ -2,19 +2,20 @@ package app.ui.console;
 
 import app.domain.model.Announcement;
 import app.domain.shared.ListingPriceComparator;
+import app.domain.shared.TypeOfProperty;
 import app.ui.console.utils.Utils;
-import app.controller.DisplayListingsController;
+import app.controller.DisplayAnnouncementsController;
 import java.util.List;
 
 public class DisplayAnnouncementsUI implements Runnable{
 
     @Override
     public void run() {
-        displayListings();
+        displayAnnouncements();
     }
 
-    private boolean displayListings(){
-        DisplayListingsController controller = new DisplayListingsController();
+    private boolean displayAnnouncements(){
+        DisplayAnnouncementsController controller = new DisplayAnnouncementsController();
         List<List<Object>> availableFields = controller.getAvailableFields();
 
         if (availableFields.get(0) == null){
@@ -54,18 +55,22 @@ public class DisplayAnnouncementsUI implements Runnable{
                 selectedTypeOfProperty = Utils.readLineFromConsole("Type of property: ").toUpperCase();
             } while (!availableFields.get(1).toString().contains(selectedTypeOfProperty));
 
-            int selectedNumberOfBedrooms;
-            do {
-                selectedNumberOfBedrooms = Utils.readIntegerFromConsole("Number of bedrooms: ");
-            } while (!availableFields.get(2).contains(selectedNumberOfBedrooms));
+            int selectedNumberOfBedrooms = -1;
+
+            if(!selectedTypeOfProperty.equals(TypeOfProperty.LAND.toString()))
+                do {
+                    selectedNumberOfBedrooms = Utils.readIntegerFromConsole("Number of bedrooms: ");
+                } while (!availableFields.get(2).contains(selectedNumberOfBedrooms));
+
+
 
 
             List<Announcement> announcements;
             //TO-FIX
-            if (selectedTypeOfBusiness.equals("") && selectedTypeOfProperty.equals("") && selectedNumberOfBedrooms == 0){
-                announcements = controller.getAllVisibleListings();
+            if (selectedTypeOfBusiness.equals("") && selectedTypeOfProperty.equals("") && selectedNumberOfBedrooms == -1){
+                announcements = controller.getAllVisibleAnnouncements();
             } else {
-                announcements = controller.getListings(selectedTypeOfBusiness, selectedTypeOfProperty, selectedNumberOfBedrooms);
+                announcements = controller.getAnnouncements(selectedTypeOfBusiness, selectedTypeOfProperty, selectedNumberOfBedrooms);
             }
 
             for (Announcement announcement : announcements) {

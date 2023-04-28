@@ -1,0 +1,71 @@
+@startuml
+
+actor Administrator as adm
+participant ":RegisterBranchUI" as ui
+participant ":RegisterBranchController" as ctr
+participant Branch as b
+participant ":BranchRepository" as rp
+
+autonumber
+
+activate adm
+
+        activate ui
+        adm -> ui: starts registering a new branch
+
+        ui -> adm : requests data
+
+        deactivate ui
+
+
+
+        adm -> ui: type requested data (ID, name, location, phoneNumber, email)
+
+        activate ui
+
+        adm <- ui: shows requested data
+        deactivate ui
+
+        adm -> ui: Submit data
+
+        activate ui
+
+        ui -> ctr: register branch
+
+        deactivate ui
+        activate ctr
+
+        ctr -> b: createBranch(D, name, location, phoneNumber, email)
+
+            deactivate ctr
+            activate b
+
+            b -> b: validate data
+
+        b -> rp: saveBranch()
+
+        deactivate b
+
+        activate rp
+
+        rp -> ctr: branch
+
+        deactivate rp
+
+        activate ctr
+
+        ctr -> ui: branch
+
+        deactivate ctr
+
+        activate ui
+        ui -> adm: display operation sucess
+        deactivate ui
+        deactivate b
+
+
+
+deactivate adm
+
+
+@enduml
