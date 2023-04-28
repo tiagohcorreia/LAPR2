@@ -37,7 +37,7 @@ public class Announcement {
         this.setVisible(false);
         this.setPrice(0);
         this.setCommission(0);
-        this.setTypeOfBusiness(TypeOfBusiness.Sell);
+        this.setTypeOfBusiness(TypeOfBusiness.SELL);
         this.setProperty(null);
         this.setAgent(null);
     }

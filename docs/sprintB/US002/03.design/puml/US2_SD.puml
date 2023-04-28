@@ -10,6 +10,10 @@ actor "Agent" as AG
 participant ":PublishAnnouncementUI" as UI
 participant ":PublishAnnouncementController" as CTRL
 participant "new Property\n:Property" as Property
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "repositories\n:Repositories" as REP
 participant ":AnnouncementRepository" as AnnouncementREP
 participant "new Announcement\n:Announcement" as Announcement
 
@@ -34,9 +38,61 @@ activate AG
 
                UI -> CTRL** : create
 
-               UI -> CTRL : createAnnouncement((size, location,\n distance from the city \n center, price, commission))
+               UI -> CTRL : createAnnouncement((Business,size, location,\n distance from the city \n center, price, commission))
 
-                 activate CTRL
+               CTRL -> CTRL : getEmployeeFromSession()
+                           activate CTRL
+
+                               CTRL -> _APP: getInstance()
+                               activate _APP
+                                   _APP -> CTRL: appSession
+                               deactivate _APP
+
+
+                               CTRL -> APP: getCurrentSession()
+                               activate APP
+
+                                   APP --> CTRL: currentSession
+                               deactivate APP
+
+                               CTRL -> SESSAO: email = getUserEmail()
+                               activate SESSAO
+
+                                   SESSAO --> CTRL: email
+                               deactivate SESSAO
+
+
+                               CTRL -> REP: getAgencyRepository(email)
+                               activate REP
+
+                                   REP --> CTRL:AgencyRepository
+                               deactivate REP
+
+
+                               CTRL -> AgencyRepository: getAgencyByAgentEmail(email)
+                               activate AgencyRepository
+
+                                   loop [for each Agency
+                                       AgencyRepository -> Agency : anyAgentHasEmail(email)
+                                       activate Agency
+
+                                            Agency --> AgencyRepository : true/false
+                                       deactivate Agency
+                                   end
+                                   AgencyRepository --> CTRL : Agency
+                               deactivate AgencyRepository
+
+                               CTRL -> Agency: getAgencyByEmail(email)
+                               activate Agency
+
+                                   Agency --> CTRL : Agent
+                               deactivate Agency
+
+                               CTRL --> CTRL : Agent
+
+
+
+
 
                    CTRL -> Property** : create
 
@@ -46,7 +102,7 @@ activate AG
                    Property -> CTRL: Property
                    deactivate Property
 
-                CTRL -> AnnouncementREP**: createAnnouncement(Announcement))
+                CTRL -> AnnouncementREP**: createAnnouncement(Business,size, location,\n distance from the city \n center, price, commission, Agent, Agency))
                 activate AnnouncementREP
 
             AnnouncementREP -> Announcement**: create(Announcement)
