@@ -27,5 +27,5 @@ activate ":System"
 deactivate ":System"
 OE -> ":System" : types requested data
 activate ":System"
-":System" --> OE : confirm the success of the operation
+":System" --> OE : creates the location  and confirm the success of the operation
 @enduml
