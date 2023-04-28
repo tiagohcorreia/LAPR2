@@ -1,7 +1,7 @@
 package app.ui.console;
 
 import app.domain.model.Announcement;
-import app.domain.shared.ListingPriceComparator;
+import app.domain.shared.AnnouncementPriceComparator;
 import app.domain.shared.TypeOfProperty;
 import app.ui.console.utils.Utils;
 import app.controller.DisplayAnnouncementsController;
@@ -110,8 +110,8 @@ public class DisplayAnnouncementsUI implements Runnable{
                 } while (!sortingModeIsValid);
 
                 if (sortingMode == 1) {
-                    ListingPriceComparator listingPriceComparator = new ListingPriceComparator();
-                    announcements.sort(listingPriceComparator);
+                    AnnouncementPriceComparator announcementPriceComparator = new AnnouncementPriceComparator();
+                    announcements.sort(announcementPriceComparator);
                     for (Announcement announcement : announcements) {
                         System.out.println(announcement);
                     }
