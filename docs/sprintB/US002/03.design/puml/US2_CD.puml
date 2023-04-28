@@ -1,0 +1,68 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class PublishAnnouncementUI{
+}
+
+class PublishAnnouncementController {
+    + PublishAnnouncementController(Property)
+    + createAnnouncment(Bussiness,size,location,distance_from_the_city_center,\nprice,commission)
+
+}
+
+
+
+
+class AnnouncementRepository{
+    +getAnnouncement()
+    +validateAnnouncement()
+    +addAnnouncement()
+}
+
+class Announcement{
+    + Announcement(Bussiness,size,location,distance_from_the_city_center,\nprice,commission)
+
+}
+
+class Property{
+  -String Bussiness
+  -float size
+  -string location
+  -float distance_from_the_city_center
+  -float price
+}
+
+
+
+class Agent {
+    -citizenCard
+    -taxNumber
+    -address
+    -phoneNumber
+    -agency
+    +publishAnnouncement(Bussiness,size,location,distance_from_the_city_center,\nprice,commission)
+}
+
+
+
+
+PublishAnnouncementUI .> PublishAnnouncementController
+
+PublishAnnouncementController ..> Property
+
+PublishAnnouncementController ..> AnnouncementRepository : AnnouncementRepository
+
+AnnouncementRepository --> "*" Announcement
+
+Announcement "1" --> "1" Property: property
+
+Announcement --> Agent : publishedBy
+@enduml
