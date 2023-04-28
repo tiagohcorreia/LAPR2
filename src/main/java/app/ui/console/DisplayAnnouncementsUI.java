@@ -1,11 +1,12 @@
 package app.ui.console;
 
 import app.domain.model.Announcement;
+import app.domain.shared.AnnouncementLocationComparator;
 import app.domain.shared.AnnouncementPriceComparator;
-import app.domain.shared.TypeOfBusiness;
-import app.domain.shared.TypeOfProperty;
 import app.ui.console.utils.Utils;
 import app.controller.DisplayAnnouncementsController;
+
+import java.util.Collections;
 import java.util.List;
 
 public class DisplayAnnouncementsUI implements Runnable{
@@ -81,6 +82,7 @@ public class DisplayAnnouncementsUI implements Runnable{
             }
 
             //Get matching announcements
+            //Default order is oldest first
             List<Announcement> announcements;
             //TO-FIX
             if (selectedTypeOfBusiness.equals("") && selectedTypeOfProperty.equals("") && selectedNumberOfBedrooms == -1){
@@ -89,6 +91,7 @@ public class DisplayAnnouncementsUI implements Runnable{
                 announcements = controller.getAnnouncements(selectedTypeOfBusiness, selectedTypeOfProperty, selectedNumberOfBedrooms);
             }
 
+            Collections.reverse(announcements);
 
             for (Announcement announcement : announcements) {
                 System.out.println(announcement);
@@ -133,7 +136,11 @@ public class DisplayAnnouncementsUI implements Runnable{
                         System.out.println(announcement);
                     }
                 } else if (sortingMode == 2){
-                    //TODO
+                    AnnouncementLocationComparator announcementLocationComparator = new AnnouncementLocationComparator();
+                    announcements.sort(announcementLocationComparator);
+                    for (Announcement announcement : announcements) {
+                        System.out.println(announcement);
+                    }
                 }
             }
         }
