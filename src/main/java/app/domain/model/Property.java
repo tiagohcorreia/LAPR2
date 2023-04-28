@@ -20,10 +20,10 @@ public abstract class Property {
     //Full constructor
     public Property(float area, City location, float cityCentreDistance, ArrayList<String> photographs) {
 
-        this.area = area;
-        this.cityCentreDistance = cityCentreDistance;
+        this.area = setArea(area);
+        this.cityCentreDistance = setCityCentreDistance(cityCentreDistance);
         this.location = location;
-        this.photographs = photographs;
+        this.photographs = setPhotographs(photographs);
     }
 
     //Default constructor
@@ -48,12 +48,27 @@ public abstract class Property {
         return area;
     }
 
-    public void setArea(float area) {
-        this.area = area;
-    }
-
     public City getLocation() {
         return location;
+    }
+
+    public float getCityCentreDistance() {
+        return cityCentreDistance;
+    }
+
+    public ArrayList<String> getPhotographs() {
+        return photographs;
+    }
+
+    public int getNumberOfBedrooms(){ return -1; }
+
+
+    public float setArea(float area) {
+
+        if (area<=0){
+            throw new IllegalArgumentException("Please insert an area >0");
+        }
+        return area;
     }
 
     public void setLocation(City location) {
@@ -61,23 +76,23 @@ public abstract class Property {
     }
 
 
-    public float getCityCentreDistance() {
+    public float setCityCentreDistance(float cityCentreDistance) {
+        if (cityCentreDistance<=0){
+            throw new IllegalArgumentException("Please insert a distance >0");
+        }
         return cityCentreDistance;
     }
 
-    public void setCityCentreDistance(float cityCentreDistance) {
-        this.cityCentreDistance = cityCentreDistance;
-    }
-
-    public ArrayList<String> getPhotographs() {
+    public ArrayList<String> setPhotographs(ArrayList<String> photographs) {
+        if (photographs.isEmpty() && photographs.size()>30){
+            throw new IllegalArgumentException("Please insert at least 1 photograph and a maximum of 30 photographs");
+        }else if (photographs == null) {
+            throw new NullPointerException("You need to insert at least 1 photograph");
+        }
         return photographs;
     }
 
-    public void setPhotographs(ArrayList<String> photographs) {
-        this.photographs = photographs;
-    }
 
-    public int getNumberOfBedrooms(){ return -1; }
 
     //ToString()
     @Override
