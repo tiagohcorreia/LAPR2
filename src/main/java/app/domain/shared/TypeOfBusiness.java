@@ -1,10 +1,10 @@
 package app.domain.shared;
 
 public enum TypeOfBusiness {
-    BUY(1){
+    Sell(1){
         @Override
         public String toString() {
-            return String.format("Buy");
+            return String.format("Rent");
         }
     }, RENT(2){
         @Override
