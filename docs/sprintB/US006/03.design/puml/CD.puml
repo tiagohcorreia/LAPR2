@@ -1,0 +1,52 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class CreateLocationUI{
+}
+
+class CreateLocationController {
+    + createLocation(street,city,district,state,zipcode)
+   
+}
+
+
+
+
+class Repository{
+    +getLocation()
+    +validate()
+    +save()
+}
+
+class Location{
+    + Location(street,city,district,state,zipcode)
+
+}
+
+
+
+Class Admnistrator{
+}
+
+
+
+
+
+
+
+CreateLocationUI .> CreateLocationController
+
+CreateLocationController ..> Repository : LocationRepository
+
+Repository --> "*" Location
+
+Location --> Admnistrator : createBy
+@enduml
