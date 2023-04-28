@@ -37,11 +37,11 @@ In the USA, the addresses will not include municipalities or parishes.
 
 
 ### 1.3. Acceptance Criteria
-•	**AC1:** A location must not have any null variables.
->
-•	**AC2:** A zipcode must be exactly 5 numbers.
->
-•	**AC3:** A state must be exactly 2 capital letters.
+>	**AC1:** A location must not have any null variables.
+
+>	**AC2:** A zipcode must be exactly 5 numbers.
+
+>	**AC3:** A state must be exactly 2 capital letters.
 
 
 ### 1.4. Found out Dependencies
@@ -50,14 +50,16 @@ In the USA, the addresses will not include municipalities or parishes.
 
 ### 1.5 Input and Output Data
 **Input Data:**
-* Typed data:
-   Street
-   City
-   District
-   State
-   Zipcode
-* Output Data:
-  Sucess of the operation
+> 
+   * Street
+     City
+     District
+     State
+     Zipcode
+**Output Data:**
+
+  * Sucess of the operation
+    Error messages
     
 ### 1.6. System Sequence Diagram (SSD)
 
