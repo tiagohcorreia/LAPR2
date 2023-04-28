@@ -7,18 +7,19 @@ autonumber
 
 'hide footbox
 actor "Unregistered User" as UR
-participant ":DisplayListingsUI" as UI
-participant ":DisplayListingsUI" as UI
-participant ":DisplayListingsController" as CTRL
+participant ":DisplayAnnouncementsUI" as UI
+participant ":DisplayAnnouncementsUI" as UI
+participant ":DisplayAnnouncementsController" as CTRL
 participant ":Repositories" as reposclass
 participant "repositories\n:Repositories" as repositories
-participant "listingRepository\n:ListingRepository" as LRepo
-participant "listing\n:Listing" as listing
+participant "announcementRepository\n:AnnouncementRepository" as ARepo
+participant "announcement\n:Announcement" as announcement
+participant ":Property" as prop
 
 
 
 activate UR
-UR -> UI: starts listing announcements
+UR -> UI: starts announcement announcements
 activate UI
 UI -> CTRL**: create
 UI -> CTRL: getAvailableFields()
@@ -28,33 +29,28 @@ CTRL -> reposclass: getInstance()
 activate reposclass
 reposclass --> CTRL: repositories
 deactivate reposclass
-CTRL -> repositories: getListingsRepository()
+CTRL -> repositories: getAnnouncementsRepository()
 activate repositories
-repositories --> CTRL: listingsRepository
+repositories --> CTRL: announcementsRepository
 deactivate repositories
-CTRL -> LRepo: getAvailableFields()
-activate LRepo
-loop for each listing
-LRepo -> listing: isVisible()
-activate listing
-return true/false
-'LRepo -> listing: getBusinessType()
-alt true
-LRepo -> listing: getListing()
-activate listing
-return listing
-else false
-listing --> LRepo: null
+CTRL -> ARepo: getAvailableFields()
+activate ARepo
+loop for each announcement
+    ARepo -> announcement: isVisible()
+    activate announcement
+    return true/false
+    'ARepo -> announcement: getBusinessType()
+    ARepo -> announcement: getAnnouncement()
+    alt true
+        activate announcement
+        announcement --> ARepo: announcement
+        else false
+        return null
+        deactivate announcement
+    end
 end
-'listing --> LRepo: businessType
-'LRepo -> listing: getPropertyType()
-'listing --> LRepo: propertyType
-'LRepo -> listing: getNumberOfRooms()
-'listing --> LRepo: numberOfRooms
-deactivate listing
-end
-LRepo --> CTRL: availableFields
-deactivate LRepo
+ARepo --> CTRL: availableFields
+deactivate ARepo
 
 CTRL -> UI: availableFields
 deactivate CTRL
@@ -62,54 +58,63 @@ deactivate CTRL
 UI --> UR: shows available fields and\nrequests data selection
 alt
 UR -> UI: selects required data
-UI -> CTRL: getListings(businessType,\npropertyType, numberOfRooms)
+UI -> CTRL: getAnnouncements(businessType,\npropertyType, numberOfRooms)
 activate CTRL
-CTRL -> LRepo: getListings(businessType,\npropertyType, numberOfRooms)
-activate LRepo
-loop for each listing
-LRepo -> listing: isVisible()
-activate listing
+CTRL -> ARepo: getAnnouncements(businessType,\npropertyType, numberOfRooms)
+activate ARepo
+loop for each announcement
+ARepo -> announcement: isVisible()
+activate announcement
 return true/false
-deactivate listing
-LRepo -> listing: isBusinessType(businessType)
-activate listing
+deactivate announcement
+ARepo -> announcement: isBusinessType(businessType)
+activate announcement
 return true/false
-deactivate listing
+deactivate announcement
 
-LRepo -> listing: isPropertyType(propertyType)
-activate listing
+ARepo -> announcement: isPropertyType(propertyType)
+activate announcement
+announcement -> prop: getClassName().getSimpleName()
+activate prop
+return
 return true/false
-deactivate listing
+deactivate prop
+deactivate announcement
 
-LRepo -> listing: numberOfRoomsEquals(\nnumberOfRooms)
-activate listing
+ARepo -> announcement: numberOfRoomsEquals(\nnumberOfRooms)
+activate announcement
+activate announcement
+announcement -> prop: getNumberOfRooms()
+activate prop
+return
+
 return true/false
-deactivate listing
+deactivate announcement
 
 
 end
 
-LRepo --> CTRL: listings
-deactivate LRepo
-CTRL --> UI: listings
+ARepo --> CTRL: announcements
+deactivate ARepo
+CTRL --> UI: announcements
 deactivate CTRL
 UI --> UR: shows matching announcements
 else
 UR -> UI: doesn't select any data
-UI -> CTRL: getAllVisibleListings()
+UI -> CTRL: getAllVisibleAnnouncements()
 activate CTRL
-CTRL -> LRepo: getAllVisibleListings()
-activate LRepo
-loop for each listing
-LRepo -> listing: isVisible()
-activate listing
+CTRL -> ARepo: getAllVisibleAnnouncements()
+activate ARepo
+loop for each announcement
+ARepo -> announcement: isVisible()
+activate announcement
 return true/false
-deactivate listing
+deactivate announcement
 end
-LRepo --> CTRL: listings
-deactivate LRepo
+ARepo --> CTRL: announcements
+deactivate ARepo
 
-CTRL --> UI: listings
+CTRL --> UI: announcements
 deactivate CTRL
 UI --> UR: shows all announcements
 

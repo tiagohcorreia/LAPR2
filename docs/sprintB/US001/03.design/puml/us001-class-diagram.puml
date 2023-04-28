@@ -1,0 +1,71 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+class Announcement{
+-boolean visible
+-float price
+-float commission
++getPrice():float
++getProperty():float
+}
+enum TypeOfBusiness{
+SELL
+RENT
+}
+
+abstract class Property{
+-float area
+-location
+-float cityCentreDistance
+}
+class House{
+-int numberOfBedrooms
+-int numberOfBathrooms
+-int numberOfParkingSpaces
+-String[] equipment
+
+-boolean hasBasement
+-boolean hasInhabitableLoft
+
++getNumberOfBedrooms():int
++getHasInhabitableLoft():boolean
+}
+class Apartment{
+-int numberOfBedrooms
+-int numberOfBathrooms
+-int numberOfParkingSpaces
+-String[] equipment-int numberOfBedroom
+
++getNumberOfBedrooms():int
+}
+class AnnouncementRepository{
+'-List<Announcement> announcements
+}
+
+class DisplayAnnouncementsUI{
++displayAnnouncements()
+}
+class DisplayAnnouncementsController{}
+
+class Land{
+
+}
+
+class Agent{
+}
+
+DisplayAnnouncementsUI -[dashed]-> DisplayAnnouncementsController
+DisplayAnnouncementsController -[dashed]-> AnnouncementRepository
+AnnouncementRepository "1" *- "*" Announcement: holds
+
+Announcement "1" o-- "1" Property: contains >
+Announcement "1" o-- "1" Agent: validated by
+Announcement "1" *- "1" TypeOfBusiness: is of type
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+@enduml
