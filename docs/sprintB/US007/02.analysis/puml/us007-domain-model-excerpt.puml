@@ -73,12 +73,12 @@ together {
 Buyer --|> Client
 Seller --|> Client
 }
-Buyer "1" - "*" Property: Buys >
-Visit "1" - "1" Buyer: requests <
+Buyer "1" -- "*" Property: Buys >
+Visit "1" -- "1" Buyer: requests <
 Visit "1" - "1" Agent: scheduled by >
 Seller "1" - "*" Property: owns >
-Seller "1" - "*" Listing: creates >
-Agent "1" - "*" Listing: validates >
+Seller "1" -- "*" Listing: creates >
+Agent "1" --- "*" Listing: validates >
 
 Property <|-- House
 Property <|-- Apartment

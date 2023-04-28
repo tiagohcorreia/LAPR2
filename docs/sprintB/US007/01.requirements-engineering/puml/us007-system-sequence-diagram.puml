@@ -1,0 +1,74 @@
+@startuml
+
+Actor UnregisteredUser as user
+participant ":System" as ui
+
+autonumber
+activate user
+user -> ui: starts register in the system
+activate ui
+ui --> user: request user name
+deactivate ui
+user -> ui: types name
+activate ui
+ui --> user: requests user e-mail
+deactivate ui
+user -> ui: types user e-mail
+activate ui
+ui --> user: requests user password
+deactivate ui
+user -> ui: types user password
+activate ui
+ui --> user: shows typed data and asks for confirmaation
+deactivate ui
+user -> ui: confirms data
+activate ui
+ui --> user: informs operation success
+deactivate ui
+deactivate user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

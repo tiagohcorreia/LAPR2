@@ -72,7 +72,7 @@ operations related to the real estate business
 ### 1.6. System Sequence Diagram (SSD)
 
 
-![System Sequence Diagram](docs/sprintB/US007/01.requirements-engineering/svg/SSD.svg)
+![System Sequence Diagram](svg/us007-system-sequence-diagram.svg)
 
 
 ### 1.7 Other Relevant Remarks
