@@ -26,15 +26,15 @@ public class RegisterPropertyController {
                                int area, City location, int cityCentreDistance, float price, ArrayList<String> photographs, Employee agent) {
 
         if (posTypeOfProperty==2){
-            Property property= new Apartment(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList);
+            Apartment property= new Apartment(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList);
             Announcement announcement= new Announcement(false,price,0 ,sellOrRent,property,agent);
             this.announcementRepository.createAnnouncement(announcement);
         } else if (posTypeOfProperty==1) {
-            Property property= new House(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList,hasBasement,hasInhabitalLoft,sunExposure);
+            House property= new House(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList,hasBasement,hasInhabitalLoft,sunExposure);
             Announcement announcement= new Announcement(false,price,0 ,sellOrRent,property,agent);
             this.announcementRepository.createAnnouncement(announcement);
         }else {
-            Property property= new Land(area,location,cityCentreDistance,photographs);
+            Land property= new Land(area,location,cityCentreDistance,photographs);
             Announcement announcement= new Announcement(false,price,0 ,sellOrRent,property,agent);
             this.announcementRepository.createAnnouncement(announcement);
         }
@@ -44,7 +44,7 @@ public class RegisterPropertyController {
         List<Employee> agent= new ArrayList();
         for(Employee employee : employeeRepository.getEmployeeList()) {
 
-            if(employee.getRole().equals("Agent")) {
+            if(employee.getRole().equals(Role.AGENT)) {
                 agent.add(employee);
             }
         }

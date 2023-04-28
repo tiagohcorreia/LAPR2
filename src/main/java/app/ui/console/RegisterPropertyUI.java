@@ -135,6 +135,7 @@ public class RegisterPropertyUI implements Runnable {
                 System.out.println("Number of bathrooms: "+ numberOfBathrooms);
                 System.out.println("Number of parking spaces: "+ numberOfParkingSpaces);
                 System.out.println("Equipment available: " + equipmentList);
+
             }
             if (posTypeOfProperty==1) {
                 System.out.println("The house has basement? " + hasBasement);
