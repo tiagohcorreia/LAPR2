@@ -8,7 +8,13 @@ class Branch {
     - int phoneNumber
     - String email
 
-    + saveBranch()
+
+    + checkIfDataIsNull()
+    + checkNameLength()
+    + checkValidEmail()
+    + checkValidPhoneNumber()
+
+
 
 }
 
@@ -27,7 +33,7 @@ class RegisterBranchController {
 
 class BranchRepository {
 
-
+    + saveBranch()
 }
 
 

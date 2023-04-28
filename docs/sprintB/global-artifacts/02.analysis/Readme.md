@@ -10,13 +10,15 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Business Transactions**
 
-*
+* Sale
+* Rent
 
 ---
 
-**Transaction Line Itemss**
+**Transaction Line Items**
 
-*
+* Price
+* Commission
 
 ---
 
@@ -36,35 +38,49 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Roles of People or Organizations**
 
-* 
-
+* Branch
+* System Administrator
+* Network Manager
+* Store Manager
+* Agent
+* Owner
+* Client
+* Buyer
+* Seller
+* User
 
 ---
 
 
 **Places**
 
-*  
+* State
+* District
+* City
 
 ---
 
 **Noteworthy Events**
 
-* 
+* Visit
 
 ---
 
 
 **Physical Objects**
 
-*
+* Property
+* House
+* Apartment
+* Land
 
 ---
 
 
 **Descriptions of Things**
 
-*  
+* Equipment
+* Sun exposure
 
 
 ---
@@ -72,7 +88,8 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Catalogs**
 
-*  
+* Listing
+* Announcement
 
 ---
 
@@ -93,7 +110,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Organizations**
 
-*  
+*  Real Estate USA
 
 ---
 
@@ -121,7 +138,7 @@ To identify domain conceptual classes, start by making a list of candidate conce
 
 **Documents mentioned/used to perform some work/**
 
-* 
+* Photographs
 ---
 
 
@@ -140,10 +157,29 @@ An association is a relationship between instances of objects that indicates a r
 
 
 
-| Concept (A) 		|  Association   	|  Concept (B) |
-|----------	   		|:-------------:		|------:       |
-| C1  	| verb1    		 	| C2  |
-| ...  	| ...    		 	| ...  |
+| Concept (A) 		                                               |  Association   	   |                 Concept (B) |
+|--------------------------------------------------------------|:------------------:|----------------------------:|
+| Announcement  	                                              |  contains    		 	  |                    Property |
+| Branch	                                                      | publishes     		 	 |                Announcement |
+| 	      Seller                                                |    creates		 	     |                Announcement |
+| 	         Seller                                             |     	is a 	 	      |                      Client |
+| 	          Seller                                            |      	owns	 	      |                    Property |
+| 	           House                                            |      		 ia a	      |                    Property |
+| 	           Appartment                                       |      		 ia a	      |                    Property |
+| 	           Land                                             |      		 ia a	      |                    Property |
+| 	            Property                                        |   		 	located in   |                        City |
+| 	     City                                                   |    located in		    |                    District |
+| District	                                                    |    located in		    |                       State |
+| 	          System Administrator                              |  specifies    		   | City<br/>District<br/>State |
+| System Administrator<br/>Network Manager<br/>Branch manager	 |  is a          		  |                    Employee |
+| 	                      Employee                              |   works at    		   |                      Branch |
+| 	                              Buyer                         |     requests		     |                       Visit |
+| 	                       Visit                                |   scheduled by		   |                       Agent |
+| 	                                 Agent                      |    validates		     |                Announcement |
+| 	                Network                                     |     employs		      |                   Employees |
+| 	                  Buyer                                     |     browses		      |                             |
+| 	                 Network                                    |       owns		       |                      Branch |
+| 	                   System Administrator                     |  registers     		  |                      Branch |
 
 
 

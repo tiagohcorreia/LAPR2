@@ -14,8 +14,8 @@ hide methods
 
 
 Network "1" -- "*" Branch: owns >
-Branch "1" -- "*" Listing: publishes >
-Listing "1" -- "1" Property: contains >
+Branch "1" -- "*" Announcement: publishes >
+Announcement "1" -- "1" Property: contains >
 
 Network "1" -- "*" Employee: employs >
 
@@ -32,8 +32,8 @@ Agent --|> Employee
 
 Employee "1" - "1" Branch: works at a >
 
-"System Administrator" "1" --> "*" Employee: registers >
-"System Administrator" "1" -> "*" Branch: registers >
+"System Administrator" "1" ----> "*" Employee: registers >
+"System Administrator" "1" ---> "*" Branch: registers >
 
 
 "System Administrator" "1" -> "*" State: specifies >
@@ -47,8 +47,8 @@ Seller --|> Client
 }
 
 Seller "1" - "*" Property: owns >
-Seller "1" - "*" Listing: creates >
-Agent "1" - "*" Listing: validates >
+Seller "1" - "*" Announcement: creates >
+Agent "1" - "*" Announcement: validates >
 Visit "1" - "1" Buyer: requests <
 Visit "1" - "1" Agent: scheduled by >
 
@@ -97,7 +97,7 @@ class Visit{
 
 }
 
-class Listing{
+class Announcement{
 int listingID
 bool visible
 float price

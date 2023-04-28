@@ -1,7 +1,5 @@
 package app.domain.model;
 
-import app.exceptions.NegativeNumberException;
-
 import java.util.Objects;
 
 public class Employee {
