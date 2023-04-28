@@ -4,11 +4,18 @@ class Administrator {
 }
 
 class Location{
-String state
-String city
-String district
-String street
-int zipCode
+-String state
+-String city
+-String district
+-String street
+-int zipCode
++getState()
++getZipcode()
++getCity()
++getDistrict()
++getStreet()
+
+
 }
 
 class State{
