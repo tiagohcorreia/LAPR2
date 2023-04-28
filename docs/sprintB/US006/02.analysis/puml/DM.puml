@@ -19,12 +19,13 @@ class System {
 
 class State {
   -name: String
-  -cities: Set<City>
-  +getName(): String
-  +setName(name: String): void
-  +addCity(city: City): void
-  +removeCity(city: City): void
-  +getCities(): Set<City>
+    -cities: Set<City>
+    +getName(): String
+    +setName(name: String): void
+    +addCity(city: City): void
+    +removeCity(city: City): void
+    +getCities(): Set<City>
+    +saveState(): void
 }
 
 class City {
