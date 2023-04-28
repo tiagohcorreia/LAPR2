@@ -1,4 +1,4 @@
-# US 003 - Register a new Employee
+# US 005 - Register a store
 
 ## 3. Design - User Story Realization
 
