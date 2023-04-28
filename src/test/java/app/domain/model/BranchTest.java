@@ -71,7 +71,7 @@ class BranchTest {
         });
     }
 
-    @DisplayName("Ensure phone number with 7 digits works")
+    @DisplayName("Ensure phone number with 9 digits works")
     @Test
     void EnsurePhoneNumberWith9DigitsWorks() {
 
