@@ -13,7 +13,8 @@ participant ":DisplayAnnouncementsController" as CTRL
 participant ":Repositories" as reposclass
 participant "repositories\n:Repositories" as repositories
 participant "announcementRepository\n:AnnouncementRepository" as ARepo
-participant "announcement\n:Announcement" as announcement
+'participant "announcement\n:Announcement" as announcement
+participant ":Announcement" as announcement
 participant ":Property" as prop
 
 
@@ -41,10 +42,10 @@ loop for each announcement
     return true/false
     'ARepo -> announcement: getBusinessType()
     ARepo -> announcement: getAnnouncement()
-    alt true
+    alt isVisible() = true
         activate announcement
         announcement --> ARepo: announcement
-        else false
+        else isVisible() = false
         return null
         deactivate announcement
     end
@@ -57,72 +58,70 @@ deactivate CTRL
 
 UI --> UR: shows available fields and\nrequests data selection
 alt
-UR -> UI: selects required data
-UI -> CTRL: getAnnouncements(businessType,\npropertyType, numberOfRooms)
-activate CTRL
-CTRL -> ARepo: getAnnouncements(businessType,\npropertyType, numberOfRooms)
-activate ARepo
-loop for each announcement
-ARepo -> announcement: isVisible()
-activate announcement
-return true/false
-deactivate announcement
-ARepo -> announcement: isBusinessType(businessType)
-activate announcement
-return true/false
-deactivate announcement
+    UR -> UI: selects required data
+    UI -> CTRL: getAnnouncements(businessType,\npropertyType, numberOfRooms)
+    activate CTRL
+    CTRL -> ARepo: getAnnouncements(businessType,\npropertyType, numberOfRooms)
+    activate ARepo
+    loop for each announcement
+        ARepo -> announcement: isVisible()
+        activate announcement
+        return true/false
+        deactivate announcement
+        ARepo -> announcement: isBusinessType(businessType)
+        activate announcement
+        return true/false
+        deactivate announcement
 
-ARepo -> announcement: isPropertyType(propertyType)
-activate announcement
-announcement -> prop: getClassName().getSimpleName()
-activate prop
-return
-return true/false
-deactivate prop
-deactivate announcement
+        ARepo -> announcement: isPropertyType(propertyType)
+        activate announcement
+        announcement -> prop: getClassName().getSimpleName()
+        activate prop
+        return
+        return true/false
+        deactivate prop
+        deactivate announcement
 
-ARepo -> announcement: numberOfRoomsEquals(\nnumberOfRooms)
-activate announcement
-activate announcement
-announcement -> prop: getNumberOfRooms()
-activate prop
-return
+        ARepo -> announcement: numberOfRoomsEquals(\nnumberOfRooms)
+        activate announcement
+        activate announcement
+        announcement -> prop: getNumberOfRooms()
+        activate prop
+        return
 
-return true/false
-deactivate announcement
+        return true/false
+        deactivate announcement
+    end
 
-
-end
-
-ARepo --> CTRL: announcements
-deactivate ARepo
-CTRL --> UI: announcements
-deactivate CTRL
-UI --> UR: shows matching announcements
+    ARepo --> CTRL: announcements
+    deactivate ARepo
+    CTRL --> UI: announcements
+    deactivate CTRL
+    UI --> UR: shows matching announcements
 else
-UR -> UI: doesn't select any data
-UI -> CTRL: getAllVisibleAnnouncements()
-activate CTRL
-CTRL -> ARepo: getAllVisibleAnnouncements()
-activate ARepo
-loop for each announcement
-ARepo -> announcement: isVisible()
-activate announcement
-return true/false
-deactivate announcement
-end
-ARepo --> CTRL: announcements
-deactivate ARepo
+    UR -> UI: doesn't select any data
+    UI -> CTRL: getAllVisibleAnnouncements()
+    activate CTRL
+    CTRL -> ARepo: getAllVisibleAnnouncements()
+    activate ARepo
+    loop for each announcement
+        ARepo -> announcement: isVisible()
+        activate announcement
+        return true/false
+        deactivate announcement
+    end
+    ARepo --> CTRL: announcements
+    deactivate ARepo
 
-CTRL --> UI: announcements
-deactivate CTRL
-UI --> UR: shows all announcements
-
+    CTRL --> UI: announcements
+    deactivate CTRL
+    UI --> UR: shows all announcements
 end 'ALT fragment end
 
-UR -> UI: selects sorting order
-UI -> UI: sort(mode)
-UI --> UR: displays sorted data
-
+opt
+    UR -> UI: selects sorting order
+    UI -> UI: sort(mode)
+    UI --> UR: displays sorted data
+end
 
 @enduml

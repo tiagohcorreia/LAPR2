@@ -1,18 +1,25 @@
 @startuml
 'https://plantuml.com/class-diagram
-
+skinparam shadowing false
 
 
 class Announcement{
 -boolean visible
 -float price
 -float commission
-+getPrice():float
-+getProperty():float
+-String[] photographs
+'+getPrice():float
+'+getProperty():float
 }
 enum TypeOfBusiness{
 SELL
 RENT
+}
+enum SunExposure{
+NORTH
+EAST
+SOUTH
+WEST
 }
 
 abstract class Property{
@@ -29,20 +36,27 @@ class House{
 -boolean hasBasement
 -boolean hasInhabitableLoft
 
-+getNumberOfBedrooms():int
-+getHasInhabitableLoft():boolean
+'+getNumberOfBedrooms():int
+'+getHasInhabitableLoft():boolean
 }
 class Apartment{
 -int numberOfBedrooms
 -int numberOfBathrooms
 -int numberOfParkingSpaces
--String[] equipment-int numberOfBedroom
+-String[] equipment
 
-+getNumberOfBedrooms():int
+'+getNumberOfBedrooms():int
 }
 class AnnouncementRepository{
 '-List<Announcement> announcements
++save()
++validateAnnouncement()
 }
+class Repositories{
++getAnnouncementRepository()
+}
+class Client{}
+class Seller{}
 
 class DisplayAnnouncementsUI{
 +displayAnnouncements()
@@ -55,17 +69,32 @@ class Land{
 
 class Agent{
 }
+class Employee{
+-String name
+-int passportNumber
+-int taxNumber
+-String address
+-String emailAddress
+-long telephoneNumber
+}
 
 DisplayAnnouncementsUI -[dashed]-> DisplayAnnouncementsController
 DisplayAnnouncementsController -[dashed]-> AnnouncementRepository
 AnnouncementRepository "1" *- "*" Announcement: holds
+Repositories "1" o- "1" AnnouncementRepository: holds
+
+Agent -|> Employee
 
 Announcement "1" o-- "1" Property: contains >
 Announcement "1" o-- "1" Agent: validated by
 Announcement "1" *- "1" TypeOfBusiness: is of type
+Client "1" --* "1" Announcement: creates
 
 Property <|-- House
 Property <|-- Apartment
 Property <|-- Land
+Property "1" *- "1" SunExposure: has
 
+Seller --|> Client
+'Seller - Property: owns
 @enduml
