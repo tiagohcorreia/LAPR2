@@ -14,12 +14,39 @@ class PublishAnnouncementUI{
 
 class PublishAnnouncementController {
     + PublishAnnouncementController(Property)
-    + createAnnouncment(Bussiness,size,location,distance_from_the_city_center,\nprice,commission)
+    + createAnnouncment(Bussiness,size,location,distance_from_the_city_center,\nprice,commission, Agency, Agent)
+    - getAgentFromSession()
 
 }
 
+class ApplicationSession
+{
+    + static getInstance()
+    + getCurrentSession()
+}
+
+class UserSession
+{
+    + getUserEmail()
+}
 
 
+class AgencyRepository {
+    + getAgencyByAgentEmail(email)
+}
+
+class Agency {
+    - String name
+    + anyEmployeeHasEmail(email)
+    + Agency(name)
+    - getAgentByEmail(email)
+}
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getAgencyRepository()
+}
 
 class AnnouncementRepository{
     +getAnnouncement()
@@ -28,12 +55,12 @@ class AnnouncementRepository{
 }
 
 class Announcement{
-    + Announcement(Bussiness,size,location,distance_from_the_city_center,\nprice,commission)
+    + Announcement(Business,size,location,distance_from_the_city_center,\nprice,commission)
 
 }
 
 class Property{
-  -String Bussiness
+  -String Business
   -float size
   -string location
   -float distance_from_the_city_center
@@ -48,11 +75,24 @@ class Agent {
     -address
     -phoneNumber
     -agency
-    +publishAnnouncement(Bussiness,size,location,distance_from_the_city_center,\nprice,commission)
+    -email
+    +publishAnnouncement(Business,size,location,distance_from_the_city_center,\nprice,commission)
 }
 
 
 
+Repositories -> Repositories : instance
+ApplicationSession -> ApplicationSession : instance
+PublishAnnouncementController .> Repositories : repositories
+
+Repositories --> "1" AgencyRepository
+
+AgencyRepository --> "*" Agency
+ApplicationSession --> "1" UserSession : userSession
+
+PublishAnnouncementController ..> "1" Agency : Agency
+PublishAnnouncementController ..> ApplicationSession
+PublishAnnouncementController ..> UserSession
 
 PublishAnnouncementUI .> PublishAnnouncementController
 
