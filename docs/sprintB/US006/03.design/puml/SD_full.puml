@@ -3,221 +3,222 @@ autonumber
 title User specifies a new location
 
 actor User
-participant UI
-participant Controller
+participant createLocationUI
+participant CreateLocationController
 participant Repository
 
 activate User
-User -> UI: Starts the program and selects 'New Location'
-activate UI
-UI --> User: Requests the state from the user
-deactivate UI
-User -> UI : inputs state
-activate UI
-activate Controller
-UI -> Controller: createState(state)
-deactivate UI
+User -> createLocationUI: Starts the program and selects 'New Location'
+activate createLocationUI
+createLocationUI --> User: Requests the state from the user
+deactivate createLocationUI
+User -> createLocationUI : inputs state
+activate createLocationUI
+activate CreateLocationController
+createLocationUI -> CreateLocationController: createState(state)
+deactivate createLocationUI
 activate Repository
-Controller ->Repository : validateState(state)
-deactivate Controller
-Repository -> Controller : returns outcome of the operation
+CreateLocationController ->Repository : validateState(state)
+deactivate CreateLocationController
+Repository -> CreateLocationController : returns outcome of the operation
 deactivate Repository
 
-deactivate UI
+deactivate createLocationUI
 alt Invalid input
-    activate Controller
-    Controller -> UI: displayErrorMessage("Invalid state input. Please try again.")
-    deactivate Controller
+    activate CreateLocationController
+    CreateLocationController -> createLocationUI: displayErrorMessage("Invalid state input. Please try again.")
+    deactivate CreateLocationController
     loop until valid input provided
-        User -> UI: inputs state
-        activate UI
-        UI -> Controller: createState(state)
-        deactivate UI
-        activate Controller
+        User -> createLocationUI: inputs state
+        activate createLocationUI
+        createLocationUI -> CreateLocationController: createState(state)
+        deactivate createLocationUI
+        activate CreateLocationController
         activate Repository
-        Controller -> Repository : validate(state)
-        Repository -> Controller : returns outcome of the operation
+        CreateLocationController -> Repository : validate(state)
+        Repository -> CreateLocationController : returns outcome of the operation
         deactivate Repository
 
     end
 end
 
-Repository --> Controller: save(state)
+Repository --> CreateLocationController: save(state)
 deactivate Repository
 
-deactivate Controller
+deactivate CreateLocationController
 
-activate UI
-UI --> User: Requests the city from the user
-deactivate UI
-User -> UI : inputs city
-activate UI
-activate Controller
-UI -> Controller: createCity(city)
-deactivate UI
+activate createLocationUI
+createLocationUI --> User: Requests the city from the user
+deactivate createLocationUI
+User -> createLocationUI : inputs city
+activate createLocationUI
+activate CreateLocationController
+createLocationUI -> CreateLocationController: createCity(city)
+deactivate createLocationUI
 activate Repository
-Controller ->Repository : validateCity(city)
-deactivate Controller
-Repository -> Controller : returns outcome of the operation
+CreateLocationController ->Repository : validateCity(city)
+deactivate CreateLocationController
+Repository -> CreateLocationController : returns outcome of the operation
 deactivate Repository
 
-deactivate UI
+deactivate createLocationUI
 alt Invalid input
-    activate Controller
-    Controller -> UI: displayErrorMessage("Invalid city input. Please try again.")
-    deactivate Controller
+    activate CreateLocationController
+    CreateLocationController -> createLocationUI: displayErrorMessage("Invalid city input. Please try again.")
+    deactivate CreateLocationController
     loop until valid input provided
-        User -> UI: inputs city
-        activate UI
-        UI -> Controller: createCity(city)
-        deactivate UI
-        activate Controller
+        User -> createLocationUI: inputs city
+        activate createLocationUI
+        createLocationUI -> CreateLocationController: createCity(city)
+        deactivate createLocationUI
+        activate CreateLocationController
         activate Repository
-        Controller -> Repository : validate(city)
-        Repository -> Controller : returns outcome of the operation
+        CreateLocationController -> Repository : validate(city)
+        Repository -> CreateLocationController : returns outcome of the operation
         deactivate Repository
 
     end
 end
 
-Repository --> Controller: save(city)
+Repository --> CreateLocationController: save(city)
 deactivate Repository
 
-deactivate Controller
+deactivate CreateLocationController
 
-activate UI
-UI --> User: Requests the district from the user
-deactivate UI
-User -> UI : inputs district
-activate UI
-activate Controller
-UI -> Controller: createDistrict(district)
-deactivate UI
+activate createLocationUI
+createLocationUI --> User: Requests the district from the user
+deactivate createLocationUI
+User -> createLocationUI : inputs district
+activate createLocationUI
+activate CreateLocationController
+createLocationUI -> CreateLocationController: createDistrict(district)
+deactivate createLocationUI
 activate Repository
-Controller ->Repository : validateDistrict(district)
-deactivate Controller
-Repository -> Controller : returns outcome of the operation
+CreateLocationController ->Repository : validateDistrict(district)
+deactivate CreateLocationController
+Repository -> CreateLocationController : returns outcome of the operation
 deactivate Repository
 
-deactivate UI
+deactivate createLocationUI
 alt Invalid input
-    activate Controller
-    Controller -> UI: displayErrorMessage("Invalid district input. Please try again.")
-    deactivate Controller
+    activate CreateLocationController
+    CreateLocationController -> createLocationUI: displayErrorMessage("Invalid district input. Please try again.")
+    deactivate CreateLocationController
     loop until valid input provided
-        User -> UI: inputs district
-        activate UI
-        UI -> Controller: createDistrict(district)
-        deactivate UI
-        activate Controller
+        User -> createLocationUI: inputs district
+        activate createLocationUI
+        createLocationUI -> CreateLocationController: createDistrict(district)
+        deactivate createLocationUI
+        activate CreateLocationController
         activate Repository
-        Controller -> Repository : validate(district)
-        Repository -> Controller : returns outcome of the operation
+        CreateLocationController -> Repository : validate(district)
+        Repository -> CreateLocationController : returns outcome of the operation
         deactivate Repository
 
     end
 end
 
-Repository --> Controller: save(district)
+Repository --> CreateLocationController: save(district)
 deactivate Repository
 
-deactivate Controller
+deactivate CreateLocationController
 
-activate UI
-UI --> User: Requests the street from the user
-deactivate UI
-User -> UI : inputs street
-activate UI
-activate Controller
-UI -> Controller: createStreet(street)
-deactivate UI
+activate createLocationUI
+createLocationUI --> User: Requests the street from the user
+deactivate createLocationUI
+User -> createLocationUI : inputs street
+activate createLocationUI
+activate CreateLocationController
+createLocationUI -> CreateLocationController: createStreet(street)
+deactivate createLocationUI
 activate Repository
-Controller ->Repository : validateStreet(street)
-deactivate Controller
-Repository -> Controller : returns outcome of the operation
+CreateLocationController ->Repository : validateStreet(street)
+deactivate CreateLocationController
+Repository -> CreateLocationController : returns outcome of the operation
 deactivate Repository
 
-deactivate UI
+deactivate createLocationUI
 alt Invalid input
-    activate Controller
-    Controller -> UI: displayErrorMessage("Invalid street input. Please try again.")
-    deactivate Controller
+    activate CreateLocationController
+    CreateLocationController -> createLocationUI: displayErrorMessage("Invalid street input. Please try again.")
+    deactivate CreateLocationController
     loop until valid input provided
-        User -> UI: inputs street
-        activate UI
-        UI -> Controller: createStreet(street)
-        deactivate UI
-        activate Controller
+        User -> createLocationUI: inputs street
+        activate createLocationUI
+        createLocationUI -> CreateLocationController: createStreet(street)
+        deactivate createLocationUI
+        activate CreateLocationController
         activate Repository
-        Controller -> Repository : validate(street)
-        Repository -> Controller : returns outcome of the operation
+        CreateLocationController -> Repository : validate(street)
+        Repository -> CreateLocationController : returns outcome of the operation
         deactivate Repository
 
     end
 end
 
-Repository --> Controller: save(street)
+Repository --> CreateLocationController: save(street)
 deactivate Repository
 
-deactivate Controller
+deactivate CreateLocationController
 
-activate UI
-UI --> User: Requests the zipcode from the user
-deactivate UI
-User -> UI : inputs zipcode
-activate UI
-activate Controller
-UI -> Controller: createZipcode(zipcode)
-deactivate UI
+activate createLocationUI
+createLocationUI --> User: Requests the zipcode from the user
+deactivate createLocationUI
+User -> createLocationUI : inputs zipcode
+activate createLocationUI
+activate CreateLocationController
+createLocationUI -> CreateLocationController: createZipcode(zipcode)
+deactivate createLocationUI
 activate Repository
-Controller ->Repository : validateZipcode(zipcode))
-deactivate Controller
-Repository -> Controller : returns outcome of the operation
+CreateLocationController ->Repository : validateZipcode(zipcode))
+deactivate CreateLocationController
+Repository -> CreateLocationController : returns outcome of the operation
 deactivate Repository
 
-deactivate UI
+deactivate createLocationUI
 alt Invalid input
-    activate Controller
-    Controller -> UI: displayErrorMessage("Invalid zipcode input. Please try again.")
-    deactivate Controller
+    activate CreateLocationController
+    CreateLocationController -> createLocationUI: displayErrorMessage("Invalid zipcode input. Please try again.")
+    deactivate CreateLocationController
     loop until valid input provided
-        User -> UI: inputs zipcode
-        activate UI
-        UI -> Controller: createZipcode(zipcode)
-        deactivate UI
-        activate Controller
+        User -> createLocationUI: inputs zipcode
+        activate createLocationUI
+        createLocationUI -> CreateLocationController: createZipcode(zipcode)
+        deactivate createLocationUI
+        activate CreateLocationController
         activate Repository
-        Controller -> Repository : validate(zipcode)
-        Repository -> Controller : returns outcome of the operation
+        CreateLocationController -> Repository : validate(zipcode)
+        Repository -> CreateLocationController : returns outcome of the operation
         deactivate Repository
 
     end
 end
 
-Repository --> Controller: save(zipcode)
+Repository --> CreateLocationController: save(zipcode)
 deactivate Repository
 
-deactivate Controller
+deactivate CreateLocationController
 
 
-activate UI
-UI -> Controller : createLocation(street,city,district,state,zipcode)
-activate Controller
-deactivate UI
-Controller -> Location : createLocation(street,city,district,state,zipcode)
-deactivate Controller
-activate UI
-User -> UI : confirms
-activate Controller
-UI --> Controller: saveLocation(street,city,district,state,zipcode)
+activate createLocationUI
+createLocationUI -> CreateLocationController : createLocation(street,city,district,state,zipcode)
+activate CreateLocationController
+deactivate createLocationUI
+CreateLocationController -> Location : createLocation(street,city,district,state,zipcode)
+deactivate CreateLocationController
+activate createLocationUI
+User -> createLocationUI : confirms
+activate CreateLocationController
+CreateLocationUI --> CreateLocationController: saveLocation(street,city,district,state,zipcode)
+
+deactivate createLocationUI
 activate Repository
-deactivate UI
-Controller --> Repository: saveLocation(Location)
-deactivate Controller
+CreateLocationController --> Repository: saveLocation(Location)
+deactivate CreateLocationController
 deactivate Repository
-activate UI
-UI -> User: Shows the created Location to the user
-deactivate UI
-User -> UI: Exits the program
+activate createLocationUI
+createLocationUI -> User: Shows the created Location to the user
+deactivate createLocationUI
+User -> createLocationUI: Exits the program
 deactivate User
 @enduml
