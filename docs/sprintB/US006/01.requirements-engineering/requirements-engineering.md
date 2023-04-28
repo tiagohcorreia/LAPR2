@@ -55,9 +55,7 @@ In the USA, the addresses will not include municipalities or parishes.
 	State
 	Zipcode
 * Output Data:
-  * Selecting a state
-	Selecting a City
-	Selecting a District
+  * Sucess of the operation
     
 ### 1.6. System Sequence Diagram (SSD)
 
@@ -65,7 +63,7 @@ In the USA, the addresses will not include municipalities or parishes.
 
 ### Alternative One
 
-![System Sequence Diagram - Alternative One](svg/ssd.svg)
+![System Sequence Diagram - Alternative One](svg/SSD.svg)
 
 ### 1.7 Other Relevant Remarks
 
