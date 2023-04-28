@@ -70,11 +70,12 @@ activate owner
         repAnounc-> announcement**: create
         announcement -> announcement: validateAnnouncement(Announcement)
         activate announcement
-        deactivate announcement
-        announcement -> announcement:AddAnnouncement(Announcement)
-        activate announcement
         announcement->repAnounc: Announcement
         deactivate announcement
+        repAnounc -> repAnounc:AddAnnouncement(Announcement)
+        activate repAnounc
+
+        deactivate repAnounc
         repAnounc ->ctrl: Announcement
         deactivate repAnounc
 
