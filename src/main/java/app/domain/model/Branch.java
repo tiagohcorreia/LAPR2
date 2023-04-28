@@ -24,6 +24,10 @@ public class Branch {
         this.email = email;
     }
 
+    public Branch(){
+
+    }
+
     /**
      *
      * @param ID
@@ -44,7 +48,7 @@ public class Branch {
      * @param name
      */
     public void checkNameLength(String name){
-        if(name.length() <= 40){
+        if(!(name.length() <= 40)){
             throw new IllegalArgumentException("Name should be 40 chars or less");
         }
     }
@@ -65,7 +69,7 @@ public class Branch {
      */
     public void checkValidPhoneNumber(int phoneNumber){
 
-        if(Pattern.matches("[0-9]{9}", Integer.toString(phoneNumber))){
+        if(!Pattern.matches("[0-9]{9}", Integer.toString(phoneNumber))){
             throw new IllegalArgumentException("Phone Number can only have 9 digits");
         }
     }
