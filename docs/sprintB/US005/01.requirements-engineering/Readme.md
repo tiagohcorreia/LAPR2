@@ -21,17 +21,23 @@ the designation, the location, the email address and the contact telephone numbe
 
 **From the client clarifications:**
 
-> 
->  
-> 
+>Question: Could you please share how will the designation of new stores be made, is there a pattern perhaps?
+
+>Answer: There is no pattern. The System Administrator can introduce any designation/name. The designation/name should have at most forty characters.
+
+>Question: Will the System Administrator be able to choose a location from a list of available locations (defined elsewhere in the application) or will he be able to submit any location he wants?
+
+>Answer: The System Administrator can submit any location.
+
 
 
 
 ### 1.3. Acceptance Criteria
 
 
-* AC1: All required fiels must be filled in.
+* AC1: All required fields must be filled in.
 * AC2: ID must be an integer.
+* AC3: Name should have at most 40 characters.
 
 ### 1.4. Found out Dependencies
 
@@ -47,7 +53,6 @@ the designation, the location, the email address and the contact telephone numbe
 	* a ID 
 	* a designation/name 
 	* a location
-    * a local manager
 	* a phone number
 	* a email address
 
