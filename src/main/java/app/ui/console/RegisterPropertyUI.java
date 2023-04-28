@@ -1,13 +1,18 @@
 package app.ui.console;
 
 import app.controller.RegisterPropertyController;
+import app.domain.model.City;
 import app.domain.model.Employee;
+
 import app.domain.shared.SunExposure;
+import app.domain.shared.TypeOfBusiness;
+import app.domain.shared.TypeOfProperty;
 import app.ui.console.utils.Utils;
-import org.apache.commons.lang3.ObjectUtils;
+
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class RegisterPropertyUI implements Runnable {
@@ -20,8 +25,8 @@ public class RegisterPropertyUI implements Runnable {
 
     @Override
     public void run() {
-        String sellOrRent;
-        String typeProperty;
+        TypeOfBusiness sellOrRent;
+        TypeOfProperty typeProperty;
         int numberOfBedrooms=0;
         int numberOfBathrooms=0;
         int numberOfParkingSpaces=0;
@@ -30,11 +35,11 @@ public class RegisterPropertyUI implements Runnable {
         String equipment="";
         boolean hasBasement=false;
         boolean hasInhabitalLoft=false;
-        boolean sunExposure=false;
+        SunExposure sunExposure=null;
         int area;
-        String location;
+        City location;
         int cityCenterDistance;
-        double price;
+        float price;
         ArrayList<String> photographs = new ArrayList();
         String photo;
         int numberPhotos=1;
@@ -43,13 +48,19 @@ public class RegisterPropertyUI implements Runnable {
 
 
         //Type of property
-        typeProperty = Utils.readLineFromConsole("Insert the type of property: (A)partment, (H)ouse or (L)and : ");
+        List<TypeOfProperty> x = this.controller.getTypeOfPropertyAsList();
+        Utils.showList(x,"Type of Property");
+        Integer posTypeOfProperty = Utils.readIntegerFromConsole("Choose the type of property: ");
+        typeProperty= TypeOfProperty.getTypeOfPropertyById(posTypeOfProperty);
 
         //area in m2
         area = Utils.readIntegerFromConsole("Insert area in m2: ");
 
         //Location
-        location = Utils.readLineFromConsole("Insert the location: ");
+
+        String city = Utils.readLineFromConsole("Insert the city:");
+        location= this.controller.getCity(city);
+
 
         //area in m2
         cityCenterDistance = Utils.readIntegerFromConsole("Insert the distance from the centre: ");
@@ -61,7 +72,7 @@ public class RegisterPropertyUI implements Runnable {
             photographs.add(photo);
         }
 
-        if (typeProperty=="A" || typeProperty=="H"){
+        if (posTypeOfProperty== 1 || posTypeOfProperty==2){
 
             //Number of bedrooms
             numberOfBedrooms = Utils.readIntegerFromConsole("Insert Number of bedrooms: ");
@@ -79,19 +90,23 @@ public class RegisterPropertyUI implements Runnable {
                 equipmentList.add(equipment);
             }
         }
-        if (typeProperty=="H") {
+        if (posTypeOfProperty==1) {
 
             int hasBasementInt = Utils.readIntegerFromConsole("The house has a basement? \n0. NO\n1. YES");
             if (hasBasementInt==0){hasBasement=false;}else{hasBasement=true;}
             int hasInhabitalLoftInt = Utils.readIntegerFromConsole("The house has an inhabitalLoft? \n0. NO\n1. YES");
             if (hasInhabitalLoftInt==0){hasInhabitalLoft=false;}else{hasInhabitalLoft=true;}
-            int sunExposureInt = Utils.readIntegerFromConsole("The house has sun exposure?\n0. NO\n1. YES");
-            if (sunExposureInt==0){sunExposure=false;}else{sunExposure=true;}
+
+            //SunExposure
+            List<SunExposure> y = this.controller.getSunExposureAsList();
+            Utils.showList(y,"SunExposure");
+            Integer posSunExposure = Utils.readIntegerFromConsole("Choose the sunExposure: ");
+            sunExposure= SunExposure.getSunExposureById(posSunExposure);
         }
 
 
         //price
-        price=Utils.readDoubleFromConsole("Insert the price of the property: ");
+        price= (float) Utils.readDoubleFromConsole("Insert the price of the property: ");
 
         //agent
         String agentsList = this.controller.getAgent().toString();
@@ -99,25 +114,29 @@ public class RegisterPropertyUI implements Runnable {
         choosedAgent= this.controller.getEmployee(agent);
 
         //Sell or Rent a property
-        sellOrRent = Utils.readLineFromConsole("Insert 'S' if you want to sell a property. Insert 'R' if you want rent a property: ");
+        List<TypeOfBusiness> z = this.controller.getTypeOfBusinessAsList();
+        Utils.showList(z,"Type of Business");
+        Integer posTypeOfBusiness = Utils.readIntegerFromConsole("Choose the Type of Business: ");
+        sellOrRent= TypeOfBusiness.getTypeOfBusinessById(posTypeOfBusiness);
 
         int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
         if(optValidation == 1) {
 
-            this.controller.createAnnouncement(sellOrRent,typeProperty,numberOfBedrooms,numberOfBathrooms, numberOfParkingSpaces, equipmentList,hasBasement,hasInhabitalLoft,
+
+            this.controller.createAnnouncement(sellOrRent,posTypeOfProperty,numberOfBedrooms,numberOfBathrooms, numberOfParkingSpaces, equipmentList,hasBasement,hasInhabitalLoft,
                     sunExposure,area,location,cityCenterDistance,price,photographs,choosedAgent);
 
-            System.out.println("(S)ell or (R)ent: " + sellOrRent);
+            System.out.println("Type of Business: " + sellOrRent);
             System.out.println("Type of property: " + typeProperty);
-            if (typeProperty=="A" || typeProperty=="H"){
+            if (posTypeOfProperty==1 || posTypeOfProperty==2){
 
                 System.out.println("Number of bedrooms: " + numberOfBedrooms);
                 System.out.println("Number of bathrooms: "+ numberOfBathrooms);
                 System.out.println("Number of parking spaces: "+ numberOfParkingSpaces);
                 System.out.println("Equipment available: " + equipmentList);
             }
-            if (typeProperty=="H") {
+            if (posTypeOfProperty==1) {
                 System.out.println("The house has basement? " + hasBasement);
                 System.out.println("The house has inhabital loft? " + hasInhabitalLoft);
                 System.out.println("The house has sun exposure? " + sunExposure);
