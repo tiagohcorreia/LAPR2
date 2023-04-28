@@ -1,0 +1,72 @@
+@startuml
+class Administrator {
+  +requestStateData()
+  +requestCityData()
+  +requestDistrictData()
+  +requestStreetData()
+  +requestZipCodeData()
+  +confirmOperationSuccess()
+}
+
+class System {
+  +requestStateData()
+  +requestCityData()
+  +requestDistrictData()
+  +requestStreetData()
+  +requestZipCodeData()
+  +confirmOperationSuccess()
+}
+
+class State {
+  -name: String
+  -cities: Set<City>
+  +getName(): String
+  +setName(name: String): void
+  +addCity(city: City): void
+  +removeCity(city: City): void
+  +getCities(): Set<City>
+}
+
+class City {
+  -name: String
+  -districts: Set<District>
+  +getName(): String
+  +setName(name: String): void
+  +addDistrict(district: District): void
+  +removeDistrict(district: District): void
+  +getDistricts(): Set<District>
+}
+
+class District {
+  -name: String
+  -streets: Set<Street>
+  +getName(): String
+  +setName(name: String): void
+  +addStreet(street: Street): void
+  +removeStreet(street: Street): void
+  +getStreets(): Set<Street>
+}
+
+class Street {
+  -name: String
+  -zipCodes: Set<ZipCode>
+  +getName(): String
+  +setName(name: String): void
+  +addZipCode(zipCode: ZipCode): void
+  +removeZipCode(zipCode: ZipCode): void
+  +getZipCodes(): Set<ZipCode>
+}
+
+class ZipCode {
+  -code: String
+  +getCode(): String
+  +setCode(code: String): void
+}
+
+Administrator --> System
+System "1" --> "0..1" State
+State "1" --> "0..*" City
+City "1" --> "0..*" District
+District "1" --> "0..*" Street
+Street "1" --> "0..*" ZipCode
+@enduml
