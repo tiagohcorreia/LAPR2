@@ -24,32 +24,48 @@ public class Apartment extends Property{
         return numberOfBedrooms;
     }
 
-    public void setNumberOfBedrooms(int numberOfBedrooms) {
-        this.numberOfBedrooms = numberOfBedrooms;
-    }
+
 
     public int getNumberOfBathrooms() {
         return numberOfBathrooms;
     }
 
-    public void setNumberOfBathrooms(int numberOfBathrooms) {
-        this.numberOfBathrooms = numberOfBathrooms;
-    }
+
 
     public int getNumberOfParkingSpaces() {
         return numberOfParkingSpaces;
     }
 
-    public void setNumberOfParkingSpaces(int numberOfParkingSpaces) {
-        this.numberOfParkingSpaces = numberOfParkingSpaces;
-    }
+
 
     public ArrayList<String> getEquipment() {
         return equipment;
     }
 
-    public void setEquipment(ArrayList<String> equipment) {
-        this.equipment = equipment;
+    public int setNumberOfBedrooms(int numberOfBedrooms) {
+        if (numberOfBedrooms<0){
+            throw new IllegalArgumentException("Please insert a number >=0");
+        }
+        return numberOfBedrooms;
+    }
+    public int setNumberOfBathrooms(int numberOfBathrooms) {
+        if (numberOfBathrooms<0){
+            throw new IllegalArgumentException("Please insert a number >=0");
+        }
+        return numberOfBathrooms;
+    }
+    public int setNumberOfParkingSpaces(int numberOfParkingSpaces) {
+        if (numberOfParkingSpaces<0){
+            throw new IllegalArgumentException("Please insert a number >=0");
+        }
+        return numberOfParkingSpaces;
+    }
+
+    public ArrayList<String> setEquipment(ArrayList<String> equipment) {
+        if (equipment == null) {
+            throw new NullPointerException("You need to insert at least 1 equipment.");
+        }
+        return equipment;
     }
 
     //ToString
