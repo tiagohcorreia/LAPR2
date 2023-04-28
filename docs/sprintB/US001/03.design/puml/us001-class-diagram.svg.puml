@@ -5,22 +5,22 @@
 
 class Announcement{
 -float price
-+getPrice()
++getPrice():float
++getProperty():float
 }
 
 class Property{
 -float area
-+getProperty()
 }
 class House{
 -int numberOfBedrooms
--bool hasInhabitableLoft
-+getNumberOfBedrooms()
-+getHasInhabitableLoft()
+-boolean hasInhabitableLoft
++getNumberOfBedrooms():int
++getHasInhabitableLoft():boolean
 }
 class Apartment{
--int numberOfBedrooms
-+getNumberOfBedrooms()
+-int numberOfBedroom
++getNumberOfBedrooms():int
 }
 class Land{
 

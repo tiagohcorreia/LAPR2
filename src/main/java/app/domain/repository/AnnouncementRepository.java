@@ -66,9 +66,9 @@ public class AnnouncementRepository {
                 if (!availableFields.get(1).contains(announcement.getProperty().getClass().getSimpleName())){
                     availableFields.get(1).add(announcement.getProperty().getClass().getSimpleName());
                 }
-                if (announcement.getProperty().getClass().getSimpleName().equals("Land")){
+                if (!announcement.getProperty().getClass().getSimpleName().equals("Land") && !availableFields.get(2).contains(announcement.getProperty().getNumberOfBedrooms())){
                 //if (announcement.getProperty().getClass().getSimpleName().equals("Land") && !availableFields.get(2).contains(announcement.getProperty().getNumberOfBedrooms())){
-                    availableFields.get(2).add(300);
+                    availableFields.get(2).add(announcement.getProperty().getNumberOfBedrooms());
                     //availableFields.get(2).add(announcement.getProperty().getBedrooms());
                 }
             }
