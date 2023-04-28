@@ -4,6 +4,7 @@ import app.domain.model.Agency;
 import app.domain.model.Employee;
 import app.domain.model.Role;
 import app.domain.repository.RegisterEmployeeRepository;
+import app.exceptions.NegativeNumberException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +27,7 @@ public class RegisterEmployeeController {
 
 
     public String createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
-                                 int telephoneNumber, Integer posRole, Integer posAgency) {
+                                 long telephoneNumber, Integer posRole, Integer posAgency)  {
 
         Employee newEmployee = new Employee(employeeName, passportNumber, taxNumber, address, eMail, telephoneNumber,
                 Role.getRoleById(posRole), Agency.getAgencyById(posAgency));
