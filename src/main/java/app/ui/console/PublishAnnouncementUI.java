@@ -1,6 +1,6 @@
 package app.ui.console;
 
-import app.controller.PublishAnnouncementController;
+/*import app.controller.PublishAnnouncementController;
 import app.domain.repository.AnnouncementRepository;
 import app.domain.shared.TypeOfBusiness;
 import app.domain.shared.TypeOfProperty;
