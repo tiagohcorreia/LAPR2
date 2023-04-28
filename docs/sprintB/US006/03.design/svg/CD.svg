@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="512px" preserveAspectRatio="none" style="width:507px;height:512px;background:#FFFFFF;" version="1.1" viewBox="0 0 507 512" width="507px" zoomAndPan="magnify"><defs/><g><!--MD5=[bfbfb4951075b729643e18bca3059702]
+class CreateLocationUI--><g id="elem_CreateLocationUI"><rect codeLine="11" fill="#F1F1F1" height="48" id="CreateLocationUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="141" x="7" y="16"/><ellipse cx="22" cy="32" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M25.6875,33.2031 Q25.4375,36.6875 24.2656,37.8594 Q23.2344,38.5781 21.8594,38.5781 Q20.4844,38.5781 19.4531,37.8594 Q17.6719,36.0781 17.6719,32.4063 Q17.6719,28.1563 19.5469,26.25 Q20.5938,25.2344 21.9219,25.2344 Q23.3281,25.2344 24.1719,26.0469 Q25.6563,27.5625 25.5781,30.4375 L23.4531,30.4375 Q23.375,28.1094 22.7344,27.4688 Q22.4531,27.1719 21.9219,27.1719 Q21.4688,27.1719 21.1094,27.5469 Q19.875,28.7656 19.875,32.2813 Q19.875,35.3281 20.9219,36.3438 Q21.3438,36.7813 21.8594,36.7813 Q22.3125,36.7813 22.75,36.3438 Q23.3125,35.7969 23.3906,33.2031 L25.6875,33.2031 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="36" y="37.7285">CreateLocationUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="147" y1="48" y2="48"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="147" y1="56" y2="56"/></g><!--MD5=[450a4be6d92bad89c45f5bfee721809d]
+class CreateLocationController--><g id="elem_CreateLocationController"><rect codeLine="14" fill="#F1F1F1" height="65.6094" id="CreateLocationController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="317" x="183" y="7"/><ellipse cx="257.75" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M261.4375,24.2031 Q261.1875,27.6875 260.0156,28.8594 Q258.9844,29.5781 257.6094,29.5781 Q256.2344,29.5781 255.2031,28.8594 Q253.4219,27.0781 253.4219,23.4063 Q253.4219,19.1563 255.2969,17.25 Q256.3438,16.2344 257.6719,16.2344 Q259.0781,16.2344 259.9219,17.0469 Q261.4063,18.5625 261.3281,21.4375 L259.2031,21.4375 Q259.125,19.1094 258.4844,18.4688 Q258.2031,18.1719 257.6719,18.1719 Q257.2188,18.1719 256.8594,18.5469 Q255.625,19.7656 255.625,23.2813 Q255.625,26.3281 256.6719,27.3438 Q257.0938,27.7813 257.6094,27.7813 Q258.0625,27.7813 258.5,27.3438 Q259.0625,26.7969 259.1406,24.2031 L261.4375,24.2031 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="159" x="278.25" y="28.7285">CreateLocationController</text><line style="stroke:#181818;stroke-width:0.5;" x1="184" x2="499" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="184" x2="499" y1="47" y2="47"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="305" x="189" y="65.5332">+createLocation(street,city,district,state,zipcode)</text></g><!--MD5=[c05f8d4c5007184b0fb1ea93cdb8d9fe]
+class Repository--><g id="elem_Repository"><rect codeLine="22" fill="#F1F1F1" height="100.8281" id="Repository" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="104" x="289.5" y="151"/><ellipse cx="306.3" cy="167" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M309.9875,168.2031 Q309.7375,171.6875 308.5656,172.8594 Q307.5344,173.5781 306.1594,173.5781 Q304.7844,173.5781 303.7531,172.8594 Q301.9719,171.0781 301.9719,167.4063 Q301.9719,163.1563 303.8469,161.25 Q304.8938,160.2344 306.2219,160.2344 Q307.6281,160.2344 308.4719,161.0469 Q309.9563,162.5625 309.8781,165.4375 L307.7531,165.4375 Q307.675,163.1094 307.0344,162.4688 Q306.7531,162.1719 306.2219,162.1719 Q305.7688,162.1719 305.4094,162.5469 Q304.175,163.7656 304.175,167.2813 Q304.175,170.3281 305.2219,171.3438 Q305.6438,171.7813 306.1594,171.7813 Q306.6125,171.7813 307.05,171.3438 Q307.6125,170.7969 307.6906,168.2031 L309.9875,168.2031 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="320.7" y="172.7285">Repository</text><line style="stroke:#181818;stroke-width:0.5;" x1="290.5" x2="392.5" y1="183" y2="183"/><line style="stroke:#181818;stroke-width:0.5;" x1="290.5" x2="392.5" y1="191" y2="191"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="295.5" y="209.5332">+getLocation()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="295.5" y="227.1426">+validate()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="295.5" y="244.752">+save()</text></g><!--MD5=[4f1f3706c1a355a8488e154afcaed5df]
+class Location--><g id="elem_Location"><rect codeLine="28" fill="#F1F1F1" height="65.6094" id="Location" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="277" x="203" y="313"/><ellipse cx="310.25" cy="329" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M313.9375,330.2031 Q313.6875,333.6875 312.5156,334.8594 Q311.4844,335.5781 310.1094,335.5781 Q308.7344,335.5781 307.7031,334.8594 Q305.9219,333.0781 305.9219,329.4063 Q305.9219,325.1563 307.7969,323.25 Q308.8438,322.2344 310.1719,322.2344 Q311.5781,322.2344 312.4219,323.0469 Q313.9063,324.5625 313.8281,327.4375 L311.7031,327.4375 Q311.625,325.1094 310.9844,324.4688 Q310.7031,324.1719 310.1719,324.1719 Q309.7188,324.1719 309.3594,324.5469 Q308.125,325.7656 308.125,329.2813 Q308.125,332.3281 309.1719,333.3438 Q309.5938,333.7813 310.1094,333.7813 Q310.5625,333.7813 311,333.3438 Q311.5625,332.7969 311.6406,330.2031 L313.9375,330.2031 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="330.75" y="334.7285">Location</text><line style="stroke:#181818;stroke-width:0.5;" x1="204" x2="479" y1="345" y2="345"/><line style="stroke:#181818;stroke-width:0.5;" x1="204" x2="479" y1="353" y2="353"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="265" x="209" y="371.5332">+Location(street,city,district,state,zipcode)</text></g><!--MD5=[1807546699bed71a5b7fb0b74ae84899]
+class Admnistrator--><g id="elem_Admnistrator"><rect codeLine="35" fill="#F1F1F1" height="48" id="Admnistrator" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="112" x="285.5" y="457"/><ellipse cx="300.5" cy="473" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M304.1875,474.2031 Q303.9375,477.6875 302.7656,478.8594 Q301.7344,479.5781 300.3594,479.5781 Q298.9844,479.5781 297.9531,478.8594 Q296.1719,477.0781 296.1719,473.4063 Q296.1719,469.1563 298.0469,467.25 Q299.0938,466.2344 300.4219,466.2344 Q301.8281,466.2344 302.6719,467.0469 Q304.1563,468.5625 304.0781,471.4375 L301.9531,471.4375 Q301.875,469.1094 301.2344,468.4688 Q300.9531,468.1719 300.4219,468.1719 Q299.9688,468.1719 299.6094,468.5469 Q298.375,469.7656 298.375,473.2813 Q298.375,476.3281 299.4219,477.3438 Q299.8438,477.7813 300.3594,477.7813 Q300.8125,477.7813 301.25,477.3438 Q301.8125,476.7969 301.8906,474.2031 L304.1875,474.2031 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="314.5" y="478.7285">Admnistrator</text><line style="stroke:#181818;stroke-width:0.5;" x1="286.5" x2="396.5" y1="489" y2="489"/><line style="stroke:#181818;stroke-width:0.5;" x1="286.5" x2="396.5" y1="497" y2="497"/></g><!--MD5=[fc25d6258a15781ea130496ea14b2b8a]
+link CreateLocationUI to CreateLocationController--><g id="link_CreateLocationUI_CreateLocationController"><path codeLine="44" d="M148.11,40 C158.34,40 165.5,40 165.5,40 C165.5,40 170.22,40 177.48,40 " fill="none" id="CreateLocationUI-to-CreateLocationController" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="182.89,40,173.89,36,177.89,40,173.89,44,182.89,40" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[e6fb515dc46719ca97ad926b93cd7425]
+link CreateLocationController to Repository--><g id="link_CreateLocationController_Repository"><path codeLine="46" d="M341.5,73.28 C341.5,94.1 341.5,121.71 341.5,145.88 " fill="none" id="CreateLocationController-to-Repository" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="341.5,150.99,345.5,141.99,341.5,145.99,337.5,141.99,341.5,150.99" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="342.5" y="117.4951">LocationRepository</text></g><!--MD5=[78bd882fa0aefe015c84399e05dd9d6f]
+link Repository to Location--><g id="link_Repository_Location"><path codeLine="48" d="M341.5,252.34 C341.5,270.52 341.5,290.76 341.5,307.67 " fill="none" id="Repository-to-Location" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="341.5,312.8,345.5,303.8,341.5,307.8,337.5,303.8,341.5,312.8" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="336.0078" y="302.2569">*</text></g><!--MD5=[7b7a32466e5d5eb3da9d22343fac873b]
+link Location to Admnistrator--><g id="link_Location_Admnistrator"><path codeLine="50" d="M341.5,379.2 C341.5,401.31 341.5,430.39 341.5,451.63 " fill="none" id="Location-to-Admnistrator" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="341.5,456.85,345.5,447.85,341.5,451.85,337.5,447.85,341.5,456.85" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="52" x="342.5" y="423.4951">createBy</text></g><!--MD5=[63a9ed02be90b69faf11f9362c40a474]
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class CreateLocationUI{
+}
+
+class CreateLocationController {
+    + createLocation(street,city,district,state,zipcode)
+
+}
+
+
+
+
+class Repository{
+    +getLocation()
+    +validate()
+    +save()
+}
+
+class Location{
+    + Location(street,city,district,state,zipcode)
+
+}
+
+
+
+Class Admnistrator{
+}
+
+
+
+
+
+
+
+CreateLocationUI .> CreateLocationController
+
+CreateLocationController ..> Repository : LocationRepository
+
+Repository - -> "*" Location
+
+Location - -> Admnistrator : createBy
+@enduml
+
+@startuml
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+
+skinparam classAttributeIconSize 0
+
+
+class CreateLocationUI{
+}
+
+class CreateLocationController {
+    + createLocation(street,city,district,state,zipcode)
+
+}
+
+
+
+
+class Repository{
+    +getLocation()
+    +validate()
+    +save()
+}
+
+class Location{
+    + Location(street,city,district,state,zipcode)
+
+}
+
+
+
+Class Admnistrator{
+}
+
+
+
+
+
+
+
+CreateLocationUI .> CreateLocationController
+
+CreateLocationController ..> Repository : LocationRepository
+
+Repository - -> "*" Location
+
+Location - -> Admnistrator : createBy
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: MS932
+Language: en
+Country: US
+--></g></svg>
