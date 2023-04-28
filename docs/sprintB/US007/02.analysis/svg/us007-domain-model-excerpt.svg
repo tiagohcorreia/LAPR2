@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="518px" preserveAspectRatio="none" style="width:610px;height:518px;background:#FFFFFF;" version="1.1" viewBox="0 0 610 518" width="610px" zoomAndPan="magnify"><defs/><g><!--MD5=[9bfbfe4cc19320946103b337832d186f]
+entity ##69700--><!--MD5=[ed6624c6556d5e7b1bd23032162d20b7]
+class Client--><rect codeLine="18" fill="#F8F8F8" height="33.0938" id="Client" style="stroke:#383838;stroke-width:1.5;" width="38" x="384" y="260.3564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="32" x="387" y="277.8135">Client</text><line style="stroke:#383838;stroke-width:1.5;" x1="385" x2="421" y1="285.4502" y2="285.4502"/><!--MD5=[43844b47726d9c4702f600b824e35ead]
+class Seller--><rect codeLine="22" fill="#F8F8F8" height="33.0938" id="Seller" style="stroke:#383838;stroke-width:1.5;" width="38" x="404" y="121.8564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="32" x="407" y="139.3135">Seller</text><line style="stroke:#383838;stroke-width:1.5;" x1="405" x2="441" y1="146.9502" y2="146.9502"/><!--MD5=[2a6a992e699eac248da01b98a6cecd43]
+class Buyer--><rect codeLine="26" fill="#F8F8F8" height="33.0938" id="Buyer" style="stroke:#383838;stroke-width:1.5;" width="37" x="278.5" y="121.8564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="31" x="281.5" y="139.3135">Buyer</text><line style="stroke:#383838;stroke-width:1.5;" x1="279.5" x2="314.5" y1="146.9502" y2="146.9502"/><!--MD5=[e049a9fc6087ec9a0b5519edf8a49765]
+class Visit--><rect codeLine="28" fill="#F8F8F8" height="33.0938" id="Visit" style="stroke:#383838;stroke-width:1.5;" width="29" x="348.5" y="10.8564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="23" x="351.5" y="28.3135">Visit</text><line style="stroke:#383838;stroke-width:1.5;" x1="349.5" x2="376.5" y1="35.9502" y2="35.9502"/><!--MD5=[9d44916250b776386006c440668bcfbb]
+class Agent--><rect codeLine="31" fill="#F8F8F8" height="33.0938" id="Agent" style="stroke:#383838;stroke-width:1.5;" width="37" x="530.5" y="10.8564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="31" x="533.5" y="28.3135">Agent</text><line style="stroke:#383838;stroke-width:1.5;" x1="531.5" x2="566.5" y1="35.9502" y2="35.9502"/><!--MD5=[c7159c368ecd92fb5843b3b4ed8c52fc]
+class Listing--><rect codeLine="35" fill="#F8F8F8" height="74.6016" id="Listing" style="stroke:#383838;stroke-width:1.5;" width="62" x="469" y="239.3564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="37" x="481.5" y="256.8135">Listing</text><line style="stroke:#383838;stroke-width:1.5;" x1="470" x2="530" y1="264.4502" y2="264.4502"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="475" y="279.8691">propertyID</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="475" y="293.7051">price</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="475" y="307.541">sellOrRent</text><!--MD5=[6b626634f3bb0842bebd5e499c80b711]
+class Property--><rect codeLine="41" fill="#F8F8F8" height="88.4375" id="Property" style="stroke:#383838;stroke-width:1.5;" width="127" x="197.5" y="232.8564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="45" x="238.5" y="250.3135">Property</text><line style="stroke:#383838;stroke-width:1.5;" x1="198.5" x2="323.5" y1="257.9502" y2="257.9502"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="46" x="203.5" y="273.3691">float area</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="38" x="203.5" y="287.2051">City city</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="115" x="203.5" y="301.041">float cityCenterDistance</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="115" x="203.5" y="314.877">List&lt;Image&gt; photograph</text><!--MD5=[5005bba8c6d1dda988b0bcc8eba409f6]
+class House--><rect codeLine="47" fill="#F8F8F8" height="129.9453" id="House" style="stroke:#383838;stroke-width:1.5;" width="146" x="7" y="381.8564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="37" x="61.5" y="399.3135">House</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="152" y1="406.9502" y2="406.9502"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="13" y="422.3691">int numberOfBedrooms</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="114" x="13" y="436.2051">int numberOfBathrooms</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="13" y="450.041">int numberOfParkingSpaces</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="109" x="13" y="463.877">List&lt;String&gt; equipment</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="89" x="13" y="477.7129">bool hasBasement</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="13" y="491.5488">bool hasInhabitableLoft</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="13" y="505.3848">SunExposure sunExposure</text><!--MD5=[7938f2b00af14ba76f29cd64fe89cba4]
+class Apartment--><rect codeLine="57" fill="#F8F8F8" height="88.4375" id="Apartment" style="stroke:#383838;stroke-width:1.5;" width="146" x="188" y="402.8564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="56" x="233" y="420.3135">Apartment</text><line style="stroke:#383838;stroke-width:1.5;" x1="189" x2="333" y1="427.9502" y2="427.9502"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="111" x="194" y="443.3691">int numberOfBedrooms</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="114" x="194" y="457.2051">int numberOfBathrooms</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="134" x="194" y="471.041">int numberOfParkingSpaces</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="109" x="194" y="484.877">List&lt;String&gt; equipment</text><!--MD5=[3b2ebc2a82a6ca42650088e4a2410713]
+class Land--><rect codeLine="63" fill="#F8F8F8" height="102.2734" id="Land" style="stroke:#383838;stroke-width:1.5;" width="174" x="369" y="395.8564"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="28" x="442" y="413.3135">Land</text><line style="stroke:#383838;stroke-width:1.5;" x1="370" x2="542" y1="420.9502" y2="420.9502"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="375" y="436.3691">int listingID</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="53" x="375" y="450.2051">bool visible</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="48" x="375" y="464.041">float price</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="80" x="375" y="477.877">float commission</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="162" x="375" y="491.7129">TypeOfBusiness typeOfBusiness</text><!--MD5=[5487656f09e336a36fbed6ab6c5d7c51]
+link Buyer to Client--><path codeLine="72" d="M300.03,155.0064 C303.17,168.5364 309.07,188.1664 319,202.8564 C331.85,221.8664 350.85,238.9464 367.54,251.7964 " fill="none" id="Buyer-to-Client" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="371.66,246.1464,383.73,263.5664,363.43,257.4664,371.66,246.1464" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[494dd7e2e90f16a1957f0549ca9be0b3]
+link Seller to Client--><path codeLine="73" d="M420.71,155.0164 C417.69,175.5764 412.31,212.3064 408.27,239.8864 " fill="none" id="Seller-to-Client" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="415.15,241.1864,405.33,259.9564,401.3,239.1564,415.15,241.1864" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[18e95b4977eb4c676d06409dcd862720]
+link Buyer to Property--><path codeLine="75" d="M278.31,145.4564 C261.23,152.1464 237.03,164.6864 226,184.8564 C217.8,199.8564 221.51,217.1864 229.02,232.6664 " fill="none" id="Buyer-Property" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="228.5398,198.3851,235.5489,191.9567,230.4318,189.0646,228.5398,198.3851" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="30" x="240" y="199.3516">Buys</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="263.4048" y="142.6769">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="218.5248" y="221.8369">*</text><!--MD5=[89c562c8c811638d631578af28e73bf4]
+link Visit to Buyer--><path codeLine="76" d="M353.54,43.9764 C341,64.6964 318.98,101.0664 306.44,121.7664 " fill="none" id="Visit-Buyer" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="341.5897,78.7551,334.3909,84.9703,339.4189,88.0146,341.5897,78.7551" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="50" x="348" y="88.3516">requests</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="342.409" y="65.3603">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="301.4819" y="110.8531">1</text><!--MD5=[8a4d2d2da763b08b62d16811c968bdfd]
+link Visit to Agent--><path codeLine="77" d="M377.6,27.3564 C411.08,27.3564 493.38,27.3564 530.42,27.3564 " fill="none" id="Visit-Agent" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="418,15.5322,408.9549,12.5933,408.9549,18.4712,418,15.5322" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="77" x="422" y="20.8516">scheduled by</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="385.5188" y="21.408">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="515.554" y="22.0475">1</text><!--MD5=[7c96604d78e947ece2a9dd32323a19f1]
+link Seller to Property--><path codeLine="78" d="M403.97,152.8564 C391.76,161.6864 375.69,173.6264 362,184.8564 C343.57,199.9764 323.96,217.3264 306.97,232.8064 " fill="none" id="Seller-Property" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="363.1417,197.2124,371.9907,193.7273,368.2522,189.1916,363.1417,197.2124" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="30" x="376" y="199.3516">owns</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="388.9437" y="152.7131">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="308.898" y="221.9992">*</text><!--MD5=[520da7d6181802dbc1012da4c8d59dfe]
+link Seller to Listing--><path codeLine="79" d="M431.83,155.0164 C443.33,175.3964 463.78,211.6464 479.29,239.1364 " fill="none" id="Seller-Listing" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="464.4569,198.3869,462.572,189.065,457.4527,191.9533,464.4569,198.3869" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="43" x="471" y="199.3516">creates</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="426.5289" y="176.413">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="470.1557" y="228.5545">*</text><!--MD5=[541c0bc34b88b1d624520f33a17d788f]
+link Agent to Listing--><path codeLine="80" d="M547.51,43.9164 C544.4,74.5964 536.35,144.9564 523,202.8564 C520.25,214.7664 516.51,227.5464 512.84,239.0264 " fill="none" id="Agent-Listing" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="542.1252,143.4551,546.6013,135.0637,540.8141,134.0354,542.1252,143.4551" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="50" x="552" y="143.8516">validates</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="538.8571" y="65.5898">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="509.6818" y="228.4249">*</text><!--MD5=[850071a18dc7ad6c377b2032da142e97]
+reverse link Property to House--><path codeLine="82" d="M199.6,334.8464 C183.32,349.9564 165.64,366.3664 148.99,381.8264 " fill="none" id="Property-backto-House" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="194.97,329.5964,214.39,321.1164,204.49,339.8564,194.97,329.5964" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[71833479a25abe5b48a215f80abb6d80]
+reverse link Property to Apartment--><path codeLine="83" d="M261,341.2564 C261,361.7764 261,384.0464 261,402.7364 " fill="none" id="Property-backto-Apartment" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="254,341.1164,261,321.1164,268,341.1164,254,341.1164" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[1df9c5af9dc88862e781d75dcf66ac89]
+reverse link Property to Land--><path codeLine="84" d="M326.13,333.9664 C349.33,353.9564 375.29,376.3164 397.86,395.7664 " fill="none" id="Property-backto-Land" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="321.55,339.2564,310.96,320.9064,330.69,328.6564,321.55,339.2564" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[5a852bd5900be410a49c931cc92a9b63]
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+'title Domain Model
+
+'class Platform {
+'  -description
+'}
+
+class Client {
+
+}
+
+class Seller {
+
+}
+
+class Buyer {
+}
+class Visit{
+
+}
+class Agent{
+
+}
+
+class Listing{
+    propertyID
+    price
+    sellOrRent
+
+}
+class Property {
+    float area
+    City city
+    float cityCenterDistance
+    List<Image> photograph
+}
+class House {
+     int numberOfBedrooms
+     int numberOfBathrooms
+     int numberOfParkingSpaces
+     List<String> equipment
+     bool hasBasement
+     bool hasInhabitableLoft
+     SunExposure sunExposure
+}
+
+class Apartment {
+     int numberOfBedrooms
+     int numberOfBathrooms
+     int numberOfParkingSpaces
+     List<String> equipment
+}
+class Land {
+    int listingID
+    bool visible
+    float price
+    float commission
+    TypeOfBusiness typeOfBusiness
+}
+
+together {
+Buyer - -|> Client
+Seller - -|> Client
+}
+Buyer "1" - - "*" Property: Buys >
+Visit "1" - - "1" Buyer: requests <
+Visit "1" - "1" Agent: scheduled by >
+Seller "1" - "*" Property: owns >
+Seller "1" - - "*" Listing: creates >
+Agent "1" - - - "*" Listing: validates >
+
+Property <|- - House
+Property <|- - Apartment
+Property <|- - Land
+
+@enduml
+
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+
+
+class Client {
+
+}
+
+class Seller {
+
+}
+
+class Buyer {
+}
+class Visit{
+
+}
+class Agent{
+
+}
+
+class Listing{
+    propertyID
+    price
+    sellOrRent
+
+}
+class Property {
+    float area
+    City city
+    float cityCenterDistance
+    List<Image> photograph
+}
+class House {
+     int numberOfBedrooms
+     int numberOfBathrooms
+     int numberOfParkingSpaces
+     List<String> equipment
+     bool hasBasement
+     bool hasInhabitableLoft
+     SunExposure sunExposure
+}
+
+class Apartment {
+     int numberOfBedrooms
+     int numberOfBathrooms
+     int numberOfParkingSpaces
+     List<String> equipment
+}
+class Land {
+    int listingID
+    bool visible
+    float price
+    float commission
+    TypeOfBusiness typeOfBusiness
+}
+
+together {
+Buyer - -|> Client
+Seller - -|> Client
+}
+Buyer "1" - - "*" Property: Buys >
+Visit "1" - - "1" Buyer: requests <
+Visit "1" - "1" Agent: scheduled by >
+Seller "1" - "*" Property: owns >
+Seller "1" - - "*" Listing: creates >
+Agent "1" - - - "*" Listing: validates >
+
+Property <|- - House
+Property <|- - Apartment
+Property <|- - Land
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 18:19:58 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>
