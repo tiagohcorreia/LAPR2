@@ -2,6 +2,7 @@ package app.ui.console;
 
 import app.domain.model.Announcement;
 import app.domain.shared.AnnouncementPriceComparator;
+import app.domain.shared.TypeOfBusiness;
 import app.domain.shared.TypeOfProperty;
 import app.ui.console.utils.Utils;
 import app.controller.DisplayAnnouncementsController;
@@ -24,47 +25,62 @@ public class DisplayAnnouncementsUI implements Runnable{
         }
 
         else {
-            System.out.println("Search filter:");
-            System.out.println("(select from the available options)");
-            System.out.println("Type of business - ");
+            System.out.println("SEARCH FILTER");
+            System.out.println("- Select one from the following options");
+            System.out.println("- Or press [Enter] to see all available announcements");
+            System.out.println();
+            System.out.print("Type of business - ");
             for (Object fields : availableFields.get(0)) {
                 System.out.print(fields.toString() + " ");
             }
             System.out.println();
 
-            System.out.println("Type of property - ");
+            System.out.print("Type of property - ");
             for (Object fields : availableFields.get(1)) {
                 System.out.print(fields.toString() + " ");
             }
             System.out.println();
 
-            System.out.println("Number of bedrooms - ");
+            System.out.print("Number of bedrooms - ");
             for (Object fields : availableFields.get(2)) {
                 System.out.print(fields.toString() + " ");
             }
             System.out.println();
 
-
-            String selectedTypeOfBusiness;
+            //Getting user input
+            String selectedTypeOfBusiness=null;
             do {
-                selectedTypeOfBusiness = Utils.readLineFromConsole("Type of business: ").toUpperCase();
-            } while (!availableFields.get(0).toString().contains(selectedTypeOfBusiness));
+                try {
+                    selectedTypeOfBusiness = Utils.readLineFromConsole("Type of business: ").trim().toUpperCase();
+                } catch (Exception e){
+                    System.out.println("Please try again.");
+                }
+            } while (!availableFields.get(0).toString().contains(selectedTypeOfBusiness) && !selectedTypeOfBusiness.equals(""));
 
-            String selectedTypeOfProperty;
+            String selectedTypeOfProperty=null;
             do {
-                selectedTypeOfProperty = Utils.readLineFromConsole("Type of property: ").toUpperCase();
-            } while (!availableFields.get(1).toString().contains(selectedTypeOfProperty));
+                try {
+                    selectedTypeOfProperty = Utils.readLineFromConsole("Type of property: ").trim().toUpperCase();
+                } catch (Exception e){
+                    System.out.println("Please try again.");
+                }
+            } while (!availableFields.get(1).toString().contains(selectedTypeOfProperty) && !selectedTypeOfProperty.equals(""));
 
             int selectedNumberOfBedrooms = -1;
-
-            if(!selectedTypeOfProperty.equals(TypeOfProperty.LAND.toString()))
+            String input = null;
+            if(!selectedTypeOfProperty.equals("LAND")) {
                 do {
-                    selectedNumberOfBedrooms = Utils.readIntegerFromConsole("Number of bedrooms: ");
-                } while (!availableFields.get(2).contains(selectedNumberOfBedrooms));
+                    try {
+                        input = Utils.readLineFromConsole("Number of bedrooms: ").trim();
+                        selectedNumberOfBedrooms = (input.equals("")) ? -1 : Integer.parseInt(input);
+                    } catch (Exception e){
+                        selectedNumberOfBedrooms = -1;
+                        System.out.println("Please try again.");
+                    }
+                } while (!availableFields.get(2).contains(selectedNumberOfBedrooms) && selectedNumberOfBedrooms == -1 && !input.equals(""));
+            }
 
-
-
-
+            //Get matching announcements
             List<Announcement> announcements;
             //TO-FIX
             if (selectedTypeOfBusiness.equals("") && selectedTypeOfProperty.equals("") && selectedNumberOfBedrooms == -1){
@@ -72,6 +88,7 @@ public class DisplayAnnouncementsUI implements Runnable{
             } else {
                 announcements = controller.getAnnouncements(selectedTypeOfBusiness, selectedTypeOfProperty, selectedNumberOfBedrooms);
             }
+
 
             for (Announcement announcement : announcements) {
                 System.out.println(announcement);
@@ -100,7 +117,7 @@ public class DisplayAnnouncementsUI implements Runnable{
             boolean sortingModeIsValid = false;
             while (sortingMode != 0){
                 do{
-                    sortingMode = Utils.readIntegerFromConsole("Sorting modes:\n1 - Price\n2 - Parish\n0 - Exit\nSort by: ");
+                    sortingMode = Utils.readIntegerFromConsole("Sorting modes:\n1 - Price\n2 - City\n0 - Exit\nSort by: ");
                     if (sortingMode == 1 || sortingMode == 2 || sortingMode == 0) {
                         sortingModeIsValid = true;
                     }
