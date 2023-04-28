@@ -9,7 +9,7 @@ public class PublishAnnouncementController {
 
 
 
-        public void createAnnouncement(Property property)
+        //public void createAnnouncement(Property property)
 
 
     }

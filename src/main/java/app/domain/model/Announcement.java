@@ -52,9 +52,9 @@ public class Announcement {
         this.setAgent(anotherAnnouncement.getAgent());
     }
 
-    public Announcement getListing() { return new Announcement(this); }
+    public Announcement getAnnouncement() { return new Announcement(this); }
 
-    public Announcement getListing(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
+    public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
         if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getClass().getSimpleName()) && numberOfBedrooms == 300){
         //if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getClass().getSimpleName()) && numberOfBedrooms == this.property.getBedrooms()){
             return new Announcement(this);
@@ -109,14 +109,15 @@ public class Announcement {
 
     //TO-FIX
     public String toString(){
+        String visibility = (this.visible) ? "yes" : "no";
         return String.format("Announcement - " +
-                "ID: %d\t" +
                 "Visible: %s\t" +
                 "Business Type: %s\t" +
                 "Property: %s\t" +
                 "Price: %f\t" +
                 "Commission: %f\t" +
                 "Agent: %s\t",
+                visibility,
                 this.typeOfBusiness.toString(),
                 this.property.toString(),
                 this.price,

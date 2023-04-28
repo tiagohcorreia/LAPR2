@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DisplayAnnouncementsController {
     Repositories repositories = Repositories.getInstance();
-    AnnouncementRepository announcementRepository = repositories.getListingRepository();
+    AnnouncementRepository announcementRepository = repositories.getAnnouncementRepository();
 
     public List<List<Object>> getAvailableFields(){
         return this.announcementRepository.getAvailableFields();

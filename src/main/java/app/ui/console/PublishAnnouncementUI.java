@@ -11,7 +11,7 @@ public class PublishAnnouncementUI {
 
     public PublishAnnouncementUI(){
         scanner = new Scanner(System.in);
-        controller = new PublishAnnouncementController();
+        //controller = new PublishAnnouncementController();
     }
 
     public void run() {
@@ -25,7 +25,7 @@ public class PublishAnnouncementUI {
 
             switch (option){
                 case "1":
-                    publishAnnouncement();
+                    //publishAnnouncement();
                     break;
                 case "2":
                     exit = true;
@@ -38,5 +38,5 @@ public class PublishAnnouncementUI {
         scanner.close();
     }
 
-    private void publishAnnouncement()
+    //private void publishAnnouncement()
 }

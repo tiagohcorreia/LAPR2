@@ -58,7 +58,7 @@ public class Repositories {
         return instance;
     }
 
-    public AnnouncementRepository getListingRepository() {return announcementRepository;}
+    public AnnouncementRepository getAnnouncementRepository() {return announcementRepository;}
 
     public RegisterEmployeeRepository getEmployeeRepository() {return  employeeRepository;}
     public StateRepository getStateRepository() {return  stateRepository;}
