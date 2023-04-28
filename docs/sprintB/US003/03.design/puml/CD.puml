@@ -8,23 +8,23 @@ class Employee {
     - String address
     - String emailAddress
     - int telephoneNumber
-    - String agency
-    - verifyIfEmployeeDataIsNotNull()
-    + saveEmployee()
+    - Role role
+    - Agency agency
+
 
 }
 
 class RegeisterEmployeeUI {
 
     - controller
-    + registerEmployee()
+
 
 }
 
 class RegeisterEmployeeController {
 
     - employeeRepository
-    + getRole()
+    + getRolesAsList()
     + getAgency()
     + createEmployee()
 }
@@ -65,10 +65,10 @@ Interface Runnable {
 }
 
 Runnable -left-|> RegeisterEmployeeUI
-RegeisterEmployeeUI --> RegeisterEmployeeController
-RegeisterEmployeeController --> Employee
-Employee --> Role
-Employee --> Agency
+RegeisterEmployeeUI ..> RegeisterEmployeeController
+RegeisterEmployeeController ..> Employee
+Employee --* Role
+Employee --* Agency
 Employee --> EmployeeRepository
 
 

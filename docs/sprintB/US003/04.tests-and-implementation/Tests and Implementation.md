@@ -2,17 +2,198 @@
 
 # 4. Tests 
 
-**Test 1:** Check that it is not possible to create an instance of the Employee class with null values. 
+**Tests for Employee Name:** Check that it is not possible to create an instance of the Employee class with null values. 
 
+	@DisplayName("Ensure Empty Employee Name Fails")
+    @Test
+    void EnsureNullEmployeeNameFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            e1.setName("");
+        });
+    }
+
+     @DisplayName("Ensure Null Employee Name Fails")
+    @Test
+    void EnsureEmptyEmployeeNameFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            e1.setName(null);
+        });
+    }
 	
-	
 
-**Test 2:**  
+**Tests for Employee Passport Number:**
 
-	
+        @DisplayName("Ensure Negative Employee Passport Number Fails")
+        @Test
+        void EnsureNegativeEmployeePassportNumberFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", -12345678 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+
+            assertNotNull(e1);
+        });
+    }
+
+    @DisplayName("Ensure Employee Passport Number with 10 digits Fails")
+    @Test
+    void EnsureEmployeePassportNumberWith10DigitsFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 1234567891 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            assertNotNull(e1);
+        });
+    }
+
+    @DisplayName("Ensure Employee Passport Number with 8 digits Fails")
+    @Test
+    void EnsureEmployeePassportNumberWith8DigitsFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 12345678 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            assertNotNull(e1);
+        });
+    }
+
+**Tests for Employee Tax Number:**  
+
+       @DisplayName("Ensure Negative Employee Tax Number fails")
+       @Test
+       void EnsureNegativeEmployeeTaxNumberFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789 , -23456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            assertNotNull(e1);
+        });
+    }
+
+    @DisplayName("Ensure Employee Passport Number with 10 digits Fails")
+    @Test
+    void EnsureEmployeeTaxNumberWith10DigitsFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789 , 1234567891, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            assertNotNull(e1);
+        });
+    }
+
+    @DisplayName("Ensure Employee Passport Number with 8 digits Fails")
+    @Test
+    void EnsureEmployeeTaxNumberWith8DigitsFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789 , 12345678, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            assertNotNull(e1);
+        });
+    }
+
+**Tests for Employee Address:**  
+
+       @DisplayName("Ensure Empty Employee Address Fails")
+       @Test
+       void EnsureEmptylEmployeeAddressFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            e1.setAddress("");
+        });
+    }
+
+    @DisplayName("Ensure Null Employee Address Fails")
+    @Test
+    void EnsureNullEmployeeAddressFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            e1.setAddress(null);
+        });
+    }
 
 
-*It is also recommended to organize this content by subsections.* 
+**Tests for Employee E-mail:**  
+
+    @DisplayName("Ensure Null Employee E-mail Address Fails")
+    @Test
+    void EnsureNullEmployeeEmailAddressFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            e1.setEmailAdress(null);
+        });
+    }
+
+    @DisplayName("Ensure Empty Employee E-mail Address Fails")
+    @Test
+    void EnsureEmptyEmployeeEmailAddressFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            e1.setEmailAdress("");
+        });
+    }
+
+    @DisplayName("Ensure Employee E-mail Address Without @ Fails")
+    @Test
+    void EnsureNullEmployeeEmailAddressWithoutAnArrobaFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "employee123", 1234567891, Role.AGENT, Agency.AGENCY1);
+            e1.setAddress("employee123");
+        });
+    }
+
+
+**Tests for Employee Telephone Number:**  
+
+    @DisplayName("Ensure Negative Employee Telephone Number fails")
+    @Test
+    void EnsureNegativeEmployeeTelephoneNumberFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", -234567891, Role.AGENT, Agency.AGENCY1);
+            assertNotNull(e1);
+        });
+    }
+
+    @DisplayName("Ensure Employee Telephone Number with 9 digits fails")
+    @Test
+    void EnsureEmployeeTelephoneNumberWith9DigitsFails() {
+
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", 123456789, Role.AGENT, Agency.AGENCY1);
+            assertNotNull(e1);
+        });
+    }
+
+    @DisplayName("Ensure Employee Telephone Number with 11 digits fails")
+    @Test
+    void EnsureEmployeeTelephoneNumberWith11DigitsFails() {
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", 12_345_678_910L, Role.AGENT, Agency.AGENCY1);
+            assertNotNull(e1);
+        });
+    }
 
 # 5. Construction (Implementation)
 
@@ -49,27 +230,29 @@ public class RegisterEmployeeUI implements Runnable {
         Integer telephoneNumber = Utils.readIntegerFromConsole("Insert Telephone Number: ");
 
         //Role
-        String Role = this.controller.getRole();
-        Integer pos1 = Utils.readIntegerFromConsole("Choose a Role for the Employee: ");
+        List<Role> x = this.controller.getRolesAsList();
+        Utils.showList(x, "Roles");
+        Integer posRole = Utils.readIntegerFromConsole("Choose a Role for the Employee: ");
 
         //Agency
-        String Agency = this.controller.getAgency();
-        Integer pos2 = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");
+        List<Agency> y = this.controller.getAgency();
+        Utils.showList(y, "Agency");
+        Integer posAgency = Utils.readIntegerFromConsole("Choose a Agency for the Employee:
 
 
         int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
         if (optValidation == 1) {
-            /*this.controller.createEmployee(emplyeeName, employeePassportNumber,
-                    address, address, eMail, telephoneNumber,role,agency);*/
+            
+            this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber, posRole, posAgency);
 
             System.out.println("Employee name: " + emplyeeName);
             System.out.println("Employee Passport Number: " + employeePassportNumber);
             System.out.println("Employee Address: " + address);
             System.out.println("Employee E-mail: " + eMail);
             System.out.println("Employee Telephone Number: " + telephoneNumber);
-            //System.out.println("Employee Role: " + );
-            //System.out.println("Employee Agency: " + );
+            System.out.println("Employee Role: " + Role.getRoleById(posRole));
+            System.out.println("Employee Agency: " + Agency.getAgencyById(posAgency));
 
         } else {
             System.err.println("Operation Canceled!");
@@ -91,17 +274,31 @@ public class RegisterEmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
-    public String getRole() {
-        return Role.asString();
+    public List<Role> getRolesAsList() {
+        return Arrays.stream(Role.values()).toList();
     }
 
-    public String getAgency() {
-        return Agency.asString();
+    public List<Agency> getAgency() {
+        return Arrays.stream(Agency.values()).toList();
     }
 
-    public void createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
-                               int telephoneNumber, Role role, Agency agency) {
 
+    public String createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
+                                 long telephoneNumber, Integer posRole, Integer posAgency)  {
+
+        Employee newEmployee = new Employee(employeeName, passportNumber, taxNumber, address, eMail, telephoneNumber,
+                Role.getRoleById(posRole), Agency.getAgencyById(posAgency));
+
+        try {
+
+            this.employeeRepository.saveEmployee(newEmployee);
+            System.out.println();
+            return newEmployee.toString();
+
+        } catch (Exception e) {
+
+            throw new IllegalStateException(e.getMessage().toString());
+        }
     }
     }
 
@@ -117,19 +314,17 @@ public class Employee {
     private int taxNumber;
     private String address;
     private String emailAdress;
-    private int telephoneNumber;
+    private long telephoneNumber;
     private Role role;
     private Agency agency;
 
 
-    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAdress, int telephoneNumber, Role role, Agency agency) {
+    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAdress, long telephoneNumber, Role role, Agency agency) {
 
-        verifyIfEmployeeDataIsNotNull(name, passportNumber, taxNumber, address, emailAdress, telephoneNumber);
-
-        this.name = name;
+        this.name = setName(name);
         this.passportNumber = setPassportNumber(passportNumber);
         this.taxNumber = setTaxNumber(taxNumber);
-        this.address = address;
+        this.address = setAddress(address);
         this.emailAdress = setEmailAdress(emailAdress);
         this.telephoneNumber = setTelephoneNumber(telephoneNumber);
         this.role = role;
@@ -159,7 +354,7 @@ public class Employee {
         return emailAdress;
     }
 
-    public int getTelephoneNumber() {
+    public long getTelephoneNumber() {
         return telephoneNumber;
     }
 
@@ -171,58 +366,87 @@ public class Employee {
         return agency;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String setName(String name) {
+
+        if (name == null) {
+
+            throw new NullPointerException("Employee name can't be null");
+
+        } else if (name.trim().isEmpty()) {
+
+            throw new IllegalArgumentException("Employee name must be filled");
+
+        }
+        return name;
     }
 
     public int setPassportNumber(int passportNumber) {
 
-        if(Integer.toString(passportNumber).length() != 9) {
+        if (passportNumber < 0) {
+
+            throw new IllegalArgumentException("Passport number can't be negative");
+
+        } else if (passportNumber >= 100000000 && passportNumber <= 999999999) {
+
             throw new IllegalArgumentException("Passport number must have 9 digits.");
         }
-
-        return passportNumber = passportNumber;
+        return passportNumber;
     }
 
     public int setTaxNumber(int taxNumber) {
 
-        if(Integer.toString(taxNumber).length() != 9) {
-
-            throw new IllegalArgumentException("Tax Number must have 9 digits");
-
-        } else if(telephoneNumber < 0) {
+        if (taxNumber < 0) {
 
             throw new IllegalArgumentException("Tax Number can't be negative");
-        }
 
-        return this.taxNumber = taxNumber;
+        } else if (taxNumber >= 100000000 && taxNumber <= 999999999) {
+
+            throw new IllegalArgumentException("Tax Number must have 9 digits");
+        }
+        return taxNumber;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public String setAddress(String address) {
+
+        if (address == null) {
+
+            throw new IllegalArgumentException("Employee address can't be null");
+
+        } else if (address.trim().isEmpty()) {
+
+            throw new IllegalArgumentException("Employee address must be filled");
+        }
+        return address;
     }
 
     public String setEmailAdress(String emailAdress) {
 
-        if(!emailAdress.contains("@")) {
-            throw new IllegalArgumentException("Invalid E-mail address.");
-        }
+        if (emailAdress == null) {
 
-        return this.emailAdress = emailAdress;
+            throw new IllegalArgumentException("Employee name can't be null");
+
+        } else if (emailAdress.trim().isEmpty()) {
+
+            throw new IllegalArgumentException("Employee name must be filled");
+
+        } else if (!emailAdress.contains("@")) {
+
+            throw new IllegalArgumentException("E-mail address must have @");
+        }
+        return emailAdress;
     }
 
-    public int setTelephoneNumber(int telephoneNumber) {
+    public long setTelephoneNumber(long telephoneNumber) {
 
-        if(Integer.toString(telephoneNumber).length() != 10) {
-
-            throw new IllegalArgumentException("Telephone Number must have 10 digits");
-
-        } else if(telephoneNumber < 0) {
+        if (telephoneNumber < 0) {
 
             throw new IllegalArgumentException("Telephone Number can't be negative");
-        }
 
-        return this.telephoneNumber = telephoneNumber;
+        } else if (telephoneNumber >= 1_000_000_000L && telephoneNumber <= 9_999_999_999L) {
+
+            throw new IllegalArgumentException("Telephone Number must have 10 digits");
+        }
+        return telephoneNumber;
     }
 
     public void setRole(Role role) {
@@ -235,7 +459,9 @@ public class Employee {
 
     @Override
     public String toString() {
+
         final StringBuilder sb = new StringBuilder("Employee{ ");
+
         sb.append("name='").append(name).append('\'');
         sb.append(", PassportNumber=").append(passportNumber);
         sb.append(", taxNumber=").append(taxNumber);
@@ -245,6 +471,7 @@ public class Employee {
         sb.append(", role=").append(role);
         sb.append(", agency=").append(agency);
         sb.append('}');
+
         return sb.toString();
     }
 
@@ -261,90 +488,17 @@ public class Employee {
         return Objects.hash(name, passportNumber, taxNumber, address, emailAdress, telephoneNumber, role, agency);
     }
 
-    private void verifyIfEmployeeDataIsNotNull(String name, int passportNumber, int taxNumber, String address, String emailAdress, int telephoneNumber) {
+    /*private void verifyIfEmployeeDataIsNotNull(String name, int passportNumber, int taxNumber, String address, String emailAdress, long telephoneNumber) {
 
-        if (name == null || passportNumber == 0 || taxNumber == 0 || address == null || emailAdress == null || telephoneNumber == 0) {
+        if (name.trim().isEmpty() || Integer.toString(passportNumber).trim().isEmpty() || Integer.toString(taxNumber).trim().isEmpty() || address.trim().isEmpty() || emailAdress.trim().isEmpty() || Long.toString(telephoneNumber).trim().isEmpty()) {
             throw new NullPointerException("Employee data can't be empty. Please fill all the required fields.");
         }
-    }
-}
-```
 
-## Enum Role
+        if (name.length() < 1) {
 
-```java
-public enum Role {
-
-    ADMNISTRATOR, MANAGER, AGENT;
-
-    public static String asString() {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("0").append(ADMNISTRATOR.toString()).append("\n");
-        stringBuilder.append("1").append(MANAGER.toString()).append("\n");
-        stringBuilder.append("2").append(AGENT.toString()).append("\n");
-
-        return stringBuilder.toString();
-    }
-
-    public static List<Role> getRolesAsList() {
-
-        List<Role> roles = new ArrayList<>();
-
-        roles.add(ADMNISTRATOR);  //0
-        roles.add(MANAGER);      //1
-        roles.add(AGENT);       //2
-
-        return roles;
-    }
-
-    public static Role getRoleByID(int position) {
-
-        List<Role> aux = getRolesAsList();
-
-        return aux.get(position);
-    }
-
-
-}
-
-```
-
-## Enum Agency
-
-```java
-public enum Agency {
-
-    AGENCY1, AGENCY2, AGENCY3;
-
-    public static String asString() {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("0").append(AGENCY1.toString()).append("\n");
-        stringBuilder.append("1").append(AGENCY2.toString()).append("\n");
-        stringBuilder.append("2").append(AGENCY3.toString()).append("\n");
-
-        return stringBuilder.toString();
-    }
-
-    public static List<Agency> getAgencyAsList() {
-
-        List<Agency> agency = new ArrayList<>();
-
-        agency.add(AGENCY1); //0
-        agency.add(AGENCY2); //1
-        agency.add(AGENCY3); //2
-
-        return agency;
-    }
-
-    public static Agency getRolebyID(int position) {
-
-        List<Agency> aux = getAgencyAsList();
-
-        return aux.get(position);
-    }
-
+            throw new NullPointerException("Employee data can't be empty. Please fill all the required fields.");
+        }
+    }*/
 }
 
 ```

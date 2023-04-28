@@ -6,20 +6,23 @@ activate UR
 UR -> SYS: starts listing announcements
 activate SYS
 return shows available fields and requests data selection (buy/rent, type of property, no. of rooms)
-deactivate SYS
 
 alt
-    loop
     UR -> SYS: selects required data (buy/rent, type of property, no. of rooms)
+    activate SYS
     UR <-- SYS: shows matching announcements
-    end
+    deactivate SYS
 else
     UR -> SYS: doesn't select any data
+    activate SYS
     UR <-- SYS: shows all announcements
+    deactivate SYS
 end
 loop
     UR -> SYS: selects sorting order (price and/or location)
+    activate SYS
     UR <-- SYS: displays sorted data as requested
+    deactivate SYS
 end
 
 

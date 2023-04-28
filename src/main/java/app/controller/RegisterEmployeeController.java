@@ -26,7 +26,7 @@ public class RegisterEmployeeController {
 
 
     public String createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
-                                 int telephoneNumber, Integer posRole, Integer posAgency) {
+                                 long telephoneNumber, Integer posRole, Integer posAgency)  {
 
         Employee newEmployee = new Employee(employeeName, passportNumber, taxNumber, address, eMail, telephoneNumber,
                 Role.getRoleById(posRole), Agency.getAgencyById(posAgency));

@@ -1,73 +1,49 @@
 @startuml
 class Administrator {
-  +requestStateData()
-  +requestCityData()
-  +requestDistrictData()
-  +requestStreetData()
-  +requestZipCodeData()
-  +confirmOperationSuccess()
+
 }
 
-class System {
-  +requestStateData()
-  +requestCityData()
-  +requestDistrictData()
-  +requestStreetData()
-  +requestZipCodeData()
-  +confirmOperationSuccess()
+class Location{
+-String state
+-String city
+-String district
+-String street
+-int zipCode
++getState()
++getZipcode()
++getCity()
++getDistrict()
++getStreet()
+
+
 }
 
-class State {
-  -name: String
-    -cities: Set<City>
-    +getName(): String
-    +setName(name: String): void
-    +addCity(city: City): void
-    +removeCity(city: City): void
-    +getCities(): Set<City>
-    +saveState(): void
+class State{
+name
 }
 
-class City {
-  -name: String
-  -districts: Set<District>
-  +getName(): String
-  +setName(name: String): void
-  +addDistrict(district: District): void
-  +removeDistrict(district: District): void
-  +getDistricts(): Set<District>
+class City{
+name
 }
 
-class District {
-  -name: String
-  -streets: Set<Street>
-  +getName(): String
-  +setName(name: String): void
-  +addStreet(street: Street): void
-  +removeStreet(street: Street): void
-  +getStreets(): Set<Street>
+class District{
+name
 }
 
-class Street {
-  -name: String
-  -zipCodes: Set<ZipCode>
-  +getName(): String
-  +setName(name: String): void
-  +addZipCode(zipCode: ZipCode): void
-  +removeZipCode(zipCode: ZipCode): void
-  +getZipCodes(): Set<ZipCode>
+class Street{
+string
 }
 
-class ZipCode {
-  -code: String
-  +getCode(): String
-  +setCode(code: String): void
+class Zipcode{
+number
 }
 
-Administrator --> System
-System "1" --> "0..1" State
-State "1" --> "0..*" City
-City "1" --> "0..*" District
-District "1" --> "0..*" Street
-Street "1" --> "0..*" ZipCode
+
+Administrator "1" -- "*" Location: creates >
+Location "*" -- "*" State: contains >
+Location "*" -- "*" City: contains >
+Location "*" -- "*" District: contains >
+Location "*" -- "*" Street: contains >
+Location "*" -- "*" Zipcode: contains >
+
 @enduml

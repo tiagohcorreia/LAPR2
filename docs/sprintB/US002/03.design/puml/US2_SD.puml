@@ -9,11 +9,14 @@ autonumber
 actor "Agent" as AG
 participant ":PublishAnnouncementUI" as UI
 participant ":PublishAnnouncementController" as CTRL
-participant ":Repositories" as RepositorySingleton
+participant "new Property\n:Property" as Property
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
 participant "repositories\n:Repositories" as REP
 participant ":AnnouncementRepository" as AnnouncementREP
-participant ":Property" as Property
-participant ":Announcement" as Announcement
+participant "new Announcement\n:Announcement" as Announcement
+
 
 activate AG
 
@@ -24,54 +27,101 @@ activate AG
 
         AG -> UI : select the property type
 
+        UI --> AG : presents the data to be\n filled in by the type of porperty
+
+        AG -> UI : insert the requested data (size, location, distance \nfrom the city center, price, commission)
+
+        UI --> AG : validate data
+
+        AG -> UI : submits data
+
+
                UI -> CTRL** : create
 
-               UI -> CTRL : Property()
+               UI -> CTRL : createAnnouncement((Business,size, location,\n distance from the city \n center, price, commission))
 
-                 activate CTRL
+               CTRL -> CTRL : getEmployeeFromSession()
+                           activate CTRL
 
-                  CTRL -> RepositorySingleton : getInstance()
-                  activate RepositorySingleton
-
-                  RepositorySingleton --> CTRL: repositories
-                  deactivate RepositorySingleton
-
-                   CTRL -> REP : getPropertyRepository()
-                       activate REP
-
-                        REP --> CTRL: PropertyRepository
-                          deactivate REP
-
-                           CTRL -> PropertyREP : getProperty()
-                             activate PropertyREP
-
-                               PropertyREP --> CTRL: Property
-                                 deactivate PropertyREP
+                               CTRL -> _APP: getInstance()
+                               activate _APP
+                                   _APP -> CTRL: appSession
+                               deactivate _APP
 
 
-                   CTRL --> UI : Property
+                               CTRL -> APP: getCurrentSession()
+                               activate APP
 
-                   UI --> AG : presents the data to be\n filled in by the type of porperty
+                                   APP --> CTRL: currentSession
+                               deactivate APP
 
-                   AG -> UI : insert the requested data (size, location, distance \nfrom the city center, price, commission)
+                               CTRL -> SESSAO: email = getUserEmail()
+                               activate SESSAO
 
-                   UI --> AG : validate data
-
-                   AG -> UI : submits data
-
-                   UI -> CTRL : createAnnouncement (size, location,\n distance from the city \n center, price, commission)
-
-                CTRL -> AnnouncementREP: createAnnouncement(size, location,\n distance from the city \n center, price, commission)
-            activate AnnouncementREP
-
-                AnnouncementREP -> Announcement**: create(size, location,\n distance from the city \n center, price, commission)
-                AnnouncementREP -> AnnouncementREP: addAnnouncement (Announcement)
+                                   SESSAO --> CTRL: email
+                               deactivate SESSAO
 
 
+                               CTRL -> REP: getAgencyRepository(email)
+                               activate REP
+
+                                   REP --> CTRL:AgencyRepository
+                               deactivate REP
+
+
+                               CTRL -> AgencyRepository: getAgencyByAgentEmail(email)
+                               activate AgencyRepository
+
+                                   loop [for each Agency
+                                       AgencyRepository -> Agency : anyAgentHasEmail(email)
+                                       activate Agency
+
+                                            Agency --> AgencyRepository : true/false
+                                       deactivate Agency
+                                   end
+                                   AgencyRepository --> CTRL : Agency
+                               deactivate AgencyRepository
+
+                               CTRL -> Agency: getAgencyByEmail(email)
+                               activate Agency
+
+                                   Agency --> CTRL : Agent
+                               deactivate Agency
+
+                               CTRL --> CTRL : Agent
+
+
+
+
+
+                   CTRL -> Property** : create
+
+                   activate Property
+                   Property -> Property: validateProperty(Property)
+
+                   Property -> CTRL: Property
+                   deactivate Property
+
+                CTRL -> AnnouncementREP**: createAnnouncement(Business,size, location,\n distance from the city \n center, price, commission, Agent, Agency))
                 activate AnnouncementREP
-                    AnnouncementREP -> AnnouncementREP: validateAnnouncement(Announcement))
-                    activate AnnouncementREP
-                        AnnouncementREP --> AnnouncementREP
+
+            AnnouncementREP -> Announcement**: create(Announcement)
+
+            activate Announcement
+
+            Announcement -> Announcement: validateAnnouncement(Announcement)
+
+            Announcement -> AnnouncementREP: Announcement(Announcement)
+
+            deactivate Announcement
+
+
+               activate AnnouncementREP
+                   AnnouncementREP -> AnnouncementREP: validateAnnouncement(Announcement))
+                   activate AnnouncementREP
+                    AnnouncementREP -> AnnouncementREP: addAnnouncement (Announcement)
+
+                     AnnouncementREP --> AnnouncementREP
                     deactivate AnnouncementREP
 
                     AnnouncementREP --> AnnouncementREP

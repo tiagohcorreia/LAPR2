@@ -47,6 +47,9 @@ public class Repositories {
     private static final app.domain.repository.Repositories instance = new app.domain.repository.Repositories();
     AnnouncementRepository announcementRepository = new AnnouncementRepository();
     RegisterEmployeeRepository employeeRepository = new RegisterEmployeeRepository();
+    StateRepository stateRepository = new StateRepository();
+    DistrictRepository districtRepository = new DistrictRepository();
+    CityRepository cityRepository = new CityRepository();
 
     private Repositories() {
     }
@@ -55,8 +58,11 @@ public class Repositories {
         return instance;
     }
 
-    public AnnouncementRepository getListingRepository() {return announcementRepository;}
+    public AnnouncementRepository getAnnouncementRepository() {return announcementRepository;}
 
     public RegisterEmployeeRepository getEmployeeRepository() {return  employeeRepository;}
+    public StateRepository getStateRepository() {return  stateRepository;}
+    public DistrictRepository getDistrictRepository() {return  districtRepository;}
+    public CityRepository getCityRepository() {return  cityRepository;}
 
 }

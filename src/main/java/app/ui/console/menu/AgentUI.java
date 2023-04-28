@@ -1,20 +1,24 @@
-package app.ui.console;
+package app.ui.console.menu;
 
 import app.controller.PublishAnnouncementController;
+import app.domain.repository.AnnouncementRepository;
+import app.ui.console.PublishAnnouncementUI;
 
 import java.util.Scanner;
 
-public class PublishAnnouncementUI {
+public class AgentUI{
 
     private Scanner scanner;
-    private PublishAnnouncementController controller;
 
-    public PublishAnnouncementUI(){
-        scanner = new Scanner(System.in);
-        //controller = new PublishAnnouncementController();
+
+    public AgentUI() {
+        Scanner scanner = new Scanner(System.in);
+
+
     }
 
     public void run() {
+
         boolean exit = false;
         do {
             System.out.println("Hello, Agent");
@@ -25,7 +29,7 @@ public class PublishAnnouncementUI {
 
             switch (option){
                 case "1":
-                    //publishAnnouncement();
+                   new PublishAnnouncementUI();
                     break;
                 case "2":
                     exit = true;
@@ -37,6 +41,4 @@ public class PublishAnnouncementUI {
         } while (!exit);
         scanner.close();
     }
-
-    //private void publishAnnouncement()
 }
