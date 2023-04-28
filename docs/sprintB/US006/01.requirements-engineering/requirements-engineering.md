@@ -37,9 +37,9 @@ In the USA, the addresses will not include municipalities or parishes.
 
 
 ### 1.3. Acceptance Criteria
-•	**AC1:** A state must be created first before you can specify a district.
-•	**AC2:** A district must be created first before you can specify a city.
-•	**AC3:** A city must be created first before you can specify a street.
+•	**AC1:** A location must not have any null variables.
+•	**AC2:** A zipcode must be exactly 5 numbers.
+•	**AC3:** A state must be exactly 2 capital letters.
 
 
 ### 1.4. Found out Dependencies
