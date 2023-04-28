@@ -14,7 +14,8 @@ class CreateLocationUI{
 
 class CreateLocationController {
     + createLocation(street,city,district,state,zipcode)
-   
+    +validate()
+
 }
 
 
@@ -22,7 +23,6 @@ class CreateLocationController {
 
 class Repository{
     +getLocation()
-    +validate()
     +save()
 }
 
