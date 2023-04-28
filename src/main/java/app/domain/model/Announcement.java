@@ -4,7 +4,6 @@ import app.domain.shared.TypeOfBusiness;
 import java.util.NoSuchElementException;
 
 public class Announcement {
-    private int listingID;
     private boolean visible;
     private float price;
     private float commission;
@@ -13,8 +12,7 @@ public class Announcement {
     private Employee agent;
 
     //Full constructor
-    public Announcement(int listingID, boolean visible, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
-        this.setListingID(listingID);
+    public Announcement(boolean visible, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
         this.setVisible(visible);
         this.setPrice(price);
         this.setCommission(commission);
@@ -36,18 +34,16 @@ public class Announcement {
 
     //Default constructor
     public Announcement(){
-        this.setListingID(0);
         this.setVisible(false);
         this.setPrice(0);
         this.setCommission(0);
-        this.setTypeOfBusiness(TypeOfBusiness.BUY);
+        this.setTypeOfBusiness(TypeOfBusiness.Sell);
         this.setProperty(null);
         this.setAgent(null);
     }
 
     //Copy constructor
     public Announcement(Announcement anotherAnnouncement){
-        this.setListingID(anotherAnnouncement.getListingID());
         this.setVisible(anotherAnnouncement.isVisible());
         this.setPrice(anotherAnnouncement.getPrice());
         this.setCommission(anotherAnnouncement.getCommission());
@@ -66,11 +62,7 @@ public class Announcement {
         else
             throw new NoSuchElementException("No entries found.");
     }
-    public int getListingID() {
-        return listingID;
-    }
 
-    public void setListingID(int listingID) { this.listingID = listingID; }
 
     public boolean isVisible() {
         return this.visible;
@@ -125,8 +117,6 @@ public class Announcement {
                 "Price: %f\t" +
                 "Commission: %f\t" +
                 "Agent: %s\t",
-                this.listingID,
-                "true",
                 this.typeOfBusiness.toString(),
                 this.property.toString(),
                 this.price,

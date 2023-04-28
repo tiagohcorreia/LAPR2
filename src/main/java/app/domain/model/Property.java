@@ -77,6 +77,8 @@ public abstract class Property {
         this.photographs = photographs;
     }
 
+    public int getNumberOfBedrooms(){ return -1; }
+
     //ToString()
     @Override
     public String toString() {

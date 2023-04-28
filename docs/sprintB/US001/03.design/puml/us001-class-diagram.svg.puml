@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+class Announcement{
+-float price
++getPrice():float
++getProperty():float
+}
+
+class Property{
+-float area
+}
+class House{
+-int numberOfBedrooms
+-boolean hasInhabitableLoft
++getNumberOfBedrooms():int
++getHasInhabitableLoft():boolean
+}
+class Apartment{
+-int numberOfBedroom
++getNumberOfBedrooms():int
+}
+class Land{
+
+}
+
+Announcement "1" -> Property: contains
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+@enduml

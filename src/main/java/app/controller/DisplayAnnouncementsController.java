@@ -6,7 +6,7 @@ import app.domain.repository.Repositories;
 
 import java.util.List;
 
-public class DisplayListingsController {
+public class DisplayAnnouncementsController {
     Repositories repositories = Repositories.getInstance();
     AnnouncementRepository announcementRepository = repositories.getListingRepository();
 
@@ -14,12 +14,12 @@ public class DisplayListingsController {
         return this.announcementRepository.getAvailableFields();
     }
 
-    public List<Announcement> getListings(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
-        return announcementRepository.getListings(typeOfBusiness, typeOfProperty, numberOfBedrooms);
+    public List<Announcement> getAnnouncements(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
+        return announcementRepository.getAnnouncements(typeOfBusiness, typeOfProperty, numberOfBedrooms);
     }
 
-    public List<Announcement> getAllVisibleListings(){
-        return announcementRepository.getAllVisibleListings();
+    public List<Announcement> getAllVisibleAnnouncements(){
+        return announcementRepository.getAllVisibleAnnouncements();
     }
 
 }
