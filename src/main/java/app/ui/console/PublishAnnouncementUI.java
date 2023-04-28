@@ -38,5 +38,5 @@ public class PublishAnnouncementUI {
         scanner.close();
     }
 
-    private void publishAnnouncement()
+    private void publishAnnouncement(){}
 }
