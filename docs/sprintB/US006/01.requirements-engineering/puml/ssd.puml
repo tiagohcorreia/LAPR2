@@ -13,51 +13,19 @@ OE -> ":System" : types requested data
 activate ":System"
 ":System" --> OE : confirms the data and asks for the data related to the City
 deactivate ":System"
-loop
 OE -> ":System" : types requested data
-
 activate ":System"
-":System" --> OE : confirms the data and asks if the admin wants to specify another city in the same state (y/n)
-
-end loop
-
-activate ":System"
-
-":System" --> OE : asks for the data related to the District
+":System" --> OE : confirms the data and asks for the data related to the District
 deactivate ":System"
-loop
 OE -> ":System" : types requested data
-
 activate ":System"
-":System" --> OE : confirms the data and asks if the admin wants to specify another district in the same city (y/n)
-
-end loop
-activate ":System"
-
-":System" --> OE : asks for the data related to the Street
+":System" --> OE : confirms the data and asks for the data related to the Street
 deactivate ":System"
-loop
 OE -> ":System" : types requested data
-
 activate ":System"
-":System" --> OE : confirms the data and asks if the admin wants to specify another street in the same district (y/n)
-
-end loop
-activate ":System"
-
-":System" --> OE : asks for the data related to the zipcode
+":System" --> OE : confirms the data and asks for the data related to the Zipcode
 deactivate ":System"
-loop
 OE -> ":System" : types requested data
-
-activate ":System"
-":System" --> OE : confirms the data and asks if the admin wants to specify another zipcode in the same district (y/n)
-
-end loop
-
 activate ":System"
 ":System" --> OE : confirm the success of the operation
-deactivate ":System"
-deactivate OE
-
 @enduml
