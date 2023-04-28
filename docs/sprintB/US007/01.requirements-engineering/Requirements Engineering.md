@@ -1,4 +1,4 @@
-# US 007 - As an unregistered user, I want to register in the system to buy, sell or rent properties 
+# US 007 - Register client
 
 ## 1. Requirements Engineering
 
