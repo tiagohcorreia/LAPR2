@@ -29,7 +29,7 @@ public class AgentUI{
 
             switch (option){
                 case "1":
-                   new PublishAnnouncementUI();
+                   new PublishAnnouncementUI(new PublishAnnouncementController(new AnnouncementRepository()));
                     break;
                 case "2":
                     exit = true;
@@ -41,4 +41,5 @@ public class AgentUI{
         } while (!exit);
         scanner.close();
     }
+
 }
