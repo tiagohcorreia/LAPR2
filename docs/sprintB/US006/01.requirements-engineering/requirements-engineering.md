@@ -52,14 +52,16 @@ In the USA, the addresses will not include municipalities or parishes.
 **Input Data:**
 > 
    * Street
-     City
-     District
-     State
-     Zipcode
+   *  City
+   * District
+   * State
+   * Zipcode
+    
 **Output Data:**
 
-  * Sucess of the operation
-    Error messages
+>
+   * Sucess of the operation
+     Error messages
     
 ### 1.6. System Sequence Diagram (SSD)
 
