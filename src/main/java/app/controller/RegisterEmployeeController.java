@@ -4,7 +4,6 @@ import app.domain.model.Agency;
 import app.domain.model.Employee;
 import app.domain.model.Role;
 import app.domain.repository.RegisterEmployeeRepository;
-import app.exceptions.NegativeNumberException;
 
 import java.util.Arrays;
 import java.util.List;
