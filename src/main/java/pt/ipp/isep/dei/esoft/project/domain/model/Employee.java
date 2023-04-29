@@ -9,12 +9,12 @@ public class Employee {
     private int taxNumber;
     private String address;
     private String emailAdress;
-    private long telephoneNumber;
+    private int telephoneNumber;
     private Role role;
     private Agency agency;
 
 
-    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAdress, long telephoneNumber, Role role, Agency agency) {
+    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAdress, int telephoneNumber, Role role, Agency agency) {
 
         this.name = setName(name);
         this.passportNumber = setPassportNumber(passportNumber);
@@ -81,9 +81,9 @@ public class Employee {
 
             throw new IllegalArgumentException("Passport number can't be negative");
 
-        } else if (passportNumber >= 100000000 && passportNumber <= 999999999) {
+        } else if (Integer.toString(passportNumber).trim().length() != 9) {
 
-            throw new IllegalArgumentException("Passport number must have 9 digits.");
+            throw new IllegalArgumentException("Passport Number must have 9 digits.");
         }
         return passportNumber;
     }
@@ -94,7 +94,7 @@ public class Employee {
 
             throw new IllegalArgumentException("Tax Number can't be negative");
 
-        } else if (taxNumber >= 100000000 && taxNumber <= 999999999) {
+        } else if (Integer.toString(passportNumber).trim().length() != 9) {
 
             throw new IllegalArgumentException("Tax Number must have 9 digits");
         }
@@ -131,13 +131,13 @@ public class Employee {
         return emailAdress;
     }
 
-    public long setTelephoneNumber(long telephoneNumber) {
+    public int setTelephoneNumber(int telephoneNumber) {
 
         if (telephoneNumber < 0) {
 
             throw new IllegalArgumentException("Telephone Number can't be negative");
 
-        } else if (telephoneNumber >= 1_000_000_000L && telephoneNumber <= 9_999_999_999L) {
+        } else if (Integer.toString(telephoneNumber).trim().length() != 10) {
 
             throw new IllegalArgumentException("Telephone Number must have 10 digits");
         }

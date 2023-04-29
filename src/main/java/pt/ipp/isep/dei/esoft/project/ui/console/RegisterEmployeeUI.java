@@ -19,67 +19,73 @@ public class RegisterEmployeeUI implements Runnable {
     @Override
     public void run() {
 
-        //Employee name
-        String emplyeeName = Utils.readLineFromConsole("Insert Employee name: ");
+        boolean success = true;
 
-        //Passport Number
-        Integer employeePassportNumber = Utils.readIntegerFromConsole("Insert Passport Number: ");
-
-        //TaxNumber
-        Integer taxNumber = Utils.readIntegerFromConsole("Insert Tax Number: ");
-
-        //Address
-        String address = Utils.readLineFromConsole("Insert Address: ");
-
-        //E-mail
-        String eMail = Utils.readLineFromConsole("Insert E-mail: ");
-
-        //Telephone Number
-        Integer telephoneNumber = Utils.readIntegerFromConsole("Insert Telephone Number: ");
-
-        //Role
-        List<Role> x = this.controller.getRolesAsList();
-        Utils.showList(x, "Roles");
-        Integer posRole = Utils.readIntegerFromConsole("Choose a Role for the Employee: ");
-
-        //Agency
-        List<Agency> y = this.controller.getAgency();
-        Utils.showList(y, "Agency");
-        Integer posAgency = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");
+        while (success) {
 
 
-        int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
+            //Employee name
+            String emplyeeName = Utils.readLineFromConsole("Insert Employee name: ");
 
-        if (optValidation == 1) {
+            //Passport Number
+            Integer employeePassportNumber = Utils.readIntegerFromConsole("Insert Passport Number: ");
 
-            try {
+            //TaxNumber
+            Integer taxNumber = Utils.readIntegerFromConsole("Insert Tax Number: ");
 
-                this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber, posRole, posAgency);
+            //Address
+            String address = Utils.readLineFromConsole("Insert Address: ");
 
-            } catch (IllegalArgumentException e) {
+            //E-mail
+            String eMail = Utils.readLineFromConsole("Insert E-mail: ");
 
-                e.getMessage();
-                System.err.println("Invalid data ");
+            //Telephone Number
+            Integer telephoneNumber = Utils.readIntegerFromConsole("Insert Telephone Number: ");
+
+            //Role
+            List<Role> x = this.controller.getRolesAsList();
+            Utils.showList(x, "Roles");
+            Integer posRole = Utils.readIntegerFromConsole("Choose a Role for the Employee: ");
+
+            //Agency
+            List<Agency> y = this.controller.getAgency();
+            Utils.showList(y, "Agency");
+            Integer posAgency = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");
 
 
-            } catch (NullPointerException e) {
+            int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
-                e.getMessage();
-                System.err.println("Data can't be null ");
+            if (optValidation == 1) {
 
+                try {
+
+                    this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber, posRole, posAgency);
+                    this.controller.sendEmail(emplyeeName,eMail);
+                    success = false;
+
+                    if(success) {
+
+                        System.out.println("Please insert Employee data again");
+                    }
+
+                } catch (IllegalArgumentException e) {
+
+                    System.err.println(e.getMessage());
+
+                }
+                System.out.println("Employee name: " + emplyeeName);
+                System.out.println("Employee Passport Number: " + employeePassportNumber);
+                System.out.println("Employee Address: " + address);
+                System.out.println("Employee E-mail: " + eMail);
+                System.out.println("Employee Telephone Number: " + telephoneNumber);
+                System.out.println("Employee Role: " + Role.getRoleById(posRole));
+                System.out.println("Employee Agency: " + Agency.getAgencyById(posAgency));
+
+            } else {
+
+                System.err.println("Operation Canceled!");
             }
 
-            System.out.println("Employee name: " + emplyeeName);
-            System.out.println("Employee Passport Number: " + employeePassportNumber);
-            System.out.println("Employee Address: " + address);
-            System.out.println("Employee E-mail: " + eMail);
-            System.out.println("Employee Telephone Number: " + telephoneNumber);
-            System.out.println("Employee Role: " + Role.getRoleById(posRole));
-            System.out.println("Employee Agency: " + Agency.getAgencyById(posAgency));
-
-        } else {
-
-            System.err.println("Operation Canceled!");
 
         }
 

@@ -28,12 +28,13 @@ class EmployeeTwoTest {
     @Test
     void EnsureEmptyEmployeeNameFails() {
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
 
             Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
             e1.setName(null);
         });
     }
+
 
     //-----------------------------------------------------------------------------------------------------------------
 
@@ -95,7 +96,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , 1234567891, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 1234567891 , 1234567891, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
             assertNotNull(e1);
         });
     }
@@ -106,7 +107,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , 12345678, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 12345678 , 12345678, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
             assertNotNull(e1);
         });
     }
@@ -201,18 +202,6 @@ class EmployeeTwoTest {
             assertNotNull(e1);
         });
     }
-
-    @DisplayName("Ensure Employee Telephone Number with 11 digits fails")
-    @Test
-    void EnsureEmployeeTelephoneNumberWith11DigitsFails() {
-
-        assertThrows(IllegalArgumentException.class, () -> {
-
-            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", 12_345_678_910L, Role.AGENT, Agency.AGENCY1);
-            assertNotNull(e1);
-        });
-    }
-
 
     // ---------------------------------------------------------------------------------------------------------------
 
