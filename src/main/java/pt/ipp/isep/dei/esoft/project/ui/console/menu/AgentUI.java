@@ -1,9 +1,9 @@
-/*
-package app.ui.console.menu;
 
-import app.controller.PublishAnnouncementController;
+package pt.ipp.isep.dei.esoft.project.ui.console.menu;
+
+import pt.ipp.isep.dei.esoft.project.application.controller.PublishAnnouncementController;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
-import app.ui.console.PublishAnnouncementUI;
+import pt.ipp.isep.dei.esoft.project.ui.console.PublishAnnouncementUI;
 
 import java.util.Scanner;
 
@@ -44,4 +44,4 @@ public class AgentUI{
     }
 
 }
-*/
+

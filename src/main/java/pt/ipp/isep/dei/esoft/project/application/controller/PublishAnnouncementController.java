@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/*public class PublishAnnouncementController {
+public class PublishAnnouncementController {
 
     private List<Announcement> announcements;
     private List<TypeOfProperty> typesOfProperty;
@@ -27,25 +27,25 @@ import java.util.List;
     DistrictRepository districtRepository = repositories.getDistrictRepository();
     CityRepository cityRepository = repositories.getCityRepository();
 
- /*   public PublishAnnouncementController(AnnouncementRepository announcementRepository) {
+    public PublishAnnouncementController(AnnouncementRepository announcementRepository) {
         this.announcementRepository = announcementRepository;
     }
 
 
-    public void createAnnouncement(TypeOfBusiness sellOrRent, int posTypeOfProperty, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
-                                   ArrayList<String> equipmentList,boolean hasBasement, boolean hasInhabitalLoft, SunExposure sunExposure,
-                                   int area, City location, int cityCentreDistance, float price, ArrayList<String> photographs, Employee agent){
+    public void createAnnouncement(TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
+                                   ArrayList<String> equipmentList,boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
+                                   int area, City location, int cityCentreDistance, float commission, float price, ArrayList<String> photographs, Employee agent){
         if (posTypeOfProperty == 2) {
-            Property property = new Apartment(area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipmentList);
-            Announcement announcement = new Announcement(false, price, 0, sellOrRent, property, agent);
+            Property property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);
+            Announcement announcement = new Announcement(true,  commission, price ,sellOrRent, property, agent);
             this.announcementRepository.createAnnouncement(announcement);
         } else if (posTypeOfProperty == 1) {
-            Property property = new House(area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipmentList, hasBasement, hasInhabitalLoft, sunExposure);
-            Announcement announcement = new Announcement(false, price, 0, sellOrRent, property, agent);
+            Property property = new House(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
+            Announcement announcement = new Announcement(true,  commission, price, sellOrRent, property, agent);
             this.announcementRepository.createAnnouncement(announcement);
         } else {
             Property property = new Land(area, location, cityCentreDistance, photographs);
-            Announcement announcement = new Announcement(false, price, 0, sellOrRent, property, agent);
+            Announcement announcement = new Announcement(true, commission, price, sellOrRent, property, agent);
             this.announcementRepository.createAnnouncement(announcement);
         }
 
@@ -53,7 +53,6 @@ import java.util.List;
     }
 
 
-    }
 
 
     public City getCity (String city){
@@ -86,6 +85,6 @@ import java.util.List;
         return employeeRepository.getEmployee(name);
     }
 
-} */
+}
 
 
