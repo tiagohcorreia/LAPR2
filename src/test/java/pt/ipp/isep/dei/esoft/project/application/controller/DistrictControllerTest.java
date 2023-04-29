@@ -1,8 +1,8 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import app.controller.DistrictController;
-import app.domain.model.District;
-import app.domain.repository.DistrictRepository;
+import pt.ipp.isep.dei.esoft.project.application.controller.DistrictController;
+import pt.ipp.isep.dei.esoft.project.domain.model.District;
+import pt.ipp.isep.dei.esoft.project.domain.repository.DistrictRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

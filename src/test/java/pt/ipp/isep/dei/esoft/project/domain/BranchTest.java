@@ -1,4 +1,5 @@
-package app.domain.model;
+package pt.ipp.isep.dei.esoft.project.domain;
+import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,13 +1,13 @@
-package app.controller;
+package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import app.domain.model.Agency;
-import app.domain.model.City;
-import app.domain.model.Employee;
-import app.domain.model.Role;
-import app.domain.repository.AnnouncementRepository;
-import app.domain.repository.CityRepository;
-import app.domain.repository.RegisterEmployeeRepository;
-import app.domain.repository.Repositories;
+import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
+import pt.ipp.isep.dei.esoft.project.domain.model.City;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+import pt.ipp.isep.dei.esoft.project.domain.model.Role;
+import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.CityRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.RegisterEmployeeRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

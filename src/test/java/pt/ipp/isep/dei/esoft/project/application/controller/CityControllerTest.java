@@ -1,8 +1,8 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import app.controller.CityController;
-import app.domain.model.City;
-import app.domain.repository.CityRepository;
+import pt.ipp.isep.dei.esoft.project.application.controller.CityController;
+import pt.ipp.isep.dei.esoft.project.domain.model.City;
+import pt.ipp.isep.dei.esoft.project.domain.repository.CityRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

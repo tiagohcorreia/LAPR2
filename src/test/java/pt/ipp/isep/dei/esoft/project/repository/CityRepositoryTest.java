@@ -1,7 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.repository;
 
-import app.domain.model.City;
-import app.domain.repository.CityRepository;
+import pt.ipp.isep.dei.esoft.project.domain.model.City;
+import pt.ipp.isep.dei.esoft.project.domain.repository.CityRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

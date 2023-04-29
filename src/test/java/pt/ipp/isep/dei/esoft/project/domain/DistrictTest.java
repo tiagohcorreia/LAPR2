@@ -1,7 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.domain;
 
-import app.domain.model.City;
-import app.domain.model.District;
+import pt.ipp.isep.dei.esoft.project.domain.model.City;
+import pt.ipp.isep.dei.esoft.project.domain.model.District;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,11 +1,15 @@
-package app.domain.model;
+package pt.ipp.isep.dei.esoft.project.domain;
+
+import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pt.ipp.isep.dei.esoft.project.domain.model.Role;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EmployeeTest {
+class EmployeeTwoTest {
 
     //Name
 

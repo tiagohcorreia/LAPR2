@@ -1,8 +1,8 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import app.controller.StateController;
-import app.domain.model.State;
-import app.domain.repository.StateRepository;
+import pt.ipp.isep.dei.esoft.project.application.controller.StateController;
+import pt.ipp.isep.dei.esoft.project.domain.model.State;
+import pt.ipp.isep.dei.esoft.project.domain.repository.StateRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

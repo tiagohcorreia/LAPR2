@@ -1,6 +1,9 @@
-package app.domain.model;
+package pt.ipp.isep.dei.esoft.project.domain;
 
-import app.domain.shared.SunExposure;
+import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
+import pt.ipp.isep.dei.esoft.project.domain.model.Property;
+import pt.ipp.isep.dei.esoft.project.domain.model.City;
+import pt.ipp.isep.dei.esoft.project.domain.model.House;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

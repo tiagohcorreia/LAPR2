@@ -1,4 +1,4 @@
-package app.controller;
+package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
