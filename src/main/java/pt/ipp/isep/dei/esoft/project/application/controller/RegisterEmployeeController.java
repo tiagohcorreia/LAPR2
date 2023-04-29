@@ -17,15 +17,11 @@ public class RegisterEmployeeController {
     }
 
     public List<Role> getRolesAsList() {
-        //TOFIX-STREAM
-        //return Arrays.stream(Role.values()).toList();
-        return null;
+        return Arrays.stream(Role.values()).toList();
     }
 
     public List<Agency> getAgency() {
-    //TOFIX-STREAM
-        //return Arrays.stream(Agency.values()).toList();
-        return null;
+        return Arrays.stream(Agency.values()).toList();
     }
 
 
