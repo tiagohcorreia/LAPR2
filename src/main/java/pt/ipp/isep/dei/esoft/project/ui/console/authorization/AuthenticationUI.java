@@ -1,4 +1,3 @@
-/*
 package pt.ipp.isep.dei.esoft.project.ui.console.authorization;
 
 
@@ -13,11 +12,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-*/
 /**
  * @author Paulo Maio pam@isep.ipp.pt
- *//*
-
+ */
 
 public class AuthenticationUI implements Runnable {
     private final AuthenticationController ctrl;
@@ -101,4 +98,3 @@ public class AuthenticationUI implements Runnable {
     }
 
 }
-*/
