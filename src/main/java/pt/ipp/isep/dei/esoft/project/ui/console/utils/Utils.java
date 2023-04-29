@@ -1,4 +1,4 @@
-/*package pt.ipp.isep.dei.esoft.project.ui.console.utils;
+package pt.ipp.isep.dei.esoft.project.ui.console.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-*//**
+/**
  * @author Paulo Maio pam@isep.ipp.pt
- *//*
+ */
 public class Utils {
 
     static public String readLineFromConsole(String prompt) {
@@ -133,4 +133,4 @@ public class Utils {
 
         return value - 1;
     }
-}*/
+}
