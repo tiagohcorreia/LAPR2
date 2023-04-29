@@ -6,8 +6,7 @@ skinparam shadowing false
 autonumber
 
 'hide footbox
-actor "Unregistered User" as UR
-participant ":DisplayAnnouncementsUI" as UI
+actor "Unregistered User" as UU
 participant ":DisplayAnnouncementsUI" as UI
 participant ":DisplayAnnouncementsController" as CTRL
 participant ":Repositories" as reposclass
@@ -19,10 +18,12 @@ participant ":Property" as prop
 
 
 
-activate UR
-UR -> UI: starts announcement announcements
+activate UU
+UU -> UI: starts announcement announcements
 activate UI
 UI -> CTRL**: create
+UI -> UI: availableFields =\ngetAvailableFields()
+activate UI
 UI -> CTRL: getAvailableFields()
 activate CTRL
 
@@ -53,12 +54,21 @@ end
 ARepo --> CTRL: availableFields
 deactivate ARepo
 
-CTRL -> UI: availableFields
+CTRL --> UI: availableFields
 deactivate CTRL
+deactivate UI
 
-UI --> UR: shows available fields and\nrequests data selection
+UI -> UI: displayAvailableFields(\navailableFields)
+activate UI
+deactivate UI
+
+UI -> UI: filterData = requestFilterData()
+activate UI
+deactivate UI
+
+UI --> UU: shows available fields and\nrequests data selection
 alt
-    UR -> UI: selects required data
+    UU -> UI: selects required data
     UI -> CTRL: getAnnouncements(businessType,\npropertyType, numberOfRooms)
     activate CTRL
     CTRL -> ARepo: getAnnouncements(businessType,\npropertyType, numberOfRooms)
@@ -97,9 +107,9 @@ alt
     deactivate ARepo
     CTRL --> UI: announcements
     deactivate CTRL
-    UI --> UR: shows matching announcements
+    UI --> UU: shows matching announcements
 else
-    UR -> UI: doesn't select any data
+    UU -> UI: doesn't select any data
     UI -> CTRL: getAllVisibleAnnouncements()
     activate CTRL
     CTRL -> ARepo: getAllVisibleAnnouncements()
@@ -115,13 +125,13 @@ else
 
     CTRL --> UI: announcements
     deactivate CTRL
-    UI --> UR: shows all announcements
+    UI --> UU: shows all announcements
 end 'ALT fragment end
 
 opt
-    UR -> UI: selects sorting order
+    UU -> UI: selects sorting order
     UI -> UI: sort(mode)
-    UI --> UR: displays sorted data
+    UI --> UU: displays sorted data
 end
 
 @enduml
