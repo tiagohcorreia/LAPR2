@@ -4,7 +4,7 @@ public enum TypeOfBusiness {
     SELL(1){
         @Override
         public String toString() {
-            return String.format("Rent");
+            return String.format("Sell");
         }
     }, RENT(2){
         @Override
