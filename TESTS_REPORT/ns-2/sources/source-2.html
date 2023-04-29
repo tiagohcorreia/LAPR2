@@ -1,0 +1,230 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Announcement</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Announcement (pt.ipp.isep.dei.esoft.project.domain.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Announcement</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/48)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.model;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
+&nbsp;
+&nbsp;import java.util.NoSuchElementException;
+&nbsp;
+&nbsp;public class Announcement {
+&nbsp;    private boolean visible;
+&nbsp;    private float price;
+&nbsp;    private float commission;
+&nbsp;    private TypeOfBusiness typeOfBusiness;
+&nbsp;    private Property property;
+&nbsp;    private Employee agent;
+&nbsp;
+&nbsp;    //Full constructor
+<b class="nc">&nbsp;    public Announcement(boolean visible, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {</b>
+<b class="nc">&nbsp;        this.setVisible(visible);</b>
+<b class="nc">&nbsp;        this.setPrice(price);</b>
+<b class="nc">&nbsp;        this.setCommission(commission);</b>
+<b class="nc">&nbsp;        this.setTypeOfBusiness(typeOfBusiness);</b>
+<b class="nc">&nbsp;        this.setProperty(property);</b>
+<b class="nc">&nbsp;        this.setAgent(agent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public float getCommission() {
+<b class="nc">&nbsp;        return commission;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCommission(float commission) {
+<b class="nc">&nbsp;        if (price &lt; 0){</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Invalid commission value.&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        this.commission = commission;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Default constructor
+<b class="nc">&nbsp;    public Announcement(){</b>
+<b class="nc">&nbsp;        this.setVisible(false);</b>
+<b class="nc">&nbsp;        this.setPrice(0);</b>
+<b class="nc">&nbsp;        this.setCommission(0);</b>
+<b class="nc">&nbsp;        this.setTypeOfBusiness(TypeOfBusiness.SELL);</b>
+<b class="nc">&nbsp;        this.setProperty(null);</b>
+<b class="nc">&nbsp;        this.setAgent(null);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Copy constructor
+<b class="nc">&nbsp;    public Announcement(Announcement anotherAnnouncement){</b>
+<b class="nc">&nbsp;        this.setVisible(anotherAnnouncement.isVisible());</b>
+<b class="nc">&nbsp;        this.setPrice(anotherAnnouncement.getPrice());</b>
+<b class="nc">&nbsp;        this.setCommission(anotherAnnouncement.getCommission());</b>
+<b class="nc">&nbsp;        this.setTypeOfBusiness(anotherAnnouncement.getTypeOfBusiness());</b>
+<b class="nc">&nbsp;        this.setProperty(anotherAnnouncement.getProperty());</b>
+<b class="nc">&nbsp;        this.setAgent(anotherAnnouncement.getAgent());</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Announcement getAnnouncement() { return new Announcement(this); }</b>
+&nbsp;
+&nbsp;    public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
+<b class="nc">&nbsp;        if (this.isVisible() &amp;&amp; typeOfBusiness.equals(this.typeOfBusiness.toString()) &amp;&amp; typeOfProperty.equals(this.property.getClass().getSimpleName()) &amp;&amp; numberOfBedrooms == 300){</b>
+&nbsp;        //if (this.isVisible() &amp;&amp; typeOfBusiness.equals(this.typeOfBusiness.toString()) &amp;&amp; typeOfProperty.equals(this.property.getClass().getSimpleName()) &amp;&amp; numberOfBedrooms == this.property.getBedrooms()){
+<b class="nc">&nbsp;            return new Announcement(this);</b>
+&nbsp;        }
+&nbsp;        else
+<b class="nc">&nbsp;            throw new NoSuchElementException(&quot;No entries found.&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public boolean isVisible() {
+<b class="nc">&nbsp;        return this.visible;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setVisible(boolean visible) {
+<b class="nc">&nbsp;        this.visible = visible;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public float getPrice() {
+<b class="nc">&nbsp;        return price;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPrice(float price) {
+<b class="nc">&nbsp;        if (price &lt; 0){</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Invalid price value.&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        this.price = price;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public TypeOfBusiness getTypeOfBusiness() {
+<b class="nc">&nbsp;        return typeOfBusiness;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTypeOfBusiness(TypeOfBusiness typeOfBusiness) {
+<b class="nc">&nbsp;        this.typeOfBusiness = typeOfBusiness;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Property getProperty() {
+<b class="nc">&nbsp;        return property;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setProperty(Property property) {
+<b class="nc">&nbsp;        this.property = property;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Employee getAgent() {
+<b class="nc">&nbsp;        return agent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setAgent(Employee agent) {
+<b class="nc">&nbsp;        this.agent = agent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //TO-FIX
+&nbsp;    public String toString(){
+<b class="nc">&nbsp;        String visibility = (this.visible) ? &quot;yes&quot; : &quot;no&quot;;</b>
+<b class="nc">&nbsp;        return String.format(&quot;Announcement - &quot; +</b>
+&nbsp;                &quot;Visible: %s\t&quot; +
+&nbsp;                &quot;Business Type: %s\t&quot; +
+&nbsp;                &quot;Property: %s\t&quot; +
+&nbsp;                &quot;Price: %f\t&quot; +
+&nbsp;                &quot;Commission: %f\t&quot; +
+&nbsp;                &quot;Agent: %s\t&quot;,
+&nbsp;                visibility,
+<b class="nc">&nbsp;                this.typeOfBusiness.toString(),</b>
+<b class="nc">&nbsp;                this.property.toString(),</b>
+<b class="nc">&nbsp;                this.price,</b>
+<b class="nc">&nbsp;                this.commission,</b>
+<b class="nc">&nbsp;                this.agent.toString());</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-29 21:04</div>
+</div>
+</body>
+</html>
