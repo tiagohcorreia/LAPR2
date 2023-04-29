@@ -1,0 +1,223 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Property</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Property (pt.ipp.isep.dei.esoft.project.domain.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Property</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/16)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/40)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.model;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;
+&nbsp;public abstract class Property {
+&nbsp;
+&nbsp;    private static final float DEFAULT_AREA = 1;
+<b class="nc">&nbsp;    private static final City DEFAULT_LOCATION = new City();</b>
+&nbsp;    private static final float DEFAULT_CITY_CENTER_DISTANCE = 10;
+<b class="nc">&nbsp;    private static final ArrayList&lt;String&gt; DEFAULT_PHOTOGRAPHS = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;    private float area;
+&nbsp;    City location;
+&nbsp;    float cityCentreDistance;
+&nbsp;    private ArrayList&lt;String&gt; photographs;
+&nbsp;
+&nbsp;
+&nbsp;    //Full constructor
+<b class="nc">&nbsp;    public Property(float area, City location, float cityCentreDistance, ArrayList&lt;String&gt; photographs) {</b>
+&nbsp;
+<b class="nc">&nbsp;        this.area = setArea(area);</b>
+<b class="nc">&nbsp;        this.cityCentreDistance = setCityCentreDistance(cityCentreDistance);</b>
+<b class="nc">&nbsp;        this.location = location;</b>
+<b class="nc">&nbsp;        this.photographs = setPhotographs(photographs);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Default constructor
+<b class="nc">&nbsp;    public Property(){</b>
+<b class="nc">&nbsp;        this.area = DEFAULT_AREA;</b>
+<b class="nc">&nbsp;        this.location = DEFAULT_LOCATION;</b>
+<b class="nc">&nbsp;        this.cityCentreDistance = DEFAULT_CITY_CENTER_DISTANCE;</b>
+<b class="nc">&nbsp;        this.photographs = DEFAULT_PHOTOGRAPHS;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Copy constructor
+<b class="nc">&nbsp;    public Property(Property anotherProperty){</b>
+<b class="nc">&nbsp;        this.setArea(anotherProperty.getArea());</b>
+<b class="nc">&nbsp;        this.setLocation(anotherProperty.getLocation());</b>
+<b class="nc">&nbsp;        this.setCityCentreDistance(anotherProperty.getCityCentreDistance());</b>
+<b class="nc">&nbsp;        this.setPhotographs(anotherProperty.getPhotographs());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Getters and Setters
+&nbsp;
+&nbsp;    public float getArea() {
+<b class="nc">&nbsp;        return area;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public City getLocation() {
+<b class="nc">&nbsp;        return location;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public float getCityCentreDistance() {
+<b class="nc">&nbsp;        return cityCentreDistance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;String&gt; getPhotographs() {
+<b class="nc">&nbsp;        return photographs;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public int getNumberOfBedrooms(){ return -1; }</b>
+&nbsp;
+&nbsp;
+&nbsp;    public float setArea(float area) {
+&nbsp;
+<b class="nc">&nbsp;        if (area&lt;=0){</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Please insert an area &gt;0&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return area;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLocation(City location) {
+<b class="nc">&nbsp;        this.location = location;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public float setCityCentreDistance(float cityCentreDistance) {
+<b class="nc">&nbsp;        if (cityCentreDistance&lt;=0){</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Please insert a distance &gt;0&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return cityCentreDistance;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ArrayList&lt;String&gt; setPhotographs(ArrayList&lt;String&gt; photographs) {
+<b class="nc">&nbsp;        if (photographs.isEmpty() &amp;&amp; photographs.size()&gt;30){</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Please insert at least 1 photograph and a maximum of 30 photographs&quot;);</b>
+<b class="nc">&nbsp;        }else if (photographs == null) {</b>
+<b class="nc">&nbsp;            throw new NullPointerException(&quot;You need to insert at least 1 photograph&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return photographs;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    //ToString()
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot; area=&quot; + area +</b>
+&nbsp;                &quot;, address=&#39;&quot; + location + &#39;\&#39;&#39; +
+&nbsp;                &quot;, cityCentreDistance=&quot; + cityCentreDistance +
+&nbsp;                &quot;, photographs=&quot; + photographs;
+&nbsp;    }
+&nbsp;    //equals
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="nc">&nbsp;        if (this == o) return true;</b>
+<b class="nc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="nc">&nbsp;        Property property = (Property) o;</b>
+<b class="nc">&nbsp;        return Float.compare(property.area, area) == 0 &amp;&amp; Float.compare(property.cityCentreDistance, cityCentreDistance) == 0 &amp;&amp; Objects.equals(location, property.location) &amp;&amp; Objects.equals(photographs, property.photographs);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="nc">&nbsp;        return Objects.hash(area, location, cityCentreDistance, photographs);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-29 21:04</div>
+</div>
+</body>
+</html>
