@@ -37,7 +37,7 @@ public class State {
             sb.append("No districts in this state.\n");
         } else {
             for (District district : districts) {
-                sb.append("- ").append(district.getName()).append("\n");
+                sb.append("- ").append(district.toString()).append("\n");
             }
         }
         return sb.toString();
