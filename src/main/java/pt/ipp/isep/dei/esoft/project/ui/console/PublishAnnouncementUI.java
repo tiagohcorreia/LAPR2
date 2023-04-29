@@ -239,6 +239,8 @@ public class PublishAnnouncementUI implements Runnable {
                         break;
 
                 }
+                System.out.println();
+                System.out.println();
                 System.out.println("===== Review Ad Details =====");
                 System.out.println("Type of Business: " + sellOrRent);
                 System.out.println("Type of property: " + selectedType);
@@ -247,7 +249,7 @@ public class PublishAnnouncementUI implements Runnable {
                 System.out.println("Distance of Centre: " + distance);
                 System.out.println("Price: " + price + "€");
                 System.out.println("Price: " + price + "€");
-                System.out.println("Responsible Agent: " + agentResp.getName());
+                System.out.println("Agent: " + agentResp.getName());
 
                 if (posTypeOfProperty == 1 || posTypeOfProperty == 2) {
 
