@@ -181,11 +181,11 @@ W
 'TESTS_REPORT/ns-2/sources/source-b.html,5\9\590bb21c2c49ded8b4c44ffb34cfbce3b03e1ba0
 W
 'TESTS_REPORT/ns-2/sources/source-c.html,f\9\f904a684e54662a90476471e82bb7bbab865bae6
-w
-Gsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTwoTest.java,0\b\0b38d53ea00375a88cd95f700d85b70a8c9a55b3
-’
-bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterEmployeeController.java,4\2\42631d9afe0f6a476ab9cf53b2f0bd3afdc285d2
 €
 Psrc/main/java/pt/ipp/isep/dei/esoft/project/domain/shared/PasswordGenerator.java,0\f\0fd907b06b34a3bd7d21b16984ecb93a09022e8d
 G
 TESTS_REPORT/index.html,9\1\91d7d2bba45a4ef686fedf9f199c23d92f4004fb
+v
+Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
+~
+Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565

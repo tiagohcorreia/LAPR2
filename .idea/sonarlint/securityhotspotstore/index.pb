@@ -13,10 +13,6 @@ C
 docs/auth/README.md,a\3\a37dd0cad7ca009057adb1641903e10082949cc2
 t
 Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTest.java,1\0\1009d2015c9fc4a9f50d9b819006a88ce2e99b09
-w
-Gsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTwoTest.java,0\b\0b38d53ea00375a88cd95f700d85b70a8c9a55b3
-’
-bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterEmployeeController.java,4\2\42631d9afe0f6a476ab9cf53b2f0bd3afdc285d2
 C
 APP_FILES/email.txt,6\c\6cc5cd8f7f8c046eed62aee2a0fb3aa1bcf8090f
 €
@@ -189,3 +185,7 @@ _
 /TESTS_REPORT/ns-1/index_SORT_BY_BLOCK_DESC.html,c\5\c5cac55fc053bc9df3514f610742f55a182e3e63
 G
 TESTS_REPORT/index.html,9\1\91d7d2bba45a4ef686fedf9f199c23d92f4004fb
+v
+Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
+~
+Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565
