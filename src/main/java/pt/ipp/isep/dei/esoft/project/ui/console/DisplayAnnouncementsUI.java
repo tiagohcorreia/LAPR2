@@ -21,9 +21,10 @@ public class DisplayAnnouncementsUI implements Runnable{
         return controller.getAvailableFields();
     }
 
-    public void displayAvailableFields(List<List<Object>> availableFields){
+    public boolean displayAvailableFields(List<List<Object>> availableFields){
         if (availableFields.get(0).size() == 0){
             System.out.println("There are no announcements in the system.");
+            return true;
         }
         else {
             System.out.println("SEARCH FILTER");
@@ -48,6 +49,7 @@ public class DisplayAnnouncementsUI implements Runnable{
             }
             System.out.println();
         }
+        return false;
     }
 
     public String[] requestFilterData(List<List<Object>> availableFields){
@@ -114,82 +116,57 @@ public class DisplayAnnouncementsUI implements Runnable{
     }
 
     public List<Announcement> getMatchingAnnouncements(String[] selectedData){
-        //List<Announcement> matchingAnnouncements = controller.getAnnouncements(selectedData);
-        return null;
+        return controller.getAnnouncements(selectedData[0], selectedData[1], Integer.parseInt(selectedData[2]));
+    }
+
+    public List<Announcement> sortAnnouncements(int sortingMode, List<Announcement> announcements){
+        switch (sortingMode){
+            case 1:
+                //sort by price
+                announcements.sort(new AnnouncementPriceComparator());
+                break;
+            case 2:
+                //sort by city
+                announcements.sort(new AnnouncementLocationComparator());
+        }
+        return announcements;
     }
 
     private boolean runUS(){
         List<List<Object>> availableFields = getAvailableFields();
-        displayAvailableFields(availableFields);
+        if (displayAvailableFields(availableFields))
+            return true;
         String[] selectedData = requestFilterData(availableFields);
+        List<Announcement> matchingAnnouncements = getMatchingAnnouncements(selectedData);
+        //Reverse the list so it shows most recent announcements first
+        Collections.reverse(matchingAnnouncements);
+        displayAnnouncements(matchingAnnouncements);
 
+        int sortingMode = -1;
+        while(sortingMode != 0) {
+            System.out.println("Sorting options");
+            System.out.println("1 - Price");
+            System.out.println("2 - City");
 
+            while(sortingMode != 1 && sortingMode != 2){
+                try{
+                    sortingMode = Utils.readIntegerFromConsole("Sorting mode: ");
+                } catch (Exception e){
+                    System.out.println(e.getMessage() + "Por favor tente novamente.");
+                }
+            }
 
-//
-//            //Get matching announcements
-//            //Default order is oldest first
-//            List<Announcement> announcements;
-//            //TO-FIX
-//            if (selectedTypeOfBusiness.equals("") && selectedTypeOfProperty.equals("") && selectedNumberOfBedrooms == -1){
-//                announcements = controller.getAllVisibleAnnouncements();
-//            } else {
-//                announcements = controller.getAnnouncements(selectedTypeOfBusiness, selectedTypeOfProperty, selectedNumberOfBedrooms);
-//            }
-//
-//            Collections.reverse(announcements);
-//
-//            for (Announcement announcement : announcements) {
-//                System.out.println(announcement);
-//            }
-////            while (sortingMode != 0) {
-////
-////                do {
-////                    sortingMode = Utils.readIntegerFromConsole("Sorting modes:\n1 - Price\n2 - Parish\n0 - Exit\nSort by: ");
-////                    if (sortingMode != 1 && sortingMode != 2 && sortingMode != 0) {
-////                        System.out.println("Invalid selection, please try again");
-////                    }
-////                } while (sortingMode != 1 && sortingMode != 2);
-////
-////                if (sortingMode == 1) {
-////                    ListingPriceComparator listingPriceComparator = new ListingPriceComparator();
-////                    matchingListings.sort(listingPriceComparator);
-////                    for (Announcement matchingListing : matchingListings) {
-////                        System.out.println(matchingListing);
-////                    }
-////                } else {
-////
-////                }
-////            }
-//
-//            int sortingMode = -1;
-//            boolean sortingModeIsValid = false;
-//            while (sortingMode != 0){
-//                do{
-//                    sortingMode = Utils.readIntegerFromConsole("Sorting modes:\n1 - Price\n2 - City\n0 - Exit\nSort by: ");
-//                    if (sortingMode == 1 || sortingMode == 2 || sortingMode == 0) {
-//                        sortingModeIsValid = true;
-//                    }
-//                    else {
-//                        System.out.println("Invalid selection, please try again");
-//                    }
-//                } while (!sortingModeIsValid);
-//
-//                if (sortingMode == 1) {
-//                    AnnouncementPriceComparator announcementPriceComparator = new AnnouncementPriceComparator();
-//                    announcements.sort(announcementPriceComparator);
-//                    for (Announcement announcement : announcements) {
-//                        System.out.println(announcement);
-//                    }
-//                } else if (sortingMode == 2){
-//                    AnnouncementLocationComparator announcementLocationComparator = new AnnouncementLocationComparator();
-//                    announcements.sort(announcementLocationComparator);
-//                    for (Announcement announcement : announcements) {
-//                        System.out.println(announcement);
-//                    }
-//                }
-//            }
-//
-//
+            matchingAnnouncements = sortAnnouncements(sortingMode, matchingAnnouncements);
+            displayAnnouncements(matchingAnnouncements);
+
+        }
+
         return false;
+    }
+
+    private void displayAnnouncements(List<Announcement> matchingAnnouncements) {
+        for(Announcement announcement : matchingAnnouncements){
+            System.out.println(announcement.toString());
+        }
     }
 }
