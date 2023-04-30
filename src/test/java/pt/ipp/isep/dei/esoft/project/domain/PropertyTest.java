@@ -57,6 +57,19 @@ class PropertyTest {
             p1.setPhotographs(null);
         });
     }
+    @DisplayName("Ensure House photographs array bigger than 30 Fails")
+    @Test
+    void EnsureLimitsPhotosArrayFails(){
 
+        assertThrows(IllegalArgumentException.class, () -> {
+            City city=new City("Porto");
+            ArrayList<String> photos= new ArrayList<>();
+            photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");
+            photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");
+            ArrayList<String> equipment= new ArrayList<>();
+            Property p1 = new House(35,city,23,photos,12,3,1,equipment,true,false,SunExposure.getSunExposureById(1));
+
+        });
+    }
 
 }

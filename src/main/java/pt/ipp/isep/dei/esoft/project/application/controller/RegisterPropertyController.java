@@ -24,32 +24,36 @@ public class RegisterPropertyController {
     public void createAnnouncement(TypeOfBusiness sellOrRent, int posTypeOfProperty, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
                                ArrayList<String> equipmentList,boolean hasBasement, boolean hasInhabitalLoft, SunExposure sunExposure,
                                int area, City location, int cityCentreDistance, float price, ArrayList<String> photographs, Employee agent) {
+        try {
+            if (posTypeOfProperty==2){
+                Apartment property= new Apartment(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList);
+                Announcement announcement= new Announcement(false,price,0 ,sellOrRent,property,agent);
+                this.announcementRepository.createAnnouncement(announcement);
+            } else if (posTypeOfProperty==1) {
+                House property= new House(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList,hasBasement,hasInhabitalLoft,sunExposure);
+                Announcement announcement= new Announcement(false,price,0 ,sellOrRent,property,agent);
+                this.announcementRepository.createAnnouncement(announcement);
+            }else {
+                Land property= new Land(area,location,cityCentreDistance,photographs);
+                Announcement announcement= new Announcement(false,price,0 ,sellOrRent,property,agent);
+                this.announcementRepository.createAnnouncement(announcement);
+            }
+        }catch (Exception e) {
 
-        if (posTypeOfProperty==2){
-            Apartment property= new Apartment(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList);
-            Announcement announcement= new Announcement(false,price,0 ,sellOrRent,property,agent);
-            this.announcementRepository.createAnnouncement(announcement);
-        } else if (posTypeOfProperty==1) {
-            House property= new House(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList,hasBasement,hasInhabitalLoft,sunExposure);
-            Announcement announcement= new Announcement(false,price,0 ,sellOrRent,property,agent);
-            this.announcementRepository.createAnnouncement(announcement);
-        }else {
-            Land property= new Land(area,location,cityCentreDistance,photographs);
-            Announcement announcement= new Announcement(false,price,0 ,sellOrRent,property,agent);
-            this.announcementRepository.createAnnouncement(announcement);
+            throw new IllegalArgumentException(e.getMessage().toString());
         }
+
 
     }
     public List<Employee> getAgent() {
         List<Employee> agent= new ArrayList();
         for(Employee employee : employeeRepository.getEmployeeList()) {
 
-            if(employee.getRole().equals(Role.AGENT)) {
+            if(employee.getRole()==Role.AGENT) {
                 agent.add(employee);
             }
         }
         return agent;
-
     }
     public Employee getEmployee(String name){
         return employeeRepository.getEmployee(name);
@@ -60,20 +64,19 @@ public class RegisterPropertyController {
     }
 
     public List<SunExposure> getSunExposureAsList() {
-        //TOFIX-STREAM
-        //return Arrays.stream(SunExposure.values()).toList();
-        return null;
+
+        return Arrays.stream(SunExposure.values()).toList();
+
     }
 
     public List<TypeOfProperty> getTypeOfPropertyAsList() {
-        //TOFIX-STREAM
-        //return Arrays.stream(TypeOfProperty.values()).toList();
-        return null;
+
+        return Arrays.stream(TypeOfProperty.values()).toList();
+
     }
 
     public List<TypeOfBusiness> getTypeOfBusinessAsList() {
-        //TOFIX-STREAM
-        //return Arrays.stream(TypeOfBusiness.values()).toList();
-        return null;
+
+        return Arrays.stream(TypeOfBusiness.values()).toList();
     }
 }
