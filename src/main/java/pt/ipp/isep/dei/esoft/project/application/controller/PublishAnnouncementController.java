@@ -42,16 +42,15 @@ public class PublishAnnouncementController {
 
     public void createAnnouncement(TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
                                    ArrayList<String> equipmentList,boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
-                                   int area, City location, int cityCentreDistance, float commission, float price, ArrayList<String> photographs, String agentName){
+                                   int area, City location, int cityCentreDistance, float commission, float price, ArrayList photographs, String agentName){
         RegisterEmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
 
         // get the employee corresponding to the agent email
         String emailAdress = null;
         Employee agent = employeeRepository.findByEmail(emailAdress);
 
-        //agentName = String.valueOf(authenticationController.getCurrentSession());
-        agentName = authenticationController.getCurrentUserName();
-// Busca o nome do agente pela sessão
+        agentName = String.valueOf(authenticationController.getCurrentSession());
+
          agent = employeeRepository.getUserByEmail(agentName);
 
         if (posTypeOfProperty == 2) {

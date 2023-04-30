@@ -26,7 +26,7 @@ public class Announcement {
     }
 
     public void setCommission(float commission) {
-        if (price < 0){
+        if (commission < 0){
             throw new IllegalArgumentException("Invalid commission value.");
         }
         this.commission = commission;
@@ -52,7 +52,8 @@ public class Announcement {
         this.setAgent(anotherAnnouncement.getAgent());
     }
 
-    public Announcement getAnnouncement() { return new Announcement(this); }
+    public Announcement getAnnouncement() {
+        return new Announcement(this); }
 
     public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
         if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getClass().getSimpleName()) && numberOfBedrooms == 300){

@@ -56,14 +56,14 @@ public class AuthenticationUI implements Runnable {
     }
 
     private boolean doLogin() {
-        System.out.println("\nLogin UI:");
+        System.out.println("\n=============== Real Estate USA ===============:");
 
         int maxAttempts = 3;
         boolean success = false;
         do {
             maxAttempts--;
-            String id = Utils.readLineFromConsole("Enter UserId/Email: ");
-            String pwd = Utils.readLineFromConsole("Enter Password: ");
+            String id = Utils.readLineFromConsole("Email: ");
+            String pwd = Utils.readLineFromConsole("Password: ");
 
             success = ctrl.doLogin(id, pwd);
             if (!success) {

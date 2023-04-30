@@ -46,14 +46,14 @@ public class AuthenticationController {
     }
 
 
-   //* public pt.ipp.isep.dei.esoft.project.application.session.UserSession getCurrentSession(){
-       // pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();
-        //return new pt.ipp.isep.dei.esoft.project.application.session.UserSession(userSession);
-    //}
-
-    public String getCurrentUserName() {
-        UserSession userSession = this.authenticationRepository.getCurrentUserSession();
-        return userSession.getUserName();
+   public pt.ipp.isep.dei.esoft.project.application.session.UserSession getCurrentSession(){
+        pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();
+        return new pt.ipp.isep.dei.esoft.project.application.session.UserSession(userSession);
     }
+
+   //* public String getCurrentUserName() {
+      //  UserSession userSession = this.authenticationRepository.getCurrentUserSession();
+       // return userSession.getUserName();
+   //}
 
 }

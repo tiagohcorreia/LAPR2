@@ -25,12 +25,12 @@ public class AgentUI implements Runnable{
 
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
-        System.out.println("Welcome, Agent!\n Select an option:");
+        System.out.println("=============== Real Estate USA ===============\n ");
         options.add(new MenuItem("Publish announcement",  new PublishAnnouncementUI(new PublishAnnouncementController(new AnnouncementRepository(), new AuthenticationController()),new AuthenticationController())));
         options.add(new MenuItem("Exit", (Runnable) new MainMenuUI()));
         int option = 0;
         do {
-            option = Utils.showAndSelectIndex(options, ":");
+            option = Utils.showAndSelectIndex(options, "\n                     Menu\n");
 
             if ((option >= 0) && (option < options.size())) {
                 options.get(option).run();

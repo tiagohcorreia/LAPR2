@@ -41,6 +41,7 @@ public class AnnouncementRepository {
         return false;
     }
 
+
     public List<Announcement> getAllVisibleAnnouncements() {
         List<Announcement> allVisibleAnnouncements = new ArrayList<>();
         for(Announcement announcement : announcements){
@@ -50,6 +51,8 @@ public class AnnouncementRepository {
         }
         return allVisibleAnnouncements;
     }
+
+
 
     public List<List<Object>> getAvailableFields(){
         List<List<Object>> availableFields = new ArrayList<>();

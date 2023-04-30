@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
-public abstract class Property {
+public class Property {
 
     private static final float DEFAULT_AREA = 1;
     private static final City DEFAULT_LOCATION = new City();
