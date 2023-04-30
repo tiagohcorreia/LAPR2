@@ -1,0 +1,212 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RegisterEmployeeController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: RegisterEmployeeController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegisterEmployeeController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Role;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.RegisterEmployeeRepository;
+&nbsp;
+&nbsp;import java.io.File;
+&nbsp;import java.io.FileWriter;
+&nbsp;import java.io.IOException;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.generatePassword;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type Register employee controller.
+&nbsp; */
+&nbsp;public class RegisterEmployeeController {
+&nbsp;
+&nbsp;    private RegisterEmployeeRepository employeeRepository;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Instantiates a new Register employee controller.
+&nbsp;     *
+&nbsp;     * @param employeeRepository the employee repository
+&nbsp;     */
+<b class="nc">&nbsp;    public RegisterEmployeeController(RegisterEmployeeRepository employeeRepository) {</b>
+<b class="nc">&nbsp;        this.employeeRepository = employeeRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets roles as list.
+&nbsp;     *
+&nbsp;     * @return the roles as list
+&nbsp;     */
+&nbsp;    public List&lt;Role&gt; getRolesAsList() {
+<b class="nc">&nbsp;        return Arrays.stream(Role.values()).toList();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets agency.
+&nbsp;     *
+&nbsp;     * @return the agency
+&nbsp;     */
+&nbsp;    public List&lt;Agency&gt; getAgency() {
+<b class="nc">&nbsp;        return Arrays.stream(Agency.values()).toList();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Create employee string.
+&nbsp;     *
+&nbsp;     * @param employeeName    the employee name
+&nbsp;     * @param passportNumber  the passport number
+&nbsp;     * @param taxNumber       the tax number
+&nbsp;     * @param address         the address
+&nbsp;     * @param eMail           the e mail
+&nbsp;     * @param telephoneNumber the telephone number
+&nbsp;     * @param posRole         the pos role
+&nbsp;     * @param posAgency       the pos agency
+&nbsp;     * @return the string
+&nbsp;     */
+&nbsp;    public String createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
+&nbsp;                                 int telephoneNumber, Integer posRole, Integer posAgency) {
+&nbsp;
+<b class="nc">&nbsp;        Employee newEmployee = new Employee(employeeName, passportNumber, taxNumber, address, eMail, telephoneNumber,</b>
+<b class="nc">&nbsp;                Role.getRoleById(posRole), Agency.getAgencyById(posAgency));</b>
+&nbsp;
+&nbsp;        try {
+&nbsp;
+<b class="nc">&nbsp;            this.employeeRepository.saveEmployee(newEmployee);</b>
+<b class="nc">&nbsp;            System.out.println();</b>
+<b class="nc">&nbsp;            return newEmployee.toString();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+&nbsp;
+<b class="nc">&nbsp;            throw new IllegalStateException(e.getMessage().toString());</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Send email.
+&nbsp;     *
+&nbsp;     * @param emplyeeName the emplyee name
+&nbsp;     * @param eMail       the e mail
+&nbsp;     */
+&nbsp;    public void sendEmail(String emplyeeName, String eMail) {
+&nbsp;
+<b class="nc">&nbsp;        String password = generatePassword();</b>
+<b class="nc">&nbsp;        String conteudo = &quot;Email: &quot; + eMail + &quot; | Senha: &quot; + password;</b>
+&nbsp;
+&nbsp;        try {
+&nbsp;
+<b class="nc">&nbsp;            FileWriter file = new FileWriter(new File(&quot;APP_FILES/email.txt&quot;));</b>
+<b class="nc">&nbsp;            file.write(conteudo + &quot;\n&quot;);</b>
+<b class="nc">&nbsp;            file.close();</b>
+<b class="nc">&nbsp;            System.out.println(&quot;File with employee credentials generated with success&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (IOException e) {</b>
+&nbsp;
+<b class="nc">&nbsp;            System.out.println(&quot;Error creating file&quot;);</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-30 23:35</div>
+</div>
+</body>
+</html>

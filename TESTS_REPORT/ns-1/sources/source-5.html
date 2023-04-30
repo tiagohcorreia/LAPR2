@@ -1,0 +1,274 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PublishAnnouncementController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: PublishAnnouncementController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PublishAnnouncementController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/29)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.*;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.*;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
+&nbsp;import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type Publish announcement controller.
+&nbsp; */
+&nbsp;public class PublishAnnouncementController {
+&nbsp;
+&nbsp;    private List&lt;Announcement&gt; announcements;
+&nbsp;    private List&lt;TypeOfProperty&gt; typesOfProperty;
+&nbsp;    private List&lt;City&gt; cities;
+&nbsp;    private List&lt;SunExposure&gt; sunExposures;
+&nbsp;    private List&lt;TypeOfBusiness&gt; typesOfBusiness;
+&nbsp;
+&nbsp;    private AnnouncementRepository announcementRepository;
+&nbsp;    private AuthenticationController authenticationController;
+&nbsp;    /**
+&nbsp;     * The Repositories.
+&nbsp;     */
+<b class="nc">&nbsp;    Repositories repositories = Repositories.getInstance();</b>
+&nbsp;    /**
+&nbsp;     * The Employee repository.
+&nbsp;     */
+<b class="nc">&nbsp;    RegisterEmployeeRepository employeeRepository = repositories.getEmployeeRepository();</b>
+&nbsp;    /**
+&nbsp;     * The State repository.
+&nbsp;     */
+<b class="nc">&nbsp;    StateRepository stateRepository = repositories.getStateRepository();</b>
+&nbsp;    /**
+&nbsp;     * The District repository.
+&nbsp;     */
+<b class="nc">&nbsp;    DistrictRepository districtRepository = repositories.getDistrictRepository();</b>
+&nbsp;    /**
+&nbsp;     * The City repository.
+&nbsp;     */
+<b class="nc">&nbsp;    CityRepository cityRepository = repositories.getCityRepository();</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Instantiates a new Publish announcement controller.
+&nbsp;     *
+&nbsp;     * @param announcementRepository   the announcement repository
+&nbsp;     * @param authenticationController the authentication controller
+&nbsp;     */
+<b class="nc">&nbsp;    public PublishAnnouncementController(AnnouncementRepository announcementRepository, AuthenticationController authenticationController) {</b>
+<b class="nc">&nbsp;        this.announcementRepository = announcementRepository;</b>
+<b class="nc">&nbsp;        this.authenticationController = authenticationController;</b>
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Create announcement.
+&nbsp;     *
+&nbsp;     * @param sellOrRent         the sell or rent
+&nbsp;     * @param posTypeOfProperty  the pos type of property
+&nbsp;     * @param bedrooms           the bedrooms
+&nbsp;     * @param bathrooms          the bathrooms
+&nbsp;     * @param parkingSpaces      the parking spaces
+&nbsp;     * @param equipmentList      the equipment list
+&nbsp;     * @param hasBasement        the has basement
+&nbsp;     * @param hasLoft            the has loft
+&nbsp;     * @param sunExposure        the sun exposure
+&nbsp;     * @param area               the area
+&nbsp;     * @param location           the location
+&nbsp;     * @param cityCentreDistance the city centre distance
+&nbsp;     * @param commission         the commission
+&nbsp;     * @param price              the price
+&nbsp;     * @param photographs        the photographs
+&nbsp;     * @param agentName          the agent name
+&nbsp;     */
+&nbsp;    public void createAnnouncement(TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
+&nbsp;                                   ArrayList&lt;String&gt; equipmentList,boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
+&nbsp;                                   int area, City location, int cityCentreDistance, float commission, float price, ArrayList photographs, String agentName){
+<b class="nc">&nbsp;        RegisterEmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();</b>
+&nbsp;
+&nbsp;        // get the employee corresponding to the agent email
+<b class="nc">&nbsp;        String emailAdress = null;</b>
+<b class="nc">&nbsp;        Employee agent = employeeRepository.findByEmail(emailAdress);</b>
+&nbsp;
+<b class="nc">&nbsp;        agentName = String.valueOf(authenticationController.getCurrentSession());</b>
+&nbsp;
+<b class="nc">&nbsp;         agent = employeeRepository.getUserByEmail(agentName);</b>
+&nbsp;
+<b class="nc">&nbsp;        if (posTypeOfProperty == 2) {</b>
+<b class="nc">&nbsp;            Property property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);</b>
+<b class="nc">&nbsp;            Announcement announcement = new Announcement(true,  commission, price ,sellOrRent, property, agent);</b>
+<b class="nc">&nbsp;            this.announcementRepository.createAnnouncement(announcement);</b>
+<b class="nc">&nbsp;        } else if (posTypeOfProperty == 1) {</b>
+<b class="nc">&nbsp;            Property property = new House(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);</b>
+<b class="nc">&nbsp;            Announcement announcement = new Announcement(true,  commission, price, sellOrRent, property, agent);</b>
+<b class="nc">&nbsp;            this.announcementRepository.createAnnouncement(announcement);</b>
+<b class="nc">&nbsp;        } else {</b>
+<b class="nc">&nbsp;            Property property = new Land(area, location, cityCentreDistance, photographs);</b>
+<b class="nc">&nbsp;            Announcement announcement = new Announcement(true, commission, price, sellOrRent, property, agent);</b>
+<b class="nc">&nbsp;            this.announcementRepository.createAnnouncement(announcement);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Get city city.
+&nbsp;     *
+&nbsp;     * @param city the city
+&nbsp;     * @return the city
+&nbsp;     */
+&nbsp;    public City getCity (String city){
+<b class="nc">&nbsp;        return cityRepository.findByName(city);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets sun exposure as list.
+&nbsp;     *
+&nbsp;     * @return the sun exposure as list
+&nbsp;     */
+&nbsp;    public List&lt;SunExposure&gt; getSunExposureAsList () {
+<b class="nc">&nbsp;        return Arrays.stream(SunExposure.values()).toList();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets type of property as list.
+&nbsp;     *
+&nbsp;     * @return the type of property as list
+&nbsp;     */
+&nbsp;    public List&lt;TypeOfProperty&gt; getTypeOfPropertyAsList () {
+<b class="nc">&nbsp;        return Arrays.stream(TypeOfProperty.values()).toList();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets type of business as list.
+&nbsp;     *
+&nbsp;     * @return the type of business as list
+&nbsp;     */
+&nbsp;    public List&lt;TypeOfBusiness&gt; getTypeOfBusinessAsList () {
+<b class="nc">&nbsp;        return Arrays.stream(TypeOfBusiness.values()).toList();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;   /* public List&lt;Employee&gt; getAgent() {
+&nbsp;        List&lt;Employee&gt; agent= new ArrayList();
+&nbsp;        for(Employee employee : employeeRepository.getEmployeeList()) {
+&nbsp;
+&nbsp;            if(employee.getRole().equals(&quot;Agent&quot;)) {
+&nbsp;                agent.add(employee);
+&nbsp;            }
+&nbsp;        }
+&nbsp;        return agent;
+&nbsp;
+&nbsp;    }
+&nbsp;    public Employee getEmployee(String name){
+&nbsp;        return employeeRepository.getEmployee(name);
+&nbsp;    }*/
+&nbsp;
+&nbsp;
+&nbsp;}
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-30 23:35</div>
+</div>
+</body>
+</html>

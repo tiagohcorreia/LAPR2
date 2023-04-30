@@ -1,22 +1,8 @@
 
-p
-@src/main/java/pt/ipp/isep/dei/esoft/project/domain/Employee.java,d\6\d6a9205b2dbee76e44f3c4c862501a1bcd3869ad
-x
-Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AdminUI.java,5\6\56e0b5ce6530e817cb5beddc7029295eb5a8cfb0
 W
 'docs/sprintB/US003/03.design/svg/CD.svg,0\7\0757c2b0fc7c9cefbdbeb565867776355c0f18d2
-m
-=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
-w
-Gsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/utils/Utils.java,4\7\47b9d33bd8a0fd938bcc084cafee57a55d924ff0
 C
 docs/auth/README.md,a\3\a37dd0cad7ca009057adb1641903e10082949cc2
-t
-Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTest.java,1\0\1009d2015c9fc4a9f50d9b819006a88ce2e99b09
-C
-APP_FILES/email.txt,6\c\6cc5cd8f7f8c046eed62aee2a0fb3aa1bcf8090f
-€
-Psrc/main/java/pt/ipp/isep/dei/esoft/project/domain/shared/PasswordGenerator.java,0\f\0fd907b06b34a3bd7d21b16984ecb93a09022e8d
 [
 +TESTS_REPORT/ns-1/index_SORT_BY_METHOD.html,2\6\26e39b0be33b7901cee6496d38ebcff9512a8160
 `
@@ -185,7 +171,3 @@ _
 /TESTS_REPORT/ns-1/index_SORT_BY_BLOCK_DESC.html,c\5\c5cac55fc053bc9df3514f610742f55a182e3e63
 G
 TESTS_REPORT/index.html,9\1\91d7d2bba45a4ef686fedf9f199c23d92f4004fb
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
-~
-Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565

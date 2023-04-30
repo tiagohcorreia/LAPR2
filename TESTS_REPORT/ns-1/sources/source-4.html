@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > TaskCategory</title>
+  <title>Coverage Report > DistrictController</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
 </div>
 
-<h1>Coverage Summary for Class: TaskCategory (pt.ipp.isep.dei.esoft.project.domain)</h1>
+<h1>Coverage Summary for Class: DistrictController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">TaskCategory</td>
+  <td class="name">DistrictController</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/11)
+    (0/7)
   </span>
 </td>
 </tr>
@@ -74,52 +74,69 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
 &nbsp;
-&nbsp;import java.util.Objects;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.City;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.District;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.DistrictRepository;
 &nbsp;
-&nbsp;public class TaskCategory {
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
 &nbsp;
-&nbsp;    private final String description;
+&nbsp;/**
+&nbsp; * The type District controller.
+&nbsp; */
+&nbsp;public class DistrictController {
+&nbsp;    private DistrictRepository districtRepository;
 &nbsp;
-<b class="nc">&nbsp;    public TaskCategory(String description) {</b>
-<b class="nc">&nbsp;        this.description = description;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    @Override
-&nbsp;    public boolean equals(Object o) {
-<b class="nc">&nbsp;        if (this == o) {</b>
-<b class="nc">&nbsp;            return true;</b>
-&nbsp;        }
-<b class="nc">&nbsp;        if (!(o instanceof TaskCategory)) {</b>
-<b class="nc">&nbsp;            return false;</b>
-&nbsp;        }
-<b class="nc">&nbsp;        TaskCategory that = (TaskCategory) o;</b>
-<b class="nc">&nbsp;        return description.equals(that.description);</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    @Override
-&nbsp;    public int hashCode() {
-<b class="nc">&nbsp;        return Objects.hash(description);</b>
+&nbsp;    /**
+&nbsp;     * Instantiates a new District controller.
+&nbsp;     *
+&nbsp;     * @param districtRepository the district repository
+&nbsp;     */
+<b class="nc">&nbsp;    public DistrictController(DistrictRepository districtRepository) {</b>
+<b class="nc">&nbsp;        this.districtRepository = districtRepository;</b>
 &nbsp;    }
 &nbsp;
 &nbsp;    /**
-&nbsp;     * This method returns the description of the task category.
+&nbsp;     * Add district.
 &nbsp;     *
-&nbsp;     * @return The description of the task category.
+&nbsp;     * @param name the name
 &nbsp;     */
-&nbsp;    public String getDescription() {
-<b class="nc">&nbsp;        return description;</b>
+&nbsp;    public void addDistrict(String name) {
+<b class="nc">&nbsp;        District district = new District(name, new ArrayList&lt;&gt;());</b>
+<b class="nc">&nbsp;        districtRepository.save(district);</b>
 &nbsp;    }
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Clone method.
+&nbsp;     * Find district by name district.
 &nbsp;     *
-&nbsp;     * @return A clone of the current task.
+&nbsp;     * @param name the name
+&nbsp;     * @return the district
 &nbsp;     */
-&nbsp;    public TaskCategory clone() {
-<b class="nc">&nbsp;        return new TaskCategory(this.description);</b>
+&nbsp;    public District findDistrictByName(String name) {
+<b class="nc">&nbsp;        return districtRepository.findByName(name);</b>
 &nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets all districts.
+&nbsp;     *
+&nbsp;     * @return the all districts
+&nbsp;     */
+&nbsp;    public List&lt;District&gt; getAllDistricts() {
+<b class="nc">&nbsp;        return districtRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add city to district.
+&nbsp;     *
+&nbsp;     * @param districtName the district name
+&nbsp;     * @param city         the city
+&nbsp;     */
+&nbsp;    public void addCityToDistrict(String districtName, City city) {
+<b class="nc">&nbsp;        districtRepository.addCity(districtName, city);</b>
+&nbsp;    }
+&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -144,7 +161,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-29 21:04</div>
+    <div style="float:right;">generated on 2023-04-30 23:35</div>
 </div>
 </body>
 </html>

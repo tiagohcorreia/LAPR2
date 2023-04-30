@@ -1,0 +1,238 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Apartment</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Apartment (pt.ipp.isep.dei.esoft.project.domain.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Apartment</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (5/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    59,1%
+  </span>
+  <span class="absValue">
+    (13/22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.model;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type Apartment.
+&nbsp; */
+&nbsp;public class Apartment extends Property{
+&nbsp;    private int numberOfBedrooms;
+&nbsp;    private int numberOfBathrooms;
+&nbsp;    private int numberOfParkingSpaces;
+&nbsp;    private ArrayList&lt;String&gt; equipment;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Instantiates a new Apartment.
+&nbsp;     *
+&nbsp;     * @param area                  the area
+&nbsp;     * @param location              the location
+&nbsp;     * @param cityCentreDistance    the city centre distance
+&nbsp;     * @param photographs           the photographs
+&nbsp;     * @param numberOfBedrooms      the number of bedrooms
+&nbsp;     * @param numberOfBathrooms     the number of bathrooms
+&nbsp;     * @param numberOfParkingSpaces the number of parking spaces
+&nbsp;     * @param equipment             the equipment
+&nbsp;     */
+&nbsp;//Constructor
+&nbsp;    public Apartment(float area, City location, float cityCentreDistance, ArrayList&lt;String&gt; photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList&lt;String&gt; equipment) {
+<b class="fc">&nbsp;        super(area, location, cityCentreDistance, photographs);</b>
+<b class="fc">&nbsp;        this.numberOfBedrooms=numberOfBedrooms;</b>
+<b class="fc">&nbsp;        this.numberOfBathrooms=numberOfBathrooms;</b>
+<b class="fc">&nbsp;        this.numberOfParkingSpaces=numberOfParkingSpaces;</b>
+<b class="fc">&nbsp;        this.equipment=equipment;</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    //Getters and Setters
+&nbsp;
+&nbsp;    public int getNumberOfBedrooms() {
+<b class="nc">&nbsp;        return numberOfBedrooms;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets number of bathrooms.
+&nbsp;     *
+&nbsp;     * @return the number of bathrooms
+&nbsp;     */
+&nbsp;    public int getNumberOfBathrooms() {
+<b class="nc">&nbsp;        return numberOfBathrooms;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets number of parking spaces.
+&nbsp;     *
+&nbsp;     * @return the number of parking spaces
+&nbsp;     */
+&nbsp;    public int getNumberOfParkingSpaces() {
+<b class="nc">&nbsp;        return numberOfParkingSpaces;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets equipment.
+&nbsp;     *
+&nbsp;     * @return the equipment
+&nbsp;     */
+&nbsp;    public ArrayList&lt;String&gt; getEquipment() {
+<b class="nc">&nbsp;        return equipment;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets number of bedrooms.
+&nbsp;     *
+&nbsp;     * @param numberOfBedrooms the number of bedrooms
+&nbsp;     * @return the number of bedrooms
+&nbsp;     */
+&nbsp;    public int setNumberOfBedrooms(int numberOfBedrooms) {
+<b class="fc">&nbsp;        if (numberOfBedrooms&lt;0){</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Please insert a number &gt;=0&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return numberOfBedrooms;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets number of bathrooms.
+&nbsp;     *
+&nbsp;     * @param numberOfBathrooms the number of bathrooms
+&nbsp;     * @return the number of bathrooms
+&nbsp;     */
+&nbsp;    public int setNumberOfBathrooms(int numberOfBathrooms) {
+<b class="fc">&nbsp;        if (numberOfBathrooms&lt;0){</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Please insert a number &gt;=0&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return numberOfBathrooms;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets number of parking spaces.
+&nbsp;     *
+&nbsp;     * @param numberOfParkingSpaces the number of parking spaces
+&nbsp;     * @return the number of parking spaces
+&nbsp;     */
+&nbsp;    public int setNumberOfParkingSpaces(int numberOfParkingSpaces) {
+<b class="fc">&nbsp;        if (numberOfParkingSpaces&lt;0){</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Please insert a number &gt;=0&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return numberOfParkingSpaces;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets equipment.
+&nbsp;     *
+&nbsp;     * @param equipment the equipment
+&nbsp;     * @return the equipment
+&nbsp;     */
+&nbsp;    public ArrayList&lt;String&gt; setEquipment(ArrayList&lt;String&gt; equipment) {
+<b class="fc">&nbsp;        if (equipment == null) {</b>
+<b class="fc">&nbsp;            throw new NullPointerException(&quot;You need to insert at least 1 equipment.&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return equipment;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //ToString
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Apartment{&quot; +super.toString()+</b>
+&nbsp;                &quot;, numberOfBedrooms=&quot; + numberOfBedrooms +
+&nbsp;                &quot;, numberOfBathrooms=&quot; + numberOfBathrooms +
+&nbsp;                &quot;, numberOfParkingSpaces=&quot; + numberOfParkingSpaces +
+&nbsp;                &quot;, equipment=&quot; + equipment +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-30 23:35</div>
+</div>
+</body>
+</html>

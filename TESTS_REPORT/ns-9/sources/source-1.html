@@ -1,0 +1,167 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AuthenticationRepository</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.repository</a>
+</div>
+
+<h1>Coverage Summary for Class: AuthenticationRepository (pt.ipp.isep.dei.esoft.project.repository)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AuthenticationRepository</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83,3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85,7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.repository;
+&nbsp;
+&nbsp;
+&nbsp;import pt.isep.lei.esoft.auth.AuthFacade;
+&nbsp;import pt.isep.lei.esoft.auth.UserSession;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type Authentication repository.
+&nbsp; */
+<b class="fc">&nbsp;public class AuthenticationRepository {</b>
+<b class="fc">&nbsp;    private final AuthFacade authenticationFacade = new AuthFacade();</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Do login boolean.
+&nbsp;     *
+&nbsp;     * @param email the email
+&nbsp;     * @param pwd   the pwd
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean doLogin(String email, String pwd) {
+<b class="fc">&nbsp;        return authenticationFacade.doLogin(email, pwd).isLoggedIn();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Do logout.
+&nbsp;     */
+&nbsp;    public void doLogout() {
+<b class="nc">&nbsp;        authenticationFacade.doLogout();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets current user session.
+&nbsp;     *
+&nbsp;     * @return the current user session
+&nbsp;     */
+&nbsp;    public UserSession getCurrentUserSession() {
+<b class="fc">&nbsp;        return authenticationFacade.getCurrentUserSession();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add user role boolean.
+&nbsp;     *
+&nbsp;     * @param id          the id
+&nbsp;     * @param description the description
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean addUserRole(String id, String description) {
+<b class="fc">&nbsp;        return authenticationFacade.addUserRole(id, description);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add user with role boolean.
+&nbsp;     *
+&nbsp;     * @param name   the name
+&nbsp;     * @param email  the email
+&nbsp;     * @param pwd    the pwd
+&nbsp;     * @param roleId the role id
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean addUserWithRole(String name, String email, String pwd, String roleId) {
+<b class="fc">&nbsp;        return authenticationFacade.addUserWithRole(name, email, pwd, roleId);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-30 23:35</div>
+</div>
+</body>
+</html>
