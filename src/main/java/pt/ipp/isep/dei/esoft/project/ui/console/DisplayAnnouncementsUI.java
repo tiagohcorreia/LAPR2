@@ -23,11 +23,11 @@ public class DisplayAnnouncementsUI implements Runnable{
     }
 
     public boolean displayAvailableFields(List<List<Object>> availableFields){
-        if (availableFields.get(0).size() == 0){
-            System.out.println("There are no announcements in the system.");
-            return true;
-        }
-        else {
+       // if (availableFields.get(0).size() == 0){
+//            System.out.println("There are no announcements in the system.");
+//            return true;
+//        }
+//        else {
             System.out.println("SEARCH FILTER");
             System.out.println("- Select one from the following options");
             System.out.println("- Or press [Enter] to see all available announcements");
@@ -49,7 +49,7 @@ public class DisplayAnnouncementsUI implements Runnable{
                 System.out.print(fields.toString() + " ");
             }
             System.out.println();
-        }
+        //}
         return false;
     }
 
@@ -139,10 +139,12 @@ public class DisplayAnnouncementsUI implements Runnable{
             return true;
         String[] selectedData = requestFilterData(availableFields);
         List<Announcement> matchingAnnouncements = new ArrayList<>();
-        if (selectedData == null)
-            matchingAnnouncements = getMatchingAnnouncements(selectedData);
-        else
+        if (selectedData == null) {
             matchingAnnouncements = controller.getAllVisibleAnnouncements();
+        }
+        else {
+            matchingAnnouncements = getMatchingAnnouncements(selectedData);
+        }
         //Reverse the list so it shows most recent announcements first
         Collections.reverse(matchingAnnouncements);
         displayAnnouncements(matchingAnnouncements);
@@ -155,13 +157,13 @@ public class DisplayAnnouncementsUI implements Runnable{
             System.out.println("1 - Price");
             System.out.println("2 - City");
 
-            while(sortingMode != 1 && sortingMode != 2){
+            do{
                 try{
                     sortingMode = Utils.readIntegerFromConsole("Sorting mode: ");
                 } catch (Exception e){
                     System.out.println(e.getMessage() + "Por favor tente novamente.");
                 }
-            }
+            }while(sortingMode != 1 && sortingMode != 2 && sortingMode != 0);
 
             matchingAnnouncements = sortAnnouncements(sortingMode, matchingAnnouncements);
             displayAnnouncements(matchingAnnouncements);
