@@ -44,12 +44,11 @@ public class RegisterPropertyController {
         List<Employee> agent= new ArrayList();
         for(Employee employee : employeeRepository.getEmployeeList()) {
 
-            if(employee.getRole().equals(Role.AGENT)) {
+            if(employee.getRole()==Role.AGENT) {
                 agent.add(employee);
             }
         }
         return agent;
-
     }
     public Employee getEmployee(String name){
         return employeeRepository.getEmployee(name);
@@ -60,20 +59,19 @@ public class RegisterPropertyController {
     }
 
     public List<SunExposure> getSunExposureAsList() {
-        //TOFIX-STREAM
-        //return Arrays.stream(SunExposure.values()).toList();
-        return null;
+
+        return Arrays.stream(SunExposure.values()).toList();
+
     }
 
     public List<TypeOfProperty> getTypeOfPropertyAsList() {
-        //TOFIX-STREAM
-        //return Arrays.stream(TypeOfProperty.values()).toList();
-        return null;
+
+        return Arrays.stream(TypeOfProperty.values()).toList();
+
     }
 
     public List<TypeOfBusiness> getTypeOfBusinessAsList() {
-        //TOFIX-STREAM
-        //return Arrays.stream(TypeOfBusiness.values()).toList();
-        return null;
+
+        return Arrays.stream(TypeOfBusiness.values()).toList();
     }
 }
