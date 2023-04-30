@@ -6,6 +6,7 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementPriceComparator;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 import pt.ipp.isep.dei.esoft.project.application.controller.DisplayAnnouncementsController;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -65,7 +66,7 @@ public class DisplayAnnouncementsUI implements Runnable{
             } catch (Exception e){
                 System.out.println("Please try again.");
             }
-        } while (!availableFields.get(0).toString().contains(selectedTypeOfBusiness) && !selectedTypeOfBusiness.equals(""));
+        } while (!availableFields.get(0).contains(selectedTypeOfBusiness) && !selectedTypeOfBusiness.equals(""));
 
         //  -Type of property
         String selectedTypeOfProperty=null;
@@ -76,7 +77,7 @@ public class DisplayAnnouncementsUI implements Runnable{
             } catch (Exception e){
                 System.out.println("Please try again.");
             }
-        } while (!availableFields.get(1).toString().contains(selectedTypeOfProperty) && !selectedTypeOfProperty.equals(""));
+        } while (!availableFields.get(1).contains(selectedTypeOfProperty) && !selectedTypeOfProperty.equals(""));
 
 //        int selectedNumberOfBedrooms = -1;
 //        String input = null;
@@ -137,11 +138,17 @@ public class DisplayAnnouncementsUI implements Runnable{
         if (displayAvailableFields(availableFields))
             return true;
         String[] selectedData = requestFilterData(availableFields);
-        List<Announcement> matchingAnnouncements = getMatchingAnnouncements(selectedData);
+        List<Announcement> matchingAnnouncements = new ArrayList<>();
+        if (selectedData == null)
+            matchingAnnouncements = getMatchingAnnouncements(selectedData);
+        else
+            matchingAnnouncements = controller.getAllVisibleAnnouncements();
         //Reverse the list so it shows most recent announcements first
         Collections.reverse(matchingAnnouncements);
         displayAnnouncements(matchingAnnouncements);
 
+
+        //Select sorting mode
         int sortingMode = -1;
         while(sortingMode != 0) {
             System.out.println("Sorting options");
