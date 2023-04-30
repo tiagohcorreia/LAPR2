@@ -40,14 +40,15 @@ activate ARepo
 loop for each announcement
     ARepo -> announcement: isVisible()
     activate announcement
-    return true/false
+    alt isVisible() = true
+    announcement --> ARepo: true
     'ARepo -> announcement: getBusinessType()
     ARepo -> announcement: getAnnouncement()
-    alt isVisible() = true
-        activate announcement
+
         announcement --> ARepo: announcement
         else isVisible() = false
-        return null
+
+        return false
         deactivate announcement
     end
 end
