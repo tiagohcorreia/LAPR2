@@ -11,6 +11,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTwoTest {
 
+    @DisplayName("Ensure Create Valid Employee Works")
+    @Test
+    void EnsureCreateAValidEmployeeDoesNotCauseAnyException() {
+
+        try {
+
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+
+        } catch (IllegalArgumentException e) {
+
+            fail("An Exception shoud not be thrown");
+
+        } catch (NullPointerException e) {
+
+            fail("An Exception shoud not be thrown");
+
+        } catch (Exception e) {
+
+            fail("An Exception shoud not be thrown");
+
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------------------------
+
     //Name
 
     @DisplayName("Ensure Empty Employee Name Fails")
@@ -48,7 +73,7 @@ class EmployeeTwoTest {
 
             Employee e1 = new Employee("Employee", -12345678 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
 
-            assertNotNull(e1);
+
         });
     }
 
@@ -59,7 +84,7 @@ class EmployeeTwoTest {
         assertThrows(IllegalArgumentException.class, () -> {
 
             Employee e1 = new Employee("Employee", 1234567891 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
-            assertNotNull(e1);
+
         });
     }
 
@@ -70,7 +95,7 @@ class EmployeeTwoTest {
         assertThrows(IllegalArgumentException.class, () -> {
 
             Employee e1 = new Employee("Employee", 12345678 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
-            assertNotNull(e1);
+
         });
     }
 
@@ -86,7 +111,7 @@ class EmployeeTwoTest {
         assertThrows(IllegalArgumentException.class, () -> {
 
             Employee e1 = new Employee("Employee", 123456789 , -23456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
-            assertNotNull(e1);
+
         });
     }
 
@@ -97,7 +122,7 @@ class EmployeeTwoTest {
         assertThrows(IllegalArgumentException.class, () -> {
 
             Employee e1 = new Employee("Employee", 1234567891 , 1234567891, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
-            assertNotNull(e1);
+
         });
     }
 
@@ -108,7 +133,7 @@ class EmployeeTwoTest {
         assertThrows(IllegalArgumentException.class, () -> {
 
             Employee e1 = new Employee("Employee", 12345678 , 12345678, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
-            assertNotNull(e1);
+
         });
     }
 
@@ -187,7 +212,7 @@ class EmployeeTwoTest {
         assertThrows(IllegalArgumentException.class, () -> {
 
             Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", -234567891, Role.AGENT, Agency.AGENCY1);
-            assertNotNull(e1);
+
         });
     }
 
@@ -199,7 +224,7 @@ class EmployeeTwoTest {
         assertThrows(IllegalArgumentException.class, () -> {
 
             Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", 123456789, Role.AGENT, Agency.AGENCY1);
-            assertNotNull(e1);
+
         });
     }
 

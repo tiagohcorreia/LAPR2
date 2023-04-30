@@ -60,10 +60,10 @@ public class RegisterEmployeeUI implements Runnable {
                 try {
 
                     this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber, posRole, posAgency);
-                    this.controller.sendEmail(emplyeeName,eMail);
+                    this.controller.sendEmail(emplyeeName, eMail);
                     success = false;
 
-                    if(success) {
+                    if (success) {
 
                         System.out.println("Please insert Employee data again");
                     }
@@ -72,7 +72,16 @@ public class RegisterEmployeeUI implements Runnable {
 
                     System.err.println(e.getMessage());
 
+                } catch (NullPointerException e) {
+
+                    System.err.println(e.getMessage());
+
+                } catch (Exception e) {
+
+                    System.out.println(e.getMessage());
+
                 }
+
                 System.out.println("Employee name: " + emplyeeName);
                 System.out.println("Employee Passport Number: " + employeePassportNumber);
                 System.out.println("Employee Address: " + address);
