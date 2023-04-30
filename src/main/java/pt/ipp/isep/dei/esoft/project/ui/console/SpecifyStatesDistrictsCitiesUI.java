@@ -9,6 +9,9 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.StateRepository;
 
 import java.util.Scanner;
 
+/**
+ * The type Specify states districts cities ui.
+ */
 public class SpecifyStatesDistrictsCitiesUI implements Runnable {
 
     @Override

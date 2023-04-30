@@ -1,12 +1,22 @@
 package pt.ipp.isep.dei.esoft.project.domain.shared;
 
+/**
+ * The enum Type of business.
+ */
 public enum TypeOfBusiness {
+    /**
+     * The Sell.
+     */
     SELL(1){
         @Override
         public String toString() {
             return String.format("Sell");
         }
-    }, RENT(2){
+    },
+    /**
+     * The Rent.
+     */
+    RENT(2){
         @Override
         public String toString() {
             return String.format("Rent");
@@ -18,10 +28,21 @@ public enum TypeOfBusiness {
         this.valor = valor;
     }
 
+    /**
+     * Gets type of business id.
+     *
+     * @return the type of business id
+     */
     public int getTypeOfBusinessID() {
         return this.valor;
     }
 
+    /**
+     * Gets type of business by id.
+     *
+     * @param id the id
+     * @return the type of business by id
+     */
     public static TypeOfBusiness getTypeOfBusinessById(int id) {
 
         TypeOfBusiness[] array = TypeOfBusiness.values();

@@ -9,8 +9,14 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Role;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Employee two test.
+ */
 class EmployeeTwoTest {
 
+    /**
+     * Ensure create a valid employee does not cause any exception.
+     */
     @DisplayName("Ensure Create Valid Employee Works")
     @Test
     void EnsureCreateAValidEmployeeDoesNotCauseAnyException() {
@@ -38,6 +44,9 @@ class EmployeeTwoTest {
 
     //Name
 
+    /**
+     * Ensure null employee name fails.
+     */
     @DisplayName("Ensure Empty Employee Name Fails")
     @Test
     void EnsureNullEmployeeNameFails() {
@@ -49,6 +58,9 @@ class EmployeeTwoTest {
         });
     }
 
+    /**
+     * Ensure empty employee name fails.
+     */
     @DisplayName("Ensure Null Employee Name Fails")
     @Test
     void EnsureEmptyEmployeeNameFails() {
@@ -65,6 +77,9 @@ class EmployeeTwoTest {
 
     //PassportNumber
 
+    /**
+     * Ensure negative employee passport number fails.
+     */
     @DisplayName("Ensure Negative Employee Passport Number Fails")
     @Test
     void EnsureNegativeEmployeePassportNumberFails() {
@@ -77,6 +92,9 @@ class EmployeeTwoTest {
         });
     }
 
+    /**
+     * Ensure employee passport number with 10 digits fails.
+     */
     @DisplayName("Ensure Employee Passport Number with 10 digits Fails")
     @Test
     void EnsureEmployeePassportNumberWith10DigitsFails() {
@@ -88,6 +106,9 @@ class EmployeeTwoTest {
         });
     }
 
+    /**
+     * Ensure employee passport number with 8 digits fails.
+     */
     @DisplayName("Ensure Employee Passport Number with 8 digits Fails")
     @Test
     void EnsureEmployeePassportNumberWith8DigitsFails() {
@@ -104,6 +125,9 @@ class EmployeeTwoTest {
 
     //Tax Number
 
+    /**
+     * Ensure negative employee tax number fails.
+     */
     @DisplayName("Ensure Negative Employee Tax Number fails")
     @Test
     void EnsureNegativeEmployeeTaxNumberFails() {
@@ -115,6 +139,9 @@ class EmployeeTwoTest {
         });
     }
 
+    /**
+     * Ensure employee tax number with 10 digits fails.
+     */
     @DisplayName("Ensure Employee Passport Number with 10 digits Fails")
     @Test
     void EnsureEmployeeTaxNumberWith10DigitsFails() {
@@ -126,6 +153,9 @@ class EmployeeTwoTest {
         });
     }
 
+    /**
+     * Ensure employee tax number with 8 digits fails.
+     */
     @DisplayName("Ensure Employee Passport Number with 8 digits Fails")
     @Test
     void EnsureEmployeeTaxNumberWith8DigitsFails() {
@@ -141,6 +171,9 @@ class EmployeeTwoTest {
 
     //Address
 
+    /**
+     * Ensure emptyl employee address fails.
+     */
     @DisplayName("Ensure Empty Employee Address Fails")
     @Test
     void EnsureEmptylEmployeeAddressFails() {
@@ -152,6 +185,9 @@ class EmployeeTwoTest {
         });
     }
 
+    /**
+     * Ensure null employee address fails.
+     */
     @DisplayName("Ensure Null Employee Address Fails")
     @Test
     void EnsureNullEmployeeAddressFails() {
@@ -168,6 +204,9 @@ class EmployeeTwoTest {
 
     //E-mail
 
+    /**
+     * Ensure null employee email address fails.
+     */
     @DisplayName("Ensure Null Employee E-mail Address Fails")
     @Test
     void EnsureNullEmployeeEmailAddressFails() {
@@ -179,6 +218,9 @@ class EmployeeTwoTest {
         });
     }
 
+    /**
+     * Ensure empty employee email address fails.
+     */
     @DisplayName("Ensure Empty Employee E-mail Address Fails")
     @Test
     void EnsureEmptyEmployeeEmailAddressFails() {
@@ -190,6 +232,9 @@ class EmployeeTwoTest {
         });
     }
 
+    /**
+     * Ensure null employee email address without an arroba fails.
+     */
     @DisplayName("Ensure Employee E-mail Address Without @ Fails")
     @Test
     void EnsureNullEmployeeEmailAddressWithoutAnArrobaFails() {
@@ -205,6 +250,9 @@ class EmployeeTwoTest {
 
     //Telephone Number
 
+    /**
+     * Ensure negative employee telephone number fails.
+     */
     @DisplayName("Ensure Negative Employee Telephone Number fails")
     @Test
     void EnsureNegativeEmployeeTelephoneNumberFails() {
@@ -216,6 +264,9 @@ class EmployeeTwoTest {
         });
     }
 
+    /**
+     * Ensure employee telephone number with 9 digits fails.
+     */
     @DisplayName("Ensure Employee Telephone Number with 9 digits fails")
     @Test
     void EnsureEmployeeTelephoneNumberWith9DigitsFails() {

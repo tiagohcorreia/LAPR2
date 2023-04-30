@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 /**
- * Create Task UI (console). This option is only available for administrators for demonstration purposes.
+ * The type Create task ui.
  */
 public class CreateTaskUI implements Runnable {
 

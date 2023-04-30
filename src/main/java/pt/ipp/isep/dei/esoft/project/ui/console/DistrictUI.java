@@ -7,17 +7,29 @@ import pt.ipp.isep.dei.esoft.project.domain.model.District;
 
 import java.util.Scanner;
 
+/**
+ * The type District ui.
+ */
 public class DistrictUI {
     private final DistrictController districtController;
     private final CityController cityController;
     private final Scanner scanner;
 
+    /**
+     * Instantiates a new District ui.
+     *
+     * @param districtController the district controller
+     * @param cityController     the city controller
+     */
     public DistrictUI(DistrictController districtController, CityController cityController) {
         this.districtController = districtController;
         this.cityController = cityController;
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * Run.
+     */
     public void run() {
         boolean running = true;
 

@@ -11,16 +11,60 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The type Register property controller.
+ */
 public class RegisterPropertyController {
     private AnnouncementRepository announcementRepository;
+    /**
+     * The Repositories.
+     */
     Repositories repositories = Repositories.getInstance();
+    /**
+     * The Employee repository.
+     */
     RegisterEmployeeRepository employeeRepository = repositories.getEmployeeRepository();
+    /**
+     * The State repository.
+     */
     StateRepository stateRepository=repositories.getStateRepository();
+    /**
+     * The District repository.
+     */
     DistrictRepository districtRepository=repositories.getDistrictRepository();
+    /**
+     * The City repository.
+     */
     CityRepository cityRepository=repositories.getCityRepository();
+
+    /**
+     * Instantiates a new Register property controller.
+     *
+     * @param announcementRepository the announcement repository
+     */
     public RegisterPropertyController(AnnouncementRepository announcementRepository) {
         this.announcementRepository = announcementRepository;
     }
+
+    /**
+     * Create announcement.
+     *
+     * @param sellOrRent            the sell or rent
+     * @param posTypeOfProperty     the pos type of property
+     * @param numberOfBedrooms      the number of bedrooms
+     * @param numberOfBathrooms     the number of bathrooms
+     * @param numberOfParkingSpaces the number of parking spaces
+     * @param equipmentList         the equipment list
+     * @param hasBasement           the has basement
+     * @param hasInhabitalLoft      the has inhabital loft
+     * @param sunExposure           the sun exposure
+     * @param area                  the area
+     * @param location              the location
+     * @param cityCentreDistance    the city centre distance
+     * @param price                 the price
+     * @param photographs           the photographs
+     * @param agent                 the agent
+     */
     public void createAnnouncement(TypeOfBusiness sellOrRent, int posTypeOfProperty, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
                                ArrayList<String> equipmentList,boolean hasBasement, boolean hasInhabitalLoft, SunExposure sunExposure,
                                int area, City location, int cityCentreDistance, float price, ArrayList<String> photographs, Employee agent) {
@@ -45,6 +89,12 @@ public class RegisterPropertyController {
 
 
     }
+
+    /**
+     * Gets agent.
+     *
+     * @return the agent
+     */
     public List<Employee> getAgent() {
         List<Employee> agent= new ArrayList();
         for(Employee employee : employeeRepository.getEmployeeList()) {
@@ -55,26 +105,54 @@ public class RegisterPropertyController {
         }
         return agent;
     }
+
+    /**
+     * Get employee employee.
+     *
+     * @param name the name
+     * @return the employee
+     */
     public Employee getEmployee(String name){
         return employeeRepository.getEmployee(name);
     }
 
+    /**
+     * Get city city.
+     *
+     * @param city the city
+     * @return the city
+     */
     public City getCity(String city){
         return cityRepository.findByName(city);
     }
 
+    /**
+     * Gets sun exposure as list.
+     *
+     * @return the sun exposure as list
+     */
     public List<SunExposure> getSunExposureAsList() {
 
         return Arrays.stream(SunExposure.values()).toList();
 
     }
 
+    /**
+     * Gets type of property as list.
+     *
+     * @return the type of property as list
+     */
     public List<TypeOfProperty> getTypeOfPropertyAsList() {
 
         return Arrays.stream(TypeOfProperty.values()).toList();
 
     }
 
+    /**
+     * Gets type of business as list.
+     *
+     * @return the type of business as list
+     */
     public List<TypeOfBusiness> getTypeOfBusinessAsList() {
 
         return Arrays.stream(TypeOfBusiness.values()).toList();

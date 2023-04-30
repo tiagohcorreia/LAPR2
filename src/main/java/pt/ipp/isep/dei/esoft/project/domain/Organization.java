@@ -5,9 +5,18 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * The type Organization.
+ */
 public class Organization {
     private final String vatNumber;
+    /**
+     * The Employees.
+     */
     List<Employee> employees = new ArrayList<>();
+    /**
+     * The Tasks.
+     */
     List<Task> tasks = new ArrayList<>();
     private String name;
     private String website;
@@ -15,37 +24,36 @@ public class Organization {
     private String email;
 
     /**
-     * This method is the constructor of the organization.
+     * Instantiates a new Organization.
      *
-     * @param vatNumber The vat number of the organization. This is the identity of the organization, therefore it
-     *                  cannot be changed.
+     * @param vatNumber the vat number
      */
     public Organization(String vatNumber) {
         this.vatNumber = vatNumber;
     }
 
     /**
-     * This method checks if an employee works for the organization.
+     * Employs boolean.
      *
-     * @param employee The employee to be checked.
-     * @return True if the employee works for the organization.
+     * @param employee the employee
+     * @return the boolean
      */
     public boolean employs(Employee employee) {
         return employees.contains(employee);
     }
 
     /**
-     * This method creates a new task.
+     * Create task optional.
      *
-     * @param reference            The reference of the task to be created.
-     * @param description          The description of the task to be created.
-     * @param informalDescription  The informal description of the task to be created.
-     * @param technicalDescription The technical description of the task to be created.
-     * @param duration             The duration of the task to be created.
-     * @param cost                 The cost of the task to be created.
-     * @param taskCategory         The task category of the task to be created.
-     * @param employee             The employee of the task to be created.
-     * @return
+     * @param reference            the reference
+     * @param description          the description
+     * @param informalDescription  the informal description
+     * @param technicalDescription the technical description
+     * @param duration             the duration
+     * @param cost                 the cost
+     * @param taskCategory         the task category
+     * @param employee             the employee
+     * @return the optional
      */
     public Optional<Task> createTask(String reference, String description, String informalDescription,
                                      String technicalDescription, Integer duration, Double cost,
@@ -67,12 +75,6 @@ public class Organization {
         return optionalValue;
     }
 
-    /**
-     * This method adds a task to the list of tasks.
-     *
-     * @param task The task to be added.
-     * @return True if the task was added successfully.
-     */
     private boolean addTask(Task task) {
         boolean success = false;
         if (validate(task)) {
@@ -83,31 +85,19 @@ public class Organization {
 
     }
 
-    /**
-     * This method validates the task, checking for duplicates.
-     *
-     * @param task The task to be validated.
-     * @return True if the task is valid.
-     */
     private boolean validate(Task task) {
         return tasksDoNotContain(task);
     }
 
-    /**
-     * This method checks if the task is already in the list of tasks.
-     *
-     * @param task The task to be checked.
-     * @return True if the task is not in the list of tasks.
-     */
     private boolean tasksDoNotContain(Task task) {
         return !tasks.contains(task);
     }
 
     /**
-     * This methos checks if the organization has an employee with the given email.
+     * Any employee has email boolean.
      *
-     * @param email The email to be checked.
-     * @return True if the organization has an employee with the given email.
+     * @param email the email
+     * @return the boolean
      */
     public boolean anyEmployeeHasEmail(String email) {
         boolean result = false;
@@ -136,7 +126,13 @@ public class Organization {
         return Objects.hash(vatNumber);
     }
 
-    //add employee to organization
+    /**
+     * Add employee boolean.
+     *
+     * @param employee the employee
+     * @return the boolean
+     */
+//add employee to organization
     public boolean addEmployee(Employee employee) {
         boolean success = false;
         if (validateEmployee(employee)) {

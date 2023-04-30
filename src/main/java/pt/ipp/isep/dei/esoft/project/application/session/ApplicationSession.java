@@ -8,16 +8,27 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * The type Application session.
+ */
 public class ApplicationSession {
     private AuthenticationRepository authenticationRepository=null;
     private static final String CONFIGURATION_FILENAME = "config.properties";
     private static final String COMPANY_DESIGNATION = "Company.Designation";
 
+    /**
+     * Instantiates a new Application session.
+     */
     public ApplicationSession() {
         this.authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
         Properties props = getProperties();
     }
 
+    /**
+     * Get current session user session.
+     *
+     * @return the user session
+     */
     public UserSession getCurrentSession(){
         pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();
         return new UserSession(userSession);
@@ -47,6 +58,12 @@ public class ApplicationSession {
 
     // Extracted from https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
     private static ApplicationSession singleton = null;
+
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static ApplicationSession getInstance()
     {
         if(singleton == null)

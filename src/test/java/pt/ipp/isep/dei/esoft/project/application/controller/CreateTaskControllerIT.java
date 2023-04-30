@@ -19,13 +19,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
- * The Create Task Controller Integration Tests.
- * <p>
- * The class CreateTaskController does not perform anything by itself and relies on other classes to work. Therefore,
- * all these tests are integration tests and not unit tests. That is why this class is named IT from Integration Tests.
+ * The type Create task controller it.
  */
 class CreateTaskControllerIT {
 
+    /**
+     * Ensure create task works.
+     */
     @Test
     void ensureCreateTaskWorks() {
 
@@ -60,6 +60,9 @@ class CreateTaskControllerIT {
                         1, 1d, "Task" + " Category Description");
     }
 
+    /**
+     * Ensure get categories work.
+     */
     @Test
     void ensureGetCategoriesWork() {
         //Arrange
@@ -103,8 +106,7 @@ class CreateTaskControllerIT {
     }
 
     /**
-     * This test ensures that the CreateTaskController works with the singleton Repositories class.
-     * This type of tests should be avoided because they share the Repositories state with other tests.
+     * Ensure create task works with singleton.
      */
     @Test
     void ensureCreateTaskWorksWithSingleton() {
@@ -149,6 +151,9 @@ class CreateTaskControllerIT {
 
     //TODO: test the controller createTask using mockito to mock the repositories.
 
+    /**
+     * Ensure create task for non existing organization fails.
+     */
     @Test
     void ensureCreateTaskForNonExistingOrganizationFails() {
         //Arrange

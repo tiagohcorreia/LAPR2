@@ -14,16 +14,25 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * The type State controller test.
+ */
 class StateControllerTest {
     private StateRepository stateRepository;
     private StateController stateController;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         stateRepository = Mockito.mock(StateRepository.class);
         stateController = new StateController(stateRepository);
     }
 
+    /**
+     * Add state.
+     */
     @Test
     void addState() {
         String stateName = "California";
@@ -33,6 +42,9 @@ class StateControllerTest {
         verify(stateRepository, times(1)).save(state);
     }
 
+    /**
+     * Find state by name.
+     */
     @Test
     void findStateByName() {
         State california = new State("California", new ArrayList<>());
@@ -42,6 +54,9 @@ class StateControllerTest {
         assertEquals(california, foundState);
     }
 
+    /**
+     * Gets all states.
+     */
     @Test
     void getAllStates() {
         List<State> states = new ArrayList<>(Arrays.asList(

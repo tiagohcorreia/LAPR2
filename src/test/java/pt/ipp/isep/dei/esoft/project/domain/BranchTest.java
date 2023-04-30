@@ -6,9 +6,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Branch test.
+ */
 class BranchTest {
 
 
+    /**
+     * Ensure name equal 40 chars works.
+     */
     @DisplayName("Ensure name equal 40 chars works")
     @Test
     void EnsureNameEqual40CharsWorks() {
@@ -22,6 +28,9 @@ class BranchTest {
         });
     }
 
+    /**
+     * Ensure name bigger than 40 chars fails.
+     */
     @DisplayName("Ensure name bigger than 40 chars fails")
     @Test
     void EnsureNameBiggerThan40CharsFails() {
@@ -36,6 +45,9 @@ class BranchTest {
         });
     }
 
+    /**
+     * Ensure name smaller than 40 chars works.
+     */
     @DisplayName("Ensure name smaller than 40 chars works")
     @Test
     void EnsureNameSmallerThan40CharsWorks() {
@@ -50,6 +62,9 @@ class BranchTest {
     }
 
 
+    /**
+     * Ensure null data fails.
+     */
     @DisplayName("Ensure null data fails")
     @Test
     void EnsureNullDataFails() {
@@ -61,6 +76,9 @@ class BranchTest {
         });
     }
 
+    /**
+     * Ensure create branch works.
+     */
     @DisplayName("Ensure create branch works")
     @Test
     void EnsureCreateBranchWorks() {
@@ -72,6 +90,9 @@ class BranchTest {
         });
     }
 
+    /**
+     * Ensure phone number with 9 digits works.
+     */
     @DisplayName("Ensure phone number with 9 digits works")
     @Test
     void EnsurePhoneNumberWith9DigitsWorks() {
@@ -86,6 +107,9 @@ class BranchTest {
     }
 
 
+    /**
+     * Ensure phone number with 7 digits fails.
+     */
     @DisplayName("Ensure phone number with 7 digits fails")
     @Test
     void EnsurePhoneNumberWith7DigitsFails() {

@@ -14,16 +14,25 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * The type City controller test.
+ */
 class CityControllerTest {
     private CityRepository cityRepository;
     private CityController cityController;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         cityRepository = Mockito.mock(CityRepository.class);
         cityController = new CityController(cityRepository);
     }
 
+    /**
+     * Add city.
+     */
     @Test
     void addCity() {
         String cityName = "Los Angeles";
@@ -33,6 +42,9 @@ class CityControllerTest {
         verify(cityRepository, times(1)).save(city);
     }
 
+    /**
+     * Find city by name.
+     */
     @Test
     void findCityByName() {
         City newYork = new City("New York");
@@ -42,6 +54,9 @@ class CityControllerTest {
         assertEquals(newYork, foundCity);
     }
 
+    /**
+     * Gets all cities.
+     */
     @Test
     void getAllCities() {
         List<City> cities = new ArrayList<>(Arrays.asList(

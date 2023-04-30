@@ -14,16 +14,25 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * The type District controller test.
+ */
 class DistrictControllerTest {
     private DistrictRepository districtRepository;
     private DistrictController districtController;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         districtRepository = Mockito.mock(DistrictRepository.class);
         districtController = new DistrictController(districtRepository);
     }
 
+    /**
+     * Add district.
+     */
     @Test
     void addDistrict() {
         String districtName = "Manhattan";
@@ -33,6 +42,9 @@ class DistrictControllerTest {
         verify(districtRepository, times(1)).save(district);
     }
 
+    /**
+     * Find district by name.
+     */
     @Test
     void findDistrictByName() {
         District manhattan = new District("Manhattan", new ArrayList<>());
@@ -42,6 +54,9 @@ class DistrictControllerTest {
         assertEquals(manhattan, foundDistrict);
     }
 
+    /**
+     * Gets all districts.
+     */
     @Test
     void getAllDistricts() {
         List<District> districts = new ArrayList<>(Arrays.asList(

@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The type Publish announcement controller.
+ */
 public class PublishAnnouncementController {
 
     private List<Announcement> announcements;
@@ -24,12 +27,33 @@ public class PublishAnnouncementController {
 
     private AnnouncementRepository announcementRepository;
     private AuthenticationController authenticationController;
+    /**
+     * The Repositories.
+     */
     Repositories repositories = Repositories.getInstance();
+    /**
+     * The Employee repository.
+     */
     RegisterEmployeeRepository employeeRepository = repositories.getEmployeeRepository();
+    /**
+     * The State repository.
+     */
     StateRepository stateRepository = repositories.getStateRepository();
+    /**
+     * The District repository.
+     */
     DistrictRepository districtRepository = repositories.getDistrictRepository();
+    /**
+     * The City repository.
+     */
     CityRepository cityRepository = repositories.getCityRepository();
 
+    /**
+     * Instantiates a new Publish announcement controller.
+     *
+     * @param announcementRepository   the announcement repository
+     * @param authenticationController the authentication controller
+     */
     public PublishAnnouncementController(AnnouncementRepository announcementRepository, AuthenticationController authenticationController) {
         this.announcementRepository = announcementRepository;
         this.authenticationController = authenticationController;
@@ -38,8 +62,26 @@ public class PublishAnnouncementController {
     }
 
 
-
-
+    /**
+     * Create announcement.
+     *
+     * @param sellOrRent         the sell or rent
+     * @param posTypeOfProperty  the pos type of property
+     * @param bedrooms           the bedrooms
+     * @param bathrooms          the bathrooms
+     * @param parkingSpaces      the parking spaces
+     * @param equipmentList      the equipment list
+     * @param hasBasement        the has basement
+     * @param hasLoft            the has loft
+     * @param sunExposure        the sun exposure
+     * @param area               the area
+     * @param location           the location
+     * @param cityCentreDistance the city centre distance
+     * @param commission         the commission
+     * @param price              the price
+     * @param photographs        the photographs
+     * @param agentName          the agent name
+     */
     public void createAnnouncement(TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
                                    ArrayList<String> equipmentList,boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
                                    int area, City location, int cityCentreDistance, float commission, float price, ArrayList photographs, String agentName){
@@ -71,19 +113,39 @@ public class PublishAnnouncementController {
     }
 
 
-
-
+    /**
+     * Get city city.
+     *
+     * @param city the city
+     * @return the city
+     */
     public City getCity (String city){
         return cityRepository.findByName(city);
     }
+
+    /**
+     * Gets sun exposure as list.
+     *
+     * @return the sun exposure as list
+     */
     public List<SunExposure> getSunExposureAsList () {
         return Arrays.stream(SunExposure.values()).toList();
     }
 
+    /**
+     * Gets type of property as list.
+     *
+     * @return the type of property as list
+     */
     public List<TypeOfProperty> getTypeOfPropertyAsList () {
         return Arrays.stream(TypeOfProperty.values()).toList();
     }
 
+    /**
+     * Gets type of business as list.
+     *
+     * @return the type of business as list
+     */
     public List<TypeOfBusiness> getTypeOfBusinessAsList () {
         return Arrays.stream(TypeOfBusiness.values()).toList();
     }

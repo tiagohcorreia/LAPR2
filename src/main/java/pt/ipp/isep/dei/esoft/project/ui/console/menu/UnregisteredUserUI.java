@@ -7,7 +7,13 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Unregistered user ui.
+ */
 public class UnregisteredUserUI implements Runnable {
+    /**
+     * Instantiates a new Unregistered user ui.
+     */
     public UnregisteredUserUI() {
 
     }

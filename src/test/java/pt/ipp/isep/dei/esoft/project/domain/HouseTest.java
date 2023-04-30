@@ -10,8 +10,14 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type House test.
+ */
 class HouseTest {
 
+    /**
+     * Ensure negative house bedrooms fails.
+     */
     @DisplayName("Ensure that number of bedrooms <0 Fails")
     @Test
     void EnsureNegativeHouseBedroomsFails(){
@@ -26,6 +32,10 @@ class HouseTest {
             p1.setNumberOfBedrooms(-1);
         });
     }
+
+    /**
+     * Ensure negative house bathrooms fails.
+     */
     @DisplayName("Ensure that number of bathrooms <0 Fails")
     @Test
     void EnsureNegativeHouseBathroomsFails(){
@@ -41,6 +51,9 @@ class HouseTest {
         });
     }
 
+    /**
+     * Ensure negative house parking spaces fails.
+     */
     @DisplayName("Ensure that number of parking spaces <0 Fails")
     @Test
     void EnsureNegativeHouseParkingSpacesFails(){
@@ -56,6 +69,9 @@ class HouseTest {
         });
     }
 
+    /**
+     * Ensure null house equipment fails.
+     */
     @DisplayName("Ensure that null equipment Fails")
     @Test
     void EnsureNullHouseEquipmentFails(){

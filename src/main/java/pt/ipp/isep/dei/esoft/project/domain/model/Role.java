@@ -3,21 +3,35 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The enum Role.
+ */
 public enum Role {
 
+    /**
+     * The Admnistrator.
+     */
     ADMNISTRATOR(1) {
         @Override
         public String toString() {
             return String.format("Administrator");
         }
 
-    }, MANAGER(2) {
+    },
+    /**
+     * The Manager.
+     */
+    MANAGER(2) {
         @Override
         public String toString() {
             return String.format("Manager");
         }
 
-    }, AGENT(3) {
+    },
+    /**
+     * The Agent.
+     */
+    AGENT(3) {
         @Override
         public String toString() {
             return String.format("Agent");
@@ -30,10 +44,21 @@ public enum Role {
         this.valor = valor;
     }
 
+    /**
+     * Gets role id.
+     *
+     * @return the role id
+     */
     public int getRoleID() {
         return this.valor;
     }
 
+    /**
+     * Gets role by id.
+     *
+     * @param id the id
+     * @return the role by id
+     */
     public static Role getRoleById(int id) {
 
         Role[] array = Role.values();

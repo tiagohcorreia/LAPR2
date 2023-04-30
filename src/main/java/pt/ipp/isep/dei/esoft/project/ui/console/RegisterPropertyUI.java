@@ -15,10 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The type Register property ui.
+ */
 public class RegisterPropertyUI implements Runnable {
 
     private RegisterPropertyController controller;
 
+    /**
+     * Instantiates a new Register property ui.
+     *
+     * @param controller the controller
+     */
     public RegisterPropertyUI(RegisterPropertyController controller) {
         this.controller = controller;
     }

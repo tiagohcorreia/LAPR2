@@ -16,8 +16,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Display announcements controller test.
+ */
 class DisplayAnnouncementsControllerTest {
 
+    /**
+     * The constant defaultProprty.
+     */
 //    private static String url = "http:\\\\photograps.server";
 //    private static List<String> phot = new ArrayList<>();
 //    phot.push
@@ -31,11 +37,17 @@ class DisplayAnnouncementsControllerTest {
             2,
             new ArrayList<>(),
             true,false,SunExposure.NORTH);
+    /**
+     * The constant defaultEmployee.
+     */
     public static final Employee defaultEmployee = new Employee("Joao",
             123123123,
             123456789,
             "Somewhere",
             "email@mail.com",1234567890, Role.AGENT, Agency.AGENCY1);
+    /**
+     * The constant defaultAnnouncement.
+     */
     public static final Announcement defaultAnnouncement = new Announcement(
             true,
             20,
@@ -44,9 +56,15 @@ class DisplayAnnouncementsControllerTest {
             defaultProprty,
             defaultEmployee);
 
+    /**
+     * The Announcements list.
+     */
     List<Announcement> announcementsList = new ArrayList<>();
 
 
+    /**
+     * Ensure get available fields.
+     */
     @Test
     void ensureGetAvailableFields() {
         DisplayAnnouncementsController controller = new DisplayAnnouncementsController();
@@ -109,10 +127,16 @@ class DisplayAnnouncementsControllerTest {
 
     }
 
+    /**
+     * Gets announcements.
+     */
     @Test
     void getAnnouncements() {
     }
 
+    /**
+     * Gets all visible announcements.
+     */
     @Test
     void getAllVisibleAnnouncements() {
     }

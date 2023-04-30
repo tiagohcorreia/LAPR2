@@ -13,10 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The type Agent ui.
+ */
 public class AgentUI implements Runnable{
 
     private Scanner scanner;
 
+    /**
+     * Instantiates a new Agent ui.
+     */
     public AgentUI() {
 
 

@@ -10,8 +10,14 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Task category repository test.
+ */
 class TaskCategoryRepositoryTest {
 
+    /**
+     * Gets task category by description empty list.
+     */
     @Test
     void getTaskCategoryByDescriptionEmptyList() {
         TaskCategoryRepository taskCategoryRepository = new TaskCategoryRepository();
@@ -20,6 +26,9 @@ class TaskCategoryRepositoryTest {
                 () -> taskCategoryRepository.getTaskCategoryByDescription(taskCategoryDescription));
     }
 
+    /**
+     * Gets task category by description null list.
+     */
     @Test
     void getTaskCategoryByDescriptionNullList() {
         TaskCategoryRepository taskCategoryRepository = new TaskCategoryRepository();
@@ -28,6 +37,9 @@ class TaskCategoryRepositoryTest {
                 () -> taskCategoryRepository.getTaskCategoryByDescription(taskCategoryDescription));
     }
 
+    /**
+     * Ensure new task category successfully added.
+     */
     @Test
     void ensureNewTaskCategorySuccessfullyAdded() {
         TaskCategoryRepository taskCategoryRepository = new TaskCategoryRepository();
@@ -36,6 +48,9 @@ class TaskCategoryRepositoryTest {
         taskCategoryRepository.add(taskCategory);
     }
 
+    /**
+     * Ensure get task category for existing task category.
+     */
     @Test
     void ensureGetTaskCategoryForExistingTaskCategory() {
         TaskCategoryRepository taskCategoryRepository = new TaskCategoryRepository();
@@ -46,6 +61,9 @@ class TaskCategoryRepositoryTest {
         assertEquals(taskCategory, taskCategory1);
     }
 
+    /**
+     * Ensure get task category fails for non existing task category.
+     */
     @Test
     void ensureGetTaskCategoryFailsForNonExistingTaskCategory() {
         TaskCategoryRepository taskCategoryRepository = new TaskCategoryRepository();
@@ -58,6 +76,9 @@ class TaskCategoryRepositoryTest {
 
     }
 
+    /**
+     * Ensure get task categories returns an immutable list.
+     */
     @Test
     void ensureGetTaskCategoriesReturnsAnImmutableList() {
         TaskCategoryRepository taskCategoryRepository = new TaskCategoryRepository();
@@ -70,6 +91,9 @@ class TaskCategoryRepositoryTest {
 
     }
 
+    /**
+     * Ensure get task categories returns the correct list.
+     */
     @Test
     void ensureGetTaskCategoriesReturnsTheCorrectList() {
         //Arrange
@@ -87,6 +111,9 @@ class TaskCategoryRepositoryTest {
         assertEquals(taskCategory, taskCategoryRepository.getTaskCategories().get(size - 1));
     }
 
+    /**
+     * Ensure adding duplicate task category fails.
+     */
     @Test
     void ensureAddingDuplicateTaskCategoryFails() {
         //Arrange
@@ -102,6 +129,9 @@ class TaskCategoryRepositoryTest {
         assertTrue(duplicateTaskCategory.isEmpty());
     }
 
+    /**
+     * Ensure adding different task categories works.
+     */
     @Test
     void ensureAddingDifferentTaskCategoriesWorks() {
         //Arrange

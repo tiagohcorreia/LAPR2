@@ -11,21 +11,40 @@ import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 import java.util.List;
 
 /**
- * @author Paulo Maio pam@isep.ipp.pt
+ * The type Authentication controller.
  */
 public class AuthenticationController {
 
+    /**
+     * The constant ROLE_ADMIN.
+     */
     public static final String ROLE_ADMIN = "ADMINISTRATOR";
+    /**
+     * The constant ROLE_EMPLOYEE.
+     */
     public static final String ROLE_EMPLOYEE = "EMPLOYEE";
+    /**
+     * The constant ROLE_OWNER.
+     */
     public static final String ROLE_OWNER = "OWNER";
 
     //private final ApplicationSession applicationSession;
     private final AuthenticationRepository authenticationRepository;
 
+    /**
+     * Instantiates a new Authentication controller.
+     */
     public AuthenticationController() {
         this.authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
     }
 
+    /**
+     * Do login boolean.
+     *
+     * @param email the email
+     * @param pwd   the pwd
+     * @return the boolean
+     */
     public boolean doLogin(String email, String pwd) {
         try {
             return authenticationRepository.doLogin(email, pwd);
@@ -34,6 +53,11 @@ public class AuthenticationController {
         }
     }
 
+    /**
+     * Gets user roles.
+     *
+     * @return the user roles
+     */
     public List<UserRoleDTO> getUserRoles() {
         if (authenticationRepository.getCurrentUserSession().isLoggedIn()) {
             return authenticationRepository.getCurrentUserSession().getUserRoles();
@@ -41,12 +65,20 @@ public class AuthenticationController {
         return null;
     }
 
+    /**
+     * Do logout.
+     */
     public void doLogout() {
         authenticationRepository.doLogout();
     }
 
 
-   public pt.ipp.isep.dei.esoft.project.application.session.UserSession getCurrentSession(){
+    /**
+     * Get current session pt . ipp . isep . dei . esoft . project . application . session . user session.
+     *
+     * @return the pt . ipp . isep . dei . esoft . project . application . session . user session
+     */
+    public pt.ipp.isep.dei.esoft.project.application.session.UserSession getCurrentSession(){
         pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();
         return new pt.ipp.isep.dei.esoft.project.application.session.UserSession(userSession);
     }

@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The type Display announcements ui.
+ */
 public class DisplayAnnouncementsUI implements Runnable{
     private static final DisplayAnnouncementsController controller = new DisplayAnnouncementsController();
 
@@ -18,10 +21,21 @@ public class DisplayAnnouncementsUI implements Runnable{
         runUS();
     }
 
+    /**
+     * Get available fields list.
+     *
+     * @return the list
+     */
     public List<List<Object>> getAvailableFields(){
         return controller.getAvailableFields();
     }
 
+    /**
+     * Display available fields boolean.
+     *
+     * @param availableFields the available fields
+     * @return the boolean
+     */
     public boolean displayAvailableFields(List<List<Object>> availableFields){
         if (availableFields.get(0).size() == 0){
             System.out.println("There are no announcements in the system.");
@@ -53,6 +67,12 @@ public class DisplayAnnouncementsUI implements Runnable{
         return false;
     }
 
+    /**
+     * Request filter data string [ ].
+     *
+     * @param availableFields the available fields
+     * @return the string [ ]
+     */
     public String[] requestFilterData(List<List<Object>> availableFields){
         String[] selectedData = new String[3];
 
@@ -116,10 +136,23 @@ public class DisplayAnnouncementsUI implements Runnable{
             return selectedData;
     }
 
+    /**
+     * Get matching announcements list.
+     *
+     * @param selectedData the selected data
+     * @return the list
+     */
     public List<Announcement> getMatchingAnnouncements(String[] selectedData){
         return controller.getAnnouncements(selectedData[0], selectedData[1], Integer.parseInt(selectedData[2]));
     }
 
+    /**
+     * Sort announcements list.
+     *
+     * @param sortingMode   the sorting mode
+     * @param announcements the announcements
+     * @return the list
+     */
     public List<Announcement> sortAnnouncements(int sortingMode, List<Announcement> announcements){
         switch (sortingMode){
             case 1:

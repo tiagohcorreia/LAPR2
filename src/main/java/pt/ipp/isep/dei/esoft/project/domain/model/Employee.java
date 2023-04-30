@@ -2,6 +2,9 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 
 import java.util.Objects;
 
+/**
+ * The type Employee.
+ */
 public class Employee {
 
     private String name;
@@ -14,6 +17,18 @@ public class Employee {
     private Agency agency;
 
 
+    /**
+     * Instantiates a new Employee.
+     *
+     * @param name            the name
+     * @param passportNumber  the passport number
+     * @param taxNumber       the tax number
+     * @param address         the address
+     * @param emailAdress     the email adress
+     * @param telephoneNumber the telephone number
+     * @param role            the role
+     * @param agency          the agency
+     */
     public Employee(String name, int passportNumber, int taxNumber, String address, String emailAdress, int telephoneNumber, Role role, Agency agency) {
 
         this.name = setName(name);
@@ -26,42 +41,93 @@ public class Employee {
         this.agency = agency;
     }
 
+    /**
+     * Instantiates a new Employee.
+     *
+     * @param employeeName the employee name
+     */
     public Employee(String employeeName) {
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets passport number.
+     *
+     * @return the passport number
+     */
     public int getPassportNumber() {
         return passportNumber;
     }
 
+    /**
+     * Gets tax number.
+     *
+     * @return the tax number
+     */
     public int getTaxNumber() {
         return taxNumber;
     }
 
+    /**
+     * Gets address.
+     *
+     * @return the address
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Gets email adress.
+     *
+     * @return the email adress
+     */
     public String getEmailAdress() {
         return emailAdress;
     }
 
+    /**
+     * Gets telephone number.
+     *
+     * @return the telephone number
+     */
     public long getTelephoneNumber() {
         return telephoneNumber;
     }
 
+    /**
+     * Gets role.
+     *
+     * @return the role
+     */
     public Role getRole() {
         return role;
     }
 
+    /**
+     * Gets agency.
+     *
+     * @return the agency
+     */
     public Agency getAgency() {
         return agency;
     }
 
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     * @return the name
+     */
     public String setName(String name) {
 
         if (name == null) {
@@ -76,6 +142,12 @@ public class Employee {
         return name;
     }
 
+    /**
+     * Sets passport number.
+     *
+     * @param passportNumber the passport number
+     * @return the passport number
+     */
     public int setPassportNumber(int passportNumber) {
 
         if (passportNumber < 0) {
@@ -89,6 +161,12 @@ public class Employee {
         return passportNumber;
     }
 
+    /**
+     * Sets tax number.
+     *
+     * @param taxNumber the tax number
+     * @return the tax number
+     */
     public int setTaxNumber(int taxNumber) {
 
         if (taxNumber < 0) {
@@ -102,6 +180,12 @@ public class Employee {
         return taxNumber;
     }
 
+    /**
+     * Sets address.
+     *
+     * @param address the address
+     * @return the address
+     */
     public String setAddress(String address) {
 
         if (address == null) {
@@ -115,6 +199,12 @@ public class Employee {
         return address;
     }
 
+    /**
+     * Sets email adress.
+     *
+     * @param emailAdress the email adress
+     * @return the email adress
+     */
     public String setEmailAdress(String emailAdress) {
 
         if (emailAdress == null) {
@@ -132,6 +222,12 @@ public class Employee {
         return emailAdress;
     }
 
+    /**
+     * Sets telephone number.
+     *
+     * @param telephoneNumber the telephone number
+     * @return the telephone number
+     */
     public int setTelephoneNumber(int telephoneNumber) {
 
         if (telephoneNumber < 0) {
@@ -145,10 +241,20 @@ public class Employee {
         return telephoneNumber;
     }
 
+    /**
+     * Sets role.
+     *
+     * @param role the role
+     */
     public void setRole(Role role) {
         this.role = role;
     }
 
+    /**
+     * Sets agency.
+     *
+     * @param agency the agency
+     */
     public void setAgency(Agency agency) {
         this.agency = agency;
     }
