@@ -84,7 +84,7 @@ public abstract class Property {
     }
 
     public ArrayList<String> setPhotographs(ArrayList<String> photographs) {
-        if (photographs.isEmpty() && photographs.size()>30){
+        if (photographs.size()>30){
             throw new IllegalArgumentException("Please insert at least 1 photograph and a maximum of 30 photographs");
         }else if (photographs == null) {
             throw new NullPointerException("You need to insert at least 1 photograph");
