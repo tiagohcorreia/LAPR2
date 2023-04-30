@@ -38,6 +38,8 @@ public class RegisterPropertyUI implements Runnable {
             String equipment = "";
             boolean hasBasement = false;
             boolean hasInhabitalLoft = false;
+            String hasBasementString="";
+            String hasInhabitalLoftString="";
             SunExposure sunExposure = null;
             int area;
             City location;
@@ -98,14 +100,18 @@ public class RegisterPropertyUI implements Runnable {
                 int hasBasementInt = Utils.readIntegerFromConsole("The house has a basement? \n0. NO\n1. YES");
                 if (hasBasementInt == 0) {
                     hasBasement = false;
+                    hasBasementString="No";
                 } else {
                     hasBasement = true;
+                    hasBasementString= "Yes";
                 }
                 int hasInhabitalLoftInt = Utils.readIntegerFromConsole("The house has an inhabitalLoft? \n0. NO\n1. YES");
                 if (hasInhabitalLoftInt == 0) {
                     hasInhabitalLoft = false;
+                    hasInhabitalLoftString="No";
                 } else {
                     hasInhabitalLoft = true;
+                    hasInhabitalLoftString="Yes";
                 }
 
                 //SunExposure
@@ -168,14 +174,14 @@ public class RegisterPropertyUI implements Runnable {
 
                 }
                 if (posTypeOfProperty == 1) {
-                    System.out.println("The house has basement? " + hasBasement);
-                    System.out.println("The house has inhabital loft? " + hasInhabitalLoft);
+                    System.out.println("The house has basement? " + hasBasementString);
+                    System.out.println("The house has inhabital loft? " + hasInhabitalLoftString);
                     System.out.println("The house has sun exposure? " + sunExposure);
                 }
                 System.out.println("Area: " + area + " m2");
                 System.out.println("Location: " + location);
-                System.out.println("Distance of Centre: " + cityCenterDistance);
-                System.out.println("Price: " + price);
+                System.out.println("Distance of Centre: " + cityCenterDistance+" Km");
+                System.out.println("Price: " + price + "$");
                 System.out.println("Responsible Agent: " + choosedAgent.getName());
 
             } else {
