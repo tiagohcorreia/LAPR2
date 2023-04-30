@@ -17,18 +17,25 @@ public class MainMenuUI implements Runnable {
     }
 
     public void run() {
+
+
+
         List<MenuItem> options = new ArrayList<MenuItem>();
         options.add(new MenuItem("Do Login", new AuthenticationUI()));
         options.add(new MenuItem("Enter as unregistered user", new UnregisteredUserUI()));
+        options.add(new MenuItem("Publish an announcement", new AgentUI()));
         options.add(new MenuItem("Know the Development Team", new DevTeamUI()));
         int option = 0;
         do {
+            System.out.println("=============== Real Estate USA ===============");
             option = Utils.showAndSelectIndex(options, "\n\nMain Menu");
+            System.out.println("=============== Real Estate USA ===============");
 
             if ((option >= 0) && (option < options.size())) {
                 options.get(option).run();
             }
         } while (option != -1);
+
     }
 
 

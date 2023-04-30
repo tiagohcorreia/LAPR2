@@ -1,16 +1,12 @@
 package pt.ipp.isep.dei.esoft.project.ui.console;
 
 
-import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
-import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.City;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
-import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
-import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.application.controller.PublishAnnouncementController;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
@@ -18,24 +14,23 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 import java.util.Scanner;
 
-public class PublishAnnouncementUI {
+public class PublishAnnouncementUI implements Runnable {
 
     private Scanner scanner;
     private PublishAnnouncementController controller;
 
     public PublishAnnouncementUI(PublishAnnouncementController controller) {
         scanner = new Scanner(System.in);
-        //controller = new PublishAnnouncementController();
+        this.controller= controller;
 
 
     }
 
-    public void publishAnnouncement() {
+    public void  run () {
 
         TypeOfBusiness sellOrRent;
         TypeOfProperty typeProperty;
@@ -244,6 +239,8 @@ public class PublishAnnouncementUI {
                         break;
 
                 }
+                System.out.println();
+                System.out.println();
                 System.out.println("===== Review Ad Details =====");
                 System.out.println("Type of Business: " + sellOrRent);
                 System.out.println("Type of property: " + selectedType);
@@ -251,7 +248,8 @@ public class PublishAnnouncementUI {
                 System.out.println("Location: " + location);
                 System.out.println("Distance of Centre: " + distance);
                 System.out.println("Price: " + price + "€");
-                System.out.println("Responsible Agent: " + agentResp.getName());
+                System.out.println("Price: " + price + "€");
+                System.out.println("Agent: " + agentResp.getName());
 
                 if (posTypeOfProperty == 1 || posTypeOfProperty == 2) {
 
