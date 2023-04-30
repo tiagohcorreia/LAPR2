@@ -72,4 +72,22 @@ public class RegisterEmployeeRepository {
         }
         return stringBuilder.toString();
     }
+
+    public Employee getUserByEmail(String email) {
+        for (Employee employee : employeeList) {
+            if (employee.getEmailAdress().equals(email)) {
+                return employee;
+            }
+        }
+        return null;
+    }
+
+    public Employee findByEmail(String email) {
+        for (Employee employee : employeeList) {
+            if (employee.getEmailAdress().equals(email)) {
+                return employee;
+            }
+        }
+        return null;
+    }
 }

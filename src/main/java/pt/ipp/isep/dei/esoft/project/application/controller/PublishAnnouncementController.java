@@ -5,6 +5,8 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.*;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
+import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
+import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 
 
 
@@ -21,20 +23,37 @@ public class PublishAnnouncementController {
     private List<TypeOfBusiness> typesOfBusiness;
 
     private AnnouncementRepository announcementRepository;
+    private AuthenticationController authenticationController;
     Repositories repositories = Repositories.getInstance();
     RegisterEmployeeRepository employeeRepository = repositories.getEmployeeRepository();
     StateRepository stateRepository = repositories.getStateRepository();
     DistrictRepository districtRepository = repositories.getDistrictRepository();
     CityRepository cityRepository = repositories.getCityRepository();
 
-    public PublishAnnouncementController(AnnouncementRepository announcementRepository) {
+    public PublishAnnouncementController(AnnouncementRepository announcementRepository, AuthenticationController authenticationController) {
         this.announcementRepository = announcementRepository;
+        this.authenticationController = authenticationController;
+
+
     }
+
+
 
 
     public void createAnnouncement(TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
                                    ArrayList<String> equipmentList,boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
-                                   int area, City location, int cityCentreDistance, float commission, float price, ArrayList<String> photographs, Employee agent){
+                                   int area, City location, int cityCentreDistance, float commission, float price, ArrayList<String> photographs, String agentName){
+        RegisterEmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
+
+        // get the employee corresponding to the agent email
+        String emailAdress = null;
+        Employee agent = employeeRepository.findByEmail(emailAdress);
+
+        //agentName = String.valueOf(authenticationController.getCurrentSession());
+        agentName = authenticationController.getCurrentUserName();
+// Busca o nome do agente pela sessão
+         agent = employeeRepository.getUserByEmail(agentName);
+
         if (posTypeOfProperty == 2) {
             Property property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);
             Announcement announcement = new Announcement(true,  commission, price ,sellOrRent, property, agent);
@@ -70,7 +89,7 @@ public class PublishAnnouncementController {
         return Arrays.stream(TypeOfBusiness.values()).toList();
     }
 
-    public List<Employee> getAgent() {
+   /* public List<Employee> getAgent() {
         List<Employee> agent= new ArrayList();
         for(Employee employee : employeeRepository.getEmployeeList()) {
 
@@ -83,7 +102,8 @@ public class PublishAnnouncementController {
     }
     public Employee getEmployee(String name){
         return employeeRepository.getEmployee(name);
-    }
+    }*/
+
 
 }
 

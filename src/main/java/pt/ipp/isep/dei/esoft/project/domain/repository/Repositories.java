@@ -41,6 +41,8 @@ package pt.ipp.isep.dei.esoft.project.domain.repository;
 //}
 
 
+import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
+
 //v3
 public class Repositories {
 
@@ -50,6 +52,7 @@ public class Repositories {
     StateRepository stateRepository = new StateRepository();
     DistrictRepository districtRepository = new DistrictRepository();
     CityRepository cityRepository = new CityRepository();
+    AuthenticationRepository authenticationRepository = new AuthenticationRepository();
 
     private Repositories() {
     }
@@ -65,4 +68,7 @@ public class Repositories {
     public DistrictRepository getDistrictRepository() {return  districtRepository;}
     public CityRepository getCityRepository() {return  cityRepository;}
 
+    public AuthenticationRepository getAuthenticationRepository() {
+        return authenticationRepository;
+    }
 }

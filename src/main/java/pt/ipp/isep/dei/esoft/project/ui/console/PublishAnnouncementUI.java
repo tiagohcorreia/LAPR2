@@ -9,6 +9,7 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.application.controller.PublishAnnouncementController;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 
 
 
@@ -22,10 +23,12 @@ public class PublishAnnouncementUI implements Runnable {
 
     private Scanner scanner;
     private PublishAnnouncementController controller;
+    private AuthenticationController authenticationController;
 
-    public PublishAnnouncementUI(PublishAnnouncementController controller) {
+    public PublishAnnouncementUI(PublishAnnouncementController controller, AuthenticationController authenticationController) {
         scanner = new Scanner(System.in);
         this.controller= controller;
+        this.authenticationController = new AuthenticationController();
 
 
     }
@@ -53,13 +56,16 @@ public class PublishAnnouncementUI implements Runnable {
 
 
         boolean confirmed = false;
-        do {
+
             System.out.println("===== Publish a new announcement =====");
 
             //Agente
-            String agentsList = this.controller.getAgent().toString();
-            String agent = Utils.readLineFromConsole("Agent, insert your name:: ");
-            Employee agentResp = this.controller.getEmployee(agent);
+            //String agentsList = this.controller.getAgent().toString();
+        String agentName = String.valueOf(authenticationController.getCurrentUserName());
+
+
+        //String agent = Utils.readLineFromConsole("Agent, insert your name:: ");
+           // Employee agentResp = this.controller.getEmployee(agent);
 
             //typeOfBusiness
             List<TypeOfBusiness> typeOfBusinessList = this.controller.getTypeOfBusinessAsList();
@@ -249,7 +255,7 @@ public class PublishAnnouncementUI implements Runnable {
                 System.out.println("Distance of Centre: " + distance);
                 System.out.println("Price: " + price + "€");
                 System.out.println("Price: " + price + "€");
-                System.out.println("Agent: " + agentResp.getName());
+                System.out.println("Agent: " + agentName);
 
                 if (posTypeOfProperty == 1 || posTypeOfProperty == 2) {
 
@@ -267,15 +273,15 @@ public class PublishAnnouncementUI implements Runnable {
 
 
                 System.out.print("Confirm ad creation (y/n)? ");
-                String confirm = scanner.nextLine();
+                String confirm = scanner.next();
                 if (confirm.equalsIgnoreCase("y")) {
                     this.controller.createAnnouncement(sellOrRent, posTypeOfProperty, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft,
-                            sunExposure, area, location, distance, commission, price, photographs, agentResp);
+                            sunExposure, area, location, distance, commission, price, photographs, agentName);
                     System.out.println("Ad created successfully!");
                     confirmed = true;
                 } else {
                     System.out.print("Cancel (y/n)? ");
-                    String cancel = scanner.nextLine();
+                    String cancel = scanner.next();
                     if (cancel.equalsIgnoreCase("y")) {
                         System.out.println("Ad creation cancelled.");
                         confirmed = true;
@@ -284,8 +290,7 @@ public class PublishAnnouncementUI implements Runnable {
             }
 
 
-        }while (!confirmed) ;
 
-        scanner.close();
+
     }
 }
