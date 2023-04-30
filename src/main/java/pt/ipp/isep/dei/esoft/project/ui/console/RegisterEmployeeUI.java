@@ -8,10 +8,18 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.List;
 
+/**
+ * The type Register employee ui.
+ */
 public class RegisterEmployeeUI implements Runnable {
 
     private RegisterEmployeeController controller = new RegisterEmployeeController(new RegisterEmployeeRepository());
 
+    /**
+     * Instantiates a new Register employee ui.
+     *
+     * @param controller the controller
+     */
     public RegisterEmployeeUI(RegisterEmployeeController controller) {
         //this.controller = controller;
     }

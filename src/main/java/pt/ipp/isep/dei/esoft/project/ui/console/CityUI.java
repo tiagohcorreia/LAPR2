@@ -5,15 +5,26 @@ import pt.ipp.isep.dei.esoft.project.domain.model.City;
 
 import java.util.Scanner;
 
+/**
+ * The type City ui.
+ */
 public class CityUI {
     private final CityController cityController;
     private final Scanner scanner;
 
+    /**
+     * Instantiates a new City ui.
+     *
+     * @param cityController the city controller
+     */
     public CityUI(CityController cityController) {
         this.cityController = cityController;
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * Run.
+     */
     public void run() {
         boolean running = true;
 

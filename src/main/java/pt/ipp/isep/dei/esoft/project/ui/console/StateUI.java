@@ -7,17 +7,29 @@ import pt.ipp.isep.dei.esoft.project.domain.model.District;
 
 import java.util.Scanner;
 
+/**
+ * The type State ui.
+ */
 public class StateUI {
     private final StateController stateController;
     private final DistrictController districtController;
     private final Scanner scanner;
 
+    /**
+     * Instantiates a new State ui.
+     *
+     * @param stateController    the state controller
+     * @param districtController the district controller
+     */
     public StateUI(StateController stateController, DistrictController districtController) {
         this.stateController = stateController;
         this.districtController = districtController;
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     * Run.
+     */
     public void run() {
         boolean running = true;
 

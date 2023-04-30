@@ -12,7 +12,13 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Owner ui.
+ */
 public class OwnerUI  implements Runnable{
+    /**
+     * Instantiates a new Owner ui.
+     */
     public OwnerUI() {
 
     }

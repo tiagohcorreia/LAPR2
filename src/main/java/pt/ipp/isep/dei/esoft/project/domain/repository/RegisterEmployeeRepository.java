@@ -5,15 +5,33 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Register employee repository.
+ */
 public class RegisterEmployeeRepository {
 
+    /**
+     * The constant employeeList.
+     */
     public static List<Employee> employeeList = new ArrayList();
 
+    /**
+     * Create employee employee.
+     *
+     * @param employeeName the employee name
+     * @return the employee
+     */
     public Employee createEmployee (String employeeName) {
 
         return new Employee(employeeName);
     }
 
+    /**
+     * Save employee boolean.
+     *
+     * @param employee the employee
+     * @return the boolean
+     */
     public boolean saveEmployee(Employee employee) {
 
         if(validateEmployee(employee)) {
@@ -23,6 +41,12 @@ public class RegisterEmployeeRepository {
         return false;
     }
 
+    /**
+     * Add employee boolean.
+     *
+     * @param employee the employee
+     * @return the boolean
+     */
     public boolean addEmployee(Employee employee) {
 
         if(employee != null && validateEmployee(employee)) {
@@ -32,6 +56,12 @@ public class RegisterEmployeeRepository {
         return false;
     }
 
+    /**
+     * Validate employee boolean.
+     *
+     * @param employee the employee
+     * @return the boolean
+     */
     public boolean validateEmployee(Employee employee) {
 
         for(Employee employee1 : employeeList) {
@@ -44,11 +74,22 @@ public class RegisterEmployeeRepository {
         return true;
     }
 
+    /**
+     * Gets employee list.
+     *
+     * @return the employee list
+     */
     public List<Employee> getEmployeeList() {
 
         return new ArrayList<>(employeeList);
     }
 
+    /**
+     * Gets employee.
+     *
+     * @param employeeID the employee id
+     * @return the employee
+     */
     public static Employee getEmployee(String employeeID) {
 
         for(Employee employee : employeeList) {
@@ -61,6 +102,11 @@ public class RegisterEmployeeRepository {
         return null;
     }
 
+    /**
+     * Gets employee list as string.
+     *
+     * @return the employee list as string
+     */
     public String getEmployeeListAsString() {
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -73,6 +119,12 @@ public class RegisterEmployeeRepository {
         return stringBuilder.toString();
     }
 
+    /**
+     * Gets user by email.
+     *
+     * @param email the email
+     * @return the user by email
+     */
     public Employee getUserByEmail(String email) {
         for (Employee employee : employeeList) {
             if (employee.getEmailAdress().equals(email)) {
@@ -82,6 +134,12 @@ public class RegisterEmployeeRepository {
         return null;
     }
 
+    /**
+     * Find by email employee.
+     *
+     * @param email the email
+     * @return the employee
+     */
     public Employee findByEmail(String email) {
         for (Employee employee : employeeList) {
             if (employee.getEmailAdress().equals(email)) {

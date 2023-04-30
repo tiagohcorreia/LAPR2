@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type Task category repository.
+ */
 public class TaskCategoryRepository {
 
     private final List<TaskCategory> taskCategories = new ArrayList<>();
 
     /**
-     * This method returns an exsiting Task Category by its description.
+     * Gets task category by description.
      *
-     * @param taskCategoryDescription The description of the task category to be created.
-     * @return The task category.
-     * @throws IllegalArgumentException if the task category does not exist, which should never happen.
+     * @param taskCategoryDescription the task category description
+     * @return the task category by description
      */
     public TaskCategory getTaskCategoryByDescription(String taskCategoryDescription) {
         TaskCategory newTaskCategory = new TaskCategory(taskCategoryDescription);
@@ -30,6 +32,12 @@ public class TaskCategoryRepository {
         return taskCategory;
     }
 
+    /**
+     * Add optional.
+     *
+     * @param taskCategory the task category
+     * @return the optional
+     */
     public Optional<TaskCategory> add(TaskCategory taskCategory) {
 
         Optional<TaskCategory> newTaskCategory = Optional.empty();
@@ -53,9 +61,9 @@ public class TaskCategoryRepository {
     }
 
     /**
-     * This method returns a defensive (immutable) copy of the list of task categories.
+     * Gets task categories.
      *
-     * @return The list of task categories.
+     * @return the task categories
      */
     public List<TaskCategory> getTaskCategories() {
         //This is a defensive copy, so that the repository cannot be modified from the outside.

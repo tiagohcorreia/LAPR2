@@ -9,10 +9,13 @@ import java.util.List;
 
 
 /**
- * @author Paulo Maio pam@isep.ipp.pt
+ * The type Main menu ui.
  */
 public class MainMenuUI implements Runnable {
 
+    /**
+     * Instantiates a new Main menu ui.
+     */
     public MainMenuUI() {
     }
 

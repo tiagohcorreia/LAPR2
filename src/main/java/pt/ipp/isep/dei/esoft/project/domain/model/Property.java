@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
+/**
+ * The type Property.
+ */
 public class Property {
 
     private static final float DEFAULT_AREA = 1;
@@ -12,12 +15,26 @@ public class Property {
     private static final ArrayList<String> DEFAULT_PHOTOGRAPHS = new ArrayList<>();
 
     private float area;
+    /**
+     * The Location.
+     */
     City location;
+    /**
+     * The City centre distance.
+     */
     float cityCentreDistance;
     private ArrayList<String> photographs;
 
 
-    //Full constructor
+    /**
+     * Instantiates a new Property.
+     *
+     * @param area               the area
+     * @param location           the location
+     * @param cityCentreDistance the city centre distance
+     * @param photographs        the photographs
+     */
+//Full constructor
     public Property(float area, City location, float cityCentreDistance, ArrayList<String> photographs) {
 
         this.area = setArea(area);
@@ -26,7 +43,10 @@ public class Property {
         this.photographs = setPhotographs(photographs);
     }
 
-    //Default constructor
+    /**
+     * Instantiates a new Property.
+     */
+//Default constructor
     public Property(){
         this.area = DEFAULT_AREA;
         this.location = DEFAULT_LOCATION;
@@ -34,7 +54,12 @@ public class Property {
         this.photographs = DEFAULT_PHOTOGRAPHS;
     }
 
-    //Copy constructor
+    /**
+     * Instantiates a new Property.
+     *
+     * @param anotherProperty the another property
+     */
+//Copy constructor
     public Property(Property anotherProperty){
         this.setArea(anotherProperty.getArea());
         this.setLocation(anotherProperty.getLocation());
@@ -44,25 +69,56 @@ public class Property {
 
     // Getters and Setters
 
+    /**
+     * Gets area.
+     *
+     * @return the area
+     */
     public float getArea() {
         return area;
     }
 
+    /**
+     * Gets location.
+     *
+     * @return the location
+     */
     public City getLocation() {
         return location;
     }
 
+    /**
+     * Gets city centre distance.
+     *
+     * @return the city centre distance
+     */
     public float getCityCentreDistance() {
         return cityCentreDistance;
     }
 
+    /**
+     * Gets photographs.
+     *
+     * @return the photographs
+     */
     public ArrayList<String> getPhotographs() {
         return photographs;
     }
 
+    /**
+     * Get number of bedrooms int.
+     *
+     * @return the int
+     */
     public int getNumberOfBedrooms(){ return -1; }
 
 
+    /**
+     * Sets area.
+     *
+     * @param area the area
+     * @return the area
+     */
     public float setArea(float area) {
 
         if (area<=0){
@@ -71,11 +127,22 @@ public class Property {
         return area;
     }
 
+    /**
+     * Sets location.
+     *
+     * @param location the location
+     */
     public void setLocation(City location) {
         this.location = location;
     }
 
 
+    /**
+     * Sets city centre distance.
+     *
+     * @param cityCentreDistance the city centre distance
+     * @return the city centre distance
+     */
     public float setCityCentreDistance(float cityCentreDistance) {
         if (cityCentreDistance<=0){
             throw new IllegalArgumentException("Please insert a distance >0");
@@ -83,6 +150,12 @@ public class Property {
         return cityCentreDistance;
     }
 
+    /**
+     * Sets photographs.
+     *
+     * @param photographs the photographs
+     * @return the photographs
+     */
     public ArrayList<String> setPhotographs(ArrayList<String> photographs) {
         if (photographs.size()>30){
             throw new IllegalArgumentException("Please insert at least 1 photograph and a maximum of 30 photographs");

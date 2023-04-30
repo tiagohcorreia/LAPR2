@@ -12,8 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * The type Announcement test.
+ */
 class AnnouncementTest {
 
+    /**
+     * Ensure announcement is created.
+     */
     @Test
     void ensureAnnouncementIsCreated() {
         // Arrange
@@ -37,6 +43,9 @@ class AnnouncementTest {
         Assertions.assertEquals(agent, announcement.getAgent());
     }
 
+    /**
+     * Ensure default announcement is created.
+     */
     @Test
     void ensureDefaultAnnouncementIsCreated() {
         // Act
@@ -52,6 +61,9 @@ class AnnouncementTest {
     }
 
 
+    /**
+     * Ensure throw exception when setting negative price.
+     */
     @Test
     void EnsureThrowExceptionWhenSettingNegativePrice() {
         // Arrange
@@ -61,6 +73,9 @@ class AnnouncementTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> announcement.setPrice(-1000.0f));
     }
 
+    /**
+     * Ensure throw exception when setting negative commission.
+     */
     @Test
     void ensureThrowExceptionWhenSettingNegativeCommission() {
         // Arrange

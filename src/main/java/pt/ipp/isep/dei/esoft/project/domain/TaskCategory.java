@@ -2,10 +2,18 @@ package pt.ipp.isep.dei.esoft.project.domain;
 
 import java.util.Objects;
 
+/**
+ * The type Task category.
+ */
 public class TaskCategory {
 
     private final String description;
 
+    /**
+     * Instantiates a new Task category.
+     *
+     * @param description the description
+     */
     public TaskCategory(String description) {
         this.description = description;
     }
@@ -28,19 +36,14 @@ public class TaskCategory {
     }
 
     /**
-     * This method returns the description of the task category.
+     * Gets description.
      *
-     * @return The description of the task category.
+     * @return the description
      */
     public String getDescription() {
         return description;
     }
 
-    /**
-     * Clone method.
-     *
-     * @return A clone of the current task.
-     */
     public TaskCategory clone() {
         return new TaskCategory(this.description);
     }

@@ -6,15 +6,29 @@ import pt.ipp.isep.dei.esoft.project.domain.model.State;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type State repository.
+ */
 public class StateRepository {
     private List<State> states = new ArrayList<>();
 
+    /**
+     * Save.
+     *
+     * @param state the state
+     */
     public void save(State state) {
         if (stateIsValid(state)) {
             states.add(state);
         }
     }
 
+    /**
+     * Find by name state.
+     *
+     * @param name the name
+     * @return the state
+     */
     public State findByName(String name) {
         for (State state : states) {
             if (state.getName().equalsIgnoreCase(name)) {
@@ -28,13 +42,30 @@ public class StateRepository {
         return state != null && !states.contains(state);
     }
 
+    /**
+     * Find all list.
+     *
+     * @return the list
+     */
     public List<State> findAll() {
         return new ArrayList<>(states);
     }
 
+    /**
+     * Is empty boolean.
+     *
+     * @return the boolean
+     */
     public boolean isEmpty() {
         return states.isEmpty();
     }
+
+    /**
+     * Add district to state.
+     *
+     * @param state    the state
+     * @param district the district
+     */
     public void addDistrictToState(State state, District district) {
         if (state != null && district != null) {
             state.getDistricts().add(district);

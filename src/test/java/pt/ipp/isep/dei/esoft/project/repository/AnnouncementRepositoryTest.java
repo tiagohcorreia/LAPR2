@@ -17,8 +17,14 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 
+/**
+ * The type Announcement repository test.
+ */
 public class AnnouncementRepositoryTest {
 
+    /**
+     * Test save.
+     */
     @Test
     public void testSave() {
         ArrayList<String> photographs = new ArrayList<>();
@@ -32,6 +38,9 @@ public class AnnouncementRepositoryTest {
         assertTrue(repository.save(announcement));
     }
 
+    /**
+     * Test create announcement.
+     */
     @Test
     public void testCreateAnnouncement() {
         ArrayList<String> photographs = new ArrayList<>();
@@ -44,6 +53,9 @@ public class AnnouncementRepositoryTest {
         assertTrue(repository.createAnnouncement(announcement));
     }
 
+    /**
+     * Test validate announcement.
+     */
     @Test
     public void testValidateAnnouncement() {
         ArrayList<String> photographs = new ArrayList<>();
@@ -59,6 +71,9 @@ public class AnnouncementRepositoryTest {
         assertFalse(repository.validateAnnouncement(announcement));
     }
 
+    /**
+     * Test add announcement.
+     */
     @Test
     public void testAddAnnouncement() {
         ArrayList<String> photographs = new ArrayList<>();

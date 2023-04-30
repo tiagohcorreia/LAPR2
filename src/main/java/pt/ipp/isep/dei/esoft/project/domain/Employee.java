@@ -2,12 +2,20 @@ package pt.ipp.isep.dei.esoft.project.domain;
 
 import java.util.Objects;
 
+/**
+ * The type Employee.
+ */
 public class Employee {
     private final String email;
     private String name;
     private String position;
     private String phone;
 
+    /**
+     * Instantiates a new Employee.
+     *
+     * @param email the email
+     */
     public Employee(String email) {
         this.email = email;
     }
@@ -29,16 +37,17 @@ public class Employee {
         return Objects.hash(email);
     }
 
+    /**
+     * Has email boolean.
+     *
+     * @param email the email
+     * @return the boolean
+     */
     public boolean hasEmail(String email) {
         return this.email.equals(email);
     }
 
 
-    /**
-     * Clone method.
-     *
-     * @return A clone of the current instance.
-     */
     public Employee clone() {
         return new Employee(this.email);
     }

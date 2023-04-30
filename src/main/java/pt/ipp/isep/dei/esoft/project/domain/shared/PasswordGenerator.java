@@ -2,13 +2,24 @@ package pt.ipp.isep.dei.esoft.project.domain.shared;
 
 import java.util.Random;
 
+/**
+ * The type Password generator.
+ */
 public class PasswordGenerator {
 
+    /**
+     * Instantiates a new Password generator.
+     */
     public PasswordGenerator() {
     }
 
     private static final int PASSWORD_SIZE = 7;
 
+    /**
+     * Generate password string.
+     *
+     * @return the string
+     */
     public static String generatePassword() {
 
         String allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

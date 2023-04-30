@@ -3,12 +3,17 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- *
- * @author Paulo Maio pam@isep.ipp.pt
+ * The type Show text ui.
  */
 public class ShowTextUI implements Runnable{
 
     private String text;
+
+    /**
+     * Instantiates a new Show text ui.
+     *
+     * @param text the text
+     */
     public ShowTextUI(String text)
     {
         if (StringUtils.isBlank(text))

@@ -11,8 +11,14 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Property test.
+ */
 class PropertyTest {
 
+    /**
+     * Ensure negative property area fails.
+     */
     @DisplayName("Ensure House area <0 Fails")
     @Test
     void EnsureNegativePropertyAreaFails(){
@@ -28,6 +34,10 @@ class PropertyTest {
 
         });
     }
+
+    /**
+     * Ensure null house area fails.
+     */
     @DisplayName("Ensure House Distance of the center <0 Fails")
     @Test
     void EnsureNullHouseAreaFails(){
@@ -43,6 +53,9 @@ class PropertyTest {
         });
     }
 
+    /**
+     * Ensure null photos array fails.
+     */
     @DisplayName("Ensure House photographs array empty Fails")
     @Test
     void EnsureNullPhotosArrayFails(){
@@ -57,6 +70,10 @@ class PropertyTest {
             p1.setPhotographs(null);
         });
     }
+
+    /**
+     * Ensure limits photos array fails.
+     */
     @DisplayName("Ensure House photographs array bigger than 30 Fails")
     @Test
     void EnsureLimitsPhotosArrayFails(){

@@ -2,6 +2,9 @@ package pt.ipp.isep.dei.esoft.project.domain;
 
 import java.util.Objects;
 
+/**
+ * The type Task.
+ */
 public class Task {
     private final String reference;
     private final String description;
@@ -14,6 +17,18 @@ public class Task {
 
     private final Employee employee;
 
+    /**
+     * Instantiates a new Task.
+     *
+     * @param reference            the reference
+     * @param description          the description
+     * @param informalDescription  the informal description
+     * @param technicalDescription the technical description
+     * @param duration             the duration
+     * @param cost                 the cost
+     * @param taskCategory         the task category
+     * @param employee             the employee
+     */
     public Task(String reference, String description, String informalDescription, String technicalDescription,
                 Integer duration, Double cost, TaskCategory taskCategory, Employee employee) {
 
@@ -53,11 +68,6 @@ public class Task {
     }
 
 
-    /**
-     * Clone method.
-     *
-     * @return A clone of the current instance.
-     */
     public Task clone() {
         return new Task(this.reference, this.description, this.informalDescription, this.technicalDescription,
                 this.duration, this.cost, this.taskCategory, this.employee);

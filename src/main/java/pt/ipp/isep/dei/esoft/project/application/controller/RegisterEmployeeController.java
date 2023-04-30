@@ -13,23 +13,54 @@ import java.util.List;
 
 import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.generatePassword;
 
+/**
+ * The type Register employee controller.
+ */
 public class RegisterEmployeeController {
 
     private RegisterEmployeeRepository employeeRepository;
 
+    /**
+     * Instantiates a new Register employee controller.
+     *
+     * @param employeeRepository the employee repository
+     */
     public RegisterEmployeeController(RegisterEmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
+    /**
+     * Gets roles as list.
+     *
+     * @return the roles as list
+     */
     public List<Role> getRolesAsList() {
         return Arrays.stream(Role.values()).toList();
     }
 
+    /**
+     * Gets agency.
+     *
+     * @return the agency
+     */
     public List<Agency> getAgency() {
         return Arrays.stream(Agency.values()).toList();
     }
 
 
+    /**
+     * Create employee string.
+     *
+     * @param employeeName    the employee name
+     * @param passportNumber  the passport number
+     * @param taxNumber       the tax number
+     * @param address         the address
+     * @param eMail           the e mail
+     * @param telephoneNumber the telephone number
+     * @param posRole         the pos role
+     * @param posAgency       the pos agency
+     * @return the string
+     */
     public String createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
                                  int telephoneNumber, Integer posRole, Integer posAgency) {
 
@@ -49,6 +80,12 @@ public class RegisterEmployeeController {
 
     }
 
+    /**
+     * Send email.
+     *
+     * @param emplyeeName the emplyee name
+     * @param eMail       the e mail
+     */
     public void sendEmail(String emplyeeName, String eMail) {
 
         String password = generatePassword();

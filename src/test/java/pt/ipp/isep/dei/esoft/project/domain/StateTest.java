@@ -13,10 +13,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * The type State test.
+ */
 class StateTest {
     private State state;
     private List<District> districts;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         List<City> newYorkCities = new ArrayList<>(Arrays.asList(new City("New York"), new City("Buffalo")));
@@ -30,22 +36,34 @@ class StateTest {
         state = new State("New York", districts);
     }
 
+    /**
+     * Gets name.
+     */
     @Test
     void getName() {
         assertEquals("New York", state.getName());
     }
 
+    /**
+     * Sets name.
+     */
     @Test
     void setName() {
         state.setName("California");
         assertEquals("California", state.getName());
     }
 
+    /**
+     * Gets districts.
+     */
     @Test
     void getDistricts() {
         assertEquals(districts, state.getDistricts());
     }
 
+    /**
+     * Sets districts.
+     */
     @Test
     void setDistricts() {
         List<City> texasCities = new ArrayList<>(Arrays.asList(new City("Houston"), new City("Austin")));
@@ -60,11 +78,17 @@ class StateTest {
         assertEquals(newDistricts, state.getDistricts());
     }
 
+    /**
+     * Test to string.
+     */
     @Test
     void testToString() {
         assertEquals("State{name='New York', districts=" + districts + "}", state.toString());
     }
 
+    /**
+     * Test equals.
+     */
     @Test
     void testEquals() {
         State anotherState = new State("New York", districts);

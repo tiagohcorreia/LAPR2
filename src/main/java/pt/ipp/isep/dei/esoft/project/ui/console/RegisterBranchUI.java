@@ -7,11 +7,19 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.List;
 
+/**
+ * The type Register branch ui.
+ */
 public class RegisterBranchUI implements Runnable {
 
 
     private RegisterBranchController controller = new RegisterBranchController(new RegisterBranchRepository());
 
+    /**
+     * Instantiates a new Register branch ui.
+     *
+     * @param controller the controller
+     */
     public RegisterBranchUI(RegisterBranchController controller) {
         //this.controller = controller;
     }

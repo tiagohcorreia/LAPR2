@@ -13,12 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The type Publish announcement ui.
+ */
 public class PublishAnnouncementUI implements Runnable {
     private Scanner scanner;
 
     private final PublishAnnouncementController controller;
     private final AuthenticationController authenticationController;
 
+    /**
+     * Instantiates a new Publish announcement ui.
+     *
+     * @param controller               the controller
+     * @param authenticationController the authentication controller
+     */
     public PublishAnnouncementUI(PublishAnnouncementController controller, AuthenticationController authenticationController) {
         Scanner scanner = new Scanner(System.in);
         this.controller = controller;

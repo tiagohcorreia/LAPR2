@@ -13,14 +13,23 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+/**
+ * The type State repository test.
+ */
 class StateRepositoryTest {
     private StateRepository stateRepository;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         stateRepository = new StateRepository();
     }
 
+    /**
+     * Save.
+     */
     @Test
     void save() {
         City newYorkCity = new City("New York");
@@ -31,7 +40,10 @@ class StateRepositoryTest {
         State foundState = stateRepository.findByName("New York");
         assertEquals(newState, foundState);
     }
- 
+
+    /**
+     * Find by name.
+     */
     @Test
     void findByName() {
         City newYorkCity = new City("New York");
@@ -43,12 +55,18 @@ class StateRepositoryTest {
         assertEquals(newState, foundState);
     }
 
+    /**
+     * Find by name not found.
+     */
     @Test
     void findByNameNotFound() {
         State foundState = stateRepository.findByName("Nonexistent State");
         assertNull(foundState);
     }
 
+    /**
+     * Find all.
+     */
     @Test
     void findAll() {
         City newYorkCity = new City("New York");

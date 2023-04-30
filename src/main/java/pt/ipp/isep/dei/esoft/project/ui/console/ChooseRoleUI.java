@@ -5,6 +5,9 @@ import pt.ipp.isep.dei.esoft.project.ui.console.menu.OwnerUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.menu.UnregisteredUserUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
+/**
+ * The type Choose role ui.
+ */
 public class ChooseRoleUI implements Runnable {
 
     @Override

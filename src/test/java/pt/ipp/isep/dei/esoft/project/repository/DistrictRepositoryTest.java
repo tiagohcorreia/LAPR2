@@ -12,14 +12,23 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+/**
+ * The type District repository test.
+ */
 class DistrictRepositoryTest {
     private DistrictRepository districtRepository;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         districtRepository = new DistrictRepository();
     }
 
+    /**
+     * Save.
+     */
     @Test
     void save() {
         City newYorkCity = new City("New York");
@@ -30,6 +39,9 @@ class DistrictRepositoryTest {
         assertEquals(newYorkDistrict, foundDistrict);
     }
 
+    /**
+     * Find by name.
+     */
     @Test
     void findByName() {
         City newYorkCity = new City("New York");
@@ -40,12 +52,18 @@ class DistrictRepositoryTest {
         assertEquals(newYorkDistrict, foundDistrict);
     }
 
+    /**
+     * Find by name not found.
+     */
     @Test
     void findByNameNotFound() {
         District foundDistrict = districtRepository.findByName("Nonexistent District");
         assertNull(foundDistrict);
     }
 
+    /**
+     * Find all.
+     */
     @Test
     void findAll() {
         City newYorkCity = new City("New York");

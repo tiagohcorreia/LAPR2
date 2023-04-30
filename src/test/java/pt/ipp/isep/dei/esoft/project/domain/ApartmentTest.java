@@ -10,7 +10,13 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Apartment test.
+ */
 class ApartmentTest {
+    /**
+     * Ensure negative apartment bedrooms fails.
+     */
     @DisplayName("Ensure that number of bedrooms <0 Fails")
     @Test
     void EnsureNegativeApartmentBedroomsFails(){
@@ -25,6 +31,10 @@ class ApartmentTest {
             p1.setNumberOfBedrooms(-1);
         });
     }
+
+    /**
+     * Ensure negative apartment bathrooms fails.
+     */
     @DisplayName("Ensure that number of bathrooms <0 Fails")
     @Test
     void EnsureNegativeApartmentBathroomsFails(){
@@ -40,6 +50,9 @@ class ApartmentTest {
         });
     }
 
+    /**
+     * Ensure negative apartment parking spaces fails.
+     */
     @DisplayName("Ensure that number of parking spaces <0 Fails")
     @Test
     void EnsureNegativeApartmentParkingSpacesFails(){
@@ -55,6 +68,9 @@ class ApartmentTest {
         });
     }
 
+    /**
+     * Ensure null apartment equipment fails.
+     */
     @DisplayName("Ensure that null equipment Fails")
     @Test
     void EnsureNullApartmentEquipmentFails(){

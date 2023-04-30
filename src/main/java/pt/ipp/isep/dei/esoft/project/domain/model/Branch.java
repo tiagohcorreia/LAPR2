@@ -2,6 +2,9 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 
 import java.util.regex.Pattern;
 
+/**
+ * The type Branch.
+ */
 public class Branch {
 
     private int ID;
@@ -10,6 +13,15 @@ public class Branch {
     private int phoneNumber;
     private String email;
 
+    /**
+     * Instantiates a new Branch.
+     *
+     * @param ID          the id
+     * @param name        the name
+     * @param location    the location
+     * @param phoneNumber the phone number
+     * @param email       the email
+     */
     public Branch(int ID, String name, String location, int phoneNumber, String email) {
 
         checkIfDataIsNull(ID,name,location,phoneNumber,email);
@@ -24,17 +36,21 @@ public class Branch {
         this.email = email;
     }
 
+    /**
+     * Instantiates a new Branch.
+     */
     public Branch(){
 
     }
 
     /**
+     * Check if data is null.
      *
-     * @param ID
-     * @param name
-     * @param location
-     * @param phoneNumber
-     * @param email
+     * @param ID          the id
+     * @param name        the name
+     * @param location    the location
+     * @param phoneNumber the phone number
+     * @param email       the email
      */
     public void checkIfDataIsNull(int ID, String name, String location, int phoneNumber, String email){
 
@@ -44,8 +60,9 @@ public class Branch {
     }
 
     /**
+     * Check name length.
      *
-     * @param name
+     * @param name the name
      */
     public void checkNameLength(String name){
         if(!(name.length() <= 40)){
@@ -54,8 +71,9 @@ public class Branch {
     }
 
     /**
+     * Check valid email.
      *
-     * @param email
+     * @param email the email
      */
     public void checkValidEmail(String email){
         if(Pattern.matches("[a-z0-9]+@[a-z]+\\.[a-z]", email)){
@@ -64,8 +82,9 @@ public class Branch {
     }
 
     /**
+     * Check valid phone number.
      *
-     * @param phoneNumber
+     * @param phoneNumber the phone number
      */
     public void checkValidPhoneNumber(int phoneNumber){
 
@@ -74,40 +93,85 @@ public class Branch {
         }
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets location.
+     *
+     * @return the location
+     */
     public String getLocation() {
         return location;
     }
 
+    /**
+     * Gets phone number.
+     *
+     * @return the phone number
+     */
     public int getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name) {
         checkNameLength(name);
         this.name = name;
     }
 
+    /**
+     * Sets location.
+     *
+     * @param location the location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
 
+    /**
+     * Sets phone number.
+     *
+     * @param phoneNumber the phone number
+     */
     public void setPhoneNumber(int phoneNumber) {
         checkValidPhoneNumber(phoneNumber);
         this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
     public void setEmail(String email) {
         checkValidEmail(email);
         this.email = email;

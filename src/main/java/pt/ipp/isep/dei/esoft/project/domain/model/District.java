@@ -3,27 +3,56 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 import java.util.List;
 
 
+/**
+ * The type District.
+ */
 public class District {
     private String name;
     private List<City> cities;
 
+    /**
+     * Instantiates a new District.
+     *
+     * @param name   the name
+     * @param cities the cities
+     */
     public District(String name, List<City> cities) {
         this.name = name;
         this.cities = cities;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets cities.
+     *
+     * @return the cities
+     */
     public List<City> getCities() {
         return cities;
     }
 
+    /**
+     * Sets cities.
+     *
+     * @param cities the cities
+     */
     public void setCities(List<City> cities) {
         this.cities = cities;
     }
