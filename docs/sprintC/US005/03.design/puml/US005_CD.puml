@@ -1,0 +1,52 @@
+@startuml
+
+class Branch {
+
+    - int ID
+    - String name
+    - String location
+    - int phoneNumber
+    - String email
+
+
+    + checkIfDataIsNull()
+    + checkNameLength()
+    + checkValidEmail()
+    + checkValidPhoneNumber()
+
+
+
+}
+
+class RegisterBranchUI {
+
+    - controller
+    + registerBranch()
+
+}
+
+class RegisterBranchController {
+
+    - branchRepository
+    + createBranch()
+}
+
+class BranchRepository {
+
+    + saveBranch()
+}
+
+
+
+
+Interface Runnable {
+    + run()
+}
+
+Runnable -left-|> RegisterBranchUI
+RegisterBranchUI --> RegisterBranchController
+RegisterBranchController --> Branch
+Branch -right-> BranchRepository
+
+
+@enduml

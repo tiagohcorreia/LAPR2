@@ -1,0 +1,137 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Unregistered User" as UU
+participant ":DisplayAnnouncementsUI" as UI
+participant ":DisplayAnnouncementsController" as CTRL
+participant ":Repositories" as reposclass
+participant "repositories\n:Repositories" as repositories
+participant "announcementRepository\n:AnnouncementRepository" as ARepo
+'participant "announcement\n:Announcement" as announcement
+participant ":Announcement" as announcement
+participant ":Property" as prop
+
+
+
+activate UU
+UU -> UI: starts announcement announcements
+activate UI
+UI -> CTRL**: create
+UI -> UI: availableFields =\ngetAvailableFields()
+activate UI
+UI -> CTRL: getAvailableFields()
+activate CTRL
+
+CTRL -> reposclass: getInstance()
+activate reposclass
+reposclass --> CTRL: repositories
+deactivate reposclass
+CTRL -> repositories: getAnnouncementsRepository()
+activate repositories
+repositories --> CTRL: announcementsRepository
+deactivate repositories
+CTRL -> ARepo: getAvailableFields()
+activate ARepo
+loop for each announcement
+    ARepo -> announcement: isVisible()
+    activate announcement
+    return true/false
+    'ARepo -> announcement: getBusinessType()
+    ARepo -> announcement: getAnnouncement()
+    alt isVisible() = true
+        activate announcement
+        announcement --> ARepo: announcement
+        else isVisible() = false
+        return null
+        deactivate announcement
+    end
+end
+ARepo --> CTRL: availableFields
+deactivate ARepo
+
+CTRL --> UI: availableFields
+deactivate CTRL
+deactivate UI
+
+UI -> UI: displayAvailableFields(\navailableFields)
+activate UI
+deactivate UI
+
+UI -> UI: filterData = requestFilterData()
+activate UI
+deactivate UI
+
+UI --> UU: shows available fields and\nrequests data selection
+alt
+    UU -> UI: selects required data
+    UI -> CTRL: getAnnouncements(businessType,\npropertyType, numberOfRooms)
+    activate CTRL
+    CTRL -> ARepo: getAnnouncements(businessType,\npropertyType, numberOfRooms)
+    activate ARepo
+    loop for each announcement
+        ARepo -> announcement: isVisible()
+        activate announcement
+        return true/false
+        deactivate announcement
+        ARepo -> announcement: isBusinessType(businessType)
+        activate announcement
+        return true/false
+        deactivate announcement
+
+        ARepo -> announcement: isPropertyType(propertyType)
+        activate announcement
+        announcement -> prop: getClassName().getSimpleName()
+        activate prop
+        return
+        return true/false
+        deactivate prop
+        deactivate announcement
+
+        ARepo -> announcement: numberOfRoomsEquals(\nnumberOfRooms)
+        activate announcement
+        activate announcement
+        announcement -> prop: getNumberOfRooms()
+        activate prop
+        return
+
+        return true/false
+        deactivate announcement
+    end
+
+    ARepo --> CTRL: announcements
+    deactivate ARepo
+    CTRL --> UI: announcements
+    deactivate CTRL
+    UI --> UU: shows matching announcements
+else
+    UU -> UI: doesn't select any data
+    UI -> CTRL: getAllVisibleAnnouncements()
+    activate CTRL
+    CTRL -> ARepo: getAllVisibleAnnouncements()
+    activate ARepo
+    loop for each announcement
+        ARepo -> announcement: isVisible()
+        activate announcement
+        return true/false
+        deactivate announcement
+    end
+    ARepo --> CTRL: announcements
+    deactivate ARepo
+
+    CTRL --> UI: announcements
+    deactivate CTRL
+    UI --> UU: shows all announcements
+end 'ALT fragment end
+
+opt
+    UU -> UI: selects sorting order
+    UI -> UI: sort(mode)
+    UI --> UU: displays sorted data
+end
+
+@enduml

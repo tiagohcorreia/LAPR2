@@ -1,0 +1,26 @@
+@startuml
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam groupInheritance 1
+hide circle
+hide methods
+
+"System Administrator" "1" -> "*" Branch: registers >
+
+
+class Branch{
+ID
+name
+location
+email
+phoneNumber
+}
+
+together {
+class "System Administrator"
+
+
+@enduml

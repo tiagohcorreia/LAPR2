@@ -1,0 +1,82 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+
+class Agent {
+    citizenCard
+    taxNumber
+    address
+    phoneNumber
+    agency
+}
+
+
+
+class Advertisement {
+
+}
+
+
+
+class House {
+     numberOfBedrooms
+     numberOfBathroom
+     numberOfParkingSpaces
+     availableEquipment
+     existenceOfBasement
+     inhabitableLoft
+     sunExposure
+}
+
+class Apartment {
+     numberOfBedrooms
+     numberOfBathroom
+     numberOfParkingSpaces
+     availableEquipment
+
+}
+class Land {
+     description
+}
+
+class Commission {
+    commissionValue
+}
+
+class Property {
+     id
+     area
+     location
+     distance_from_the_city_centre
+     price
+     photographs
+     Bussiness
+
+}
+
+
+
+
+Advertisement "1" -- "1" Property: contains >
+Agent "1" -- "*" Advertisement: publish >
+House "1" --"1" Property: is >
+Apartment"1" -- "1" Property: is >
+Land"1" - "1" Property: is >
+Advertisement"1" - "1" Commission: it has >
+
+
+
+
+
+
+
+@enduml

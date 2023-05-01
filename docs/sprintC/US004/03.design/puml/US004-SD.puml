@@ -1,0 +1,90 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor Owner as owner
+participant ":RegisterPropertyUI" as ui
+participant ":RegisterPropertyController" as ctrl
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as rep
+participant ":RegisterEmployeeRepository" as repEmp
+participant ":AnnouncementRepository" as repAnounc
+participant "newProperty\n:Property" as property
+participant "newAnnouncement\n:Announcement" as announcement
+
+activate owner
+
+        owner -> ui : starts the request for listing a property
+
+        activate ui
+
+        ui--> owner : requests to select the type of property
+
+        owner -> ui: selects the type of property
+
+        ui -> ctrl** : create
+
+        ui-> ctrl: getAgent()
+
+        activate ctrl
+
+        ctrl -> RepositorySingleton: getInstance()
+        activate RepositorySingleton
+        RepositorySingleton --> ctrl: repositories
+        deactivate RepositorySingleton
+
+        ctrl -> rep: getEmployeeRepository()
+        activate rep
+        rep--> ctrl: RegisterEmployeeRepository
+        deactivate rep
+
+        ctrl ->repEmp: getAgents()
+        activate repEmp
+        repEmp -> ctrl: agentsList
+        deactivate repEmp
+
+        ctrl-> ui: agentsList
+
+        ui --> owner : requests listing and property data
+
+        owner -> ui : inserts the property data
+
+        ui-> owner: validates data
+
+        ui -> ctrl: createAnnouncement()
+        ctrl -> property**: create
+        activate repAnounc
+        property -> property: validateProperty(Property)
+        activate property
+        property -> repAnounc: Property
+        deactivate property
+        repAnounc-> ctrl: Property
+        deactivate repAnounc
+        deactivate repAnounc
+        ctrl -> repAnounc: createAnnouncement()
+        activate repAnounc
+        repAnounc-> announcement**: create
+        announcement -> announcement: validateAnnouncement(Announcement)
+        activate announcement
+        announcement->repAnounc: Announcement
+        deactivate announcement
+        repAnounc -> repAnounc:AddAnnouncement(Announcement)
+        activate repAnounc
+
+        deactivate repAnounc
+        repAnounc ->ctrl: Announcement
+        deactivate repAnounc
+
+            ctrl --> ui: Announcement
+        deactivate ctrl
+            ui --> owner: informs operation success
+        deactivate ui
+
+deactivate owner
+
+
+          @enduml

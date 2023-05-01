@@ -1,0 +1,49 @@
+@startuml
+class Administrator {
+
+}
+
+class Location{
+-String state
+-String city
+-String district
+-String street
+-int zipCode
++getState()
++getZipcode()
++getCity()
++getDistrict()
++getStreet()
+
+
+}
+
+class State{
+name
+}
+
+class City{
+name
+}
+
+class District{
+name
+}
+
+class Street{
+string
+}
+
+class Zipcode{
+number
+}
+
+
+Administrator "1" -- "*" Location: creates >
+Location "*" -- "*" State: contains >
+Location "*" -- "*" City: contains >
+Location "*" -- "*" District: contains >
+Location "*" -- "*" Street: contains >
+Location "*" -- "*" Zipcode: contains >
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Agent" as Employee
+participant ":System" as System
+
+activate Employee
+
+    Employee -> System : asks to publish an announcement
+    activate System
+
+        System --> Employee : requests data
+    deactivate System
+
+    Employee -> System : Select the property type
+    activate System
+
+        System --> Employee : presents the data to be filled in by the type of property
+
+    deactivate System
+
+    Employee -> System : insert the requested data (size, location, distance from the city center, number of bedrooms, number of bathrooms, price, commission)
+    activate System
+
+        System --> Employee : validate the data
+    deactivate System
+
+    Employee -> System : submits data
+    activate System
+
+        System --> Employee : displays operation success
+    deactivate System
+
+@enduml
