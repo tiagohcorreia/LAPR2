@@ -36,34 +36,32 @@ public class DisplayAnnouncementsUI implements Runnable{
      * @param availableFields the available fields
      * @return the boolean
      */
-    public boolean displayAvailableFields(List<List<Object>> availableFields){
-       // if (availableFields.get(0).size() == 0){
-//            System.out.println("There are no announcements in the system.");
-//            return true;
-//        }
-//        else {
-            System.out.println("SEARCH FILTER");
-            System.out.println("- Select one from the following options");
-            System.out.println("- Or press [Enter] to see all available announcements");
-            System.out.println();
-            System.out.print("Type of business - ");
-            for (Object fields : availableFields.get(0)) {
-                System.out.print(fields.toString() + " ");
-            }
-            System.out.println();
+    public boolean displayAvailableFields(List<List<Object>> availableFields){System.out.println("SEARCH FILTER");
+        if (availableFields.get(0).size() == 0) {
+            System.out.println("There are no announcements registered in the system.");
+            return true;
+        }
+        System.out.println("- Select one from the following options");
+        System.out.println("- Or press [Enter] to see all available announcements");
+        System.out.println();
+        System.out.print("Type of business - ");
+        for (Object fields : availableFields.get(0)) {
+            System.out.print(fields.toString() + " ");
+        }
+        System.out.println();
 
-            System.out.print("Type of property - ");
-            for (Object fields : availableFields.get(1)) {
-                System.out.print(fields.toString() + " ");
-            }
-            System.out.println();
+        System.out.print("Type of property - ");
+        for (Object fields : availableFields.get(1)) {
+            System.out.print(fields.toString() + " ");
+        }
+        System.out.println();
 
-            System.out.print("Number of bedrooms - ");
-            for (Object fields : availableFields.get(2)) {
-                System.out.print(fields.toString() + " ");
-            }
-            System.out.println();
-        //}
+        System.out.print("Number of bedrooms - ");
+        for (Object fields : availableFields.get(2)) {
+            System.out.print(fields.toString() + " ");
+        }
+        System.out.println();
+
         return false;
     }
 
@@ -99,21 +97,6 @@ public class DisplayAnnouncementsUI implements Runnable{
             }
         } while (!availableFields.get(1).contains(selectedTypeOfProperty) && !selectedTypeOfProperty.equals(""));
 
-//        int selectedNumberOfBedrooms = -1;
-//        String input = null;
-//        if(!selectedTypeOfProperty.equals("LAND")) {
-//            do {
-//                try {
-//                    input = Utils.readLineFromConsole("Number of bedrooms: ").trim();
-//                    selectedNumberOfBedrooms = (input.equals("")) ? -1 : Integer.parseInt(input);
-//                    selectedData[2] = String.valueOf(selectedNumberOfBedrooms);
-//                } catch (Exception e){
-//                    selectedNumberOfBedrooms = -1;
-//                    System.out.println("Please try again.");
-//                }
-//            } while (!availableFields.get(2).contains(selectedNumberOfBedrooms) && selectedNumberOfBedrooms == -1 && !input.equals(""));
-//        }
-
         //  -Number of bedrooms
         //(only displayed if the selected property type is not "LAND")
         String selectedNumberOfBedrooms = null;
@@ -123,9 +106,8 @@ public class DisplayAnnouncementsUI implements Runnable{
                     selectedNumberOfBedrooms = Utils.readLineFromConsole("Number of bedrooms: ").trim();
                     selectedData[2] = selectedNumberOfBedrooms;
                 } catch (Exception e){
-                    System.out.println("Please try again.");
+                    System.out.println(e.getMessage() + "Please try again.");
                 }
-//            } while (!availableFields.get(2).contains(selectedNumberOfBedrooms) && selectedNumberOfBedrooms == -1 && !input.equals(""));
             } while (!availableFields.get(1).toString().contains(String.valueOf(selectedNumberOfBedrooms)) && !selectedNumberOfBedrooms.equals(""));
 
     }
@@ -162,6 +144,9 @@ public class DisplayAnnouncementsUI implements Runnable{
             case 2:
                 //sort by city
                 announcements.sort(new AnnouncementLocationComparator());
+                break;
+            default:
+                break;
         }
         return announcements;
     }
@@ -183,12 +168,13 @@ public class DisplayAnnouncementsUI implements Runnable{
         displayAnnouncements(matchingAnnouncements);
 
 
-        //Select sorting mode
+        //Set sorting mode
         int sortingMode = -1;
         while(sortingMode != 0) {
             System.out.println("Sorting options");
             System.out.println("1 - Price");
             System.out.println("2 - City");
+            System.out.println("0 - Exit");
 
             do{
                 try{
@@ -206,6 +192,11 @@ public class DisplayAnnouncementsUI implements Runnable{
         return false;
     }
 
+    /**
+     * Prints announcements list.
+     *
+     * @param matchingAnnouncements announcement list.
+     */
     private void displayAnnouncements(List<Announcement> matchingAnnouncements) {
         for(Announcement announcement : matchingAnnouncements){
             System.out.println(announcement.toString());
