@@ -82,7 +82,7 @@ public class DisplayAnnouncementsUI implements Runnable{
                 selectedTypeOfBusiness = Utils.readLineFromConsole("Type of business: ").trim().toUpperCase();
                 selectedData[0] = selectedTypeOfBusiness;
             } catch (Exception e){
-                System.out.println("Please try again.");
+                System.out.println(e.getMessage() + "Please try again.");
             }
         } while (!availableFields.get(0).contains(selectedTypeOfBusiness) && !selectedTypeOfBusiness.equals(""));
 
@@ -93,7 +93,7 @@ public class DisplayAnnouncementsUI implements Runnable{
                 selectedTypeOfProperty = Utils.readLineFromConsole("Type of property: ").trim().toUpperCase();
                 selectedData[1] = selectedTypeOfProperty;
             } catch (Exception e){
-                System.out.println("Please try again.");
+                System.out.println(e.getMessage() + "Please try again.");
             }
         } while (!availableFields.get(1).contains(selectedTypeOfProperty) && !selectedTypeOfProperty.equals(""));
 
