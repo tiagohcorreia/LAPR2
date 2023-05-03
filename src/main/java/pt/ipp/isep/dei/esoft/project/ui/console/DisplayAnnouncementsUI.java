@@ -211,7 +211,7 @@ public class DisplayAnnouncementsUI implements Runnable{
 //                    + announcement.getProperty().getArea() + "\t"
 //
 //            );
-            announcement.getApartmentAsString();
+            System.out.println(announcement.getApartmentAsString());
         }
     }
 }
