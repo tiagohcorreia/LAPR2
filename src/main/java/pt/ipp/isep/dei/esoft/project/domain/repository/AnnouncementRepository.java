@@ -46,11 +46,8 @@ public class AnnouncementRepository {
      * @return the boolean
      */
     public boolean validateAnnouncement(Announcement announcement) {
-
         for(Announcement announcement1 : announcements) {
-
-            if(announcement.equals(announcement)) {
-
+            if(announcement.equals(announcement1)) {
                 return false;
             }
         }
@@ -67,7 +64,7 @@ public class AnnouncementRepository {
 
         if(announcement != null && validateAnnouncement(announcement)) {
 
-            return this.announcements.add(announcement);
+            return announcements.add(announcement.getAnnouncement());
         }
         return false;
     }
