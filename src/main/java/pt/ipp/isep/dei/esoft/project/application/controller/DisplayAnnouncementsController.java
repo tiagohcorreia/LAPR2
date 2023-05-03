@@ -11,13 +11,9 @@ import java.util.List;
  */
 public class DisplayAnnouncementsController {
     /**
-     * The Repositories.
-     */
-    Repositories repositories = Repositories.getInstance();
-    /**
      * The Announcement repository.
      */
-    AnnouncementRepository announcementRepository = repositories.getAnnouncementRepository();
+    AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
 
     /**
      * Get available fields list.
