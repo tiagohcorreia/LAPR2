@@ -40,14 +40,14 @@ public class AnnouncementRepository {
     }
 
     /**
-     * Validate announcement boolean.
+     * Checks if the annoucement to be saved is a duplicate.
      *
-     * @param announcement the announcement
-     * @return the boolean
+     * @param announcement the announcement to be saved
+     * @return true if successful, false otherwise
      */
     public boolean validateAnnouncement(Announcement announcement) {
-        for(Announcement announcement1 : announcements) {
-            if(announcement.equals(announcement1)) {
+        for(Announcement i : announcements) {
+            if(announcement.equals(i)) {
                 return false;
             }
         }
@@ -100,16 +100,14 @@ public class AnnouncementRepository {
         //TO-FIX
         for(Announcement announcement : announcements){
             if ( announcement != null && announcement.isVisible()){
-                if (!availableFields.get(0).contains(announcement.getTypeOfBusiness())){
-                    availableFields.get(0).add(announcement.getTypeOfBusiness());
+                if (!availableFields.get(0).contains(announcement.getTypeOfBusiness().toString().toUpperCase())){
+                    availableFields.get(0).add(announcement.getTypeOfBusiness().toString().toUpperCase());
                 }
-                if (!availableFields.get(1).contains(announcement.getProperty().getClass().getSimpleName())){
-                    availableFields.get(1).add(announcement.getProperty().getClass().getSimpleName());
+                if (!availableFields.get(1).contains(announcement.getProperty().getClass().getSimpleName().toUpperCase())){
+                    availableFields.get(1).add(announcement.getProperty().getClass().getSimpleName().toUpperCase());
                 }
                 if (!announcement.getProperty().getClass().getSimpleName().equals("Land") && !availableFields.get(2).contains(announcement.getProperty().getNumberOfBedrooms())){
-                //if (announcement.getProperty().getClass().getSimpleName().equals("Land") && !availableFields.get(2).contains(announcement.getProperty().getNumberOfBedrooms())){
                     availableFields.get(2).add(announcement.getProperty().getNumberOfBedrooms());
-                    //availableFields.get(2).add(announcement.getProperty().getBedrooms());
                 }
             }
         }

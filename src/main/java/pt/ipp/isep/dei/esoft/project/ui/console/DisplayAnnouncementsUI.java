@@ -100,17 +100,20 @@ public class DisplayAnnouncementsUI implements Runnable{
         //  -Number of bedrooms
         //(only displayed if the selected property type is not "LAND")
         String selectedNumberOfBedrooms = null;
+        int bedrooms = -1;
         if(!selectedTypeOfProperty.equals("LAND")) {
             do {
                 try {
                     selectedNumberOfBedrooms = Utils.readLineFromConsole("Number of bedrooms: ").trim();
                     selectedData[2] = selectedNumberOfBedrooms;
+                    bedrooms = Integer.parseInt(selectedNumberOfBedrooms);
                 } catch (Exception e){
                     System.out.println(e.getMessage() + "Please try again.");
                 }
-            } while (!availableFields.get(1).toString().contains(String.valueOf(selectedNumberOfBedrooms)) && !selectedNumberOfBedrooms.equals(""));
+            } while (!availableFields.get(2).contains(bedrooms) && !selectedNumberOfBedrooms.equals(""));
 
-    }
+        } else
+            selectedData[2] = "-1";
 
         if (selectedData[0].equals("") && selectedData[1].equals("") && selectedData[2].equals(""))
             return null;
@@ -125,7 +128,10 @@ public class DisplayAnnouncementsUI implements Runnable{
      * @return the list
      */
     public List<Announcement> getMatchingAnnouncements(String[] selectedData){
-        return controller.getAnnouncements(selectedData[0], selectedData[1], Integer.parseInt(selectedData[2]));
+        if(selectedData[2].equals(""))
+            return controller.getAnnouncements(selectedData[0], selectedData[1], -1);
+        else
+            return controller.getAnnouncements(selectedData[0], selectedData[1], Integer.parseInt(selectedData[2]));
     }
 
     /**
@@ -186,9 +192,8 @@ public class DisplayAnnouncementsUI implements Runnable{
 
             matchingAnnouncements = sortAnnouncements(sortingMode, matchingAnnouncements);
             displayAnnouncements(matchingAnnouncements);
-
         }
-
+        System.out.println("done");
         return false;
     }
 

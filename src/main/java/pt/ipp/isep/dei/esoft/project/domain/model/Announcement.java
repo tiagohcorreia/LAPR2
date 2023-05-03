@@ -100,12 +100,14 @@ public class Announcement {
      * @return the announcement
      */
     public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
-        if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getClass().getSimpleName()) && numberOfBedrooms == 300){
-        //if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString()) && typeOfProperty.equals(this.property.getClass().getSimpleName()) && numberOfBedrooms == this.property.getBedrooms()){
+        if (!typeOfBusiness.equals("LAND")) {
+            if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase()) && numberOfBedrooms == this.getProperty().getNumberOfBedrooms()) {
+                return new Announcement(this);
+            }
+        } else if(this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase())){
             return new Announcement(this);
         }
-        else
-            throw new NoSuchElementException("No entries found.");
+        return null;
     }
 
 
