@@ -36,11 +36,13 @@ public class DisplayAnnouncementsUI implements Runnable{
      * @param availableFields the available fields
      * @return the boolean
      */
-    public boolean displayAvailableFields(List<List<Object>> availableFields){System.out.println("SEARCH FILTER");
+    public boolean displayAvailableFields(List<List<Object>> availableFields){
         if (availableFields.get(0).size() == 0) {
             System.out.println("There are no announcements registered in the system.");
+            Utils.readLineFromConsole("Press [Enter] to continue");
             return true;
         }
+        System.out.println("SEARCH FILTER");
         System.out.println("- Select one from the following options");
         System.out.println("- Or press [Enter] to see all available announcements");
         System.out.println();
@@ -142,25 +144,23 @@ public class DisplayAnnouncementsUI implements Runnable{
      * @return the list
      */
     public List<Announcement> sortAnnouncements(int sortingMode, List<Announcement> announcements){
-        switch (sortingMode){
-            case 1:
-                //sort by price
-                announcements.sort(new AnnouncementPriceComparator());
-                break;
-            case 2:
-                //sort by city
-                announcements.sort(new AnnouncementLocationComparator());
-                break;
-            default:
-                break;
+        switch (sortingMode) {
+            case 1 ->
+                    //sort by price
+                    announcements.sort(new AnnouncementPriceComparator());
+            case 2 ->
+                    //sort by city
+                    announcements.sort(new AnnouncementLocationComparator());
+            default -> {
+            }
         }
         return announcements;
     }
 
-    private boolean runUS(){
+    private void runUS(){
         List<List<Object>> availableFields = getAvailableFields();
         if (displayAvailableFields(availableFields))
-            return true;
+            return;
         String[] selectedData = requestFilterData(availableFields);
         List<Announcement> matchingAnnouncements = new ArrayList<>();
         if (selectedData == null) {
@@ -193,8 +193,6 @@ public class DisplayAnnouncementsUI implements Runnable{
             matchingAnnouncements = sortAnnouncements(sortingMode, matchingAnnouncements);
             displayAnnouncements(matchingAnnouncements);
         }
-        System.out.println("done");
-        return false;
     }
 
     /**
@@ -203,8 +201,17 @@ public class DisplayAnnouncementsUI implements Runnable{
      * @param matchingAnnouncements announcement list.
      */
     private void displayAnnouncements(List<Announcement> matchingAnnouncements) {
+        System.out.println("Type\tProperty\tPrice\tLocation\tArea\tCenterDist\tNoBedrooms\tPhotographs");
         for(Announcement announcement : matchingAnnouncements){
-            System.out.println(announcement.toString());
+            //System.out.println(announcement.toString());
+//            System.out.println(
+//                    announcement.getTypeOfBusiness().toString() + "\t"
+//                    + announcement.getProperty().getClass().getSimpleName() + "\t"
+//                    + announcement.getPrice() + "\t"
+//                    + announcement.getProperty().getArea() + "\t"
+//
+//            );
+            announcement.getApartmentAsString();
         }
     }
 }

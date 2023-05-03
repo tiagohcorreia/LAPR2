@@ -40,7 +40,7 @@ public class AnnouncementRepository {
     }
 
     /**
-     * Checks if the annoucement to be saved is a duplicate.
+     * Checks if the announcement to be saved is a duplicate.
      *
      * @param announcement the announcement to be saved
      * @return true if successful, false otherwise

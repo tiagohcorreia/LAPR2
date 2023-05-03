@@ -221,4 +221,17 @@ public class Announcement {
                 this.commission,
                 this.agent.toString());
     }
+
+    public String getApartmentAsString() {
+        String result =
+                getTypeOfBusiness().toString() + "\t" +
+                getProperty().getClass().getSimpleName() + "\t" +
+                getPrice() + "\t" +
+                getProperty().getLocation() + "\t" +
+                getProperty().getArea() + "\t" +
+                getProperty().getCityCentreDistance() + "\t" +
+                getProperty().getNumberOfBedrooms() + "\t" +
+                getProperty().getPhotographs();
+        return result;
+    }
 }
