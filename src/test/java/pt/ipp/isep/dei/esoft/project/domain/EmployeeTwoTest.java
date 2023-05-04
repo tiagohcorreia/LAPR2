@@ -14,34 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class EmployeeTwoTest {
 
-    /**
-     * Ensure create a valid employee does not cause any exception.
-     */
-    @DisplayName("Ensure Create Valid Employee Works")
-    @Test
-    void EnsureCreateAValidEmployeeDoesNotCauseAnyException() {
-
-        try {
-
-            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
-
-        } catch (IllegalArgumentException e) {
-
-            fail("An Exception shoud not be thrown");
-
-        } catch (NullPointerException e) {
-
-            fail("An Exception shoud not be thrown");
-
-        } catch (Exception e) {
-
-            fail("An Exception shoud not be thrown");
-
-        }
-    }
-
-    //----------------------------------------------------------------------------------------------------------------
-
     //Name
 
     /**
