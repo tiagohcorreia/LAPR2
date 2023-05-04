@@ -57,8 +57,7 @@ public class SpecifyStatesDistrictsCitiesUI implements Runnable {
                     displayAnnouncementsUI.run();
                     break;
                 case 0:
-                    System.out.println("Getting out of the system...");
-                    System.exit(0);
+                   return;
                 default:
                     System.out.println("Invalid option. Please try again.");
             }

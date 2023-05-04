@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.City;
 import pt.ipp.isep.dei.esoft.project.domain.repository.CityRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
 import java.util.List;
 
@@ -9,7 +10,10 @@ import java.util.List;
  * The type City controller.
  */
 public class CityController {
-    private CityRepository cityRepository;
+    private CityRepository cityRepository = Repositories.getInstance().getCityRepository();
+    Repositories repositories = Repositories.getInstance();
+
+
 
     /**
      * Instantiates a new City controller.
@@ -17,7 +21,8 @@ public class CityController {
      * @param cityRepository the city repository
      */
     public CityController(CityRepository cityRepository) {
-        this.cityRepository = cityRepository;
+
+        //this.cityRepository = cityRepository;
     }
 
     /**
