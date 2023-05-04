@@ -32,7 +32,7 @@ public class AgentUI implements Runnable{
     public void run() {
         List<MenuItem> options = new ArrayList<MenuItem>();
         System.out.println("=============== Real Estate USA ===============\n ");
-        options.add(new MenuItem("Publish announcement",  new PublishAnnouncementUI(new PublishAnnouncementController(new AnnouncementRepository(), new AuthenticationController()),new AuthenticationController())));
+        options.add(new MenuItem("Publish announcement",  new PublishAnnouncementUI()));
         options.add(new MenuItem("Exit", (Runnable) new MainMenuUI()));
         int option = 0;
         do {

@@ -24,13 +24,10 @@ public class PublishAnnouncementUI implements Runnable {
 
     /**
      * Instantiates a new Publish announcement ui.
-     *
-     * @param controller               the controller
-     * @param authenticationController the authentication controller
      */
-    public PublishAnnouncementUI(PublishAnnouncementController controller, AuthenticationController authenticationController) {
+    public PublishAnnouncementUI() {
         Scanner scanner = new Scanner(System.in);
-        this.controller = controller;
+        this.controller = new PublishAnnouncementController();
         this.authenticationController = new AuthenticationController();
 
 

@@ -19,48 +19,28 @@ import java.util.List;
  */
 public class PublishAnnouncementController {
 
-    private List<Announcement> announcements;
-    private List<TypeOfProperty> typesOfProperty;
-    private List<City> cities;
-    private List<SunExposure> sunExposures;
-    private List<TypeOfBusiness> typesOfBusiness;
-
-    private AnnouncementRepository announcementRepository;
-    private AuthenticationController authenticationController;
+    private AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
+    private AuthenticationController authenticationController=new AuthenticationController();
     /**
      * The Repositories.
      */
-    Repositories repositories = Repositories.getInstance();
+    //Repositories repositories = Repositories.getInstance();
     /**
      * The Employee repository.
      */
-    RegisterEmployeeRepository employeeRepository = repositories.getEmployeeRepository();
+    RegisterEmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
     /**
      * The State repository.
      */
-    StateRepository stateRepository = repositories.getStateRepository();
+    StateRepository stateRepository = Repositories.getInstance().getStateRepository();
     /**
      * The District repository.
      */
-    DistrictRepository districtRepository = repositories.getDistrictRepository();
+    DistrictRepository districtRepository = Repositories.getInstance().getDistrictRepository();
     /**
      * The City repository.
      */
-    CityRepository cityRepository = repositories.getCityRepository();
-
-    /**
-     * Instantiates a new Publish announcement controller.
-     *
-     * @param announcementRepository   the announcement repository
-     * @param authenticationController the authentication controller
-     */
-    public PublishAnnouncementController(AnnouncementRepository announcementRepository, AuthenticationController authenticationController) {
-        this.announcementRepository = announcementRepository;
-        this.authenticationController = authenticationController;
-
-
-    }
-
+    CityRepository cityRepository = Repositories.getInstance().getCityRepository();
 
     /**
      * Create announcement.
@@ -89,11 +69,12 @@ public class PublishAnnouncementController {
 
         // get the employee corresponding to the agent email
         String emailAdress = null;
-        Employee agent = employeeRepository.findByEmail(emailAdress);
+        pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address",1231231230,Role.AGENT,Agency.AGENCY1);
+        //Employee agent = employeeRepository.findByEmail(emailAdress);
 
-        agentName = String.valueOf(authenticationController.getCurrentSession());
+        //agentName = String.valueOf(authenticationController.getCurrentSession().getUserName());
 
-         agent = employeeRepository.getUserByEmail(agentName);
+        // agent = employeeRepository.getUserByEmail(agentName);
 
         if (posTypeOfProperty == 2) {
             Property property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);
