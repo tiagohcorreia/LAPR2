@@ -1,6 +1,18 @@
 @startuml
 'https://plantuml.com/class-diagram
 skinparam shadowing false
+allowmixing
+
+package UI {
+    class DisplayAnnouncementsUI{
+        +displayAnnouncements()
+    }
+}
+
+package Controller {
+    class DisplayAnnouncementsController{}
+}
+ package Domain{
 
 
 class Announcement{
@@ -68,7 +80,6 @@ interface MultiStoryInhabitableProperty <<interface>>{
 -setHasInhabitableLoft(boolean hasInhabitableLoft):boolean
 }
 
-MultiStoryInhabitableProperty -|> InhabitableProperty
 
 class AnnouncementRepository{
 '-List<Announcement> announcements
@@ -81,10 +92,7 @@ class Repositories{
 class Client{}
 class Seller{}
 
-class DisplayAnnouncementsUI{
-+displayAnnouncements()
-}
-class DisplayAnnouncementsController{}
+
 
 class Land{
 
@@ -100,6 +108,11 @@ class Employee{
 -String emailAddress
 -long telephoneNumber
 }
+
+}
+
+MultiStoryInhabitableProperty -|> InhabitableProperty
+
 
 DisplayAnnouncementsUI -[dashed]-> DisplayAnnouncementsController
 DisplayAnnouncementsController -[dashed]-> Repositories
@@ -125,131 +138,5 @@ House -.|> MultiStoryInhabitableProperty
 
 Seller --|> Client
 'Seller - Property: owns
-@enduml@startuml
-       'https://plantuml.com/class-diagram
-       skinparam shadowing false
 
-
-       class Announcement{
-       -boolean visible
-       -float price
-       -float commission
-       -String[] photographs
-       '+getPrice():float
-       '+getProperty():float
-       }
-       enum TypeOfBusiness{
-       SELL
-       RENT
-       }
-       enum SunExposure{
-       NORTH
-       EAST
-       SOUTH
-       WEST
-       }
-
-       abstract class Property{
-       -float area
-       -location
-       -float cityCentreDistance
-       }
-       class House{
-       -int numberOfBedrooms
-       -int numberOfBathrooms
-       -int numberOfParkingSpaces
-       -String[] equipment
-
-       -boolean hasBasement
-       -boolean hasInhabitableLoft
-
-       '+getNumberOfBedrooms():int
-       '+getHasInhabitableLoft():boolean
-       }
-       class Apartment{
-       -int numberOfBedrooms
-       -int numberOfBathrooms
-       -int numberOfParkingSpaces
-       -String[] equipment
-
-       '+getNumberOfBedrooms():int
-       }
-
-       interface InhabitableProperty <<interface>>{
-       +getNumberOfBedrooms():int
-       +getNumberOfBathrooms():int
-       +getNumberOfParkingSpaces():int
-       +getEquipment():List<String>
-
-       -setNumberOfBedrooms(int):int
-       -setNumberOfBathrooms(int):int
-       -setNumberOfParkingSpaces(int):int
-       -setEquipment(List<String>):List<String>
-       }
-
-       interface MultiStoryInhabitableProperty <<interface>>{
-       +getHasBasement():boolean
-       +getHasInhabitableLoft():boolean
-
-       -setHasBasement(boolean hasBasement):boolean
-       -setHasInhabitableLoft(boolean hasInhabitableLoft):boolean
-       }
-
-       MultiStoryInhabitableProperty -|> InhabitableProperty
-
-       class AnnouncementRepository{
-       '-List<Announcement> announcements
-       +save()
-       +validateAnnouncement()
-       }
-       class Repositories{
-       +getAnnouncementRepository()
-       }
-       class Client{}
-       class Seller{}
-
-       class DisplayAnnouncementsUI{
-       +displayAnnouncements()
-       }
-       class DisplayAnnouncementsController{}
-
-       class Land{
-
-       }
-
-       class Agent{
-       }
-       class Employee{
-       -String name
-       -int passportNumber
-       -int taxNumber
-       -String address
-       -String emailAddress
-       -long telephoneNumber
-       }
-
-       DisplayAnnouncementsUI -[dashed]-> DisplayAnnouncementsController
-       DisplayAnnouncementsController -[dashed]-> Repositories
-       'DisplayAnnouncementsController -[dashed]-> AnnouncementRepository
-       AnnouncementRepository "1" *- "*" Announcement: aggregates
-       Repositories "1" o- "1" AnnouncementRepository: holds
-
-       Agent -|> Employee
-
-       Announcement "1" o-- "1" Property: contains >
-       Announcement "1" o-- "1" Agent: validated by >
-       Announcement "1" *- "1" TypeOfBusiness: is of type
-       Client "1" --* "1" Announcement: creates
-
-       Property <|-- House
-       Property <|-- Apartment
-       Property <|-- Land
-       Property "1" *- "1" SunExposure: has
-
-       Apartment -.|> InhabitableProperty
-       House -.|> MultiStoryInhabitableProperty
-
-
-       Seller --|> Client
-       'Seller - Property: owns
-       @enduml
+@enduml
