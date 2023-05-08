@@ -28,6 +28,8 @@ public class AuthenticationController {
      */
     public static final String ROLE_OWNER = "OWNER";
 
+    public static final String ROLE_UNREGISTERED = "UNREGISTERED_USER";
+
     //private final ApplicationSession applicationSession;
     private final AuthenticationRepository authenticationRepository;
 
