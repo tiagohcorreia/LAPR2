@@ -47,6 +47,29 @@ class Apartment{
 
 '+getNumberOfBedrooms():int
 }
+
+interface InhabitableProperty <<interface>>{
++getNumberOfBedrooms():int
++getNumberOfBathrooms():int
++getNumberOfParkingSpaces():int
++getEquipment():List<String>
+
+-setNumberOfBedrooms(int):int
+-setNumberOfBathrooms(int):int
+-setNumberOfParkingSpaces(int):int
+-setEquipment(List<String>):List<String>
+}
+
+interface MultiStoryInhabitableProperty <<interface>>{
++getHasBasement():boolean
++getHasInhabitableLoft():boolean
+
+-setHasBasement(boolean hasBasement):boolean
+-setHasInhabitableLoft(boolean hasInhabitableLoft):boolean
+}
+
+MultiStoryInhabitableProperty -|> InhabitableProperty
+
 class AnnouncementRepository{
 '-List<Announcement> announcements
 +save()
@@ -79,14 +102,15 @@ class Employee{
 }
 
 DisplayAnnouncementsUI -[dashed]-> DisplayAnnouncementsController
-DisplayAnnouncementsController -[dashed]-> AnnouncementRepository
-AnnouncementRepository "1" *- "*" Announcement: holds
+DisplayAnnouncementsController -[dashed]-> Repositories
+'DisplayAnnouncementsController -[dashed]-> AnnouncementRepository
+AnnouncementRepository "1" *- "*" Announcement: aggregates
 Repositories "1" o- "1" AnnouncementRepository: holds
 
 Agent -|> Employee
 
 Announcement "1" o-- "1" Property: contains >
-Announcement "1" o-- "1" Agent: validated by
+Announcement "1" o-- "1" Agent: validated by >
 Announcement "1" *- "1" TypeOfBusiness: is of type
 Client "1" --* "1" Announcement: creates
 
@@ -94,6 +118,10 @@ Property <|-- House
 Property <|-- Apartment
 Property <|-- Land
 Property "1" *- "1" SunExposure: has
+
+Apartment -.|> InhabitableProperty
+House -.|> MultiStoryInhabitableProperty
+
 
 Seller --|> Client
 'Seller - Property: owns

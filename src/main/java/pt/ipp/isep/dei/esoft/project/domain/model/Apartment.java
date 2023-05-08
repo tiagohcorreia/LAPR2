@@ -1,11 +1,14 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import pt.ipp.isep.dei.esoft.project.domain.shared.InhabitableProperty;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Apartment.
  */
-public class Apartment extends Property{
+public class Apartment extends Property implements InhabitableProperty {
     private int numberOfBedrooms;
     private int numberOfBathrooms;
     private int numberOfParkingSpaces;
@@ -114,7 +117,7 @@ public class Apartment extends Property{
      * @param equipment the equipment
      * @return the equipment
      */
-    public ArrayList<String> setEquipment(ArrayList<String> equipment) {
+    public List<String> setEquipment(List<String> equipment) {
         if (equipment == null) {
             throw new NullPointerException("You need to insert at least 1 equipment.");
         }

@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import pt.ipp.isep.dei.esoft.project.domain.shared.MultiStoryInhabitableProperty;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 /**
  * The type House.
  */
-public class House extends Property{
+public class House extends Property implements MultiStoryInhabitableProperty {
     private int numberOfBedrooms;
     private int numberOfBathrooms;
     private int numberOfParkingSpaces;
@@ -86,7 +87,7 @@ public class House extends Property{
      *
      * @return the boolean
      */
-    public boolean isHasBasement() {
+    public boolean getHasBasement() {
         return hasBasement;
     }
 
@@ -96,7 +97,7 @@ public class House extends Property{
      *
      * @return the boolean
      */
-    public boolean isHasInhabitableLoft() {
+    public boolean getHasInhabitableLoft() {
         return hasInhabitableLoft;
     }
 
