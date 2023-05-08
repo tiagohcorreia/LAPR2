@@ -1,8 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
-import java.util.NoSuchElementException;
-
 /**
  * The type Announcement.
  */
@@ -222,7 +220,7 @@ public class Announcement {
                 this.agent.toString());
     }
 
-    public String getApartmentAsString() {
+    public String getAnnouncementAsString() {
         String result =
                 getTypeOfBusiness().toString() + "\t" +
                 getProperty().getClass().getSimpleName() + "\t" +
@@ -231,7 +229,8 @@ public class Announcement {
                 getProperty().getArea() + "\t" +
                 getProperty().getCityCentreDistance() + "\t" +
                 getProperty().getNumberOfBedrooms() + "\t" +
-                getProperty().getPhotographs();
+                getProperty().getPhotographs() + "\t" +
+                getAgent().getName();
         return result;
     }
 }

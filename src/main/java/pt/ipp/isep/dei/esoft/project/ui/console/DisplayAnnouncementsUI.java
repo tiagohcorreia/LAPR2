@@ -201,7 +201,7 @@ public class DisplayAnnouncementsUI implements Runnable{
      * @param matchingAnnouncements announcement list.
      */
     private void displayAnnouncements(List<Announcement> matchingAnnouncements) {
-        System.out.println("Type\tProperty\tPrice\tLocation\tArea\tCenterDist\tNoBedrooms\tPhotographs");
+        System.out.println("Type\tProperty\tPrice\tLocation\tArea\tCenterDist\tNoBedrooms\tPhotographs\tAgent");
         for(Announcement announcement : matchingAnnouncements){
             //System.out.println(announcement.toString());
 //            System.out.println(
@@ -211,7 +211,7 @@ public class DisplayAnnouncementsUI implements Runnable{
 //                    + announcement.getProperty().getArea() + "\t"
 //
 //            );
-            System.out.println(announcement.getApartmentAsString());
+            System.out.println(announcement.getAnnouncementAsString());
         }
     }
 }
