@@ -53,7 +53,7 @@ name=Legacy Agent; passport card number=000000000; tax number=000000000, email a
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
+* There is a dependency to US02 because we rely on the ability to register announcements.
 
 
 ### 1.5 Input and Output Data
@@ -62,7 +62,7 @@ name=Legacy Agent; passport card number=000000000; tax number=000000000, email a
 **Input Data:**
 
 * Typed data:
-	* file path
+	* File path
 
 **Output Data:**
 
