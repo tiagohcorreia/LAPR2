@@ -3,7 +3,7 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 import javax.management.InvalidAttributeValueException;
 import java.util.List;
 
-public class User {
+public class Client {
     private String name;
     private String email;
     private String password;
@@ -25,7 +25,7 @@ public class User {
         return password;
     }
 
-    public User(String name, String email, String password, int cCNumber, int taxNumber, String address, int telephoneNumber) {
+    public Client(String name, String email, String password, int cCNumber, int taxNumber, String address, int telephoneNumber) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -35,7 +35,7 @@ public class User {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public User (List<String> input){
+    public Client(List<String> input){
 
         try {
             name = input.get(0);

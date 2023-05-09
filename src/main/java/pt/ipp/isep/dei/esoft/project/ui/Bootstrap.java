@@ -4,14 +4,13 @@ import pt.ipp.isep.dei.esoft.project.application.controller.authorization.Authen
 import pt.ipp.isep.dei.esoft.project.domain.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.Organization;
 import pt.ipp.isep.dei.esoft.project.domain.TaskCategory;
-import pt.ipp.isep.dei.esoft.project.domain.model.User;
-import pt.ipp.isep.dei.esoft.project.domain.repository.UserRepository;
+import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+import pt.ipp.isep.dei.esoft.project.domain.repository.ClientRepository;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.OrganizationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.repository.TaskCategoryRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,10 +76,10 @@ public class Bootstrap implements Runnable {
                 AuthenticationController.ROLE_CLIENT);
 
         //Get registered clients
-        UserRepository userRepository = pt.ipp.isep.dei.esoft.project.domain.repository.Repositories.getInstance().getUserRepository();
-        List<User> userList = userRepository.getUsers();
-        for (User user: userList) {
-            authenticationRepository.addUserWithRole(user.getName(), user.getEmail(), user.getPassword(), AuthenticationController.ROLE_CLIENT);
+        ClientRepository clientRepository = pt.ipp.isep.dei.esoft.project.domain.repository.Repositories.getInstance().getUserRepository();
+        List<Client> clientList = clientRepository.getUsers();
+        for (Client client : clientList) {
+            authenticationRepository.addUserWithRole(client.getName(), client.getEmail(), client.getPassword(), AuthenticationController.ROLE_CLIENT);
         }
     }
 

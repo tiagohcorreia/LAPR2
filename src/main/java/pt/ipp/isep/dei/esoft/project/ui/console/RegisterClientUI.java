@@ -1,7 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.RegisterClientController;
-import pt.ipp.isep.dei.esoft.project.domain.model.User;
+import pt.ipp.isep.dei.esoft.project.domain.model.Client;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class RegisterClientUI implements Runnable{
         List<String> input = new ArrayList<>();
 
         boolean userSuccessfulyCreated = false;
-        User newUser = null;
+        Client newClient = null;
         //while (!userSuccessfulyCreated) {
             input.add(Utils.readLineFromConsole("Name: "));
             input.add(Utils.readLineFromConsole("Email: "));
@@ -35,9 +35,9 @@ public class RegisterClientUI implements Runnable{
             input.add(Utils.readLineFromConsole("Address: "));
             input.add(Utils.readLineFromConsole("Telephone number: "));
 
-            newUser = controller.createUser(input);
+            newClient = controller.createUser(input);
         //}
-        if (controller.addUser(newUser))
+        if (controller.addUser(newClient))
             System.out.println("User successfully registered!");
         else
             System.out.println("User registration failed.");
