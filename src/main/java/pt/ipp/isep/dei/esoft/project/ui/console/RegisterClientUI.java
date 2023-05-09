@@ -35,9 +35,9 @@ public class RegisterClientUI implements Runnable{
             input.add(Utils.readLineFromConsole("Address: "));
             input.add(Utils.readLineFromConsole("Telephone number: "));
 
-            newClient = controller.createUser(input);
+            newClient = controller.createClient(input);
         //}
-        if (controller.addUser(newClient))
+        if (controller.saveClient(newClient))
             System.out.println("User successfully registered!");
         else
             System.out.println("User registration failed.");

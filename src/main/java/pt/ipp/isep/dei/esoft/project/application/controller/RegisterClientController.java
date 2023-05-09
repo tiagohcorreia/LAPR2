@@ -14,7 +14,7 @@ public class RegisterClientController {
     private ClientRepository clientRepository = Repositories.getInstance().getUserRepository();
     //private AuthFacade authFacade = new AuthFacade();
 
-    public Client createUser(List<String> input) {
+    public Client createClient(List<String> input) {
         Client newClient = null;
         try {
             newClient = new Client(input);
@@ -24,7 +24,7 @@ public class RegisterClientController {
         return newClient;
     }
 
-    public boolean addUser(Client newClient){
+    public boolean saveClient(Client newClient){
         boolean success = false;
         try {
              success = clientRepository.add(newClient);
