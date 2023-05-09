@@ -40,6 +40,7 @@ operations related to the real estate business
 
 * **AC1:** User name, e-mail and password can't be empty
 * **AC2:** E-mail must have @
+* **AC3:** Name, e-mail, citizen card number, tax number and phone number must be unique
 
 
 ### 1.4. Found out Dependencies

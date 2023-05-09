@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor "Unregistered User" as ur
+participant RegisterUserUI as ui
+participant RegisterUserController as ctrl
+participant ":Repositories" as repos
+participant "authenticationRepository\n:AuthenticationRepository" as authRepo
+
+
+autonumber
+
+ur -> ui: starts registration
+activate ui
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance().getAuthenticationRepository()
+activate repos
+return authenticationRepository
+
+return requests name
+
+@enduml
