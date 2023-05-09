@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="666.6px" preserveAspectRatio="none" style="width:738px;height:666px;background:#FFFFFF;" version="1.1" viewBox="0 0 738 666" width="738.6px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="548.4609" style="stroke:#383838;stroke-width:0.6;" width="6" x="36" y="57.3656"/><rect fill="#FFFFFF" height="146.0531" style="stroke:#383838;stroke-width:0.6;" width="6" x="160.2" y="70.7766"/><rect fill="#FFFFFF" height="137.0766" style="stroke:#383838;stroke-width:0.6;" width="6" x="160.2" y="235.0406"/><rect fill="#FFFFFF" height="215.4984" style="stroke:#383838;stroke-width:0.6;" width="6" x="160.2" y="390.3281"/><rect fill="#FFFFFF" height="74.1984" style="stroke:#383838;stroke-width:0.6;" width="6" x="254.4" y="94.9875"/><rect fill="#FFFFFF" height="90.8438" style="stroke:#383838;stroke-width:0.6;" width="6" x="254.4" y="253.2516"/><rect fill="#FFFFFF" height="179.0766" style="stroke:#383838;stroke-width:0.6;" width="6" x="254.4" y="408.5391"/><rect fill="#FFFFFF" height="18.2109" style="stroke:#383838;stroke-width:0.6;" width="6" x="428.4" y="114.5531"/><rect fill="#FFFFFF" height="18.2109" style="stroke:#383838;stroke-width:0.6;" width="6" x="428.4" y="150.975"/><rect fill="#FFFFFF" height="18.2109" style="stroke:#383838;stroke-width:0.6;" width="6" x="516.3" y="551.1938"/><rect fill="#FFFFFF" height="54.4219" style="stroke:#383838;stroke-width:0.6;" width="6" x="611.7" y="271.4625"/><rect fill="#FFFFFF" height="106.2328" style="stroke:#383838;stroke-width:0.6;" width="6" x="611.7" y="426.75"/><rect fill="#FFFFFF" height="16.8" style="stroke:#383838;stroke-width:0.6;" width="6" x="614.7" y="449.7609"/><rect fill="#FFFFFF" height="16.8" style="stroke:#383838;stroke-width:0.6;" width="6" x="614.7" y="493.7719"/><rect fill="#FFFFFF" height="18" style="stroke:#383838;stroke-width:0.6;" width="6" x="716.1" y="289.6734"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="39" x2="39" y1="51.3656" y2="616.6266"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="163.2" x2="163.2" y1="51.3656" y2="616.6266"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="257.4" x2="257.4" y1="94.3594" y2="616.6266"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="431.1" x2="431.1" y1="51.3656" y2="616.6266"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="519.3" x2="519.3" y1="51.3656" y2="616.6266"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="614.7" x2="614.7" y1="51.3656" y2="616.6266"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:5.0,5.0;" x1="719.1" x2="719.1" y1="51.3656" y2="616.6266"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="68.4" x="3" y="49.5199">Unregistered User</text><ellipse cx="39" cy="9" fill="#F8F8F8" rx="4.8" ry="4.8" style="stroke:#383838;stroke-width:1.2;"/><path d="M39,13.8 L39,30 M31.2,18.6 L46.8,18.6 M39,30 L31.2,39 M39,30 L46.8,39 " fill="none" style="stroke:#383838;stroke-width:1.2;"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="68.4" x="3" y="624.7465">Unregistered User</text><ellipse cx="39" cy="632.5922" fill="#F8F8F8" rx="4.8" ry="4.8" style="stroke:#383838;stroke-width:1.2;"/><path d="M39,637.3922 L39,653.5922 M31.2,642.1922 L46.8,642.1922 M39,653.5922 L31.2,662.5922 M39,653.5922 L46.8,662.5922 " fill="none" style="stroke:#383838;stroke-width:1.2;"/><rect fill="#F8F8F8" height="18.9656" style="stroke:#383838;stroke-width:0.8999999999999999;" width="67.2" x="129.6" y="31.8"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="58.8" x="133.8" y="44.7199">:RegisterUserUI</text><rect fill="#F8F8F8" height="18.9656" style="stroke:#383838;stroke-width:0.8999999999999999;" width="67.2" x="129.6" y="616.0266"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="58.8" x="133.8" y="628.9465">:RegisterUserUI</text><rect fill="#F8F8F8" height="18.9656" style="stroke:#383838;stroke-width:0.8999999999999999;" width="97.2" x="208.8" y="616.0266"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="88.8" x="213" y="628.9465">:RegisterUserController</text><rect fill="#F8F8F8" height="29.5313" style="stroke:#383838;stroke-width:0.8999999999999999;" width="58.2" x="402.3" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="44.4" x="409.2" y="34.1543">repositories</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="49.8" x="406.5" y="44.7199">:Repositories</text><rect fill="#F8F8F8" height="29.5313" style="stroke:#383838;stroke-width:0.8999999999999999;" width="58.2" x="402.3" y="616.0266"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="44.4" x="409.2" y="628.9465">repositories</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="49.8" x="406.5" y="639.5121">:Repositories</text><rect fill="#F8F8F8" height="29.5313" style="stroke:#383838;stroke-width:0.8999999999999999;" width="105.6" x="466.5" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="94.2" x="472.2" y="34.1543">authenticationRepository</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="97.2" x="470.7" y="44.7199">:AuthenticationRepository</text><rect fill="#F8F8F8" height="29.5313" style="stroke:#383838;stroke-width:0.8999999999999999;" width="105.6" x="466.5" y="616.0266"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="94.2" x="472.2" y="628.9465">authenticationRepository</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="97.2" x="470.7" y="639.5121">:AuthenticationRepository</text><rect fill="#F8F8F8" height="29.5313" style="stroke:#383838;stroke-width:0.8999999999999999;" width="73.2" x="578.1" y="21.2344"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="60.6" x="584.4" y="34.1543">clientRepository</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="64.8" x="582.3" y="44.7199">:ClientRepository</text><rect fill="#F8F8F8" height="29.5313" style="stroke:#383838;stroke-width:0.8999999999999999;" width="73.2" x="578.1" y="616.0266"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="60.6" x="584.4" y="628.9465">clientRepository</text><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="64.8" x="582.3" y="639.5121">:ClientRepository</text><rect fill="#F8F8F8" height="18.9656" style="stroke:#383838;stroke-width:0.8999999999999999;" width="32.4" x="702.9" y="31.8"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="24" x="707.1" y="44.7199">:Client</text><rect fill="#F8F8F8" height="18.9656" style="stroke:#383838;stroke-width:0.8999999999999999;" width="32.4" x="702.9" y="616.0266"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="24" x="707.1" y="628.9465">:Client</text><rect fill="#FFFFFF" height="548.4609" style="stroke:#383838;stroke-width:0.6;" width="6" x="36" y="57.3656"/><rect fill="#FFFFFF" height="146.0531" style="stroke:#383838;stroke-width:0.6;" width="6" x="160.2" y="70.7766"/><rect fill="#FFFFFF" height="137.0766" style="stroke:#383838;stroke-width:0.6;" width="6" x="160.2" y="235.0406"/><rect fill="#FFFFFF" height="215.4984" style="stroke:#383838;stroke-width:0.6;" width="6" x="160.2" y="390.3281"/><rect fill="#FFFFFF" height="74.1984" style="stroke:#383838;stroke-width:0.6;" width="6" x="254.4" y="94.9875"/><rect fill="#FFFFFF" height="90.8438" style="stroke:#383838;stroke-width:0.6;" width="6" x="254.4" y="253.2516"/><rect fill="#FFFFFF" height="179.0766" style="stroke:#383838;stroke-width:0.6;" width="6" x="254.4" y="408.5391"/><rect fill="#FFFFFF" height="18.2109" style="stroke:#383838;stroke-width:0.6;" width="6" x="428.4" y="114.5531"/><rect fill="#FFFFFF" height="18.2109" style="stroke:#383838;stroke-width:0.6;" width="6" x="428.4" y="150.975"/><rect fill="#FFFFFF" height="18.2109" style="stroke:#383838;stroke-width:0.6;" width="6" x="516.3" y="551.1938"/><rect fill="#FFFFFF" height="54.4219" style="stroke:#383838;stroke-width:0.6;" width="6" x="611.7" y="271.4625"/><rect fill="#FFFFFF" height="106.2328" style="stroke:#383838;stroke-width:0.6;" width="6" x="611.7" y="426.75"/><rect fill="#FFFFFF" height="16.8" style="stroke:#383838;stroke-width:0.6;" width="6" x="614.7" y="449.7609"/><rect fill="#FFFFFF" height="16.8" style="stroke:#383838;stroke-width:0.6;" width="6" x="614.7" y="493.7719"/><rect fill="#FFFFFF" height="18" style="stroke:#383838;stroke-width:0.6;" width="6" x="716.1" y="289.6734"/><polygon fill="#383838" points="153,68.3766,159,70.7766,153,73.1766,155.4,70.7766" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="42" x2="156.6" y1="70.7766" y2="70.7766"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="46.2" y="67.8627">1</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="60.6" x="52.8" y="67.8627">starts registration</text><polygon fill="#383838" points="201.6,86.5875,207.6,88.9875,201.6,91.3875,204,88.9875" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="166.2" x2="205.2" y1="88.9875" y2="88.9875"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="170.4" y="86.0736">2</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="21.6" x="177" y="86.0736">create</text><rect fill="#F8F8F8" height="18.9656" style="stroke:#383838;stroke-width:0.8999999999999999;" width="97.2" x="208.8" y="75.5766"/><text fill="#000000" font-family="sans-serif" font-size="8.4" lengthAdjust="spacing" textLength="88.8" x="213" y="88.4965">:RegisterUserController</text><polygon fill="#383838" points="421.2,112.1531,427.2,114.5531,421.2,116.9531,423.6,114.5531" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="260.4" x2="424.8" y1="114.5531" y2="114.5531"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="264.6" y="111.6393">3</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="150" x="271.2" y="111.6393">getInstance().getAuthenticationRepository()</text><polygon fill="#383838" points="267,130.3641,261,132.7641,267,135.1641,264.6,132.7641" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="263.4" x2="430.8" y1="132.7641" y2="132.7641"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="270.6" y="129.8502">4</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="85.8" x="277.2" y="129.8502">authenticationRepository</text><polygon fill="#383838" points="421.2,148.575,427.2,150.975,421.2,153.375,423.6,150.975" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="260.4" x2="424.8" y1="150.975" y2="150.975"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="264.6" y="148.0611">5</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="120" x="271.2" y="148.0611">getInstance().getClientRepository()</text><polygon fill="#383838" points="264,166.7859,258,169.1859,264,171.5859,261.6,169.1859" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="260.4" x2="430.8" y1="169.1859" y2="169.1859"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="267.6" y="166.2721">6</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="55.8" x="274.2" y="166.2721">clientRepository</text><polygon fill="#383838" points="48.6,214.4297,42.6,216.8297,48.6,219.2297,46.2,216.8297" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="45" x2="162.6" y1="216.8297" y2="216.8297"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="52.2" y="199.1994">7</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="97.2" x="58.8" y="184.483">requests data (name, email,</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="79.2" x="58.8" y="194.2939">password, CC number,</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="71.4" x="58.8" y="204.1049">tax number,address,</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="51.6" x="58.8" y="213.9158">phone number)</text><polygon fill="#383838" points="153,232.6406,159,235.0406,153,237.4406,155.4,235.0406" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="42" x2="156.6" y1="235.0406" y2="235.0406"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="46.2" y="232.1268">8</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="73.2" x="52.8" y="232.1268">types requested data</text><polygon fill="#383838" points="247.2,250.8516,253.2,253.2516,247.2,255.6516,249.6,253.2516" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="166.2" x2="250.8" y1="253.2516" y2="253.2516"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="4.2" x="170.4" y="250.3377">9</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="63" x="177" y="250.3377">createClient(input)</text><polygon fill="#383838" points="604.5,269.0625,610.5,271.4625,604.5,273.8625,606.9,271.4625" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="260.4" x2="608.1" y1="271.4625" y2="271.4625"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="264.6" y="268.5486">10</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="63" x="275.4" y="268.5486">createClient(input)</text><polygon fill="#383838" points="708.9,287.2734,714.9,289.6734,708.9,292.0734,711.3,289.6734" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="617.7" x2="712.5" y1="289.6734" y2="289.6734"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="621.9" y="286.7596">11</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="30.6" x="632.7" y="286.7596">validate()</text><polygon fill="#383838" points="267,323.4844,261,325.8844,267,328.2844,264.6,325.8844" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="263.4" x2="614.1" y1="325.8844" y2="325.8844"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="270.6" y="322.9705">12</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="33.6" x="281.4" y="322.9705">newClient</text><polygon fill="#383838" points="172.8,341.6953,166.8,344.0953,172.8,346.4953,170.4,344.0953" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="169.2" x2="256.8" y1="344.0953" y2="344.0953"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="176.4" y="341.1814">13</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="33.6" x="187.2" y="341.1814">newClient</text><polygon fill="#383838" points="48.6,369.7172,42.6,372.1172,48.6,374.5172,46.2,372.1172" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="45" x2="162.6" y1="372.1172" y2="372.1172"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="52.2" y="364.2979">14</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="73.8" x="63" y="359.3924">shows input data and</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="72" x="63" y="369.2033">asks for confirmation</text><polygon fill="#383838" points="153,387.9281,159,390.3281,153,392.7281,155.4,390.3281" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="42" x2="156.6" y1="390.3281" y2="390.3281"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="46.2" y="387.4143">15</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="46.8" x="57" y="387.4143">confirms data</text><polygon fill="#383838" points="247.2,406.1391,253.2,408.5391,247.2,410.9391,249.6,408.5391" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="166.2" x2="250.8" y1="408.5391" y2="408.5391"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="170.4" y="405.6252">16</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="40.2" x="181.2" y="405.6252">saveClient()</text><polygon fill="#383838" points="604.5,424.35,610.5,426.75,604.5,429.15,606.9,426.75" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="260.4" x2="608.1" y1="426.75" y2="426.75"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="264.6" y="423.8361">17</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="73.8" x="275.4" y="423.8361">saveClient(newClient)</text><line style="stroke:#383838;stroke-width:0.6;" x1="620.7" x2="645.9" y1="444.9609" y2="444.9609"/><line style="stroke:#383838;stroke-width:0.6;" x1="645.9" x2="645.9" y1="444.9609" y2="452.7609"/><line style="stroke:#383838;stroke-width:0.6;" x1="621.3" x2="645.9" y1="452.7609" y2="452.7609"/><polygon fill="#383838" points="627.3,450.3609,621.3,452.7609,627.3,455.1609,624.9,452.7609" style="stroke:#383838;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="624.9" y="442.0471">18</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="79.2" x="635.7" y="442.0471">existsClient(newClient)</text><line style="stroke:#383838;stroke-width:0.6;" x1="620.7" x2="645.9" y1="488.9719" y2="488.9719"/><line style="stroke:#383838;stroke-width:0.6;" x1="645.9" x2="645.9" y1="488.9719" y2="496.7719"/><line style="stroke:#383838;stroke-width:0.6;" x1="621.3" x2="645.9" y1="496.7719" y2="496.7719"/><polygon fill="#383838" points="627.3,494.3719,621.3,496.7719,627.3,499.1719,624.9,496.7719" style="stroke:#383838;stroke-width:0.6;"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="624.9" y="486.058">19</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="73.8" x="635.7" y="486.058">saveClient(newClient)</text><polygon fill="#383838" points="267,530.5828,261,532.9828,267,535.3828,264.6,532.9828" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="263.4" x2="614.1" y1="532.9828" y2="532.9828"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="270.6" y="530.0689">20</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="13.2" x="281.4" y="530.0689">true</text><polygon fill="#383838" points="509.1,548.7937,515.1,551.1938,509.1,553.5938,511.5,551.1938" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;" x1="260.4" x2="512.7" y1="551.1938" y2="551.1938"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="264.6" y="548.2799">21</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="129" x="275.4" y="548.2799">addUserWithRole(..., ROLE_CLIENT)</text><polygon fill="#383838" points="267,567.0047,261,569.4047,267,571.8047,264.6,569.4047" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="263.4" x2="518.7" y1="569.4047" y2="569.4047"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="270.6" y="566.4908">22</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="13.2" x="281.4" y="566.4908">true</text><polygon fill="#383838" points="172.8,585.2156,166.8,587.6156,172.8,590.0156,170.4,587.6156" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="169.2" x2="256.8" y1="587.6156" y2="587.6156"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="176.4" y="584.7018">23</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="13.2" x="187.2" y="584.7018">true</text><polygon fill="#383838" points="45.6,603.4266,39.6,605.8266,45.6,608.2266,43.2,605.8266" style="stroke:#383838;stroke-width:0.6;"/><line style="stroke:#383838;stroke-width:0.6;stroke-dasharray:2.0,2.0;" x1="42" x2="162.6" y1="605.8266" y2="605.8266"/><text fill="#000000" font-family="sans-serif" font-size="7.8" font-weight="bold" lengthAdjust="spacing" textLength="8.4" x="49.2" y="602.9127">24</text><text fill="#000000" font-family="sans-serif" font-size="7.8" lengthAdjust="spacing" textLength="88.2" x="60" y="602.9127">shows operation success</text><!--MD5=[a93a7658ee5e4ad3a6476fdc56ca4748]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "Unregistered User" as uu
+participant ":RegisterUserUI" as ui
+participant ":RegisterUserController" as ctrl
+participant "repositories\n:Repositories" as repos
+participant "authenticationRepository\n:AuthenticationRepository" as authRepo
+participant "clientRepository\n:ClientRepository" as clientRepo
+participant ":Client" as client
+
+activate uu
+uu -> ui: starts registration
+activate ui
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance().getAuthenticationRepository()
+activate repos
+return authenticationRepository
+ctrl -> repos: getInstance().getClientRepository()
+activate repos
+return clientRepository
+deactivate ctrl
+return requests data (name, email,\npassword, CC number,\ntax number,address,\nphone number)
+
+uu -> ui: types requested data
+activate ui
+
+ui -> ctrl: createClient(input)
+activate ctrl
+ctrl -> clientRepo: createClient(input)
+activate clientRepo
+clientRepo -> client: validate()
+activate client
+deactivate client
+return newClient
+return newClient
+return shows input data and\nasks for confirmation
+
+uu -> ui: confirms data
+activate ui
+ui -> ctrl: saveClient()
+activate ctrl
+ctrl -> clientRepo: saveClient(newClient)
+activate clientRepo
+clientRepo -> clientRepo: existsClient(newClient)
+activate clientRepo
+deactivate clientRepo
+clientRepo -> clientRepo: saveClient(newClient)
+activate clientRepo
+deactivate clientRepo
+return true
+ctrl -> authRepo: addUserWithRole(..., ROLE_CLIENT)
+activate authRepo
+return true
+return true
+return shows operation success
+
+
+
+
+deactivate uu
+@enduml
+
+@startuml
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "Unregistered User" as uu
+participant ":RegisterUserUI" as ui
+participant ":RegisterUserController" as ctrl
+participant "repositories\n:Repositories" as repos
+participant "authenticationRepository\n:AuthenticationRepository" as authRepo
+participant "clientRepository\n:ClientRepository" as clientRepo
+participant ":Client" as client
+
+activate uu
+uu -> ui: starts registration
+activate ui
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance().getAuthenticationRepository()
+activate repos
+return authenticationRepository
+ctrl -> repos: getInstance().getClientRepository()
+activate repos
+return clientRepository
+deactivate ctrl
+return requests data (name, email,\npassword, CC number,\ntax number,address,\nphone number)
+
+uu -> ui: types requested data
+activate ui
+
+ui -> ctrl: createClient(input)
+activate ctrl
+ctrl -> clientRepo: createClient(input)
+activate clientRepo
+clientRepo -> client: validate()
+activate client
+deactivate client
+return newClient
+return newClient
+return shows input data and\nasks for confirmation
+
+uu -> ui: confirms data
+activate ui
+ui -> ctrl: saveClient()
+activate ctrl
+ctrl -> clientRepo: saveClient(newClient)
+activate clientRepo
+clientRepo -> clientRepo: existsClient(newClient)
+activate clientRepo
+deactivate clientRepo
+clientRepo -> clientRepo: saveClient(newClient)
+activate clientRepo
+deactivate clientRepo
+return true
+ctrl -> authRepo: addUserWithRole(..., ROLE_CLIENT)
+activate authRepo
+return true
+return true
+return shows operation success
+
+
+
+
+deactivate uu
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 18:19:58 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>
