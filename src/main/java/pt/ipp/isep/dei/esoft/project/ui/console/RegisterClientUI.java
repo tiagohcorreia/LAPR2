@@ -1,14 +1,14 @@
 package pt.ipp.isep.dei.esoft.project.ui.console;
 
-import pt.ipp.isep.dei.esoft.project.application.controller.RegisterUserController;
+import pt.ipp.isep.dei.esoft.project.application.controller.RegisterClientController;
 import pt.ipp.isep.dei.esoft.project.domain.model.User;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterUserUI implements Runnable{
-    private RegisterUserController controller = new RegisterUserController();
+public class RegisterClientUI implements Runnable{
+    private RegisterClientController controller = new RegisterClientController();
 
     @Override
     public void run() {

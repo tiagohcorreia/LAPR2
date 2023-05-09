@@ -7,10 +7,9 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.UserRepository;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 //import pt.isep.lei.esoft.auth.AuthFacade;
 
-import javax.management.InvalidAttributeValueException;
 import java.util.List;
 
-public class RegisterUserController {
+public class RegisterClientController {
     private AuthenticationRepository authenticationRepository = pt.ipp.isep.dei.esoft.project.repository.Repositories.getInstance().getAuthenticationRepository();
     private UserRepository userRepository = Repositories.getInstance().getUserRepository();
     //private AuthFacade authFacade = new AuthFacade();
