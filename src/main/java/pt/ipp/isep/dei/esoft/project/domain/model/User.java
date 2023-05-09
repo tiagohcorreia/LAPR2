@@ -70,9 +70,9 @@ public class User {
     //TODO: check validation
     public void validate() throws InvalidAttributeValueException {
         if (
-                name == null || name == "" ||
-                email == null || email == "" ||
-                password == null || password == "" ||
+                name == null || name.equals("") ||
+                email == null || email.equals("") || !email.contains("@") ||
+                password == null || password.equals("") ||
                 cCNumber < 1_000_000 || cCNumber > 10_000_000 ||
                 taxNumber < 1_000_000 || taxNumber > 10_000_000 ||
                 telephoneNumber < 100_000_000 || telephoneNumber > 999_999_999
