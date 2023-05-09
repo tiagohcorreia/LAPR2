@@ -54,6 +54,9 @@ activate client
     client -> client: isValidTaxNumber()
     activate client
     deactivate client
+    client -> client: isValidAddress()
+    activate client
+    deactivate client
     client -> client: isValidTelephoneNumber()
     activate client
 deactivate client
