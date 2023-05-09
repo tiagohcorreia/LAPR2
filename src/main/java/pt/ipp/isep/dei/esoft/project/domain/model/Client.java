@@ -68,15 +68,67 @@ public class Client {
     }
 
     //TODO: check validation
-    public void validate() throws InvalidAttributeValueException {
-        if (
-                name == null || name.equals("") ||
-                email == null || email.equals("") || !email.contains("@") ||
-                password == null || password.equals("") ||
-                cCNumber < 1_000_000 || cCNumber > 10_000_000 ||
-                taxNumber < 1_000_000 || taxNumber > 10_000_000 ||
-                telephoneNumber < 100_000_000 || telephoneNumber > 999_999_999
-        )
-            throw new InvalidAttributeValueException("Invalid user attribute.");
+    public boolean validate() throws InvalidAttributeValueException {
+//        if (
+//                name == null || name.equals("") ||
+//                email == null || email.equals("") || !email.contains("@") ||
+//                password == null || password.equals("") ||
+//                cCNumber < 1_000_000 || cCNumber > 10_000_000 ||
+//                taxNumber < 1_000_000 || taxNumber > 10_000_000 ||
+//                telephoneNumber < 100_000_000 || telephoneNumber > 999_999_999
+//        )
+//            throw new InvalidAttributeValueException("Invalid user attribute.");
+
+        try{
+            isValidName();
+            isValidAddress();
+            isValidEmail();
+            isValidPassword();
+            isValidCCNumber();
+            isValidTaxNumber();
+            isValidAddress();
+            isValidTelephoneNumber();
+        } catch (InvalidAttributeValueException e){
+            System.out.println("Invalid attribute: " + e.getMessage());
+        } catch (Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        return true;
     }
+
+    private void isValidName() throws InvalidAttributeValueException {
+        if (name == null || name.equals(""))
+            throw new InvalidAttributeValueException("Name is invalid.");
+    }
+
+    private void isValidEmail() throws InvalidAttributeValueException {
+        if (email == null || email.equals(""))
+            throw new InvalidAttributeValueException("Email is invalid.");
+    }
+
+    private void isValidPassword() throws InvalidAttributeValueException {
+        if (password == null || password.equals(""))
+            throw new InvalidAttributeValueException("Password is invalid.");
+    }
+
+    private void isValidCCNumber() throws InvalidAttributeValueException {
+        if (cCNumber < 1_000_000 || cCNumber > 10_000_000)
+            throw new InvalidAttributeValueException("CC Number is invalid.");
+    }
+
+    private void isValidTaxNumber() throws InvalidAttributeValueException {
+        if (taxNumber < 1_000_000 || taxNumber > 10_000_000)
+            throw new InvalidAttributeValueException("Tax Number is invalid.");
+    }
+
+    private void isValidAddress() throws InvalidAttributeValueException {
+        if (address == null)
+            throw new InvalidAttributeValueException("Address is invalid.");
+    }
+
+    private void isValidTelephoneNumber() throws InvalidAttributeValueException {
+        if (telephoneNumber < 100_000_000 || telephoneNumber > 999_999_999)
+            throw new InvalidAttributeValueException("Telephone Number is invalid");
+    }
+
 }
