@@ -11,7 +11,7 @@ participant ":RegisterUserController" as ctrl
 participant "repositories\n:Repositories" as repos
 participant "authenticationRepository\n:AuthenticationRepository" as authRepo
 participant "clientRepository\n:ClientRepository" as clientRepo
-participant ":Client" as client
+participant "newClient\n:Client" as client
 
 activate uu
 uu -> ui: starts registration
@@ -36,7 +36,29 @@ ctrl -> clientRepo: createClient(input)
 activate clientRepo
 clientRepo -> client: validate()
 activate client
+    client -> client: isValidName()
+    activate client
+    deactivate client
+    client -> client: isValidName()
+    activate client
+    deactivate client
+    client -> client: isValidEmail()
+    activate client
+    deactivate client
+    client -> client: isValidPassword()
+    activate client
+    deactivate client
+    client -> client: isValidCCNumber()
+    activate client
+    deactivate client
+    client -> client: isValidTaxNumber()
+    activate client
+    deactivate client
+    client -> client: isValidTelephoneNumber()
+    activate client
 deactivate client
+return true
+
 return newClient
 return newClient
 return shows input data and\nasks for confirmation
