@@ -41,6 +41,29 @@ name=Legacy Agent; passport card number=000000000; tax number=000000000, email a
 > **Answer:** In the past our company only had the type of commissions that you see in the CSV file. Our legacy system has many limitations and this is why we are asking you to develop a new system.
 
 
+> **Question:** From the provided CSV file, our team infers that this feature is meant to import data related to announcements only and not other data like, for example, employee information. Is this correct?
+>
+> **Answer:** The new system should allow the System Admininstrator to import CSV files like the one provided in moodle. The legacy system is not able to export any other fields/attributes or formats.
+
+
+> **Question:** Also, in relation to AC2, can we assume that a CSV file is any file whose filename ends with ".csv"?
+>
+> **Answer:** The System Administrator should be able to load any file with the extension csv. The file content must be validated, showing a message to the system administrator if the file is empty or its content is not in the requested format.
+
+
+> **Question:** In the legacy File provided, on the Location, I assume that the structure of the cell is: Address, City, State, and postal code. Assuming that this is the right structure, shouldn't the districts of the cities be there as well?
+>
+> **Answer:** Please check carefully the legacy file. For instance, in line 5 we get "71 ST. NICHOLAS DRIVE, NORTH POLE, FAIRBANKS NORTH STAR,  AK, 99705". When loading the data, you should consider location addresses with and without district info.
+
+
+[//]: # (> **Question:** )
+
+[//]: # (>)
+
+[//]: # (> **Answer:** )
+
+
+
 ### 1.3. Acceptance Criteria
 
 
