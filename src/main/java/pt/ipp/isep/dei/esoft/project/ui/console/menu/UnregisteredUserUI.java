@@ -23,6 +23,7 @@ public class UnregisteredUserUI implements Runnable {
         List<MenuItem> options = new ArrayList<>();
 
         options.add(new MenuItem("Display listed properties", new DisplayAnnouncementsUI()));
+        options.add(new MenuItem("Register as client", new RegisterUserUI()));
         //options.add(new MenuItem("Specify states, districts or cities", new SpecifyStatesDistrictsCitiesUI()));
 
         int option = 0;

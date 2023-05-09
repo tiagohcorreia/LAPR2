@@ -41,6 +41,7 @@ package pt.ipp.isep.dei.esoft.project.domain.repository;
 //}
 
 
+import pt.ipp.isep.dei.esoft.project.domain.model.User;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 
 /**
@@ -74,6 +75,12 @@ public class Repositories {
      * The Authentication repository.
      */
     AuthenticationRepository authenticationRepository = new AuthenticationRepository();
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    UserRepository userRepository = new UserRepository();
 
     private Repositories() {
     }

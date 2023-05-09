@@ -4,10 +4,15 @@ import pt.ipp.isep.dei.esoft.project.application.controller.authorization.Authen
 import pt.ipp.isep.dei.esoft.project.domain.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.Organization;
 import pt.ipp.isep.dei.esoft.project.domain.TaskCategory;
+import pt.ipp.isep.dei.esoft.project.domain.model.User;
+import pt.ipp.isep.dei.esoft.project.domain.repository.UserRepository;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.OrganizationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.repository.TaskCategoryRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Bootstrap.
@@ -65,6 +70,15 @@ public class Bootstrap implements Runnable {
 
         authenticationRepository.addUserWithRole("Owner", "owner@this.app", "owner",
                 AuthenticationController.ROLE_OWNER);
+
+
+
+        UserRepository userRepository = pt.ipp.isep.dei.esoft.project.domain.repository.Repositories.getInstance().getUserRepository();
+        List<User> userList = userRepository.getUsers();
+
+        for (User user: userList) {
+            authenticationRepository.addUserWithRole(user.getName(), user.getEmail(), user.getPassword(), AuthenticationController.ROLE_CLIENT);
+        }
     }
 
 
