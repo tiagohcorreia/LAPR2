@@ -33,7 +33,11 @@ public class RegisterUserController {
             System.out.println("Couldn't save user: " + e.getMessage());
         }
         //authFacade.addUserWithRole(newUser.getName(), newUser.getEmail(), newUser.getPassword(), AuthenticationController.ROLE_CLIENT);
-        boolean success2 = authenticationRepository.addUserWithRole(newUser.getName(), newUser.getEmail(), newUser.getPassword(), AuthenticationController.ROLE_CLIENT);
+        try {
+            authenticationRepository.addUserWithRole(newUser.getName(), newUser.getEmail(), newUser.getPassword(), AuthenticationController.ROLE_CLIENT);
+        } catch (Exception e){
+            System.out.println("Couldn't register user with authetication system. " + e.getMessage());
+        }
         //if (success2) System.out.println("succ");
         return success;
     }
