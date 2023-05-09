@@ -2,10 +2,7 @@ package pt.ipp.isep.dei.esoft.project.ui.console.authorization;
 
 
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
-import pt.ipp.isep.dei.esoft.project.ui.console.menu.AdminUI;
-import pt.ipp.isep.dei.esoft.project.ui.console.menu.AgentUI;
-import pt.ipp.isep.dei.esoft.project.ui.console.menu.MenuItem;
-import pt.ipp.isep.dei.esoft.project.ui.console.menu.OwnerUI;
+import pt.ipp.isep.dei.esoft.project.ui.console.menu.*;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 
@@ -54,6 +51,8 @@ public class AuthenticationUI implements Runnable {
         rolesUI.add(new MenuItem(AuthenticationController.ROLE_EMPLOYEE, new AgentUI()));
 
         //TODO: Complete with other user roles and related RoleUI
+        rolesUI.add(new MenuItem(AuthenticationController.ROLE_CLIENT, new ClientUI()));
+
         return rolesUI;
     }
 

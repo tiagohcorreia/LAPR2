@@ -34,6 +34,7 @@ public class Bootstrap implements Runnable {
         organization.addEmployee(new Employee("admin@this.app"));
         organization.addEmployee(new Employee("employee@this.app"));
         organization.addEmployee(new Employee("owner@this.app"));
+        //organization.addEmployee(new Employee("client@this.app"));
         organizationRepository.add(organization);
     }
 
@@ -58,6 +59,7 @@ public class Bootstrap implements Runnable {
         authenticationRepository.addUserRole(AuthenticationController.ROLE_EMPLOYEE,
                 AuthenticationController.ROLE_EMPLOYEE);
         authenticationRepository.addUserRole(AuthenticationController.ROLE_OWNER, AuthenticationController.ROLE_OWNER);
+        authenticationRepository.addUserRole(AuthenticationController.ROLE_CLIENT, AuthenticationController.ROLE_CLIENT);
 
         authenticationRepository.addUserWithRole("Main Administrator", "admin@this.app", "admin",
                 AuthenticationController.ROLE_ADMIN);
@@ -71,11 +73,12 @@ public class Bootstrap implements Runnable {
         authenticationRepository.addUserWithRole("Owner", "owner@this.app", "owner",
                 AuthenticationController.ROLE_OWNER);
 
+        authenticationRepository.addUserWithRole("Client", "client@this.app", "clt",
+                AuthenticationController.ROLE_CLIENT);
 
-
+        //Get registered clients
         UserRepository userRepository = pt.ipp.isep.dei.esoft.project.domain.repository.Repositories.getInstance().getUserRepository();
         List<User> userList = userRepository.getUsers();
-
         for (User user: userList) {
             authenticationRepository.addUserWithRole(user.getName(), user.getEmail(), user.getPassword(), AuthenticationController.ROLE_CLIENT);
         }
