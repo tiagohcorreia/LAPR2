@@ -50,35 +50,10 @@ public class Client {
         } catch (Exception e) {
             System.out.println("Couldn't create user. " + e.getMessage());
         }
-
-//        User newUser = new User(
-//                input.get(0),
-//                input.get(1),
-//                input.get(2),
-//                Integer.getInteger(input.get(3)),
-//                Integer.getInteger(input.get(4)),
-//                input.get(5),
-//                Integer.getInteger(input.get(6)));
-//
-//        try {
-//            newUser.validate();
-//        } catch (InvalidAttributeValueException e) {
-//            e.printStackTrace();
-//        }
     }
 
     //TODO: check validation
-    public boolean validate() throws InvalidAttributeValueException {
-//        if (
-//                name == null || name.equals("") ||
-//                email == null || email.equals("") || !email.contains("@") ||
-//                password == null || password.equals("") ||
-//                cCNumber < 1_000_000 || cCNumber > 10_000_000 ||
-//                taxNumber < 1_000_000 || taxNumber > 10_000_000 ||
-//                telephoneNumber < 100_000_000 || telephoneNumber > 999_999_999
-//        )
-//            throw new InvalidAttributeValueException("Invalid user attribute.");
-
+    private boolean validate(){
         try{
             isValidName();
             isValidAddress();
