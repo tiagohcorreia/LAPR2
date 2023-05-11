@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="479px" preserveAspectRatio="none" style="width:231px;height:479px;background:#FFFFFF;" version="1.1" viewBox="0 0 231 479" width="231px" zoomAndPan="magnify"><defs/><g><!--MD5=[ed6624c6556d5e7b1bd23032162d20b7]
+class Client--><rect codeLine="47" fill="#F8F8F8" height="129.9453" id="Client" style="stroke:#383838;stroke-width:1.5;" width="79" x="58" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="32" x="81.5" y="24.457">Client</text><line style="stroke:#383838;stroke-width:1.5;" x1="59" x2="136" y1="32.0938" y2="32.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="26" x="64" y="47.5127">name</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="64" y="61.3486">email</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="64" y="75.1846">password</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="64" y="89.0205">cCNumber</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="64" y="102.8564">TaxNumber</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="40" x="64" y="116.6924">address</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="64" y="130.5283">phoneNumber</text><!--MD5=[2a6a992e699eac248da01b98a6cecd43]
+class Buyer--><rect codeLine="56" fill="#F8F8F8" height="33.0938" id="Buyer" style="stroke:#383838;stroke-width:1.5;" width="37" x="116" y="215"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="31" x="119" y="232.457">Buyer</text><line style="stroke:#383838;stroke-width:1.5;" x1="117" x2="152" y1="240.0938" y2="240.0938"/><!--MD5=[43844b47726d9c4702f600b824e35ead]
+class Seller--><rect codeLine="57" fill="#F8F8F8" height="33.0938" id="Seller" style="stroke:#383838;stroke-width:1.5;" width="38" x="42.5" y="215"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="32" x="45.5" y="232.457">Seller</text><line style="stroke:#383838;stroke-width:1.5;" x1="43.5" x2="79.5" y1="240.0938" y2="240.0938"/><!--MD5=[04df7bfd972d2d3ea0273e95b66a80a5]
+class Announcement--><rect codeLine="63" fill="#F8F8F8" height="33.0938" id="Announcement" style="stroke:#383838;stroke-width:1.5;" width="89" x="84" y="328"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="83" x="87" y="345.457">Announcement</text><line style="stroke:#383838;stroke-width:1.5;" x1="85" x2="172" y1="353.0938" y2="353.0938"/><!--MD5=[6b626634f3bb0842bebd5e499c80b711]
+class Property--><rect codeLine="72" fill="#F8F8F8" height="33.0938" id="Property" style="stroke:#383838;stroke-width:1.5;" width="51" x="7" y="439"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="45" x="10" y="456.457">Property</text><line style="stroke:#383838;stroke-width:1.5;" x1="8" x2="57" y1="464.0938" y2="464.0938"/><!--MD5=[e049a9fc6087ec9a0b5519edf8a49765]
+class Visit--><rect codeLine="59" fill="#F8F8F8" height="33.0938" id="Visit" style="stroke:#383838;stroke-width:1.5;" width="29" x="186" y="55.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="23" x="189" y="72.957">Visit</text><line style="stroke:#383838;stroke-width:1.5;" x1="187" x2="214" y1="80.5938" y2="80.5938"/><!--MD5=[a363a729a326534fa72ee010b5a18559]
+link Announcement to Property--><path codeLine="17" d="M114.75,361.12 C96.5,381.84 64.47,418.21 46.23,438.91 " fill="none" id="Announcement-Property" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="88.1951,403.9278,96.3791,399.0829,91.9683,395.1978,88.1951,403.9278" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="49" x="100.5" y="405.4951">contains</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="102.2516" y="382.5038">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="42.7466" y="427.9966">1</text><!--MD5=[5513027f619f9ed4354265c616059fab]
+reverse link Client to Buyer--><path codeLine="29" d="M117.14,156.62 C122.39,178.93 127.5,200.72 130.81,214.79 " fill="none" id="Client-backto-Buyer" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="110.31,158.13,112.55,137.06,123.94,154.93,110.31,158.13" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[fd402211ae94801b6e815eeed4a705e0]
+reverse link Client to Seller--><path codeLine="30" d="M78.39,156.62 C73.29,178.93 68.31,200.72 65.09,214.79 " fill="none" id="Client-backto-Seller" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="none" points="71.58,155,82.86,137.06,85.22,158.12,71.58,155" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[7c96604d78e947ece2a9dd32323a19f1]
+link Seller to Property--><path codeLine="33" d="M52.68,248.1 C42.82,266.52 27.45,298.39 21.5,328 C13.6,367.33 22.49,414.68 28.29,438.76 " fill="none" id="Seller-Property" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="25.8655,349.6354,29.9285,341.0363,24.0981,340.2905,25.8655,349.6354" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="30" x="35.5" y="349.9951">owns</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="41.753" y="269.4775">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="21.0673" y="428.1027">*</text><!--MD5=[8cd95d64b3a0a599c4970a6da76231fa]
+link Seller to Announcement--><path codeLine="34" d="M58.55,248.08 C56.73,262.03 56.11,282.61 64.5,298 C71.35,310.57 83.35,320.48 95.12,327.8 " fill="none" id="Seller-Announcement" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="71.5848,293.7204,70.4847,284.2737,65.1421,286.7245,71.5848,293.7204" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="43" x="78.5" y="294.4951">creates</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="58.7253" y="269.4511">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="78.2348" y="317.1559">*</text><!--MD5=[89c562c8c811638d631578af28e73bf4]
+link Visit to Buyer--><path codeLine="35" d="M193.93,88.68 C181.28,118.87 153.67,184.75 141.04,214.89 " fill="none" id="Visit-Buyer" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="166.4325,171.5643,160.226,178.7706,165.6471,181.0424,166.4325,171.5643" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="50" x="173.5" y="181.4951">requests</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="183.7202" y="110.083">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="135.047" y="204.2758">1</text><!--MD5=[54d87a73e189d7a38d60435ebd4361fd]
+link Buyer to Announcement--><path codeLine="36" d="M133.64,248.4 C132.49,269.62 130.48,306.96 129.34,327.98 " fill="none" id="Buyer-Announcement" style="stroke:#383838;stroke-width:1.0;"/><polygon fill="#000000" points="136.2302,294.1685,139.6529,285.2952,133.7836,284.978,136.2302,294.1685" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="48" x="145.5" y="294.4951">browses</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="125.3048" y="269.5602">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="5" x="123.7694" y="317.0907">*</text><!--MD5=[925a96045aaf80f1a0d99018e0ba6d39]
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'skinparam linetype ortho
+'left to right direction
+skinparam classAttributeIconSize 0
+skinparam groupInheritance 1
+hide circle
+hide methods
+
+
+
+
+Announcement "1" - - "1" Property: contains >
+
+'Network "1" - - "*" Employee: employs >
+
+
+
+'Agent -|> Employee
+
+
+
+
+together {
+Client <|- - Buyer
+Client <|- - Seller
+}
+
+Seller "1" - "*" Property: owns >
+Seller "1" - "*" Announcement: creates >
+Visit "1" - - "1" Buyer: requests <
+Buyer "1" - - "*" Announcement: browses >
+'Visit "1" - "1" Agent: scheduled by >
+
+
+
+'class Network{
+
+'}
+
+
+
+class Client {
+name
+email
+password
+cCNumber
+TaxNumber
+address
+phoneNumber
+}
+class Buyer
+class Seller
+
+class Visit{
+
+}
+
+class Announcement{
+'listingID
+'visible
+'price
+'commission
+'typeOfBusiness
+}
+
+
+class Property{
+'area
+'city
+'cityCenterDistance
+'photographs
+}
+
+
+
+
+
+@enduml
+
+@startuml
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+skinparam classAttributeIconSize 0
+skinparam groupInheritance 1
+hide circle
+hide methods
+
+
+
+
+Announcement "1" - - "1" Property: contains >
+
+
+
+
+
+
+
+
+together {
+Client <|- - Buyer
+Client <|- - Seller
+}
+
+Seller "1" - "*" Property: owns >
+Seller "1" - "*" Announcement: creates >
+Visit "1" - - "1" Buyer: requests <
+Buyer "1" - - "*" Announcement: browses >
+
+
+
+
+
+
+
+class Client {
+name
+email
+password
+cCNumber
+TaxNumber
+address
+phoneNumber
+}
+class Buyer
+class Seller
+
+class Visit{
+
+}
+
+class Announcement{
+}
+
+
+class Property{
+}
+
+
+
+
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 18:19:58 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>

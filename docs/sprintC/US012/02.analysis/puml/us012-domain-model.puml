@@ -1,49 +1,84 @@
 @startuml
+'https://plantuml.com/class-diagram
+
 skinparam monochrome true
 skinparam packageStyle rectangle
 skinparam shadowing false
 
+'skinparam linetype ortho
 'left to right direction
-
 skinparam classAttributeIconSize 0
-
+skinparam groupInheritance 1
 hide circle
 hide methods
 
-class Branch {
+
+
+
+Announcement "1" -- "1" Property: contains >
+
+'Network "1" -- "*" Employee: employs >
+
+
+
+'Agent -|> Employee
+
+
+
+
+together {
+Client <|-- Buyer
+Client <|-- Seller
+}
+
+Seller "1" - "*" Property: owns >
+Seller "1" - "*" Announcement: creates >
+Visit "1" -- "1" Buyer: requests <
+Buyer "1" -- "*" Announcement: browses >
+'Visit "1" - "1" Agent: scheduled by >
+
+
+
+'class Network{
+
+'}
+
+
+
+class Client {
+name
+email
+password
+cCNumber
+TaxNumber
+address
+phoneNumber
+}
+class Buyer
+class Seller
+
+class Visit{
+
+}
+
+class Announcement{
+'listingID
+'visible
+'price
+'commission
+'typeOfBusiness
 }
 
 
-class Employee {
-
+class Property{
+'area
+'city
+'cityCenterDistance
+'photographs
 }
 
-class "System Administrator" as sa{
-}
-
-sa -|> Employee
-sa "1" ---> "*" Announcement: imports >
 
 
-
-Property <|-- House
-Property <|-- Apartment
-Property <|-- Land
-
-
-Announcement "1" -- "1" Property: includes >
-
-Branch "1" -- "0..*" Announcement: publishes >
-
-Agent "*" - "1" Branch: assigned to >
-Agent --|> Employee
-'Employee -|> User
-Agent "1" -- "*" Announcement: validates >
-'Client "0..1" - "*" Property: owns >
-Property "*" -- "1" Client : owns <
-'Client "*" -|> "1" User
-Client "1" -- "*" Announcement: creates >
-'"Unregistered User" "1" ---|> "1" User
 
 
 @enduml
