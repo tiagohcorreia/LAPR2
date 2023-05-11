@@ -1,0 +1,13 @@
+@startuml
+
+actor Client as client
+participant System as ui
+
+client -> ui: starts placing an order to purchase the property
+
+ui -> client:
+
+autonumber
+
+
+@enduml
