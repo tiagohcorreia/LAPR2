@@ -21,4 +21,6 @@ Admin --> (US006: specify districts, municipalities, and parishes in the system)
 
 UnregUser --> (US007: register in the system to buy, sell or rent properties)
 
+Admin --> (US012: Import data from a legacy system)
+
 @enduml
