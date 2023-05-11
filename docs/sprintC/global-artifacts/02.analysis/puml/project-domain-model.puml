@@ -12,6 +12,13 @@ skinparam groupInheritance 1
 hide circle
 hide methods
 
+class Address{
+doorNumber
+street
+zipCode
+}
+
+Address -> City: includes >
 
 Network "1" -- "*" Branch: owns >
 Branch "1" -- "*" Announcement: publishes >
@@ -40,7 +47,6 @@ Employee "1" - "1" Branch: works at a >
 "System Administrator" "1" -> "*" District: specifies >
 "System Administrator" "1" -> "*" City: specifies >
 
-
 together {
 Buyer --|> Client
 Seller --|> Client
@@ -61,23 +67,23 @@ State "1" - "*" District: located in <
 
 
 class Network{
-
+name
 }
 
 class Branch{
-name:String
-address:String
-email:String
-phoneNumber:String
+name
+address
+email
+phoneNumber
 }
 
 class Employee{
-String name
-int cCNumber
-int taxNumber
-String address
-String email
-String phoneNumber
+name
+cCNumber
+taxNumber
+address
+email
+phoneNumber
 }
 
 together {
@@ -90,61 +96,92 @@ class "Store Manager"
 class Agent
 }
 
-class Client
+class Client{
+name
+email
+cCNumber
+taxNumber
+address
+phoneNumber
+}
 class Buyer
 class Seller
 
 class Visit{
+date
+time
+prediction
+}
 
+class Order{
+price
+}
+
+class Commission{
+value
 }
 
 class Announcement{
-int listingID
-bool visible
-float price
-float commission
-TypeOfBusiness typeOfBusiness
+state
+price
+typeOfBusiness
 }
 
+Announcement ---> Commission: has a >
+
+Commission <|- FixedCommision
+Commission <|- PercentageCommision
+
+Buyer -> Order: submits >
+Order -> Property: to buy/rent >
 
 class Property{
-float area
-City city
-float cityCenterDistance
-List<Image> photograph
+area
+cityCenterDistance
+photographs
 }
 
-class House{
-int numberOfBedrooms
-int numberOfBathrooms
-int numberOfParkingSpaces
-List<String> equipment
-bool hasBasement
+Property -> Address: located in >
 
-bool hasInhabitableLoft
-SunExposure sunExposure
+class House{
+numberOfBedrooms
+numberOfBathrooms
+numberOfParkingSpaces
+hasBasement
+
+hasInhabitableLoft
+sunExposure
 }
 
 class Apartment{
-int numberOfBedrooms
-int numberOfBathrooms
-int numberOfParkingSpaces
-List<String> equipment
+numberOfBedrooms
+numberOfBathrooms
+numberOfParkingSpaces
+equipment
 }
 
 class Land{
 }
 
 class State{
-String name
+name
 }
 class District{
-String name
+name
 }
 class City{
-String name
+name
 }
 
-
+'class User{
+'email
+'password
+'}
+'
+'User <--- "System Administrator": accesses as <
+'User <--- "Network Manager": accesses as <
+'User <--- Agent: accesses as <
+'User <--- "Store Manager": accesses as <
+'User <--- Client: accesses as <
 
 @enduml
