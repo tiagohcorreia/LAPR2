@@ -36,7 +36,7 @@ Employee "1" - "1" Branch: works at a >
 "System Administrator" "1" ---> "*" Branch: registers >
 
 
-"System Administrator" "1" -> "*" State: specifies >
+"System Administrator" "1" --> "*" State: specifies >
 "System Administrator" "1" -> "*" District: specifies >
 "System Administrator" "1" -> "*" City: specifies >
 
@@ -50,12 +50,13 @@ Seller "1" - "*" Property: owns >
 Seller "1" - "*" Announcement: creates >
 Agent "1" - "*" Announcement: validates >
 Visit "1" - "1" Buyer: requests <
-Visit "1" - "1" Agent: scheduled by >
+Buyer "1" - "*" Announcement: browses >
+Visit "1" --- "1" Agent: scheduled by >
 
 together {
-Property "1" -- "1" City: located in >
-District "1" -- "*" City: located in <
-State "1" -- "*" District: located in <
+Property "1" - "1" City: located in >
+District "1" - "*" City: located in <
+State "1" - "*" District: located in <
 }
 
 
