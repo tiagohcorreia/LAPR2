@@ -8,7 +8,7 @@ skinparam shadowing false
 'skinparam linetype ortho
 'left to right direction
 skinparam classAttributeIconSize 0
-skinparam groupInheritance 1
+'skinparam groupInheritance 2
 hide circle
 hide methods
 
@@ -17,54 +17,6 @@ doorNumber
 street
 zipCode
 }
-
-Address -> City: includes >
-
-Network "1" -- "*" Branch: owns >
-Branch "1" -- "*" Announcement: publishes >
-Announcement "1" -- "1" Property: contains >
-
-Network "1" -- "*" Employee: employs >
-
-
-Property <|-- House
-Property <|-- Apartment
-Property <|-- Land
-
-
-"System Administrator" --|> Employee
-"Network Manager" --|> Employee
-"Store Manager" --|> Employee
-Agent --|> Employee
-
-Employee "1" - "1" Branch: works at a >
-
-"System Administrator" "1" ----> "*" Employee: registers >
-"System Administrator" "1" ---> "*" Branch: registers >
-
-
-"System Administrator" "1" --> "*" State: specifies >
-"System Administrator" "1" -> "*" District: specifies >
-"System Administrator" "1" -> "*" City: specifies >
-
-together {
-Buyer --|> Client
-Seller --|> Client
-}
-
-Seller "1" - "*" Property: owns >
-Seller "1" - "*" Announcement: creates >
-Agent "1" - "*" Announcement: validates >
-Visit "1" - "1" Buyer: requests <
-Buyer "1" - "*" Announcement: browses >
-Visit "1" --- "1" Agent: scheduled by >
-
-together {
-Property "1" - "1" City: located in >
-District "1" - "*" City: located in <
-State "1" - "*" District: located in <
-}
-
 
 class Network{
 name
@@ -86,13 +38,15 @@ email
 phoneNumber
 }
 
+class BranchEmployee
+
 together {
-class "System Administrator"
+class "System Administrator" as SysAdmin
+class "Network Manager" as NetworkMan
+}
 
-class "Network Manager"
-
-class "Store Manager"
-
+together {
+class "Store Manager" as StoreMan
 class Agent
 }
 
@@ -104,7 +58,9 @@ taxNumber
 address
 phoneNumber
 }
+
 class Buyer
+
 class Seller
 
 class Visit{
@@ -127,21 +83,11 @@ price
 typeOfBusiness
 }
 
-Announcement ---> Commission: has a >
-
-Commission <|- FixedCommision
-Commission <|- PercentageCommision
-
-Buyer -> Order: submits >
-Order -> Property: to buy/rent >
-
 class Property{
 area
 cityCenterDistance
 photographs
 }
-
-Property -> Address: located in >
 
 class House{
 numberOfBedrooms
@@ -163,25 +109,91 @@ equipment
 class Land{
 }
 
-class State{
-name
+together {
+    class State{
+    name
+    }
+    class District{
+    name
+    }
+    class City{
+    name
+    }
 }
-class District{
-name
-}
-class City{
-name
-}
+
+Network "1" -- "*" Branch: owns >
+Branch "1" -- "*" Announcement: publishes >
+Announcement "1" -- "1" Property: contains >
+
+Network "1" -- "*" Employee: employs >
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+BranchEmployee --|> Employee
+
+
+Employee <|-- SysAdmin
+Employee <|-- NetworkMan
+BranchEmployee <|- StoreMan
+BranchEmployee <|- Agent
+
+'SysAdmin ---|> Employee
+'NetworkMan ---|> Employee
+'StoreMan ---|> Employee
+'Agent ---|> Employee
+
+BranchEmployee "1" - "1" Branch: assigned to >
+
+SysAdmin "1" --> "*" Employee: registers >
+SysAdmin "1" --> "*" Branch: registers >
+
+SysAdmin "1" ---> "*" State: specifies >
+SysAdmin "1" ---> "*" District: specifies >
+SysAdmin "1" ---> "*" City: specifies >
+
+NetworkMan "*" -> "1" Network: manages >
+
+StoreMan "1" -> "1" Branch: manages >
+
+Buyer --|> Client
+Seller --|> Client
+
+Seller "1" - "*" Property: owns >
+Seller "1" -- "*" Announcement: creates >
+Agent "1" - "*" Announcement: validates >
+Visit "1" - "1" Buyer: requests <
+Buyer "1" - "*" Announcement: browses >
+Visit "1" -- "1" Agent: scheduled by >
+
+Agent "1" -> "1" Commission: sets >
+
+
+District "1" -- "*" City: has >
+State "1" -- "*" District: has >
+
+
+Announcement "1" ---> "1" Commission: has a >
+
+Commission <|-- FixedCommission
+Commission <|-- PercentageCommission
+
+Buyer --> Order: submits >
+Order --> Property: to buy/rent >
+Property "1" --> "1" Address: located in >
+
+Address -> City: includes >
 
 'class User{
 'email
 'password
 '}
 '
-'User <--- "System Administrator": accesses as <
-'User <--- "Network Manager": accesses as <
+'User <--- SysAdmin: accesses as <
+'User <--- NetworkMan: accesses as <
 'User <--- Agent: accesses as <
-'User <--- "Store Manager": accesses as <
+'User <--- StoreMan: accesses as <
 'User <--- Client: accesses as <
 
 @enduml
