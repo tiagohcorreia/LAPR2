@@ -1,0 +1,63 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Agent" as AG
+participant ":System" as System
+
+activate AG
+
+    AG -> System : asks to see the  announcements requests
+    activate System
+
+        System --> AG : show the announcements requests
+    deactivate System
+
+    AG -> System : select the announcement request  to analyse
+    activate System
+
+        System --> AG : present all the information about the announcement request selected
+    deactivate System
+
+
+     AG -> System : select an option - accept or reject
+     activate System
+
+        alt accept
+
+            AG -> System : accept the announcement request
+      activate System
+            System --> AG : request the commission
+     deactivate System
+            AG -> System : set the commission
+     activate System
+             System --> AG : validate the data
+     deactivate System
+             AG -> System : publish the announcement
+     activate System
+            System --> AG : display operation success
+     deactivate System
+        else reject
+        AG -> System : reject the announcement
+      activate System
+        System --> AG : request the motive
+      deactivate System
+
+        AG -> System : type the motive
+        activate System
+        AG -> System : confirm
+        System --> AG : display operation success
+      deactivate System
+           end
+
+        System --> AG :display operation success
+    deactivate System
+
+
+
+@enduml
