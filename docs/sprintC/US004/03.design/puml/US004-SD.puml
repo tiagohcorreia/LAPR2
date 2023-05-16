@@ -56,8 +56,9 @@ activate owner
         ui-> owner: validates data
 
         ui -> ctrl: createAnnouncement()
-        ctrl -> property**: create
         activate repAnounc
+        repAnounc -> property**: create
+
         property -> property: validateProperty(Property)
         activate property
         property -> repAnounc: Property
