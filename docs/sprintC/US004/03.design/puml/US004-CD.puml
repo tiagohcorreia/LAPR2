@@ -19,24 +19,7 @@ class Property{
     - Arraylist<String> photographs
     + validateProperty()
 }
-class House{
-    - int numberOfBedrooms
-    - int numberOfBathrooms
-    - int numberOfParkingSpaces
-    - Arraylist<String> equipment
-    - boolean hasBasement
-    - boolean hasInhabitableLoft
-    - SunExposure sunExposure
-}
-class Apartment{
-    - int numberOfBedrooms
-    - int numberOfBathrooms
-    - int numberOfParkingSpaces
-    - Arraylist<String> equipment
-}
-class Land{
 
-}
 class RegisterPropertyUI {
     + getAgent()
     + createAnnouncement()
@@ -56,15 +39,12 @@ class AnnouncementRepository {
 }
 
 
-RegisterPropertyUI --> RegisterPropertyController
-RegisterPropertyController --> Repositories
-RegisterPropertyController --> RegisterEmployeeRepository
-RegisterPropertyController --> AnnouncementRepository
-RegisterPropertyController --> Property
-
-House --> Property
-Apartment --> Property
-Land --> Property
+RegisterPropertyUI ..> RegisterPropertyController
+RegisterPropertyController ..> Repositories : repositories
+RegisterPropertyController ..> RegisterEmployeeRepository : RegisterEmployeeRepository
+RegisterPropertyController ..> AnnouncementRepository : announcementRepository
+RegisterPropertyController ..> Property: property
 AnnouncementRepository --> Announcement
+Repositories -> Repositories : instance
 
 @enduml
