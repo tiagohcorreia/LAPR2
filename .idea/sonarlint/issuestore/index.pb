@@ -3,8 +3,6 @@ w
 Gdocs/sprintC/global-artifacts/01.requirements-engineering/puml/UCD.puml,a\a\aa98e63aa51f8bb7d02b3c356cd274a2432badbc
 m
 =src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
-Z
-*docs/sprintC/US010/02.analysis/Analysis.md,c\b\cb8cb0a941ea5960b029b64934a60304b21fe504
 V
 &docs/sprintC/US010/03.design/Design.md,c\e\ce8055eaddec9395bc908b549417bca55e7d881b
 C

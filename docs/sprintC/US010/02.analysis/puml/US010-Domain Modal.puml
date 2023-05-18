@@ -1,0 +1,58 @@
+@startuml
+
+object Client {
+
+}
+
+object Order {
+
+}
+
+object Announcement {
+
+}
+
+object Property {
+
+}
+
+object House {
+
+
+}
+
+object Apartment {
+
+}
+
+object Land {
+
+}
+
+object Commission{
+
+}
+
+object FixedCommission {
+
+}
+
+object PercentageCommission {
+
+}
+
+Client -> Order: submits
+
+Announcement "1" -- "1" Property: contains >
+Announcement "1" ---> "1" Commission: has a >
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+Commission <|-- FixedCommission
+Commission <|-- PercentageCommission
+
+Order --> Property: to buy >
+
+@enduml
