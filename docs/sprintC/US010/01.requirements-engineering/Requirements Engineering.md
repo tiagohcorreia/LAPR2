@@ -68,24 +68,26 @@ As a client, I place an order to purchase the property, submitting the order amo
 * Typed data:
 	 
 	
-	* 
-	* 
-	* 
-	* 
+	* order amount
+
 	
 * Selected data:
-	* 
-
+        
+	 *  Property
+   
 
 **Output Data:**
 
-* 
-* 
+    *  List of properties
+    *  Request confirmation
+    *  Success of the operation
+
+
 
 ### 1.6. System Sequence Diagram (SSD)
 
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram](svg\SSD.svg)
 
 
 ### 1.7 Other Relevant Remarks
