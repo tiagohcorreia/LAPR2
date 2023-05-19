@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "System Administrator" as sa
+participant ":LegacyImportUI" as ui
+participant ":LegacyImportController" as ctrl
+participant ":FileHandler" as fh
+
+activate sa
+sa -> ui: starts importing data
+activate ui
+ui -> ctrl**: create
+
+return requests file path
+
+sa -> ui: types file path
+activate ui
+
+ui -> ctrl: importFile(filePath)
+activate ctrl
+ctrl -> fh**: create
+ctrl -> fh: readFile(filePath)
+activate fh
+return file
+
+ctrl -> fh: readCSV(file)
+activate fh
+return csv[]
+
+
+alt
+    ui --> sa: informs operation success
+else
+    ui --> sa: inform no CSV file found
+else
+    return inform file is empty
+
+end
+
+deactivate sa
+
+@enduml

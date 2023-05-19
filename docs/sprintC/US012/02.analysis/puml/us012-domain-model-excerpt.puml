@@ -1,0 +1,189 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'skinparam linetype ortho
+'left to right direction
+skinparam classAttributeIconSize 0
+skinparam groupInheritance 1
+hide circle
+hide methods
+
+class Network{
+name
+}
+
+class Branch{
+name
+email
+address
+phoneNumber
+}
+
+class Employee{
+name
+cCNumber
+tasNumber
+email
+address
+phoneNumber
+}
+
+class Agent{
+}
+
+class Client{
+name
+cCNumber
+tasNumber
+email
+address
+phoneNumber
+}
+
+class Announcement{
+name
+price
+typeOfBusiness
+}
+
+class Property{
+area
+cityCenterDistance
+photographs
+}
+
+class House{
+numberOfBedrooms
+numberOfBathrooms
+numberOfParkingSpaces
+equipment
+
+hasBasement
+hasInhabitableLoft
+sunExposure
+}
+
+class Apartment{
+numberOfBedrooms
+numberOfBathrooms
+numberOfParkingSpaces
+equipment
+}
+
+class Land{
+}
+
+class Address {
+doorNumber
+street
+zipCode
+}
+
+class City {
+name
+}
+
+class District {
+name
+}
+
+class State {
+name
+}
+
+
+Network "1" -- "*" Branch: owns >
+Network "1" -- "1..*" Employee: employs >
+Agent -|> Employee
+Agent "1" - "*" Announcement: validates >
+'Employee <- Agent
+Branch "1" -- "*" Announcement: publishes >
+
+Announcement "1" -- "1" Property: contains >
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+Property "1" - "1" Address: has >
+'Address "*" -- "1" City
+City "1" -- "*" Address
+State "1" - "1..*" District
+District "1" - "1..*" City
+
+
+Announcement "1" -- "1" Client: creates <
+Client "1" - "*" Property: owns >
+
+
+'Announcement "1" -- "1" Property: contains >
+'
+''Network "1" -- "*" Employee: employs >
+'
+'
+'
+''Agent -|> Employee
+'
+'
+'
+'
+'together {
+'Client <|-- Buyer
+'Client <|-- Seller
+'}
+'
+'Seller "1" - "*" Property: owns >
+'Seller "1" - "*" Announcement: creates >
+'Visit "1" -- "1" Buyer: requests <
+'Buyer "1" -- "*" Announcement: browses >
+''Visit "1" - "1" Agent: scheduled by >
+'
+'
+'
+''class Network{
+'
+''}
+'
+'
+'
+'class Client {
+'name
+'email
+'password
+'cCNumber
+'TaxNumber
+'address
+'phoneNumber
+'}
+'class Buyer
+'class Seller
+'
+'class Visit{
+'
+'}
+'
+'class Announcement{
+''listingID
+''visible
+''price
+''commission
+''typeOfBusiness
+'}
+'
+'
+'class Property{
+''area
+''city
+''cityCenterDistance
+''photographs
+'}
+'
+
+
+
+
+@enduml
