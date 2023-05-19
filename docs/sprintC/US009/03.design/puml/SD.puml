@@ -1,0 +1,113 @@
+@startuml
+
+autonumber
+
+actor Client as client
+participant ScheduleVisitUI as ui
+participant ScheduleVisitController as ctrl
+participant AnnouncementDTO
+participant AnnouncementRepository
+participant ScheduleRepository
+participant Schedule as schedule
+
+autonumber
+
+activate client
+
+client -> ui: starts scheduling request
+
+activate ui
+
+ui -> ctrl** : create
+
+ui-> client: requests the property business he wants to schedule (Sell, Rent or All)
+client->ui: selects the type of business
+
+ui -> ctrl: getAnnouncementList()
+
+deactivate ui
+
+activate ctrl
+
+ctrl -> AnnouncementDTO: getAnnouncementList()
+
+deactivate ctrl
+
+activate AnnouncementDTO
+
+AnnouncementDTO -> AnnouncementRepository: getAnnouncementList()
+
+deactivate AnnouncementDTO
+
+activate AnnouncementRepository
+
+AnnouncementRepository -> AnnouncementDTO: return AnnouncementList
+
+deactivate AnnouncementRepository
+
+activate AnnouncementDTO
+
+AnnouncementDTO -> ctrl:  return AnnouncementList
+
+deactivate AnnouncementDTO
+
+activate ctrl
+
+ctrl -> ui: return AnnouncementList
+
+deactivate ctrl
+
+activate ui
+
+ui -> client: shows announcement list and requests the user to select one\n and insert all the information (name, phoneNumber,day, hour, note)
+
+client -> ui: selects announcement with the property and types all the information
+
+ui -> ctrl: validateSchedule()
+
+deactivate ui
+
+activate ctrl
+
+ctrl -> schedule: validateSchedule()
+
+deactivate ctrl
+
+activate schedule
+
+schedule -> schedule: validates the schedule
+
+schedule -> ctrl: return schedule
+
+deactivate schedule
+
+activate ctrl
+
+ctrl -> ui: return schedule
+
+deactivate ctrl
+
+activate ui
+
+ui -> client: shows request schedule information
+
+client -> ui: confirms the data
+
+ui -> ctrl: saveScheduleRequest()
+
+deactivate ui
+
+activate ctrl
+
+ctrl -> ScheduleRepository: saveScheduleRequest()
+
+activate ScheduleRepository
+
+activate ui
+
+ui -> client: informs operation sucess
+
+
+deactivate client
+
+@enduml
