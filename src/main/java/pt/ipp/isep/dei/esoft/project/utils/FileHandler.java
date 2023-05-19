@@ -43,6 +43,10 @@ public class FileHandler {
         }
     }
 
+    public static boolean csvIsEmpty(List<?> csv){
+        return (csv.size() == 0)? true : false;
+    }
+
     public static boolean appendToFile(String filepath, String content){
         File file = new File(filepath);
         try {
@@ -76,14 +80,8 @@ public class FileHandler {
         return true;
     }
 
-    public static boolean deleteFile(String filepath){
-        boolean result;
-        try{
-            File file = readFile(filepath);
-            result = file.delete();
-        } catch (FileNotFoundException e){
-            return false;
-        }
-        return result;
+    public static boolean deleteFile(String filepath) throws FileNotFoundException {
+        File file = readFile(filepath);
+        return file.delete();
     }
 }

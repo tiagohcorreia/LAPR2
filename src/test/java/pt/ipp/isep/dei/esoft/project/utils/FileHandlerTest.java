@@ -19,12 +19,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FileHandlerTest {
 
+    //Filepaths
     private static final String CSV_FILE_FILEPATH = "example_csv_file.csv";
     private static final String TEST_FILE_FILEPATH = "example_file.txt";
     private static final String TEST_FILE_2_FILEPATH = "example_file_2.txt";
-    private static final String EMPTY_FILE_FILEPATH = "empty_file.txt";
+    private static final String EMPTY_CSV_FILE_FILEPATH = "empty_file.csv";
+    private static final String NONEXISTANT_FILE_FILEPATH = "nofile.xyz";
+
+    //File contents
     private static final String EXAMPLE_LINE_1 = "This is a, test file!";
     private static final String EXAMPLE_LINE_2 = "And something else...";
+
+    //CSV data
     private static final List<List<String>> data = new ArrayList<>();
 
 
@@ -34,7 +40,7 @@ class FileHandlerTest {
         FileHandler.createFile(CSV_FILE_FILEPATH, generateCSVString());
         FileHandler.createFile(TEST_FILE_FILEPATH,EXAMPLE_LINE_1);
         FileHandler.createFile(TEST_FILE_2_FILEPATH,EXAMPLE_LINE_1 + "\n" + EXAMPLE_LINE_2);
-        FileHandler.createFile(EMPTY_FILE_FILEPATH,"");
+        FileHandler.createFile(EMPTY_CSV_FILE_FILEPATH,"");
 
         //Generate CSV data as list of string lists
         for (int i = 0; i < 10; i++) {
@@ -49,20 +55,14 @@ class FileHandlerTest {
 
     @AfterAll
     static void cleanup(){
+        try {
             FileHandler.deleteFile(CSV_FILE_FILEPATH);
             FileHandler.deleteFile(TEST_FILE_FILEPATH);
             FileHandler.deleteFile(TEST_FILE_2_FILEPATH);
-            FileHandler.deleteFile(EMPTY_FILE_FILEPATH);
-    }
-
-
-    private File generateTestFile() throws FileNotFoundException {
-        String testString = generateCSVString();
-        File file = new File(CSV_FILE_FILEPATH);
-        PrintWriter writer = new PrintWriter(file);
-        writer.write(testString);
-        writer.close();
-        return file;
+            FileHandler.deleteFile(EMPTY_CSV_FILE_FILEPATH);
+        } catch (Exception e){
+            System.out.println("Couldn't delete test files!");
+        }
     }
 
 
@@ -117,9 +117,16 @@ class FileHandlerTest {
 
 
     @Test
-    void ensureReadCSVThrowsFileIsEmptyException(){
-        //TODO
+    void ensureCsvIsEmptyWorks() throws InvalidFileTypeException, InvalidAttributeValueException {
+        //Arrange
+        File file = new File(EMPTY_CSV_FILE_FILEPATH);
+        List<?> csv = FileHandler.readCSV(file);
 
+        //Act
+        boolean result = FileHandler.csvIsEmpty(csv);
+
+        //Assert
+        assertTrue(result);
     }
 
 
@@ -165,5 +172,12 @@ class FileHandlerTest {
 
         //Assert
         assertEquals(-1L, Files.mismatch(f1.toPath(), f2.toPath()));
+    }
+
+
+    @Test
+    void ensureDeleteFileThrowsFileNotFoundException(){
+        //Arrange
+        assertThrows(FileNotFoundException.class, () -> FileHandler.deleteFile(NONEXISTANT_FILE_FILEPATH));
     }
 }
