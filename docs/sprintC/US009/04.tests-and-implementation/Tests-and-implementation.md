@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 009 - Sends a message to schedule a visit
 
 # 4. Tests 
 

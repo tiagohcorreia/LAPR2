@@ -23,11 +23,13 @@ public class AdminUI implements Runnable {
     }
 
     public void run() {
+
         List<MenuItem> options = new ArrayList<MenuItem>();
-        options.add(new MenuItem("Create Task", new CreateTaskUI()));
+
+        //options.add(new MenuItem("Create Task", new CreateTaskUI()));
         options.add(new MenuItem("Specify states, districts or cities", new SpecifyStatesDistrictsCitiesUI()));
         options.add(new MenuItem("Register Employee ", new RegisterEmployeeUI(new RegisterEmployeeController(new RegisterEmployeeRepository()))));
-        options.add(new MenuItem("Option 3 ", new ShowTextUI("You have chosen Option C.")));
+        //options.add(new MenuItem("Option 3 ", new ShowTextUI("You have chosen Option C.")));
         //options.add(new MenuItem("Import from legacy system ", new ImportFromLegacyUI()));
 
         int option = 0;

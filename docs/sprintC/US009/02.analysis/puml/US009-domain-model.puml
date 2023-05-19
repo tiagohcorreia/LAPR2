@@ -10,52 +10,61 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-'title Domain Model
+title Domain Model US009
 
-'class Platform {
-'  -description
-'}
+object Client {
 
-class Organization {
-    name
-    vatNumber
-    website
-    phoneNumber
-    email
 }
 
-class Task {
-    reference
-    description
-    informalDesc
-    technicalDesc
-    duration
-    cost
+object Visit {
+
 }
 
-class Category {
-    description
+object Announcement {
+
 }
 
-class Employee {
-    name
-    email
-    position
-    phone
+object Property {
+
 }
 
-'class User {
-'    name
-'    email
-'    password
-'}
+object House {
 
-'Platform "1" -- "*" Organization : has registered >
-'Platform "1" -- "*" Category : defines >
-Organization "1" - "0..*" Employee : has >
-Organization "1" - "0..*" Task: owns >
-'Task "*" -- "1" Employee: created by >
-Employee "1" -- "*" Task : creates >
-'Employee "0..1" -- "1" User: acts as >
-Task "*" - "1" Category: cataloged as >
+
+}
+
+object Apartment {
+
+}
+
+object Land {
+
+}
+
+object Commission{
+
+}
+
+object FixedCommission {
+
+}
+
+object PercentageCommission {
+
+}
+
+Client -> Visit: requests
+
+Announcement "1" -- "1" Property: contains >
+Announcement "1" ---> "1" Commission: has a >
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+Commission <|-- FixedCommission
+Commission <|-- PercentageCommission
+
+Visit --> Property: to visit >
+Agent --> Visit: validates >
 @enduml

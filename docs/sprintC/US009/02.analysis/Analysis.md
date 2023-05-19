@@ -1,11 +1,10 @@
-# US 006 - To create a Task 
+# US 009 - Sends a message to schedule a visit
 
 ## 2. Analysis
 
 ### 2.1. Relevant Domain Model Excerpt 
 
-![Domain Model](svg/us006-domain-model.svg)
-
+![US009-domain-model-Domain_Model_US009.svg](svg%2FUS009-domain-model-Domain_Model_US009.svg)
 ### 2.2. Other Remarks
 
 n/a
