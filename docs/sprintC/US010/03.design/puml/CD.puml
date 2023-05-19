@@ -1,0 +1,62 @@
+@startuml
+
+interface Runnable {
+
+    + run()
+}
+
+class PlaceOrderToBuyPropertyUI {
+
+    - controller
+}
+
+class PlaceOrderToBuyPropertyController {
+
+    - orderRepository
+    + createOrder()
+    + getAnnouncementList()
+}
+
+class Order {
+
+    - orderAmount
+    - announcement
+    - status
+}
+
+class PlaceOrderToBuyPropertyRepository {
+
+    - orderList
+    + seveOrder()
+    + validateOrder()
+}
+
+class AnnouncementRepository {
+
+    + save()
+    + createAnnouncement()
+    + validateAnnouncement()
+    + addAnnouncement()
+    + getAllVisibleAnnouncements()
+    + getAvailableFields()
+    + getAnnouncements()
+}
+
+class AnnouncementDTO {
+
+    - price
+    - typeOfBusiness
+    - property
+    - agent
+}
+
+
+
+Runnable -left-|> PlaceOrderToBuyPropertyUI
+PlaceOrderToBuyPropertyUI ..> PlaceOrderToBuyPropertyController
+PlaceOrderToBuyPropertyController -> AnnouncementDTO
+AnnouncementDTO -> AnnouncementRepository
+PlaceOrderToBuyPropertyController ..> Order
+Order --> PlaceOrderToBuyPropertyRepository
+
+@enduml
