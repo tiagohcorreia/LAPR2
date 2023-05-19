@@ -23,32 +23,10 @@ class FileHandlerTest {
     private static final String TEST_FILE_FILEPATH = "example_file.txt";
     private static final String TEST_FILE_2_FILEPATH = "example_file_2.txt";
     private static final String EMPTY_FILE_FILEPATH = "empty_file.txt";
-    private static final List<List<String>> data = new ArrayList<>();
-
     private static final String EXAMPLE_LINE_1 = "This is a, test file!";
     private static final String EXAMPLE_LINE_2 = "And something else...";
+    private static final List<List<String>> data = new ArrayList<>();
 
-
-    //private final File csvFile = generateTestFile();
-
-//    public FileHandlerTest(){
-//        //final File csvFile = generateTestFile();
-//
-//        //Generate files
-//        FileHandler.createFile(CSV_FILE_FILEPATH, generateCSVString());
-//        FileHandler.createFile(TEST_FILE_FILEPATH,"This is a, test file!");
-//        FileHandler.createFile(EMPTY_FILE_FILEPATH,"");
-//
-//        //Generate CSV data as list of string lists
-//        List<List<String>> data = new ArrayList<>();
-//        for (int i = 0; i < 10; i++) {
-//            List<String> line = new ArrayList<>();
-//            for (int j = 0; j < 10; j++) {
-//                line.add("L"+(i+1)+"E"+(j+1));
-//            }
-//            data.add(line);
-//        }
-//    }
 
     @BeforeAll
     static void arrange(){
@@ -69,7 +47,6 @@ class FileHandlerTest {
     }
 
 
-
     @AfterAll
     static void cleanup(){
             FileHandler.deleteFile(CSV_FILE_FILEPATH);
@@ -77,7 +54,6 @@ class FileHandlerTest {
             FileHandler.deleteFile(TEST_FILE_2_FILEPATH);
             FileHandler.deleteFile(EMPTY_FILE_FILEPATH);
     }
-
 
 
     private File generateTestFile() throws FileNotFoundException {
@@ -88,6 +64,7 @@ class FileHandlerTest {
         writer.close();
         return file;
     }
+
 
     private static String generateCSVString(){
         String testString = new String();
@@ -102,6 +79,7 @@ class FileHandlerTest {
         return testString;
     }
 
+
     private List<List<String>> CSVStringToList(String csv){
         List<List<String>> csvAsList = new ArrayList<>();
         String[] lines = csv.split("\n");
@@ -114,17 +92,14 @@ class FileHandlerTest {
         return csvAsList;
     }
 
+
     @Test
     void ensureReadFileWorks() throws FileNotFoundException {
-        //Arrange
-        //File file = generateTestFile();
-
         //Act
         File resultFile = FileHandler.readFile(CSV_FILE_FILEPATH);
 
         //Assert
         assertEquals(new File(CSV_FILE_FILEPATH), resultFile);
-        //assertEquals(file, resultFile);
     }
 
 
@@ -140,12 +115,13 @@ class FileHandlerTest {
         });
     }
 
+
     @Test
     void ensureReadCSVThrowsFileIsEmptyException(){
-        //Arrange
-
+        //TODO
 
     }
+
 
     @Test
     void ensureReadFileThrowsFileNotFoundException(){
@@ -154,6 +130,7 @@ class FileHandlerTest {
             File file = FileHandler.readFile("testfile.example");
         });
     }
+
 
     @Test
     void ensureReadFileThrowsInvalidArgumentException(){
@@ -170,26 +147,12 @@ class FileHandlerTest {
     @Test
     void ensureReadCSVWorks() throws InvalidFileTypeException, InvalidAttributeValueException {
         //Arrange
-        //File testfile = generateTestFile();
-        //String testString = generateCSVString();
-        //List<?> testCSVList = CSVStringToList(testString);
-
-        //Act
-        //List<?> readData = FileHandler.readCSV(CSV_FILE_FILEPATH);
-
-        //Assert
-        //assertEquals(readData, testCSVList);
-
-        //Arrange
         File csvFile = new File(CSV_FILE_FILEPATH);
-
-
-
-        //List<?> data = FileHandler.readCSV(csvFile);
 
         //Act & Assert
         assertEquals(FileHandler.readCSV(csvFile), this.data);
     }
+
 
     @Test
     void ensureAppendToFileWorks() throws IOException {
@@ -199,11 +162,8 @@ class FileHandlerTest {
 
         //Act
         FileHandler.appendToFile(TEST_FILE_FILEPATH, "\n"+EXAMPLE_LINE_2);
-        //f1.equals(f2);
-
 
         //Assert
-        //assertEquals(FileHandler.readFile(TEST_FILE_FILEPATH), FileHandler.readFile(TEST_FILE_2_FILEPATH));
         assertEquals(-1L, Files.mismatch(f1.toPath(), f2.toPath()));
     }
 }
