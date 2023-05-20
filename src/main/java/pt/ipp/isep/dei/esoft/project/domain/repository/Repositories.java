@@ -77,6 +77,8 @@ public class Repositories {
 
     ClientRepository clientRepository = new ClientRepository();
 
+    BranchRepository branchRepository = new BranchRepository();
+
     private Repositories() {
     }
 
@@ -143,4 +145,7 @@ public class Repositories {
      * @return the client repository
      */
     public ClientRepository getClientRepository() {return clientRepository;}
+
+    public BranchRepository getBranchRepository() {return branchRepository;}
+
 }
