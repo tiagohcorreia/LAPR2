@@ -5,11 +5,7 @@ import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
-import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
-import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
-import pt.ipp.isep.dei.esoft.project.repository.OrganizationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
-import pt.ipp.isep.dei.esoft.project.repository.TaskCategoryRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +62,7 @@ class DisplayAnnouncementsControllerTest {
      * Ensure get available fields.
      */
     @Test
-    void ensureGetAvailableFields() {
+    void ensureGetAvailableFieldsWorks() {
         DisplayAnnouncementsController controller = new DisplayAnnouncementsController();
         //Arrange
         //Get Repository
@@ -111,7 +107,7 @@ class DisplayAnnouncementsControllerTest {
         //}
         expected.get(0).add(TypeOfBusiness.SELL);
         expected.get(0).add(TypeOfBusiness.RENT);
-        expected.get(1).add("House");
+        expected.get(1).add("House".toUpperCase());
         expected.get(2).add(3);
 
 

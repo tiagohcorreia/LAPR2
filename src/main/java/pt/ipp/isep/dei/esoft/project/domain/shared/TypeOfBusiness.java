@@ -10,7 +10,7 @@ public enum TypeOfBusiness {
     SELL(1){
         @Override
         public String toString() {
-            return String.format("Sell");
+            return String.format("Sell").toUpperCase();
         }
     },
     /**
@@ -19,7 +19,7 @@ public enum TypeOfBusiness {
     RENT(2){
         @Override
         public String toString() {
-            return String.format("Rent");
+            return String.format("Rent").toUpperCase();
         }
     };
     private final int valor;
