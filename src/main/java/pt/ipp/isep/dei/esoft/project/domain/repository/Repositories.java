@@ -57,7 +57,7 @@ public class Repositories {
     /**
      * The Employee repository.
      */
-    RegisterEmployeeRepository employeeRepository = new RegisterEmployeeRepository();
+    EmployeeRepository employeeRepository = new EmployeeRepository();
     /**
      * The State repository.
      */
@@ -105,7 +105,7 @@ public class Repositories {
      *
      * @return the employee repository
      */
-    public RegisterEmployeeRepository getEmployeeRepository() {return  employeeRepository;}
+    public EmployeeRepository getEmployeeRepository() {return  employeeRepository;}
 
     /**
      * Gets state repository.

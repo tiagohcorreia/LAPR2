@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * The type Register employee repository.
  */
-public class RegisterEmployeeRepository {
+public class EmployeeRepository {
 
     /**
      * The constant employeeList.

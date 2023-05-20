@@ -23,7 +23,7 @@ public class RegisterPropertyController {
     /**
      * The Employee repository.
      */
-    RegisterEmployeeRepository employeeRepository = repositories.getEmployeeRepository();
+    EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
     /**
      * The State repository.
      */
