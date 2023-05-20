@@ -1,9 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.ui.console.menu;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
-import pt.ipp.isep.dei.esoft.project.application.controller.RegisterEmployeeController;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
-import pt.ipp.isep.dei.esoft.project.domain.repository.RegisterEmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.*;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
