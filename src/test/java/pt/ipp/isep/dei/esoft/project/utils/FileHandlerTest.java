@@ -6,7 +6,6 @@ import pt.ipp.isep.dei.esoft.project.exceptions.InvalidFileTypeException;
 
 import org.junit.jupiter.api.Test;
 
-import javax.management.InvalidAttributeValueException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -110,7 +109,7 @@ class FileHandlerTest {
 
         //Act & Assert
         assertThrows(InvalidFileTypeException.class, () -> {
-            List<?> csv = CsvHandler.readCSV(file);
+            List<?> csv = CsvHandler.getDataFromCsvFile(file);
         });
     }
 
@@ -119,7 +118,7 @@ class FileHandlerTest {
     void ensureCsvIsEmptyWorks() throws InvalidFileTypeException {
         //Arrange
         File file = new File(EMPTY_CSV_FILE_FILEPATH);
-        List<?> csv = CsvHandler.readCSV(file);
+        List<?> csv = CsvHandler.getDataFromCsvFile(file);
 
         //Act
         boolean result = CsvHandler.csvIsEmpty(csv);
@@ -156,7 +155,7 @@ class FileHandlerTest {
         File csvFile = new File(CSV_FILE_FILEPATH);
 
         //Act & Assert
-        assertEquals(CsvHandler.readCSV(csvFile), this.data);
+        assertEquals(CsvHandler.getDataFromCsvFile(csvFile), this.data);
     }
 
 

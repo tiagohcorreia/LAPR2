@@ -11,7 +11,7 @@ import java.util.Scanner;
 import static pt.ipp.isep.dei.esoft.project.utils.FileHandler.CSV_DELIMITER;
 
 public interface CsvHandler {
-    public static List<?> readCSV(File file) throws InvalidFileTypeException {
+    public static List<?> getDataFromCsvFile(File file) throws InvalidFileTypeException {
         //Check if the filename ends with ".csv"
         String[] filepath = file.getAbsolutePath().split("\\.");
         String extension = filepath[filepath.length-1];
@@ -35,7 +35,7 @@ public interface CsvHandler {
     }
 
     public static boolean csvIsEmpty(List<?> csv){
-        return csv.size() == 0;
+        return csv.size() < 2;
     }
 
 }
