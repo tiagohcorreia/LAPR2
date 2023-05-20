@@ -10,7 +10,6 @@ import javax.management.InvalidAttributeValueException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +20,10 @@ class FileHandlerTest {
 
     //Filepaths
     private static final String CSV_FILE_FILEPATH = "example_csv_file.csv";
-    private static final String TEST_FILE_FILEPATH = "example_file.txt";
-    private static final String TEST_FILE_2_FILEPATH = "example_file_2.txt";
+    private static final String TEST_FILE_FILEPATH = "example_text_file.txt";
+    private static final String TEST_FILE_2_FILEPATH = "example_text_file_2.txt";
     private static final String EMPTY_CSV_FILE_FILEPATH = "empty_file.csv";
-    private static final String NONEXISTANT_FILE_FILEPATH = "nofile.xyz";
+    private static final String NONEXISTENT_FILE_FILEPATH = "nofile.xyz";
 
     //File contents
     private static final String EXAMPLE_LINE_1 = "This is a, test file!";
@@ -178,6 +177,6 @@ class FileHandlerTest {
     @Test
     void ensureDeleteFileThrowsFileNotFoundException(){
         //Arrange
-        assertThrows(FileNotFoundException.class, () -> FileHandler.deleteFile(NONEXISTANT_FILE_FILEPATH));
+        assertThrows(FileNotFoundException.class, () -> FileHandler.deleteFile(NONEXISTENT_FILE_FILEPATH));
     }
 }
