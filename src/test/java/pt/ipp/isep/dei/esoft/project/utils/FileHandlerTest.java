@@ -82,7 +82,7 @@ class FileHandlerTest {
         List<List<String>> csvAsList = new ArrayList<>();
         String[] lines = csv.split("\n");
         for (String line: lines) {
-            String[] elements = line.split(",");
+            String[] elements = line.split(";");
             csvAsList.add(new ArrayList<>());
             for (String element: elements)
                 csvAsList.get(csvAsList.size()-1).add(element);
