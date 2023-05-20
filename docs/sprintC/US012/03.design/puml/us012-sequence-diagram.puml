@@ -9,11 +9,35 @@ actor "System Administrator" as sa
 participant ":LegacyImportUI" as ui
 participant ":LegacyImportController" as ctrl
 participant ":FileHandler" as fh
+participant ":Repositories" as repos
+participant "repositories\n:Repositories" as repositories
+participant "announcementRepository\n:AnnouncementRepository" as ARepo
+participant "employeeRepository\n:EmployeeRepository" as ERepo
+participant "clientRepository\n:ClientRepository" as CRepo
+participant ":Announcement" as announcement
+participant ":Property" as prop
 
 activate sa
 sa -> ui: starts importing data
 activate ui
 ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance()
+activate repos
+return repositories
+
+ctrl -> repositories: getAnnouncementsRepository()
+activate repositories
+return announcementRepository
+
+ctrl -> repositories: getEmployeesRepository()
+activate repositories
+return employeeRepository
+
+ctrl -> repositories: getClientsRepository()
+activate repositories
+return clientRepository
+
 
 return requests file path
 
@@ -22,7 +46,7 @@ activate ui
 
 ui -> ctrl: importFile(filePath)
 activate ctrl
-ctrl -> fh**: create
+'ctrl -> fh**: create
 ctrl -> fh: readFile(filePath)
 activate fh
 return file
