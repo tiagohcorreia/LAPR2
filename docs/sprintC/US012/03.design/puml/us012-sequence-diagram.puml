@@ -37,7 +37,7 @@ return employeeRepository
 ctrl -> repositories: getClientsRepository()
 activate repositories
 return clientRepository
-
+deactivate ctrl
 
 return requests file path
 
@@ -54,6 +54,25 @@ return file
 ctrl -> fh: readCSV(file)
 activate fh
 return csv[]
+
+ctrl -> ERepo: getEmployeeByName("Legacy Agent")
+activate ERepo
+alt
+    ERepo --> ctrl: Employee legacyAgent
+else
+    return null
+    ctrl -> ERepo: registerEmployee
+    activate ERepo
+    return true
+end
+
+
+ctrl -> fh: parseCsv
+ctrl -> fh: getEntry
+ctrl -> fh: parseAnnouncementData
+ctrl -> fh: parsePropertyData
+ctrl -> fh: parseBranchData
+ctrl -> fh: parseClientData
 
 
 alt
