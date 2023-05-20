@@ -9,13 +9,17 @@ actor "System Administrator" as sa
 participant ":LegacyImportUI" as ui
 participant ":LegacyImportController" as ctrl
 participant ":FileHandler" as fh
+participant ":CsvHandler" as ch
+
 participant ":Repositories" as repos
 participant "repositories\n:Repositories" as repositories
-participant "announcementRepository\n:AnnouncementRepository" as ARepo
-participant "employeeRepository\n:EmployeeRepository" as ERepo
-participant "clientRepository\n:ClientRepository" as CRepo
-participant ":Announcement" as announcement
-participant ":Property" as prop
+participant "announcementRepository\n:AnnouncementRepository" as AnnR
+participant "employeeRepository\n:EmployeeRepository" as EmpR
+participant "clientRepository\n:ClientRepository" as CliR
+participant "branchRepository\n:BranchRepository" as BraR
+participant ":Employee" as Emp
+participant ":Announcement" as Ann
+participant ":Property" as Pro
 
 activate sa
 sa -> ui: starts importing data
@@ -26,15 +30,20 @@ ctrl -> repos: getInstance()
 activate repos
 return repositories
 
-ctrl -> repositories: getAnnouncementsRepository()
+ctrl -> repositories: getBranchRepository()
+activate repositories
+return branchRepository
+
+ctrl -> repositories: getAnnouncementRepository()
 activate repositories
 return announcementRepository
 
-ctrl -> repositories: getEmployeesRepository()
+ctrl -> repositories: getEmployeeRepository()
 activate repositories
 return employeeRepository
 
-ctrl -> repositories: getClientsRepository()
+
+ctrl -> repositories: getClientRepository()
 activate repositories
 return clientRepository
 deactivate ctrl
@@ -55,25 +64,27 @@ ctrl -> fh: readCSV(file)
 activate fh
 return csv[]
 
-ctrl -> ERepo: getEmployeeByName("Legacy Agent")
-activate ERepo
+ctrl -> EmpR: getEmployeeByName("Legacy Agent")
+activate EmpR
 alt
-    ERepo --> ctrl: Employee legacyAgent
+    EmpR --> ctrl: Employee legacyAgent
 else
     return null
-    ctrl -> ERepo: registerEmployee
-    activate ERepo
+    ctrl -> EmpR: registerEmployee(\n"Legacy Agent", ...)
+    activate EmpR
+    EmpR -> Emp**: create
+    activate Emp
+    Emp -> Emp: validateEmployee()
+    return true
     return true
 end
 
 
-ctrl -> fh: parseCsv
-ctrl -> fh: getEntry
-ctrl -> fh: parseAnnouncementData
-ctrl -> fh: parsePropertyData
-ctrl -> fh: parseBranchData
-ctrl -> fh: parseClientData
-
+ctrl -> ch: parseCsv(csv)
+activate ch
+ref over ch: SD_CsvHandler_parseCsv
+autonumber 56
+return csvData
 
 alt
     ui --> sa: informs operation success

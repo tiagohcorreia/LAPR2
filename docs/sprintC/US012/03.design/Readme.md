@@ -77,7 +77,10 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 This diagram shows the full sequence of interactions between the classes involved in the realization of this user story.
 
-![Sequence Diagram - Full](svg/us006-sequence-diagram-full.svg)
+![Sequence Diagram - Full](svg/us012-sequence-diagram.svg)
+
+**CsvHandler parseCsv**
+![CsvHandler parseCsv](svg/SD_CsvHandler_parseCsv.svg)
 
 ### Alternative 2 - Split Diagram
 
