@@ -36,7 +36,7 @@ class FileHandlerTest {
     static void arrange(){
         //Generate files
         FileOps.createFile(CSV_FILE_FILEPATH, generateCSVString());
-        FileOps.createFile(TEST_FILE_FILEPATH,EXAMPLE_LINE_1);
+        FileOps.createFile(TEST_FILE_FILEPATH, EXAMPLE_LINE_1);
         FileOps.createFile(TEST_FILE_2_FILEPATH,EXAMPLE_LINE_1 + "\n" + EXAMPLE_LINE_2);
         FileOps.createFile(EMPTY_CSV_FILE_FILEPATH,"");
 
@@ -54,10 +54,10 @@ class FileHandlerTest {
     @AfterAll
     static void cleanup(){
         try {
-            FileOps.deleteFile(CSV_FILE_FILEPATH);
             FileOps.deleteFile(TEST_FILE_FILEPATH);
             FileOps.deleteFile(TEST_FILE_2_FILEPATH);
             FileOps.deleteFile(EMPTY_CSV_FILE_FILEPATH);
+            FileOps.deleteFile(CSV_FILE_FILEPATH);
         } catch (Exception e){
             System.out.println("Couldn't delete test files!");
         }

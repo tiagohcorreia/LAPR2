@@ -29,6 +29,7 @@ public interface CsvHandler {
                 Collections.addAll(thisLine, lineElements);
                 csv.add(thisLine);
             }
+            sc.close();
         } finally {
             return csv;
         }

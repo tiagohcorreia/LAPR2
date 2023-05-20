@@ -39,7 +39,7 @@ public interface FileOps {
     public static boolean createFile(String filepath, String content) {
         File file = new File(filepath);
         try {
-            Writer writer = new FileWriter(file);
+            Writer writer = new FileWriter(file,false);
             try {
                 writer.write(content);
             } finally {
