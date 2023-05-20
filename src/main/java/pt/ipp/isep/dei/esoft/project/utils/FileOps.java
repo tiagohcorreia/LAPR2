@@ -56,5 +56,9 @@ public interface FileOps {
         return file.delete();
     }
 
+    public static boolean isFileEmpty(File file){
+        return (file.length() == 0L);
+    }
+
 
 }

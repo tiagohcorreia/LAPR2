@@ -179,4 +179,9 @@ class FileHandlerTest {
         //Arrange
         assertThrows(FileNotFoundException.class, () -> FileOps.deleteFile(NONEXISTENT_FILE_FILEPATH));
     }
+
+    @Test
+    void ensureIsFileEmptyWorks(){
+        assertTrue(FileOps.isFileEmpty(new File(EMPTY_CSV_FILE_FILEPATH)));
+    }
 }

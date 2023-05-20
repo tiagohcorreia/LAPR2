@@ -136,4 +136,11 @@ public class Repositories {
     public AuthenticationRepository getAuthenticationRepository() {
         return authenticationRepository;
     }
+
+    /**
+     * Gets client repository.
+     *
+     * @return the client repository
+     */
+    public ClientRepository getClientRepository() {return clientRepository;}
 }
