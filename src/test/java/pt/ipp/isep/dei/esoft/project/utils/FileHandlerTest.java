@@ -36,10 +36,10 @@ class FileHandlerTest {
     @BeforeAll
     static void arrange(){
         //Generate files
-        FileHandler.createFile(CSV_FILE_FILEPATH, generateCSVString());
-        FileHandler.createFile(TEST_FILE_FILEPATH,EXAMPLE_LINE_1);
-        FileHandler.createFile(TEST_FILE_2_FILEPATH,EXAMPLE_LINE_1 + "\n" + EXAMPLE_LINE_2);
-        FileHandler.createFile(EMPTY_CSV_FILE_FILEPATH,"");
+        FileOps.createFile(CSV_FILE_FILEPATH, generateCSVString());
+        FileOps.createFile(TEST_FILE_FILEPATH,EXAMPLE_LINE_1);
+        FileOps.createFile(TEST_FILE_2_FILEPATH,EXAMPLE_LINE_1 + "\n" + EXAMPLE_LINE_2);
+        FileOps.createFile(EMPTY_CSV_FILE_FILEPATH,"");
 
         //Generate CSV data as list of string lists
         for (int i = 0; i < 10; i++) {
@@ -55,10 +55,10 @@ class FileHandlerTest {
     @AfterAll
     static void cleanup(){
         try {
-            FileHandler.deleteFile(CSV_FILE_FILEPATH);
-            FileHandler.deleteFile(TEST_FILE_FILEPATH);
-            FileHandler.deleteFile(TEST_FILE_2_FILEPATH);
-            FileHandler.deleteFile(EMPTY_CSV_FILE_FILEPATH);
+            FileOps.deleteFile(CSV_FILE_FILEPATH);
+            FileOps.deleteFile(TEST_FILE_FILEPATH);
+            FileOps.deleteFile(TEST_FILE_2_FILEPATH);
+            FileOps.deleteFile(EMPTY_CSV_FILE_FILEPATH);
         } catch (Exception e){
             System.out.println("Couldn't delete test files!");
         }
@@ -95,7 +95,7 @@ class FileHandlerTest {
     @Test
     void ensureReadFileWorks() throws FileNotFoundException {
         //Act
-        File resultFile = FileHandler.readFile(CSV_FILE_FILEPATH);
+        File resultFile = FileOps.readFile(CSV_FILE_FILEPATH);
 
         //Assert
         assertEquals(new File(CSV_FILE_FILEPATH), resultFile);
@@ -105,24 +105,24 @@ class FileHandlerTest {
     @Test
     void ensureReadCSVThrowsInvalidFileTypeException() throws FileNotFoundException {
         //Arrange
-        FileHandler.createFile(TEST_FILE_FILEPATH,"This is a, test file!");
-        File file = FileHandler.readFile(TEST_FILE_FILEPATH);
+        FileOps.createFile(TEST_FILE_FILEPATH,"This is a, test file!");
+        File file = FileOps.readFile(TEST_FILE_FILEPATH);
 
         //Act & Assert
         assertThrows(InvalidFileTypeException.class, () -> {
-            List<?> csv = FileHandler.readCSV(file);
+            List<?> csv = CsvHandler.readCSV(file);
         });
     }
 
 
     @Test
-    void ensureCsvIsEmptyWorks() throws InvalidFileTypeException, InvalidAttributeValueException {
+    void ensureCsvIsEmptyWorks() throws InvalidFileTypeException {
         //Arrange
         File file = new File(EMPTY_CSV_FILE_FILEPATH);
-        List<?> csv = FileHandler.readCSV(file);
+        List<?> csv = CsvHandler.readCSV(file);
 
         //Act
-        boolean result = FileHandler.csvIsEmpty(csv);
+        boolean result = CsvHandler.csvIsEmpty(csv);
 
         //Assert
         assertTrue(result);
@@ -133,7 +133,7 @@ class FileHandlerTest {
     void ensureReadFileThrowsFileNotFoundException(){
         //Act & Assert
         assertThrows(FileNotFoundException.class, () -> {
-            File file = FileHandler.readFile("testfile.example");
+            File file = FileOps.readFile("testfile.example");
         });
     }
 
@@ -145,18 +145,18 @@ class FileHandlerTest {
 
         //Act & Assert
         assertThrows(IllegalArgumentException.class, () -> {
-            File file = FileHandler.readFile(userDirectory);
+            File file = FileOps.readFile(userDirectory);
         });
     }
 
 
     @Test
-    void ensureReadCSVWorks() throws InvalidFileTypeException, InvalidAttributeValueException {
+    void ensureReadCSVWorks() throws InvalidFileTypeException {
         //Arrange
         File csvFile = new File(CSV_FILE_FILEPATH);
 
         //Act & Assert
-        assertEquals(FileHandler.readCSV(csvFile), this.data);
+        assertEquals(CsvHandler.readCSV(csvFile), this.data);
     }
 
 
@@ -167,7 +167,7 @@ class FileHandlerTest {
         File f2 = new File(TEST_FILE_2_FILEPATH);
 
         //Act
-        FileHandler.appendToFile(TEST_FILE_FILEPATH, "\n"+EXAMPLE_LINE_2);
+        FileOps.appendToFile(TEST_FILE_FILEPATH, "\n"+EXAMPLE_LINE_2);
 
         //Assert
         assertEquals(-1L, Files.mismatch(f1.toPath(), f2.toPath()));
@@ -177,6 +177,6 @@ class FileHandlerTest {
     @Test
     void ensureDeleteFileThrowsFileNotFoundException(){
         //Arrange
-        assertThrows(FileNotFoundException.class, () -> FileHandler.deleteFile(NONEXISTENT_FILE_FILEPATH));
+        assertThrows(FileNotFoundException.class, () -> FileOps.deleteFile(NONEXISTENT_FILE_FILEPATH));
     }
 }
