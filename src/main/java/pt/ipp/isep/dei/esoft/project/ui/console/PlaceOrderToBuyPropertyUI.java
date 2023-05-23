@@ -1,8 +1,11 @@
 package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
+import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+
+import java.util.List;
 
 public class PlaceOrderToBuyPropertyUI implements Runnable {
 
@@ -20,6 +23,9 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
         while(success) {
 
             //List of anouncements
+            List<AnnouncementDTO> x = this.controller.announcementDTOList();
+            Utils.showList(x, "Anouncements");
+            Integer posAnouncement = Utils.readIntegerFromConsole("Select the anouncement with the desire property");
 
 
             //OrderAmount
@@ -32,17 +38,16 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
                 try {
 
-                    //this.controller.createOrder();
+                    //this.controller.createOrder(orderAmount, posAnouncement);
                     success = false;
-
 
                 } catch (Exception e) {
 
                     System.out.println(e.getMessage());
                 }
 
-                System.out.println();
-                System.out.println();
+                System.out.println("Order amount: " + orderAmount);
+                System.out.println(posAnouncement);
 
             } else {
 
