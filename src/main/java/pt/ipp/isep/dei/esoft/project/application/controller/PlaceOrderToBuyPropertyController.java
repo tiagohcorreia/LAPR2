@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.model.Order;
+import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
 
 public class PlaceOrderToBuyPropertyController {
@@ -19,7 +20,7 @@ public class PlaceOrderToBuyPropertyController {
 
         try {
 
-
+            this.orderRepository.saveOrder(newOrder);
             return newOrder.toString();
 
         } catch (Exception e) {

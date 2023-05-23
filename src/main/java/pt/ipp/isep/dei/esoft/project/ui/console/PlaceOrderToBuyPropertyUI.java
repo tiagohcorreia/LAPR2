@@ -23,6 +23,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
 
             //OrderAmount
+            Double orderAmount = Utils.readDoubleFromConsole("Insert order amount: ");
 
 
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
@@ -31,6 +32,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
                 try {
 
+                    //this.controller.createOrder();
                     success = false;
 
 
