@@ -47,10 +47,6 @@ Jdocs/sprintC/US010/01.requirements-engineering/Requirements Engineering.md,4\0
 Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/EmployeeRepository.java,2\3\23141fe36a1069590dc1b5ec75fa10ac189ee118
 ”
 dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/PlaceOrderToBuyPropertyRepository.java,e\d\ed1e941c31133e4a508bbf65921728943224a0cf
-s
-Csrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Order.java,2\0\20aae18838b3f671aa33ec2f9a8e90e3bd49a809
-z
-Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
 v
 Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
 ’
@@ -67,7 +63,5 @@ x
 Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AgentUI.java,4\d\4db040abbfc19875a8da8604f243d6234dfa18ad
 m
 =src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
-‰
-Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepository.java,c\8\c805ca1cbd80f0ac94482e0d78c0adf7bc47eeb0
 y
 Isrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/ClientUI.java,d\8\d895ba200ee2621c2e68a3f7f60e7e6c84ac310d
