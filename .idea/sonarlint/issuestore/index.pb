@@ -43,12 +43,8 @@ Y
 )docs/sprintC/US010/03.design/puml/SD.puml,0\c\0cfc3c5973a65cc2845de7ea2aab529648ef7c5b
 z
 Jdocs/sprintC/US010/01.requirements-engineering/Requirements Engineering.md,4\0\40d4888ab98ad3c0f96294e6ee8a497de5765569
-”
-dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/PlaceOrderToBuyPropertyRepository.java,e\d\ed1e941c31133e4a508bbf65921728943224a0cf
 …
 Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/EmployeeRepository.java,2\3\23141fe36a1069590dc1b5ec75fa10ac189ee118
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
 r
 Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Role.java,6\5\65b5cf0f6bf88b995571224cf6bd7d023b031ba4
 ‚

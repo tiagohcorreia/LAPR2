@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.model.Order;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
@@ -11,26 +12,27 @@ import java.util.List;
 public class PlaceOrderToBuyPropertyController {
 
     private AnnouncementRepository announcementRepository;
+    private AnnouncementMapper announcementMapper;
     private PlaceOrderToBuyPropertyRepository orderRepository;
 
     public PlaceOrderToBuyPropertyController(PlaceOrderToBuyPropertyRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
-    public PlaceOrderToBuyPropertyController(AnnouncementRepository announcementRepository) {
-        //this.announcementRepository = announcementRepository;
-    }
-
     public List<AnnouncementDTO> announcementDTOList() {
 
+        /*List<AnnouncementDTO> announcements = announcementMapper.getAllAnnouncements();
+        return AnnouncementMapper.convert(announcements);*/
+
         List<Announcement> announcements = announcementRepository.getAllVisibleAnnouncements();
-        return AnnouncementDTO.convert(announcements);
+
+        return AnnouncementMapper.convert(announcements);
     }
 
 
-    public String createOrder(Double orderAmount, Announcement announcement) {
+    public String createOrder(Double orderAmount, AnnouncementDTO announcementDTO) {
 
-        Order newOrder = new Order(orderAmount, announcement);
+        Order newOrder = new Order(orderAmount, announcementDTO);
 
         try {
 
