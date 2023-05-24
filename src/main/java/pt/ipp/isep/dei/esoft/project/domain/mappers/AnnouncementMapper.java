@@ -5,39 +5,29 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AnnouncementMapper {
 
-    //float price;
-    //TypeOfBusiness typeOfBusiness;
-    //Property property;
-    //Employee agent;
+    public static List<AnnouncementDTO> convert(List<Announcement> announcementList) {
 
-    /*public AnnouncementDTO toDTO(Announcement announcement) {
+        return announcementList.stream().map(AnnouncementDTO :: new).collect(Collectors.toList());
+    }
 
-        // Extrct infromation from announcement
-        Float price = announcement.getPrice();
-
-
-        // Create DTO
-        //AnnouncementDTO dto = new AnnouncementDTO(price);
-
-
-        return dto;
-    }*/
-
-   /* public List<AnnouncementDTO> toDTOList(List<Announcement> announcements) {
+    public static List<AnnouncementDTO> toDto(List<Announcement> announcementList) {
 
         List<AnnouncementDTO> dtoList = new ArrayList<>();
 
-        for (Announcement announcement : announcements) {
+        for(Announcement announcement: announcementList) {
 
-            AnnouncementDTO dto = toDTO(announcement);
-            dtoList.add(dto);
+            dtoList.add(toDtoAnnouncement(announcement));
         }
-
         return dtoList;
-    }*/
+    }
+
+    public static AnnouncementDTO toDtoAnnouncement(Announcement announcement) {
+        return new AnnouncementDTO();
+    }
 }
 
 

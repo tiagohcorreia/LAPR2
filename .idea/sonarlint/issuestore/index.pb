@@ -19,8 +19,6 @@ k
 ;docs/sprintC/US010/02.analysis/puml/US010-Domain Modal.puml,f\0\f0340305aa5a2ed4ced7e21e4e67881abe5dea05
 l
 <docs/sprintC/US010/01.requirements-engineering/puml/SSD.puml,3\7\37912ac57ed24d4f6e9560ca0652730c88ffb588
-
-]src/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/RegisterEmployeeRepository.java,a\a\aac87c92d7d1c0101971bff49ccab19e570c5187
 x
 Hdocs/sprintC/global-artifacts/02.analysis/puml/project-domain-model.puml,5\a\5abe9d734418f49334db48080704a5ca510c5994
 Y
@@ -45,3 +43,31 @@ Y
 )docs/sprintC/US010/03.design/puml/SD.puml,0\c\0cfc3c5973a65cc2845de7ea2aab529648ef7c5b
 z
 Jdocs/sprintC/US010/01.requirements-engineering/Requirements Engineering.md,4\0\40d4888ab98ad3c0f96294e6ee8a497de5765569
+”
+dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/PlaceOrderToBuyPropertyRepository.java,e\d\ed1e941c31133e4a508bbf65921728943224a0cf
+…
+Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/EmployeeRepository.java,2\3\23141fe36a1069590dc1b5ec75fa10ac189ee118
+s
+Csrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Order.java,2\0\20aae18838b3f671aa33ec2f9a8e90e3bd49a809
+v
+Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
+r
+Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Role.java,6\5\65b5cf0f6bf88b995571224cf6bd7d023b031ba4
+‚
+Rsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/DisplayAnnouncementsUI.java,3\4\34f954f5ea973a3fe85331d804a3bde64f8bf741
+m
+=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
+x
+Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AgentUI.java,4\d\4db040abbfc19875a8da8604f243d6234dfa18ad
+x
+Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AdminUI.java,5\6\56e0b5ce6530e817cb5beddc7029295eb5a8cfb0
+~
+Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565
+‰
+Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepository.java,c\8\c805ca1cbd80f0ac94482e0d78c0adf7bc47eeb0
+’
+bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterEmployeeController.java,4\2\42631d9afe0f6a476ab9cf53b2f0bd3afdc285d2
+z
+Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
+y
+Isrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/ClientUI.java,d\8\d895ba200ee2621c2e68a3f7f60e7e6c84ac310d
