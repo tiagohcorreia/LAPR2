@@ -1,11 +1,12 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * The type Employee.
  */
-public class Employee {
+public class Employee implements Serializable {
 
     private String name;
     private int passportNumber;

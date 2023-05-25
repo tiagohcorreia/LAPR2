@@ -53,22 +53,6 @@ public class AnnouncementDTO {
         return null;
     }
 
-    /*public AnnouncementDTO selectAnnouncementByNumber(int selectedNumber) {
-
-        Map<Integer, AnnouncementDTO> announcementMap = new HashMap<>();
-
-        AnnouncementMapper mapper = new AnnouncementMapper();
-
-        //List<AnnouncementDTO> announcementDTOs = mapper.toDto();
-        //List<AnnouncementDTO> announcementDTOs = mapper.toDTOList(getAllVisibleAnnouncements());
-
-        for (int i = 0; i < announcementDTOs.size(); i++) {
-
-            announcementMap.put(i + 1, announcementDTOs.get(i));
-        }
-
-        return announcementMap.get(selectedNumber);
-    }*/
 }
 
 

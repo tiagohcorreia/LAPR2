@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PlaceOrderToBuyPropertyController {
 
-    private AnnouncementRepository announcementRepository;
+    private AnnouncementRepository announcementRepository = new AnnouncementRepository();
     private AnnouncementMapper announcementMapper;
     private PlaceOrderToBuyPropertyRepository orderRepository;
 
@@ -21,18 +21,14 @@ public class PlaceOrderToBuyPropertyController {
 
     public List<AnnouncementDTO> announcementDTOList() {
 
-        /*List<AnnouncementDTO> announcements = announcementMapper.getAllAnnouncements();
-        return AnnouncementMapper.convert(announcements);*/
-
         List<Announcement> announcements = announcementRepository.getAllVisibleAnnouncements();
 
         return AnnouncementMapper.convert(announcements);
     }
 
+    public String createOrder(Double orderAmount, Integer posAnnouncement) {
 
-    public String createOrder(Double orderAmount, AnnouncementDTO announcementDTO) {
-
-        Order newOrder = new Order(orderAmount, announcementDTO);
+        Order newOrder = new Order(orderAmount, AnnouncementMapper.getAnnouncementDTOById(posAnnouncement));
 
         try {
 

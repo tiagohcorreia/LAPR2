@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 public class AnnouncementMapper {
 
+    private static List<AnnouncementDTO> announcementDTOList = new ArrayList<>();
+
     public static List<AnnouncementDTO> convert(List<Announcement> announcementList) {
 
         return announcementList.stream().map(AnnouncementDTO::new).collect(Collectors.toList());
@@ -27,13 +29,23 @@ public class AnnouncementMapper {
 
     public List<AnnouncementDTO> getAllAnnouncements() {
 
-        List<AnnouncementDTO> allVisibleAnnouncements = new ArrayList<>();
+        List<AnnouncementDTO> allAnnouncements = new ArrayList<>();
 
-        for (AnnouncementDTO announcementDTO : allVisibleAnnouncements) {
+        for (AnnouncementDTO announcementDTO : allAnnouncements) {
 
-            allVisibleAnnouncements.add(announcementDTO.getAnnouncement());
+            allAnnouncements.add(announcementDTO.getAnnouncement());
         }
-        return allVisibleAnnouncements;
+        return allAnnouncements;
+    }
+
+    public static AnnouncementDTO getAnnouncementDTOById(int id) {
+
+        if (id >= 0 && id < announcementDTOList.size()) {
+
+            return announcementDTOList.get(id);
+        }
+
+        return null;
     }
 
     public AnnouncementDTO toDtoAnnouncement(Announcement announcement) {

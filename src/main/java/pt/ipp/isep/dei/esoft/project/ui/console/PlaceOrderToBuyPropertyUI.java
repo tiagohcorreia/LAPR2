@@ -38,7 +38,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
                 try {
 
-                    //this.controller.createOrder(orderAmount, posAnouncement);
+                    this.controller.createOrder(orderAmount, posAnouncement);
                     success = false;
 
                 } catch (Exception e) {
@@ -47,7 +47,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
                 }
 
                 System.out.println("Order amount: " + orderAmount);
-                System.out.println(posAnouncement);
+                System.out.println("Selected Announcement:\n" + posAnouncement.toString());
 
             } else {
 
