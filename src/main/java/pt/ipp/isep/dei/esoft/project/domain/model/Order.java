@@ -40,7 +40,7 @@ public class Order {
     }
 
     public AnnouncementDTO setAnnouncementDTO(AnnouncementDTO announcementDTO) {
-        return this.announcementDTO = announcementDTO;
+        return this.announcementDTO;
     }
 
     public static void setStatus(boolean status) {
