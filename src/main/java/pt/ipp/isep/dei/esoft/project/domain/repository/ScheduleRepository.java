@@ -16,7 +16,6 @@ public class ScheduleRepository {
         for(Schedule schedule1: scheduleList) {
 
             if(schedule.equals(schedule)) {
-
                 return false;
             }
         }
