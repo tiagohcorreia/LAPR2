@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="284px" preserveAspectRatio="none" style="width:515px;height:284px;background:#FFFFFF;" version="1.1" viewBox="0 0 515 284" width="515px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="27.6094" id="_title" style="stroke:none;stroke-width:1.0;" width="497" x="5" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="487" x="10" y="29.5332">US013(SSD) - List all employees working in every store of the network</text><rect fill="#FFFFFF" height="52.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="157" y="131.2188"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="367" y="153.5703"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="162" x2="162" y1="121.2188" y2="201.9219"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="372" x2="372" y1="121.2188" y2="201.9219"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="104" y="118.1426">Network Manager</text><ellipse cx="162" cy="52.1094" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M162,60.1094 L162,87.1094 M149,68.1094 L175,68.1094 M162,87.1094 L149,102.1094 M162,87.1094 L175,102.1094 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="104" y="215.4551">Network Manager</text><ellipse cx="162" cy="227.0313" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M162,235.0313 L162,262.0313 M149,243.0313 L175,243.0313 M162,262.0313 L149,277.0313 M162,262.0313 L175,277.0313 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="64" x="340" y="88.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="347" y="110.1426">:System</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="64" x="340" y="200.9219"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="347" y="222.4551">:System</text><rect fill="#FFFFFF" height="52.7031" style="stroke:#181818;stroke-width:1.0;" width="10" x="157" y="131.2188"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="367" y="153.5703"/><polygon fill="#181818" points="355,149.5703,365,153.5703,355,157.5703,359,153.5703" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="167" x2="361" y1="153.5703" y2="153.5703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="174" y="148.7139">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="170" x="185" y="148.7139">requests to list all employees</text><polygon fill="#181818" points="173,179.9219,163,183.9219,173,187.9219,169,183.9219" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="167" x2="371" y1="183.9219" y2="183.9219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="179" y="179.0654">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="190" y="179.0654">shows sorted employee list</text><!--MD5=[6a26e77e5d59c5f77c7a45b6b3a26ff4]
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title US013(SSD) - List all employees working in every store of the network
+
+autonumber
+
+actor "Network Manager" as NetworkManager
+participant ":System" as System
+
+activate NetworkManager
+    NetworkManager -> System : requests to list all employees
+    activate System
+    System - -> NetworkManager : shows sorted employee list
+    deactivate System
+deactivate NetworkManager
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 BST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

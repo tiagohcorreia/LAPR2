@@ -20,30 +20,33 @@ class Branch {
 
 class RegisterBranchUI {
 
+    - controller
+    + registerBranch()
 
 }
 
 class RegisterBranchController {
 
+    - branchRepository
     + createBranch()
 }
 
-class Repository {
-    - Repositories()
-    + getBranchRepository()
-}
-
-
 class BranchRepository {
 
-   
+    + saveBranch()
 }
 
 
-RegisterBranchUI -[dashed]-> RegisterBranchController
-RegisterBranchController -[dashed]-> Repository
-Repository --> BranchRepository
-BranchRepository --> Branch
+
+
+Interface Runnable {
+    + run()
+}
+
+Runnable -left-|> RegisterBranchUI
+RegisterBranchUI --> RegisterBranchController
+RegisterBranchController --> Branch
+Branch -right-> BranchRepository
 
 
 @enduml
