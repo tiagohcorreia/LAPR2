@@ -1,0 +1,88 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'skinparam linetype ortho
+'left to right direction
+skinparam classAttributeIconSize 0
+'skinparam groupInheritance 2
+hide circle
+hide methods
+
+class Network{
+name
+}
+
+class Branch{
+name
+address
+email
+phoneNumber
+}
+
+class Employee{
+}
+
+class Person{
+name
+email
+cCNumber
+taxNumber
+address
+phoneNumber
+}
+
+class BranchEmployee
+
+together {
+
+class "Network Manager" as NetworkMan
+}
+
+
+class Announcement{
+state
+price
+typeOfBusiness
+}
+
+
+
+
+
+
+Network "1" -- "*" Branch: owns >
+Branch "1" -- "*" Announcement: publishes >
+
+
+Network "1" -- "*" Employee: employs >
+
+
+
+BranchEmployee --|> Employee
+
+Person <|-- Employee
+
+
+
+Employee <|-- NetworkMan
+
+
+BranchEmployee "1" - "1" Branch: assigned to >
+
+
+
+NetworkMan "*" -> "1" Network: manages >
+
+
+
+
+
+
+
+
+
+@enduml
