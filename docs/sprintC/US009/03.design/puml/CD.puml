@@ -15,6 +15,7 @@ class ScheduleVisitController {
     - AnnouncementRepository
     + createSchedule()
     + getAnnouncementList()
+    + validateScheduleHour()
 
 }
 
