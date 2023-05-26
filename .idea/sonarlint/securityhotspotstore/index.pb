@@ -23,8 +23,6 @@ v
 Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Property.java,1\d\1d552c1006ef511d6f57b98c18b4837269e359d4
 Y
 )docs/sprintC/US003/03.design/puml/SD.puml,2\2\22e1e6411f25497ac9b7ba7edcb9a3a2099a7de2
-z
-Jdocs/sprintC/US010/04.tests-and-implementation/Tests and Implementation.md,9\b\9bca0ba3be4be2d49e9725ac05e6e5b3ad62f91b
 r
 Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Role.java,6\5\65b5cf0f6bf88b995571224cf6bd7d023b031ba4
 Ç
@@ -33,8 +31,6 @@ x
 Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AgentUI.java,4\d\4db040abbfc19875a8da8604f243d6234dfa18ad
 z
 Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
-p
-@src/main/java/pt/ipp/isep/dei/esoft/project/domain/Employee.java,d\6\d6a9205b2dbee76e44f3c4c862501a1bcd3869ad
 t
 Dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Branch.java,5\e\5ee4012e1371b548690c7d2478592df3cc0ca63a
 m
@@ -47,17 +43,9 @@ Dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Agency.java,1\f\1f658
 Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/EmployeeRepository.java,2\3\23141fe36a1069590dc1b5ec75fa10ac189ee118
 í
 bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterEmployeeController.java,4\2\42631d9afe0f6a476ab9cf53b2f0bd3afdc285d2
-â
-Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepository.java,c\8\c805ca1cbd80f0ac94482e0d78c0adf7bc47eeb0
 Å
 Qsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PublishAnnouncementUI.java,e\3\e39d570332e455cb8f6bdecc4c2babee30369fc9
 ~
 Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565
 ï
 esrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PublishAnnouncementController.java,5\a\5aa707f0b07a84d4c69be7429e1838ed656307e8
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
-ô
-isrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PlaceOrderToBuyPropertyController.java,f\2\f23e3482c7029e1e6c436ec449042c4065f6a470
-{
-Ksrc/main/java/pt/ipp/isep/dei/esoft/project/domain/dto/AnnouncementDTO.java,e\e\ee3c4402ef715a947eca3b741597a9bf840d11bd
