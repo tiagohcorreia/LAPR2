@@ -17,8 +17,8 @@ public class Announcement {
      *
      * @param visible        the visible
      * @param price          the price
-     * @param commission     the commission
-     * @param typeOfBusiness the type of business
+     * @param commission     the  agent commission
+     * @param typeOfBusiness the type of business (sellor/rent)
      * @param property       the property
      * @param agent          the agent
      */
@@ -233,4 +233,5 @@ public class Announcement {
                 getAgent().getName();
         return result;
     }
+
 }

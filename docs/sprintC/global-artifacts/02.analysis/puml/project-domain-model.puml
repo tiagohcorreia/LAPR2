@@ -8,10 +8,114 @@ skinparam shadowing false
 'skinparam linetype ortho
 'left to right direction
 skinparam classAttributeIconSize 0
-skinparam groupInheritance 1
+'skinparam groupInheritance 2
 hide circle
 hide methods
 
+class Address{
+doorNumber
+street
+zipCode
+}
+
+class Network{
+name
+}
+
+class Branch{
+name
+address
+email
+phoneNumber
+}
+
+class Employee{
+}
+
+class Person{
+name
+email
+cCNumber
+taxNumber
+address
+phoneNumber
+}
+
+class BranchEmployee
+
+together {
+class "System Administrator" as SysAdmin
+class "Network Manager" as NetworkMan
+}
+
+together {
+class "Store Manager" as StoreMan
+class Agent
+}
+
+class Client{
+}
+
+class Buyer
+
+class Seller
+
+class Visit{
+date
+time
+prediction
+}
+
+class Order{
+price
+}
+
+class Commission{
+value
+}
+
+class Announcement{
+state
+price
+typeOfBusiness
+}
+
+class Property{
+area
+cityCenterDistance
+photographs
+}
+
+class InhabitableProperty{
+numberOfBedrooms
+numberOfBathrooms
+numberOfParkingSpaces
+equipment
+}
+
+class House{
+hasBasement
+hasInhabitableLoft
+sunExposure
+}
+
+class Apartment{
+}
+
+class Land{
+}
+
+together {
+    class State{
+    name
+    }
+    class District{
+    name
+    }
+    class City{
+    name
+    }
+}
 
 Network "1" -- "*" Branch: owns >
 Branch "1" -- "*" Announcement: publishes >
@@ -19,131 +123,78 @@ Announcement "1" -- "1" Property: contains >
 
 Network "1" -- "*" Employee: employs >
 
-
-Property <|-- House
-Property <|-- Apartment
+Property <|-- InhabitableProperty
+InhabitableProperty <|-- House
+InhabitableProperty <|-- Apartment
+'Property <|-- House
+'Property <|-- Apartment
 Property <|-- Land
 
+BranchEmployee --|> Employee
 
-"System Administrator" --|> Employee
-"Network Manager" --|> Employee
-"Store Manager" --|> Employee
-Agent --|> Employee
+Person <|-- Employee
+Person <|-- Client
 
-Employee "1" - "1" Branch: works at a >
+Employee <|-- SysAdmin
+Employee <|-- NetworkMan
+BranchEmployee <|- StoreMan
+BranchEmployee <|- Agent
 
-"System Administrator" "1" ----> "*" Employee: registers >
-"System Administrator" "1" ---> "*" Branch: registers >
+'SysAdmin ---|> Employee
+'NetworkMan ---|> Employee
+'StoreMan ---|> Employee
+'Agent ---|> Employee
 
+BranchEmployee "1" - "1" Branch: assigned to >
 
-"System Administrator" "1" -> "*" State: specifies >
-"System Administrator" "1" -> "*" District: specifies >
-"System Administrator" "1" -> "*" City: specifies >
+SysAdmin "1" --> "*" Employee: registers >
+SysAdmin "1" --> "*" Branch: registers >
 
+SysAdmin "1" ---> "*" State: specifies >
+SysAdmin "1" ---> "*" District: specifies >
+SysAdmin "1" ---> "*" City: specifies >
 
-together {
+NetworkMan "*" -> "1" Network: manages >
+
+StoreMan "1" -> "1" Branch: manages >
+
 Buyer --|> Client
 Seller --|> Client
-}
 
 Seller "1" - "*" Property: owns >
-Seller "1" - "*" Announcement: creates >
+Seller "1" -- "*" Announcement: creates >
 Agent "1" - "*" Announcement: validates >
 Visit "1" - "1" Buyer: requests <
-Visit "1" - "1" Agent: scheduled by >
+Buyer "1" - "*" Announcement: browses >
+Visit "1" -- "1" Agent: scheduled by >
 
-together {
-Property "1" -- "1" City: located in >
-District "1" -- "*" City: located in <
-State "1" -- "*" District: located in <
-}
+Agent "1" -> "1" Commission: sets >
 
 
-class Network{
-
-}
-
-class Branch{
-name:String
-address:String
-email:String
-phoneNumber:String
-}
-
-class Employee{
-String name
-int cCNumber
-int taxNumber
-String address
-String email
-String phoneNumber
-}
-
-together {
-class "System Administrator"
-
-class "Network Manager"
-
-class "Store Manager"
-
-class Agent
-}
-
-class Client
-class Buyer
-class Seller
-
-class Visit{
-
-}
-
-class Announcement{
-int listingID
-bool visible
-float price
-float commission
-TypeOfBusiness typeOfBusiness
-}
+District "1" -- "*" City: has >
+State "1" -- "*" District: has >
 
 
-class Property{
-float area
-City city
-float cityCenterDistance
-List<Image> photograph
-}
+Announcement "1" ---> "1" Commission: has a >
 
-class House{
-int numberOfBedrooms
-int numberOfBathrooms
-int numberOfParkingSpaces
-List<String> equipment
-bool hasBasement
+Commission <|-- FixedCommission
+Commission <|-- PercentageCommission
 
-bool hasInhabitableLoft
-SunExposure sunExposure
-}
+Buyer --> Order: submits >
+Order --> Property: to buy/rent >
+Property "1" --> "1" Address: located in >
 
-class Apartment{
-int numberOfBedrooms
-int numberOfBathrooms
-int numberOfParkingSpaces
-List<String> equipment
-}
+Address -> City: includes >
 
-class Land{
-}
-
-class State{
-String name
-}
-class District{
-String name
-}
-class City{
-String name
-}
-
-
+'class User{
+'email
+'password
+'}
+'
+'User <--- SysAdmin: accesses as <
+'User <--- NetworkMan: accesses as <
+'User <--- Agent: accesses as <
+'User <--- StoreMan: accesses as <
+'User <--- Client: accesses as <
 
 @enduml

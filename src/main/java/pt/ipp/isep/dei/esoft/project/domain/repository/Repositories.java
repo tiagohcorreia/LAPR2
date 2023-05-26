@@ -57,7 +57,7 @@ public class Repositories {
     /**
      * The Employee repository.
      */
-    RegisterEmployeeRepository employeeRepository = new RegisterEmployeeRepository();
+    EmployeeRepository employeeRepository = new EmployeeRepository();
     /**
      * The State repository.
      */
@@ -76,6 +76,8 @@ public class Repositories {
     AuthenticationRepository authenticationRepository = new AuthenticationRepository();
 
     ClientRepository clientRepository = new ClientRepository();
+
+    BranchRepository branchRepository = new BranchRepository();
 
     private Repositories() {
     }
@@ -105,7 +107,7 @@ public class Repositories {
      *
      * @return the employee repository
      */
-    public RegisterEmployeeRepository getEmployeeRepository() {return  employeeRepository;}
+    public EmployeeRepository getEmployeeRepository() {return  employeeRepository;}
 
     /**
      * Gets state repository.
@@ -136,4 +138,14 @@ public class Repositories {
     public AuthenticationRepository getAuthenticationRepository() {
         return authenticationRepository;
     }
+
+    /**
+     * Gets client repository.
+     *
+     * @return the client repository
+     */
+    public ClientRepository getClientRepository() {return clientRepository;}
+
+    public BranchRepository getBranchRepository() {return branchRepository;}
+
 }

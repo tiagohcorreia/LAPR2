@@ -1,0 +1,25 @@
+@startuml
+
+actor Client as client
+participant System as ui
+
+autonumber
+
+client -> ui: starts placing an order to purchase the property
+
+ui -> client: shows property list and requests the user to select one
+
+client -> ui: selects property
+
+ui -> client: requests order amount
+
+client -> ui: types order amount
+
+ui -> client: shows selected property and the order amount and asks for confirmation
+
+client -> ui: confirms the data
+
+ui -> client: informs operation sucess
+
+
+@enduml

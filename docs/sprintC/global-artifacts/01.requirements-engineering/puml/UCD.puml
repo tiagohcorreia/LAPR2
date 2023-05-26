@@ -4,8 +4,11 @@
 :Unregistered User: as UnregUser
 :Agent: as Agent
 :Owner: as Owner
+Owner -|> Client
+
 
 Left to right direction
+
 
 UnregUser --> (US001: display listed properties)
 
@@ -20,5 +23,19 @@ Admin --> (US005: register a store)
 Admin --> (US006: specify districts, municipalities, and parishes in the system)
 
 UnregUser --> (US007: register in the system to buy, sell or rent properties)
+
+Agent --> (US008: see the list of property announcement request made to myself)
+
+Client --> (US009: leave a message to the agent to schedule a visit to a  property of my interest)
+
+Client --> (US010: I place an order to purchase the property, submitting the order amount.)
+
+Agent --> (US011: list real estate purchase orders to accept or decline a purchase order for a property. After accepting or declining, an email notification should be sent to the customer)
+
+Admin --> (US012: Import data from a legacy system)
+
+NetworkManager --> (US013: list all employees working in every store of the network)
+
+Client --> (US014: read the response for the appointment requests, to accept or reject it)
 
 @enduml
