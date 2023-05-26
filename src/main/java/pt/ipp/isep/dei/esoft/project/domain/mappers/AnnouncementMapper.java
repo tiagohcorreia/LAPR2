@@ -58,12 +58,21 @@ public class AnnouncementMapper {
         return allAnnouncements;
     }
 
-    /**
-     * Gets announcement dto by id.
-     *
-     * @param id the id
-     * @return the announcement dto by id
-     */
+    public List<AnnouncementDTO> getAllAnnouncementsRecentToOldest() {
+
+        List<AnnouncementDTO> allAnnouncements = new ArrayList<>();
+        List<AnnouncementDTO> allAnnouncementsFromRecentToOldest = new ArrayList<>();
+
+        for (AnnouncementDTO announcementDTO : allAnnouncements) {
+            allAnnouncements.add(announcementDTO.getAnnouncement());
+        }
+        for (int i = allAnnouncements.size() - 1; i >= 0; i--) {
+            AnnouncementDTO announcementDTO = allAnnouncements.get(i);
+            allAnnouncementsFromRecentToOldest.add(announcementDTO);
+        }
+        return allAnnouncementsFromRecentToOldest;
+    }
+
     public static AnnouncementDTO getAnnouncementDTOById(int id) {
 
         if (id >= 0 && id < announcementDTOList.size()) {
