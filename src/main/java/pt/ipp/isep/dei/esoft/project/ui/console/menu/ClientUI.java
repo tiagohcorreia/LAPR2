@@ -1,7 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.ui.console.menu;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
+import pt.ipp.isep.dei.esoft.project.application.controller.ScheduleVisitController;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.*;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
@@ -20,6 +22,8 @@ public class ClientUI implements Runnable {
         List<MenuItem> options = new ArrayList<MenuItem>();
 
         options.add(new MenuItem("Place an order to purchase the property", new PlaceOrderToBuyPropertyUI(new PlaceOrderToBuyPropertyController(new PlaceOrderToBuyPropertyRepository()))));
+        options.add(new MenuItem("Schedule a visit to your future property", new ScheduleVisitUI(new ScheduleVisitController(new ScheduleRepository()))));
+
 
 
         int option = 0;
