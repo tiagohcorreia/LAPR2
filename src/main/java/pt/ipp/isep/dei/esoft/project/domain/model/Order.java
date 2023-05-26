@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 
+
 import java.util.Objects;
 
 public class Order {
@@ -29,7 +30,13 @@ public class Order {
     }
 
     public double setOrderAmount(double orderAmount) {
-        return this.orderAmount = orderAmount;
+
+        if (orderAmount < 0) {
+
+            throw new IllegalArgumentException("Order amount must be positive");
+        }
+
+        return this.orderAmount;
     }
 
     public AnnouncementDTO setAnnouncementDTO(AnnouncementDTO announcementDTO) {
