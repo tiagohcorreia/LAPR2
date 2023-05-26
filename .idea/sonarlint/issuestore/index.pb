@@ -3,8 +3,6 @@ w
 Gdocs/sprintC/global-artifacts/01.requirements-engineering/puml/UCD.puml,a\a\aa98e63aa51f8bb7d02b3c356cd274a2432badbc
 C
 APP_FILES/email.txt,6\c\6cc5cd8f7f8c046eed62aee2a0fb3aa1bcf8090f
-L
-docs/sprintC/US010/Readme.md,5\7\57620ce78b7b1a07d6db03a8998b06a631ad558d
 u
 Edocs/sprintC/global-artifacts/01.requirements-engineering/svg/UCD.svg,f\6\f60cc213465f976cccafb8774d09ed05bd866afb
 l
