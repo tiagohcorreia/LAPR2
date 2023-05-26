@@ -15,7 +15,8 @@ import java.util.List;
  * The type Register property controller.
  */
 public class RegisterPropertyController {
-    private AnnouncementRepository announcementRepository;
+
+    private AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
     /**
      * The Repositories.
      */
