@@ -21,7 +21,7 @@ activate client
     client -> system : chooses the property
     activate system
 
-        system --> client :  request the message (clientName, phoneNumber, day, hour)
+        system --> client :  request the message (clientName, phoneNumber, day, beginHour, endHour, note)
     deactivate system
 
     client -> system : types the requested data
