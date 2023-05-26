@@ -1,9 +1,9 @@
 # US 006 - To create a Task 
 
-[Requirements Engineering](01.requirements-engineering/Readme.md)
+[Requirements Engineering](01.requirements-engineering/Requirements Engineering.md)
 
-[Analysis](02.analysis/Readme.md)
+[Analysis](02.analysis/Analysis.md)
 
-[Design](03.design/Readme.md)
+[Design](03.design/Design.md)
 
 [Tests & Implementation ](04.tests-and-implementation/Readme.md)

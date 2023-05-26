@@ -1,0 +1,139 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":AnnouncementRequestsUI" as UI
+participant ":AnnouncementRequestsController" as CTRL
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "repositories\n:Repositories" as REP
+participant ":AnnouncementRepository" as AnnouncementREP
+
+
+
+activate AG
+
+        AG -> UI : asks to see the announcement requests
+        activate UI
+        UI -> CTRL : getAnnouncementRequests()
+        activate CTRL
+         CTRL -> CTRL : getEmployeeFromSession()
+
+          CTRL -> _APP: getInstance()
+             activate _APP
+          _APP -> CTRL: appSession
+              deactivate _APP
+
+          CTRL -> APP: getCurrentSession()
+              activate APP
+
+          APP --> CTRL: currentSession
+              deactivate APP
+
+         CTRL -> SESSAO: agentName = getUserNameByEmail()
+              activate SESSAO
+
+          SESSAO --> CTRL : agentName
+              deactivate SESSAO
+
+
+         CTRL -> CTRL : getAnnouncementRequestsBAgentName(agentName)
+
+         CTRL -> REP : getInstance()
+               activate REP
+
+         REP --> CTRL: repositories
+               deactivate REP
+
+          CTRL -> REP : getAnnouncementRepository()
+                activate REP
+
+           REP -> CTRL : AnnouncementRepository
+                deactivate REP
+
+           CTRL -> AnnouncementREP : getAnnoucementRequestsByAgentName(agentName)
+                activate AnnouncementREP
+
+           AnnouncementREP --> CTRL : AnnouncementRequetsList
+                deactivate AnnouncementREP
+         CTRL --> UI : AnnouncementRequetsList
+
+        UI --> AG : show the announcement requests
+
+        AG -> UI : select the announcement request to analyze
+
+        UI -> CTRL : getAnnouncement()
+
+        CTRL -> CTRL : getAnnouncementRepository()
+
+
+        CTRL -> AnnouncementREP: getAnnouncement()
+               activate AnnouncementREP
+               AnnouncementREP --> CTRL : Announcement
+               deactivate AnnouncementREP
+
+               CTRL --> UI : Announcement
+
+        UI --> AG : present all the information about the announcement request selected
+
+        AG -> UI : select an option - accept or reject
+
+        alt Accept
+
+        AG -> UI : accept
+        UI --> AG: requests the commission
+        AG -> UI : set the commission
+
+        UI -> CTRL : getAccept()
+         CTRL -> REP : getInstance()
+                       activate REP
+
+                 REP --> CTRL: repositories
+                       deactivate REP
+
+        CTRL -> CTRL: getAnnouncementRepository()
+        CTRL -> AnnouncementREP : getAccept()
+        activate AnnouncementREP
+        AnnouncementREP --> CTRL : Accept
+        deactivate AnnouncementREP
+        CTRL --> UI : accept
+        UI --> AG: display operation sucess
+
+
+        else reject
+        AG -> UI : reject
+        UI --> AG : request the motive to reject
+        AG -> UI : type the motive to reject
+        UI -> CTRL : getReject()
+        CTRL -> REP : getInstance()
+           activate REP
+
+             REP --> CTRL: repositories
+           deactivate REP
+
+                CTRL -> CTRL: getAnnouncementRepository()
+                CTRL -> AnnouncementREP : getReject()
+                activate AnnouncementREP
+                AnnouncementREP --> CTRL : Reject
+                CTRL --> UI : reject
+                deactivate AnnouncementREP
+                 UI --> AG: display operation sucess
+
+
+
+        end
+
+         UI --> AG: display operation sucess
+
+
+                    deactivate UI
+
+                deactivate AG
+
+@enduml

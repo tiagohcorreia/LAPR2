@@ -73,14 +73,10 @@ should be refreshed, and that request should not be shown again.
 
 ### 1.6. System Sequence Diagram (SSD)
 
-**Other alternatives might exist.**
-
-#### Alternative One
-
 ![System Sequence Diagram ](svg/US8_SSD.svg)
 
 
 
 ### 1.7 Other Relevant Remarks
 
-* TOCHANGE-The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* N/A
