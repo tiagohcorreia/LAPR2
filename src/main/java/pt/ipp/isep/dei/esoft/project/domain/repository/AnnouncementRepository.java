@@ -12,7 +12,7 @@ public class AnnouncementRepository {
     /**
      * The Announcements.
      */
-    List<Announcement> announcements = new ArrayList<>();
+    public static List<Announcement> announcements = new ArrayList<>();
 
     /**
      * Save boolean.

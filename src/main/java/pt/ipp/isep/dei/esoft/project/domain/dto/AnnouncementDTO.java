@@ -60,12 +60,11 @@ public class AnnouncementDTO {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("AnnouncementDTO{");
-        sb.append("price=").append(price);
-        sb.append(", typeOfBusiness=").append(typeOfBusiness);
-        sb.append(", property=").append(property);
-        sb.append(", agent=").append(agent);
-        sb.append(", announcementDTOs=").append(announcementDTOs);
+        final StringBuilder sb = new StringBuilder("Announcement {");
+        sb.append("Price: ").append(price);
+        sb.append(", Type Of Business: ").append(typeOfBusiness);
+        sb.append(", Property: ").append(property);
+        sb.append(", Agent: ").append(agent);
         sb.append('}');
         return sb.toString();
     }
