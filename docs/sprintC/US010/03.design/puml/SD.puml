@@ -5,6 +5,7 @@ autonumber
 actor Client as client
 participant PlaceOrderToBuyPropertyUI as ui
 participant PlaceOrderToBuyPropertyController as ctr
+participant AnnouncementMapper
 participant AnnouncementDTO
 participant AnnouncementRepository
 participant PlaceOrderToBuyPropertyRepository
@@ -44,9 +45,15 @@ deactivate AnnouncementRepository
 
 activate AnnouncementDTO
 
-AnnouncementDTO -> ctr:  return AnnouncementList
+AnnouncementDTO -> AnnouncementMapper: return AnnouncementList
 
 deactivate AnnouncementDTO
+
+activate AnnouncementMapper
+
+AnnouncementMapper -> ctr:  return AnnouncementList
+
+deactivate AnnouncementMapper
 
 activate ctr
 

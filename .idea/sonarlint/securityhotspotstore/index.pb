@@ -11,8 +11,6 @@ l
 <docs/sprintC/US003/01.requirements-engineering/puml/SSD.puml,b\1\b18e6daeec6be8a6963aeed4e68feb40b63d280a
 z
 Jdocs/sprintC/US003/01.requirements-engineering/Requirements Engineering.md,0\4\04cdecef0a1473dada1bc9c8f7297e27825c93cb
-j
-:docs/sprintC/US010/01.requirements-engineering/svg/SSD.svg,6\d\6daae39b6b45b9355ddb21ec331f8963a56e6fac
 k
 ;docs/sprintC/US010/02.analysis/puml/US010-Domain Modal.puml,f\0\f0340305aa5a2ed4ced7e21e4e67881abe5dea05
 i
@@ -25,16 +23,8 @@ v
 Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Property.java,1\d\1d552c1006ef511d6f57b98c18b4837269e359d4
 Y
 )docs/sprintC/US003/03.design/puml/SD.puml,2\2\22e1e6411f25497ac9b7ba7edcb9a3a2099a7de2
-Y
-)docs/sprintC/US010/03.design/puml/CD.puml,e\7\e749def219934d6bcdb90f43117daaba04cd3cff
-W
-'docs/sprintC/US010/03.design/svg/CD.svg,0\c\0c3aed8e186e9f58017afc5941fe00ce0831f338
-W
-'docs/sprintC/US010/03.design/svg/SD.svg,a\3\a3d3b027c57aec9d18331a9674b5fff74a74691c
 z
 Jdocs/sprintC/US010/04.tests-and-implementation/Tests and Implementation.md,9\b\9bca0ba3be4be2d49e9725ac05e6e5b3ad62f91b
-Y
-)docs/sprintC/US010/03.design/puml/SD.puml,0\c\0cfc3c5973a65cc2845de7ea2aab529648ef7c5b
 r
 Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Role.java,6\5\65b5cf0f6bf88b995571224cf6bd7d023b031ba4
 ‚
@@ -49,8 +39,6 @@ t
 Dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Branch.java,5\e\5ee4012e1371b548690c7d2478592df3cc0ca63a
 m
 =src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
-”
-dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/PlaceOrderToBuyPropertyRepository.java,e\d\ed1e941c31133e4a508bbf65921728943224a0cf
 –
 fsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/DisplayAnnouncementsController.java,2\5\25b2b91a324bc84e50ea6bd33f18eb5da2ea9f8b
 t
@@ -69,8 +57,6 @@ Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java
 esrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PublishAnnouncementController.java,5\a\5aa707f0b07a84d4c69be7429e1838ed656307e8
 v
 Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
-‚
-Rsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/mappers/AnnouncementMapper.java,6\f\6f177605ed4572bf461a450d197f1b4718035c03
 ™
 isrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PlaceOrderToBuyPropertyController.java,f\2\f23e3482c7029e1e6c436ec449042c4065f6a470
 {
