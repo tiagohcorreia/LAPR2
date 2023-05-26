@@ -7,7 +7,6 @@ import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -39,7 +38,6 @@ class ScheduleTest {
     @Test
     @DisplayName("Ensure that a schedule without a name fails")
     void EnsureEmptyNameFails() {
-
         assertThrows(IllegalArgumentException.class, () -> {
             schedule.setName("");
         });
