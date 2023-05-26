@@ -3,6 +3,7 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 
@@ -59,9 +60,26 @@ public class Schedule {
     }
 
     public String setName(String name) {
+        if (name == null) {
+
+            throw new NullPointerException("Your name can't be null, please insert again.");
+
+        } else if (name.trim().isEmpty()) {
+
+            throw new IllegalArgumentException("Your name must be filled.");
+
+        }
         return this.name = name;
     }
     public Integer setPhoneNumber(int phoneNumber) {
+        if (phoneNumber < 0) {
+
+            throw new IllegalArgumentException("Telephone Number can't be negative");
+
+        } else if (Integer.toString(phoneNumber).trim().length() != 10) {
+
+            throw new IllegalArgumentException("Telephone Number must have 10 digits");
+        }
         return this.phoneNumber = phoneNumber;
     }
 
@@ -70,6 +88,9 @@ public class Schedule {
     }
 
     public LocalDate setDay(LocalDate day) {
+        if (day.isBefore(LocalDate.now())){
+            throw new IllegalArgumentException("You can’t schedule a visit for a day in the past.");
+        }
         return this.day = day;
     }
 
@@ -77,6 +98,9 @@ public class Schedule {
         return this.beginHour = beginHour;
     }
     public LocalTime setEndHour(LocalTime endHour) {
+        if (endHour.isBefore(beginHour)){
+            throw new IllegalArgumentException("The time the visit ends must be after the time the visit begins.");
+        }
         return this.endHour = endHour;
     }
 
@@ -113,4 +137,5 @@ public class Schedule {
                 ", note= " + note +
                 '}';
     }
+
 }
