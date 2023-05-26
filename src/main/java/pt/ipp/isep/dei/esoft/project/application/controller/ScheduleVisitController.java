@@ -3,8 +3,6 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
-import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
-import pt.ipp.isep.dei.esoft.project.domain.model.Role;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;

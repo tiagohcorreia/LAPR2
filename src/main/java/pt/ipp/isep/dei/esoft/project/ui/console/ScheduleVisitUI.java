@@ -61,8 +61,17 @@ public class ScheduleVisitUI implements Runnable{
                 try {
                     if (controller.validateScheduleHour(controller.getAnnouncementDTO(posAnouncement),day,beginTime,endTime)==true){
                         this.controller.createSchedule(name,phoneNumber, posAnouncement,day,beginTime,endTime, note);
+                        System.out.println("Name: " + name);
+                        System.out.println("Phone Number: " + phoneNumber);
+                        System.out.println("Announcement Number:\n" + posAnouncement);
+                        System.out.println("Day: " + day);
+                        System.out.println("Begin Time: " + beginTime );
+                        System.out.println("End Hour: " + endTime);
+                        System.out.println("Note: " + note);
+                        System.out.println();
                         System.out.println("Schedule message confirmed");
                         success = false;
+
                     } else{
                         System.out.println("Please insert Schedule data again");
                     }
@@ -81,9 +90,6 @@ public class ScheduleVisitUI implements Runnable{
                     System.out.println(e.getMessage());
 
                 }
-
-
-
 
             } else {
 

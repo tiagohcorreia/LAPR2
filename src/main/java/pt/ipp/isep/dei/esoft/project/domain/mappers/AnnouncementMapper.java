@@ -2,6 +2,8 @@ package pt.ipp.isep.dei.esoft.project.domain.mappers;
 
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.stream.Collectors;
 public class AnnouncementMapper {
 
     private static List<AnnouncementDTO> announcementDTOList = new ArrayList<>();
+    AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
 
     /**
      * Convert list.
