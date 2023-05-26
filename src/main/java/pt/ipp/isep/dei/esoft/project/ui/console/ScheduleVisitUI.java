@@ -29,12 +29,26 @@ public class ScheduleVisitUI implements Runnable{
 
 
             //Day
-            //LocalDate day = "2023-07-2";
+            String stringDay = Utils.readLineFromConsole("Insert the day you want to schedule: (yyyy-mm-dd)");
+            LocalDate day = LocalDate.parse(stringDay);
+
 
             //Begin Hour
-            //LocalTime beginHour = Utils.readIntegerFromConsole("Insert the begin hour of the visit(24h format): ");
+            System.out.println("Insert the time you want to start the visit");
+            int beginHour=Utils.readIntegerFromConsole("Hour :");
+            int begunMin=Utils.readIntegerFromConsole("Minute:");
+            int beginSec=Utils.readIntegerFromConsole("Second :");
+            LocalTime beginTime = LocalTime.of(beginHour,begunMin,beginSec);
 
-            String note= Utils.readLineFromConsole("Insert a note for agent:");
+            //End Hour
+            System.out.println("Insert the time you want to end the visit");
+            int endHour=Utils.readIntegerFromConsole("Hour :");
+            int endMin=Utils.readIntegerFromConsole("Minute :");
+            int endSec=Utils.readIntegerFromConsole("Second:");
+            LocalTime endTime = LocalTime.of(endHour,endMin,endSec);
+
+            //Extra note
+            String note= Utils.readLineFromConsole("Insert a note for the agent:");
 
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
@@ -42,21 +56,33 @@ public class ScheduleVisitUI implements Runnable{
 
                 try {
 
-                    //this.controller.createSchedule(name,phoneNumber, posAnouncement,day,beginHour,endHour, note);
+                    this.controller.createSchedule(name,phoneNumber, posAnouncement,day,beginTime,endTime, note);
                     success = false;
+                    if (success) {
+                        System.out.println("Please insert Schedule data again");
+                    }
+
+                } catch (IllegalArgumentException e) {
+
+                    System.err.println(e.getMessage());
+
+                } catch (NullPointerException e) {
+
+                    System.err.println(e.getMessage());
 
                 } catch (Exception e) {
 
                     System.out.println(e.getMessage());
+
                 }
 
                 System.out.println("Name: " + name);
                 System.out.println("Phone Number: " + phoneNumber);
                 System.out.println("Announcement Number:\n" + posAnouncement);
-                //System.out.println("Day: " + day);
-                //System.out.println("Begin Hour: " + beginHour+"h");
-                //System.out.println("End Hour: " + beginHour+1+"h");
-                System.out.println("End Hour: " + note);
+                System.out.println("Day: " + day);
+                System.out.println("Begin Time: " + beginTime );
+                System.out.println("End Hour: " + endTime);
+                System.out.println("Note: " + note);
             } else {
 
                 System.err.println("Operation Canceled");
