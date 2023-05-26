@@ -3,14 +3,23 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
+import pt.ipp.isep.dei.esoft.project.exceptions.NegativeNumberException;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.List;
 
+/**
+ * The type Place order to buy property ui.
+ */
 public class PlaceOrderToBuyPropertyUI implements Runnable {
 
     private PlaceOrderToBuyPropertyController controller = new PlaceOrderToBuyPropertyController(new PlaceOrderToBuyPropertyRepository());
 
+    /**
+     * Instantiates a new Place order to buy property ui.
+     *
+     * @param controller the controller
+     */
     public PlaceOrderToBuyPropertyUI(PlaceOrderToBuyPropertyController controller) {
         //this.controller = controller;
     }
@@ -40,6 +49,10 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
                     this.controller.createOrder(orderAmount, posAnouncement);
                     success = false;
+
+                } catch (IllegalArgumentException e) {
+
+                    System.out.println(e.getMessage());
 
                 } catch (Exception e) {
 

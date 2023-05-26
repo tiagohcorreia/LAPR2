@@ -29,6 +29,9 @@ class PlaceOrderToBuyPropertyRepository {
     - orderList
     + seveOrder()
     + validateOrder()
+    + addOrder()
+    + getOrderList()
+    + getOrdersListAsString()
 }
 
 class AnnouncementRepository {
@@ -50,11 +53,22 @@ class AnnouncementDTO {
     - agent
 }
 
+class AnnouncementMapper {
+
+    - announcementDTOList
+    + convert()
+    + toDto()
+    + getAllAnnouncements()
+    + getAnnouncementDTOById()
+    + toDtoAnnouncement()
+}
+
 
 
 Runnable -left-|> PlaceOrderToBuyPropertyUI
 PlaceOrderToBuyPropertyUI ..> PlaceOrderToBuyPropertyController
-PlaceOrderToBuyPropertyController -> AnnouncementDTO
+PlaceOrderToBuyPropertyController -> AnnouncementMapper
+AnnouncementMapper -> AnnouncementDTO
 AnnouncementDTO -> AnnouncementRepository
 PlaceOrderToBuyPropertyController ..> Order
 Order --> PlaceOrderToBuyPropertyRepository

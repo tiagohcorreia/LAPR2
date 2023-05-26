@@ -53,6 +53,9 @@ As a client, I place an order to purchase the property, submitting the order amo
 
 * **AC3:** A client can only submit a new order to purchase the same property after the previous one is declined
 
+* **AC4:** Order amount must be positive
+
+
 
 ### 1.4. Found out Dependencies
 
@@ -74,12 +77,12 @@ As a client, I place an order to purchase the property, submitting the order amo
 * Selected data:
 
         
-     *  Property
+     *  Announcement
    
 
 **Output Data:**
 
-    *  List of properties
+    *  List of Announcements
     *  Request confirmation
     *  Success of the operation
 

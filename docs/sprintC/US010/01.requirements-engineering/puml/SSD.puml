@@ -7,15 +7,15 @@ autonumber
 
 client -> ui: starts placing an order to purchase the property
 
-ui -> client: shows property list and requests the user to select one
+ui -> client: shows announcements list and requests the user to select one
 
-client -> ui: selects property
+client -> ui: selects announcement with the desire property
 
 ui -> client: requests order amount
 
 client -> ui: types order amount
 
-ui -> client: shows selected property and the order amount and asks for confirmation
+ui -> client: shows selected announcement and the order amount and asks for confirmation
 
 client -> ui: confirms the data
 
