@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam shadowing false
+allowmixing
+
+package UI {
+    class LegacyImportUI{
+        +displayAnnouncements()
+    }
+}
+
+package Controller {
+    class LegacyImportController{}
+}
+
+package Utils{
+    class FileHandler
+    interface CsvHandler{
+        +readCsv(File):List<>
+        +csvIsEmpty(List<>):boolean
+    }
+    interface FileOps
+
+    interface FileOps{
+    +readFile(String):File
+    +appendToFile(String, String):boolean
+    +createFile(String, String):boolean
+    +deleteFile(String):boolean
+
+    }
+
+    FileHandler -.|> FileOps
+    FileHandler -.|> CsvHandler
+    CsvHandler .> FileOps
+}
+
+
+
+package Domain{
+}
+
+
+LegacyImportUI -[dashed]-> LegacyImportController
+LegacyImportController -[dashed]-> Repositories
+LegacyImportController -[dashed]-> FileHandler
+
+
+
+
+
+@enduml

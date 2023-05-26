@@ -1,0 +1,41 @@
+@startuml
+        skinparam monochrome true
+        skinparam packageStyle rectangle
+        skinparam shadowing false
+
+        title System Sequence Diagram (SSD) - US 014
+
+        autonumber
+
+        actor "Client" as client
+        participant ":System" as system
+
+        activate client
+
+        client -> system : check the responses to the appointment requests
+        activate system
+
+        system --> client : shows the list of the appointment requests sorted by oldest
+        deactivate system
+        alt if the user accepts the appointment
+        client -> system : accepts the appointment
+        activate system
+        system --> client : updates the status to accepted and deletes any other requests made for the same propriety
+        deactivate system
+        else if the user rejects the appointment
+
+        client -> system : rejects the appointment
+        activate system
+        system --> client : asks the client to suggests a new date and time for the visit if they are interested
+        deactivate system
+        client -> system : types requested data
+        activate system
+        system --> client : updates the status to rejected and creates a new request based on the typed data
+
+        end alt
+
+
+        system --> client : displays operation success
+        deactivate system
+
+        @enduml

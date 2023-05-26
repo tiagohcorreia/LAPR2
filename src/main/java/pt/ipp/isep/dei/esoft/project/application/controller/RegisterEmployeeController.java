@@ -3,7 +3,7 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Role;
-import pt.ipp.isep.dei.esoft.project.domain.repository.RegisterEmployeeRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,14 +18,14 @@ import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.gene
  */
 public class RegisterEmployeeController {
 
-    private RegisterEmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     /**
      * Instantiates a new Register employee controller.
      *
      * @param employeeRepository the employee repository
      */
-    public RegisterEmployeeController(RegisterEmployeeRepository employeeRepository) {
+    public RegisterEmployeeController(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 

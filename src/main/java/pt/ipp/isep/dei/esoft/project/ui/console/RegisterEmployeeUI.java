@@ -3,7 +3,7 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 import pt.ipp.isep.dei.esoft.project.application.controller.RegisterEmployeeController;
 import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
 import pt.ipp.isep.dei.esoft.project.domain.model.Role;
-import pt.ipp.isep.dei.esoft.project.domain.repository.RegisterEmployeeRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class RegisterEmployeeUI implements Runnable {
 
-    private RegisterEmployeeController controller = new RegisterEmployeeController(new RegisterEmployeeRepository());
+    private RegisterEmployeeController controller = new RegisterEmployeeController(new EmployeeRepository());
 
     /**
      * Instantiates a new Register employee ui.

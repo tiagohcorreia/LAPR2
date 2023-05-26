@@ -1,0 +1,121 @@
+@startuml
+
+autonumber
+
+actor Client as client
+participant PlaceOrderToBuyPropertyUI as ui
+participant PlaceOrderToBuyPropertyController as ctr
+participant AnnouncementMapper
+participant AnnouncementDTO
+participant AnnouncementRepository
+participant PlaceOrderToBuyPropertyRepository
+participant Order as order
+
+autonumber
+
+activate client
+
+client -> ui: starts placing an order to purchase the property
+
+activate ui
+
+ui -> ctr** : create
+
+ui -> ctr: getAnnouncementList()
+
+deactivate ui
+
+activate ctr
+
+ctr -> AnnouncementDTO: getAnnouncementList()
+
+deactivate ctr
+
+activate AnnouncementDTO
+
+AnnouncementDTO -> AnnouncementRepository: getAnnouncementList()
+
+deactivate AnnouncementDTO
+
+activate AnnouncementRepository
+
+AnnouncementRepository -> AnnouncementDTO: return AnnouncementList
+
+deactivate AnnouncementRepository
+
+activate AnnouncementDTO
+
+AnnouncementDTO -> AnnouncementMapper: return AnnouncementList
+
+deactivate AnnouncementDTO
+
+activate AnnouncementMapper
+
+AnnouncementMapper -> ctr:  return AnnouncementList
+
+deactivate AnnouncementMapper
+
+activate ctr
+
+ctr -> ui: return AnnouncementList
+
+deactivate ctr
+
+activate ui
+
+ui -> client: shows Announcement list and requests the user to select one
+
+client -> ui: selects Announcement with the property
+
+ui -> client: requests order amount
+
+client -> ui: types order amount
+
+ui -> ctr: createOrder()
+
+deactivate ui
+
+activate ctr
+
+ctr -> order: createOrder()
+
+deactivate ctr
+
+activate order
+
+order -> order: validates
+
+order -> ctr: return created order
+
+deactivate order
+
+activate ctr
+
+ctr -> ui: return created order
+
+deactivate ctr
+
+activate ui
+
+ui -> client: shows selected property and the order amount and asks for confirmation
+
+client -> ui: confirms the data
+
+ui -> ctr: saveOrder()
+
+deactivate ui
+
+activate ctr
+
+ctr -> PlaceOrderToBuyPropertyRepository: saveOrder()
+
+activate PlaceOrderToBuyPropertyRepository
+
+activate ui
+
+ui -> client: informs operation sucess
+
+
+deactivate client
+
+@enduml

@@ -100,8 +100,8 @@ public class AnnouncementRepository {
         //TO-FIX
         for(Announcement announcement : announcements){
             if ( announcement != null && announcement.isVisible()){
-                if (!availableFields.get(0).contains(announcement.getTypeOfBusiness().toString().toUpperCase())){
-                    availableFields.get(0).add(announcement.getTypeOfBusiness().toString().toUpperCase());
+                if (!availableFields.get(0).contains(announcement.getTypeOfBusiness())){
+                    availableFields.get(0).add(announcement.getTypeOfBusiness());
                 }
                 if (!availableFields.get(1).contains(announcement.getProperty().getClass().getSimpleName().toUpperCase())){
                     availableFields.get(1).add(announcement.getProperty().getClass().getSimpleName().toUpperCase());

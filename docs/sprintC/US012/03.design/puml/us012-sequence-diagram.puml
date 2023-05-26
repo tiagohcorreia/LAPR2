@@ -1,0 +1,100 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "System Administrator" as sa
+participant ":LegacyImportUI" as ui
+participant ":LegacyImportController" as ctrl
+participant ":FileHandler" as fh
+participant ":CsvHandler" as ch
+
+participant ":Repositories" as repos
+participant "repositories\n:Repositories" as repositories
+participant "announcementRepository\n:AnnouncementRepository" as AnnR
+participant "employeeRepository\n:EmployeeRepository" as EmpR
+participant "clientRepository\n:ClientRepository" as CliR
+participant "branchRepository\n:BranchRepository" as BraR
+participant ":Employee" as Emp
+participant ":Announcement" as Ann
+participant ":Property" as Pro
+
+activate sa
+sa -> ui: starts importing data
+activate ui
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance()
+activate repos
+return repositories
+
+ctrl -> repositories: getBranchRepository()
+activate repositories
+return branchRepository
+
+ctrl -> repositories: getAnnouncementRepository()
+activate repositories
+return announcementRepository
+
+ctrl -> repositories: getEmployeeRepository()
+activate repositories
+return employeeRepository
+
+
+ctrl -> repositories: getClientRepository()
+activate repositories
+return clientRepository
+deactivate ctrl
+
+return requests file path
+
+sa -> ui: types file path
+activate ui
+
+ui -> ctrl: importFile(filePath)
+activate ctrl
+'ctrl -> fh**: create
+ctrl -> fh: readFile(filePath)
+activate fh
+return file
+
+ctrl -> fh: readCSV(file)
+activate fh
+return csv[]
+
+ctrl -> EmpR: getEmployeeByName("Legacy Agent")
+activate EmpR
+alt
+    EmpR --> ctrl: Employee legacyAgent
+else
+    return null
+    ctrl -> EmpR: registerEmployee(\n"Legacy Agent", ...)
+    activate EmpR
+    EmpR -> Emp**: create
+    activate Emp
+    Emp -> Emp: validateEmployee()
+    return true
+    return true
+end
+
+
+ctrl -> ch: parseCsv(csv)
+activate ch
+ref over ch: SD_CsvHandler_parseCsv
+autonumber 56
+return csvData
+
+alt
+    ui --> sa: informs operation success
+else
+    ui --> sa: inform no CSV file found
+else
+    return inform file is empty
+
+end
+
+deactivate sa
+
+@enduml

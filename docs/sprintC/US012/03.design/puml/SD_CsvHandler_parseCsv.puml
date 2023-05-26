@@ -1,0 +1,82 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber 28
+
+Title SD_CsvHandler_parseCsv
+
+participant ":CsvHandler" as ch
+participant "announcementRepository\n:AnnouncementRepository" as AnnR
+participant "employeeRepository\n:EmployeeRepository" as EmpR
+participant "clientRepository\n:ClientRepository" as CliR
+participant "branchRepository\n:BranchRepository" as BraR
+participant ":Employee" as Emp
+participant ":Announcement" as Ann
+participant ":Property" as Pro
+
+-> ch: parseCsv(csv)
+activate ch
+loop
+    ch -> ch: entry = getEntry()
+    activate ch
+
+    ch -> ch: branchData = parseBranchData()
+    activate ch
+    ch -> BraR: createBranch(\nname, address, phoneNumber, email)
+        activate BraR
+        BraR -> "branch\n:Branch"**: create
+        activate "branch\n:Branch"
+        "branch\n:Branch" -> "branch\n:Branch": validate()
+        return branch
+        return branch
+        ch -> BraR: saveBranch(branch)
+        activate BraR
+        return true
+    deactivate ch
+
+    ch -> ch: parseClientData()
+    activate ch
+    ch -> CliR: createClient(\nname, address, phoneNumber, email)
+        activate CliR
+        CliR -> "client\n:Client"**: create
+        activate "client\n:Client"
+        "client\n:Client" -> "client\n:Client": validate()
+        return client
+        return client
+        ch -> CliR: saveClient(client)
+                activate CliR
+                return true
+    deactivate ch
+
+    ch -> ch: parsePropertyData()
+    activate ch
+    ch -> ":Announcement": createProperty(\nname, address, phoneNumber, email)
+        activate ":Announcement"
+        ":Announcement" -> "property\n:Property"**: create
+        activate "property\n:Property"
+        "property\n:Property" -> "property\n:Property": validate()
+        return property
+        return property
+    deactivate ch
+
+    ch -> ch: parseAnnouncementData()
+    activate ch
+    ch -> AnnR: createAnnouncement(\nname, address, phoneNumber, email)
+        activate AnnR
+        AnnR -> "announcement\n:Announcement"**: create
+        activate "announcement\n:Announcement"
+        "announcement\n:Announcement" -> "announcement\n:Announcement": validate()
+        return announcement
+        return announcement
+        ch -> AnnR: saveAnnouncement(announcement)
+                activate AnnR
+                return true
+    deactivate ch
+
+
+end
+deactivate ch
+return csvData
+@enduml

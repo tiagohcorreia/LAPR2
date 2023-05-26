@@ -4,6 +4,7 @@
 :Unregistered User: as UnregUser
 :Agent: as Agent
 :Owner: as Owner
+Owner -|> Client
 
 
 Left to right direction

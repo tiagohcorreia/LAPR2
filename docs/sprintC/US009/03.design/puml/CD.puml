@@ -1,0 +1,80 @@
+@startuml
+
+interface Runnable {
+
+    + run()
+}
+
+class ScheduleVisitUI {
+    - controller
+}
+
+class ScheduleVisitController {
+
+    - scheduleRepository
+    - AnnouncementRepository
+    + createSchedule()
+    + getAnnouncementList()
+
+}
+
+class Schedule {
+
+    - name
+    - phoneNumber
+    - announcement
+    - day
+    - begiHour
+    - endHour
+    - note
+    - status
+}
+
+class ScheduleRepository {
+
+    - ScheduleList
+    + saveSchedule()
+    + validateSchedule()
+    + addSchedule()
+    + getScheduleList()
+    + getScheduleListAsString()
+}
+
+class AnnouncementRepository {
+
+    + save()
+    + createAnnouncement()
+    + validateAnnouncement()
+    + addAnnouncement()
+    + getAllVisibleAnnouncements()
+    + getAvailableFields()
+    + getAnnouncements()
+}
+
+class AnnouncementDTO {
+
+    - price
+    - typeOfBusiness
+    - property
+    - agent
+}
+class AnnouncementMapper {
+
+    - announcementDTOList
+    + convert()
+    + toDto()
+    + getAllAnnouncements()
+    + getAllAnnouncementsRecentToOldest()
+    + toDtoAnnouncement()
+}
+
+
+Runnable -left-|> ScheduleVisitUI
+ScheduleVisitUI ..> ScheduleVisitController
+ScheduleVisitController -> AnnouncementMapper
+AnnouncementMapper -> AnnouncementDTO
+AnnouncementDTO -> AnnouncementRepository
+ScheduleVisitController ..> Schedule
+Schedule --> ScheduleRepository
+
+@enduml

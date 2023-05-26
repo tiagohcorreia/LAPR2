@@ -47,11 +47,14 @@ As a client, I place an order to purchase the property, submitting the order amo
 
 * **AC1:** The order amount submitted by the client must be equal to or lower than the price set by the owner for the property
 
-* **AC2:** If the order amount submitted by the client has already been posted for the property (by another request from this client or any other client), the
-           system must state that on the screen and the order placed previously should be
-           considered first when selling the property
+* **AC2:** If the order amount submitted by the client has already been posted for the property (by another request
+           from this client or any other client), the system must state that on the screen and the order placed 
+           previously should be considered first when selling the property
 
 * **AC3:** A client can only submit a new order to purchase the same property after the previous one is declined
+
+* **AC4:** Order amount must be positive
+
 
 
 ### 1.4. Found out Dependencies
@@ -67,25 +70,27 @@ As a client, I place an order to purchase the property, submitting the order amo
 
 * Typed data:
 	 
-	
-	* 
-	* 
-	* 
-	* 
+
+	* order amount
+
 	
 * Selected data:
-	* 
 
+        
+     *  Announcement
+   
 
 **Output Data:**
 
-* 
-* 
+    *  List of Announcements
+    *  Request confirmation
+    *  Success of the operation
+
 
 ### 1.6. System Sequence Diagram (SSD)
 
 
-![System Sequence Diagram - Alternative One](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram](svg\SSD.svg)
 
 
 ### 1.7 Other Relevant Remarks

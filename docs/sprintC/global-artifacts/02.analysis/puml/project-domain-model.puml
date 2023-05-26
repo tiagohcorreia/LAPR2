@@ -30,11 +30,14 @@ phoneNumber
 }
 
 class Employee{
+}
+
+class Person{
 name
+email
 cCNumber
 taxNumber
 address
-email
 phoneNumber
 }
 
@@ -51,12 +54,6 @@ class Agent
 }
 
 class Client{
-name
-email
-cCNumber
-taxNumber
-address
-phoneNumber
 }
 
 class Buyer
@@ -89,21 +86,20 @@ cityCenterDistance
 photographs
 }
 
-class House{
+class InhabitableProperty{
 numberOfBedrooms
 numberOfBathrooms
 numberOfParkingSpaces
-hasBasement
+equipment
+}
 
+class House{
+hasBasement
 hasInhabitableLoft
 sunExposure
 }
 
 class Apartment{
-numberOfBedrooms
-numberOfBathrooms
-numberOfParkingSpaces
-equipment
 }
 
 class Land{
@@ -127,12 +123,17 @@ Announcement "1" -- "1" Property: contains >
 
 Network "1" -- "*" Employee: employs >
 
-Property <|-- House
-Property <|-- Apartment
+Property <|-- InhabitableProperty
+InhabitableProperty <|-- House
+InhabitableProperty <|-- Apartment
+'Property <|-- House
+'Property <|-- Apartment
 Property <|-- Land
 
 BranchEmployee --|> Employee
 
+Person <|-- Employee
+Person <|-- Client
 
 Employee <|-- SysAdmin
 Employee <|-- NetworkMan

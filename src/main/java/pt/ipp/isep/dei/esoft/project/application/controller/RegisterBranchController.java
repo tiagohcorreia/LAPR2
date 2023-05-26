@@ -3,21 +3,23 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
-import pt.ipp.isep.dei.esoft.project.domain.repository.RegisterBranchRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
 /**
  * The type Register branch controller.
  */
 public class RegisterBranchController {
 
-    private RegisterBranchRepository branchRepository;
+    BranchRepository branchRepository = Repositories.getInstance().getBranchRepository();
+
 
     /**
      * Instantiates a new Register branch controller.
      *
      * @param branchRepo the branch repo
      */
-    public RegisterBranchController(RegisterBranchRepository branchRepo) {
+    public RegisterBranchController(BranchRepository branchRepo) {
         branchRepository = branchRepo;
     }
 
