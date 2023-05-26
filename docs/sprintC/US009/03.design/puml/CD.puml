@@ -12,8 +12,9 @@ class ScheduleVisitUI {
 class ScheduleVisitController {
 
     - scheduleRepository
+    - AnnouncementRepository
+    + createSchedule()
     + getAnnouncementList()
-    + validateSchedule()
 
 }
 
@@ -23,16 +24,20 @@ class Schedule {
     - phoneNumber
     - announcement
     - day
-    - hour
+    - begiHour
+    - endHour
+    - note
     - status
 }
 
 class ScheduleRepository {
 
     - ScheduleList
-    - ValidateScheduleList
     + saveSchedule()
     + validateSchedule()
+    + addSchedule()
+    + getScheduleList()
+    + getScheduleListAsString()
 }
 
 class AnnouncementRepository {
@@ -53,12 +58,21 @@ class AnnouncementDTO {
     - property
     - agent
 }
+class AnnouncementMapper {
 
+    - announcementDTOList
+    + convert()
+    + toDto()
+    + getAllAnnouncements()
+    + getAllAnnouncementsRecentToOldest()
+    + toDtoAnnouncement()
+}
 
 
 Runnable -left-|> ScheduleVisitUI
 ScheduleVisitUI ..> ScheduleVisitController
-ScheduleVisitController -> AnnouncementDTO
+ScheduleVisitController -> AnnouncementMapper
+AnnouncementMapper -> AnnouncementDTO
 AnnouncementDTO -> AnnouncementRepository
 ScheduleVisitController ..> Schedule
 Schedule --> ScheduleRepository
