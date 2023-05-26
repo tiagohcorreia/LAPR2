@@ -9,16 +9,29 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRe
 
 import java.util.List;
 
+/**
+ * The type Place order to buy property controller.
+ */
 public class PlaceOrderToBuyPropertyController {
 
     private AnnouncementRepository announcementRepository = new AnnouncementRepository();
     private AnnouncementMapper announcementMapper;
     private PlaceOrderToBuyPropertyRepository orderRepository;
 
+    /**
+     * Instantiates a new Place order to buy property controller.
+     *
+     * @param orderRepository the order repository
+     */
     public PlaceOrderToBuyPropertyController(PlaceOrderToBuyPropertyRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
+    /**
+     * Announcement dto list list.
+     *
+     * @return the list
+     */
     public List<AnnouncementDTO> announcementDTOList() {
 
         List<Announcement> announcements = announcementRepository.getAllVisibleAnnouncements();
@@ -26,6 +39,13 @@ public class PlaceOrderToBuyPropertyController {
         return AnnouncementMapper.convert(announcements);
     }
 
+    /**
+     * Create order string.
+     *
+     * @param orderAmount     the order amount
+     * @param posAnnouncement the pos announcement
+     * @return the string
+     */
     public String createOrder(Double orderAmount, Integer posAnnouncement) {
 
         Order newOrder = new Order(orderAmount, AnnouncementMapper.getAnnouncementDTOById(posAnnouncement));

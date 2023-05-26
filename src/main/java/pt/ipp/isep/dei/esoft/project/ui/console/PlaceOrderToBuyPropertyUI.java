@@ -8,10 +8,18 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.List;
 
+/**
+ * The type Place order to buy property ui.
+ */
 public class PlaceOrderToBuyPropertyUI implements Runnable {
 
     private PlaceOrderToBuyPropertyController controller = new PlaceOrderToBuyPropertyController(new PlaceOrderToBuyPropertyRepository());
 
+    /**
+     * Instantiates a new Place order to buy property ui.
+     *
+     * @param controller the controller
+     */
     public PlaceOrderToBuyPropertyUI(PlaceOrderToBuyPropertyController controller) {
         //this.controller = controller;
     }
