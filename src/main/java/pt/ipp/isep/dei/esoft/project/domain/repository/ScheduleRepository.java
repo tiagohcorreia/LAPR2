@@ -6,7 +6,6 @@ import java.util.List;
 
 public class ScheduleRepository {
     public static List<Schedule> scheduleList = new ArrayList<>();
-    public static List<Schedule> confirmedScheduleList = new ArrayList<>();
     public boolean saveSchedule(Schedule schedule){
         if(validateSchedule(schedule)) {
             return addSchedule(schedule);
