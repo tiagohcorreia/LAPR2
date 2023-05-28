@@ -46,6 +46,7 @@ public class CsvHandler {
     static CityRepository cityRepository = Repositories.getInstance().getCityRepository();
     static BranchRepository branchRepository = Repositories.getInstance().getBranchRepository();
     static ClientRepository clientRepository = Repositories.getInstance().getClientRepository();
+    static AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
 
 
 
@@ -95,15 +96,24 @@ public class CsvHandler {
     }
 
     public static boolean parseCSV(List<?> csv){
+        boolean success = false;
         for (Object line:
              csv) {
-            parseBranchData((List<?>) line);
+            Branch branch = parseBranchData((List<?>) line);
+            Client client = parseClientData((List<?>) line);
+            //Property property = parsePropertyData((List<?>) line);
+            Announcement announcement = parseAnnouncementData((List<?>) line);
 
-
+            try{
+                success = (branchRepository.saveBranch(branch) && success);
+                success = (clientRepository.add(client));
+                success = (announcementRepository.save(announcement));
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
-
-        return true;
+        return success;
     }
 
     private static Branch parseBranchData(List<?> line){
@@ -136,10 +146,12 @@ public class CsvHandler {
     }
 
     private static Property parsePropertyData(List<?> line){
+
         return null;
     }
 
-    private static Announcement announcement(List<?> line, Property property){
+    private static Announcement parseAnnouncementData(List<?> line){
+
         return null;
     }
 
