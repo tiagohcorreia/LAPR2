@@ -6,7 +6,7 @@ import pt.ipp.isep.dei.esoft.project.application.controller.RegisterPropertyCont
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.PublishAnnouncementUI;
-// import pt.ipp.isep.dei.esoft.project.ui.console.PurchaseOrderUI;
+//import pt.ipp.isep.dei.esoft.project.ui.console.PurchaseOrderUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.RegisterPropertyUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
