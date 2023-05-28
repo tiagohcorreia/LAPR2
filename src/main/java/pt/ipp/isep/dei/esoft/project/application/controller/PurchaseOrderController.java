@@ -50,5 +50,38 @@
 //            purchaseOrderRepository.decline(purchaseOrder);
 //            emailService.sendNotification(purchaseOrder.getClient(), "Your purchase order has been declined.");
 //        }
+//        public void acceptPurchaseOrder(String id, String agentEmail) {
+//            PurchaseOrder purchaseOrder = purchaseOrderRepository.getPurchaseOrderById(id);
+//            if (purchaseOrder != null) {
+//                purchaseOrder.setAccepted(true);
+//                purchaseOrderRepository.updatePurchaseOrder(purchaseOrder);
+//                emailService.sendNotification(purchaseOrder.getClient(), "Your purchase order has been accepted by " + agentEmail);
+//                declineOtherPurchaseOrders(agentEmail);
+//            } else {
+//                throw new IllegalArgumentException("No purchase order found with id: " + id);
+//            }
+//        }
+//
+//        public void declinePurchaseOrder(String id, String agentEmail) {
+//            PurchaseOrder purchaseOrder = purchaseOrderRepository.getPurchaseOrderById(id);
+//            if (purchaseOrder != null) {
+//                purchaseOrder.setAccepted(false);
+//                purchaseOrderRepository.updatePurchaseOrder(purchaseOrder);
+//                emailService.sendNotification(purchaseOrder.getClient(), "Your purchase order has been declined by " + agentEmail);
+//            } else {
+//                throw new IllegalArgumentException("No purchase order found with id: " + id);
+//            }
+//        }
+//
+//        private void declineOtherPurchaseOrders(String agentEmail) {
+//            List<PurchaseOrder> ordersForProperty = purchaseOrderRepository.getAll() ;
+//            for (PurchaseOrder order : ordersForProperty) {
+//                if (!order.isAccepted()) {
+//                    order.setAccepted(false);
+//                    purchaseOrderRepository.updatePurchaseOrder(order);
+//                    emailService.sendNotification(order.getClient(), "Your purchase order has been declined by " + agentEmail);
+//                }
+//            }
+//        }
 //    }
-
+//
