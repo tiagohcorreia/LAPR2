@@ -5,6 +5,7 @@ autonumber
 actor Client as client
 participant ScheduleVisitUI as ui
 participant ScheduleVisitController as ctrl
+participant AnnouncementMapper as mapper
 participant AnnouncementDTO
 participant AnnouncementRepository
 participant ScheduleRepository
@@ -47,7 +48,10 @@ deactivate AnnouncementRepository
 
 activate AnnouncementDTO
 
-AnnouncementDTO -> ctrl:  return AnnouncementList
+AnnouncementDTO -> mapper:  return AnnouncementList
+activate mapper
+mapper -> ctrl: return AnnouncementList
+deactivate mapper
 
 deactivate AnnouncementDTO
 
@@ -59,17 +63,17 @@ deactivate ctrl
 
 activate ui
 
-ui -> client: shows announcement list and requests the user to select one\n and insert all the information (name, phoneNumber,day, hour, note)
+ui -> client: shows announcement list and requests the user to select one\n and insert all the information (name, phoneNumber,day,\n beginHour,endHour, note)
 
 client -> ui: selects announcement with the property and types all the information
 
-ui -> ctrl: validateSchedule()
+ui -> ctrl: createSchedule()
 
 deactivate ui
 
 activate ctrl
 
-ctrl -> schedule: validateSchedule()
+ctrl -> schedule: createSchedule()
 
 deactivate ctrl
 
@@ -93,15 +97,19 @@ ui -> client: shows request schedule information
 
 client -> ui: confirms the data
 
-ui -> ctrl: saveScheduleRequest()
+ui -> ctrl: saveScheduleSchedule()
 
 deactivate ui
 
 activate ctrl
 
-ctrl -> ScheduleRepository: saveScheduleRequest()
-
+ctrl -> ScheduleRepository: saveSchedule()
 activate ScheduleRepository
+
+ScheduleRepository-> ScheduleRepository: addSchedule()
+
+deactivate ScheduleRepository
+
 
 activate ui
 

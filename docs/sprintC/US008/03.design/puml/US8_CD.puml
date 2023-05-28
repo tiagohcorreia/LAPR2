@@ -1,0 +1,100 @@
+@startuml
+'skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype polyline
+'skinparam linetype orto
+
+skinparam classAttributeIconSize 0
+
+'left to right direction
+
+class AnnouncementRequestUI{
+}
+
+class AnnouncementRequestController {
+    + AnnouncementRequestsController()
+    - getEmployeeFromSession()
+
+}
+
+class ApplicationSession
+{
+    + static getInstance()
+    + getCurrentSession()
+}
+
+class UserSession
+{
+    + getUserNameByEmail()
+}
+
+
+class Repositories {
+    - Repositories()
+    + getInstance() : Repositories
+    + getAnnouncementRepository()
+}
+
+class AnnouncementRepository{
+    +getAnnouncement()
+    +getAnnouncementRequests()
+    +getAccept()
+    +getReject()
+
+}
+
+class Announcement{
+    - status
+    - date
+    -commission
+}
+
+class Property{
+  -String Business
+  -float size
+  -float distance_from_the_city_center
+  -float price
+}
+
+
+
+class Agent {
+    -string passport
+    -int taxNumber
+    -string address
+    -int phoneNumber
+    -string agency
+    -string email
+    +ViewAnnouncementRequests()
+    +Accept()
+    +Reject()
+
+}
+
+
+
+Repositories -> Repositories : instance
+ApplicationSession -> ApplicationSession : instance
+AnnouncementRequestController .> Repositories : repositories
+
+
+ApplicationSession --> "1" UserSession : userSession
+
+
+AnnouncementRequestController ..> ApplicationSession
+AnnouncementRequestController ..> UserSession
+
+AnnouncementRequestUI .> AnnouncementRequestController
+
+AnnouncementRequestController ..> Property
+
+AnnouncementRequestController ..> AnnouncementRepository : AnnouncementRepository
+
+AnnouncementRepository --> "*" Announcement
+
+Announcement "1" --> "1" Property: property
+
+Announcement --> Agent : publishedBy/seenBy\nacceptedBy/rejectedBy
+
+@enduml

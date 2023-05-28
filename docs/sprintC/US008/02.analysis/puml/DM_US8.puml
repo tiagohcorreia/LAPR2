@@ -22,6 +22,8 @@ class Agent {
 
 class Advertisement {
     id
+    status
+    date
 }
 class Client {
     name
@@ -56,19 +58,18 @@ class Commission {
 }
 
 class Property {
-     id
+
      area
      distance_from_the_city_centre
      price
      photographs
-     Bussiness
+     Type_Business
 
 }
 
 class Location{
      street
      postalCode
-     doorNumber
 }
 class City{
     cityName

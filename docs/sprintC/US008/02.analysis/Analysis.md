@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 008 - View announcement requests, review and approve/reject
 
 ## 2. Analysis
 

@@ -87,7 +87,9 @@ A: System behavior must be consistent. For instance, the filters to be applied w
 	* a name, 
 	* a phone number, 
 	* a day,
-	* a hour;
+	* a begin hour,
+    * a end hour,
+    * a note;
   
 	
 * Selected data:
