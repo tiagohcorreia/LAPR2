@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.ui.console.menu.AdminUI;
+import pt.ipp.isep.dei.esoft.project.ui.console.menu.AgentUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.menu.OwnerUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.menu.UnregisteredUserUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
@@ -34,7 +35,8 @@ public class ChooseRoleUI implements Runnable {
                 break;
             case 3:
                 //TO DO - Create a UI for the agent
-
+                AgentUI agentUI = new AgentUI();
+                agentUI.run();
                 break;
             case 4:
                 UnregisteredUserUI unregisteredUserUI = new UnregisteredUserUI();
