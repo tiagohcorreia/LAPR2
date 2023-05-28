@@ -59,5 +59,23 @@
 //        }
 //        return null; // Retorna null se nenhum PurchaseOrder com o ID fornecido for encontrado.
 //    }
+//
+//    // Update a purchase order
+//    public void updatePurchaseOrder(PurchaseOrder updatedOrder) {
+//        int indexToUpdate = -1;
+//        for (int i = 0; i < purchaseOrders.size(); i++) {
+//            if (purchaseOrders.get(i).getId().equals(updatedOrder.getId())) {
+//                indexToUpdate = i;
+//                break;
+//            }
+//        }
+//
+//        // If we found the PurchaseOrder, update it
+//        if (indexToUpdate != -1) {
+//            purchaseOrders.set(indexToUpdate, updatedOrder);
+//        } else {
+//            throw new IllegalArgumentException("No purchase order found with id: " + updatedOrder.getId());
+//        }
+//    }
 //}
-
+//

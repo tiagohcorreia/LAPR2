@@ -14,6 +14,7 @@ public class Property {
     private static final float DEFAULT_CITY_CENTER_DISTANCE = 10;
     private static final ArrayList<String> DEFAULT_PHOTOGRAPHS = new ArrayList<>();
 
+    private String id;
     private float area;
     /**
      * The Location.
@@ -43,6 +44,14 @@ public class Property {
         this.photographs = setPhotographs(photographs);
     }
 
+    public Property(String id, float area, City location, float cityCentreDistance, ArrayList<String> photographs) {
+        this.id = id;
+        this.area = area;
+        this.location = location;
+        this.cityCentreDistance = cityCentreDistance;
+        this.photographs = photographs;
+    }
+
     /**
      * Instantiates a new Property.
      */
@@ -68,6 +77,10 @@ public class Property {
     }
 
     // Getters and Setters
+
+    public String getId() {
+        return id;
+    }
 
     /**
      * Gets area.
