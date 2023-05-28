@@ -3,6 +3,7 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
+import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
@@ -33,7 +34,7 @@ public class RegisterBranchController {
      * @param email       the email
      * @return the string
      */
-    public String createBranch(int ID, String name, String location, int phoneNumber,  String email) {
+    public String createBranch(int ID, String name, Location location, int phoneNumber, String email) {
 
         Branch newBranch = new Branch(ID, name, location, phoneNumber, email);
 

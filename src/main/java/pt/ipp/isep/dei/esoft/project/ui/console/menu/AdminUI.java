@@ -3,6 +3,7 @@ package pt.ipp.isep.dei.esoft.project.ui.console.menu;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.RegisterEmployeeController;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
+import pt.ipp.isep.dei.esoft.project.ui.console.LegacyImportUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.RegisterEmployeeUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.SpecifyStatesDistrictsCitiesUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
@@ -28,7 +29,7 @@ public class AdminUI implements Runnable {
         options.add(new MenuItem("Specify states, districts or cities", new SpecifyStatesDistrictsCitiesUI()));
         options.add(new MenuItem("Register Employee ", new RegisterEmployeeUI(new RegisterEmployeeController(new EmployeeRepository()))));
         //options.add(new MenuItem("Option 3 ", new ShowTextUI("You have chosen Option C.")));
-        //options.add(new MenuItem("Import from legacy system ", new ImportFromLegacyUI()));
+        options.add(new MenuItem("Import from legacy system ", new LegacyImportUI()));
 
         int option = 0;
         do {

@@ -9,7 +9,7 @@ public class Branch {
 
     private int ID;
     private String name;
-    private String location;
+    private Location location;
     private int phoneNumber;
     private String email;
 
@@ -22,7 +22,7 @@ public class Branch {
      * @param phoneNumber the phone number
      * @param email       the email
      */
-    public Branch(int ID, String name, String location, int phoneNumber, String email) {
+    public Branch(int ID, String name, Location location, int phoneNumber, String email) {
 
         checkIfDataIsNull(ID,name,location,phoneNumber,email);
         checkNameLength(name);
@@ -52,7 +52,7 @@ public class Branch {
      * @param phoneNumber the phone number
      * @param email       the email
      */
-    public void checkIfDataIsNull(int ID, String name, String location, int phoneNumber, String email){
+    public void checkIfDataIsNull(int ID, String name, Location location, int phoneNumber, String email){
 
         if (ID == 0 || name == null || location == null || phoneNumber == 0 || email == null) {
             throw new NullPointerException("All fields required");
@@ -116,7 +116,7 @@ public class Branch {
      *
      * @return the location
      */
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
@@ -153,7 +153,7 @@ public class Branch {
      *
      * @param location the location
      */
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 

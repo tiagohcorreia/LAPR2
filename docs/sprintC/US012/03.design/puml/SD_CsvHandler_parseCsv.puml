@@ -9,22 +9,30 @@ Title SD_CsvHandler_parseCsv
 
 participant ":CsvHandler" as ch
 participant "announcementRepository\n:AnnouncementRepository" as AnnR
-participant "employeeRepository\n:EmployeeRepository" as EmpR
+'participant "employeeRepository\n:EmployeeRepository" as EmpR'
 participant "clientRepository\n:ClientRepository" as CliR
 participant "branchRepository\n:BranchRepository" as BraR
-participant ":Employee" as Emp
-participant ":Announcement" as Ann
-participant ":Property" as Pro
+'participant ":Employee" as Emp
+'participant ":Announcement" as Ann
+'participant ":Property" as Pro
+participant ":Location" as loc
 
 -> ch: parseCsv(csv)
 activate ch
-loop
-    ch -> ch: entry = getEntry()
+loop for entry in csv
+    ch -> ch: getEntry()
     activate ch
 
-    ch -> ch: branchData = parseBranchData()
+    ch -> ch: parseBranchData()
     activate ch
-    ch -> BraR: createBranch(\nname, address, phoneNumber, email)
+    ch -> ch: branchLocation = parseBranchLocation()
+    activate ch
+    ch -> loc: create
+    activate loc
+    loc -> loc: validate()
+    return location
+    deactivate ch
+    ch -> BraR: createBranch(\nname, location, phoneNumber, email)
         activate BraR
         BraR -> "branch\n:Branch"**: create
         activate "branch\n:Branch"
@@ -38,6 +46,11 @@ loop
 
     ch -> ch: parseClientData()
     activate ch
+    'ch -> loc: create
+    '    activate loc
+    '    loc -> loc: validate()
+    '    return location
+    'deactivate ch
     ch -> CliR: createClient(\nname, address, phoneNumber, email)
         activate CliR
         CliR -> "client\n:Client"**: create
@@ -52,6 +65,13 @@ loop
 
     ch -> ch: parsePropertyData()
     activate ch
+    ch -> ch: propertyLocation = parsePropertyLocation()
+    activate ch
+    ch -> loc: create
+            activate loc
+            loc -> loc: validate()
+            return location
+            deactivate ch
     ch -> ":Announcement": createProperty(\nname, address, phoneNumber, email)
         activate ":Announcement"
         ":Announcement" -> "property\n:Property"**: create
@@ -78,5 +98,5 @@ loop
 
 end
 deactivate ch
-return csvData
+return true
 @enduml

@@ -13,13 +13,13 @@ participant ":CsvHandler" as ch
 
 participant ":Repositories" as repos
 participant "repositories\n:Repositories" as repositories
-participant "announcementRepository\n:AnnouncementRepository" as AnnR
+'participant "announcementRepository\n:AnnouncementRepository" as AnnR
 participant "employeeRepository\n:EmployeeRepository" as EmpR
-participant "clientRepository\n:ClientRepository" as CliR
-participant "branchRepository\n:BranchRepository" as BraR
-participant ":Employee" as Emp
-participant ":Announcement" as Ann
-participant ":Property" as Pro
+'participant "clientRepository\n:ClientRepository" as CliR
+'participant "branchRepository\n:BranchRepository" as BraR
+participant "newEmployee\n:Employee" as Emp
+'participant ":Announcement" as Ann
+'participant ":Property" as Pro
 
 activate sa
 sa -> ui: starts importing data
@@ -58,11 +58,22 @@ activate ctrl
 'ctrl -> fh**: create
 ctrl -> fh: readFile(filePath)
 activate fh
-return file
-
+alt file not found
+fh -> ctrl: null
+ctrl -> ui: false
+ui -> sa: informs file not found
+else file found
+    return file
 ctrl -> fh: readCSV(file)
 activate fh
 return csv[]
+
+ctrl -> ctrl: csv[].length()
+'activate ctrl
+alt csv[].length() < 2
+ctrl -> ui: null
+ui -> sa: inform file is empty
+else csv[].length >= 2
 
 ctrl -> EmpR: getEmployeeByName("Legacy Agent")
 activate EmpR
@@ -84,16 +95,22 @@ ctrl -> ch: parseCsv(csv)
 activate ch
 ref over ch: SD_CsvHandler_parseCsv
 autonumber 56
-return csvData
-
-alt
-    ui --> sa: informs operation success
-else
-    ui --> sa: inform no CSV file found
-else
-    return inform file is empty
-
+return true
+return inform operation success
+return inform operation success
 end
+end
+
+
+
+'alt
+'    ui --> sa: informs operation success
+'else
+'    ui --> sa: inform no CSV file found
+'else
+'    return inform file is empty
+'
+'end
 
 deactivate sa
 

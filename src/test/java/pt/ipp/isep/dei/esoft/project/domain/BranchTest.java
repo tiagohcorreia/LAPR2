@@ -3,6 +3,8 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pt.ipp.isep.dei.esoft.project.domain.model.City;
+import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -85,7 +87,8 @@ class BranchTest {
 
         assertDoesNotThrow( ()->{
 
-            Branch b = new Branch(1, "MEGA STORE", "Porto" ,982822882,"mega@asda.com");
+            //Branch b = new Branch(1, "MEGA STORE", "Porto" ,982822882,"mega@asda.com");
+            Branch b = new Branch(1, "MEGA STORE", new Location("123 Street", new City(), 12345),982822882,"mega@asda.com");
 
         });
     }

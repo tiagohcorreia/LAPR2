@@ -5,9 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.Writer;
 
-public interface FileOps {
+public class FileOps {
 
-    static File readFile(String filePath) throws FileNotFoundException{
+    public static File readFile(String filePath) throws FileNotFoundException{
         File file = new File(filePath);
 
         if (!file.exists())

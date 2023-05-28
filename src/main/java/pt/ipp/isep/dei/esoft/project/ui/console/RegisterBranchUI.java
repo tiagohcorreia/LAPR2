@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.RegisterBranchController;
 
+import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
@@ -45,7 +46,9 @@ public class RegisterBranchUI implements Runnable {
 
         if (optValidation == 1) {
 
-            controller.createBranch(branchID, branchName, branchLocation, branchPhoneNumber, branchEmail);
+            //TODO: fix location
+            //controller.createBranch(branchID, branchName, branchLocation, branchPhoneNumber, branchEmail);
+            controller.createBranch(branchID, branchName, new Location(), branchPhoneNumber, branchEmail);
 
             System.out.println("Branch created!");
 

@@ -1,6 +1,8 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
+import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+import pt.ipp.isep.dei.esoft.project.domain.model.Role;
 
 import javax.imageio.IIOException;
 import java.io.*;
@@ -27,6 +29,12 @@ public class EmployeeRepository implements Serializable {
 
         return new Employee(employeeName);
     }
+
+    public Employee createEmployee (String name, int passportNumber, int taxNumber, String address, String emailAdress, int telephoneNumber, Role role, Agency agency) {
+        return new Employee(name, passportNumber, taxNumber, address, emailAdress, telephoneNumber, role, agency);
+    }
+
+
 
     /**
      * Save employee boolean.

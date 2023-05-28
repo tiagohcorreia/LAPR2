@@ -12,9 +12,9 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class Address{
-doorNumber
+class Location{
 street
+area
 zipCode
 }
 
@@ -182,9 +182,9 @@ Commission <|-- PercentageCommission
 
 Buyer --> Order: submits >
 Order --> Property: to buy/rent >
-Property "1" --> "1" Address: located in >
+Property "1" --> "1" Location: located in >
 
-Address -> City: includes >
+Location -> City: includes >
 
 'class User{
 'email

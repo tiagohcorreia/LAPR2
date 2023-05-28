@@ -71,6 +71,10 @@ public class StateRepository {
             state.getDistricts().add(district);
         }
     }
+
+    public State createState(String name, List<District> districts){
+        return new State(name, districts);
+    }
 }
 
 

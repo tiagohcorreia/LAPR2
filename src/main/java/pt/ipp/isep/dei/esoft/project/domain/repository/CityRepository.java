@@ -59,5 +59,9 @@ public class CityRepository {
     public boolean isEmpty() {
         return cities.isEmpty();
     }
+
+    public City createCity(String name){
+        return new City(name);
+    }
 }
 

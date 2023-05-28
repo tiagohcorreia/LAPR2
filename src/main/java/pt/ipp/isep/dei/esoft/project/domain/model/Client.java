@@ -10,7 +10,16 @@ public class Client {
     private int cCNumber;
     private int taxNumber;
     private String address;
+    protected Location location;
     private int telephoneNumber;
+
+    public Client(String name, String email, int cCNumber, int taxNumber, int telephoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.cCNumber = cCNumber;
+        this.taxNumber = taxNumber;
+        this.telephoneNumber = telephoneNumber;
+    }
 
 
     public String getName() {
@@ -35,6 +44,16 @@ public class Client {
         this.telephoneNumber = telephoneNumber;
     }
 
+    public Client(String name, String email, String password, int cCNumber, int taxNumber, Location location, int telephoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.cCNumber = cCNumber;
+        this.taxNumber = taxNumber;
+        this.location = location;
+        this.telephoneNumber = telephoneNumber;
+    }
+
     public Client(List<String> input){
 
         try {
@@ -51,6 +70,8 @@ public class Client {
             System.out.println("Couldn't create user. " + e.getMessage());
         }
     }
+
+
 
     //TODO: check validation
     private boolean validate(){
@@ -104,6 +125,11 @@ public class Client {
     private void isValidTelephoneNumber() throws InvalidAttributeValueException {
         if (telephoneNumber < 100_000_000 || telephoneNumber > 999_999_999)
             throw new InvalidAttributeValueException("Telephone Number is invalid");
+    }
+
+    private void isValidLocation() throws InvalidAttributeValueException {
+        if (location == null)
+            throw new InvalidAttributeValueException("Location is invalid.");
     }
 
 }

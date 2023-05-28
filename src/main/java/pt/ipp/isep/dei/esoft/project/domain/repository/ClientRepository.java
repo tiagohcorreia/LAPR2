@@ -10,6 +10,10 @@ import java.util.List;
 public class ClientRepository {
     private List<Client> clients = new ArrayList<>();
 
+    public Client createClient(String name, String email, int cCNumber, int taxNumber, int telephoneNumber){
+        return new Client(name, email, cCNumber, taxNumber, telephoneNumber);
+    }
+
     public boolean add(Client client){
         if (userExists(client))
             throw new DuplicateRequestException("This user is already registered");
