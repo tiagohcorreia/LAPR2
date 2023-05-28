@@ -1,43 +1,85 @@
 //package pt.ipp.isep.dei.esoft.project.domain.model;
 //
-//import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+//import java.util.Objects;
 //
-//public class PurchaseOrder extends Order {
+//public class PurchaseOrder {
 //    private String id;
-//    private AnnouncementDTO announcementDTO;
-//    private boolean accepted;
+//    private double orderAmount;
+//    private Client client;
+//    private Property property;
+//    private boolean isAccepted;
 //
-//    public PurchaseOrder(String id, double orderAmount, AnnouncementDTO announcementDTO) {
-//        super(id, orderAmount, announcementDTO);
-//        this.announcementDTO = announcementDTO;
-//        this.accepted = false;
+//    // constructor, getters, setters
+//
+//
+//    public PurchaseOrder(String id, double orderAmount, Client client, Property property, boolean isAccepted) {
+//        this.id = id;
+//        this.orderAmount = orderAmount;
+//        this.client = client;
+//        this.property = property;
+//        this.isAccepted = isAccepted;
 //    }
 //
-//    public AnnouncementDTO getAnnouncementDTO() {
-//        return announcementDTO;
+//    public PurchaseOrder() {
 //    }
 //
-//    public AnnouncementDTO setAnnouncementDTO(AnnouncementDTO announcementDTO) {
-//        this.announcementDTO = announcementDTO;
-//        return announcementDTO;
+//    public double getOrderAmount() {
+//        return orderAmount;
+//    }
+//
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setOrderAmount(double orderAmount) {
+//        this.orderAmount = orderAmount;
+//    }
+//
+//    public Client getClient() {
+//        return client;
+//    }
+//
+//    public void setClient(Client client) {
+//        this.client = client;
+//    }
+//
+//    public Property getProperty() {
+//        return property;
+//    }
+//
+//    public void setProperty(Property property) {
+//        this.property = property;
 //    }
 //
 //    public boolean isAccepted() {
-//        return accepted;
+//        return isAccepted;
 //    }
 //
 //    public void setAccepted(boolean accepted) {
-//        this.accepted = accepted;
+//        isAccepted = accepted;
+//    }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        PurchaseOrder that = (PurchaseOrder) o;
+//        return Double.compare(that.orderAmount, orderAmount) == 0 && isAccepted == that.isAccepted && Objects.equals(id, that.id) && Objects.equals(client, that.client) && Objects.equals(property, that.property);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, orderAmount, client, property, isAccepted);
 //    }
 //
 //    @Override
 //    public String toString() {
-//        final StringBuilder sb = new StringBuilder("PurchaseOrder{");
-//        sb.append("id=").append(getId());
-//        sb.append("orderAmount=").append(getOrderAmount());
-//        sb.append(", announcementDTO=").append(announcementDTO);
-//        sb.append(", status=").append(isStatus());
-//        sb.append('}');
-//        return sb.toString();
+//        return "PurchaseOrder{" +
+//                "id='" + id + '\'' +
+//                ", orderAmount=" + orderAmount +
+//                ", client=" + client +
+//                ", property=" + property +
+//                ", isAccepted=" + isAccepted +
+//                '}';
 //    }
 //}

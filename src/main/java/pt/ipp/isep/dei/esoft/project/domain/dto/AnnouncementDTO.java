@@ -79,6 +79,21 @@ public class AnnouncementDTO {
         return null;
     }
 
+    public float getPrice() {
+        return price;
+    }
+
+    public TypeOfBusiness getTypeOfBusiness() {
+        return typeOfBusiness;
+    }
+
+    public Property getProperty() {
+        return property;
+    }
+
+    public Employee getAgent() {
+        return agent;
+    }
 }
 
 

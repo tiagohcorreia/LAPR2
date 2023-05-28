@@ -1,80 +1,54 @@
-//package pt.ipp.isep.dei.esoft.project.domain.controller;
+//package pt.ipp.isep.dei.esoft.project.application.controller;
 //
-//import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
-//import pt.ipp.isep.dei.esoft.project.domain.dto.PurchaseOrderDTO;
-//import pt.ipp.isep.dei.esoft.project.domain.model.EmailNotification;
+//import pt.ipp.isep.dei.esoft.project.domain.model.Property;
 //import pt.ipp.isep.dei.esoft.project.domain.model.PurchaseOrder;
+//import pt.ipp.isep.dei.esoft.project.domain.repository.EmailService;
 //import pt.ipp.isep.dei.esoft.project.domain.repository.PurchaseOrderRepository;
 //
-//import java.util.ArrayList;
+//
+//import java.util.Collections;
 //import java.util.Comparator;
 //import java.util.List;
-//import java.util.stream.Collectors;
 //
-//public class PurchaseOrderController {
-//    private PurchaseOrderRepository purchaseOrderRepository;
+//    public class PurchaseOrderController {
 //
-//    public PurchaseOrderController() {
-//        this.purchaseOrderRepository = new PurchaseOrderRepository();
-//    }
+//        private PurchaseOrderRepository purchaseOrderRepository;
+//        private EmailService emailService;
 //
-//    public List<PurchaseOrderDTO> getPurchaseOrdersByProperty(String propertyId) {
-//        List<PurchaseOrder> purchaseOrders = purchaseOrderRepository.getPurchaseOrdersByProperty(propertyId);
-//
-//        List<PurchaseOrderDTO> purchaseOrderDTOs = new ArrayList<>();
-//        for (PurchaseOrder purchaseOrder : purchaseOrders) {
-//            PurchaseOrderDTO purchaseOrderDTO = new PurchaseOrderDTO(
-//                    purchaseOrder.getId(),
-//                    purchaseOrder.getAnnouncementDTO().getProperty().getId(),
-//                    purchaseOrder.getOrderAmount(),
-//                    purchaseOrder.isAccepted()
-//            );
-//            purchaseOrderDTOs.add(purchaseOrderDTO);
+//        public PurchaseOrderController() {
+//            this.purchaseOrderRepository = new PurchaseOrderRepository();
+//            this.emailService = new EmailService();
 //        }
 //
-//        return purchaseOrderDTOs;
-//    }
+//        public List<PurchaseOrder> getPurchaseOrdersByProperty(Property property) {
+//            List<PurchaseOrder> purchaseOrders = purchaseOrderRepository.getByProperty(property);
 //
-//    public void sortPurchaseOrdersByAmount(List<PurchaseOrderDTO> purchaseOrders) {
-//        purchaseOrders.sort(Comparator.comparingDouble(PurchaseOrderDTO::getOfferAmount).reversed());
-//    }
+//            // Sort the purchase orders from highest to lowest offer
+//            Collections.sort(purchaseOrders, Comparator.comparing(PurchaseOrder::getOrderAmount).reversed());
 //
-//    public void acceptPurchaseOrder(String orderId) {
-//        PurchaseOrder purchaseOrder = purchaseOrderRepository.getPurchaseOrderById(orderId);
+//            return purchaseOrders;
+//        }
 //
-//        // Update the accepted purchase order
-//        purchaseOrder.accept();
+//        public PurchaseOrder getPurchaseOrderById(String id) {
+//            return this.purchaseOrderRepository.getPurchaseOrderById(id);
+//        }
 //
-//        // Decline all other purchase orders for the same property
-//        declineOtherPurchaseOrders(purchaseOrder);
+//        public void acceptPurchaseOrder(PurchaseOrder purchaseOrder) {
+//            purchaseOrderRepository.accept(purchaseOrder);
+//            emailService.sendNotification(purchaseOrder.getClient(), "Your purchase order has been accepted.");
 //
-//        // Send email notification to the customer
-////        sendEmailNotification(purchaseOrder.getAnnouncementDTO().getCustomerEmail(), "Purchase Order Accepted");
-//    }
-//
-//    public void declinePurchaseOrder(String orderId) {
-//        PurchaseOrder purchaseOrder = purchaseOrderRepository.get(orderId);
-//
-//        // Update the declined purchase order
-//        purchaseOrder.decline();
-//
-//        // Send email notification to the customer
-//        sendEmailNotification(purchaseOrder.getAnnouncementDTO().getCustomerEmail(), "Purchase Order Declined");
-//    }
-//
-//    private void declineOtherPurchaseOrders(PurchaseOrder acceptedOrder) {
-//        List<PurchaseOrder> purchaseOrders = purchaseOrderRepository.getPurchaseOrdersByProperty(
-//                acceptedOrder.getAnnouncementDTO().getProperty().getId());
-//
-//        for (PurchaseOrder order : purchaseOrders) {
-//            if (!order.getId().equals(acceptedOrder.getId())) {
-//                order.decline();
+//            // Decline all other purchase orders for the property
+//            List<PurchaseOrder> otherPurchaseOrders = purchaseOrderRepository.getByProperty(purchaseOrder.getProperty());
+//            for (PurchaseOrder otherPurchaseOrder : otherPurchaseOrders) {
+//                if (!otherPurchaseOrder.equals(purchaseOrder)) {
+//                    declinePurchaseOrder(otherPurchaseOrder);
+//                }
 //            }
 //        }
-//    }
 //
-//    private void sendEmailNotification(String customerEmail, String message) {
-//        EmailNotification.sendEmail(customerEmail, message);
+//        public void declinePurchaseOrder(PurchaseOrder purchaseOrder) {
+//            purchaseOrderRepository.decline(purchaseOrder);
+//            emailService.sendNotification(purchaseOrder.getClient(), "Your purchase order has been declined.");
+//        }
 //    }
-//}
 
