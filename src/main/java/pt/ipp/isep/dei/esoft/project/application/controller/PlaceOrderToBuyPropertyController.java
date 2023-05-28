@@ -36,7 +36,7 @@ public class PlaceOrderToBuyPropertyController {
      */
     public List<AnnouncementDTO> announcementDTOList() {
 
-        List<Announcement> announcements = announcementRepository.getAllVisibleAnnouncements();
+        List<Announcement> announcements = announcementRepository.getPublishedAnnouncements();
 
         return AnnouncementMapper.convert(announcements);
     }

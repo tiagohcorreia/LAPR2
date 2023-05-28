@@ -89,7 +89,7 @@ public class EmployeeRepository implements Serializable {
      *
      * @return the employee list
      */
-    public List<Employee> getEmployeeList() {
+    public static List<Employee> getEmployeeList() {
 
         return new ArrayList<>(employeeList);
     }

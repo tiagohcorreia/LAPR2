@@ -1,8 +1,11 @@
 package pt.ipp.isep.dei.esoft.project.application.controller.authorization;
 
+import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
 import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
+import pt.isep.lei.esoft.auth.AuthFacade;
+
 
 import java.util.List;
 
@@ -81,10 +84,19 @@ public class AuthenticationController {
         pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();
         return new pt.ipp.isep.dei.esoft.project.application.session.UserSession(userSession);
     }
+    public String getAgentName() {
+       pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();
+        if (userSession != null) {
+            userSession.getUserName();
+            return userSession.getUserName();
+        } else {
+            return null;
+        }
+    }
 
-   //* public String getCurrentUserName() {
-      //  UserSession userSession = this.authenticationRepository.getCurrentUserSession();
-       // return userSession.getUserName();
-   //}
+   public String getCurrentUserSession() {
+       pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();
+        return userSession.getUserName();
+   }
 
 }

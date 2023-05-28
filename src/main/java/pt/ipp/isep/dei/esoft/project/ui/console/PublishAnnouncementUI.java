@@ -4,10 +4,15 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 import pt.ipp.isep.dei.esoft.project.application.controller.PublishAnnouncementController;
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.ipp.isep.dei.esoft.project.domain.model.City;
+import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,12 +50,13 @@ public class PublishAnnouncementUI implements Runnable {
         boolean hasLoft = false;
         SunExposure sunExposure = null;
         int area;
-        City location;
+        Location location;
         int distance;
         float price;
         ArrayList<String> photographs = new ArrayList<>();
         String photo;
         ArrayList<String> availableEquipment = new ArrayList<>();
+        Date date=null;
 
 
         boolean confirmed = false;
@@ -64,6 +70,15 @@ public class PublishAnnouncementUI implements Runnable {
 
         //String agent = Utils.readLineFromConsole("Agent, insert your name:: ");
         // Employee agentResp = this.controller.getEmployee(agent);
+        // date
+        String dateString = Utils.readLineFromConsole("Insert the date (YYYY-MM-DD):");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            date = dateFormat.parse(dateString);
+        } catch (ParseException e) {
+            System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
+        }
 
         //typeOfBusiness
         List<TypeOfBusiness> typeOfBusinessList = this.controller.getTypeOfBusinessAsList();
@@ -109,10 +124,17 @@ public class PublishAnnouncementUI implements Runnable {
             scanner.nextLine();
 
             //location
-            System.out.println("Location:");
-            String city = scanner.nextLine();
-            location = this.controller.getCity(city);
+            String city = Utils.readLineFromConsole("Insert the city:");
+            location = null;
+            City existingCity = this.controller.getCity(city);
+            if (existingCity != null) {
+                String street = Utils.readLineFromConsole("Insert the street:");
+                String postalCode = Utils.readLineFromConsole("Insert the postal code:");
 
+                location = new Location(street, postalCode, existingCity);
+            } else {
+                System.out.println("City not found in the repository. Please enter a valid city.");
+            }
             //distanceFromCityCenter
             System.out.println("Distance from city center(km2):");
             distance = scanner.nextInt();
@@ -277,7 +299,7 @@ public class PublishAnnouncementUI implements Runnable {
             String confirm = scanner.next();
             if (confirm.equalsIgnoreCase("y")) {
 
-                this.controller.createAnnouncement(sellOrRent, posTypeOfProperty, bedrooms, bathrooms, parkingSpaces, availableEquipment, hasBasement, hasLoft,
+                this.controller.createAnnouncement(date,sellOrRent, posTypeOfProperty, bedrooms, bathrooms, parkingSpaces, availableEquipment, hasBasement, hasLoft,
                         sunExposure, area, location, distance, commission, price, photographs, agentName);
                 System.out.println("Ad created successfully!\n");
                 confirmed = true;

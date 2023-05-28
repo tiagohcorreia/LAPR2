@@ -15,7 +15,7 @@ public class Land extends Property{
      * @param cityCentreDistance the city centre distance
      * @param photographs        the photographs
      */
-    public Land(float area, City location, float cityCentreDistance, ArrayList<String> photographs) {
+    public Land(float area, Location location, float cityCentreDistance, ArrayList<String> photographs) {
         super(area, location, cityCentreDistance, photographs);
     }
 

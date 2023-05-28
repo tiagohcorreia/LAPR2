@@ -36,7 +36,7 @@ public class House extends Property implements MultiStoryInhabitableProperty {
      * @param hasInhabitableLoft    the has inhabitable loft
      * @param sunExposure           the sun exposure
      */
-    public House(float area, City location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
+    public House(float area, Location location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
         super(area, location, cityCentreDistance, photographs);
         this.numberOfBedrooms=setNumberOfBedrooms(numberOfBedrooms);
         this.numberOfBathrooms=setNumberOfBathrooms(numberOfBathrooms);

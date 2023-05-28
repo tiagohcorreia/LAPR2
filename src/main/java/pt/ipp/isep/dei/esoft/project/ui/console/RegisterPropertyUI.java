@@ -4,14 +4,19 @@ import pt.ipp.isep.dei.esoft.project.application.controller.RegisterPropertyCont
 import pt.ipp.isep.dei.esoft.project.domain.model.City;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 
+import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,6 +41,7 @@ public class RegisterPropertyUI implements Runnable {
         boolean success = true;
 
         while (success) {
+
             TypeOfBusiness sellOrRent;
             TypeOfProperty typeProperty;
             int numberOfBedrooms = 0;
@@ -50,7 +56,7 @@ public class RegisterPropertyUI implements Runnable {
             String hasInhabitalLoftString="";
             SunExposure sunExposure = null;
             int area;
-            City location;
+            Location location;
             int cityCenterDistance;
             float price;
             ArrayList<String> photographs = new ArrayList();
@@ -58,6 +64,20 @@ public class RegisterPropertyUI implements Runnable {
             int numberPhotos = 1;
             String agent;
             Employee choosedAgent;
+            Date date = null;
+
+
+
+            // date
+            String dateString = Utils.readLineFromConsole("Insert the date (YYYY-MM-DD):");
+
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                 date = dateFormat.parse(dateString);
+            } catch (ParseException e) {
+                System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
+            }
 
 
             //Type of property
@@ -70,10 +90,21 @@ public class RegisterPropertyUI implements Runnable {
             area = Utils.readIntegerFromConsole("Insert area in m2: ");
 
             //Location
-
             String city = Utils.readLineFromConsole("Insert the city:");
-            location = this.controller.getCity(city);
+            location = null;
 
+            City existingCity = this.controller.getCity(city);
+            if (existingCity != null) {
+
+                String street = Utils.readLineFromConsole("Insert the street:");
+                String postalCode = Utils.readLineFromConsole("Insert the postal code:");
+
+
+                location = new Location(street, postalCode, existingCity);
+            } else {
+
+                System.out.println("City not found in the repository. Please enter a valid city.");
+            }
 
             //area in m2
             cityCenterDistance = Utils.readIntegerFromConsole("Insert the distance from the centre: ");
@@ -152,7 +183,7 @@ public class RegisterPropertyUI implements Runnable {
 
                 try {
 
-                    this.controller.createAnnouncement(sellOrRent, posTypeOfProperty, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipmentList, hasBasement, hasInhabitalLoft,
+                    this.controller.createAnnouncement(date, sellOrRent, posTypeOfProperty, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipmentList, hasBasement, hasInhabitalLoft,
                             sunExposure, area, location, cityCenterDistance, price, photographs, choosedAgent);
                     success = false;
                     if (success) {

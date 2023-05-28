@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,13 @@ public class AnnouncementRepository {
     /**
      * The Announcements.
      */
-    private List<Announcement> announcements = new ArrayList<>();
+    List<Announcement> announcements = new ArrayList<>();
+    List<Announcement> publishedAnnouncements = new ArrayList<>();
+     List<Announcement> requestedAnnouncements = new ArrayList<>();
+    List<Announcement> soldAnnouncements = new ArrayList<>();
+    List<Announcement> rentedAnnouncements = new ArrayList<>();
+     List<Announcement> pendentAnnouncements = new ArrayList<>();
+    List<Announcement> rejectedAnnouncements = new ArrayList<>();
 
     /**
      * Save boolean.
@@ -20,16 +27,72 @@ public class AnnouncementRepository {
      * @param announcement the announcement
      * @return the boolean
      */
+
+
     public boolean save(Announcement announcement) {
         return announcements.add(announcement.getAnnouncement());
     }
 
-    /**
-     * Create announcement boolean.
-     *
-     * @param announcement the announcement
-     * @return the boolean
-     */
+    public void saveAnnouncement(Announcement announcement) {
+        AnnouncementStatus status = announcement.getStatus();
+        switch (status) {
+            case PUBLISHED:
+                publishedAnnouncements.add(announcement);
+                break;
+            case REQUESTED:
+                requestedAnnouncements.add(announcement);
+                break;
+            case SOLD:
+                soldAnnouncements.add(announcement);
+                break;
+            case RENTED:
+                rentedAnnouncements.add(announcement);
+                break;
+            case PENDENT:
+                pendentAnnouncements.add(announcement);
+                break;
+            case REJECTED:
+                rejectedAnnouncements.add(announcement);
+                break;
+        }
+        announcements.add(announcement);
+    }
+
+    public List<Announcement> getPublishedAnnouncements() {
+        return publishedAnnouncements;
+    }
+
+    public List<Announcement> getRequestedAnnouncements() {
+        return requestedAnnouncements;
+    }
+
+    public List<Announcement> getSoldAnnouncements() {
+        return soldAnnouncements;
+    }
+
+    public List<Announcement> getRentedAnnouncements() {
+        return rentedAnnouncements;
+    }
+
+    public List<Announcement> getPendentAnnouncements() {
+        return pendentAnnouncements;
+    }
+
+    public List<Announcement> getRejectedAnnouncements() {
+        return rejectedAnnouncements;
+    }
+
+    public List<Announcement> getAllAnnouncements() {
+        return announcements;
+    }
+
+
+/**
+ * Create announcement boolean.
+ *
+ * @param announcement the announcement
+ * @return the boolean
+ */
     public boolean createAnnouncement (Announcement announcement) {
 
         if(validateAnnouncement(announcement)) {
@@ -75,7 +138,7 @@ public class AnnouncementRepository {
      *
      * @return the all visible announcements
      */
-    public List<Announcement> getAllVisibleAnnouncements() {
+   /* public List<Announcement> getAllVisibleAnnouncements() {
         List<Announcement> allVisibleAnnouncements = new ArrayList<>();
         for(Announcement announcement : announcements){
             if (announcement.isVisible()){
@@ -84,6 +147,9 @@ public class AnnouncementRepository {
         }
         return allVisibleAnnouncements;
     }
+
+    */
+
 
 
     /**
@@ -99,7 +165,7 @@ public class AnnouncementRepository {
 
         //TO-FIX
         for(Announcement announcement : announcements){
-            if ( announcement != null && announcement.isVisible()){
+            if ( announcement != null && announcement.getStatus() == AnnouncementStatus.PUBLISHED){
                 if (!availableFields.get(0).contains(announcement.getTypeOfBusiness())){
                     availableFields.get(0).add(announcement.getTypeOfBusiness());
                 }
@@ -133,4 +199,19 @@ public class AnnouncementRepository {
         return matchingAnnouncements;
     }
 
+    public List<Announcement> getRequestsByAgentName(String agentName) {
+        List<Announcement> agentRequests = new ArrayList<>();
+
+        for (Announcement announcement : announcements) {
+            if (announcement.getStatus() == AnnouncementStatus.REQUESTED && announcement.getAgent().equals(agentName)) {
+                agentRequests.add(announcement);
+            }
+        }
+
+        return agentRequests;
+    }
 }
+
+
+
+

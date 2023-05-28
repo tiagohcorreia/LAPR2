@@ -11,6 +11,6 @@ public class AnnouncementLocationComparator implements Comparator<Announcement> 
     @Override
     public int compare(Announcement o1, Announcement o2) {
         //return CharSequence.compare(o1.getProperty().getLocation().getStreet(), o2.getProperty().getLocation().getStreet());
-        return CharSequence.compare(o1.getProperty().getLocation().getName(), o2.getProperty().getLocation().getName());
+        return CharSequence.compare(o1.getProperty().getLocation().getCity().getName(), o2.getProperty().getLocation().getCity().getName());
     }
 }

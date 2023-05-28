@@ -286,6 +286,17 @@ public class Employee implements Serializable {
         return passportNumber == employee.passportNumber && taxNumber == employee.taxNumber && telephoneNumber == employee.telephoneNumber && Objects.equals(name, employee.name) && Objects.equals(address, employee.address) && Objects.equals(emailAdress, employee.emailAdress) && role == employee.role && agency == employee.agency;
     }
 
+    public boolean equals1(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Employee other = (Employee) obj;
+        return Objects.equals(name, other.name);
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, passportNumber, taxNumber, address, emailAdress, telephoneNumber, role, agency);

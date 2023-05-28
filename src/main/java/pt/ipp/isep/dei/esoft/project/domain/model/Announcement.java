@@ -1,21 +1,30 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
+import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 
 /**
  * The type Announcement.
  */
 public class Announcement {
-    private boolean visible;
+   // private boolean visible;
+
+    private Date date;
+    private AnnouncementStatus status;
     private float price;
     private float commission;
     private TypeOfBusiness typeOfBusiness;
     private Property property;
     private Employee agent;
+    private String reason;
 
     /**
      * Instantiates a new Announcement.
      *
-     * @param visible        the visible
      * @param price          the price
      * @param commission     the  agent commission
      * @param typeOfBusiness the type of business (sellor/rent)
@@ -23,13 +32,31 @@ public class Announcement {
      * @param agent          the agent
      */
 //Full constructor
-    public Announcement(boolean visible, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
-        this.setVisible(visible);
+    public Announcement(Date date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
+        this.setDate(date);
+        this.setStatus(status);
         this.setPrice(price);
         this.setCommission(commission);
         this.setTypeOfBusiness(typeOfBusiness);
         this.setProperty(property);
         this.setAgent(agent);
+    }
+
+    public void setStatus(AnnouncementStatus status) {
+
+        this.status = status;
+    }
+    public AnnouncementStatus getStatus(){
+
+        return status;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     /**
@@ -58,7 +85,7 @@ public class Announcement {
      */
 //Default constructor
     public Announcement(){
-        this.setVisible(false);
+        this.setStatus(AnnouncementStatus.PENDENT);
         this.setPrice(0);
         this.setCommission(0);
         this.setTypeOfBusiness(TypeOfBusiness.SELL);
@@ -73,7 +100,8 @@ public class Announcement {
      */
 //Copy constructor
     public Announcement(Announcement anotherAnnouncement){
-        this.setVisible(anotherAnnouncement.isVisible());
+        this.setDate(anotherAnnouncement.getDate());
+        this.setStatus(anotherAnnouncement.getStatus());
         this.setPrice(anotherAnnouncement.getPrice());
         this.setCommission(anotherAnnouncement.getCommission());
         this.setTypeOfBusiness(anotherAnnouncement.getTypeOfBusiness());
@@ -99,10 +127,10 @@ public class Announcement {
      */
     public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
         if (!typeOfBusiness.equals("LAND")) {
-            if (this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase()) && numberOfBedrooms == this.getProperty().getNumberOfBedrooms()) {
+            if (this.status == AnnouncementStatus.PUBLISHED && typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase()) && numberOfBedrooms == this.getProperty().getNumberOfBedrooms()) {
                 return new Announcement(this);
             }
-        } else if(this.isVisible() && typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase())){
+        } else if(this.status == AnnouncementStatus.PUBLISHED&& typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase())){
             return new Announcement(this);
         }
         return null;
@@ -114,18 +142,19 @@ public class Announcement {
      *
      * @return the boolean
      */
-    public boolean isVisible() {
+   /* public boolean isVisible() {
         return this.visible;
-    }
+    }/*
 
     /**
      * Sets visible.
      *
      * @param visible the visible
      */
-    public void setVisible(boolean visible) {
+   /* public void setVisible(boolean visible) {
         this.visible = visible;
     }
+    */
 
     /**
      * Gets price.
@@ -201,27 +230,35 @@ public class Announcement {
     public void setAgent(Employee agent) {
         this.agent = agent;
     }
+    public void setRejectionReason(String reason) {
+        this.reason = reason;
+    }
 
     //TO-FIX
     public String toString(){
-        String visibility = (this.visible) ? "yes" : "no";
+            String status = (this.status == AnnouncementStatus.PUBLISHED) ? "Published" : "Not Published";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
         return String.format("Announcement - " +
-                "Visible: %s\t" +
-                "Business Type: %s\t" +
-                "Property: %s\t" +
-                "Price: %f\t" +
-                "Commission: %f\t" +
-                "Agent: %s\t",
-                visibility,
-                this.typeOfBusiness.toString(),
-                this.property.toString(),
+                    "Date: %tD\t" +
+            "Status: %s\t" +
+            "Business Type: %s\t" +
+             "Property: %s\t" +
+             "Price: %.2f\t" +
+             "Commission: %.2f\t" +
+              "Agent: %s\t",
+                dateFormat.format(this.date),
+               this.status,
+               this.typeOfBusiness.toString(),
+               this.property.toString(),
                 this.price,
                 this.commission,
-                this.agent.toString());
-    }
+               this.agent.toString());
+        }
 
     public String getAnnouncementAsString() {
         String result =
+                getDate().toString() +"\t" +
                 getTypeOfBusiness().toString() + "\t" +
                 getProperty().getClass().getSimpleName() + "\t" +
                 getPrice() + "\t" +
@@ -233,5 +270,6 @@ public class Announcement {
                 getAgent().getName();
         return result;
     }
+
 
 }

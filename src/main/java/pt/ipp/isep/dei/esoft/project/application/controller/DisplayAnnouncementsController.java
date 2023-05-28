@@ -42,7 +42,7 @@ public class DisplayAnnouncementsController {
      * @return the list
      */
     public List<Announcement> getAllVisibleAnnouncements(){
-        return announcementRepository.getAllVisibleAnnouncements();
+        return announcementRepository.getPublishedAnnouncements();
     }
 
 }
