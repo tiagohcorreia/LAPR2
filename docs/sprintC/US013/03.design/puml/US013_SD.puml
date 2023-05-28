@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "Network Manager" as nm
+participant ":ListAllEmployeesUI" as ui
+participant ":ListAllEmployeesController" as ctrl
+
+
+participant ":Repositories" as repos
+participant "repositories\n:Repositories" as repositories
+participant "employeeRepository\n:EmployeeRepository" as EmpR
+participant "branchRepository\n:BranchRepository" as BraR
+
+
+
+activate nm
+nm -> ui: requests to list all employees
+activate ui
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance()
+activate repos
+return repositories
+
+ctrl -> repositories: getBranchRepository()
+activate repositories
+return branchRepository
+
+ctrl -> repositories: getEmployeeRepository()
+activate repositories
+return employeeRepository
+
+
+
+ctrl -> BraR: getAllBranches()
+
+activate BraR
+BraR -> BraR: SortBranchesByListings(branches)
+
+return sortedBranches
+
+loop for each branch
+
+ctrl -> EmpR: getEmployeesByBranchID(branch)
+activate EmpR
+EmpR -> EmpR: sortEmployeesAlphabetically(employees)
+EmpR -> ctrl: sortedEmployeesAlphabeticallyByBranch
+deactivate EmpR
+end
+
+
+ctrl -> ui: sortedEmployees
+
+ui -> nm: shows sorted list of employess
+
+@enduml

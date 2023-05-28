@@ -1,0 +1,62 @@
+@startuml
+
+class Branch {
+
+   
+}
+
+class Employee {
+
+
+}
+
+class ListAllEmployeesUI {
+
+    
+
+}
+
+class ListAllEmployeesController {
+
+  
+}
+
+class BranchRepository {
+
+    +getAllBranches()
+    +sortBranchesByListings(Branches)
+    +getListingTotalByBranch(ID)
+    
+}
+
+class EmployeeRepository {
+
+    +getEmployeesByBranchID(ID)
+    +sortEmployeesAlphabetically(Branch)
+
+}
+
+
+class Repositories {
+
+    +getInstance()
+    +getEmployeeRepository()
+    +getBranchRepository()
+
+}
+
+
+ListAllEmployeesUI -[dashed]-> ListAllEmployeesController
+ListAllEmployeesController-[dashed]-> Repositories
+Repositories --> Repositories
+Repositories --> EmployeeRepository
+Repositories --> BranchRepository
+
+
+
+
+Branch -left-> BranchRepository
+Employee -right-> EmployeeRepository
+
+
+@enduml

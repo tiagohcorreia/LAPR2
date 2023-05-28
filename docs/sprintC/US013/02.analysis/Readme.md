@@ -1,4 +1,4 @@
-# US 013 - Sort Employees
+# US 013 - List all employees
 
 ## 2. Analysis
 
