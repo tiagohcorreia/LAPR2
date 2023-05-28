@@ -1,12 +1,13 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The enum Agency.
  */
-public enum Agency {
+public enum Agency implements Serializable {
 
     /**
      * The Agency 1.

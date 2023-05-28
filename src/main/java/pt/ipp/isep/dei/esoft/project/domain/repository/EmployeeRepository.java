@@ -2,13 +2,15 @@ package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 
+import javax.imageio.IIOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type Register employee repository.
  */
-public class EmployeeRepository {
+public class EmployeeRepository implements Serializable {
 
     /**
      * The constant employeeList.
@@ -147,5 +149,34 @@ public class EmployeeRepository {
             }
         }
         return null;
+    }
+
+    public void readObject() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/employee.ser"));
+            ois.readObject();
+            System.out.println(employeeList);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    public void writeObject() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/employee.ser"));
+            oos.writeObject(employeeList);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        }
     }
 }

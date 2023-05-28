@@ -84,14 +84,18 @@ public class RegisterEmployeeUI implements Runnable {
 
                     System.err.println(e.getMessage());
 
+                } catch (ClassCastException cce) {
+
+                    System.out.println(cce.getMessage());
+
                 } catch (Exception e) {
 
                     System.out.println(e.getMessage());
-
                 }
 
                 System.out.println("Employee name: " + emplyeeName);
                 System.out.println("Employee Passport Number: " + employeePassportNumber);
+                System.out.println("Employee Tax Number: " + taxNumber);
                 System.out.println("Employee Address: " + address);
                 System.out.println("Employee E-mail: " + eMail);
                 System.out.println("Employee Telephone Number: " + telephoneNumber);

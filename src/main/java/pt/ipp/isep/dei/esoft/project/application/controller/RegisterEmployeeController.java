@@ -18,7 +18,7 @@ import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.gene
  */
 public class RegisterEmployeeController {
 
-    private EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository = new EmployeeRepository();
 
     /**
      * Instantiates a new Register employee controller.
@@ -26,7 +26,9 @@ public class RegisterEmployeeController {
      * @param employeeRepository the employee repository
      */
     public RegisterEmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+        //EmployeeRepository employeeRepository1 = new EmployeeRepository();
+        this.employeeRepository.readObject();
+        //this.employeeRepository = employeeRepository;
     }
 
     /**
@@ -70,6 +72,7 @@ public class RegisterEmployeeController {
         try {
 
             this.employeeRepository.saveEmployee(newEmployee);
+            this.employeeRepository.writeObject();
             System.out.println();
             return newEmployee.toString();
 

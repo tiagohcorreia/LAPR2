@@ -1,8 +1,6 @@
 
 w
 Gdocs/sprintC/global-artifacts/01.requirements-engineering/puml/UCD.puml,a\a\aa98e63aa51f8bb7d02b3c356cd274a2432badbc
-C
-APP_FILES/email.txt,6\c\6cc5cd8f7f8c046eed62aee2a0fb3aa1bcf8090f
 u
 Edocs/sprintC/global-artifacts/01.requirements-engineering/svg/UCD.svg,f\6\f60cc213465f976cccafb8774d09ed05bd866afb
 l
@@ -19,14 +17,10 @@ Y
 )docs/sprintC/US003/03.design/puml/CD.puml,b\8\b82580b4cfa98c90de7602daaaa3cb1139d6e1f1
 Y
 )docs/sprintC/US003/03.design/puml/SD.puml,2\2\22e1e6411f25497ac9b7ba7edcb9a3a2099a7de2
-r
-Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Role.java,6\5\65b5cf0f6bf88b995571224cf6bd7d023b031ba4
 x
 Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AgentUI.java,4\d\4db040abbfc19875a8da8604f243d6234dfa18ad
 t
 Dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Branch.java,5\e\5ee4012e1371b548690c7d2478592df3cc0ca63a
-t
-Dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Agency.java,1\f\1f6581c0e64b132e61bffebd9f1fe1c345baf130
 Å
 Qsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PublishAnnouncementUI.java,e\3\e39d570332e455cb8f6bdecc4c2babee30369fc9
 W
@@ -61,8 +55,6 @@ z
 Jdocs/sprintC/US010/01.requirements-engineering/Requirements Engineering.md,4\0\40d4888ab98ad3c0f96294e6ee8a497de5765569
 p
 @src/main/java/pt/ipp/isep/dei/esoft/project/domain/Employee.java,d\6\d6a9205b2dbee76e44f3c4c862501a1bcd3869ad
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
 w
 Gsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTwoTest.java,0\b\0b38d53ea00375a88cd95f700d85b70a8c9a55b3
 É
@@ -83,3 +75,25 @@ l
 docs/Readme.md,8\8\8852bdbc387d7ee2411bf902cf4808c5a4ded8a2
 Ç
 Rsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/mappers/AnnouncementMapper.java,6\f\6f177605ed4572bf461a450d197f1b4718035c03
+ï
+esrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PublishAnnouncementController.java,5\a\5aa707f0b07a84d4c69be7429e1838ed656307e8
+ñ
+fsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/DisplayAnnouncementsController.java,2\5\25b2b91a324bc84e50ea6bd33f18eb5da2ea9f8b
+Ç
+Rsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/DisplayAnnouncementsUI.java,3\4\34f954f5ea973a3fe85331d804a3bde64f8bf741
+m
+=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
+z
+Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
+v
+Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Property.java,1\d\1d552c1006ef511d6f57b98c18b4837269e359d4
+r
+Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Land.java,4\6\465639bb2c564d8f9da6a87096c6ce854b3f4c90
+{
+Ksrc/main/java/pt/ipp/isep/dei/esoft/project/domain/dto/AnnouncementDTO.java,e\e\ee3c4402ef715a947eca3b741597a9bf840d11bd
+â
+Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepository.java,c\8\c805ca1cbd80f0ac94482e0d78c0adf7bc47eeb0
+Ö
+Usrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PlaceOrderToBuyPropertyUI.java,1\1\11c3f0e6ee016f152206f9eb3b0b10bb8157d0ef
+ô
+isrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PlaceOrderToBuyPropertyController.java,f\2\f23e3482c7029e1e6c436ec449042c4065f6a470
