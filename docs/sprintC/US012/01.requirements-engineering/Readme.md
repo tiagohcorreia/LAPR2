@@ -94,16 +94,8 @@ name=Legacy Agent; passport card number=000000000; tax number=000000000, email a
 
 ### 1.6. System Sequence Diagram (SSD)
 
-**Other alternatives might exist.**
-
-#### Alternative One
-
 ![System Sequence Diagram - Alternative One](svg/us012-system-sequence-diagram.svg)
-
-#### Alternative Two
-
-![System Sequence Diagram - Alternative Two](svg/us006-system-sequence-diagram-alternative-two.svg)
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* N/A

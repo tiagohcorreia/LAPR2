@@ -45,13 +45,22 @@
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * Organization
- * Task
+ * Employee
+ * Announcement
+ * Client
+ * Branch
+ * Property
 
 Other software classes (i.e. Pure Fabrication) identified: 
 
- * CreateTaskUI  
- * CreateTaskController
+ * LegacyImportUI  
+ * LegacyImportController
+ * ClientRepository
+ * BranchRepository
+ * AnnouncementRepository
+ * EmployeeRepository
+ * CsvHandler
+ * FileOps
 
 
 ## 3.2. Sequence Diagram (SD)
