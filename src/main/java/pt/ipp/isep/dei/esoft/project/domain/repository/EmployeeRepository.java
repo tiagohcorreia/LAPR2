@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The type Register employee repository.
+ * The type Employee repository.
  */
 public class EmployeeRepository implements Serializable {
 
@@ -151,6 +151,9 @@ public class EmployeeRepository implements Serializable {
         return null;
     }
 
+    /**
+     * Read object.
+     */
     public void readObject() {
 
         try {
@@ -166,6 +169,9 @@ public class EmployeeRepository implements Serializable {
         }
     }
 
+    /**
+     * Write object.
+     */
     public void writeObject() {
 
         try {

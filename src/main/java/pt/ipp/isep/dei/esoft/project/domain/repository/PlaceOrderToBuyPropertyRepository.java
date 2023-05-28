@@ -90,6 +90,9 @@ public class PlaceOrderToBuyPropertyRepository implements Serializable {
         return stringBuilder.toString();
     }
 
+    /**
+     * Read object.
+     */
     public void readObject() {
 
         try {
@@ -105,6 +108,9 @@ public class PlaceOrderToBuyPropertyRepository implements Serializable {
         }
     }
 
+    /**
+     * Write object.
+     */
     public void writeObject() {
 
         try {
