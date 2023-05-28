@@ -1,40 +1,41 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 
+import pt.ipp.isep.dei.esoft.project.domain.model.Order;
 import pt.ipp.isep.dei.esoft.project.domain.model.Property;
-import pt.ipp.isep.dei.esoft.project.domain.model.PurchaseOrder;
+//import pt.ipp.isep.dei.esoft.project.domain.model.PurchaseOrder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PurchaseOrderRepository {
 
-    private List<PurchaseOrder> purchaseOrders;
+    private List<Order> purchaseOrders;
 
     public PurchaseOrderRepository() {
         this.purchaseOrders = new ArrayList<>();
     }
 
     // Save a purchase order
-    public void save(PurchaseOrder purchaseOrder) {
+    public void save(Order purchaseOrder) {
         purchaseOrders.add(purchaseOrder);
     }
 
     // Delete a purchase order
-    public void delete(PurchaseOrder purchaseOrder) {
+    public void delete(Order purchaseOrder) {
         purchaseOrders.remove(purchaseOrder);
     }
 
     // Get all purchase orders
-    public List<PurchaseOrder> getAll() {
+    public List<Order> getAll() {
         return purchaseOrders;
     }
 
     // Get purchase order by property
-    public List<PurchaseOrder> getByProperty(Property property) {
-        List<PurchaseOrder> result = new ArrayList<>();
-        for (PurchaseOrder purchaseOrder : purchaseOrders) {
-            if (purchaseOrder.getProperty().equals(property)) {
+    public List<Order> getByProperty(Property property) {
+        List<Order> result = new ArrayList<>();
+        for (Order purchaseOrder : purchaseOrders) {
+            if (purchaseOrder.getAnnouncementDTO().getProperty().equals(property)) {
                 result.add(purchaseOrder);
             }
         }
@@ -42,17 +43,17 @@ public class PurchaseOrderRepository {
     }
 
     // Accept a purchase order
-    public void accept(PurchaseOrder purchaseOrder) {
-        purchaseOrder.setAccepted(true);
+    public void accept(Order purchaseOrder) {
+        purchaseOrder.setStatus(true);
     }
 
     // Decline a purchase order
-    public void decline(PurchaseOrder purchaseOrder) {
-        purchaseOrder.setAccepted(false);
+    public void decline(Order purchaseOrder) {
+        purchaseOrder.setStatus(false);
     }
 
-    public PurchaseOrder getPurchaseOrderById(String id) {
-        for (PurchaseOrder order : this.purchaseOrders) {
+    public Order getPurchaseOrderById(String id) {
+        for (Order order : this.purchaseOrders) {
             if (order.getId().equals(id)) {
                 return order;
             }
@@ -61,7 +62,7 @@ public class PurchaseOrderRepository {
     }
 
     // Update a purchase order
-    public void updatePurchaseOrder(PurchaseOrder updatedOrder) {
+    public void updatePurchaseOrder(Order updatedOrder) {
         int indexToUpdate = -1;
         for (int i = 0; i < purchaseOrders.size(); i++) {
             if (purchaseOrders.get(i).getId().equals(updatedOrder.getId())) {

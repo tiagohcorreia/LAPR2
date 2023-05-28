@@ -9,11 +9,13 @@ import java.util.Objects;
 /**
  * The type Order.
  */
-public class Order implements Serializable {
+public class Order implements Serializable{
 
+    private String id;
     private double orderAmount;
     private AnnouncementDTO announcementDTO;
     private static boolean status = false;     //True - the order was accepted   False - the order is not accepted
+    private Client client;
 
     /**
      * Instantiates a new Order.
@@ -25,6 +27,17 @@ public class Order implements Serializable {
 
         this.orderAmount = setOrderAmount(orderAmount);
         this.announcementDTO = setAnnouncementDTO(announcementDTO);
+    }
+
+    public Order(String id, double orderAmount, AnnouncementDTO announcementDTO, Client client) {
+        this.id = id;
+        this.orderAmount = orderAmount;
+        this.announcementDTO = announcementDTO;
+        this.client = client;
+    }
+
+    public String getId() {
+        return id;
     }
 
     /**
@@ -43,6 +56,10 @@ public class Order implements Serializable {
      */
     public AnnouncementDTO getAnnouncementDTO() {
         return announcementDTO;
+    }
+
+    public Client getClient() {
+        return client;
     }
 
     /**
@@ -92,6 +109,7 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Order{");
+        sb.append("id=").append(id);
         sb.append("orderAmount=").append(orderAmount);
         sb.append(", announcementDTO=").append(announcementDTO);
         sb.append('}');
@@ -103,11 +121,11 @@ public class Order implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Double.compare(order.orderAmount, orderAmount) == 0 && Objects.equals(announcementDTO, order.announcementDTO);
+        return Double.compare(order.orderAmount, orderAmount) == 0 && Objects.equals(id, order.id) && Objects.equals(announcementDTO, order.announcementDTO);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderAmount, announcementDTO);
+        return Objects.hash(id, orderAmount, announcementDTO);
     }
 }

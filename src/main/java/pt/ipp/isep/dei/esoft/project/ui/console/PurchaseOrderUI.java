@@ -1,8 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.PurchaseOrderController;
+import pt.ipp.isep.dei.esoft.project.domain.model.Order;
 import pt.ipp.isep.dei.esoft.project.domain.model.Property;
-import pt.ipp.isep.dei.esoft.project.domain.model.PurchaseOrder;
+//import pt.ipp.isep.dei.esoft.project.domain.model.PurchaseOrder;
 
 import java.util.List;
 import java.util.Scanner;
@@ -28,7 +29,7 @@ public class PurchaseOrderUI implements Runnable {
 
             switch (option) {
                 case "1":
-                    List<PurchaseOrder> purchaseOrders = purchaseOrderController.getPurchaseOrdersByProperty(property);
+                    List<Order> purchaseOrders = purchaseOrderController.getPurchaseOrdersByProperty(property);
                     purchaseOrders.forEach(System.out::println);
                     break;
                 case "2":
