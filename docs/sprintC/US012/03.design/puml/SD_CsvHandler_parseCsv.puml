@@ -15,19 +15,19 @@ participant "branchRepository\n:BranchRepository" as BraR
 'participant ":Employee" as Emp
 'participant ":Announcement" as Ann
 'participant ":Property" as Pro
-participant ":Location" as loc
+participant "location\n:Location" as loc
 
 -> ch: parseCsv(csv)
-activate ch
+
 loop for entry in csv
-    ch -> ch: getEntry()
+
     activate ch
 
     ch -> ch: parseBranchData()
     activate ch
-    ch -> ch: branchLocation = parseBranchLocation()
+    ch -> ch: branchLocation = parseLocation()
     activate ch
-    ch -> loc: create
+    ch -> loc**: create
     activate loc
     loc -> loc: validate()
     return location
@@ -39,9 +39,9 @@ loop for entry in csv
         "branch\n:Branch" -> "branch\n:Branch": validate()
         return branch
         return branch
-        ch -> BraR: saveBranch(branch)
-        activate BraR
-        return true
+
+
+
     deactivate ch
 
     ch -> ch: parseClientData()
@@ -51,28 +51,25 @@ loop for entry in csv
     '    loc -> loc: validate()
     '    return location
     'deactivate ch
-    ch -> CliR: createClient(\nname, address, phoneNumber, email)
+    ch -> CliR: createClient(\nname, passportNumber,\ntaxNumber, phoneNumber, email)
         activate CliR
         CliR -> "client\n:Client"**: create
         activate "client\n:Client"
         "client\n:Client" -> "client\n:Client": validate()
         return client
         return client
-        ch -> CliR: saveClient(client)
-                activate CliR
-                return true
     deactivate ch
 
     ch -> ch: parsePropertyData()
     activate ch
-    ch -> ch: propertyLocation = parsePropertyLocation()
+    ch -> ch: parseLocation()
     activate ch
-    ch -> loc: create
+    ch -> loc**: create
             activate loc
             loc -> loc: validate()
             return location
             deactivate ch
-    ch -> ":Announcement": createProperty(\nname, address, phoneNumber, email)
+    ch -> ":Announcement": createProperty(\nname, location, phoneNumber, email)
         activate ":Announcement"
         ":Announcement" -> "property\n:Property"**: create
         activate "property\n:Property"
@@ -90,13 +87,26 @@ loop for entry in csv
         "announcement\n:Announcement" -> "announcement\n:Announcement": validate()
         return announcement
         return announcement
-        ch -> AnnR: saveAnnouncement(announcement)
-                activate AnnR
-                return true
+
+
+
     deactivate ch
 
+    ch -> BraR: saveBranch(branch)
+        activate BraR
+        BraR -> BraR: validate()
+        return true
+
+    ch -> CliR: saveClient(client)
+        activate CliR
+        CliR -> CliR: validate()
+        return true
+
+    ch -> AnnR: saveAnnouncement(announcement)
+        activate AnnR
+        AnnR -> AnnR: validate()
+        return true
 
 end
-deactivate ch
 return true
 @enduml
