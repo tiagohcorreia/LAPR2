@@ -16,7 +16,7 @@ public class PlaceOrderToBuyPropertyController {
 
     private AnnouncementRepository announcementRepository = new AnnouncementRepository();
     private AnnouncementMapper announcementMapper;
-    private PlaceOrderToBuyPropertyRepository orderRepository;
+    private PlaceOrderToBuyPropertyRepository orderRepository = new PlaceOrderToBuyPropertyRepository();
 
     /**
      * Instantiates a new Place order to buy property controller.
@@ -24,6 +24,8 @@ public class PlaceOrderToBuyPropertyController {
      * @param orderRepository the order repository
      */
     public PlaceOrderToBuyPropertyController(PlaceOrderToBuyPropertyRepository orderRepository) {
+
+        this.orderRepository.readObject();
         this.orderRepository = orderRepository;
     }
 
@@ -53,6 +55,8 @@ public class PlaceOrderToBuyPropertyController {
         try {
 
             this.orderRepository.saveOrder(newOrder);
+            this.orderRepository.writeObject();
+
             return newOrder.toString();
 
         } catch (Exception e) {

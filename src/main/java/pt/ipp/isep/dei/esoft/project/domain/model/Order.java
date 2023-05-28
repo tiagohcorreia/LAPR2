@@ -3,12 +3,13 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * The type Order.
  */
-public class Order {
+public class Order implements Serializable {
 
     private double orderAmount;
     private AnnouncementDTO announcementDTO;

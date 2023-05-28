@@ -63,28 +63,18 @@ z
 Jdocs/sprintC/US010/04.tests-and-implementation/Tests and Implementation.md,9\b\9bca0ba3be4be2d49e9725ac05e6e5b3ad62f91b
 w
 Gsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/OrderTest.java,e\9\e92b1115be037b10477776a12196d88c5ae58345
-s
-Csrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Order.java,2\0\20aae18838b3f671aa33ec2f9a8e90e3bd49a809
-”
-dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/PlaceOrderToBuyPropertyRepository.java,e\d\ed1e941c31133e4a508bbf65921728943224a0cf
 L
 docs/sprintC/US010/Readme.md,5\7\57620ce78b7b1a07d6db03a8998b06a631ad558d
 l
 <src/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/Readme.md,d\c\dc39a93105e346f11afedb3793424d0f9efae8c2
 >
 docs/Readme.md,8\8\8852bdbc387d7ee2411bf902cf4808c5a4ded8a2
-‚
-Rsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/mappers/AnnouncementMapper.java,6\f\6f177605ed4572bf461a450d197f1b4718035c03
 •
 esrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PublishAnnouncementController.java,5\a\5aa707f0b07a84d4c69be7429e1838ed656307e8
 –
 fsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/DisplayAnnouncementsController.java,2\5\25b2b91a324bc84e50ea6bd33f18eb5da2ea9f8b
 ‚
 Rsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/DisplayAnnouncementsUI.java,3\4\34f954f5ea973a3fe85331d804a3bde64f8bf741
-m
-=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
-™
-isrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PlaceOrderToBuyPropertyController.java,f\2\f23e3482c7029e1e6c436ec449042c4065f6a470
 z
 Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
 v
@@ -93,7 +83,5 @@ r
 Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Land.java,4\6\465639bb2c564d8f9da6a87096c6ce854b3f4c90
 …
 Usrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PlaceOrderToBuyPropertyUI.java,1\1\11c3f0e6ee016f152206f9eb3b0b10bb8157d0ef
-{
-Ksrc/main/java/pt/ipp/isep/dei/esoft/project/domain/dto/AnnouncementDTO.java,e\e\ee3c4402ef715a947eca3b741597a9bf840d11bd
 ‰
 Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepository.java,c\8\c805ca1cbd80f0ac94482e0d78c0adf7bc47eeb0

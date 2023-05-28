@@ -5,13 +5,14 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Property;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type Announcement dto.
  */
-public class AnnouncementDTO {
+public class AnnouncementDTO implements Serializable {
     private float price;
     private TypeOfBusiness typeOfBusiness;
     private Property property;

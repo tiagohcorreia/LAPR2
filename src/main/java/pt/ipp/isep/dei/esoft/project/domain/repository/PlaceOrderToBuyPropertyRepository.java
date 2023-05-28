@@ -2,13 +2,14 @@ package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Order;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type Place order to buy property repository.
  */
-public class PlaceOrderToBuyPropertyRepository {
+public class PlaceOrderToBuyPropertyRepository implements Serializable {
 
     /**
      * The constant orderList.
@@ -23,7 +24,7 @@ public class PlaceOrderToBuyPropertyRepository {
      */
     public boolean saveOrder(Order order) {
 
-        if(validateOrder(order)) {
+        if (validateOrder(order)) {
 
             return addOrder(order);
         }
@@ -38,7 +39,7 @@ public class PlaceOrderToBuyPropertyRepository {
      */
     public boolean addOrder(Order order) {
 
-        if(order != null && validateOrder(order)) {
+        if (order != null && validateOrder(order)) {
 
             return this.orderList.add(order);
         }
@@ -53,9 +54,9 @@ public class PlaceOrderToBuyPropertyRepository {
      */
     public boolean validateOrder(Order order) {
 
-        for(Order order1: orderList) {
+        for (Order order1 : orderList) {
 
-            if(order.equals(order)) {
+            if (order.equals(order)) {
 
                 return false;
             }
@@ -82,11 +83,40 @@ public class PlaceOrderToBuyPropertyRepository {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        for(Order order: this.orderList) {
+        for (Order order : this.orderList) {
 
             stringBuilder.append("-").append(order.toString()).append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    public void readObject() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/order.ser"));
+            ois.readObject();
+            System.out.println(orderList);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    public void writeObject() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/order.ser"));
+            oos.writeObject(orderList);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        }
     }
 
 }
