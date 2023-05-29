@@ -15,6 +15,14 @@ skinparam monochrome true
         object Client {
         }
 
+        object AgentPhoneNumber{
+
+        }
+
+        object AgentName{
+
+        }
+
         object AppointmentRequest {
         }
 
@@ -52,7 +60,7 @@ skinparam monochrome true
         }
 
         Client -> AppointmentRequest: creates
-        AppointmentRequest "1" -- "1" Property: belongs to >
+        AppointmentRequest "1" -- "1" Announcement: belongs to >
         Property <|-- House
         Property <|-- Apartment
         Property <|-- Land
@@ -61,6 +69,10 @@ skinparam monochrome true
         Client --> Response: receives
         AppointmentRequest --> Response: has >
         Agent --> Response: provides
+        AppointmentRequest --> AgentName: has >
+        AppointmentRequest --> AgentPhoneNumber: has >
+        AgentName "1" -- "1" Agent: belongs to >
+        AgentPhoneNumber "1" -- "1" Agent: belongs to >
 
         Client -> Visit: requests
         Visit --> Property: to visit >
