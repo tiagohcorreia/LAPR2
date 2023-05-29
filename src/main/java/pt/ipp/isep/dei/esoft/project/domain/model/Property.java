@@ -19,7 +19,7 @@ public class Property {
     /**
      * The Location.
      */
-    private Location location;
+    private final Location location;
     /**
      * The City centre distance.
      */
@@ -70,8 +70,9 @@ public class Property {
      */
 //Copy constructor
     public Property(Property anotherProperty){
+        location = anotherProperty.getLocation();
         this.setArea(anotherProperty.getArea());
-        this.setLocation(anotherProperty.getLocation());
+        //this.setLocation(anotherProperty.getLocation());
         this.setCityCentreDistance(anotherProperty.getCityCentreDistance());
         this.setPhotographs(anotherProperty.getPhotographs());
     }
@@ -145,9 +146,9 @@ public class Property {
      *
      * @param location the location
      */
-    public void setLocation(Location location) {
+    /*public void setLocation(Location location) {
         this.location = location;
-    }
+    }*/
 
 
     /**
