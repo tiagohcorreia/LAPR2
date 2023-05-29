@@ -119,12 +119,13 @@ class FileOpsTest {
 
     @Test
     void ensureDeleteFileThrowsFileNotFoundException(){
-        //Arrange
+        //Act & Assert
         assertThrows(FileNotFoundException.class, () -> FileOps.deleteFile(NONEXISTENT_FILE_FILEPATH));
     }
 
     @Test
     void ensureIsFileEmptyWorks(){
+        //Act & Assert
         assertTrue(FileOps.isFileEmpty(new File(EMPTY_CSV_FILE_FILEPATH)));
     }
 }

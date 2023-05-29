@@ -14,17 +14,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CsvHandlerTest {
-
     //Filepaths
     private static final String CSV_FILE_FILEPATH = "example_csv_file.csv";
     private static final String TEST_FILE_FILEPATH = "example_text_file.txt";
-    //private static final String TEST_FILE_2_FILEPATH = "example_text_file_2.txt";
-    //private static final String EMPTY_CSV_FILE_FILEPATH = "empty_file.csv";
-    //private static final String NONEXISTENT_FILE_FILEPATH = "nofile.xyz";
 
     //File contents
     private static final String EXAMPLE_LINE_1 = "This is a, test file!";
-    //private static final String EXAMPLE_LINE_2 = "And something else...";
 
     //CSV data
     private static final List<List<String>> data = new ArrayList<>();
@@ -35,8 +30,6 @@ class CsvHandlerTest {
         //Generate files
         FileOps.createFile(CSV_FILE_FILEPATH, generateCSVString());
         FileOps.createFile(TEST_FILE_FILEPATH, EXAMPLE_LINE_1);
-        //FileOps.createFile(TEST_FILE_2_FILEPATH,EXAMPLE_LINE_1 + "\n" + EXAMPLE_LINE_2);
-        //FileOps.createFile(EMPTY_CSV_FILE_FILEPATH,"");
 
         //Generate CSV data as list of string lists
         for (int i = 0; i < 10; i++) {
@@ -53,8 +46,6 @@ class CsvHandlerTest {
     static void cleanup(){
         try {
             FileOps.deleteFile(TEST_FILE_FILEPATH);
-            //FileOps.deleteFile(TEST_FILE_2_FILEPATH);
-            //FileOps.deleteFile(EMPTY_CSV_FILE_FILEPATH);
             FileOps.deleteFile(CSV_FILE_FILEPATH);
         } catch (Exception e){
             System.out.println("Couldn't delete test files!");
@@ -105,27 +96,15 @@ class CsvHandlerTest {
 
 
     @Test
-    void ensureCsvIsEmptyThrowsIllegalArgumentException() throws InvalidFileTypeException {
+    void ensureCsvIsEmptyThrowsIllegalArgumentException() {
         //Arrange
-        //File file = new File(EMPTY_CSV_FILE_FILEPATH);
-        //List<?> csv = CsvHandler.getDataFromCsvFile(file);
         List<?> csv = new ArrayList<>();
-
-        /*
-        //Act
-        boolean result = CsvHandler.csvIsEmpty(csv);
-
-        //Assert
-        assertTrue(result);
-        */
 
         //Act & Assert
         assertThrows(IllegalArgumentException.class, () -> {
             CsvHandler.csvIsEmpty(csv);
         });
     }
-
-
 
 
     @Test
@@ -135,7 +114,6 @@ class CsvHandlerTest {
         List<?> dataWithoutHeader = this.data.subList(1,this.data.size());
 
         //Act & Assert
-        //assertEquals(CsvHandler.getDataFromCsvFile(csvFile), this.data);
         assertEquals(dataWithoutHeader,CsvHandler.getDataFromCsvFile(csvFile));
     }
 
