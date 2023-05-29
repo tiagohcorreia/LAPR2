@@ -7,7 +7,6 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.exceptions.InvalidFileTypeException;
 import pt.ipp.isep.dei.esoft.project.utils.CsvHandler;
-import pt.ipp.isep.dei.esoft.project.utils.FileHandler;
 import pt.ipp.isep.dei.esoft.project.utils.FileOps;
 
 import java.io.File;

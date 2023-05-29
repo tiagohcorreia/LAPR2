@@ -7,9 +7,10 @@ import pt.ipp.isep.dei.esoft.project.exceptions.InvalidFileTypeException;
 import java.io.File;
 import java.util.*;
 
-import static pt.ipp.isep.dei.esoft.project.utils.FileHandler.CSV_DELIMITER;
 
 public class CsvHandler {
+    public static final String CSV_DELIMITER = ";";
+
     private static final int COLUMN_OWNER_ID = 0;
     private static final int COLUMN_OWNER_NAME = 1;
     private static final int COLUMN_OWNER_PASSPORT = 2;

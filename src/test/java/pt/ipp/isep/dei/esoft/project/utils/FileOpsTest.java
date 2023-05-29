@@ -2,7 +2,6 @@ package pt.ipp.isep.dei.esoft.project.utils;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import pt.ipp.isep.dei.esoft.project.exceptions.InvalidFileTypeException;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,12 +9,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileHandlerTest {
+class FileOpsTest {
 
     //Filepaths
     private static final String CSV_FILE_FILEPATH = "example_csv_file.csv";
@@ -28,8 +25,6 @@ class FileHandlerTest {
     private static final String EXAMPLE_LINE_1 = "This is a, test file!";
     private static final String EXAMPLE_LINE_2 = "And something else...";
 
-    //CSV data
-    private static final List<List<String>> data = new ArrayList<>();
 
 
     @BeforeAll
@@ -40,14 +35,6 @@ class FileHandlerTest {
         FileOps.createFile(TEST_FILE_2_FILEPATH,EXAMPLE_LINE_1 + "\n" + EXAMPLE_LINE_2);
         FileOps.createFile(EMPTY_CSV_FILE_FILEPATH,"");
 
-        //Generate CSV data as list of string lists
-        for (int i = 0; i < 10; i++) {
-            List<String> line = new ArrayList<>();
-            for (int j = 0; j < 10; j++) {
-                line.add("L"+(i+1)+"E"+(j+1));
-            }
-            data.add(line);
-        }
     }
 
 
@@ -80,17 +67,6 @@ class FileHandlerTest {
     }
 
 
-    private List<List<String>> CSVStringToList(String csv){
-        List<List<String>> csvAsList = new ArrayList<>();
-        String[] lines = csv.split("\n");
-        for (String line: lines) {
-            String[] elements = line.split(";");
-            csvAsList.add(new ArrayList<>());
-            for (String element: elements)
-                csvAsList.get(csvAsList.size()-1).add(element);
-        }
-        return csvAsList;
-    }
 
 
     @Test
@@ -102,40 +78,6 @@ class FileHandlerTest {
         assertEquals(new File(CSV_FILE_FILEPATH), resultFile);
     }
 
-
-    @Test
-    void ensureReadCSVThrowsInvalidFileTypeException() throws FileNotFoundException {
-        //Arrange
-        FileOps.createFile(TEST_FILE_FILEPATH,"This is a, test file!");
-        File file = FileOps.readFile(TEST_FILE_FILEPATH);
-
-        //Act & Assert
-        assertThrows(InvalidFileTypeException.class, () -> {
-            List<?> csv = CsvHandler.getDataFromCsvFile(file);
-        });
-    }
-
-
-    @Test
-    void ensureCsvIsEmptyThrowsIllegalArgumentException() throws InvalidFileTypeException {
-        //Arrange
-        //File file = new File(EMPTY_CSV_FILE_FILEPATH);
-        //List<?> csv = CsvHandler.getDataFromCsvFile(file);
-        List<?> csv = new ArrayList<>();
-
-        /*
-        //Act
-        boolean result = CsvHandler.csvIsEmpty(csv);
-
-        //Assert
-        assertTrue(result);
-        */
-
-        //Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> {
-            CsvHandler.csvIsEmpty(csv);
-        });
-    }
 
 
     @Test
@@ -159,16 +101,6 @@ class FileHandlerTest {
     }
 
 
-    @Test
-    void ensureReadCSVWorks() throws InvalidFileTypeException {
-        //Arrange
-        File csvFile = new File(CSV_FILE_FILEPATH);
-        List<?> dataWithoutHeader = this.data.subList(1,this.data.size());
-
-        //Act & Assert
-        //assertEquals(CsvHandler.getDataFromCsvFile(csvFile), this.data);
-        assertEquals(dataWithoutHeader,CsvHandler.getDataFromCsvFile(csvFile));
-    }
 
 
     @Test
