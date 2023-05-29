@@ -1,0 +1,92 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "Unregistered User" as uu
+participant ":RegisterUserUI" as ui
+participant ":RegisterUserController" as ctrl
+participant "repositories\n:Repositories" as repos
+participant "authenticationRepository\n:AuthenticationRepository" as authRepo
+participant "clientRepository\n:ClientRepository" as clientRepo
+participant "newClient\n:Client" as client
+
+activate uu
+uu -> ui: starts registration
+activate ui
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance().getAuthenticationRepository()
+activate repos
+return authenticationRepository
+ctrl -> repos: getInstance().getClientRepository()
+activate repos
+return clientRepository
+deactivate ctrl
+return requests data (name, email,\npassword, CC number,\ntax number,address,\nphone number)
+
+uu -> ui: types requested data
+activate ui
+
+ui -> ctrl: createClient(input)
+activate ctrl
+ctrl -> clientRepo: createClient(input)
+activate clientRepo
+clientRepo -> client: validate()
+activate client
+    client -> client: isValidName()
+    activate client
+    deactivate client
+    client -> client: isValidName()
+    activate client
+    deactivate client
+    client -> client: isValidEmail()
+    activate client
+    deactivate client
+    client -> client: isValidPassword()
+    activate client
+    deactivate client
+    client -> client: isValidCCNumber()
+    activate client
+    deactivate client
+    client -> client: isValidTaxNumber()
+    activate client
+    deactivate client
+    client -> client: isValidAddress()
+    activate client
+    deactivate client
+    client -> client: isValidTelephoneNumber()
+    activate client
+deactivate client
+return true
+
+return newClient
+return newClient
+return shows input data and\nasks for confirmation
+
+uu -> ui: confirms data
+activate ui
+ui -> ctrl: saveClient()
+activate ctrl
+ctrl -> clientRepo: saveClient(newClient)
+activate clientRepo
+clientRepo -> clientRepo: existsClient(newClient)
+activate clientRepo
+deactivate clientRepo
+clientRepo -> clientRepo: saveClient(newClient)
+activate clientRepo
+deactivate clientRepo
+return true
+ctrl -> authRepo: addUserWithRole(..., ROLE_CLIENT)
+activate authRepo
+return true
+return true
+return shows operation success
+
+
+
+
+deactivate uu
+@enduml

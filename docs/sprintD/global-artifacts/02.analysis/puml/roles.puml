@@ -1,0 +1,103 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'skinparam linetype ortho
+'left to right direction
+skinparam classAttributeIconSize 0
+skinparam groupInheritance 1
+hide circle
+hide methods
+
+class Network{
+name
+}
+class Branch {
+name
+address
+email
+phoneNumber
+}
+class Employee {
+'name
+'taxNumber
+'cCNumber
+'address
+'email
+'phoneNumber
+}
+class BranchEmployee
+class Role
+class SysAdmin
+class NetworkAdmin
+class StoreManager
+class Agent
+class Client {
+'name
+'taxNumber
+'cCNumber
+'address
+'email
+'phoneNumber
+}
+class Buyer
+class Seller
+'class User
+abstract class Person {
+name
+taxNumber
+cCNumber
+address
+email
+phoneNumber
+}
+
+'''''Option 1 -------------------
+'Network -- Branch: owns >
+'Network - Employee: employs >
+''(Employee, Network) . Role
+'
+'Employee <|- BranchEmployee
+'BranchEmployee ---- Branch: is assigned to >
+'
+'BranchEmployee <|-- StoreManager
+'BranchEmployee <|-- Agent
+'Employee <|-- SysAdmin
+'Employee <|-- NetworkAdmin
+'
+'Person <|-- Employee
+'Person <|-- Client
+'
+'Client <|-- Buyer
+'Client <|-- Seller
+
+
+''''''Option 2 -------------
+
+Network - Person: plays role for <
+(Network, Person) . Role
+
+Role <|-- Employee
+Role <|-- Client
+
+Employee <|- BranchEmployee
+BranchEmployee --- Branch: is assigned to >
+
+BranchEmployee <|-- StoreManager
+BranchEmployee <|-- Agent
+Employee <|-- SysAdmin
+Employee <|-- NetworkAdmin
+
+'Person <|-- Employee
+'Person <|-- Client
+
+Client <|-- Buyer
+Client <|-- Seller
+
+
+
+@enduml

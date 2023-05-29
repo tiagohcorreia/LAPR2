@@ -1,0 +1,39 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD) - US 009
+
+autonumber
+
+actor "Client" as client
+participant ":System" as system
+
+activate client
+
+    client -> system : asks to schedule a visit
+    activate system
+
+        system --> client : shows list the available properties and choose one
+    deactivate system
+
+    client -> system : chooses the property
+    activate system
+
+        system --> client :  request the message (clientName, phoneNumber, day, beginHour, endHour, note)
+    deactivate system
+
+    client -> system : types the requested data
+    activate system
+
+        system --> client : shows the schedule data and asks confirmation
+    deactivate system
+
+    client -> system : confirms data and send the message
+    activate system
+
+        system --> client : displays operation success
+    deactivate system
+
+@enduml

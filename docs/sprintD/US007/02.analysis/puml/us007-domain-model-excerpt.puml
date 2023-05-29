@@ -1,0 +1,87 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+'title Domain Model
+
+'class Platform {
+'  -description
+'}
+
+class Client {
+
+}
+
+class Seller {
+
+}
+
+class Buyer {
+}
+class Visit{
+
+}
+class Agent{
+
+}
+
+class Listing{
+    propertyID
+    price
+    sellOrRent
+
+}
+class Property {
+    float area
+    City city
+    float cityCenterDistance
+    List<Image> photograph
+}
+class House {
+     int numberOfBedrooms
+     int numberOfBathrooms
+     int numberOfParkingSpaces
+     List<String> equipment
+     bool hasBasement
+     bool hasInhabitableLoft
+     SunExposure sunExposure
+}
+
+class Apartment {
+     int numberOfBedrooms
+     int numberOfBathrooms
+     int numberOfParkingSpaces
+     List<String> equipment
+}
+class Land {
+    int listingID
+    bool visible
+    float price
+    float commission
+    TypeOfBusiness typeOfBusiness
+}
+
+together {
+Buyer --|> Client
+Seller --|> Client
+}
+Buyer "1" -- "*" Property: Buys >
+Visit "1" -- "1" Buyer: requests <
+Visit "1" - "1" Agent: scheduled by >
+Seller "1" - "*" Property: owns >
+Seller "1" -- "*" Listing: creates >
+Agent "1" --- "*" Listing: validates >
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+@enduml

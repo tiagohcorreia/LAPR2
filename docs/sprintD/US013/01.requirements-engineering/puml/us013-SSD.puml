@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title US013(SSD) - List all employees working in every store of the network
+
+autonumber
+
+actor "Network Manager" as NetworkManager
+participant ":System" as System
+
+activate NetworkManager
+    NetworkManager -> System : requests to list all employees
+    activate System
+    System --> NetworkManager : shows sorted employee list
+    deactivate System
+deactivate NetworkManager
+@enduml

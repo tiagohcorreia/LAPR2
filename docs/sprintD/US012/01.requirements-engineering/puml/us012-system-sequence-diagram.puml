@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor "System Administrator" as sa
+participant ":System" as sys
+
+activate sa
+sa -> sys: starts importing data
+activate sys
+return requests file path
+
+sa -> sys: types file path
+activate sys
+alt
+    sys --> sa: informs operation success
+else
+    sys --> sa: inform no CSV file found
+else
+    return inform file is empty
+
+end
+
+deactivate sa
+
+@enduml

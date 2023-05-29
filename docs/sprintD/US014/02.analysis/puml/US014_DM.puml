@@ -1,0 +1,75 @@
+@startuml
+skinparam monochrome true
+        skinparam packageStyle rectangle
+        skinparam shadowing false
+
+        'left to right direction
+
+        skinparam classAttributeIconSize 0
+
+        hide circle
+        hide methods
+
+        title US014 Domain Model
+
+        object Client {
+        }
+
+        object AppointmentRequest {
+        }
+
+        object Property {
+        }
+
+        object House {
+        }
+
+        object Apartment {
+        }
+
+        object Land {
+        }
+
+        object Agent {
+        }
+
+        object Visit {
+        }
+
+        object Announcement {
+        }
+
+        object Commission {
+        }
+
+        object FixedCommission {
+        }
+
+        object PercentageCommission {
+        }
+
+        object Response {
+        }
+
+        Client -> AppointmentRequest: creates
+        AppointmentRequest "1" -- "1" Property: belongs to >
+        Property <|-- House
+        Property <|-- Apartment
+        Property <|-- Land
+        AppointmentRequest --> Agent: assigned to >
+
+        Client --> Response: receives
+        AppointmentRequest --> Response: has >
+        Agent --> Response: provides
+
+        Client -> Visit: requests
+        Visit --> Property: to visit >
+        Agent --> Visit: validates >
+
+        Announcement "1" -- "1" Property: contains >
+        Announcement "1" ---> "1" Commission: has a >
+
+        Commission <|-- FixedCommission
+        Commission <|-- PercentageCommission
+
+@enduml

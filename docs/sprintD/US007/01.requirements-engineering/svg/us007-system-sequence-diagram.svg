@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="442px" preserveAspectRatio="none" style="width:329px;height:442px;background:#FFFFFF;" version="1.1" viewBox="0 0 329 442" width="329px" zoomAndPan="magnify"><defs><filter height="300%" id="f1t38xg5y1ll24" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#f1t38xg5y1ll24)" height="239.5156" style="stroke:#A80036;stroke-width:1.0;" width="10" x="60" y="99.6094"/><rect fill="#FFFFFF" filter="url(#f1t38xg5y1ll24)" height="79.4063" style="stroke:#A80036;stroke-width:1.0;" width="10" x="280" y="121.9609"/><rect fill="#FFFFFF" filter="url(#f1t38xg5y1ll24)" height="46.7031" style="stroke:#A80036;stroke-width:1.0;" width="10" x="280" y="231.7188"/><rect fill="#FFFFFF" filter="url(#f1t38xg5y1ll24)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="280" y="308.7734"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="65" x2="65" y1="89.6094" y2="357.125"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="285" x2="285" y1="89.6094" y2="357.125"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="5" y="86.5332">Unregistered User</text><ellipse cx="65" cy="15" fill="#FEFECE" filter="url(#f1t38xg5y1ll24)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M65,23 L65,50 M52,31 L78,31 M65,50 L52,65 M65,50 L78,65 " fill="none" filter="url(#f1t38xg5y1ll24)" style="stroke:#A80036;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="5" y="370.6582">Unregistered User</text><ellipse cx="65" cy="383.7344" fill="#FEFECE" filter="url(#f1t38xg5y1ll24)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M65,391.7344 L65,418.7344 M52,399.7344 L78,399.7344 M65,418.7344 L52,433.7344 M65,418.7344 L78,433.7344 " fill="none" filter="url(#f1t38xg5y1ll24)" style="stroke:#A80036;stroke-width:2.0;"/><rect fill="#FEFECE" filter="url(#f1t38xg5y1ll24)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="64" x="251" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="258" y="74.5332">:System</text><rect fill="#FEFECE" filter="url(#f1t38xg5y1ll24)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="64" x="251" y="356.125"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="258" y="377.6582">:System</text><rect fill="#FFFFFF" filter="url(#f1t38xg5y1ll24)" height="239.5156" style="stroke:#A80036;stroke-width:1.0;" width="10" x="60" y="99.6094"/><rect fill="#FFFFFF" filter="url(#f1t38xg5y1ll24)" height="79.4063" style="stroke:#A80036;stroke-width:1.0;" width="10" x="280" y="121.9609"/><rect fill="#FFFFFF" filter="url(#f1t38xg5y1ll24)" height="46.7031" style="stroke:#A80036;stroke-width:1.0;" width="10" x="280" y="231.7188"/><rect fill="#FFFFFF" filter="url(#f1t38xg5y1ll24)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="280" y="308.7734"/><polygon fill="#A80036" points="268,117.9609,278,121.9609,268,125.9609,272,121.9609" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="70" x2="274" y1="121.9609" y2="121.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="77" y="117.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="88" y="117.1045">starts registering in the system</text><polygon fill="#A80036" points="81,197.3672,71,201.3672,81,205.3672,77,201.3672" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="75" x2="284" y1="201.3672" y2="201.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="87" y="171.9834">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="162" x="98" y="147.4561">requests data (name, email,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="98" y="163.8076">password, CC number,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="119" x="98" y="180.1592">tax number,address,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="98" y="196.5107">phone number)</text><polygon fill="#A80036" points="268,227.7188,278,231.7188,268,235.7188,272,231.7188" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="70" x2="274" y1="231.7188" y2="231.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="77" y="226.8623">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="122" x="88" y="226.8623">types requested data</text><polygon fill="#A80036" points="81,274.4219,71,278.4219,81,282.4219,77,278.4219" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="75" x2="284" y1="278.4219" y2="278.4219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="87" y="265.3896">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="98" y="257.2139">shows input data and</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="120" x="98" y="273.5654">asks for confirmation</text><polygon fill="#A80036" points="268,304.7734,278,308.7734,268,312.7734,272,308.7734" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="70" x2="274" y1="308.7734" y2="308.7734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="77" y="303.917">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="88" y="303.917">confirms data</text><polygon fill="#A80036" points="76,335.125,66,339.125,76,343.125,72,339.125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="70" x2="284" y1="339.125" y2="339.125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82" y="334.2686">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="152" x="93" y="334.2686">informs operation success</text><!--MD5=[bfc622f3985439025a24174d3ec96841]
+@startuml
+
+actor "Unregistered User" as user
+participant ":System" as ui
+
+autonumber
+activate user
+user -> ui: starts registering in the system
+activate ui
+return requests data (name, email,\npassword, CC number,\ntax number,address,\nphone number)
+deactivate ui
+
+user -> ui: types requested data
+activate ui
+return shows input data and\nasks for confirmation
+deactivate ui
+
+user -> ui: confirms data
+activate ui
+return informs operation success
+
+
+
+
+'deactivate ui
+'user -> ui: types name
+'activate ui
+'ui - -> user: requests user e-mail
+'deactivate ui
+'user -> ui: types user e-mail
+'activate ui
+'ui - -> user: requests user password
+'deactivate ui
+'user -> ui: types user password
+'activate ui
+'ui - -> user: shows typed data and asks for confirmaation
+'deactivate ui
+'user -> ui: confirms data
+'activate ui
+'ui - -> user: informs operation success
+
+deactivate ui
+deactivate user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
+
+@startuml
+
+actor "Unregistered User" as user
+participant ":System" as ui
+
+autonumber
+activate user
+user -> ui: starts registering in the system
+activate ui
+return requests data (name, email,\npassword, CC number,\ntax number,address,\nphone number)
+deactivate ui
+
+user -> ui: types requested data
+activate ui
+return shows input data and\nasks for confirmation
+deactivate ui
+
+user -> ui: confirms data
+activate ui
+return informs operation success
+
+
+
+
+
+deactivate ui
+deactivate user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
+
+PlantUML version 1.2022.1(Tue Feb 01 18:19:58 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>

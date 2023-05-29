@@ -1,0 +1,89 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam shadowing false
+allowmixing
+
+package UI {
+    class LegacyImportUI{
+        +run()
+        -getFilePath()
+    }
+}
+
+package Controller {
+    class LegacyImportController{
+        +importFile()
+    }
+}
+
+package Utils{
+    class CsvHandler{
+        +readCsv(File):List<>
+        +csvIsEmpty(List<>):boolean
+        +getDataFromCSVFile(File):List<>
+        +parseCSV()
+        -extensionIsCsv():boolean
+        -parseBranchData():Branch
+        -parseClientData():Client
+        -parsePropertyData():Property
+        -parseAnnouncementData():Announcement
+        -parseLocation():Location
+    }
+
+    class FileOps{
+    +readFile(String):File
+    +appendToFile(String, String):boolean
+    +createFile(String, String):boolean
+    +deleteFile(String):boolean
+
+    }
+
+    CsvHandler .> FileOps
+}
+
+
+
+package Domain{
+    class Repositories
+    class Employee
+    class EmployeeRepository
+    class Branch
+    class BranchRepository
+    class Announcement
+    class AnnouncementRepository
+    class Client
+    class ClientRepository
+    class Property
+    class Location
+
+}
+
+
+LegacyImportUI -[dashed]-> LegacyImportController
+LegacyImportController -[dashed]-> EmployeeRepository
+LegacyImportController -[dashed]-> CsvHandler
+
+CsvHandler --[dashed]-> EmployeeRepository
+CsvHandler --[dashed]-> AnnouncementRepository
+CsvHandler --[dashed]-> BranchRepository
+CsvHandler --[dashed]-> ClientRepository
+
+
+Repositories "1" *-- "1" EmployeeRepository
+Repositories "1" *-- "1" ClientRepository
+Repositories "1" *-- "1" AnnouncementRepository
+Repositories "1" *-- "1" BranchRepository
+
+EmployeeRepository "1" o-- "*" Employee
+ClientRepository "1" o-- "*" Client
+AnnouncementRepository "1" o-- "*" Announcement
+BranchRepository "1" o-- "*" Branch
+
+Announcement "1" *-- "1" Property
+
+
+Branch "1" *-- "1" Location
+Property "1" *-- "1" Location
+
+
+@enduml

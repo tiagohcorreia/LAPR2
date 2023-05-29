@@ -1,0 +1,50 @@
+@startuml
+
+@startuml
+
+
+class Repositories{
+}
+class RegisterEmployeeRepository{
+}
+class Announcement{
+    + validateAnnouncement()
+    + addAnnouncement()
+}
+class Property{
+    - int propertyID
+    - float area
+    - String address
+    - float cityCentreDistance
+    - Arraylist<String> photographs
+    + validateProperty()
+}
+
+class RegisterPropertyUI {
+    + getAgent()
+    + createAnnouncement()
+
+}
+
+class RegisterPropertyController {
+    + getInstance()
+    + getEmployeeRepository()
+    + getAgents()
+    + createProperty()
+    + createAnnouncement()
+}
+
+class AnnouncementRepository {
+    + createAnnouncement()
+}
+
+
+RegisterPropertyUI ..> RegisterPropertyController
+RegisterPropertyController ..> Repositories : repositories
+RegisterPropertyController ..> RegisterEmployeeRepository : RegisterEmployeeRepository
+RegisterPropertyController ..> AnnouncementRepository : announcementRepository
+RegisterPropertyController ..> Property: property
+AnnouncementRepository --> Announcement
+Repositories -> Repositories : instance
+
+@enduml

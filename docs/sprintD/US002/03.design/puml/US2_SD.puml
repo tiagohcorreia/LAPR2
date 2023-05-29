@@ -1,0 +1,142 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":PublishAnnouncementUI" as UI
+participant ":PublishAnnouncementController" as CTRL
+participant "new Property\n:Property" as Property
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "repositories\n:Repositories" as REP
+participant ":AnnouncementRepository" as AnnouncementREP
+participant "new Announcement\n:Announcement" as Announcement
+
+
+activate AG
+
+        AG -> UI : asks to publish an announcement
+        activate UI
+
+        UI --> AG : request data
+
+        AG -> UI : select the property type
+
+        UI --> AG : presents the data to be\n filled in by the type of porperty
+
+        AG -> UI : insert the requested data (size, location, distance \nfrom the city center, price, commission)
+
+        UI --> AG : validate data
+
+        AG -> UI : submits data
+
+
+               UI -> CTRL** : create
+
+               UI -> CTRL : createAnnouncement((Business,size, location,\n distance from the city \n center, price, commission))
+
+               CTRL -> CTRL : getEmployeeFromSession()
+                           activate CTRL
+
+                               CTRL -> _APP: getInstance()
+                               activate _APP
+                                   _APP -> CTRL: appSession
+                               deactivate _APP
+
+
+                               CTRL -> APP: getCurrentSession()
+                               activate APP
+
+                                   APP --> CTRL: currentSession
+                               deactivate APP
+
+                               CTRL -> SESSAO: email = getUserEmail()
+                               activate SESSAO
+
+                                   SESSAO --> CTRL: email
+                               deactivate SESSAO
+
+
+                               CTRL -> REP: getAgencyRepository(email)
+                               activate REP
+
+                                   REP --> CTRL:AgencyRepository
+                               deactivate REP
+
+
+                               CTRL -> AgencyRepository: getAgencyByAgentEmail(email)
+                               activate AgencyRepository
+
+                                   loop [for each Agency
+                                       AgencyRepository -> Agency : anyAgentHasEmail(email)
+                                       activate Agency
+
+                                            Agency --> AgencyRepository : true/false
+                                       deactivate Agency
+                                   end
+                                   AgencyRepository --> CTRL : Agency
+                               deactivate AgencyRepository
+
+                               CTRL -> Agency: getAgencyByEmail(email)
+                               activate Agency
+
+                                   Agency --> CTRL : Agent
+                               deactivate Agency
+
+                               CTRL --> CTRL : Agent
+
+
+
+
+
+                   CTRL -> Property** : create
+
+                   activate Property
+                   Property -> Property: validateProperty(Property)
+
+                   Property -> CTRL: Property
+                   deactivate Property
+
+                CTRL -> AnnouncementREP**: createAnnouncement(Business,size, location,\n distance from the city \n center, price, commission, Agent, Agency))
+                activate AnnouncementREP
+
+            AnnouncementREP -> Announcement**: create(Announcement)
+
+            activate Announcement
+
+            Announcement -> Announcement: validateAnnouncement(Announcement)
+
+            Announcement -> AnnouncementREP: Announcement(Announcement)
+
+            deactivate Announcement
+
+
+               activate AnnouncementREP
+                   AnnouncementREP -> AnnouncementREP: validateAnnouncement(Announcement))
+                   activate AnnouncementREP
+                    AnnouncementREP -> AnnouncementREP: addAnnouncement (Announcement)
+
+                     AnnouncementREP --> AnnouncementREP
+                    deactivate AnnouncementREP
+
+                    AnnouncementREP --> AnnouncementREP
+                deactivate AnnouncementREP
+
+                AnnouncementREP --> CTRL : Announcement
+
+                deactivate AnnouncementREP
+
+                            CTRL --> UI: Announcement
+                            deactivate CTRL
+                            UI --> AG: displays operation success
+                    deactivate UI
+
+                deactivate AG
+
+
+          @enduml

@@ -1,0 +1,70 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+title Domain Model US009
+
+object Client {
+
+}
+
+object Visit {
+
+}
+
+object Announcement {
+
+}
+
+object Property {
+
+}
+
+object House {
+
+
+}
+
+object Apartment {
+
+}
+
+object Land {
+
+}
+
+object Commission{
+
+}
+
+object FixedCommission {
+
+}
+
+object PercentageCommission {
+
+}
+
+Client -> Visit: requests
+
+Announcement "1" -- "1" Property: contains >
+Announcement "1" ---> "1" Commission: has a >
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+Commission <|-- FixedCommission
+Commission <|-- PercentageCommission
+
+Visit --> Property: to visit >
+Agent --> Visit: validates >
+@enduml

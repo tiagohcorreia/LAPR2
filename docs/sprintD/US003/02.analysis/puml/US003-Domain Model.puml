@@ -1,0 +1,12 @@
+@startuml
+
+object Employee
+object Role
+object Agency
+object Administrator
+
+Administrator -> Employee: Registers
+Employee --> Role: has a
+Employee --> Agency: has a
+
+@enduml

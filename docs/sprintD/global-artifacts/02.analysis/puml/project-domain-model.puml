@@ -1,0 +1,200 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'skinparam linetype ortho
+'left to right direction
+skinparam classAttributeIconSize 0
+'skinparam groupInheritance 2
+hide circle
+hide methods
+
+class Location{
+street
+area
+zipCode
+}
+
+class Network{
+name
+}
+
+class Branch{
+name
+address
+email
+phoneNumber
+}
+
+class Employee{
+}
+
+class Person{
+name
+email
+cCNumber
+taxNumber
+address
+phoneNumber
+}
+
+class BranchEmployee
+
+together {
+class "System Administrator" as SysAdmin
+class "Network Manager" as NetworkMan
+}
+
+together {
+class "Store Manager" as StoreMan
+class Agent
+}
+
+class Client{
+}
+
+class Buyer
+
+class Seller
+
+class Visit{
+date
+time
+prediction
+}
+
+class Order{
+price
+}
+
+class Commission{
+value
+}
+
+class Announcement{
+state
+price
+typeOfBusiness
+}
+
+class Property{
+area
+cityCenterDistance
+photographs
+}
+
+class InhabitableProperty{
+numberOfBedrooms
+numberOfBathrooms
+numberOfParkingSpaces
+equipment
+}
+
+class House{
+hasBasement
+hasInhabitableLoft
+sunExposure
+}
+
+class Apartment{
+}
+
+class Land{
+}
+
+together {
+    class State{
+    name
+    }
+    class District{
+    name
+    }
+    class City{
+    name
+    }
+}
+
+Network "1" -- "*" Branch: owns >
+Branch "1" -- "*" Announcement: publishes >
+Announcement "1" -- "1" Property: contains >
+
+Network "1" -- "*" Employee: employs >
+
+Property <|-- InhabitableProperty
+InhabitableProperty <|-- House
+InhabitableProperty <|-- Apartment
+'Property <|-- House
+'Property <|-- Apartment
+Property <|-- Land
+
+BranchEmployee --|> Employee
+
+Person <|-- Employee
+Person <|-- Client
+
+Employee <|-- SysAdmin
+Employee <|-- NetworkMan
+BranchEmployee <|- StoreMan
+BranchEmployee <|- Agent
+
+'SysAdmin ---|> Employee
+'NetworkMan ---|> Employee
+'StoreMan ---|> Employee
+'Agent ---|> Employee
+
+BranchEmployee "1" - "1" Branch: assigned to >
+
+SysAdmin "1" --> "*" Employee: registers >
+SysAdmin "1" --> "*" Branch: registers >
+
+SysAdmin "1" ---> "*" State: specifies >
+SysAdmin "1" ---> "*" District: specifies >
+SysAdmin "1" ---> "*" City: specifies >
+
+NetworkMan "*" -> "1" Network: manages >
+
+StoreMan "1" -> "1" Branch: manages >
+
+Buyer --|> Client
+Seller --|> Client
+
+Seller "1" - "*" Property: owns >
+Seller "1" -- "*" Announcement: creates >
+Agent "1" - "*" Announcement: validates >
+Visit "1" - "1" Buyer: requests <
+Buyer "1" - "*" Announcement: browses >
+Visit "1" -- "1" Agent: scheduled by >
+
+Agent "1" -> "1" Commission: sets >
+
+
+District "1" -- "*" City: has >
+State "1" -- "*" District: has >
+
+
+Announcement "1" ---> "1" Commission: has a >
+
+Commission <|-- FixedCommission
+Commission <|-- PercentageCommission
+
+Buyer --> Order: submits >
+Order --> Property: to buy/rent >
+Property "1" --> "1" Location: located in >
+
+Location -> City: includes >
+
+'class User{
+'email
+'password
+'}
+'
+'User <--- SysAdmin: accesses as <
+'User <--- NetworkMan: accesses as <
+'User <--- Agent: accesses as <
+'User <--- StoreMan: accesses as <
+'User <--- Client: accesses as <
+
+@enduml
