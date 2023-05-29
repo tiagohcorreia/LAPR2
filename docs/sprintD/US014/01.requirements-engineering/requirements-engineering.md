@@ -1,4 +1,4 @@
-# US 006 - Appointment Request Response Management 
+# US 020 - Appointment Request Response Management 
 
 ## 1. Requirements Engineering
 
@@ -35,7 +35,7 @@ As a client, I want to read the response for the appointment requests, to accept
 * **AC1:** Appointment request responses should be sorted from the oldest to the newest.
 * **AC2:** When an appointment request is accepted for a property, all other requests for the same property should be automatically rejected.
 * **AC3:** When rejecting an appointment request, the client should be able to suggest a new date and time for the visit, thus triggering a new appointment request.
-
+* **AC4:** The appointment request must provide the agent name and phone number
 
 ### 1.4. Found out Dependencies
 
@@ -59,6 +59,7 @@ As a client, I want to read the response for the appointment requests, to accept
 **Output Data:**
 
 * Message of the agent
+* Name and phone number of agent
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
