@@ -55,7 +55,7 @@ class AnnouncementTest {
         Announcement announcement = new Announcement();
 
         // Assert
-        Assertions.assertEquals(AnnouncementStatus.PUBLISHED,announcement.getStatus());
+        Assertions.assertEquals(AnnouncementStatus.PENDENT,announcement.getStatus());
         Assertions.assertEquals(0.0f, announcement.getPrice());
         Assertions.assertEquals(0.0f, announcement.getCommission());
         Assertions.assertEquals(TypeOfBusiness.SELL, announcement.getTypeOfBusiness());
