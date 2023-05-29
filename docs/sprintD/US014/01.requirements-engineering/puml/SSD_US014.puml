@@ -15,7 +15,7 @@
         client -> system : check the responses to the appointment requests
         activate system
 
-        system --> client : shows the list of the appointment requests sorted by oldest
+        system --> client : shows the list of the appointment requests sorted by oldest (with the agent info displayed)
         deactivate system
         alt if the user accepts the appointment
         client -> system : accepts the appointment
