@@ -95,12 +95,11 @@ public class RegisterPropertyUI implements Runnable {
 
             City existingCity = this.controller.getCity(city);
             if (existingCity != null) {
-
+                int doorNumber = Integer.getInteger(Utils.readLineFromConsole("Insert the door number:"));
                 String street = Utils.readLineFromConsole("Insert the street:");
-                String postalCode = Utils.readLineFromConsole("Insert the postal code:");
+                int postalCode = Integer.getInteger(Utils.readLineFromConsole("Insert the postal code:"));
 
-
-                location = new Location(street, postalCode, existingCity);
+                location = new Location(doorNumber, street, existingCity, postalCode);
             } else {
 
                 System.out.println("City not found in the repository. Please enter a valid city.");

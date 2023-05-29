@@ -7,12 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList
         ;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
+import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
@@ -34,7 +37,7 @@ public class AnnouncementRepositoryTest {
         Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", 1234567890, Role.AGENT, Agency.AGENCY1);
 
         AnnouncementRepository repository = new AnnouncementRepository();
-        Announcement announcement = new Announcement(true, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new City("lisboa"),1,photographs), agent);
+        Announcement announcement = new Announcement(new Date(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
         assertTrue(repository.save(announcement));
     }
 
@@ -49,7 +52,7 @@ public class AnnouncementRepositoryTest {
 
         Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", 1234567890, Role.AGENT, Agency.AGENCY1);
         AnnouncementRepository repository = new AnnouncementRepository();
-        Announcement announcement = new Announcement(true, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new City("lisboa"),1,photographs), agent);
+        Announcement announcement = new Announcement(new Date(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
         assertTrue(repository.createAnnouncement(announcement));
     }
 
@@ -65,7 +68,7 @@ public class AnnouncementRepositoryTest {
         Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", 1234567890, Role.AGENT, Agency.AGENCY1);
 
         AnnouncementRepository repository = new AnnouncementRepository();
-        Announcement announcement = new Announcement(true, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new City("lisboa"),1,photographs), agent);
+        Announcement announcement = new Announcement(new Date(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
         assertTrue(repository.validateAnnouncement(announcement));
         repository.save(announcement);
         assertFalse(repository.validateAnnouncement(announcement));
@@ -83,7 +86,7 @@ public class AnnouncementRepositoryTest {
         Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", 1234567890, Role.AGENT, Agency.AGENCY1);
 
         AnnouncementRepository repository = new AnnouncementRepository();
-        Announcement announcement = new Announcement(true, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new City("lisboa"),1,photographs), agent);
+        Announcement announcement = new Announcement(new Date(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
         assertTrue(repository.addAnnouncement(announcement));
         assertFalse(repository.addAnnouncement(null));
         assertFalse(repository.addAnnouncement(announcement));

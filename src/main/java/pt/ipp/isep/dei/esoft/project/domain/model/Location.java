@@ -32,11 +32,18 @@ public class Location {
     }
 
 
+
+
     private boolean isValid(){
         return false;
     }
 
-    public Location(){}
+    public Location(){
+        doorNumber = 0;
+        street = "Street Zero";
+        city = new City("City Zero");
+        zipCode = 0;
+    }
 
 //    private boolean doorNumberIsValid(int doorNumber){
 //        if (doorNumber < 1)

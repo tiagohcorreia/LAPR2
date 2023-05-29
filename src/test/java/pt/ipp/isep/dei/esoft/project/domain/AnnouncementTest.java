@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -23,7 +25,8 @@ class AnnouncementTest {
     @Test
     void ensureAnnouncementIsCreated() {
         // Arrange
-        boolean visible = true;
+        Date date = new Date();
+        AnnouncementStatus announcementStatus = AnnouncementStatus.PUBLISHED;
         float price = 1000.0f;
         float commission = 50.0f;
         TypeOfBusiness typeOfBusiness = TypeOfBusiness.SELL;
@@ -32,10 +35,10 @@ class AnnouncementTest {
         Employee agent = new Employee("employee", 123456789, 123456789, "as", "employee@this.app", 1234567890, Role.AGENT, Agency.AGENCY1);
 
         // Act
-        Announcement announcement = new Announcement(visible, price, commission, typeOfBusiness, property, agent);
+        Announcement announcement = new Announcement(date, announcementStatus, price, commission, typeOfBusiness, property, agent);
 
         // Assert
-        Assertions.assertEquals(visible, announcement.isVisible());
+        Assertions.assertEquals(date, announcement.getDate());
         Assertions.assertEquals(price, announcement.getPrice());
         Assertions.assertEquals(commission, announcement.getCommission());
         Assertions.assertEquals(typeOfBusiness, announcement.getTypeOfBusiness());
@@ -52,7 +55,7 @@ class AnnouncementTest {
         Announcement announcement = new Announcement();
 
         // Assert
-        Assertions.assertFalse(announcement.isVisible());
+        Assertions.assertEquals(AnnouncementStatus.PUBLISHED,announcement.getStatus());
         Assertions.assertEquals(0.0f, announcement.getPrice());
         Assertions.assertEquals(0.0f, announcement.getCommission());
         Assertions.assertEquals(TypeOfBusiness.SELL, announcement.getTypeOfBusiness());

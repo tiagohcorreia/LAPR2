@@ -64,7 +64,8 @@ public class CsvHandler {
         List<List<String>> csv = new ArrayList<>();
         try {
             Scanner sc = new Scanner(file);
-            sc.useDelimiter(CSV_DELIMITER);
+            sc.useDelimiter(",");
+            //boolean a=sc.hasNext();
             while (sc.hasNextLine()) {
                 List<String> thisLine = new ArrayList<>();
                 String line = sc.nextLine();
@@ -76,7 +77,8 @@ public class CsvHandler {
         } finally {
             csvIsEmpty(csv);
             //Remove the header
-            return csv.remove(0);
+            csv.remove(0);
+            return csv;
         }
     }
 

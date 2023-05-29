@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Property {
 
     private static final float DEFAULT_AREA = 1;
-    private static final Location DEFAULT_LOCATION = new Location("A", "000", new City("A"));
+    private static final Location DEFAULT_LOCATION = new Location(0,"Street Zero", new City("City Zero"), 0);
     private static final float DEFAULT_CITY_CENTER_DISTANCE = 10;
     private static final ArrayList<String> DEFAULT_PHOTOGRAPHS = new ArrayList<>();
 
@@ -44,7 +44,7 @@ public class Property {
         this.photographs = setPhotographs(photographs);
     }
 
-    public Property(String id, float area, City location, float cityCentreDistance, ArrayList<String> photographs) {
+    public Property(String id, float area, Location location, float cityCentreDistance, ArrayList<String> photographs) {
         this.id = id;
         this.area = area;
         this.location = location;

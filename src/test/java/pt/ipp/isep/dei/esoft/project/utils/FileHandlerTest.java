@@ -69,7 +69,9 @@ class FileHandlerTest {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                sb.append("L" + (i+1) + "E" + (j+1) + ",");
+                sb.append("L" + (i+1) + "E" + (j+1));
+                if (j != 9)
+                    sb.append(",");
             }
             sb.append("\n");
         }
@@ -115,16 +117,24 @@ class FileHandlerTest {
 
 
     @Test
-    void ensureCsvIsEmptyWorks() throws InvalidFileTypeException {
+    void ensureCsvIsEmptyThrowsIllegalArgumentException() throws InvalidFileTypeException {
         //Arrange
-        File file = new File(EMPTY_CSV_FILE_FILEPATH);
-        List<?> csv = CsvHandler.getDataFromCsvFile(file);
+        //File file = new File(EMPTY_CSV_FILE_FILEPATH);
+        //List<?> csv = CsvHandler.getDataFromCsvFile(file);
+        List<?> csv = new ArrayList<>();
 
+        /*
         //Act
         boolean result = CsvHandler.csvIsEmpty(csv);
 
         //Assert
         assertTrue(result);
+        */
+
+        //Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            CsvHandler.csvIsEmpty(csv);
+        });
     }
 
 
@@ -153,9 +163,11 @@ class FileHandlerTest {
     void ensureReadCSVWorks() throws InvalidFileTypeException {
         //Arrange
         File csvFile = new File(CSV_FILE_FILEPATH);
+        List<?> dataWithoutHeader = this.data.subList(1,this.data.size());
 
         //Act & Assert
-        assertEquals(CsvHandler.getDataFromCsvFile(csvFile), this.data);
+        //assertEquals(CsvHandler.getDataFromCsvFile(csvFile), this.data);
+        assertEquals(dataWithoutHeader,CsvHandler.getDataFromCsvFile(csvFile));
     }
 
 

@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.domain;
 
+import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.model.Property;
 import pt.ipp.isep.dei.esoft.project.domain.model.City;
@@ -24,12 +25,13 @@ class PropertyTest {
     void EnsureNegativePropertyAreaFails(){
 
         assertThrows(IllegalArgumentException.class, () -> {
-            City city=new City("Porto");
+            //City city=new City("Porto");
+            Location location = new Location();
             ArrayList<String> photos= new ArrayList<>();
             photos.add("sdifmoie");
             ArrayList<String> equipment= new ArrayList<>();
             equipment.add("sdifmoie");
-            Property p1 = new House(35,city,23,photos,12,3,1,equipment,true,false,SunExposure.getSunExposureById(1));
+            Property p1 = new House(35,location,23,photos,12,3,1,equipment,true,false,SunExposure.getSunExposureById(1));
             p1.setArea(-1);
 
         });
@@ -43,12 +45,13 @@ class PropertyTest {
     void EnsureNullHouseAreaFails(){
 
         assertThrows(IllegalArgumentException.class, () -> {
-            City city=new City("Porto");
+            //City city=new City("Porto");
+            Location location = new Location();
             ArrayList<String> photos= new ArrayList<>();
             photos.add("sdifmoie");
             ArrayList<String> equipment= new ArrayList<>();
             photos.add("sdifmoie");
-            Property p1 = new House(35,city,23,photos,12,3,1,equipment,true,false,SunExposure.getSunExposureById(1));
+            Property p1 = new House(35,location,23,photos,12,3,1,equipment,true,false,SunExposure.getSunExposureById(1));
             p1.setCityCentreDistance(-1);
         });
     }
@@ -61,12 +64,12 @@ class PropertyTest {
     void EnsureNullPhotosArrayFails(){
 
         assertThrows(NullPointerException.class, () -> {
-            City city=new City("Porto");
-            ArrayList<String> photos= new ArrayList<>();
+            //City city=new City("Porto");
+            Location location = new Location();ArrayList<String> photos= new ArrayList<>();
             photos.add("sdifmoie");
             ArrayList<String> equipment= new ArrayList<>();
             photos.add("sdifmoie");
-            Property p1 = new House(35,city,23,photos,12,3,1,equipment,true,false,SunExposure.getSunExposureById(1));
+            Property p1 = new House(35,location,23,photos,12,3,1,equipment,true,false,SunExposure.getSunExposureById(1));
             p1.setPhotographs(null);
         });
     }
@@ -79,12 +82,13 @@ class PropertyTest {
     void EnsureLimitsPhotosArrayFails(){
 
         assertThrows(IllegalArgumentException.class, () -> {
-            City city=new City("Porto");
+            //City city=new City("Porto");
+            Location location = new Location();
             ArrayList<String> photos= new ArrayList<>();
             photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");
             photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");photos.add("a");
             ArrayList<String> equipment= new ArrayList<>();
-            Property p1 = new House(35,city,23,photos,12,3,1,equipment,true,false,SunExposure.getSunExposureById(1));
+            Property p1 = new House(35,location,23,photos,12,3,1,equipment,true,false,SunExposure.getSunExposureById(1));
 
         });
     }

@@ -4,7 +4,6 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Role;
 
-import javax.imageio.IIOException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -137,7 +136,7 @@ public class EmployeeRepository implements Serializable {
      */
     public Employee getUserByEmail(String email) {
         for (Employee employee : employeeList) {
-            if (employee.getEmailAdress().equals(email)) {
+            if (employee.getEmailAddress().equals(email)) {
                 return employee;
             }
         }
@@ -152,7 +151,7 @@ public class EmployeeRepository implements Serializable {
      */
     public Employee findByEmail(String email) {
         for (Employee employee : employeeList) {
-            if (employee.getEmailAdress().equals(email)) {
+            if (employee.getEmailAddress().equals(email)) {
                 return employee;
             }
         }

@@ -12,7 +12,7 @@ public class Employee implements Serializable {
     private int passportNumber;
     private int taxNumber;
     private String address;
-    private String emailAdress;
+    private String emailAddress;
     private int telephoneNumber;
     private Role role;
     private Agency agency;
@@ -25,18 +25,18 @@ public class Employee implements Serializable {
      * @param passportNumber  the passport number
      * @param taxNumber       the tax number
      * @param address         the address
-     * @param emailAdress     the email adress
+     * @param emailAddress     the email adress
      * @param telephoneNumber the telephone number
      * @param role            the role
      * @param agency          the agency
      */
-    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAdress, int telephoneNumber, Role role, Agency agency) {
+    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAddress, int telephoneNumber, Role role, Agency agency) {
 
         this.name = setName(name);
         this.passportNumber = setPassportNumber(passportNumber);
         this.taxNumber = setTaxNumber(taxNumber);
         this.address = setAddress(address);
-        this.emailAdress = setEmailAdress(emailAdress);
+        this.emailAddress = setEmailAdress(emailAddress);
         this.telephoneNumber = setTelephoneNumber(telephoneNumber);
         this.role = role;
         this.agency = agency;
@@ -91,8 +91,8 @@ public class Employee implements Serializable {
      *
      * @return the email adress
      */
-    public String getEmailAdress() {
-        return emailAdress;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
     /**
@@ -269,7 +269,7 @@ public class Employee implements Serializable {
         sb.append(", PassportNumber=").append(passportNumber);
         sb.append(", taxNumber=").append(taxNumber);
         sb.append(", address='").append(address).append('\'');
-        sb.append(", emailAdress='").append(emailAdress).append('\'');
+        sb.append(", emailAdress='").append(emailAddress).append('\'');
         sb.append(", contactNumber=").append(telephoneNumber);
         sb.append(", role=").append(role);
         sb.append(", agency=").append(agency);
@@ -283,7 +283,7 @@ public class Employee implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return passportNumber == employee.passportNumber && taxNumber == employee.taxNumber && telephoneNumber == employee.telephoneNumber && Objects.equals(name, employee.name) && Objects.equals(address, employee.address) && Objects.equals(emailAdress, employee.emailAdress) && role == employee.role && agency == employee.agency;
+        return passportNumber == employee.passportNumber && taxNumber == employee.taxNumber && telephoneNumber == employee.telephoneNumber && Objects.equals(name, employee.name) && Objects.equals(address, employee.address) && Objects.equals(emailAddress, employee.emailAddress) && role == employee.role && agency == employee.agency;
     }
 
     public boolean equals1(Object obj) {
@@ -299,7 +299,7 @@ public class Employee implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, passportNumber, taxNumber, address, emailAdress, telephoneNumber, role, agency);
+        return Objects.hash(name, passportNumber, taxNumber, address, emailAddress, telephoneNumber, role, agency);
     }
 
     /*private void verifyIfEmployeeDataIsNotNull(String name, int passportNumber, int taxNumber, String address, String emailAdress, long telephoneNumber) {

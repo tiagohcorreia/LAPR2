@@ -3,11 +3,13 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 import org.junit.jupiter.api.Test;
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
+import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,9 +25,12 @@ class DisplayAnnouncementsControllerTest {
 //    private static String url = "http:\\\\photograps.server";
 //    private static List<String> phot = new ArrayList<>();
 //    phot.push
+  public static final Location DEFAULT_LOCATION = new Location(0, "Street Zero", new City("City Zero"), 0);
+
+
     public static final Property defaultProprty = new House(
             (float)10.3,
-            new City(),
+            DEFAULT_LOCATION,
             20,
             new ArrayList<>(),
             3,
@@ -45,12 +50,14 @@ class DisplayAnnouncementsControllerTest {
      * The constant defaultAnnouncement.
      */
     public static final Announcement defaultAnnouncement = new Announcement(
-            true,
+            new Date(),
+            AnnouncementStatus.PUBLISHED,
             20,
             5,
             TypeOfBusiness.RENT,
             defaultProprty,
-            defaultEmployee);
+            defaultEmployee
+    );
 
     /**
      * The Announcements list.
@@ -75,7 +82,8 @@ class DisplayAnnouncementsControllerTest {
             //Employee newAgent=new Employee();
             Announcement newAnnouncement = new Announcement(
                     //(i%2==0) ? true:false,
-                    true,
+                    new Date(),
+                    AnnouncementStatus.PUBLISHED,
                     (float) ((float) i*0.5),
                     10,
                     ((i%3==0) ?

@@ -4,11 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,9 +31,9 @@ class ScheduleTest {
         LocalDate day = LocalDate.of(2023, 06, 20);
         LocalTime beginHour = LocalTime.of(12,30,0);
         LocalTime endHour = LocalTime.of(13,30,0);
-        property= new Land(123,city,123,photographs);
+        property= new Land(123,new Location(),123,photographs);
         pt.ipp.isep.dei.esoft.project.domain.model.Employee e1 = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
-        announcement= new Announcement(true,1231,121,TypeOfBusiness.SELL,property,e1);
+        announcement= new Announcement(new Date(), AnnouncementStatus.PUBLISHED,1231,121,TypeOfBusiness.SELL,property,e1);
         announcementDTO = new AnnouncementDTO(123,TypeOfBusiness.SELL,property,e1);
         schedule= new Schedule("vitor",1234567891,announcementDTO,day,beginHour,endHour,"no more notes",false);
     }
