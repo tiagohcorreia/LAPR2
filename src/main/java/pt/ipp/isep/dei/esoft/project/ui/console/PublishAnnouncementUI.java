@@ -57,6 +57,10 @@ public class PublishAnnouncementUI implements Runnable {
         String photo;
         ArrayList<String> availableEquipment = new ArrayList<>();
         Date date=null;
+        int doorNumber = 0;
+        String street = null;
+        int postalCode = 0;
+
 
 
         boolean confirmed = false;
@@ -125,17 +129,20 @@ public class PublishAnnouncementUI implements Runnable {
 
             //location
             String city = Utils.readLineFromConsole("Insert the city:");
-            location = null;
+
             City existingCity = this.controller.getCity(city);
             if (existingCity != null) {
-                int doorNumber = Integer.getInteger(Utils.readLineFromConsole("Insert the door number:"));
-                String street = Utils.readLineFromConsole("Insert the street:");
-                int postalCode = Integer.getInteger(Utils.readLineFromConsole("Insert the postal code:"));
 
-                location = new Location(doorNumber, street, existingCity, postalCode);
+                street = Utils.readLineFromConsole("Insert the street:");
+                postalCode = Integer.parseInt(Utils.readLineFromConsole("Insert the postal code(5 digits):"));
+
+
             } else {
+
                 System.out.println("City not found in the repository. Please enter a valid city.");
             }
+
+
             //distanceFromCityCenter
             System.out.println("Distance from city center(km2):");
             distance = scanner.nextInt();
@@ -170,6 +177,9 @@ public class PublishAnnouncementUI implements Runnable {
 
             switch (posTypeOfProperty) {
                 case 1: // House
+
+                    doorNumber = Integer.getInteger(Utils.readLineFromConsole("Insert the door number:"));
+
                     //bedrroms
                     System.out.println("Number of bedrooms:");
                     bedrooms = scanner.nextInt();
@@ -228,6 +238,8 @@ public class PublishAnnouncementUI implements Runnable {
 
 
                 case 2: // Apartamento
+                    doorNumber = Integer.getInteger(Utils.readLineFromConsole("Insert the door number:"));
+
                     //bedrroms
                     System.out.println("Number of bedrooms:");
                     bedrooms = scanner.nextInt();
@@ -260,6 +272,7 @@ public class PublishAnnouncementUI implements Runnable {
                     System.out.println("invalid!");
                     break;
             }
+            location = new Location(doorNumber, street, existingCity, postalCode);
 
 
             System.out.println("\n");
