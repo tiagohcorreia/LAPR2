@@ -65,6 +65,10 @@ public class RegisterPropertyUI implements Runnable {
             String agent;
             Employee choosedAgent;
             Date date = null;
+            int doorNumber = 0;
+            String street = null;
+            int postalCode = 0;
+
 
 
 
@@ -95,9 +99,9 @@ public class RegisterPropertyUI implements Runnable {
 
             City existingCity = this.controller.getCity(city);
             if (existingCity != null) {
-                int doorNumber = Integer.getInteger(Utils.readLineFromConsole("Insert the door number:"));
-                String street = Utils.readLineFromConsole("Insert the street:");
-                int postalCode = Integer.getInteger(Utils.readLineFromConsole("Insert the postal code:"));
+
+                 street = Utils.readLineFromConsole("Insert the street:");
+                postalCode = Integer.parseInt(Utils.readLineFromConsole("Insert the postal code(5 digits):"));
 
                 location = new Location(doorNumber, street, existingCity, postalCode);
             } else {
@@ -116,6 +120,8 @@ public class RegisterPropertyUI implements Runnable {
             }
 
             if (posTypeOfProperty == 1 || posTypeOfProperty == 2) {
+
+                doorNumber = Integer.getInteger(Utils.readLineFromConsole("Insert the door number:"));
 
                 //Number of bedrooms
                 numberOfBedrooms = Utils.readIntegerFromConsole("Insert Number of bedrooms: ");
@@ -177,6 +183,8 @@ public class RegisterPropertyUI implements Runnable {
             sellOrRent = TypeOfBusiness.getTypeOfBusinessById(posTypeOfBusiness);
 
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
+
+            location = new Location(doorNumber, street, existingCity, postalCode);
 
             if (optValidation == 1) {
 

@@ -3,9 +3,12 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.time.LocalDate;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+
 
 /**
  * The type Announcement.
@@ -238,6 +241,8 @@ public class Announcement {
     public String toString(){
             String status = (this.status == AnnouncementStatus.PUBLISHED) ? "Published" : "Not Published";
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
 
         return String.format("Announcement - " +
                     "Date: %tD\t" +
@@ -247,7 +252,8 @@ public class Announcement {
              "Price: %.2f\t" +
              "Commission: %.2f\t" +
               "Agent: %s\t",
-                dateFormat.format(this.date),
+                dateFormatter.format(this.date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()),
+
                this.status,
                this.typeOfBusiness.toString(),
                this.property.toString(),
