@@ -9,9 +9,9 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -69,7 +69,7 @@ public class RegisterPropertyController {
      * @param photographs           the photographs
      * @param agent                 the agent
      */
-    public void createAnnouncement(Date date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
+    public void createAnnouncement(LocalDate date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
                                    ArrayList<String> equipmentList, boolean hasBasement, boolean hasInhabitalLoft, SunExposure sunExposure,
                                    int area, Location location, int cityCentreDistance, float price, ArrayList<String> photographs, Employee agent) {
         try {

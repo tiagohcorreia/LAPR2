@@ -12,7 +12,7 @@ import pt.ipp.isep.dei.esoft.project.application.controller.authorization.Authen
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -63,7 +63,7 @@ public class PublishAnnouncementController {
      * @param photographs        the photographs
      * @param agentName          the agent name
      */
-    public void createAnnouncement(Date date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
+    public void createAnnouncement(LocalDate date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
                                    ArrayList<String> equipmentList, boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
                                    int area, Location location, int cityCentreDistance, float commission, float price, ArrayList photographs, String agentName){
         EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
