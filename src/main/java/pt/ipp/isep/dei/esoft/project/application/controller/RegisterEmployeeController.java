@@ -27,6 +27,7 @@ public class RegisterEmployeeController {
      */
     public RegisterEmployeeController(EmployeeRepository employeeRepository) {
         //EmployeeRepository employeeRepository1 = new EmployeeRepository();
+
         this.employeeRepository.readObject();
         //this.employeeRepository = employeeRepository;
     }

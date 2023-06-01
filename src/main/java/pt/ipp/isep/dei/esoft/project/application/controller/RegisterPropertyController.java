@@ -9,6 +9,7 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * The type Register property controller.
  */
-public class RegisterPropertyController {
+public class RegisterPropertyController implements Serializable {
 
     /**
      * The Repositories.
@@ -47,6 +48,7 @@ public class RegisterPropertyController {
      * @param announcementRepository the announcement repository
      */
     public RegisterPropertyController(AnnouncementRepository announcementRepository) {
+        this.employeeRepository.readObject();
 
     }
 
