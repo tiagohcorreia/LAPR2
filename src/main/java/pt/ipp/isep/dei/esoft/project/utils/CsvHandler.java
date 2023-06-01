@@ -10,6 +10,7 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.exceptions.InvalidFileTypeException;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.*;
 
 import static pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository.getEmployee;
@@ -246,7 +247,7 @@ public class CsvHandler {
     }
 
     private static Announcement parseAnnouncementData(List<?> line){
-        Date date;
+        LocalDate date;
         AnnouncementStatus announcementStatus;
         float price, commission;
         TypeOfBusiness typeOfBusiness;
@@ -320,9 +321,9 @@ public class CsvHandler {
         return locationObj;
     }
 
-    private static Date parseYyyyMmDdDate(String date){
+    private static LocalDate parseYyyyMmDdDate(String date){
         String splitDate[] = date.split("-");
-        return new Date(
+        return LocalDate.of(
                 Integer.getInteger(splitDate[2]),
                 Integer.getInteger(splitDate[1]),
                 Integer.getInteger(splitDate[0])

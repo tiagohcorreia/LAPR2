@@ -7,12 +7,10 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
-import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * The type Announcement test.
@@ -25,12 +23,14 @@ class AnnouncementTest {
     @Test
     void ensureAnnouncementIsCreated() {
         // Arrange
-        Date date = new Date();
+        LocalDate date = LocalDate.now();
         AnnouncementStatus announcementStatus = AnnouncementStatus.PUBLISHED;
         float price = 1000.0f;
         float commission = 50.0f;
         TypeOfBusiness typeOfBusiness = TypeOfBusiness.SELL;
-        Property property = new Property();
+        List<String> photographs = new ArrayList<>();
+        photographs.add("photo1");
+        Property property = new House((float)10.5,new Location(),(float)10.6, (ArrayList<String>) photographs,10, 10,10,null,false, false, SunExposure.NORTH);
 
         Employee agent = new Employee("employee", 123456789, 123456789, "as", "employee@this.app", 1234567890, Role.AGENT, Agency.AGENCY1);
 
