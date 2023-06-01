@@ -28,6 +28,7 @@ class DisplayAnnouncementsControllerTest {
 //    phot.push
   public static final Location DEFAULT_LOCATION = new Location(0, "Street Zero", new City("City Zero"), 0);
 
+  public static final Branch branch = new Branch();
 
     public static final Property defaultProprty = new House(
             (float)10.3,
@@ -46,7 +47,7 @@ class DisplayAnnouncementsControllerTest {
             123123123,
             123456789,
             "Somewhere",
-            "email@mail.com",1234567890, Role.AGENT, Agency.AGENCY1);
+            "email@mail.com",1234567890, Role.AGENT, branch);
     /**
      * The constant defaultAnnouncement.
      */

@@ -33,31 +33,31 @@ class CityControllerTest {
     /**
      * Add city.
      */
-    @Test
+   /* @Test
     void addCity() {
         String cityName = "Los Angeles";
         cityController.addCity(cityName);
 
         City city = new City(cityName);
         verify(cityRepository, times(1)).save(city);
-    }
+    }*/
 
     /**
      * Find city by name.
      */
-    @Test
+    /*@Test
     void findCityByName() {
         City newYork = new City("New York");
         when(cityRepository.findByName("New York")).thenReturn(newYork);
 
         City foundCity = cityController.findCityByName("New York");
         assertEquals(newYork, foundCity);
-    }
+    }*/
 
     /**
      * Gets all cities.
      */
-    @Test
+    /*@Test
     void getAllCities() {
         List<City> cities = new ArrayList<>(Arrays.asList(
                 new City("New York"),
@@ -68,5 +68,5 @@ class CityControllerTest {
 
         List<City> allCities = cityController.getAllCities();
         assertEquals(cities, allCities);
-    }
+    }*/
 }

@@ -25,6 +25,7 @@ class ScheduleTest {
 
     @BeforeEach
     void setup(){
+        Branch branch = new Branch();
         ArrayList<String> photographs = new ArrayList<String>();
         photographs.add("photo1");
         city=new City("Porto");
@@ -32,7 +33,7 @@ class ScheduleTest {
         LocalTime beginHour = LocalTime.of(12,30,0);
         LocalTime endHour = LocalTime.of(13,30,0);
         property= new Land(123,new Location(),123,photographs);
-        pt.ipp.isep.dei.esoft.project.domain.model.Employee e1 = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+        pt.ipp.isep.dei.esoft.project.domain.model.Employee e1 = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
         announcement= new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED,1231,121,TypeOfBusiness.SELL,property,e1);
         announcementDTO = new AnnouncementDTO(123,TypeOfBusiness.SELL,property,e1);
         schedule= new Schedule("vitor",1234567891,announcementDTO,day,beginHour,endHour,"no more notes",false, false);

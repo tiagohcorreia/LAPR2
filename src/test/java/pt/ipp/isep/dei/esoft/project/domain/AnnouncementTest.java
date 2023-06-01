@@ -34,7 +34,8 @@ class AnnouncementTest {
         equipment.add("Central Heating");
         Property property = new House((float)10.5,new Location(),(float)10.6, photographs,10, 10,10, equipment,false, false, SunExposure.NORTH);
 
-        Employee agent = new Employee("employee", 123456789, 123456789, "as", "employee@this.app", 1234567890, Role.AGENT, Agency.AGENCY1);
+        Branch branch = new Branch();
+        Employee agent = new Employee("employee", 123456789, 123456789, "as", "employee@this.app", 1234567890, Role.AGENT, branch);
 
         // Act
         Announcement announcement = new Announcement(date, announcementStatus, price, commission, typeOfBusiness, property, agent);

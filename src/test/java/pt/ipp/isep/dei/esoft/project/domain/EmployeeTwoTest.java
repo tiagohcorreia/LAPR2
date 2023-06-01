@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.domain;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
+import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 
 import org.junit.jupiter.api.DisplayName;
@@ -14,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class EmployeeTwoTest {
 
+    public static final Branch branch = new Branch();
+
     //Name
 
     /**
@@ -25,7 +28,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
             e1.setName("");
         });
     }
@@ -39,7 +42,7 @@ class EmployeeTwoTest {
 
         assertThrows(NullPointerException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
             e1.setName(null);
         });
     }
@@ -58,7 +61,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", -12345678 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", -12345678 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
 
 
         });
@@ -73,7 +76,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 1234567891 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 1234567891 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
 
         });
     }
@@ -87,7 +90,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 12345678 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 12345678 , 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
 
         });
     }
@@ -106,7 +109,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , -23456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789 , -23456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
 
         });
     }
@@ -120,7 +123,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 1234567891 , 1234567891, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 1234567891 , 1234567891, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
 
         });
     }
@@ -134,7 +137,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 12345678 , 12345678, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 12345678 , 12345678, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
 
         });
     }
@@ -152,7 +155,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
             e1.setAddress("");
         });
     }
@@ -166,7 +169,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
             e1.setAddress(null);
         });
     }
@@ -185,7 +188,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
             e1.setEmailAdress(null);
         });
     }
@@ -199,7 +202,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", 1234567891, Role.AGENT, branch);
             e1.setEmailAdress("");
         });
     }
@@ -213,7 +216,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "employee123", 1234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "employee123", 1234567891, Role.AGENT, branch);
             e1.setAddress("employee123");
         });
     }
@@ -231,7 +234,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", -234567891, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", -234567891, Role.AGENT, branch);
 
         });
     }
@@ -246,7 +249,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", 123456789, Role.AGENT, Agency.AGENCY1);
+            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", 123456789, Role.AGENT, branch);
 
         });
     }
