@@ -1,9 +1,13 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+import pt.ipp.isep.dei.esoft.project.domain.model.Property;
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
+import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -100,6 +104,10 @@ public class AnnouncementRepository {
             return addAnnouncement(announcement);
         }
         return false;
+    }
+
+    public Announcement createAnnouncement (Date date, AnnouncementStatus announcementStatus, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee employee){
+        return new Announcement(date, announcementStatus,price ,commission,typeOfBusiness,property,employee);
     }
 
     /**

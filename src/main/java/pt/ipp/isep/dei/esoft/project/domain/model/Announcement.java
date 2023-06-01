@@ -1,14 +1,13 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
+import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 import java.text.DateFormat;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.time.LocalDate;
 import java.text.SimpleDateFormat;
-import java.time.ZoneId;
-
 
 /**
  * The type Announcement.
@@ -16,7 +15,7 @@ import java.time.ZoneId;
 public class Announcement {
    // private boolean visible;
 
-    private LocalDate date;
+    private Date date;
     private AnnouncementStatus status;
     private float price;
     private float commission;
@@ -35,7 +34,7 @@ public class Announcement {
      * @param agent          the agent
      */
 //Full constructor
-    public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
+    public Announcement(Date date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
         this.setDate(date);
         this.setStatus(status);
         this.setPrice(price);
@@ -54,11 +53,11 @@ public class Announcement {
         return status;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -241,21 +240,19 @@ public class Announcement {
     public String toString(){
             String status = (this.status == AnnouncementStatus.PUBLISHED) ? "Published" : "Not Published";
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
 
         return String.format("Announcement - " +
-                    "Date: %tD\t" +
-            "Status: %s\t" +
-            "Business Type: %s\t" +
-             "Property: %s\t" +
-             "Price: %.2f\t" +
-             "Commission: %.2f\t" +
-              "Agent: %s\t",
-                date.toString(),
-               this.status,
-               this.typeOfBusiness.toString(),
-               this.property.toString(),
+                        "Date: %tD\t" +
+                        "Status: %s\t" +
+                        "Business Type: %s\t" +
+                        "Property: %s\t" +
+                        "Price: %.2f\t" +
+                        "Commission: %.2f\t" +
+                        "Agent: %s\t",
+                dateFormat.format(this.date),
+                this.status,
+                this.typeOfBusiness.toString(),
+                this.property.toString(),
                 this.price,
                 this.commission,
                this.agent.toString());
@@ -276,5 +273,14 @@ public class Announcement {
         return result;
     }
 
+    public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment) {
+        return new Apartment(area, location, cityCentreDistance, equipment, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipment);
+    }
+    public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
+        return new House(area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipment ,hasBasement, hasInhabitableLoft, sunExposure);
+    }
+    public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs) {
+        return new Land(area, location, cityCentreDistance, photographs);
+    }
 
 }

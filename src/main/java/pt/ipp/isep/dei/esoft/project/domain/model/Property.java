@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * The type Property.
  */
-public class Property {
+public abstract class Property {
 
     private static final float DEFAULT_AREA = 1;
     private static final Location DEFAULT_LOCATION = new Location(0,"Street Zero", new City("City Zero"), 0);
