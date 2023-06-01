@@ -1,0 +1,39 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title US16 - System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Agent" as agent
+participant ":System" as System
+
+activate agent
+
+    agent -> System : starts responding to a scheduling request
+    activate System
+
+        System --> agent : shows all the requests that are not validated yet
+    deactivate System
+
+    agent -> System : selects one
+    activate System
+
+        System --> agent : requests to answer to the schedule
+    deactivate System
+
+    agent -> System : rejects or confirms the schedule
+    activate System
+
+        System --> agent : shows the final message and asks confirmation
+    deactivate System
+
+    agent -> System : confirms data and send the email to client
+    activate System
+
+        System --> agent : displays operation success
+    deactivate System
+
+@enduml
