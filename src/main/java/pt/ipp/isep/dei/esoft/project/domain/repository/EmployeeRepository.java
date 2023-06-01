@@ -166,9 +166,11 @@ public class EmployeeRepository implements Serializable {
         try {
 
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/employee.ser"));
-            ois.readObject();
+            employeeList= (List<Employee>) ois.readObject();
             System.out.println(employeeList);
             ois.close();
+
+
 
         } catch (IOException | ClassNotFoundException e) {
 
