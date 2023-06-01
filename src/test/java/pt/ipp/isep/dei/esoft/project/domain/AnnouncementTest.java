@@ -28,9 +28,11 @@ class AnnouncementTest {
         float price = 1000.0f;
         float commission = 50.0f;
         TypeOfBusiness typeOfBusiness = TypeOfBusiness.SELL;
-        List<String> photographs = new ArrayList<>();
+        ArrayList<String> photographs = new ArrayList<>();
         photographs.add("photo1");
-        Property property = new House((float)10.5,new Location(),(float)10.6, (ArrayList<String>) photographs,10, 10,10,null,false, false, SunExposure.NORTH);
+        ArrayList<String> equipment = new ArrayList<>();
+        equipment.add("Central Heating");
+        Property property = new House((float)10.5,new Location(),(float)10.6, photographs,10, 10,10, equipment,false, false, SunExposure.NORTH);
 
         Employee agent = new Employee("employee", 123456789, 123456789, "as", "employee@this.app", 1234567890, Role.AGENT, Agency.AGENCY1);
 
