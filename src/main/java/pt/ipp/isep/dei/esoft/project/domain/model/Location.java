@@ -1,8 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
-import pt.ipp.isep.dei.esoft.project.domain.model.City;
+
+import java.io.Serializable;
 
 
-public class Location {
+public class Location implements Serializable {
     int doorNumber;
     String street;
     City city;

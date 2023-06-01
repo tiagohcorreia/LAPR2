@@ -3,6 +3,8 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +14,7 @@ import java.text.SimpleDateFormat;
 /**
  * The type Announcement.
  */
-public class Announcement {
+public class Announcement implements Serializable {
    // private boolean visible;
 
     private Date date;

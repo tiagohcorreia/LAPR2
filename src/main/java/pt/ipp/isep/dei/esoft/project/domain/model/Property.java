@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -7,7 +8,7 @@ import java.util.Objects;
 /**
  * The type Property.
  */
-public abstract class Property {
+public abstract class Property implements Serializable {
 
     private static final float DEFAULT_AREA = 1;
     private static final Location DEFAULT_LOCATION = new Location(0,"Street Zero", new City("City Zero"), 0);
