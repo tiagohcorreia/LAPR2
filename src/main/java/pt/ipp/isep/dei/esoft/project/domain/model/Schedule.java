@@ -16,9 +16,10 @@ public class Schedule {
     private LocalTime endHour;
 
     private String note;
-    private boolean status; //the schedule needs to be confirmed (true)
+    private boolean status; //the schedule is visible
+    private boolean aproved;
 
-    public Schedule(String name, int phoneNumber, AnnouncementDTO announcementDTO, LocalDate day, LocalTime beginHour,LocalTime endHour, String note, boolean status) {
+    public Schedule(String name, int phoneNumber, AnnouncementDTO announcementDTO, LocalDate day, LocalTime beginHour,LocalTime endHour, String note, boolean status, boolean aproved) {
         this.name = setName(name);
         this.phoneNumber = setPhoneNumber(phoneNumber);
         this.announcementDTO = setAnnouncementDTO(announcementDTO);
@@ -27,6 +28,7 @@ public class Schedule {
         this.endHour = setEndHour(endHour);
         this.note=setNote(note);
         this.status=setStatus(status);
+        this.aproved=setAproved(aproved);
     }
 
     public String getName() {
@@ -57,6 +59,9 @@ public class Schedule {
     }
     public boolean getStatus(){
         return status;
+    }
+    public boolean getAproved(){
+        return aproved;
     }
 
     public String setName(String name) {
@@ -110,6 +115,10 @@ public class Schedule {
 
     public boolean setStatus(boolean status) {
         return this.status = status;
+    }
+
+    public boolean setAproved(boolean aproved) {
+        return this.aproved = aproved;
     }
 
     @Override
