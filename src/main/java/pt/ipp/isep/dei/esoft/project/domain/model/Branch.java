@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
@@ -176,5 +177,30 @@ public class Branch implements Serializable {
     public void setEmail(String email) {
         checkValidEmail(email);
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Branch{");
+        sb.append("ID:").append(ID);
+        sb.append(", Name:'").append(name).append('\'');
+        sb.append(", Location:").append(location);
+        sb.append(", PhoneNumber:").append(phoneNumber);
+        sb.append(", E-mail:'").append(email).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Branch branch = (Branch) o;
+        return ID == branch.ID && phoneNumber == branch.phoneNumber && Objects.equals(name, branch.name) && Objects.equals(location, branch.location) && Objects.equals(email, branch.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID, name, location, phoneNumber, email);
     }
 }

@@ -2,7 +2,9 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.RegisterEmployeeController;
 import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
+import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 import pt.ipp.isep.dei.esoft.project.domain.model.Role;
+import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
@@ -56,9 +58,14 @@ public class RegisterEmployeeUI implements Runnable {
             Integer posRole = Utils.readIntegerFromConsole("Choose a Role for the Employee: ");
 
             //Agency
-            List<Agency> y = this.controller.getAgency();
+            /*List<Agency> y = this.controller.getAgency();
             Utils.showList(y, "Agency");
-            Integer posAgency = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");
+            Integer posAgency = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");*/
+
+            //Branch
+            List<Branch> z = this.controller.getBranchList();
+            Utils.showList(z, "Branch");
+            Integer posBranch = Utils.readIntegerFromConsole("Choose a Agency for the Employee: ");
 
 
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
@@ -67,7 +74,7 @@ public class RegisterEmployeeUI implements Runnable {
 
                 try {
 
-                    this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber, posRole, posAgency);
+                    this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber, posRole, posBranch);
                     this.controller.sendEmail(emplyeeName, eMail);
                     success = false;
 
@@ -93,6 +100,7 @@ public class RegisterEmployeeUI implements Runnable {
                     System.out.println(e.getMessage());
                 }
 
+                System.out.println(" === Review Employee data ===");
                 System.out.println("Employee name: " + emplyeeName);
                 System.out.println("Employee Passport Number: " + employeePassportNumber);
                 System.out.println("Employee Tax Number: " + taxNumber);
@@ -100,7 +108,7 @@ public class RegisterEmployeeUI implements Runnable {
                 System.out.println("Employee E-mail: " + eMail);
                 System.out.println("Employee Telephone Number: " + telephoneNumber);
                 System.out.println("Employee Role: " + Role.getRoleById(posRole));
-                System.out.println("Employee Agency: " + Agency.getAgencyById(posAgency));
+                System.out.println("Employee Branch: " + BranchRepository.getBranchByID(posBranch));
 
             } else {
 
