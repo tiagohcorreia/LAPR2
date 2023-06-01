@@ -98,7 +98,7 @@ public class PlaceOrderToBuyPropertyRepository implements Serializable {
         try {
 
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/order.ser"));
-            ois.readObject();
+            orderList = (List<Order>) ois.readObject();
             System.out.println(orderList);
             ois.close();
 

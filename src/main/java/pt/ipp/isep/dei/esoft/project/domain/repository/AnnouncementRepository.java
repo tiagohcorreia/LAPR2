@@ -9,7 +9,6 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -221,7 +220,7 @@ public class AnnouncementRepository {
         return agentRequests;
     }
 
-    public void readObject() {
+    public List<Announcement> readObject() {
 
         try {
 
@@ -234,6 +233,7 @@ public class AnnouncementRepository {
 
             e.printStackTrace();
         }
+        return announcements;
     }
 
     /**

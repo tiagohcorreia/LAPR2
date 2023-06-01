@@ -83,14 +83,17 @@ public class PublishAnnouncementController {
             Property property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);
             Announcement announcement = new Announcement(date,AnnouncementStatus.PUBLISHED,  commission, price ,sellOrRent, property, agent);
             this.announcementRepository.createAnnouncement(announcement);
+            this.announcementRepository.writeObject();
         } else if (posTypeOfProperty == 1) {
             Property property = new House(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
             Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED,  commission, price, sellOrRent, property, agent);
             this.announcementRepository.createAnnouncement(announcement);
+            this.announcementRepository.writeObject();
         } else {
             Property property = new Land(area, location, cityCentreDistance, photographs);
             Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, commission, price, sellOrRent, property, agent);
             this.announcementRepository.createAnnouncement(announcement);
+            this.announcementRepository.writeObject();
         }
 
 

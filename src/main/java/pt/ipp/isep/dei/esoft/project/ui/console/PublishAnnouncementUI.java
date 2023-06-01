@@ -79,11 +79,12 @@ public class PublishAnnouncementUI implements Runnable {
 
         // date
         while (date == null) {
-            System.out.print("Enter the date (YYYY-MM-DD): ");
-            String dateString = scanner.nextLine();
+            //System.out.print("Enter the date (YYYY-MM-DD): ");
+            String date1 = Utils.readLineFromConsole("Enter the date (YYYY-MM-DD): ");
+            //String dateString = scanner.nextLine();
 
             try {
-                date = LocalDate.parse(dateString);
+                date = LocalDate.parse(date1);
             } catch (DateTimeParseException e) {
                 System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
             }
