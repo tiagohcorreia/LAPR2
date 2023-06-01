@@ -128,11 +128,13 @@ public class Apartment extends Property implements InhabitableProperty {
 
     @Override
     public String toString() {
-        return "Apartment{" +super.toString()+
-                ", numberOfBedrooms=" + numberOfBedrooms +
-                ", numberOfBathrooms=" + numberOfBathrooms +
-                ", numberOfParkingSpaces=" + numberOfParkingSpaces +
-                ", equipment=" + equipment +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Apartment \n");
+        sb.append(super.toString());
+        sb.append(String.format("Number of Bedrooms:      %s\n", numberOfBedrooms));
+        sb.append(String.format("Number of Bathrooms:     %s\n", numberOfBathrooms));
+        sb.append(String.format("Number of Parking Spaces: %s\n", numberOfParkingSpaces));
+        sb.append(String.format("Equipment:               %s\n", equipment));
+        return sb.toString();
     }
 }

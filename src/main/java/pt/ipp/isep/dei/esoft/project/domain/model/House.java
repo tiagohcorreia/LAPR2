@@ -197,15 +197,17 @@ public class House extends Property implements MultiStoryInhabitableProperty {
 
     @Override
     public String toString() {
-        return "House{" +super.toString()+
-                ", numberOfBedrooms=" + numberOfBedrooms +
-                ", numberOfBathrooms=" + numberOfBathrooms +
-                ", numberOfParkingSpaces=" + numberOfParkingSpaces +
-                ", equipment=" + equipment +
-                ", hasBasement=" + hasBasement +
-                ", hasInhabitableLoft=" + hasInhabitableLoft +
-                ", sunExposure=" + sunExposure +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("House \n");
+        sb.append(super.toString());
+        sb.append(String.format("Number of Bedrooms:      %s\n", numberOfBedrooms));
+        sb.append(String.format("Number of Bathrooms:     %s\n", numberOfBathrooms));
+        sb.append(String.format("Number of Parking Spaces: %s\n", numberOfParkingSpaces));
+        sb.append(String.format("Equipment:               %s\n", equipment));
+        sb.append(String.format("Has Basement:            %s\n", hasBasement));
+        sb.append(String.format("Has Inhabitable Loft:    %s\n", hasInhabitableLoft));
+        sb.append(String.format("Sun Exposure:            %s\n", sunExposure));
+        return sb.toString();
     }
 
 

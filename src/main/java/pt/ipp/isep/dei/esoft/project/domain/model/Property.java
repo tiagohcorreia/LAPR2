@@ -185,10 +185,13 @@ public abstract class Property implements Serializable {
     //ToString()
     @Override
     public String toString() {
-        return " area=" + area +
-                ", address='" + location + '\'' +
-                ", cityCentreDistance=" + cityCentreDistance +
-                ", photographs=" + photographs;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Property - Details:\n");
+        sb.append(String.format("Area:              %s\n", area));
+        sb.append(String.format("Address:           %s\n", location));
+        sb.append(String.format("City Centre Dist.: %s\n", cityCentreDistance));
+        sb.append(String.format("Photographs:       %s\n", photographs));
+        return sb.toString();
     }
     //equals
 

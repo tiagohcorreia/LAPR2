@@ -1,6 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
+import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementRequestDTO;
+import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
+import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementRequestMapper;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
@@ -23,6 +26,7 @@ public class AnnouncementRequestsController {
 
     private AuthenticationController authenticationController;
 
+    private AnnouncementRequestMapper announcementRequestMapper = new AnnouncementRequestMapper();
 
     public Employee getEmployee(String name) {
         for (Employee employee : employeeRepository.getEmployeeList()) {
@@ -36,12 +40,12 @@ public class AnnouncementRequestsController {
     // ...
 
     public boolean isEmployee(String agentName) {
-        Employee agent = getEmployee(agentName); // Obtenha o objeto Employee correspondente ao nome
+        Employee agent = getEmployee(agentName); // Obtem o objeto Employee correspondente ao nome
         return agent != null; // Verifica se o objeto Employee foi encontrado
     }
 
 
-    public List<Announcement> getAnnouncementRequests(Employee agent) {
+  /*  public List<Announcement> getAnnouncementRequests(Employee agent) {
         List<Announcement> requestsForAgent = new ArrayList<>();
         for (Announcement announcement : this.announcementRepository.getAllAnnouncements()) {
             if (announcement.getStatus() == AnnouncementStatus.REQUESTED && announcement.getAgent().equals(agent)) {
@@ -53,7 +57,7 @@ public class AnnouncementRequestsController {
 
         return requestsForAgent;
     }
-    public Announcement getAnnouncementByIndex(int index, Employee agent) {
+   public Announcement getAnnouncementByIndex(int index, Employee agent) {
         List<Announcement> announcements = getAnnouncementRequests(agent);
         if (index >= 0 && index < announcements.size()) {
             return announcements.get(index);
@@ -79,5 +83,50 @@ public class AnnouncementRequestsController {
                     this.announcementRepository.saveAnnouncement(announcement);
                 }
             }
+            */
+
+    public List<AnnouncementRequestDTO> getAnnouncementRequests(Employee agent) {
+        List<AnnouncementRequestDTO> requestsForAgent = new ArrayList<>();
+        for (Announcement announcement : this.announcementRepository.getAllAnnouncements()) {
+            if (announcement.getStatus() == AnnouncementStatus.REQUESTED && announcement.getAgent().equals(agent)) {
+                AnnouncementRequestDTO dto = this.announcementRequestMapper.toDto(announcement);
+                requestsForAgent.add(dto);
+            }
+        }
+
+        Collections.sort(requestsForAgent, Comparator.comparing(AnnouncementRequestDTO::getDate).reversed());
+
+        return requestsForAgent;
+    }
+
+    public AnnouncementRequestDTO getAnnouncementByIndex(int index, Employee agent) {
+        List<AnnouncementRequestDTO> announcements = getAnnouncementRequests(agent);
+        if (index >= 0 && index < announcements.size()) {
+            return announcements.get(index);
+        }
+        return null;
+    }
+
+    public void acceptAnnouncementRequest(int index, float commission, Employee agent) {
+        AnnouncementRequestDTO dto = getAnnouncementByIndex(index, agent);
+        if (dto != null) {
+            Announcement announcement = this.announcementRequestMapper.toEntity(dto);
+            announcement.setCommission(commission);
+            announcement.setStatus(AnnouncementStatus.PUBLISHED);
+            this.announcementRepository.saveAnnouncement(announcement);
+        }
+    }
+
+    public void rejectAnnouncementRequest(int index, String reason, Employee agent) {
+        AnnouncementRequestDTO dto = getAnnouncementByIndex(index, agent);
+        if (dto != null) {
+            Announcement announcement = this.announcementRequestMapper.toEntity(dto);
+            announcement.setRejectionReason(reason);
+            announcement.setStatus(AnnouncementStatus.REJECTED);
+            this.announcementRepository.saveAnnouncement(announcement);
+        }
+    }
+
+
 
 }
