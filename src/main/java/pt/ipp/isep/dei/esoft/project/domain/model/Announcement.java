@@ -3,9 +3,7 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
-import java.io.Serial;
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.time.LocalDate;
@@ -17,7 +15,7 @@ import java.text.SimpleDateFormat;
 public class Announcement implements Serializable {
     // private boolean visible;
 
-    private Date date;
+    private LocalDate date;
     private AnnouncementStatus status;
     private float price;
     private float commission;
@@ -36,7 +34,7 @@ public class Announcement implements Serializable {
      * @param agent          the agent
      */
 //Full constructor
-    public Announcement(Date date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
+    public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
         this.setDate(date);
         this.setStatus(status);
         this.setPrice(price);
@@ -56,11 +54,11 @@ public class Announcement implements Serializable {
         return status;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

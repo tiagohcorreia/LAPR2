@@ -8,6 +8,7 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,7 +51,7 @@ class DisplayAnnouncementsControllerTest {
      * The constant defaultAnnouncement.
      */
     public static final Announcement defaultAnnouncement = new Announcement(
-            new Date(),
+            LocalDate.now(),
             AnnouncementStatus.PUBLISHED,
             20,
             5,
@@ -82,7 +83,7 @@ class DisplayAnnouncementsControllerTest {
             //Employee newAgent=new Employee();
             Announcement newAnnouncement = new Announcement(
                     //(i%2==0) ? true:false,
-                    new Date(),
+                    LocalDate.now(),
                     AnnouncementStatus.PUBLISHED,
                     (float) ((float) i*0.5),
                     10,

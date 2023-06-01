@@ -117,4 +117,15 @@ class CsvHandlerTest {
         assertEquals(dataWithoutHeader,CsvHandler.getDataFromCsvFile(csvFile));
     }
 
+    @Test
+    void getDataFromCsvFile() {
+    }
+
+    @Test
+    void csvIsEmpty() {
+    }
+
+    @Test
+    void parseCSV() {
+    }
 }

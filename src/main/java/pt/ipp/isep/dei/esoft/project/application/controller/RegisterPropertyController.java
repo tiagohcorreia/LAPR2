@@ -61,7 +61,7 @@ public class RegisterPropertyController {
      * @param numberOfParkingSpaces the number of parking spaces
      * @param equipmentList         the equipment list
      * @param hasBasement           the has basement
-     * @param hasInhabitalLoft      the has inhabital loft
+     * @param hasInhabitableLoft      the has inhabitable loft
      * @param sunExposure           the sun exposure
      * @param area                  the area
      * @param location              the location
@@ -71,7 +71,7 @@ public class RegisterPropertyController {
      * @param agent                 the agent
      */
     public void createAnnouncement(LocalDate date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
-                                   ArrayList<String> equipmentList, boolean hasBasement, boolean hasInhabitalLoft, SunExposure sunExposure,
+                                   ArrayList<String> equipmentList, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure,
                                    int area, Location location, int cityCentreDistance, float price, ArrayList<String> photographs, Employee agent) {
         try {
             if (posTypeOfProperty==2){
@@ -80,7 +80,7 @@ public class RegisterPropertyController {
                 announcement.setAgent(agent);
                 this.announcementRepository.createAnnouncement(announcement);
             } else if (posTypeOfProperty==1) {
-                House property= new House(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList,hasBasement,hasInhabitalLoft,sunExposure);
+                House property= new House(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList,hasBasement,hasInhabitableLoft,sunExposure);
                 Announcement announcement= new Announcement(date,AnnouncementStatus.REQUESTED,price,0 ,sellOrRent,property,agent);
                 announcement.setAgent(agent);
                 this.announcementRepository.createAnnouncement(announcement);
@@ -127,7 +127,7 @@ public class RegisterPropertyController {
     }
 
     /**
-     * Get city city.
+     * Get city.
      *
      * @param city the city
      * @return the city
