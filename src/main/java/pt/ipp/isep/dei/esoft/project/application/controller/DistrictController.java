@@ -30,6 +30,7 @@ public class DistrictController {
     public void addDistrict(String name) {
         District district = new District(name, new ArrayList<>());
         districtRepository.save(district);
+        districtRepository.writeObject();
     }
 
     /**

@@ -25,15 +25,14 @@ public class EmployeeRepository implements Serializable {
      * @param employeeName the employee name
      * @return the employee
      */
-    public Employee createEmployee (String employeeName) {
+    public Employee createEmployee(String employeeName) {
 
         return new Employee(employeeName);
     }
 
-    public Employee createEmployee (String name, int passportNumber, int taxNumber, String address, String emailAdress, int telephoneNumber, Role role, Branch branch) {
+    public Employee createEmployee(String name, int passportNumber, int taxNumber, String address, String emailAdress, int telephoneNumber, Role role, Branch branch) {
         return new Employee(name, passportNumber, taxNumber, address, emailAdress, telephoneNumber, role, branch);
     }
-
 
 
     /**
@@ -44,7 +43,7 @@ public class EmployeeRepository implements Serializable {
      */
     public boolean saveEmployee(Employee employee) {
 
-        if(validateEmployee(employee)) {
+        if (validateEmployee(employee)) {
 
             return addEmployee(employee);
         }
@@ -59,7 +58,7 @@ public class EmployeeRepository implements Serializable {
      */
     public boolean addEmployee(Employee employee) {
 
-        if(employee != null && validateEmployee(employee)) {
+        if (employee != null && validateEmployee(employee)) {
 
             return this.employeeList.add(employee);
         }
@@ -74,9 +73,9 @@ public class EmployeeRepository implements Serializable {
      */
     public boolean validateEmployee(Employee employee) {
 
-        for(Employee employee1 : employeeList) {
+        for (Employee employee1 : employeeList) {
 
-            if(employee.equals(employee)) {
+            if (employee.equals(employee)) {
 
                 return false;
             }
@@ -102,9 +101,9 @@ public class EmployeeRepository implements Serializable {
      */
     public static Employee getEmployee(String employeeID) {
 
-        for(Employee employee : employeeList) {
+        for (Employee employee : employeeList) {
 
-            if(employee.getName().equals(employeeID)) {
+            if (employee.getName().equals(employeeID)) {
 
                 return employee;
             }
@@ -122,7 +121,7 @@ public class EmployeeRepository implements Serializable {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        for(Employee employee : this.employeeList) {
+        for (Employee employee : this.employeeList) {
 
             stringBuilder.append("-").append(employee.toString()).append("\n");
 
@@ -168,7 +167,7 @@ public class EmployeeRepository implements Serializable {
         try {
 
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/employee.ser"));
-            employeeList= (List<Employee>) ois.readObject();
+            employeeList = (List<Employee>) ois.readObject();
             System.out.println(employeeList);
             ois.close();
 

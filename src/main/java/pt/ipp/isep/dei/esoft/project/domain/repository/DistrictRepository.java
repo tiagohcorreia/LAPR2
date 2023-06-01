@@ -2,7 +2,9 @@ package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.City;
 import pt.ipp.isep.dei.esoft.project.domain.model.District;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
  * The type District repository.
  */
 public class DistrictRepository {
-    private List<District> districts = new ArrayList<>();
+    private static List<District> districts = new ArrayList<>();
 
     /**
      * Save.
@@ -70,6 +72,38 @@ public class DistrictRepository {
         District district = findByName(districtName);
         if (district != null && city != null && !district.getCities().contains(city)) {
             district.getCities().add(city);
+        }
+    }
+
+    public void readObject() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/district.ser"));
+            districts = (List<District>) ois.readObject();
+            System.out.println(districts);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Write object.
+     */
+    public void writeObject() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/district.ser"));
+            oos.writeObject(districts);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
         }
     }
 }

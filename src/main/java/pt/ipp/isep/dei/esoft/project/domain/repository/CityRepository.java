@@ -1,7 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.City;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,7 @@ import java.util.List;
  * The type City repository.
  */
 public class CityRepository {
-    private List<City> cities = new ArrayList<>();
+    private static List<City> cities = new ArrayList<>();
 
 
     /**
@@ -30,7 +32,7 @@ public class CityRepository {
      * @return the city
      */
     public City findByName(String name) {
-        for (City city: cities) {
+        for (City city : cities) {
             if (city.getName().equalsIgnoreCase(name)) {
                 return city;
             }
@@ -60,8 +62,40 @@ public class CityRepository {
         return cities.isEmpty();
     }
 
-    public City createCity(String name){
+    public City createCity(String name) {
         return new City(name);
+    }
+
+    public void readObject() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/city.ser"));
+            cities = (List<City>) ois.readObject();
+            System.out.println(cities);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Write object.
+     */
+    public void writeObject() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/city.ser"));
+            oos.writeObject(cities);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        }
     }
 }
 
