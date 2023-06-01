@@ -46,6 +46,16 @@ public class Announcement implements Serializable {
         this.setAgent(agent);
     }
 
+    public Announcement(AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
+
+        this.setStatus(status);
+        this.setPrice(price);
+        this.setCommission(commission);
+        this.setTypeOfBusiness(typeOfBusiness);
+        this.setProperty(property);
+        this.setAgent(agent);
+    }
+
     public void setStatus(AnnouncementStatus status) {
 
         this.status = status;
