@@ -1,11 +1,12 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * The type State.
  */
-public class State {
+public class State implements Serializable {
     private String name;
     private List<District> districts;
 
