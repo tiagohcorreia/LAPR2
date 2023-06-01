@@ -1,9 +1,11 @@
 package pt.ipp.isep.dei.esoft.project.domain.shared;
 
+import java.io.Serializable;
+
 /**
  * The enum Type of business.
  */
-public enum TypeOfBusiness {
+public enum TypeOfBusiness implements Serializable {
     /**
      * The Sell.
      */

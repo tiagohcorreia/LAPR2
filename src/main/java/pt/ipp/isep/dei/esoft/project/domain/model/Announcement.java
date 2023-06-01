@@ -2,6 +2,8 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -13,7 +15,7 @@ import java.time.ZoneId;
 /**
  * The type Announcement.
  */
-public class Announcement {
+public class Announcement implements Serializable {
    // private boolean visible;
 
     private LocalDate date;
