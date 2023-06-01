@@ -1,11 +1,12 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
 /**
  * The type Branch.
  */
-public class Branch {
+public class Branch implements Serializable {
 
     private int ID;
     private String name;

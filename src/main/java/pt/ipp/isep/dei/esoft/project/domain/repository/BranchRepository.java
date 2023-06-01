@@ -11,9 +11,9 @@ import java.util.List;
 /**
  * The type Register branch repository.
  */
-public class BranchRepository{
+public class BranchRepository {
 
-    List<Branch> branches = new ArrayList<>();
+    static List<Branch> branches = new ArrayList<>();
 
 
     /**
@@ -21,7 +21,7 @@ public class BranchRepository{
      *
      * @param branch the branch
      */
-    public boolean saveBranch(Branch branch){
+    public boolean saveBranch(Branch branch) {
         if (findBranch(branch) != -1)
             throw new DuplicateDataException("This branch is already registered in the system at position "
                     + findBranch(branch));
@@ -31,9 +31,9 @@ public class BranchRepository{
         return true;
     }
 
-    public int findBranch(Branch branch){
-        for (Branch thisBranch: branches) {
-            if(branch.equals(thisBranch) || branch.getName().equals(thisBranch.getName()))
+    public int findBranch(Branch branch) {
+        for (Branch thisBranch : branches) {
+            if (branch.equals(thisBranch) || branch.getName().equals(thisBranch.getName()))
                 return branches.indexOf(thisBranch);
         }
         return -1;
@@ -44,12 +44,12 @@ public class BranchRepository{
         return branch;
     }
 
-    public Branch createBranch(int id, String name, Location location, int phoneNumber, String email){
+    public Branch createBranch(int id, String name, Location location, int phoneNumber, String email) {
         return new Branch(id, name, location, phoneNumber, email);
     }
 
     public boolean save(Branch branch) {
-        if(validate(branch))
+        if (validate(branch))
             return branches.add(branch);
 
         return false;
@@ -65,22 +65,31 @@ public class BranchRepository{
     }
 
     public int indexOf(Branch branch) {
-        for (Branch thisBranch: branches) {
-            if(branch.equals(thisBranch) || branch.getName().equals(thisBranch.getName()))
+        for (Branch thisBranch : branches) {
+            if (branch.equals(thisBranch) || branch.getName().equals(thisBranch.getName()))
                 return branches.indexOf(thisBranch);
         }
         return -1;
     }
 
-    private int getLowestAvailableID(){
+    private int getLowestAvailableID() {
         int lowestID = 0;
-        for (Branch branch:
-             branches) {
-            if (branch.getID()>lowestID)
+        for (Branch branch :
+                branches) {
+            if (branch.getID() > lowestID)
                 lowestID = branch.getID();
         }
         lowestID++;
         return lowestID;
     }
+
+    public static Branch getBranchByID(int id) {
+
+        if(id >= 0 && id < branches.size()) {
+
+            return branches.get(id);
+        }
+        return null;
+     }
 
 }
