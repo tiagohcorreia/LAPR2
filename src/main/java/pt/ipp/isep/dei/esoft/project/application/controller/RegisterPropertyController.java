@@ -53,6 +53,7 @@ public class RegisterPropertyController {
     /**
      * Create announcement.
      *
+     * @param date
      * @param sellOrRent            the sell or rent
      * @param posTypeOfProperty     the pos type of property
      * @param numberOfBedrooms      the number of bedrooms

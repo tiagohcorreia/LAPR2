@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
  * The type Announcement.
  */
 public class Announcement implements Serializable {
-   // private boolean visible;
+    // private boolean visible;
 
     private Date date;
     private AnnouncementStatus status;
@@ -50,7 +50,8 @@ public class Announcement implements Serializable {
 
         this.status = status;
     }
-    public AnnouncementStatus getStatus(){
+
+    public AnnouncementStatus getStatus() {
 
         return status;
     }
@@ -78,7 +79,7 @@ public class Announcement implements Serializable {
      * @param commission the commission
      */
     public void setCommission(float commission) {
-        if (commission < 0){
+        if (commission < 0) {
             throw new IllegalArgumentException("Invalid commission value.");
         }
         this.commission = commission;
@@ -88,7 +89,7 @@ public class Announcement implements Serializable {
      * Instantiates a new Announcement.
      */
 //Default constructor
-    public Announcement(){
+    public Announcement() {
         this.setStatus(AnnouncementStatus.PENDENT);
         this.setPrice(0);
         this.setCommission(0);
@@ -103,7 +104,7 @@ public class Announcement implements Serializable {
      * @param anotherAnnouncement the another announcement
      */
 //Copy constructor
-    public Announcement(Announcement anotherAnnouncement){
+    public Announcement(Announcement anotherAnnouncement) {
         this.setDate(anotherAnnouncement.getDate());
         this.setStatus(anotherAnnouncement.getStatus());
         this.setPrice(anotherAnnouncement.getPrice());
@@ -119,7 +120,8 @@ public class Announcement implements Serializable {
      * @return the announcement
      */
     public Announcement getAnnouncement() {
-        return new Announcement(this); }
+        return new Announcement(this);
+    }
 
     /**
      * Get announcement announcement.
@@ -129,12 +131,12 @@ public class Announcement implements Serializable {
      * @param numberOfBedrooms the number of bedrooms
      * @return the announcement
      */
-    public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
+    public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms) {
         if (!typeOfBusiness.equals("LAND")) {
             if (this.status == AnnouncementStatus.PUBLISHED && typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase()) && numberOfBedrooms == this.getProperty().getNumberOfBedrooms()) {
                 return new Announcement(this);
             }
-        } else if(this.status == AnnouncementStatus.PUBLISHED&& typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase())){
+        } else if (this.status == AnnouncementStatus.PUBLISHED && typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase())) {
             return new Announcement(this);
         }
         return null;
@@ -175,7 +177,7 @@ public class Announcement implements Serializable {
      * @param price the price
      */
     public void setPrice(float price) {
-        if (price < 0){
+        if (price < 0) {
             throw new IllegalArgumentException("Invalid price value.");
         }
         this.price = price;
@@ -234,13 +236,14 @@ public class Announcement implements Serializable {
     public void setAgent(Employee agent) {
         this.agent = agent;
     }
+
     public void setRejectionReason(String reason) {
         this.reason = reason;
     }
 
     //TO-FIX
-    public String toString(){
-            String status = (this.status == AnnouncementStatus.PUBLISHED) ? "Published" : "Not Published";
+    public String toString() {
+        String status = (this.status == AnnouncementStatus.PUBLISHED) ? "Published" : "Not Published";
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         return String.format("Announcement - " +
@@ -257,21 +260,21 @@ public class Announcement implements Serializable {
                 this.property.toString(),
                 this.price,
                 this.commission,
-               this.agent.toString());
-        }
+                this.agent.toString());
+    }
 
     public String getAnnouncementAsString() {
         String result =
-                getDate().toString() +"\t" +
-                getTypeOfBusiness().toString() + "\t" +
-                getProperty().getClass().getSimpleName() + "\t" +
-                getPrice() + "\t" +
-                getProperty().getLocation() + "\t" +
-                getProperty().getArea() + "\t" +
-                getProperty().getCityCentreDistance() + "\t" +
-                getProperty().getNumberOfBedrooms() + "\t" +
-                getProperty().getPhotographs() + "\t" +
-                getAgent().getName();
+                getDate().toString() + "\t" +
+                        getTypeOfBusiness().toString() + "\t" +
+                        getProperty().getClass().getSimpleName() + "\t" +
+                        getPrice() + "\t" +
+                        getProperty().getLocation() + "\t" +
+                        getProperty().getArea() + "\t" +
+                        getProperty().getCityCentreDistance() + "\t" +
+                        getProperty().getNumberOfBedrooms() + "\t" +
+                        getProperty().getPhotographs() + "\t" +
+                        getAgent().getName();
         return result;
     }
 
