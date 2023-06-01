@@ -1,6 +1,8 @@
 package pt.ipp.isep.dei.esoft.project.domain.shared;
 
-public enum AnnouncementStatus {
+import java.io.Serializable;
+
+public enum AnnouncementStatus implements Serializable {
     REQUESTED,
     PUBLISHED,
     REJECTED,

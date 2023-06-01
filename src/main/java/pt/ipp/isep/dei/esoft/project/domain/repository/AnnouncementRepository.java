@@ -6,6 +6,7 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Property;
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +24,7 @@ public class AnnouncementRepository {
      List<Announcement> requestedAnnouncements = new ArrayList<>();
     List<Announcement> soldAnnouncements = new ArrayList<>();
     List<Announcement> rentedAnnouncements = new ArrayList<>();
-     List<Announcement> pendentAnnouncements = new ArrayList<>();
+    List<Announcement> pendentAnnouncements = new ArrayList<>();
     List<Announcement> rejectedAnnouncements = new ArrayList<>();
 
     /**
@@ -218,6 +219,38 @@ public class AnnouncementRepository {
         }
 
         return agentRequests;
+    }
+
+    public void readObject() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/announcements.ser"));
+            announcements = (List<Announcement>) ois.readObject();
+            System.out.println(announcements);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Write object.
+     */
+    public void writeObject() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/announcements.ser"));
+            oos.writeObject(announcements);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        }
     }
 }
 
