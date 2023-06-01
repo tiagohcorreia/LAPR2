@@ -46,6 +46,7 @@ public class PublishAnnouncementController {
     /**
      * Create announcement.
      *
+     * @param date
      * @param sellOrRent         the sell or rent
      * @param posTypeOfProperty  the pos type of property
      * @param bedrooms           the bedrooms

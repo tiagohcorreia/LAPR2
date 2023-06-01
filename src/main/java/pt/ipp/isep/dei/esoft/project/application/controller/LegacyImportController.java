@@ -29,16 +29,16 @@ public class LegacyImportController {
 
 
     public void importFile(String filePath) throws InvalidFileTypeException {
-        File f = null;
+        File csvFile = null;
         try {
-            f = FileOps.readFile(filePath);
+            csvFile = FileOps.readFile(filePath);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e){
             e.printStackTrace();
         }
 
-        List<?> csv = CsvHandler.getDataFromCsvFile(f);
+        List<?> csv = CsvHandler.getDataFromCsvFile(csvFile);
 
         /*
         if (csv.size() < 2){
