@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * The type District repository.
  */
-public class DistrictRepository {
+public class DistrictRepository implements Serializable {
     private static List<District> districts = new ArrayList<>();
 
     /**

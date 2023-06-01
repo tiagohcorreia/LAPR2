@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * The type State repository.
  */
-public class StateRepository {
+public class StateRepository implements Serializable {
     private static List<State> states = new ArrayList<>();
 
     /**

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * The type City repository.
  */
-public class CityRepository {
+public class CityRepository implements Serializable {
     private static List<City> cities = new ArrayList<>();
 
 
