@@ -16,7 +16,7 @@ import java.time.ZoneId;
 public class Announcement {
    // private boolean visible;
 
-    private Date date;
+    private LocalDate date;
     private AnnouncementStatus status;
     private float price;
     private float commission;
@@ -35,7 +35,7 @@ public class Announcement {
      * @param agent          the agent
      */
 //Full constructor
-    public Announcement(Date date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
+    public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
         this.setDate(date);
         this.setStatus(status);
         this.setPrice(price);
@@ -54,11 +54,11 @@ public class Announcement {
         return status;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -252,8 +252,7 @@ public class Announcement {
              "Price: %.2f\t" +
              "Commission: %.2f\t" +
               "Agent: %s\t",
-                dateFormatter.format(this.date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()),
-
+                date.toString(),
                this.status,
                this.typeOfBusiness.toString(),
                this.property.toString(),

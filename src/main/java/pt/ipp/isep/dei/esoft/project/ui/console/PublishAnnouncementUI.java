@@ -10,10 +10,10 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
+
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -56,14 +56,15 @@ public class PublishAnnouncementUI implements Runnable {
         ArrayList<String> photographs = new ArrayList<>();
         String photo;
         ArrayList<String> availableEquipment = new ArrayList<>();
-        Date date=null;
+        LocalDate date=null;
         int doorNumber = 0;
         String street = null;
         int postalCode = 0;
-
-
-
         boolean confirmed = false;
+
+
+
+
 
         System.out.println("===== Publish a new announcement =====\n");
 
@@ -74,15 +75,21 @@ public class PublishAnnouncementUI implements Runnable {
 
         //String agent = Utils.readLineFromConsole("Agent, insert your name:: ");
         // Employee agentResp = this.controller.getEmployee(agent);
-        // date
-        String dateString = Utils.readLineFromConsole("Insert the date (YYYY-MM-DD):");
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            date = dateFormat.parse(dateString);
-        } catch (ParseException e) {
-            System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
+
+        // date
+        while (date == null) {
+            System.out.print("Enter the date (YYYY-MM-DD): ");
+            String dateString = scanner.nextLine();
+
+            try {
+                date = LocalDate.parse(dateString);
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
+            }
         }
+
+
 
         //typeOfBusiness
         List<TypeOfBusiness> typeOfBusinessList = this.controller.getTypeOfBusinessAsList();

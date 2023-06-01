@@ -64,7 +64,7 @@ public class RegisterPropertyUI implements Runnable {
             int numberPhotos = 1;
             String agent;
             Employee choosedAgent;
-            Date date = null;
+            LocalDate date = null;
             int doorNumber = 0;
             String street = null;
             int postalCode = 0;
@@ -73,14 +73,16 @@ public class RegisterPropertyUI implements Runnable {
 
 
             // date
-            String dateString = Utils.readLineFromConsole("Insert the date (YYYY-MM-DD):");
+            while (date == null) {
 
+                System.out.print("Enter the date (YYYY-MM-DD): ");
+                String dateString =Utils.readLineFromConsole( "Enter the date (YYYY-MM-DD): ");
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            try {
-                 date = dateFormat.parse(dateString);
-            } catch (ParseException e) {
-                System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
+                try {
+                    date = LocalDate.parse(dateString);
+                } catch (DateTimeParseException e) {
+                    System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
+                }
             }
 
 
