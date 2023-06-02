@@ -1,8 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
-import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
-import pt.ipp.isep.dei.esoft.project.domain.model.Role;
+import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
+import pt.ipp.isep.dei.esoft.project.domain.model.*;
+import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 
 import java.io.File;
@@ -20,16 +21,16 @@ public class RegisterEmployeeController {
 
     private EmployeeRepository employeeRepository = new EmployeeRepository();
 
+    private BranchRepository branchRepository = new BranchRepository();
+
     /**
      * Instantiates a new Register employee controller.
      *
      * @param employeeRepository the employee repository
      */
     public RegisterEmployeeController(EmployeeRepository employeeRepository) {
-        //EmployeeRepository employeeRepository1 = new EmployeeRepository();
 
-        this.employeeRepository.readObject();
-        //this.employeeRepository = employeeRepository;
+        this.branchRepository.readObject();
     }
 
     /**
@@ -50,6 +51,11 @@ public class RegisterEmployeeController {
         return Arrays.stream(Agency.values()).toList();
     }
 
+    public List<Branch> getBranchList() {
+
+        return branchRepository.getBranchList();
+    }
+
 
     /**
      * Create employee string.
@@ -61,14 +67,14 @@ public class RegisterEmployeeController {
      * @param eMail           the e mail
      * @param telephoneNumber the telephone number
      * @param posRole         the pos role
-     * @param posAgency       the pos agency
+     * @param posBranch       the pos agency
      * @return the string
      */
     public String createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
-                                 int telephoneNumber, Integer posRole, Integer posAgency) {
+                                 int telephoneNumber, Integer posRole, Integer posBranch) {
 
         Employee newEmployee = new Employee(employeeName, passportNumber, taxNumber, address, eMail, telephoneNumber,
-                Role.getRoleById(posRole), Agency.getAgencyById(posAgency));
+                Role.getRoleById(posRole), BranchRepository.getBranchByID(posBranch));
 
         try {
 

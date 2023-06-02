@@ -3,14 +3,15 @@ package pt.ipp.isep.dei.esoft.project.domain.repository;
 import pt.ipp.isep.dei.esoft.project.domain.model.District;
 import pt.ipp.isep.dei.esoft.project.domain.model.State;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The type State repository.
  */
-public class StateRepository {
-    private List<State> states = new ArrayList<>();
+public class StateRepository implements Serializable {
+    private static List<State> states = new ArrayList<>();
 
     /**
      * Save.
@@ -74,6 +75,38 @@ public class StateRepository {
 
     public State createState(String name, List<District> districts){
         return new State(name, districts);
+    }
+
+    public void readObject() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/state.ser"));
+            states = (List<State>) ois.readObject();
+            System.out.println(states);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Write object.
+     */
+    public void writeObject() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/state.ser"));
+            oos.writeObject(states);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        }
     }
 }
 

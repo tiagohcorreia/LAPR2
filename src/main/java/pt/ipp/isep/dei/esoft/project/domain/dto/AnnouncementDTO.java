@@ -95,6 +95,8 @@ public class AnnouncementDTO implements Serializable {
     public Employee getAgent() {
         return agent;
     }
+
+
 }
 
 

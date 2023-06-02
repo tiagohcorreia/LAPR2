@@ -71,7 +71,8 @@ public class PublishAnnouncementController {
 
         // get the employee corresponding to the agent email
         String emailAdress = null;
-        pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address",1231231230,Role.AGENT,Agency.AGENCY1);
+        Branch branch = new Branch();
+        pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address",1231231230,Role.AGENT,branch);
         //Employee agent = employeeRepository.findByEmail(emailAdress);
 
         //agentName = String.valueOf(authenticationController.getCurrentSession().getUserName());
@@ -82,14 +83,17 @@ public class PublishAnnouncementController {
             Property property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);
             Announcement announcement = new Announcement(date,AnnouncementStatus.PUBLISHED,  commission, price ,sellOrRent, property, agent);
             this.announcementRepository.createAnnouncement(announcement);
+            this.announcementRepository.writeObject();
         } else if (posTypeOfProperty == 1) {
             Property property = new House(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
             Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED,  commission, price, sellOrRent, property, agent);
             this.announcementRepository.createAnnouncement(announcement);
+            this.announcementRepository.writeObject();
         } else {
             Property property = new Land(area, location, cityCentreDistance, photographs);
             Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, commission, price, sellOrRent, property, agent);
             this.announcementRepository.createAnnouncement(announcement);
+            this.announcementRepository.writeObject();
         }
 
 

@@ -33,6 +33,7 @@ public class CityController {
     public void addCity(String name) {
         City city = new City(name);
         cityRepository.save(city);
+        cityRepository.writeObject();
     }
 
     /**

@@ -41,6 +41,7 @@ public class RegisterBranchController {
         try {
 
             branchRepository.saveBranch(newBranch);
+            branchRepository.writeObject();
 
             return newBranch.toString();
 

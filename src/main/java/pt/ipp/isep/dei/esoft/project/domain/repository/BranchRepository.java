@@ -1,10 +1,12 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.shared.GenericRepository;
 import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,7 @@ import java.util.List;
  */
 public class BranchRepository {
 
-    static List<Branch> branches = new ArrayList<>();
-
+    public static List<Branch> branches = new ArrayList<>();
 
     /**
      * Save branch.
@@ -83,13 +84,50 @@ public class BranchRepository {
         return lowestID;
     }
 
+    public List<Branch> getBranchList() {
+
+        return new ArrayList<>(branches);
+    }
+
     public static Branch getBranchByID(int id) {
 
-        if(id >= 0 && id < branches.size()) {
+        if (id >= 0 && id < branches.size()) {
 
             return branches.get(id);
         }
         return null;
-     }
+    }
+
+    public void readObject() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/branch.ser"));
+            branches = (List<Branch>) ois.readObject();
+            System.out.println(branches);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Write object.
+     */
+    public void writeObject() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/branch.ser"));
+            oos.writeObject(branches);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        }
+    }
 
 }

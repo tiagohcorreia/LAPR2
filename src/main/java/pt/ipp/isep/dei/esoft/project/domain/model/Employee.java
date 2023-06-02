@@ -15,7 +15,7 @@ public class Employee implements Serializable {
     private String emailAddress;
     private int telephoneNumber;
     private Role role;
-    private Agency agency;
+    private Branch branch;
 
 
     /**
@@ -25,12 +25,12 @@ public class Employee implements Serializable {
      * @param passportNumber  the passport number
      * @param taxNumber       the tax number
      * @param address         the address
-     * @param emailAddress     the email adress
+     * @param emailAddress    the email adress
      * @param telephoneNumber the telephone number
      * @param role            the role
-     * @param agency          the agency
+     * @param branch          the agency
      */
-    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAddress, int telephoneNumber, Role role, Agency agency) {
+    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAddress, int telephoneNumber, Role role, Branch branch) {
 
         this.name = setName(name);
         this.passportNumber = setPassportNumber(passportNumber);
@@ -39,7 +39,7 @@ public class Employee implements Serializable {
         this.emailAddress = setEmailAdress(emailAddress);
         this.telephoneNumber = setTelephoneNumber(telephoneNumber);
         this.role = role;
-        this.agency = agency;
+        this.branch = branch;
     }
 
     /**
@@ -118,10 +118,12 @@ public class Employee implements Serializable {
      *
      * @return the agency
      */
-    public Agency getAgency() {
+    /*public Agency getAgency() {
         return agency;
+    }*/
+    public Branch getBranch() {
+        return branch;
     }
-
 
     /**
      * Sets name.
@@ -251,14 +253,10 @@ public class Employee implements Serializable {
         this.role = role;
     }
 
-    /**
-     * Sets agency.
-     *
-     * @param agency the agency
-     */
-    public void setAgency(Agency agency) {
-        this.agency = agency;
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
+
 
     @Override
     public String toString() {
@@ -272,7 +270,7 @@ public class Employee implements Serializable {
         sb.append(", emailAdress='").append(emailAddress).append('\'');
         sb.append(", contactNumber=").append(telephoneNumber);
         sb.append(", role=").append(role);
-        sb.append(", agency=").append(agency);
+        sb.append(", branch=").append(branch);
         sb.append('}');
 
         return sb.toString();
@@ -283,7 +281,7 @@ public class Employee implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return passportNumber == employee.passportNumber && taxNumber == employee.taxNumber && telephoneNumber == employee.telephoneNumber && Objects.equals(name, employee.name) && Objects.equals(address, employee.address) && Objects.equals(emailAddress, employee.emailAddress) && role == employee.role && agency == employee.agency;
+        return passportNumber == employee.passportNumber && taxNumber == employee.taxNumber && telephoneNumber == employee.telephoneNumber && Objects.equals(name, employee.name) && Objects.equals(address, employee.address) && Objects.equals(emailAddress, employee.emailAddress) && role == employee.role && branch == employee.branch;
     }
 
     public boolean equals1(Object obj) {
@@ -299,7 +297,7 @@ public class Employee implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, passportNumber, taxNumber, address, emailAddress, telephoneNumber, role, agency);
+        return Objects.hash(name, passportNumber, taxNumber, address, emailAddress, telephoneNumber, role, branch);
     }
 
     /*private void verifyIfEmployeeDataIsNotNull(String name, int passportNumber, int taxNumber, String address, String emailAdress, long telephoneNumber) {

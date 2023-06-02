@@ -30,6 +30,7 @@ public class StateController {
     public void addState(String name) {
         State state = new State(name, new ArrayList<>());
         stateRepository.save(state);
+        stateRepository.writeObject();
     }
 
     /**

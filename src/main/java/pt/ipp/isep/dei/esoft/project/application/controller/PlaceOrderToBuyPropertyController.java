@@ -25,7 +25,6 @@ public class PlaceOrderToBuyPropertyController {
      */
     public PlaceOrderToBuyPropertyController(PlaceOrderToBuyPropertyRepository orderRepository) {
 
-        this.orderRepository.readObject();
         this.orderRepository = orderRepository;
     }
 
@@ -36,7 +35,7 @@ public class PlaceOrderToBuyPropertyController {
      */
     public List<AnnouncementDTO> announcementDTOList() {
 
-        List<Announcement> announcements = announcementRepository.getPublishedAnnouncements();
+        List<Announcement> announcements = announcementRepository.readObject();
 
         return AnnouncementMapper.convert(announcements);
     }
@@ -65,4 +64,9 @@ public class PlaceOrderToBuyPropertyController {
         }
 
     }
+
+    /*public String listSelectedAnnouncement() {
+
+
+    }*/
 }

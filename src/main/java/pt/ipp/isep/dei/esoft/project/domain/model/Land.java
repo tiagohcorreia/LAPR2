@@ -21,7 +21,9 @@ public class Land extends Property{
 
     @Override
     public String toString() {
-        return "Land{"+super.toString()+
-                "}";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Land \n");
+        sb.append(super.toString());
+        return sb.toString();
     }
 }

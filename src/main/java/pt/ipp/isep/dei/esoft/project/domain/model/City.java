@@ -1,9 +1,11 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import java.io.Serializable;
+
 /**
  * The type City.
  */
-public class City {
+public class City implements Serializable {
     private String name;
 
     /**

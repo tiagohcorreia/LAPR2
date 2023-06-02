@@ -1,9 +1,12 @@
 package pt.ipp.isep.dei.esoft.project.ui.console.menu;
 
 
+import pt.ipp.isep.dei.esoft.project.application.controller.RegisterBranchController;
 import pt.ipp.isep.dei.esoft.project.application.controller.RegisterEmployeeController;
+import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.LegacyImportUI;
+import pt.ipp.isep.dei.esoft.project.ui.console.RegisterBranchUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.RegisterEmployeeUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.SpecifyStatesDistrictsCitiesUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
@@ -27,12 +30,19 @@ public class AdminUI implements Runnable {
 
         //options.add(new MenuItem("Create Task", new CreateTaskUI()));
         options.add(new MenuItem("Specify states, districts or cities", new SpecifyStatesDistrictsCitiesUI()));
+
         EmployeeRepository er = new EmployeeRepository();
         RegisterEmployeeController rec = new RegisterEmployeeController(er);
         options.add(new MenuItem("Register Employee ", new RegisterEmployeeUI(rec)));
-//        options.add(new MenuItem("Register Employee ", new RegisterEmployeeUI(new RegisterEmployeeController(new EmployeeRepository()))));
+        //options.add(new MenuItem("Register Employee ", new RegisterEmployeeUI(new RegisterEmployeeController(new EmployeeRepository()))));
+
         //options.add(new MenuItem("Option 3 ", new ShowTextUI("You have chosen Option C.")));
+
         options.add(new MenuItem("Import from legacy system ", new LegacyImportUI()));
+
+        BranchRepository branchRepository = new BranchRepository();
+        RegisterBranchController branchController = new RegisterBranchController(branchRepository);
+        options.add(new MenuItem("Register a store/branch", new RegisterBranchUI(branchController)));
 
         int option = 0;
         do {

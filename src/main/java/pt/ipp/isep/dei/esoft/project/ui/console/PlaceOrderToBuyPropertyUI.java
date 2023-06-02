@@ -2,8 +2,8 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
-import pt.ipp.isep.dei.esoft.project.exceptions.NegativeNumberException;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.List;
@@ -52,16 +52,16 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
                 } catch (IllegalArgumentException e) {
 
-                    System.out.println(e.getMessage());
+                    System.err.println(e.getMessage());
 
                 } catch (Exception e) {
 
-                    System.out.println(e.getMessage());
+                    System.err.println(e.getMessage());
                 }
 
                 System.out.println("=== Review Order Detail ===");
                 System.out.println("Order amount: " + orderAmount + "$");
-                System.out.println("Selected Announcement:\n" + posAnouncement.toString());
+                System.out.println("Selected Announcement:\n" + AnnouncementMapper.getAnnouncementDTOById(posAnouncement));
 
             } else {
 

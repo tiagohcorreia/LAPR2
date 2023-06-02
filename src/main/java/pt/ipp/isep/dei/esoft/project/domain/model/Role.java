@@ -20,12 +20,12 @@ public enum Role implements Serializable {
 
     },
     /**
-     * The Manager.
+     * The Network Manager.
      */
-    MANAGER(2) {
+    NETWORK_MANAGER(2) {
         @Override
         public String toString() {
-            return String.format("Manager");
+            return String.format("Network Manager");
         }
 
     },

@@ -4,6 +4,8 @@ import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.application.controller.AnnouncementRequestsController;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementRequestDTO;
+import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementRequestMapper;
 
 import java.util.List;
 import java.util.Scanner;
@@ -39,7 +41,7 @@ public class AnnouncementRequestsUI implements Runnable{
         if (controller.isEmployee(agentName)) {
             Employee agent = controller.getEmployee(agentName);
 
-            List<Announcement> announcements = controller.getAnnouncementRequests(agent);
+            List<AnnouncementRequestDTO> announcements = controller.getAnnouncementRequests(agent);
             if (!announcements.isEmpty()) {
              System.out.println("=== Announcement Requests ===\n\n");
             for (int i = 0; i < announcements.size(); i++) {
@@ -51,7 +53,7 @@ public class AnnouncementRequestsUI implements Runnable{
                 int index = scanner.nextInt();
                 scanner.nextLine();
 
-                Announcement announcement = controller.getAnnouncementByIndex(index, agent);
+                AnnouncementRequestDTO announcement = controller.getAnnouncementByIndex(index, agent);
                 if (announcement != null) {
                     System.out.println("=== Announcement Details ===\n\n");
                     System.out.println(announcement);
