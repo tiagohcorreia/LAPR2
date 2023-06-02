@@ -1,6 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
+import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,5 +47,37 @@ public class ScheduleRepository {
             stringBuilder.append("-").append(schedule.toString()).append("\n");
         }
         return stringBuilder.toString();
+    }
+    public List<Schedule> readObject() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/schedulesRequests.ser"));
+            scheduleList = (List<Schedule>) ois.readObject();
+            System.out.println(scheduleList);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+        return scheduleList;
+    }
+
+    /**
+     * Write object.
+     */
+    public void writeObject() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/schedulesRequests.ser"));
+            oos.writeObject(scheduleList);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        }
     }
 }
