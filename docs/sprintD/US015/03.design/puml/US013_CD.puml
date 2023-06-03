@@ -48,21 +48,15 @@ class Repositories {
 
 ListAllEmployeesUI -[dashed]-> ListAllEmployeesController
 ListAllEmployeesController-[dashed]-> Repositories
-ListAllEmployeesController-[dashed]-> BranchRepository
-ListAllEmployeesController-[dashed]-> EmployeeRepository
-
-
-Repositories -> Repositories : Instance
+Repositories --> Repositories
 Repositories --> EmployeeRepository
 Repositories --> BranchRepository
 
 
 
 
-BranchRepository -down-> Branch
-EmployeeRepository -down-> Employee
-
-Branch --> Employee
+Branch -left-> BranchRepository
+Employee -right-> EmployeeRepository
 
 
 @enduml

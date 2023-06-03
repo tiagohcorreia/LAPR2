@@ -55,7 +55,7 @@ typeOfBusiness
 
 
 Network "1" -- "*" Branch: owns >
-Branch "1" -- "*" Announcement: has >
+Branch "1" -- "*" Announcement: publishes >
 
 
 Network "1" -- "*" Employee: employs >
