@@ -1,4 +1,4 @@
-# US 006 - As a client, I want to read the response for the appointment request, to accept or reject it
+# US 020 - As a client, I want to read the response for the appointment request, to accept or reject it
 
 ## 1. Requirements Engineering
 
@@ -14,6 +14,7 @@ As a client, I want to read the response for the appointment request, to accept 
 
 **From the specifications document:**
 
+
 >	
 
 
@@ -23,9 +24,9 @@ As a client, I want to read the response for the appointment request, to accept 
 
 **From the client clarifications:**
 
-> **Question:** 
+> **Question:** "The reason for declining the appointment should be selected from predefined options or entered as free text?"
 >  
-> **Answer:**
+> **Answer:** "The message should be entered as free text."
 
 
 > **Question:** 
@@ -36,15 +37,19 @@ As a client, I want to read the response for the appointment request, to accept 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** 
-* **AC2:** 
-* **AC3:** 
+* **AC1:** The agent must be notified when the message is displayed to the client
+ 
+* **AC2:** The appointment request must provide information about the property and the date of the appointment
+ 
+* **AC3:** When the appointment is rejected, the client must specify the reason
+
+* **AC4:** The appointment request must provide the agent name and phone number
 
 
 ### 1.4. Found out Dependencies
 
 
-* 
+* The system must have appointment request already registered
 
 
 ### 1.5 Input and Output Data
@@ -53,21 +58,22 @@ As a client, I want to read the response for the appointment request, to accept 
 **Input Data:**
 
 * Typed data:
-	* 
-	* 
-	* 
-	* 
-	* 
-	* 
+ 
+
+	* N/A 
+	 
+
 	
 * Selected data:
-	* 
+
+
+	* appointment request
 
 
 **Output Data:**
 
-* 
-* 
+    *  Request confirmation
+	*  Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
 

@@ -1,0 +1,22 @@
+@startuml
+
+actor Client
+participant SYSTEM as ui
+
+
+autonumber
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

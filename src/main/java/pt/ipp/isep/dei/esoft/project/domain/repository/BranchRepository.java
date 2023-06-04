@@ -104,7 +104,6 @@ public class BranchRepository {
 
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/branch.ser"));
             branches = (List<Branch>) ois.readObject();
-            System.out.println(branches);
             ois.close();
 
         } catch (IOException | ClassNotFoundException e) {
