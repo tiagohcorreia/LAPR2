@@ -15,7 +15,7 @@ participant ":System" as System
     activate System
     System --> agent : requests to select begin date and end date
     deactivate System
-    agent -> System : selects begin date and end date
+    agent -> System : selects booking start and end date
     activate System
     System --> agent : shows sorted list of booking requests
     deactivate System

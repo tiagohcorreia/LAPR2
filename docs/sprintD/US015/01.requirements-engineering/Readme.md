@@ -14,8 +14,7 @@ me.
 
 **From the specifications document:**
 
->After consulting a list of properties, the client can request to schedule a visit to the real estate agent
-for a specific property to verify its conditions. 
+>After consulting a list of properties, the client can request to schedule a visit to the real estate agent for a specific property to verify its conditions. 
 
 
 **From the client clarifications:**
@@ -54,7 +53,7 @@ file. At least two sorting algorithms should be available.
 ### 1.4. Found out Dependencies
 
 
-* US009
+* Dependency to "US009 - Sends a message to schedule a visit " since there needs to exist a visit/booking request to list.
 
 ### 1.5 Input and Output Data
 
@@ -62,8 +61,8 @@ file. At least two sorting algorithms should be available.
 
 **Selected Data:**
     
-    -Begin date;
-    -End date;
+    -Booking start date;
+    -Booking end date;
 
 **Output Data:**
 
