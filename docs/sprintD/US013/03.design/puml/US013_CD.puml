@@ -53,16 +53,16 @@ ListAllEmployeesController-[dashed]-> EmployeeRepository
 
 
 Repositories -> Repositories : Instance
-Repositories --> EmployeeRepository
-Repositories --> BranchRepository
+Repositories --> "1" EmployeeRepository
+Repositories --> "1" BranchRepository
 
 
 
 
-BranchRepository -down-> Branch
-EmployeeRepository -down-> Employee
+BranchRepository -down-> "*" Branch
+EmployeeRepository -down-> "*" Employee
 
-Branch --> Employee
+Branch "1" -right-> "*" Employee : employes
 
 
 @enduml
