@@ -26,8 +26,9 @@ public class AuthenticationController {
      * The constant ROLE_OWNER.
      */
     public static final String ROLE_OWNER = "OWNER";
-
+    public static final String ROLE_NETWORK_MANAGER = "NETWORK_MANAGER";
     public static final String ROLE_UNREGISTERED = "UNREGISTERED_USER";
+    public static final String ROLE_STORE_MANAGER = "STORE_MANAGER";
     public static final String ROLE_CLIENT = "CLIENT";
 
     //private final ApplicationSession applicationSession;

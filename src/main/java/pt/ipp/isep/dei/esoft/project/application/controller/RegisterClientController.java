@@ -35,7 +35,7 @@ public class RegisterClientController {
         try {
             authenticationRepository.addUserWithRole(newClient.getName(), newClient.getEmail(), newClient.getPassword(), AuthenticationController.ROLE_CLIENT);
         } catch (Exception e){
-            System.out.println("Couldn't register user with authetication system. " + e.getMessage());
+            System.out.println("Couldn't register user with authentication system. " + e.getMessage());
         }
         //if (success2) System.out.println("succ");
         return success;

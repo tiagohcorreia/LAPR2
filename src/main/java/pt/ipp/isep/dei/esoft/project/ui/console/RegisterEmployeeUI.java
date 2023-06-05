@@ -19,11 +19,8 @@ public class RegisterEmployeeUI implements Runnable {
 
     /**
      * Instantiates a new Register employee ui.
-     *
-     * @param controller the controller
      */
-    public RegisterEmployeeUI(RegisterEmployeeController controller) {
-        //this.controller = controller;
+    public RegisterEmployeeUI() {
     }
 
     @Override

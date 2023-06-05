@@ -61,9 +61,6 @@ public class CsvHandler {
 
 
 
-
-
-
     static StateRepository stateRepository = Repositories.getInstance().getStateRepository();
     static CityRepository cityRepository = Repositories.getInstance().getCityRepository();
     static BranchRepository branchRepository = Repositories.getInstance().getBranchRepository();
@@ -120,7 +117,8 @@ public class CsvHandler {
         return true;
     }
 
-    public static boolean parseCSV(List<?> csv){
+    public static int parseCSV(List<?> csv){
+        int failedImports = 0;
         boolean success = false;
         for (Object line:
              csv) {
@@ -134,10 +132,14 @@ public class CsvHandler {
                 success = (announcementRepository.save(announcement) && success);
             } catch (Exception e){
                 e.printStackTrace();
+            } finally {
+                if(!success)
+                    failedImports++;
+                success = true;
             }
         }
 
-        return success;
+        return failedImports;
     }
 
     private static Branch parseBranchData(List<?> line){
@@ -293,14 +295,11 @@ public class CsvHandler {
         String districtName = null;
         String stateName = null;
 
-        if(hasDistrictField){
+        if(hasDistrictField)
             districtName = fields[2];
-            stateName = fields[3];
-            zipCode = Integer.getInteger(fields[4]);
-        } else {
-            stateName = fields[2];
-            zipCode = Integer.getInteger(fields[3]);
-        }
+
+        stateName = fields[fields.length-2];
+        zipCode = Integer.getInteger(fields[fields.length-1]);
 
         //TODO: associate state with city
         State state;
@@ -322,12 +321,30 @@ public class CsvHandler {
     }
 
     private static LocalDate parseYyyyMmDdDate(String date){
+        LocalDate result = null;
         String splitDate[] = date.split("-");
-        return LocalDate.of(
-                Integer.getInteger(splitDate[2]),
-                Integer.getInteger(splitDate[1]),
-                Integer.getInteger(splitDate[0])
-        );
+        try{
+            result = LocalDate.of(
+                    Integer.getInteger(splitDate[2]),
+                    Integer.getInteger(splitDate[1]),
+                    Integer.getInteger(splitDate[0])
+            );
+        } catch (Exception e){
+            throw new IllegalArgumentException("Couldn't parse number: " + date + "\n");
+        }
+        return result;
+    }
+
+    private static int parseNumber (String number){
+        int result = -1;
+        number = number.trim();
+        number = number.replaceAll("-", "");
+        try {
+            result = Integer.getInteger(number);
+        } catch (Exception e){
+            throw new IllegalArgumentException("Couldn't parse number: " + number + "\n");
+        }
+        return result;
     }
 
 }
