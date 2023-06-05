@@ -2,10 +2,8 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 
 
 
-import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
-import pt.ipp.isep.dei.esoft.project.domain.model.Location;
-import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
-import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
+import pt.ipp.isep.dei.esoft.project.domain.model.*;
+import pt.ipp.isep.dei.esoft.project.domain.repository.*;
 
 /**
  * The type Register branch controller.
@@ -13,6 +11,9 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 public class RegisterBranchController {
 
     BranchRepository branchRepository = Repositories.getInstance().getBranchRepository();
+    CityRepository cityRepository = Repositories.getInstance().getCityRepository();
+    StateRepository stateRepository = Repositories.getInstance().getStateRepository();
+    DistrictRepository districtRepository = Repositories.getInstance().getDistrictRepository();
 
 
     /**
@@ -52,5 +53,30 @@ public class RegisterBranchController {
 
 
     }
+
+    public Location createLocation(String doorNumber, String street, String cityString, String districtString, String stateString, String zipCode){
+        int dn = Integer.parseInt(doorNumber);
+        int zc = Integer.parseInt(zipCode);
+
+        City city = cityRepository.findByName(cityString);
+        District district = districtRepository.findByName(districtString);
+        State state = stateRepository.findByName(stateString);
+
+        /*if (state == null){
+            state = createState(stateString);
+        }
+        if (district == null){
+            state = cre(stateString);
+        }
+        if (state == null){
+            state = createState(stateString);
+        }
+    */
+
+
+
+        return new Location(dn, street, city, district, state, zc);
+    }
+
 
 }

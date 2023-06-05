@@ -7,6 +7,8 @@ public class Location implements Serializable {
     int doorNumber;
     String street;
     City city;
+    District district;
+    State state;
     int zipCode;
 
     public Location(String street, City city, int zipCode) {
@@ -44,6 +46,15 @@ public class Location implements Serializable {
         street = "Street Zero";
         city = new City("City Zero");
         zipCode = 0;
+    }
+
+    public Location(int doorNumber, String street, City city, District district, State state, int zipCode){
+        this.doorNumber = doorNumber;
+        this.street = street;
+        this.city = city;
+        this.district = district;
+        this.state = state;
+        this.zipCode = zipCode;
     }
 
 //    private boolean doorNumberIsValid(int doorNumber){
