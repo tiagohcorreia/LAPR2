@@ -77,7 +77,6 @@ public class Location implements Serializable {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Location - Details:\n");
         sb.append(String.format("Door Number: %s\n", doorNumber));
         sb.append(String.format("Street:      %s\n", street));
         sb.append(String.format("City:        %s\n", city));

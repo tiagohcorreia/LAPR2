@@ -13,9 +13,10 @@ class PublishAnnouncementUI{
 }
 
 class PublishAnnouncementController {
-    + PublishAnnouncementController(Property)
-    + createAnnouncment(Bussiness,size,location,distance_from_the_city_center,\nprice,commission, Agency, Agent)
-    - getAgentFromSession()
+    + PublishAnnouncementController(date,Property,commission,agentName)
+    + createAnnouncement(date,Property,commission,agentName)
+    + createNotification(ownerName, ownerPhoneNumber,ID,date,agentName,agentPhoneNumber)
+    - getEmployeeFromSession()
 
 }
 
@@ -27,25 +28,17 @@ class ApplicationSession
 
 class UserSession
 {
-    + getUserEmail()
+    + getUserNameByEmail()
 }
 
 
-class AgencyRepository {
-    + getAgencyByAgentEmail(email)
-}
 
-class Agency {
-    - String name
-    + anyEmployeeHasEmail(email)
-    + Agency(name)
-    - getAgentByEmail(email)
-}
 
 class Repositories {
     - Repositories()
     + getInstance() : Repositories
-    + getAgencyRepository()
+    + getAnnouncementRepository()
+    +getEmployeeRepository()
 }
 
 class AnnouncementRepository{
@@ -53,19 +46,47 @@ class AnnouncementRepository{
     +validateAnnouncement()
     +addAnnouncement()
 }
+class EmployeeRepository{
+    +getAgentPhoneNumber()
+
+}
 
 class Announcement{
-    + Announcement(Business,size,location,distance_from_the_city_center,\nprice,commission)
+    + Announcement(date,Property,commission,agentName)
 
 }
 
 class Property{
-  -String Business
+  -String ID
+  -TypeOfBusiness TypeOfBusiness
   -float size
   -string location
   -float distance_from_the_city_center
+  -String photographs
   -float price
+
 }
+class House{
+    -numberOfBedrooms
+    -numberOfBathrooms
+    -availableEquipments
+    -numberOfParkingSpaces
+    -sunExposure
+    -existenceOfBasement
+    -inhabitableLoft
+
+}
+
+class Apartment{
+    -numberOfBedrooms
+    -numberOfBathrooms
+    -availableEquipments
+    -numberOfParkingSpaces
+}
+
+class Land{
+}
+
 
 
 
@@ -76,33 +97,45 @@ class Agent {
     -phoneNumber
     -agency
     -email
-    +publishAnnouncement(Business,size,location,distance_from_the_city_center,\nprice,commission)
+    +publishAnnouncement(date,Property,commission,agentName)
 }
-
-
+class NotificationService{
+    -String ownerName
+    -int ownerPhoneNumber
+    -String id
+    -LocalDate date
+    -String agentName
+    -int agentPhoneNumber
+    +CreateNotification()
+    +SendSMS()
+}
 
 Repositories -> Repositories : instance
 ApplicationSession -> ApplicationSession : instance
 PublishAnnouncementController .> Repositories : repositories
 
-Repositories --> "1" AgencyRepository
+Repositories --> "1" EmployeeRepository
 
-AgencyRepository --> "*" Agency
+EmployeeRepository --> "*" Agent: Agent
 ApplicationSession --> "1" UserSession : userSession
 
-PublishAnnouncementController ..> "1" Agency : Agency
+PublishAnnouncementController ..> "1" Agent : Agent
 PublishAnnouncementController ..> ApplicationSession
 PublishAnnouncementController ..> UserSession
 
 PublishAnnouncementUI .> PublishAnnouncementController
 
-PublishAnnouncementController ..> Property
 
 PublishAnnouncementController ..> AnnouncementRepository : AnnouncementRepository
 
 AnnouncementRepository --> "*" Announcement
 
 Announcement "1" --> "1" Property: property
+
+Property "1" --> "1" House: house
+Property "1" --> "1" Apartment: apartment
+Property "1" --> "1" Land: land
+PublishAnnouncementController --> NotificationService: notificationService
 
 Announcement --> Agent : publishedBy
 @enduml
