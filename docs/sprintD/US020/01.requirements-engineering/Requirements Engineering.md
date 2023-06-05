@@ -15,11 +15,10 @@ As a client, I want to read the response for the appointment request, to accept 
 **From the specifications document:**
 
 
->	
-
-
->	
-
+>	After consulting a list of properties, the client can request to schedule a visit to the real estate agent
+    for a specific property to verify its conditions. The agent receives the request, checks the
+    availability and sends the response. If the customer accepts the order, it is automatically scheduled
+    in the system
 
 
 **From the client clarifications:**
@@ -29,10 +28,14 @@ As a client, I want to read the response for the appointment request, to accept 
 > **Answer:** "The message should be entered as free text."
 
 
-> **Question:** 
+> **Question:** "According to AC1, the agent must be notified when the message is displayed to the client. Should he receive an email?"
 >  
-> **Answer:** 
+> **Answer:** "The agent must be notified by email when the message is displayed to the client."
 
+
+> **Question:** "Should the response for the booking request be displayed in the console? Or is it implied that the client saw the response in the email and knows what is being handled?"
+>
+> **Answer:** "The agent must be notified by email when the message is displayed to the client."
 
 ### 1.3. Acceptance Criteria
 
@@ -49,7 +52,7 @@ As a client, I want to read the response for the appointment request, to accept 
 ### 1.4. Found out Dependencies
 
 
-* The system must have appointment request already registered
+* The system must have appointment request already registered (US009)
 
 
 ### 1.5 Input and Output Data
@@ -78,7 +81,7 @@ As a client, I want to read the response for the appointment request, to accept 
 ### 1.6. System Sequence Diagram (SSD)
 
 
-![System Sequence Diagram](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram](svg/SSD.svg)
 
 
 ### 1.7 Other Relevant Remarks
