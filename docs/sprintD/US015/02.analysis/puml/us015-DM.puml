@@ -12,17 +12,6 @@ skinparam classAttributeIconSize 0
 hide circle
 hide methods
 
-class Network{
-name
-}
-
-class Branch{
-name
-address
-email
-phoneNumber
-}
-
 class Employee{
 }
 
@@ -35,53 +24,42 @@ address
 phoneNumber
 }
 
-class BranchEmployee
+class Agent{
 
-together {
+}
 
-class "Network Manager" as NetworkMan
+class Client{
+}
+
+class Buyer
+
+
+class Visit{
+date
+time
+prediction
 }
 
 
-class Announcement{
-state
-price
-typeOfBusiness
+class Property{
+area
+cityCenterDistance
+photographs
 }
-
-
-
-
-
-
-Network "1" -- "*" Branch: owns >
-Branch "1" -- "*" Announcement: publishes >
-
-
-Network "1" -- "*" Employee: employs >
-
-
 
 BranchEmployee --|> Employee
 
 Person <|-- Employee
+Person <|-- Client
 
 
-
-Employee <|-- NetworkMan
-
-
-BranchEmployee "1" - "1" Branch: assigned to >
+BranchEmployee <|- Agent
 
 
-
-NetworkMan "*" -> "1" Network: manages >
-
-
-
-
-
-
+Buyer --|> Client
+Visit "*" -down- "1" Buyer: requests <
+Visit "*" -down- "1" Agent: scheduled by >
+Visit "*" -- "1" Property: visits >
 
 
 

@@ -167,6 +167,7 @@ Agent "1" - "*" Announcement: validates >
 Visit "1" - "1" Buyer: requests <
 Buyer "1" - "*" Announcement: browses >
 Visit "1" -- "1" Agent: scheduled by >
+Visit "*" -- "1" Property: visits >
 
 Agent "1" -> "1" Commission: sets >
 

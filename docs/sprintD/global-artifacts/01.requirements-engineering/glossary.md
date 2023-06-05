@@ -5,7 +5,7 @@
 |:--------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Agent** | REU worker who interacts with its clients: recieves and reviews announcement requests, orders, and conducts property visits.                                                                                       |
 | **Announcement**          | A publication related to the intent to Sell/Rent a property by its owner.<br/>**Synonyms:** listing                                                                                                                |
-| **Branch**                | One of REU's stores.<br/>**Synonyms:** agency                                                                                                                                                                      |
+| **Branch**                | One of REU's stores.<br/>**Synonyms:** agency/store                                                                                                                                                                      |
 | **Client**                | REU's customers; Buyer/Renter/Seller.                                                                                                                                                                              |
 | **Commission**            | REU’s cut of a given sale. Can be a fixed amount or a percentage.                                                                                                                                                  |
 | **Network**               | Set of all of REU's branches.                                                                                                                                                                                      |
@@ -16,5 +16,6 @@
 | **Store Manager**         | REU worker whose main function is to "monitor and streamline the branch with the aim of getting to know better the business carried out and to analyze and evaluate the performance of employees".                 |
 | **System Administrator**  | REU worker who is "responsible for  registering all employees and branches of the network, as well as preparing the system in order to facilitate the insertion of advertisements and the use of the application". |
 | **Visit**                 | Appointment for a potential client to inspect a property, accompanied by an agent.                                                                                                                                 |
+| **Booking**                 | Request to visit a property.
 
 
