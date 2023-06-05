@@ -23,9 +23,7 @@ public class RegisterBranchController {
      *
      * @param branchRepo the branch repo
      */
-    public RegisterBranchController(BranchRepository branchRepo) {
-        branchRepository = branchRepo;
-    }
+
 
     /**
      * Create branch string.
@@ -56,9 +54,9 @@ public class RegisterBranchController {
         int doorNumber = Integer.parseInt(doorNumberString);
         int zipCode = Integer.parseInt(zipCodeString);
 
-        City city = cityRepository.findByName(cityString);
-        District district = districtRepository.findByName(districtString);
         State state = stateRepository.findByName(stateString);
+        District district = districtRepository.findByName(districtString);
+        City city = cityRepository.findByName(cityString);
 
         if (state == null){
             state = stateRepository.createState(stateString);

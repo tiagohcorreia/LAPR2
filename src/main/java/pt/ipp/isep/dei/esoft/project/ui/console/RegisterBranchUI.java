@@ -11,18 +11,8 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
  * The type Register branch ui.
  */
 public class RegisterBranchUI implements Runnable {
+    private RegisterBranchController controller = new RegisterBranchController();
 
-
-    private RegisterBranchController controller = new RegisterBranchController(new BranchRepository());
-
-    /**
-     * Instantiates a new Register branch ui.
-     *
-     * @param controller the controller
-     */
-    public RegisterBranchUI(RegisterBranchController controller) {
-        //this.controller = controller;
-    }
     @Override
     public void run() {
 
