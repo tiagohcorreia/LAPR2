@@ -9,13 +9,19 @@ autonumber
 actor "Agent" as AG
 participant ":PublishAnnouncementUI" as UI
 participant ":PublishAnnouncementController" as CTRL
-participant "new Property\n:Property" as Property
 participant ":ApplicationSession" as _APP
 participant "appSession\n:ApplicationSession" as APP
 participant "currentSession\n:UserSession" as SESSAO
 participant "repositories\n:Repositories" as REP
+participant "employee Repository\n:EmployeeRepository" as EMP
+participant "Notification Service\n:NotificationService" as NS
 participant ":AnnouncementRepository" as AnnouncementREP
 participant "new Announcement\n:Announcement" as Announcement
+participant "new Property\n:Property" as Property
+participant "new House\n:House" as House
+participant "new Apartment\n:Apartment" as Apartment
+participant "new Land\n:Land" as Land
+
 
 
 activate AG
@@ -29,7 +35,30 @@ activate AG
 
         UI --> AG : presents the data to be\n filled in by the type of porperty
 
-        AG -> UI : insert the requested data (size, location, distance \nfrom the city center, price, commission)
+        AG -> UI : insert the requested data common of all properties(area, location, distance \nfrom the city center, price, commission, photographs)
+
+        alt House
+
+        AG -> UI : insert data for the house (number of bedrooms, number of bathrooms,\n number of parking spaces, available equipments, sun exposure,\n existence of basement, inhabitable loft )
+
+        else Apartment
+
+        AG -> UI : insert data for the apartment (number of bedrooms, number of bathrooms,\n number of parking spaces, available equipments)
+
+           else Land
+           AG -> UI : Land (  )
+
+           end
+
+
+           UI -> AG: requests owner´s name
+
+           AG --> UI: insert owner´s name
+
+            UI -> AG: requests owner´s phone number
+
+             AG --> UI: insert owner´s phone number
+
 
         UI --> AG : validate data
 
@@ -38,77 +67,83 @@ activate AG
 
                UI -> CTRL** : create
 
-               UI -> CTRL : createAnnouncement((Business,size, location,\n distance from the city \n center, price, commission))
+               UI -> CTRL : createAnnouncement((ID,date,Business,size, location,\n distance from the city \n center, price, commission, photographs, type of property))
 
                CTRL -> CTRL : getEmployeeFromSession()
                            activate CTRL
 
-                               CTRL -> _APP: getInstance()
-                               activate _APP
-                                   _APP -> CTRL: appSession
-                               deactivate _APP
+                                CTRL -> _APP: getInstance()
+                                            activate _APP
+                                         _APP -> CTRL: appSession
+                                             deactivate _APP
+
+                                         CTRL -> APP: getCurrentSession()
+                                             activate APP
+
+                                         APP --> CTRL: currentSession
+                                             deactivate APP
+
+                                        CTRL -> SESSAO: agentName = getUserNameByEmail()
+                                             activate SESSAO
+
+                                         SESSAO --> CTRL : agentName
+                                             deactivate SESSAO
 
 
-                               CTRL -> APP: getCurrentSession()
-                               activate APP
 
-                                   APP --> CTRL: currentSession
-                               deactivate APP
-
-                               CTRL -> SESSAO: email = getUserEmail()
-                               activate SESSAO
-
-                                   SESSAO --> CTRL: email
-                               deactivate SESSAO
-
-
-                               CTRL -> REP: getAgencyRepository(email)
-                               activate REP
-
-                                   REP --> CTRL:AgencyRepository
-                               deactivate REP
-
-
-                               CTRL -> AgencyRepository: getAgencyByAgentEmail(email)
-                               activate AgencyRepository
-
-                                   loop [for each Agency
-                                       AgencyRepository -> Agency : anyAgentHasEmail(email)
-                                       activate Agency
-
-                                            Agency --> AgencyRepository : true/false
-                                       deactivate Agency
-                                   end
-                                   AgencyRepository --> CTRL : Agency
-                               deactivate AgencyRepository
-
-                               CTRL -> Agency: getAgencyByEmail(email)
-                               activate Agency
-
-                                   Agency --> CTRL : Agent
-                               deactivate Agency
-
-                               CTRL --> CTRL : Agent
+                               CTRL --> CTRL : agentName
 
 
 
 
 
-                   CTRL -> Property** : create
 
-                   activate Property
-                   Property -> Property: validateProperty(Property)
-
-                   Property -> CTRL: Property
-                   deactivate Property
-
-                CTRL -> AnnouncementREP**: createAnnouncement(Business,size, location,\n distance from the city \n center, price, commission, Agent, Agency))
+                CTRL -> AnnouncementREP**: createAnnouncement(ID,date,Business,size, location,\n distance from the city \n center, price, commission, photographs, type of property, agentName))
                 activate AnnouncementREP
+
+
 
             AnnouncementREP -> Announcement**: create(Announcement)
 
             activate Announcement
 
+        Announcement -> Property** : create
+
+
+
+                   activate Property
+
+
+                    alt House
+                    Property -> House** : create
+
+                    House  -> House : House(number of bedrooms, number of bathrooms, available equipments,\n number of parking spaces, sun exposure, existence of basement,\n, inhabitable loft)
+                    House -> House : validateHouse(House)
+                    House -> Property : House(House)
+
+                    else Apartment
+
+                    Property -> Apartment** : create
+                    Apartment  -> Apartment : Apartment(number of bedrooms, number of bathrooms, available equipments,\n number of parking spaces)
+                    Apartment -> Apartment : validateHouse(Apartment)
+                    Apartment -> Property : Apartment(Apartment)
+
+                    else Land
+
+                    Property -> Land** : create
+                  Land  -> Land : Land()
+                  Land -> Land : validateLand(Land)
+                  Land -> Property : Land(Land)
+
+                  end
+
+
+                   Property -> Property: validateProperty(Property)
+
+                   Property -> : Property
+
+                   Property --> Announcement
+                   deactivate Property
             Announcement -> Announcement: validateAnnouncement(Announcement)
 
             Announcement -> AnnouncementREP: Announcement(Announcement)
@@ -132,6 +167,45 @@ activate AG
                 deactivate AnnouncementREP
 
                             CTRL --> UI: Announcement
+
+                            CTRL -> CTRL : getAgentPhoneNumber(agentName)
+                             activate CTRL
+
+                           CTRL -> REP : getInstance()
+                           activate REP
+
+                            REP --> CTRL: repositories
+                              deactivate REP
+
+                             CTRL -> REP : getEmployeeRepository()
+                             activate REP
+                           REP-> CTRL : EmployeeRepository
+                           deactivate REP
+                           CTRL -> EMP : getAgentPhoneNumber(agentName)
+                            activate EMP
+
+                             EMP --> CTRL : agentPhoneNumber
+                             deactivate EMP
+
+                           CTRL --> CTRL : agentPhoneNumber
+
+                           UI -> CTRL : createSMSNotification(ownerName, ownerNumber, PropertyID, date, agentName, agentPhoneNumber)
+
+                           CTRL -> NS : createSMSNotification(ownerName, ownerNumber, PropertyID, date, agentName, agentPhoneNumber)
+                           activate NS
+                           NS-> NS : createSMSNotification(ownerName, ownerNumber, PropertyID, date, agentName, agentPhoneNumber)
+                           deactivate NS
+
+                           NS --> CTRL: Notification
+                           activate NS
+
+                           CTRL -> NS: SendSMS(Notification)
+
+                           deactivate NS
+
+                           NS-> NS : sendSMS(Notification)
+
+
                             deactivate CTRL
                             UI --> AG: displays operation success
                     deactivate UI

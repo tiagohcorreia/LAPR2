@@ -276,20 +276,22 @@ public class Announcement implements Serializable {
         String status = (this.status == AnnouncementStatus.PUBLISHED) ? "Published" : "Not Published";
         String formattedDate = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("Announcement Details:\n");
-        sb.append(String.format("Date:    %s\n", formattedDate));
-        sb.append(String.format("Status:  %s\n", status));
-        sb.append(String.format("Price:   %.2f\n", price));
-        sb.append(String.format("Type of Business: %s\n", typeOfBusiness));
-        sb.append(String.format("Property: %s\n", property));
-        sb.append(String.format("Agent:   %s\n", agent));
-        return sb.toString();
-    }
 
+            StringBuilder sb = new StringBuilder();
+            sb.append("Announcement - Details:\n");
+            sb.append(String.format("Date:              %s\n", formattedDate));
+            sb.append(String.format("Status:            %s\n", status));
+            sb.append(String.format("Price:             %.2f\n", price));
+            sb.append(String.format("Type of Business:  %s\n", typeOfBusiness));
+            sb.append(String.format("Property:          %s\n", property));
+            return sb.toString();
+        }
     public String getAnnouncementAsString() {
+        String agentName = getAgent() != null ? getAgent().getName() : "";
+
         String result =
-                getDate().toString() +"\t" +
+                //getDate().toString() +"\t" +
+                (getDate() != null ? getDate().toString() : "") + "\t" +
                 getTypeOfBusiness().toString() + "\t" +
                 getProperty().getClass().getSimpleName() + "\t" +
                 getPrice() + "\t" +
@@ -298,7 +300,8 @@ public class Announcement implements Serializable {
                 getProperty().getCityCentreDistance() + "\t" +
                 getProperty().getNumberOfBedrooms() + "\t" +
                 getProperty().getPhotographs() + "\t" +
-                getAgent().getName();
+               // getAgent().getName();
+                 agentName;
         return result;
     }
 

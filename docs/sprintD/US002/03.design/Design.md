@@ -18,9 +18,10 @@
 | Step 5 - insert the requested data                               | 	...saving the inputted data?                             | Announcement                 | IE: object created in step 1 has its own data.                                                                |
 | Step 6 - validate data                                           | 	..					                                                  |                              |                                                                                                               |              
 | Step 7 - submit data		                                           | 	...validating the data locally (mandatory data)?         | Announcement                 | IE: The object created has its own data.                                                                      | 
+| 			  		                                                          | 	... validating all data (global validation)?             | AnnouncementRepository       | IE: knows all its announcements.                                                                              |
 | 			  		                                                          | 	... validating all data (global validation)?             | AnnouncementRepository       | IE: knows all its announcements.                                                                              | 
-| 			  		                                                          | 	... saving the created announcement?                     |AnnouncementRepository                    | IE: owns all its announcements.                                                                               | 
-| Step 8  - displays operation sucess	                             | 	... informing operation success?                         | PublishAnnouncementUI        | Pure Fabrication.                                                                                             | 
+| 	Step 8 - send notification to the owner	  		                    | 	...create and send teh notification?                     | NotificationService          | IE.                                                                                                           | 
+| Step 9  - displays operation success	                             | 	... informing operation success?                         | PublishAnnouncementUI        | Pure Fabrication.                                                                                             | 
 
 ### Systematization ##
 
@@ -29,6 +30,7 @@ According to the taken rationale, the conceptual classes promoted to software cl
  * Announcement
  * Agent
  * Property
+ * NotificationService
 
 Other software classes (i.e. Pure Fabrication) identified: 
  * AnnouncementRepository

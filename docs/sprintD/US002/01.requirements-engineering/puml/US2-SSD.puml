@@ -9,6 +9,7 @@ autonumber
 
 actor "Agent" as Employee
 participant ":System" as System
+actor "Owner" as Owner
 
 activate Employee
 
@@ -21,12 +22,37 @@ activate Employee
     Employee -> System : Select the property type
     activate System
 
+
+
         System --> Employee : presents the data to be filled in by the type of property
 
     deactivate System
 
-    Employee -> System : insert the requested data (size, location, distance from the city center, number of bedrooms, number of bathrooms, price, commission)
+    Employee -> System : insert the requested data common to all property (size, location, distance from the city center, price, commission)
     activate System
+
+    alt House
+
+    deactivate System
+
+        Employee -> System : insert the data of the house (number of bedrooms, number of bathrooms,\n number  of parking spaces, available equipments, sun exposure,inhabitable loft,\ existence of basement )
+            activate System
+
+       else Apartment
+             Employee -> System : insert the data of the apartment (number of bedrooms, number of bathrooms, number  of parking spaces, available equipments)
+                        deactivate System
+
+             end
+
+    activate System
+
+          System --> Employee : requests owner's name and phone number
+          deactivate System
+
+         Employee -> System : insert the data
+            activate System
+
+
 
         System --> Employee : validate the data
     deactivate System
@@ -34,7 +60,10 @@ activate Employee
     Employee -> System : submits data
     activate System
 
-        System --> Employee : displays operation success
-    deactivate System
+     System --> Owner : Sends a notification about the publication of the\n announcement (id, publication date, agent name, agent number )
+        activate Owner
+
+     System --> Employee : displays operation success
+            deactivate System
 
 @enduml
