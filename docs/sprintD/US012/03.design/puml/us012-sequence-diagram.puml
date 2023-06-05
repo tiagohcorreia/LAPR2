@@ -30,22 +30,22 @@ ctrl -> repos: getInstance()
 activate repos
 return repositories
 
-ctrl -> repositories: getBranchRepository()
-activate repositories
-return branchRepository
+'ctrl -> repositories: getBranchRepository()
+'activate repositories
+'return branchRepository
 
-ctrl -> repositories: getAnnouncementRepository()
-activate repositories
-return announcementRepository
+'ctrl -> repositories: getAnnouncementRepository()
+'activate repositories
+'return announcementRepository
 
 ctrl -> repositories: getEmployeeRepository()
 activate repositories
 return employeeRepository
 
 
-ctrl -> repositories: getClientRepository()
-activate repositories
-return clientRepository
+''ctrl -> repositories: getClientRepository()
+'activate repositories
+'return clientRepository
 deactivate ctrl
 
 return requests file path

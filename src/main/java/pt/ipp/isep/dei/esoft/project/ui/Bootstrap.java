@@ -78,6 +78,12 @@ public class Bootstrap implements Runnable {
         authenticationRepository.addUserWithRole("Client", "client@isep.ipp.pt", "client",
                 AuthenticationController.ROLE_CLIENT);
 
+        authenticationRepository.addUserWithRole("Network Manager", "network@this.app", "net",
+                AuthenticationController.ROLE_NETWORK_MANAGER);
+
+        authenticationRepository.addUserWithRole("Store Manager", "store@this.app", "store",
+                AuthenticationController.ROLE_STORE_MANAGER);
+
         //Get registered clients
         ClientRepository clientRepository = pt.ipp.isep.dei.esoft.project.domain.repository.Repositories.getInstance().getUserRepository();
         List<Client> clientList = clientRepository.getUsers();

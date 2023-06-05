@@ -1,4 +1,4 @@
-# US 006 - As a client, I want to read the response for the appointment request, to accept or reject it
+# US 020 - As a client, I want to read the response for the appointment request, to accept or reject it
 
 ## 1. Requirements Engineering
 
@@ -14,37 +14,45 @@ As a client, I want to read the response for the appointment request, to accept 
 
 **From the specifications document:**
 
->	
 
-
->	
-
+>	After consulting a list of properties, the client can request to schedule a visit to the real estate agent
+    for a specific property to verify its conditions. The agent receives the request, checks the
+    availability and sends the response. If the customer accepts the order, it is automatically scheduled
+    in the system
 
 
 **From the client clarifications:**
 
-> **Question:** 
+> **Question:** "The reason for declining the appointment should be selected from predefined options or entered as free text?"
 >  
-> **Answer:**
+> **Answer:** "The message should be entered as free text."
 
 
-> **Question:** 
+> **Question:** "According to AC1, the agent must be notified when the message is displayed to the client. Should he receive an email?"
 >  
-> **Answer:** 
+> **Answer:** "The agent must be notified by email when the message is displayed to the client."
 
+
+> **Question:** "Should the response for the booking request be displayed in the console? Or is it implied that the client saw the response in the email and knows what is being handled?"
+>
+> **Answer:** "The agent must be notified by email when the message is displayed to the client."
 
 ### 1.3. Acceptance Criteria
 
 
-* **AC1:** 
-* **AC2:** 
-* **AC3:** 
+* **AC1:** The agent must be notified when the message is displayed to the client
+ 
+* **AC2:** The appointment request must provide information about the property and the date of the appointment
+ 
+* **AC3:** When the appointment is rejected, the client must specify the reason
+
+* **AC4:** The appointment request must provide the agent name and phone number
 
 
 ### 1.4. Found out Dependencies
 
 
-* 
+* The system must have appointment request already registered (US009)
 
 
 ### 1.5 Input and Output Data
@@ -53,26 +61,27 @@ As a client, I want to read the response for the appointment request, to accept 
 **Input Data:**
 
 * Typed data:
-	* 
-	* 
-	* 
-	* 
-	* 
-	* 
+ 
+
+	* N/A 
+	 
+
 	
 * Selected data:
-	* 
+
+
+	* appointment request
 
 
 **Output Data:**
 
-* 
-* 
+    *  Request confirmation
+	*  Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)
 
 
-![System Sequence Diagram](svg/us006-system-sequence-diagram-alternative-one.svg)
+![System Sequence Diagram](svg/SSD.svg)
 
 
 ### 1.7 Other Relevant Remarks

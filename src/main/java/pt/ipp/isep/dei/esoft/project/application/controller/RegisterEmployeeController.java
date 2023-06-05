@@ -1,7 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
-import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
+
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;

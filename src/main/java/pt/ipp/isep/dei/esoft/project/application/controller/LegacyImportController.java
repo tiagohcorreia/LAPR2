@@ -29,6 +29,7 @@ public class LegacyImportController {
 
 
     public void importFile(String filePath) throws InvalidFileTypeException {
+        int failedImports = 0;
         File csvFile = null;
         try {
             csvFile = FileOps.readFile(filePath);

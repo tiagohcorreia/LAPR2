@@ -226,7 +226,6 @@ public class AnnouncementRepository {
 
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/announcements.ser"));
             announcements = (List<Announcement>) ois.readObject();
-            System.out.println(announcements);
             ois.close();
 
         } catch (IOException | ClassNotFoundException e) {

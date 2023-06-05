@@ -60,7 +60,7 @@ As a client, I place an order to purchase the property, submitting the order amo
 ### 1.4. Found out Dependencies
 
 
-* Dependency from US2
+* Dependency from US2 - An annoncement needs to be registered in the system.
 
 
 ### 1.5 Input and Output Data

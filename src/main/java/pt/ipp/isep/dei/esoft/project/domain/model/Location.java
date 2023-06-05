@@ -7,6 +7,8 @@ public class Location implements Serializable {
     int doorNumber;
     String street;
     City city;
+    District district;
+    State state;
     int zipCode;
 
     public Location(String street, City city, int zipCode) {
@@ -46,6 +48,15 @@ public class Location implements Serializable {
         zipCode = 0;
     }
 
+    public Location(int doorNumber, String street, City city, District district, State state, int zipCode){
+        this.doorNumber = doorNumber;
+        this.street = street;
+        this.city = city;
+        this.district = district;
+        this.state = state;
+        this.zipCode = zipCode;
+    }
+
 //    private boolean doorNumberIsValid(int doorNumber){
 //        if (doorNumber < 1)
 //            throw new IllegalArgumentException("Door number must be greater than zero");
@@ -75,12 +86,23 @@ public class Location implements Serializable {
     }
 
 
-    public String toString() {
+    /*public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("Door Number: %s\n", doorNumber));
         sb.append(String.format("Street:      %s\n", street));
         sb.append(String.format("City:        %s\n", city));
         sb.append(String.format("Zip Code:    %s\n", zipCode));
+        return sb.toString();
+    }*/
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Location{");
+        sb.append("doorNumber=").append(doorNumber);
+        sb.append(", street='").append(street).append('\'');
+        sb.append(", city=").append(city);
+        sb.append(", zipCode=").append(zipCode);
+        sb.append('}');
         return sb.toString();
     }
 }

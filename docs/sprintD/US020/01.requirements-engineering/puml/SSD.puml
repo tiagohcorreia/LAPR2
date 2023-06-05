@@ -1,0 +1,23 @@
+@startuml
+
+actor Client as client
+participant SYSTEM as ui
+
+autonumber
+
+client -> ui: starts to read the response for the appointment request
+
+ui -> client: shows appointment request
+
+ui -> client: asks the user to accept or reject
+
+client -> ui: accepts or rejects the request
+
+ui -> client: asks confirmation
+
+client -> ui: confirms
+
+ui -> client: informs the operation success
+
+
+@enduml

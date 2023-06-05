@@ -32,13 +32,25 @@ public class RegisterBranchUI implements Runnable {
         String branchName = Utils.readLineFromConsole("Insert Branch name: ");
 
         //Branch location
-        String branchLocation = Utils.readLineFromConsole("Insert Branch location: ");
+        System.out.println("Branch location");
+        String branchDoorNumber = String.valueOf(Utils.readIntegerFromConsole("Branch door number: "));
+        //int branchDoorNumber = Utils.readIntegerFromConsole("Branch door number: ");
+        String branchStreet = Utils.readLineFromConsole("Branch street: ");
+        String branchCity = Utils.readLineFromConsole("Branch city: ");
+        String branchDistrict = Utils.readLineFromConsole("Branch district: ");
+        String branchState =  Utils.readLineFromConsole("Branch state: ");
+        String branchZipCode = String.valueOf(Utils.readIntegerFromConsole("Branch zip code: "));
+        //int branchZipCode = Utils.readIntegerFromConsole("Branch zip code: ");
+
+        controller.createLocation(branchDoorNumber, branchStreet, branchCity, branchDistrict, branchState, branchZipCode);
 
         //Branch phoneNumber
         Integer branchPhoneNumber = Utils.readIntegerFromConsole("Insert Branch phone number: ");
 
         //Branch email
         String branchEmail = Utils.readLineFromConsole("Insert Branch email: ");
+
+
 
 
 
