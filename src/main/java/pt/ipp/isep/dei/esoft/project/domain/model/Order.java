@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * The type Order.
  */
-public class Order implements Serializable{
+public class Order implements Serializable {
 
     private String id;
     private double orderAmount;
@@ -109,9 +109,9 @@ public class Order implements Serializable{
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Order{");
-        sb.append("id=").append(id);
-        sb.append("orderAmount=").append(orderAmount);
-        sb.append(", announcementDTO=").append(announcementDTO);
+        sb.append("Id:").append(id);
+        sb.append("Order Amount=").append(orderAmount);
+        sb.append(", Announcement:").append(announcementDTO);
         sb.append('}');
         return sb.toString();
     }

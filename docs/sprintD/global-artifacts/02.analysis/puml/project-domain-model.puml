@@ -67,7 +67,7 @@ prediction
 }
 
 class Order{
-price
+orderAmount
 }
 
 class Commission{
