@@ -36,29 +36,15 @@ public class PlaceOrderToBuyPropertyController {
     private PlaceOrderToBuyPropertyRepository orderRepository;
 
     public PlaceOrderToBuyPropertyController(PlaceOrderToBuyPropertyRepository orderRepository) {
-        this.orderRepository = orderRepository;
+        
     }
 
     public List<AnnouncementDTO> announcementDTOList() {
-
-        List<Announcement> announcements = announcementRepository.getAllVisibleAnnouncements();
-
-        return AnnouncementMapper.convert(announcements);
+        
     }
 
     public String createOrder(Double orderAmount, Integer posAnnouncement) {
-
-        Order newOrder = new Order(orderAmount, AnnouncementMapper.getAnnouncementDTOById(posAnnouncement));
-
-        try {
-
-            this.orderRepository.saveOrder(newOrder);
-            return newOrder.toString();
-
-        } catch (Exception e) {
-
-            throw new IllegalArgumentException(e.getMessage().toString());
-        }
+        
     }
 }
 
@@ -72,7 +58,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
     private PlaceOrderToBuyPropertyController controller = new PlaceOrderToBuyPropertyController(new PlaceOrderToBuyPropertyRepository());
 
     public PlaceOrderToBuyPropertyUI(PlaceOrderToBuyPropertyController controller) {
-        //this.controller = controller;
+        
     }
 
     @Override
@@ -129,49 +115,23 @@ public class PlaceOrderToBuyPropertyRepository {
     public static List<Order> orderList = new ArrayList<>();
 
     public boolean saveOrder(Order order) {
-
-        if(validateOrder(order)) {
-
-            return addOrder(order);
-        }
-        return false;
+        
     }
 
     public boolean addOrder(Order order) {
-
-        if(order != null && validateOrder(order)) {
-
-            return this.orderList.add(order);
-        }
-        return false;
+        
     }
 
     public boolean validateOrder(Order order) {
-
-        for(Order order1: orderList) {
-
-            if(order.equals(order)) {
-
-                return false;
-            }
-        }
-        return true;
+        
     }
 
     public List<Order> getOrderList() {
-
-        return new ArrayList<>(orderList);
+        
     }
 
     public String getOrdersListAsString() {
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for(Order order: this.orderList) {
-
-            stringBuilder.append("-").append(order.toString()).append("\n");
-        }
-        return stringBuilder.toString();
+        
     }
 }
 
@@ -188,61 +148,46 @@ public class Order {
     private static boolean status = false;     //True - the order was accepted   False - the order is not accepted
 
     public Order(double orderAmount, AnnouncementDTO announcementDTO) {
-
-        this.orderAmount = setOrderAmount(orderAmount);
-        this.announcementDTO = setAnnouncementDTO(announcementDTO);
+        
     }
 
     public double getOrderAmount() {
-        return orderAmount;
+        
     }
 
     public AnnouncementDTO getAnnouncementDTO() {
-        return announcementDTO;
+        
     }
 
     public static boolean isStatus() {
-        return status;
+       
     }
 
     public double setOrderAmount(double orderAmount) {
-
-        if (orderAmount < 0) {
-
-            throw new IllegalArgumentException("Order amount must be positive");
-        }
-
-        return this.orderAmount;
+        
     }
 
     public AnnouncementDTO setAnnouncementDTO(AnnouncementDTO announcementDTO) {
-        return this.announcementDTO = announcementDTO;
+       
     }
 
     public static void setStatus(boolean status) {
-        Order.status = status;
+        
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Order{");
-        sb.append("orderAmount=").append(orderAmount);
-        sb.append(", announcementDTO=").append(announcementDTO);
-        sb.append('}');
-        return sb.toString();
+        
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return Double.compare(order.orderAmount, orderAmount) == 0 && Objects.equals(announcementDTO, order.announcementDTO);
+        
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderAmount, announcementDTO);
+        
     }
 }
 
@@ -261,10 +206,7 @@ public class AnnouncementDTO {
     List<AnnouncementDTO> announcementDTOs = new ArrayList<>();
 
     public AnnouncementDTO(float price, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
-        this.price = price;
-        this.typeOfBusiness = typeOfBusiness;
-        this.property = property;
-        this.agent = agent;
+        
     }
 
     public AnnouncementDTO() {
@@ -273,27 +215,16 @@ public class AnnouncementDTO {
 
     public AnnouncementDTO(Announcement announcement) {
 
-        this.price = announcement.getPrice();
-        this.typeOfBusiness = announcement.getTypeOfBusiness();
-        this.property = announcement.getProperty();
-        this.agent = announcement.getAgent();
+        
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("AnnouncementDTO{");
-        sb.append("price=").append(price);
-        sb.append(", typeOfBusiness=").append(typeOfBusiness);
-        sb.append(", property=").append(property);
-        sb.append(", agent=").append(agent);
-        sb.append(", announcementDTOs=").append(announcementDTOs);
-        sb.append('}');
-        return sb.toString();
+        
     }
 
     public AnnouncementDTO getAnnouncement() {
-
-        return null;
+        
     }
 }
 
@@ -307,44 +238,23 @@ public class AnnouncementMapper {
     private static List<AnnouncementDTO> announcementDTOList = new ArrayList<>();
 
     public static List<AnnouncementDTO> convert(List<Announcement> announcementList) {
-
-        return announcementList.stream().map(AnnouncementDTO::new).collect(Collectors.toList());
+        
     }
 
     public List<AnnouncementDTO> toDto(List<Announcement> announcementList) {
-
-        List<AnnouncementDTO> dtoList = new ArrayList<>();
-
-        for (Announcement announcement : announcementList) {
-
-            dtoList.add(toDtoAnnouncement(announcement));
-        }
-        return dtoList;
+        
     }
 
     public List<AnnouncementDTO> getAllAnnouncements() {
-
-        List<AnnouncementDTO> allAnnouncements = new ArrayList<>();
-
-        for (AnnouncementDTO announcementDTO : allAnnouncements) {
-
-            allAnnouncements.add(announcementDTO.getAnnouncement());
-        }
-        return allAnnouncements;
+        
     }
 
     public static AnnouncementDTO getAnnouncementDTOById(int id) {
-
-        if (id >= 0 && id < announcementDTOList.size()) {
-
-            return announcementDTOList.get(id);
-        }
-
-        return null;
+        
     }
 
     public AnnouncementDTO toDtoAnnouncement(Announcement announcement) {
-        return new AnnouncementDTO();
+        
     }
 }
 
@@ -358,78 +268,46 @@ public class AnnouncementRepository {
     List<Announcement> announcements = new ArrayList<>();
     
     public boolean save(Announcement announcement) {
-        return announcements.add(announcement.getAnnouncement());
+        
     }
     
     public boolean createAnnouncement (Announcement announcement) {
-
-        if(validateAnnouncement(announcement)) {
-
-            return addAnnouncement(announcement);
-        }
-        return false;
+        
     }
     
     public boolean validateAnnouncement(Announcement announcement) {
-        for(Announcement i : announcements) {
-            if(announcement.equals(i)) {
-                return false;
-            }
-        }
-        return true;
+       
     }
     
     public boolean addAnnouncement(Announcement announcement) {
-
-        if(announcement != null && validateAnnouncement(announcement)) {
-
-            return announcements.add(announcement.getAnnouncement());
-        }
-        return false;
+        
     }
     
     public List<Announcement> getAllVisibleAnnouncements() {
-        List<Announcement> allVisibleAnnouncements = new ArrayList<>();
-        for(Announcement announcement : announcements){
-            if (announcement.isVisible()){
-                allVisibleAnnouncements.add(announcement.getAnnouncement());
-            }
-        }
-        return allVisibleAnnouncements;
+        
     }
     
     public List<List<Object>> getAvailableFields(){
-        List<List<Object>> availableFields = new ArrayList<>();
-        availableFields.add(new ArrayList<>());
-        availableFields.add(new ArrayList<>());
-        availableFields.add(new ArrayList<>());
-
-        //TO-FIX
-        for(Announcement announcement : announcements){
-            if ( announcement != null && announcement.isVisible()){
-                if (!availableFields.get(0).contains(announcement.getTypeOfBusiness())){
-                    availableFields.get(0).add(announcement.getTypeOfBusiness());
-                }
-                if (!availableFields.get(1).contains(announcement.getProperty().getClass().getSimpleName().toUpperCase())){
-                    availableFields.get(1).add(announcement.getProperty().getClass().getSimpleName().toUpperCase());
-                }
-                if (!announcement.getProperty().getClass().getSimpleName().equals("Land") && !availableFields.get(2).contains(announcement.getProperty().getNumberOfBedrooms())){
-                    availableFields.get(2).add(announcement.getProperty().getNumberOfBedrooms());
-                }
-            }
-        }
-        return availableFields;
+        
     }
     
     public List<Announcement> getAnnouncements(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
-        List<Announcement> matchingAnnouncements = new ArrayList<>();
-        for(Announcement announcement : announcements){
-            Announcement gotAnnouncement = announcement.getAnnouncement(typeOfBusiness, typeOfProperty, numberOfBedrooms);
-            if(gotAnnouncement != null){
-                matchingAnnouncements.add(gotAnnouncement);
-            }
-        }
-        return matchingAnnouncements;
+        
+    }
+
+}
+
+```
+
+## Class Repositories
+
+```java
+public class Repositories {
+
+    AnnouncementRepository announcementRepository = new AnnouncementRepository();
+
+    public AnnouncementRepository getAnnouncementRepository() {
+        
     }
 
 }
