@@ -13,15 +13,13 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.*;
 
-import static pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository.getEmployee;
-
 
 public class CsvHandler {
     public static final String CSV_DELIMITER = ";";
 
     public static final String LEGACY_AGENT_NAME = "Legacy Agent";
 
-    private static final int COLUMN_OWNER_ID = 0;
+    private static final int COLUMN_ANNOUNCEMENT_ID = 0;
     private static final int COLUMN_OWNER_NAME = 1;
     private static final int COLUMN_OWNER_PASSPORT = 2;
     private static final int COLUMN_OWNER_TAX_NUMBER = 3;
@@ -147,7 +145,7 @@ public class CsvHandler {
         String branchName = (String) line.get(COLUMN_BRANCH_NAME);
         String branchLocation = (String) line.get(COLUMN_BRANCH_LOCATION);
         String s = removeDashes(String.valueOf(line.get(COLUMN_BRANCH_PHONE)));
-        int branchPhoneNumber = Integer.valueOf(s);
+        long branchPhoneNumber = Integer.valueOf(s);
         String branchEmail = (String) line.get(COLUMN_BRANCH_EMAIL);
 
         Location location = parseLocation(branchLocation);
@@ -156,7 +154,7 @@ public class CsvHandler {
     }
 
     private static Client parseClientData(List<?> line){
-        int clientID = Integer.parseInt(String.valueOf(line.get(COLUMN_OWNER_ID)));
+        //int clientID = Integer.parseInt(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_ID)));
         String clientName = String.valueOf(line.get(COLUMN_OWNER_NAME));
         String clientPassportNumber = String.valueOf(line.get(COLUMN_OWNER_PASSPORT));
         String clientTaxNumber = String.valueOf(line.get(COLUMN_OWNER_TAX_NUMBER));
@@ -271,7 +269,7 @@ public class CsvHandler {
 
 
     private static Location parseLocation(String location){
-        String[] fields =location.split(",");
+        String[] fields = location.split(",");
         int numberOfFields = fields.length;
         boolean hasDistrictField = (numberOfFields == 5);
 

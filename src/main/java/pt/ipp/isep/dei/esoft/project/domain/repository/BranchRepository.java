@@ -45,7 +45,7 @@ public class BranchRepository {
         return branch;
     }
 
-    public Branch createBranch(int id, String name, Location location, int phoneNumber, String email) {
+    public Branch createBranch(int id, String name, Location location, long phoneNumber, String email) {
         return new Branch(id, name, location, phoneNumber, email);
     }
 

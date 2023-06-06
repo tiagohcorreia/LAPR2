@@ -12,7 +12,7 @@ public class Branch implements Serializable {
     private int ID;
     private String name;
     private Location location;
-    private int phoneNumber;
+    private long phoneNumber;
     private String email;
 
     /**
@@ -24,7 +24,7 @@ public class Branch implements Serializable {
      * @param phoneNumber the phone number
      * @param email       the email
      */
-    public Branch(int ID, String name, Location location, int phoneNumber, String email) {
+    public Branch(int ID, String name, Location location, long phoneNumber, String email) {
 
         checkIfDataIsNull(ID,name,location,phoneNumber,email);
         checkNameLength(name);
@@ -54,7 +54,7 @@ public class Branch implements Serializable {
      * @param phoneNumber the phone number
      * @param email       the email
      */
-    public void checkIfDataIsNull(int ID, String name, Location location, int phoneNumber, String email){
+    public void checkIfDataIsNull(int ID, String name, Location location, long phoneNumber, String email){
 
         if (ID == 0 || name == null || location == null || phoneNumber == 0 || email == null) {
             throw new NullPointerException("All fields required");
@@ -88,9 +88,8 @@ public class Branch implements Serializable {
      *
      * @param phoneNumber the phone number
      */
-    public void checkValidPhoneNumber(int phoneNumber){
-
-        if(!Pattern.matches("[0-9]{9}", Integer.toString(phoneNumber))){
+    public void checkValidPhoneNumber(long phoneNumber){
+        if(!Pattern.matches("[0-9]{9}", Long.toString(phoneNumber))){
             throw new IllegalArgumentException("Phone Number can only have 9 digits");
         }
     }
@@ -127,7 +126,7 @@ public class Branch implements Serializable {
      *
      * @return the phone number
      */
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -164,7 +163,7 @@ public class Branch implements Serializable {
      *
      * @param phoneNumber the phone number
      */
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         checkValidPhoneNumber(phoneNumber);
         this.phoneNumber = phoneNumber;
     }
