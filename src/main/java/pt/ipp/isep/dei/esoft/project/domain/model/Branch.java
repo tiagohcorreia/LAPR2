@@ -89,8 +89,8 @@ public class Branch implements Serializable {
      * @param phoneNumber the phone number
      */
     public void checkValidPhoneNumber(long phoneNumber){
-        if(!Pattern.matches("[0-9]{9}", Long.toString(phoneNumber))){
-            throw new IllegalArgumentException("Phone Number can only have 9 digits");
+        if(!Pattern.matches("[0-9]{10}", Long.toString(phoneNumber))){
+            throw new IllegalArgumentException("Phone Number can only have 10 digits");
         }
     }
 
