@@ -17,8 +17,6 @@ Ksrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MainMenuUI.java,2\
 `src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterBranchController.java,d\1\d11bec45cbef68e0d3ee4430b40b5fd5afcd5506
 |
 Lsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterBranchUI.java,5\6\56e81d8080cda492198764ec1442128388fe5832
-m
-=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
 Ç
 Rsrc/main/java/pt/ipp/isep/dei/esoft/project/repository/TaskCategoryRepository.java,a\5\a533e40e6e34d57633ed7f6a6bc1d935dfad2fd0
 Ç
@@ -57,8 +55,6 @@ Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/DistrictRepositor
 Rsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/StateRepository.java,f\f\ff0c673026d199309d574d349cf5d8dce4fff27b
 î
 dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/PlaceOrderToBuyPropertyRepository.java,e\d\ed1e941c31133e4a508bbf65921728943224a0cf
-Ö
-Usrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PlaceOrderToBuyPropertyUI.java,1\1\11c3f0e6ee016f152206f9eb3b0b10bb8157d0ef
 ï
 esrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PublishAnnouncementController.java,5\a\5aa707f0b07a84d4c69be7429e1838ed656307e8
 Å
@@ -91,8 +87,6 @@ Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2
 Qsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/shared/AnnouncementStatus.java,a\e\ae96421f79588899840d0471d8a72e362b4a223f
 ã
 [src/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AuthenticationRepository.java,1\7\1720d6ff593ca0ef6086cab4c10507516a643e8d
-w
-Gsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/utils/Utils.java,4\7\47b9d33bd8a0fd938bcc084cafee57a55d924ff0
 ô
 isrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PlaceOrderToBuyPropertyController.java,f\2\f23e3482c7029e1e6c436ec449042c4065f6a470
 â
@@ -103,10 +97,6 @@ r
 Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/City.java,d\4\d44dbabadc8daa53f934827c02cb3e5a4fe3a1b7
 @
 ser/employee.ser,7\0\70f2570e547eec371f9fc3064d92dad94209bd8d
-Ö
-Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/EmployeeRepository.java,2\3\23141fe36a1069590dc1b5ec75fa10ac189ee118
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
 ~
 Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565
 w

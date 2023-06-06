@@ -13,7 +13,7 @@ public class Employee implements Serializable {
     private int taxNumber;
     private String address;
     private String emailAddress;
-    private int telephoneNumber;
+    private long telephoneNumber;
     private Role role;
     private Branch branch;
 
@@ -30,7 +30,7 @@ public class Employee implements Serializable {
      * @param role            the role
      * @param branch          the agency
      */
-    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAddress, int telephoneNumber, Role role, Branch branch) {
+    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAddress, long telephoneNumber, Role role, Branch branch) {
 
         this.name = setName(name);
         this.passportNumber = setPassportNumber(passportNumber);
@@ -113,14 +113,7 @@ public class Employee implements Serializable {
         return role;
     }
 
-    /**
-     * Gets agency.
-     *
-     * @return the agency
-     */
-    /*public Agency getAgency() {
-        return agency;
-    }*/
+
     public Branch getBranch() {
         return branch;
     }
@@ -231,13 +224,13 @@ public class Employee implements Serializable {
      * @param telephoneNumber the telephone number
      * @return the telephone number
      */
-    public int setTelephoneNumber(int telephoneNumber) {
+    public long setTelephoneNumber(long telephoneNumber) {
 
         if (telephoneNumber < 0) {
 
             throw new IllegalArgumentException("Telephone Number can't be negative");
 
-        } else if (Integer.toString(telephoneNumber).trim().length() != 10) {
+        } else if (Long.toString(telephoneNumber).trim().length() != 10) {
 
             throw new IllegalArgumentException("Telephone Number must have 10 digits");
         }
@@ -263,14 +256,14 @@ public class Employee implements Serializable {
 
         final StringBuilder sb = new StringBuilder("Employee{ ");
 
-        sb.append("name='").append(name).append('\'');
-        sb.append(", PassportNumber=").append(passportNumber);
-        sb.append(", taxNumber=").append(taxNumber);
-        sb.append(", address='").append(address).append('\'');
-        sb.append(", emailAdress='").append(emailAddress).append('\'');
-        sb.append(", contactNumber=").append(telephoneNumber);
-        sb.append(", role=").append(role);
-        sb.append(", branch=").append(branch);
+        sb.append("Name:'").append(name).append('\'');
+        sb.append(", Passport Number:").append(passportNumber);
+        sb.append(", Tax Number:").append(taxNumber);
+        sb.append(", Address='").append(address).append('\'');
+        sb.append(", E-mail Adress:'").append(emailAddress).append('\'');
+        sb.append(", Contact Number:").append(telephoneNumber);
+        sb.append(", Role:").append(role);
+        sb.append(", Branch:").append(branch);
         sb.append('}');
 
         return sb.toString();
