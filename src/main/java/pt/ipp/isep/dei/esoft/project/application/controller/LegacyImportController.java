@@ -16,12 +16,13 @@ import java.util.List;
 public class LegacyImportController {
     private static final String LEGACY_AGENT_NAME = "Legacy Agent";
     //private static final String LEGACY_AGENT_PASSPORT_NUMBER = "000000000";
-    private static final int LEGACY_AGENT_PASSPORT_NUMBER = 0;
+    private static final int LEGACY_AGENT_PASSPORT_NUMBER = 100000000;
     //private static final String LEGACY_AGENT_TAX_NUMBER = "000000000";
     private static final int LEGACY_AGENT_TAX_NUMBER = 0;
     private static final String LEGACY_AGENT_EMAIL = "legacy@realstateUSA.com";
+    private static final String LEGACY_AGENT_ADDRESS = "Legacy Employee Address";
     //private static final String LEGACY_AGENT_PHONE_NUMBER = "0000000000";
-    private static final int LEGACY_AGENT_PHONE_NUMBER = 0;
+    private static final int LEGACY_AGENT_PHONE_NUMBER = 1000000000;
 
     AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
     EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
@@ -53,7 +54,7 @@ public class LegacyImportController {
                     LEGACY_AGENT_NAME,
                     LEGACY_AGENT_PASSPORT_NUMBER,
                     LEGACY_AGENT_TAX_NUMBER,
-                    "",
+                    LEGACY_AGENT_ADDRESS,
                     LEGACY_AGENT_EMAIL,
                     LEGACY_AGENT_PHONE_NUMBER,
                     null,

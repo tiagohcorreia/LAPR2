@@ -84,12 +84,12 @@ public class CsvHandler {
         List<List<String>> csv = new ArrayList<>();
         try {
             Scanner sc = new Scanner(file);
-            sc.useDelimiter(",");
+            sc.useDelimiter(CSV_DELIMITER);
             //boolean a=sc.hasNext();
             while (sc.hasNextLine()) {
                 List<String> thisLine = new ArrayList<>();
                 String line = sc.nextLine();
-                String[] lineElements = line.split(",");
+                String[] lineElements = line.split(CSV_DELIMITER);
                 Collections.addAll(thisLine, lineElements);
                 csv.add(thisLine);
             }
@@ -146,7 +146,8 @@ public class CsvHandler {
         int branchID = Integer.parseInt(String.valueOf(line.get(COLUMN_BRANCH_ID)));
         String branchName = (String) line.get(COLUMN_BRANCH_NAME);
         String branchLocation = (String) line.get(COLUMN_BRANCH_LOCATION);
-        int branchPhoneNumber = Integer.getInteger(String.valueOf(line.get(COLUMN_BRANCH_PHONE)));
+        String s = removeDashes(String.valueOf(line.get(COLUMN_BRANCH_PHONE)));
+        int branchPhoneNumber = Integer.valueOf(s);
         String branchEmail = (String) line.get(COLUMN_BRANCH_EMAIL);
 
         Location location = parseLocation(branchLocation);
@@ -270,7 +271,7 @@ public class CsvHandler {
 
 
     private static Location parseLocation(String location){
-        String fields[]=location.split(",");
+        String[] fields =location.split(",");
         int numberOfFields = fields.length;
         boolean hasDistrictField = (numberOfFields == 5);
 
@@ -322,7 +323,7 @@ public class CsvHandler {
 
     private static LocalDate parseYyyyMmDdDate(String date){
         LocalDate result = null;
-        String splitDate[] = date.split("-");
+        String[] splitDate = date.split("-");
         try{
             result = LocalDate.of(
                     Integer.getInteger(splitDate[2]),
@@ -345,6 +346,10 @@ public class CsvHandler {
             throw new IllegalArgumentException("Couldn't parse number: " + number + "\n");
         }
         return result;
+    }
+
+    private static String removeDashes(String string){
+        return string.replaceAll("-","");
     }
 
 }
