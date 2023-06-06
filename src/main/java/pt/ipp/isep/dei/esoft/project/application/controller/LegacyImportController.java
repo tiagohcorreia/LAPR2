@@ -29,7 +29,7 @@ public class LegacyImportController {
     ClientRepository clientRepository = Repositories.getInstance().getClientRepository();
 
 
-    public void importFile(String filePath) throws InvalidFileTypeException {
+    public int importFile(String filePath) throws InvalidFileTypeException {
         int failedImports = 0;
         File csvFile = null;
         try {
@@ -63,7 +63,7 @@ public class LegacyImportController {
             employeeRepository.saveEmployee(legacyEmployee);
         }
 
-        CsvHandler.parseCSV(csv);
+        return CsvHandler.parseCSV(csv);
 
     }
 }

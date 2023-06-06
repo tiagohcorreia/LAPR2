@@ -13,7 +13,7 @@ public class LegacyImportUI implements Runnable{
         String filePath = getFilePath();
 
         try {
-            controller.importFile(filePath);
+            System.out.println(controller.importFile(filePath));
         } catch (InvalidFileTypeException e) {
             e.printStackTrace();
         }
