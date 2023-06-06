@@ -77,6 +77,26 @@ public class Utils {
     }
 
     /**
+     * Read long from console long.
+     *
+     * @param prompt the prompt
+     * @return the long
+     */
+    static public long readLongFromConsole(String prompt) {
+        do {
+            try {
+                String input = readLineFromConsole(prompt);
+
+                long value = Long.parseLong(input);
+
+                return value;
+            } catch (NumberFormatException ex) {
+                Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } while (true);
+    }
+
+    /**
      * Read date from console date.
      *
      * @param prompt the prompt
