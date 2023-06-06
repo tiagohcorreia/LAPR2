@@ -21,12 +21,11 @@ public class ScheduleVisitController {
 
     public ScheduleVisitController(ScheduleRepository scheduleRepository) {
         this.scheduleRepository = scheduleRepository;
-
     }
 
     public List<AnnouncementDTO> announcementDTOList() {
 
-        List<Announcement> announcements = announcementRepository.getPublishedAnnouncements();
+        List<Announcement> announcements = announcementRepository.readObject();
 
         return AnnouncementMapper.convert(announcements);
     }

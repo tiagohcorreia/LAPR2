@@ -162,7 +162,7 @@ public class EmployeeRepository implements Serializable {
     /**
      * Read object.
      */
-    public void readObject() {
+    public List<Employee> readObject() {
 
         try {
 
@@ -174,6 +174,7 @@ public class EmployeeRepository implements Serializable {
 
             e.printStackTrace();
         }
+        return employeeList;
     }
 
     /**

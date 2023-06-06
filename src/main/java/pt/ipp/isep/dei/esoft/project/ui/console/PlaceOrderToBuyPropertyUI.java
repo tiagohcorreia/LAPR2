@@ -60,6 +60,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
                 }
 
                 System.out.println("=== Review Order Detail ===");
+                System.out.println("Client: ");
                 System.out.println("Order amount: " + orderAmount + "$");
                 System.out.println("Selected Announcement:\n" + AnnouncementMapper.getAnnouncementDTOById(posAnouncement));
 
