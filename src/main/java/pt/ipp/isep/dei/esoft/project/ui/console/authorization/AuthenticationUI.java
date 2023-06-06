@@ -52,6 +52,7 @@ public class AuthenticationUI implements Runnable {
 
         //TODO: Complete with other user roles and related RoleUI
         rolesUI.add(new MenuItem(AuthenticationController.ROLE_CLIENT, new ClientUI()));
+        rolesUI.add(new MenuItem(AuthenticationController.ROLE_NETWORK_MANAGER, new NetworkManagerUI()));
 
         return rolesUI;
     }
