@@ -10,7 +10,7 @@ import java.util.List;
 public class ClientRepository {
     private List<Client> clients = new ArrayList<>();
 
-    public Client createClient(String name, String email, int cCNumber, int taxNumber, int telephoneNumber){
+    public Client createClient(String name, String email, int cCNumber, int taxNumber, long telephoneNumber){
         return new Client(name, email, cCNumber, taxNumber, telephoneNumber);
     }
 

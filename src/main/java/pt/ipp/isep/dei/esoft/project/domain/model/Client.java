@@ -11,9 +11,9 @@ public class Client {
     private int taxNumber;
     private String address;
     protected Location location;
-    private int telephoneNumber;
+    private long telephoneNumber;
 
-    public Client(String name, String email, int cCNumber, int taxNumber, int telephoneNumber) {
+    public Client(String name, String email, int cCNumber, int taxNumber, long telephoneNumber) {
         this.name = name;
         this.email = email;
         this.cCNumber = cCNumber;
