@@ -7,6 +7,7 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
+import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
 import pt.ipp.isep.dei.esoft.project.exceptions.InvalidFileTypeException;
 
 import java.io.File;
@@ -123,20 +124,31 @@ public class CsvHandler {
             Client client = parseClientData((List<?>) line);
             Announcement announcement = parseAnnouncementData((List<?>) line);
 
-            try{
+            try {
                 //success = branchRepository.saveBranch(branch);
                 //success = (clientRepository.add(client) && success);
                 //success = (announcementRepository.save(announcement) && success);
                 branchRepository.saveBranch(branch);
-                clientRepository.add(client);
-                success = announcementRepository.save(announcement);
-
+            }catch (DuplicateDataException e){
+                System.out.println("Branch already registered.");
             } catch (Exception e){
                 e.printStackTrace();
+            }
+
+            try{
+                clientRepository.add(client);
+            }catch (DuplicateDataException e) {
+                System.out.println("Client already registered.");
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try{
+                success = announcementRepository.addAnnouncement(announcement);
+            }catch (Exception e) {
+                e.printStackTrace();
             } finally {
-                if(success)
-                    successfulImports++;
-                success = false;
+                if (success) successfulImports++;
             }
         }
 
