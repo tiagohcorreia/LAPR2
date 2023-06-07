@@ -124,9 +124,13 @@ public class CsvHandler {
             Announcement announcement = parseAnnouncementData((List<?>) line);
 
             try{
-                success = branchRepository.saveBranch(branch);
-                success = (clientRepository.add(client) && success);
-                success = (announcementRepository.save(announcement) && success);
+                //success = branchRepository.saveBranch(branch);
+                //success = (clientRepository.add(client) && success);
+                //success = (announcementRepository.save(announcement) && success);
+                branchRepository.saveBranch(branch);
+                clientRepository.add(client);
+                success = announcementRepository.save(announcement);
+
             } catch (Exception e){
                 e.printStackTrace();
             } finally {
