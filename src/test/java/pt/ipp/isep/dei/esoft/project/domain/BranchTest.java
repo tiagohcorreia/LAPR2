@@ -73,7 +73,7 @@ class BranchTest {
 
         assertThrows(NullPointerException.class, () -> {
 
-            Branch b = new Branch(0, null, null ,0,null);
+            Branch b = new Branch(0, null, null ,String.valueOf(0),null);
 
         });
     }
@@ -88,7 +88,7 @@ class BranchTest {
         assertDoesNotThrow( ()->{
 
             //Branch b = new Branch(1, "MEGA STORE", "Porto" ,982822882,"mega@asda.com");
-            Branch b = new Branch(1, "MEGA STORE", new Location("123 Street", new City(), 12345),982822882,"mega@asda.com");
+            Branch b = new Branch(1, "MEGA STORE", new Location("123 Street", new City(), 12345),String.valueOf(982822882),"mega@asda.com");
 
         });
     }
@@ -104,7 +104,7 @@ class BranchTest {
 
             Branch b = new Branch();
 
-            b.setPhoneNumber(981321232);
+            b.setPhoneNumber(String.valueOf(981321232));
 
         });
     }
@@ -121,7 +121,7 @@ class BranchTest {
 
             Branch b = new Branch();
 
-            b.setPhoneNumber(9813232);
+            b.setPhoneNumber(String.valueOf(9813232));
 
         });
     }
