@@ -10,7 +10,9 @@ class ValidateVisitUI {
 
 class ScheduleVisitController {
     - ScheduleRepository
-    + getRequestScheduleList()
+
+    + RequestScheduleListByResposibleAgent()
+    + addConfirmedVisit()
     + sendValidationEmail()
     + getAgentFromSession()
 }
@@ -38,44 +40,16 @@ class Schedule {
 }
 class Repositories {
 
-    + announcementRepository
+    + scheduleRepository
 }
 class ScheduleRepository {
 
     - ScheduleList
-    + saveSchedule()
-    + validateSchedule()
-    + addSchedule()
+    - ConfirmedScheduleList
+    + addConfirmedSchedule()
+    + removeScheduleFromRequests()
     + getScheduleList()
     + getScheduleListAsString()
-}
-
-class AnnouncementRepository {
-
-    + save()
-    + createAnnouncement()
-    + validateAnnouncement()
-    + addAnnouncement()
-    + getAllVisibleAnnouncements()
-    + getAvailableFields()
-    + getAnnouncements()
-}
-
-class AnnouncementDTO {
-
-    - price
-    - typeOfBusiness
-    - property
-    - agent
-}
-class AnnouncementMapper {
-
-    - announcementDTOList
-    + convert()
-    + toDto()
-    + getAllAnnouncements()
-    + getAllAnnouncementsRecentToOldest()
-    + toDtoAnnouncement()
 }
 
 
@@ -87,10 +61,8 @@ ScheduleVisitController ..> UserSession
 
 ValidateVisitUI ..> ScheduleVisitController
 ScheduleVisitController -> Repositories
-Repositories -> AnnouncementRepository
-AnnouncementRepository -> AnnouncementMapper
-AnnouncementMapper --> AnnouncementDTO
-ScheduleVisitController ..> ScheduleRepository
+Repositories -> ScheduleRepository
+
 ScheduleRepository --> Schedule
 
 @enduml
