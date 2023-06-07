@@ -165,7 +165,7 @@ public class CsvHandler {
 
         Location location = parseLocation(branchLocation);
 
-        return branchRepository.createBranch(branchID, branchName, location, branchPhoneNumber, branchEmail);
+        return branchRepository.createBranch(branchID, branchName, location, String.valueOf(branchPhoneNumber), branchEmail);
     }
 
     private static Client parseClientData(List<?> line){

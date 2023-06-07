@@ -13,7 +13,7 @@ public class Employee implements Serializable {
     private int taxNumber;
     private String address;
     private String emailAddress;
-    private long telephoneNumber;
+    private String telephoneNumber;
     private Role role;
     private Branch branch;
 
@@ -30,7 +30,7 @@ public class Employee implements Serializable {
      * @param role            the role
      * @param branch          the agency
      */
-    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAddress, long telephoneNumber, Role role, Branch branch) {
+    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAddress, String telephoneNumber, Role role, Branch branch) {
 
         this.name = setName(name);
         this.passportNumber = setPassportNumber(passportNumber);
@@ -100,7 +100,7 @@ public class Employee implements Serializable {
      *
      * @return the telephone number
      */
-    public long getTelephoneNumber() {
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
 
@@ -224,13 +224,13 @@ public class Employee implements Serializable {
      * @param telephoneNumber the telephone number
      * @return the telephone number
      */
-    public long setTelephoneNumber(long telephoneNumber) {
+    public String setTelephoneNumber(String telephoneNumber) {
 
-        if (telephoneNumber < 0) {
+        if (Long.parseLong(telephoneNumber) < 0) {
 
             throw new IllegalArgumentException("Telephone Number can't be negative");
 
-        } else if (Long.toString(telephoneNumber).trim().length() != 10) {
+        } else if (telephoneNumber.trim().length() != 10) {
 
             throw new IllegalArgumentException("Telephone Number must have 10 digits");
         }

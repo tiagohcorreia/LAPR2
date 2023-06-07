@@ -1,9 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -41,18 +41,10 @@ public class RegisterEmployeeController {
         return Arrays.stream(Role.values()).toList();
     }
 
-    /**
-     * Gets agency.
-     *
-     * @return the agency
-     */
-    public List<Agency> getAgency() {
-        return Arrays.stream(Agency.values()).toList();
-    }
 
     public List<Branch> getBranchList() {
 
-        return branchRepository.getBranchList();
+        return branchRepository.readObject();
     }
 
 
@@ -70,7 +62,7 @@ public class RegisterEmployeeController {
      * @return the string
      */
     public String createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
-                                 int telephoneNumber, Integer posRole, Integer posBranch) {
+                                 String telephoneNumber, Integer posRole, Integer posBranch) {
 
         Employee newEmployee = new Employee(employeeName, passportNumber, taxNumber, address, eMail, telephoneNumber,
                 Role.getRoleById(posRole), BranchRepository.getBranchByID(posBranch));

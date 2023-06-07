@@ -13,7 +13,6 @@ public class NetworkManagerUI implements Runnable {
     @Override
     public void run() {
 
-
         List<MenuItem> options = new ArrayList<MenuItem>();
 
         options.add(new MenuItem("List All Employees", new ListAllEmplyeesUI()));
