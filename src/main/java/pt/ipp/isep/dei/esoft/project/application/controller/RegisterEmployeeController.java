@@ -3,7 +3,6 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
-import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -72,6 +71,7 @@ public class RegisterEmployeeController {
             this.employeeRepository.saveEmployee(newEmployee);
             this.employeeRepository.writeObject();
             System.out.println();
+            System.out.println(newEmployee);
             return newEmployee.toString();
 
         } catch (Exception e) {
@@ -105,6 +105,5 @@ public class RegisterEmployeeController {
             e.printStackTrace();
         }
     }
-
 
 }
