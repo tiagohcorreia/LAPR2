@@ -1,0 +1,96 @@
+@startuml
+
+interface Runnable {
+    + run()
+}
+
+class ValidateVisitUI {
+    - controller
+}
+
+class ScheduleVisitController {
+    - ScheduleRepository
+    + getRequestScheduleList()
+    + sendValidationEmail()
+    + getAgentFromSession()
+}
+
+class ApplicationSession
+{
+    + static getInstance()
+    + getCurrentSession()
+}
+
+class UserSession
+{
+    + getUserNameByEmail()
+}
+class Schedule {
+
+    - name
+    - phoneNumber
+    - announcement
+    - day
+    - begiHour
+    - endHour
+    - note
+    - status
+}
+class Repositories {
+
+    + announcementRepository
+}
+class ScheduleRepository {
+
+    - ScheduleList
+    + saveSchedule()
+    + validateSchedule()
+    + addSchedule()
+    + getScheduleList()
+    + getScheduleListAsString()
+}
+
+class AnnouncementRepository {
+
+    + save()
+    + createAnnouncement()
+    + validateAnnouncement()
+    + addAnnouncement()
+    + getAllVisibleAnnouncements()
+    + getAvailableFields()
+    + getAnnouncements()
+}
+
+class AnnouncementDTO {
+
+    - price
+    - typeOfBusiness
+    - property
+    - agent
+}
+class AnnouncementMapper {
+
+    - announcementDTOList
+    + convert()
+    + toDto()
+    + getAllAnnouncements()
+    + getAllAnnouncementsRecentToOldest()
+    + toDtoAnnouncement()
+}
+
+
+Runnable -left-|> ValidateVisitUI
+ApplicationSession -> ApplicationSession : instance
+ApplicationSession --> "1" UserSession : userSession
+ScheduleVisitController ..> ApplicationSession
+ScheduleVisitController ..> UserSession
+
+ValidateVisitUI ..> ScheduleVisitController
+ScheduleVisitController -> Repositories
+Repositories -> AnnouncementRepository
+AnnouncementRepository -> AnnouncementMapper
+AnnouncementMapper --> AnnouncementDTO
+ScheduleVisitController ..> ScheduleRepository
+ScheduleRepository --> Schedule
+
+@enduml
