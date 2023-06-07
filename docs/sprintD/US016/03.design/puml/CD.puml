@@ -10,7 +10,8 @@ class ValidateVisitUI {
 
 class ScheduleVisitController {
     - ScheduleRepository
-    + getScheduleList()
+
+    + RequestScheduleListByResposibleAgent()
     + addConfirmedVisit()
     + sendValidationEmail()
     + getAgentFromSession()
@@ -45,8 +46,8 @@ class ScheduleRepository {
 
     - ScheduleList
     - ConfirmedScheduleList
-    + addConfirmedVisit()
-    + removeFromRequestSchedule()
+    + addConfirmedSchedule()
+    + removeScheduleFromRequests()
     + getScheduleList()
     + getScheduleListAsString()
 }
