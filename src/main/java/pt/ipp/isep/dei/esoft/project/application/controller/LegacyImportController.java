@@ -29,16 +29,12 @@ public class LegacyImportController {
     ClientRepository clientRepository = Repositories.getInstance().getClientRepository();
 
 
-    public int importFile(String filePath) throws InvalidFileTypeException {
+    public int importFile(String filePath) throws InvalidFileTypeException, FileNotFoundException {
         int failedImports = 0;
         File csvFile = null;
-        try {
+
             csvFile = FileOps.readFile(filePath);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e){
-            e.printStackTrace();
-        }
+
 
         List<?> csv = CsvHandler.getDataFromCsvFile(csvFile);
 

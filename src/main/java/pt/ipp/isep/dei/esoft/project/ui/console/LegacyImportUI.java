@@ -4,6 +4,8 @@ import pt.ipp.isep.dei.esoft.project.application.controller.LegacyImportControll
 import pt.ipp.isep.dei.esoft.project.exceptions.InvalidFileTypeException;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
+import java.io.FileNotFoundException;
+
 
 public class LegacyImportUI implements Runnable{
     LegacyImportController controller = new LegacyImportController();
@@ -13,9 +15,9 @@ public class LegacyImportUI implements Runnable{
         String filePath = getFilePath();
 
         try {
-            System.out.println(controller.importFile(filePath));
-        } catch (InvalidFileTypeException e) {
-            e.printStackTrace();
+            controller.importFile(filePath);
+        } catch (InvalidFileTypeException | FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
 
 

@@ -14,7 +14,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.*;
 
-
+//TODO: get csv delimiter from settings file
 public class CsvHandler {
     public static final String CSV_DELIMITER = ";";
 
