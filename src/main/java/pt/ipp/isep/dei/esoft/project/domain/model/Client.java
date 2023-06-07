@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 
 import javax.management.InvalidAttributeValueException;
 import java.util.List;
+import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.generatePassword;
 
 public class Client {
     private String name;
@@ -19,6 +20,17 @@ public class Client {
         this.cCNumber = cCNumber;
         this.taxNumber = taxNumber;
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public Client(String name, String email, int cCNumber, int taxNumber, String address, Location location, long telephoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.cCNumber = cCNumber;
+        this.taxNumber = taxNumber;
+        this.address = address;
+        this.location = location;
+        this.telephoneNumber = telephoneNumber;
+        this.password = generatePassword();
     }
 
 
