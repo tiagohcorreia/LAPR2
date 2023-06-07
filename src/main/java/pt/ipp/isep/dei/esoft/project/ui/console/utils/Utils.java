@@ -2,14 +2,15 @@ package pt.ipp.isep.dei.esoft.project.ui.console.utils;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.generatePassword;
 
 /**
  * The type Utils.
@@ -216,5 +217,18 @@ public class Utils {
         } while (value < 0 || value > list.size());
 
         return value - 1;
+    }
+
+    static public boolean sendEmail(String email, String content){
+        String filename = email.replace("@", "_at_");
+        try {
+            FileWriter file = new FileWriter(new File("APP_FILES/" + filename+ "_email.txt"));
+            file.write(content + "\n");
+            file.close();
+        } catch (IOException e) {
+            System.out.println("Error creating email file");
+            e.printStackTrace();
+        }
+        return true;
     }
 }
