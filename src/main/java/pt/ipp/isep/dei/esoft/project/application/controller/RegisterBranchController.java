@@ -35,15 +35,18 @@ public class RegisterBranchController {
      * @param email       the email
      * @return the string
      */
-    public Branch createBranch(int id, String name, Location location, int phoneNumber, String email) {
+    public Branch createBranch(int id, String name, Location location, String phoneNumber, String email) {
 
         //Branch newBranch = new Branch(ID, name, location, phoneNumber, email);
         Branch newBranch = branchRepository.createBranch(id, name, location, phoneNumber, email);
 
         try {
+
             branchRepository.saveBranch(newBranch);
             branchRepository.writeObject();
+
         } catch (Exception e) {
+
             throw new IllegalStateException(e.getMessage());
         }
 

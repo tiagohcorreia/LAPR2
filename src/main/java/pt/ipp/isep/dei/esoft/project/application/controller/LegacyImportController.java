@@ -56,7 +56,7 @@ public class LegacyImportController {
                     LEGACY_AGENT_TAX_NUMBER,
                     LEGACY_AGENT_ADDRESS,
                     LEGACY_AGENT_EMAIL,
-                    LEGACY_AGENT_PHONE_NUMBER,
+                    String.valueOf(LEGACY_AGENT_PHONE_NUMBER),
                     null,
                     null
             );

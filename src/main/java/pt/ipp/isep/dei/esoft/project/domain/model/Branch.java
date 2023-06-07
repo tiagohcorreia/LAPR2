@@ -12,7 +12,7 @@ public class Branch implements Serializable {
     private int ID;
     private String name;
     private Location location;
-    private long phoneNumber;
+    private String phoneNumber;
     private String email;
 
     /**
@@ -24,9 +24,9 @@ public class Branch implements Serializable {
      * @param phoneNumber the phone number
      * @param email       the email
      */
-    public Branch(int ID, String name, Location location, long phoneNumber, String email) {
+    public Branch(int ID, String name, Location location, String phoneNumber, String email) {
 
-        checkIfDataIsNull(ID,name,location,phoneNumber,email);
+        checkIfDataIsNull(ID, name, location, phoneNumber, email);
         checkNameLength(name);
         checkValidEmail(email);
         checkValidPhoneNumber(phoneNumber);
@@ -41,7 +41,7 @@ public class Branch implements Serializable {
     /**
      * Instantiates a new Branch.
      */
-    public Branch(){
+    public Branch() {
 
     }
 
@@ -54,9 +54,9 @@ public class Branch implements Serializable {
      * @param phoneNumber the phone number
      * @param email       the email
      */
-    public void checkIfDataIsNull(int ID, String name, Location location, long phoneNumber, String email){
+    public void checkIfDataIsNull(int ID, String name, Location location, String phoneNumber, String email) {
 
-        if (ID == 0 || name == null || location == null || phoneNumber == 0 || email == null) {
+        if (ID == 0 || name == null || location == null || phoneNumber == null || email == null) {
             throw new NullPointerException("All fields required");
         }
     }
@@ -66,8 +66,8 @@ public class Branch implements Serializable {
      *
      * @param name the name
      */
-    public void checkNameLength(String name){
-        if(!(name.length() <= 40)){
+    public void checkNameLength(String name) {
+        if (!(name.length() <= 40)) {
             throw new IllegalArgumentException("Name should be 40 chars or less");
         }
     }
@@ -77,8 +77,8 @@ public class Branch implements Serializable {
      *
      * @param email the email
      */
-    public void checkValidEmail(String email){
-        if(Pattern.matches("[a-z0-9]+@[a-z]+\\.[a-z]", email)){
+    public void checkValidEmail(String email) {
+        if (Pattern.matches("[a-z0-9]+@[a-z]+\\.[a-z]", email)) {
             throw new IllegalArgumentException("Email doesn't match the email pattern ***@***.***");
         }
     }
@@ -88,8 +88,8 @@ public class Branch implements Serializable {
      *
      * @param phoneNumber the phone number
      */
-    public void checkValidPhoneNumber(long phoneNumber){
-        if(!Pattern.matches("[0-9]{10}", Long.toString(phoneNumber))){
+    public void checkValidPhoneNumber(String phoneNumber) {
+        if (!Pattern.matches("[0-9]{10}", phoneNumber)) {
             throw new IllegalArgumentException("Phone Number can only have 10 digits");
         }
     }
@@ -126,7 +126,7 @@ public class Branch implements Serializable {
      *
      * @return the phone number
      */
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -163,7 +163,7 @@ public class Branch implements Serializable {
      *
      * @param phoneNumber the phone number
      */
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         checkValidPhoneNumber(phoneNumber);
         this.phoneNumber = phoneNumber;
     }

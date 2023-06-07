@@ -1,6 +1,5 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
-import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Role;
@@ -30,7 +29,7 @@ public class EmployeeRepository implements Serializable {
         return new Employee(employeeName);
     }
 
-    public Employee createEmployee(String name, int passportNumber, int taxNumber, String address, String emailAdress, int telephoneNumber, Role role, Branch branch) {
+    public Employee createEmployee(String name, int passportNumber, int taxNumber, String address, String emailAdress, String telephoneNumber, Role role, Branch branch) {
         return new Employee(name, passportNumber, taxNumber, address, emailAdress, telephoneNumber, role, branch);
     }
 
