@@ -3,6 +3,7 @@ package pt.ipp.isep.dei.esoft.project.domain.repository;
 //import pt.isep.lei.esoft.auth.domain.model.User;
 import com.sun.jdi.request.DuplicateRequestException;
 import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class ClientRepository {
 
     public boolean add(Client client){
         if (userExists(client))
-            throw new DuplicateRequestException("This user is already registered");
+            throw new DuplicateDataException("This user is already registered");
         else
             return clients.add(client);
 
