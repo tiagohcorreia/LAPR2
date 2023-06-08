@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
+import pt.ipp.isep.dei.esoft.project.domain.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 
@@ -9,6 +10,8 @@ import java.util.List;
 
 public class ScheduleRepository {
     public static List<Schedule> scheduleList = new ArrayList<>();
+    public static List<Schedule> confirmedScheduleList = new ArrayList<>();
+    public static List<Schedule> schedulesByResposibleAgent= new ArrayList<>();
     public boolean saveSchedule(Schedule schedule){
         if(validateSchedule(schedule)) {
             return addSchedule(schedule);
@@ -18,7 +21,7 @@ public class ScheduleRepository {
     public boolean validateSchedule(Schedule schedule){
         for(Schedule schedule1: scheduleList) {
 
-            if(schedule.equals(schedule)) {
+            if(schedule.equals(schedule1)) {
                 return false;
             }
         }
@@ -79,5 +82,29 @@ public class ScheduleRepository {
 
             ioe.printStackTrace();
         }
+    }
+
+    public List<Schedule> getRequestScheduleListByResponsibleAgent(Employee agent){
+
+        for (Schedule schedule:this.scheduleList){
+            if (schedule.getAnnouncementDTO().getAgent().equals(agent)){
+                schedulesByResposibleAgent.add(schedule);
+            }
+        }
+        return schedulesByResposibleAgent;
+    }
+
+    public boolean addConfirmedSchedule(Schedule schedule){
+        this.confirmedScheduleList.add(schedule);
+        removeScheduleFromRequests(schedule);
+        return true;
+    }
+    public boolean removeScheduleFromRequests(Schedule schedule){
+        for(Schedule schedule1: scheduleList) {
+            if(schedule.equals(schedule1)) {
+                return this.confirmedScheduleList.remove(schedule);
+            }
+        }
+        return false;
     }
 }
