@@ -7,6 +7,8 @@ participant ScheduleVisitUI as ui
 participant ScheduleVisitController as ctrl
 participant AnnouncementMapper as mapper
 participant AnnouncementDTO
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as rep
 participant AnnouncementRepository
 participant ScheduleRepository
 participant Schedule as schedule
@@ -19,28 +21,30 @@ client -> ui: starts scheduling request
 
 activate ui
 
-ui -> ctrl** : create
+
 
 ui-> client: requests the property business he wants to schedule (Sell, Rent or All)
 client->ui: selects the type of business
 
+ui -> ctrl** : create
+ctrl -> RepositorySingleton: getInstance()
+activate ctrl
+activate RepositorySingleton
+RepositorySingleton --> ctrl: return repositories
+deactivate RepositorySingleton
+
+ctrl-> rep: getAnnouncementRepository()
+activate rep
+rep-->ctrl: return AnnouncementRepository
+deactivate rep
+
+
 ui -> ctrl: getAnnouncementList()
 
-deactivate ui
-
-activate ctrl
-
-ctrl -> AnnouncementDTO: getAnnouncementList()
-
-deactivate ctrl
-
-activate AnnouncementDTO
-
-AnnouncementDTO -> AnnouncementRepository: getAnnouncementList()
-
-deactivate AnnouncementDTO
+ctrl -> AnnouncementRepository: getAnnouncementList()
 
 activate AnnouncementRepository
+
 
 AnnouncementRepository -> AnnouncementDTO: return AnnouncementList
 
@@ -55,13 +59,10 @@ deactivate mapper
 
 deactivate AnnouncementDTO
 
-activate ctrl
+
 
 ctrl -> ui: return AnnouncementList
 
-deactivate ctrl
-
-activate ui
 
 ui -> client: shows announcement list and requests the user to select one\n and insert all the information (name, phoneNumber,day,\n beginHour,endHour, note)
 
@@ -69,13 +70,10 @@ client -> ui: selects announcement with the property and types all the informati
 
 ui -> ctrl: createSchedule()
 
-deactivate ui
 
-activate ctrl
 
 ctrl -> schedule: createSchedule()
 
-deactivate ctrl
 
 activate schedule
 
@@ -85,23 +83,15 @@ schedule -> ctrl: return schedule
 
 deactivate schedule
 
-activate ctrl
 
 ctrl -> ui: return schedule
 
-deactivate ctrl
-
-activate ui
 
 ui -> client: shows request schedule information
 
 client -> ui: confirms the data
 
 ui -> ctrl: saveScheduleSchedule()
-
-deactivate ui
-
-activate ctrl
 
 ctrl -> ScheduleRepository: saveSchedule()
 activate ScheduleRepository
@@ -111,7 +101,6 @@ ScheduleRepository-> ScheduleRepository: addSchedule()
 deactivate ScheduleRepository
 
 
-activate ui
 
 ui -> client: informs operation sucess
 

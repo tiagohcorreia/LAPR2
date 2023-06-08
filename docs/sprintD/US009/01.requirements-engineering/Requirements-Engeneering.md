@@ -108,7 +108,7 @@ A: System behavior must be consistent. For instance, the filters to be applied w
 
 #### Alternative One
 
-![SSD_009-System_Sequence_Diagram__SSD____US_009.svg](svg%2FSSD_009-System_Sequence_Diagram__SSD____US_009.svg)
+![SSD_009-System_Sequence_Diagram__SSD____US_009.svg](svg/SSD_009-System_Sequence_Diagram__SSD____US_009.svg)
 ### 1.7 Other Relevant Remarks
 
 * NA
