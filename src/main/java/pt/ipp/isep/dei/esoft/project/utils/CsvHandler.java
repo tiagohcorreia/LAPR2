@@ -116,7 +116,7 @@ public class CsvHandler {
     }
 
     public static int parseCSV(List<?> csv){
-        int successfulImports = 0;
+        int successfulImportCount = 0;
         boolean success = false;
         for (Object line:
              csv) {
@@ -130,7 +130,7 @@ public class CsvHandler {
                 //success = (announcementRepository.save(announcement) && success);
                 branchRepository.saveBranch(branch);
             }catch (DuplicateDataException e){
-                System.out.println("Branch already registered.");
+                //System.out.println("Branch already registered.");
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -138,7 +138,7 @@ public class CsvHandler {
             try{
                 clientRepository.add(client);
             }catch (DuplicateDataException e) {
-                System.out.println("Client already registered.");
+                //System.out.println("Client already registered.");
             }catch (Exception e) {
                 e.printStackTrace();
             }
@@ -148,11 +148,11 @@ public class CsvHandler {
             }catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                if (success) successfulImports++;
+                if (success) successfulImportCount++;
             }
         }
 
-        return successfulImports;
+        return successfulImportCount;
     }
 
     private static Branch parseBranchData(List<?> line){

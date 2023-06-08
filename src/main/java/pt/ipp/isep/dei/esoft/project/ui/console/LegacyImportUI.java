@@ -15,12 +15,12 @@ public class LegacyImportUI implements Runnable{
         String filePath = getFilePath();
 
         try {
-            controller.importFile(filePath);
+            System.out.println("Imported "+ controller.importFile(filePath) + " announcements.");
         } catch (InvalidFileTypeException | FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
 
-
+        Utils.enterToContinue();
     }
 
     private String getFilePath(){
@@ -29,7 +29,7 @@ public class LegacyImportUI implements Runnable{
                 filePath = Utils.readLineFromConsole("File path: ").trim();
                 if (filePath.equals("")){
                     System.out.println("File path cannot be empty. Please try again");
-                    Utils.readLineFromConsole("Press [Enter] to continue...");
+                    Utils.enterToContinue();
                 }
         }
         return filePath;

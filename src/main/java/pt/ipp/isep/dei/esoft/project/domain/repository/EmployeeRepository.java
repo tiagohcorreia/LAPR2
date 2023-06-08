@@ -3,6 +3,7 @@ package pt.ipp.isep.dei.esoft.project.domain.repository;
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Role;
+import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class EmployeeRepository implements Serializable {
     /**
      * The constant employeeList.
      */
-    public static List<Employee> employeeList = new ArrayList();
+    public static List<Employee> employeeList = new ArrayList<>();
 
     /**
      * Create employee employee.
@@ -72,11 +73,10 @@ public class EmployeeRepository implements Serializable {
      */
     public boolean validateEmployee(Employee employee) {
 
-        for (Employee employee1 : employeeList) {
+        for (Employee emp : employeeList) {
 
-            if (employee.equals(employee)) {
-
-                return false;
+            if (emp.equals(employee)) {
+                throw new DuplicateDataException("Employee is already registered");
             }
         }
         return true;

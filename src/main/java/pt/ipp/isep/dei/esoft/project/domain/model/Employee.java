@@ -1,12 +1,14 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import pt.ipp.isep.dei.esoft.project.ui.console.utils.Validator;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * The type Employee.
  */
-public class Employee implements Serializable {
+public class Employee implements Serializable, Validator {
 
     private String name;
     private int passportNumber;
@@ -40,6 +42,8 @@ public class Employee implements Serializable {
         this.telephoneNumber = setTelephoneNumber(telephoneNumber);
         this.role = role;
         this.branch = branch;
+
+        validate();
     }
 
     /**
@@ -48,6 +52,7 @@ public class Employee implements Serializable {
      * @param employeeName the employee name
      */
     public Employee(String employeeName) {
+        this.name = employeeName;
     }
 
     /**
@@ -248,6 +253,20 @@ public class Employee implements Serializable {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    private boolean validate(){
+        boolean valid=false;
+        valid = validateString(this.name) &&
+                validatePassportNumber(this.passportNumber) &&
+                validateTaxNumber(this.taxNumber) &&
+                validateEmail(this.emailAddress) &&
+                validatePhoneNumber(this.telephoneNumber);
+
+        if (!valid)
+            throw new IllegalStateException("Employee is invalid");
+
+        return true;
     }
 
 
