@@ -17,12 +17,12 @@
 | Step 2  		 | 							                                      |                         |                                                                                                               |
 | Step 3  		 | 	...saving the inputted data?                | Schedule                | IE: object created in step 1 has its own data.                                                                |
 | Step 4  		 | 	...knowing the task categories to show?     | System                  | IE: Task Categories are defined by the Administrators.                                                        |
-| Step 5  		 | 	... saving the selected category?           | Task                    | IE: object created in step 1 is classified in one Category.                                                   |
+| Step 5  		 | 	... saving the selected category?           | Schedule                | IE: object created in step 1 is classified in one Category.                                                   |
 | Step 6  		 | 							                                      |                         |                                                                                                               |              
-| Step 7  		 | 	... validating all data (local validation)? | Task                    | IE: owns its data.                                                                                            | 
-| 			  		 | 	... validating all data (global validation)?| Organization            | IE: knows all its tasks.                                                                                      | 
-| 			  		 | 	... saving the created task?                | Organization            | IE: owns all its tasks.                                                                                       | 
-| Step 8  		 | 	... informing operation success?            | CreateTaskUI            | IE: is responsible for user interactions.                                                                     | 
+| Step 7  		 | 	... validating all data (local validation)? | Schedule                | IE: owns its data.                                                                                            | 
+                                                                                    | 
+| 			  		 | 	... saving the created task?                | ScheduleRepository      | IE: owns all its tasks.                                                                                       | 
+| Step 8  		 | 	... informing operation success?            | ValidateVisitUI         | IE: is responsible for user interactions.                                                                     | 
 
 ### Systematization ##
 
