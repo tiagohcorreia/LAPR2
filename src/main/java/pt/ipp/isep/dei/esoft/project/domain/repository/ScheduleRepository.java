@@ -10,8 +10,10 @@ import java.util.List;
 
 public class ScheduleRepository {
     public static List<Schedule> scheduleList = new ArrayList<>();
-    public static List<Schedule> confirmedScheduleList = new ArrayList<>();
     public static List<Schedule> schedulesByResposibleAgent= new ArrayList<>();
+    public static List<Schedule> confirmedScheduleList = new ArrayList<>();
+    public static List<Schedule> rejectedScheduleList = new ArrayList<>();
+
     public boolean saveSchedule(Schedule schedule){
         if(validateSchedule(schedule)) {
             return addSchedule(schedule);
@@ -51,7 +53,7 @@ public class ScheduleRepository {
         }
         return stringBuilder.toString();
     }
-    public List<Schedule> readObject() {
+    public List<Schedule> readObjectScheduleRequest() {
 
         try {
 
@@ -70,7 +72,7 @@ public class ScheduleRepository {
     /**
      * Write object.
      */
-    public void writeObject() {
+    public void writeObjectScheduleRequest() {
 
         try {
 
@@ -106,5 +108,75 @@ public class ScheduleRepository {
             }
         }
         return false;
+    }
+    public boolean addRejectedSchedule(Schedule schedule){
+        this.rejectedScheduleList.add(schedule);
+        removeScheduleFromRequests(schedule);
+        return true;
+    }
+
+    public List<Schedule> readObjectConfirmedSchedule() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/confirmedSchedule.ser"));
+            confirmedScheduleList = (List<Schedule>) ois.readObject();
+            System.out.println(confirmedScheduleList);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+        return confirmedScheduleList;
+    }
+
+    /**
+     * Write object.
+     */
+    public void writeObjectConfirmedSchedule() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/confirmedSchedule.ser"));
+            oos.writeObject(confirmedScheduleList);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        }
+    }
+    public List<Schedule> readObjectRejectedSchedule() {
+
+        try {
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/rejectedSchedule.ser"));
+            rejectedScheduleList = (List<Schedule>) ois.readObject();
+            System.out.println(rejectedScheduleList);
+            ois.close();
+
+        } catch (IOException | ClassNotFoundException e) {
+
+            e.printStackTrace();
+        }
+        return rejectedScheduleList;
+    }
+
+    /**
+     * Write object.
+     */
+    public void writeObjectRejectedSchedule() {
+
+        try {
+
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/rejectedSchedule.ser"));
+            oos.writeObject(rejectedScheduleList);
+            oos.close();
+
+        } catch (IOException ioe) {
+
+            ioe.printStackTrace();
+        }
     }
 }
