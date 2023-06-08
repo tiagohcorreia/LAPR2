@@ -1,7 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.Employee;
-import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 
 import java.io.*;
@@ -11,8 +10,7 @@ import java.util.List;
 public class ScheduleRepository {
     public static List<Schedule> scheduleList = new ArrayList<>();
     public static List<Schedule> schedulesByResposibleAgent= new ArrayList<>();
-    public static List<Schedule> confirmedScheduleList = new ArrayList<>();
-    public static List<Schedule> rejectedScheduleList = new ArrayList<>();
+
 
     public boolean saveSchedule(Schedule schedule){
         if(validateSchedule(schedule)) {
@@ -97,86 +95,28 @@ public class ScheduleRepository {
     }
 
     public boolean addConfirmedSchedule(Schedule schedule){
-        this.confirmedScheduleList.add(schedule);
-        removeScheduleFromRequests(schedule);
-        return true;
-    }
-    public boolean removeScheduleFromRequests(Schedule schedule){
-        for(Schedule schedule1: scheduleList) {
-            if(schedule.equals(schedule1)) {
-                return this.confirmedScheduleList.remove(schedule);
+        for (Schedule schedule1:this.scheduleList){
+            if (schedule1.equals(schedule)){
+                schedule1.setStatus(true);
+                schedule1.setAproved(true);
+                return true;
             }
         }
         return false;
     }
     public boolean addRejectedSchedule(Schedule schedule){
-        this.rejectedScheduleList.add(schedule);
-        removeScheduleFromRequests(schedule);
-        return true;
-    }
-
-    public List<Schedule> readObjectConfirmedSchedule() {
-
-        try {
-
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/confirmedSchedule.ser"));
-            confirmedScheduleList = (List<Schedule>) ois.readObject();
-            System.out.println(confirmedScheduleList);
-            ois.close();
-
-        } catch (IOException | ClassNotFoundException e) {
-
-            e.printStackTrace();
+        for (Schedule schedule1:this.scheduleList){
+            if (schedule1.equals(schedule)){
+                schedule1.setStatus(true);
+                schedule1.setAproved(false);
+                return true;
+            }
         }
-        return confirmedScheduleList;
+        return false;
     }
 
-    /**
-     * Write object.
-     */
-    public void writeObjectConfirmedSchedule() {
 
-        try {
 
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/confirmedSchedule.ser"));
-            oos.writeObject(confirmedScheduleList);
-            oos.close();
 
-        } catch (IOException ioe) {
 
-            ioe.printStackTrace();
-        }
-    }
-    public List<Schedule> readObjectRejectedSchedule() {
-
-        try {
-
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/rejectedSchedule.ser"));
-            rejectedScheduleList = (List<Schedule>) ois.readObject();
-            System.out.println(rejectedScheduleList);
-            ois.close();
-
-        } catch (IOException | ClassNotFoundException e) {
-
-            e.printStackTrace();
-        }
-        return rejectedScheduleList;
-    }
-
-    /**
-     * Write object.
-     */
-    public void writeObjectRejectedSchedule() {
-
-        try {
-
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ser/rejectedSchedule.ser"));
-            oos.writeObject(rejectedScheduleList);
-            oos.close();
-
-        } catch (IOException ioe) {
-
-            ioe.printStackTrace();
-        }
-    }
 }

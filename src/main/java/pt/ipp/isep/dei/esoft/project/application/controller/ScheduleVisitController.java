@@ -44,6 +44,7 @@ public class ScheduleVisitController {
         try {
 
             this.scheduleRepository.saveSchedule(schedule);
+            this.scheduleRepository.writeObjectScheduleRequest();
             return schedule.toString();
 
         } catch (Exception e) {
@@ -82,6 +83,7 @@ public class ScheduleVisitController {
     public boolean addConfirmedSchedule(int schedulePos){
         if (schedulePos>=0 && schedulePos< scheduleRepository.schedulesByResposibleAgent.size()){
             Schedule schedule= scheduleRepository.schedulesByResposibleAgent.get(schedulePos);
+            scheduleRepository.writeObjectScheduleRequest();
             return scheduleRepository.addConfirmedSchedule(schedule);
         }else {
             return false;
@@ -90,6 +92,7 @@ public class ScheduleVisitController {
     public boolean addRejectedSchedule(int schedulePos){
         if (schedulePos>=0 && schedulePos< scheduleRepository.schedulesByResposibleAgent.size()){
             Schedule schedule= scheduleRepository.schedulesByResposibleAgent.get(schedulePos);
+            scheduleRepository.writeObjectScheduleRequest();
             return scheduleRepository.addRejectedSchedule(schedule);
         }else {
             return false;
