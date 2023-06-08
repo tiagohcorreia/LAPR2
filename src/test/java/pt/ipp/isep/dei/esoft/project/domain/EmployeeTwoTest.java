@@ -40,7 +40,7 @@ class EmployeeTwoTest {
     @Test
     void EnsureEmptyEmployeeNameFails() {
 
-        assertThrows(NullPointerException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
 
             Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", String.valueOf(String.valueOf(982822882)), Role.AGENT, branch);
             e1.setName(null);

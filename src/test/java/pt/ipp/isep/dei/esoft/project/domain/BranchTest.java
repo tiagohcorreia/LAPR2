@@ -88,23 +88,23 @@ class BranchTest {
         assertDoesNotThrow( ()->{
 
             //Branch b = new Branch(1, "MEGA STORE", "Porto" ,982822882,"mega@asda.com");
-            Branch b = new Branch(1, "MEGA STORE", new Location("123 Street", new City(), 12345),String.valueOf(982822882),"mega@asda.com");
+            Branch b = new Branch(1, "MEGA STORE", new Location("123 Street", new City(), 12345),String.valueOf(1982822882),"mega@asda.com");
 
         });
     }
 
     /**
-     * Ensure phone number with 9 digits works.
+     * Ensure phone number with 10 digits works.
      */
-    @DisplayName("Ensure phone number with 9 digits works")
+    @DisplayName("Ensure phone number with 10 digits works")
     @Test
-    void EnsurePhoneNumberWith9DigitsWorks() {
+    void EnsurePhoneNumberWith10DigitsWorks() {
 
         assertDoesNotThrow( ()->{
 
             Branch b = new Branch();
 
-            b.setPhoneNumber(String.valueOf(981321232));
+            b.setPhoneNumber(String.valueOf(1981321232));
 
         });
     }

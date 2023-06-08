@@ -60,7 +60,7 @@ class CsvHandlerTest {
             for (int j = 0; j < 10; j++) {
                 sb.append("L" + (i+1) + "E" + (j+1));
                 if (j != 9)
-                    sb.append(",");
+                    sb.append(";");
             }
             sb.append("\n");
         }
@@ -112,7 +112,7 @@ class CsvHandlerTest {
         //Arrange
         File csvFile = new File(CSV_FILE_FILEPATH);
         List<?> dataWithoutHeader = this.data.subList(1,this.data.size());
-
+        List<?> a =CsvHandler.getDataFromCsvFile(csvFile);
         //Act & Assert
         assertEquals(dataWithoutHeader,CsvHandler.getDataFromCsvFile(csvFile));
     }
