@@ -64,46 +64,10 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
     @Override
     public void run() {
 
-        boolean success = true;
-
-        while(success) {
-
-            //List of anouncements
-            List<AnnouncementDTO> x = this.controller.announcementDTOList();
-            Utils.showList(x, "Anouncements");
-            Integer posAnouncement = Utils.readIntegerFromConsole("Select the anouncement with the desire property");
-
-            //OrderAmount
-            Double orderAmount = Utils.readDoubleFromConsole("Insert order amount: ");
-            
-            int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
-
-            if (optValidation == 1) {
-
-                try {
-
-                    this.controller.createOrder(orderAmount, posAnouncement);
-                    success = false;
-
-                } catch (IllegalArgumentException e) {
-
-                    System.out.println(e.getMessage());
-
-                } catch (Exception e) {
-
-                    System.out.println(e.getMessage());
-                }
-
-                System.out.println("Order amount: " + orderAmount);
-                System.out.println("Selected Announcement:\n" + posAnouncement.toString());
-
-            } else {
-
-                System.err.println("Operation Canceled");
-            }
-        }
+        
     }
 }
+
 
 ```
 
