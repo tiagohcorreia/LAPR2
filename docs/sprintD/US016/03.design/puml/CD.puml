@@ -11,9 +11,10 @@ class ValidateVisitUI {
 class ScheduleVisitController {
     - ScheduleRepository
 
-    + RequestScheduleListByResposibleAgent()
-    + addConfirmedVisit()
-    + sendValidationEmail()
+    + requestScheduleListByResposibleAgent()
+    + addConfirmedSchedule()
+    + addRejectedSchedule()
+    + sendEmail()
     + getAgentFromSession()
 }
 
@@ -45,11 +46,13 @@ class Repositories {
 class ScheduleRepository {
 
     - ScheduleList
-    - ConfirmedScheduleList
+    - schedulesByResposibleAgent
     + addConfirmedSchedule()
-    + removeScheduleFromRequests()
-    + getScheduleList()
-    + getScheduleListAsString()
+    + addRejectedSchedule()
+    + getRequestScheduleListByResponsibleAgent()
+    + readObjectScheduleRequest()
+    + writeObjectScheduleRequest()
+
 }
 
 
