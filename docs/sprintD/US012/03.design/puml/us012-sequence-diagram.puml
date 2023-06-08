@@ -81,17 +81,22 @@ else csv[].length >= 2
 
 ctrl -> EmpR: getEmployeeByName("Legacy Agent")
 activate EmpR
-alt
+alt Legacy Agent is registered
     EmpR --> ctrl: Employee legacyAgent
-else
+else Legacy Agent is not registered
     return null
-    ctrl -> EmpR: registerEmployee(\n"Legacy Agent", ...)
+    ctrl -> EmpR: createEmployee(\n"Legacy Agent", ...)
     activate EmpR
     EmpR -> Emp**: create
     activate Emp
     Emp -> Emp: validateEmployee()
     return true
     return true
+    ctrl -> EmpR: saveEmployee(legacyAgent)
+    activate EmpR
+    EmpR -> EmpR: validateEmployee()
+    return true
+
 end
 
 
@@ -99,8 +104,8 @@ ctrl -> ch: parseCsv(csv)
 activate ch
 ref over ch: SD_CsvHandler_parseCsv
 autonumber 56
-return true
-return inform operation success
+return successfulImportCount
+return successfulImportCount
 return inform operation success
 end
 end
