@@ -64,26 +64,10 @@ public class RegisterPropertyUI implements Runnable {
             int numberPhotos = 1;
             String agent;
             Employee choosedAgent;
-            LocalDate date = null;
+            LocalDate date = LocalDate.now();
             int doorNumber = 0;
             String street = null;
             int postalCode = 0;
-
-
-
-
-            // date
-            while (date == null) {
-
-                System.out.print("Enter the date (YYYY-MM-DD): ");
-                String dateString =Utils.readLineFromConsole( "Enter the date (YYYY-MM-DD): ");
-
-                try {
-                    date = LocalDate.parse(dateString);
-                } catch (DateTimeParseException e) {
-                    System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
-                }
-            }
 
 
             //Type of property
@@ -111,7 +95,7 @@ public class RegisterPropertyUI implements Runnable {
             }
 
             //area in m2
-            cityCenterDistance = Utils.readIntegerFromConsole("Insert the distance from the centre: ");
+            cityCenterDistance = Utils.readIntegerFromConsole("Insert the distance from the centre (km): ");
 
             //Photographs
             numberPhotos = Utils.readIntegerFromConsole("Insert how many photos you want to add: ");

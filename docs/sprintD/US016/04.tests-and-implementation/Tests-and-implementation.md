@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 016 - To validate an appointment for a visit
 
 # 4. Tests 
 
@@ -63,16 +63,12 @@ public Optional<Task> createTask(String reference, String description, String in
 
 # 6. Integration and Demo 
 
-* A new option on the Employee menu options was added.
-
-* Some demo purposes some tasks are bootstrapped while system starts.
+* A new option on the Agent menu options was added.
 
 
 # 7. Observations
 
-Platform and Organization classes are getting too many responsibilities due to IE pattern and, therefore, they are becoming huge and harder to maintain. 
-
-Is there any way to avoid this to happen?
+N/A
 
 
 
