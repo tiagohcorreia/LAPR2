@@ -1,0 +1,19 @@
+@startuml
+
+
+class ReadResponseOfAppointmentRequestGUI {
+
+}
+
+class ReadResponseOfAppointmentRequestController {
+
+}
+
+class Repositories {
+
+}
+
+Application -left-|> ReadResponseOfAppointmentRequestGUI
+
+
+@enduml
