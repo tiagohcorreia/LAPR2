@@ -231,4 +231,8 @@ public class Utils {
         }
         return true;
     }
+
+    static public void enterToContinue(){
+        readLineFromConsole("Press [Enter] to continue...");
+    }
 }
