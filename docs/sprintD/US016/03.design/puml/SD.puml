@@ -62,14 +62,31 @@ ui --> agent: requests to select a schedule request
 agent -> ui: selects the schedule request
 
 ui-> agent: requests to accept or reject the schedule request and asks for cofirmation
-agent-> ui: accept or reject and confirms the answer
 
-ui -> ctr: addConfirmedSchedule(Schedule)
+alt accept the schedule request
 
-ctr -> ScheduleRepository: addConfirmedSchedule(Schedule)
-activate ScheduleRepository
-ScheduleRepository-> ScheduleRepository: removeScheduleFromRequests()
-deactivate ScheduleRepository
+    agent-> ui: accept the schedule request
+
+    ui -> ctr: addConfirmedSchedule(schedulePos)
+
+    ctr -> ScheduleRepository: addConfirmedSchedule(Schedule)
+    activate ScheduleRepository
+
+    deactivate ScheduleRepository
+
+else reject the schedule request
+
+    agent-> ui: reject the schedule request
+
+    ui -> ctr: addRejectedSchedule(schedulePos)
+
+    ctr -> ScheduleRepository: addRejectedSchedule(Schedule)
+    activate ScheduleRepository
+
+    deactivate ScheduleRepository
+
+end
+
 ui-> agent: informs operation sucess
 
 
