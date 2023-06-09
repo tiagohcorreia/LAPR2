@@ -1,0 +1,120 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+autonumber
+
+'hide footbox
+actor "Agent" as AG
+participant ":RegisterVisitUI" as UI
+participant ":RegisterVisitController" as CTRL
+participant "repositories\n:Repositories" as REP
+participant "scheduledVisitRepository:\nScheduledVisitRepository" as ScheduledVisitRepository
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as SESSAO
+participant "visitRepository:\nVisitRepository" as VisitRepository
+participant "visit:\nVisit" as VISIT
+
+activate AG
+
+        AG -> UI : asks to register a visit
+
+        activate UI
+
+            UI -> CTRL : getScheduledVisits()
+            activate CTRL
+
+
+                     CTRL -> CTRL : getEmployeeFromSession()
+
+                      CTRL -> _APP: getInstance()
+                         activate _APP
+                      _APP -> CTRL: appSession
+                          deactivate _APP
+
+                      CTRL -> APP: getCurrentSession()
+                          activate APP
+
+                      APP --> CTRL: currentSession
+                          deactivate APP
+
+                     CTRL -> SESSAO: agentName = getUserNameByEmail()
+                          activate SESSAO
+
+                      SESSAO --> CTRL : agentName
+                          deactivate SESSAO
+
+
+                     CTRL -> CTRL : getScheduledVisitsByAgentName(agentName)
+
+                     CTRL -> REP : getInstance()
+                           activate REP
+
+                     REP --> CTRL: repositories
+                           deactivate REP
+
+                      CTRL -> REP : getScheduledVisitRepository()
+                            activate REP
+
+                       REP -> CTRL : ScheduledVisitRepository
+                            deactivate REP
+
+                       CTRL -> ScheduledVisitRepository : getScheduledVisitsByAgentName(agentName)
+                            activate ScheduledVisitRepository
+
+                       ScheduledVisitRepository --> CTRL : ScheduledVisitsList
+                            deactivate ScheduledVisitRepository
+
+                     CTRL --> UI : ScheduledVisitsList
+
+                    UI --> AG : show the list of scheduled visits
+
+                    AG -> UI : select the scheduled visit to register
+
+                    UI --> AG: show the scheduled visit and request the opinion about the business
+
+                    AG -> UI: type the opinion about the business
+
+                    UI --> AG: show the classification scale
+
+                    AG -> UI: select the classification
+
+                     AG -> UI: Register visit
+
+                            alt Duplicate Entry
+                                UI --> AG: Error - Duplicate entry for the visit
+
+                            else Valid Entry
+
+                                        UI -> CTRL: createVisit(scheduledVisit,opinionAboutBusiness,classification)
+                                        CTRl -> VisitRepository**: create
+                                        CTRL -> VisitRepository : createVisit(scheduledVisit,opinionAboutBusiness,classification)
+                                        VisitRepository -> VISIT**: create
+
+                                        VisitRepository -> VISIT: createVisit(scheduledVisit,opinionAboutBusiness,classification)
+                                        VISIT -> VISIT: validate()
+                                        VISIT --> VisitRepository: validate(Visit)
+                                        VISIT --> VisitRepository: add(Visit)
+                                        VisitRepository --> CTRL: Visit
+                                        CTRL --> UI: Visit
+
+
+                                UI --> AG: Success - Visit registered
+
+
+                            end
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

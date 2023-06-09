@@ -21,6 +21,7 @@ activate AG
 
         AG -> UI : asks to see the announcement requests
         activate UI
+
         UI -> CTRL : getAnnouncementRequests()
         activate CTRL
          CTRL -> CTRL : getEmployeeFromSession()

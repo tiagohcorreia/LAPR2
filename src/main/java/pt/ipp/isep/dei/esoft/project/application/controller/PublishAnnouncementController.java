@@ -9,7 +9,6 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.time.LocalDate;
@@ -20,12 +19,13 @@ import java.util.List;
  */
 public class PublishAnnouncementController {
 
+    Repositories repositories = Repositories.getInstance();
     private AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
+
+    private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
+
     private AuthenticationController authenticationController=new AuthenticationController();
-    /**
-     * The Repositories.
-     */
-    //Repositories repositories = Repositories.getInstance();
+
     /**
      * The Employee repository.
      */
@@ -67,6 +67,7 @@ public class PublishAnnouncementController {
     public void createAnnouncement(LocalDate date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
                                    ArrayList<String> equipmentList, boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
                                    int area, Location location, int cityCentreDistance, float commission, float price, ArrayList photographs, String agentName){
+
         EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
 
         // get the employee corresponding to the agent email
@@ -75,9 +76,7 @@ public class PublishAnnouncementController {
         pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address",1231231230,Role.AGENT,branch);
         //Employee agent = employeeRepository.findByEmail(emailAdress);
 
-        //agentName = String.valueOf(authenticationController.getCurrentSession().getUserName());
 
-        // agent = employeeRepository.getUserByEmail(agentName);
 
         if (posTypeOfProperty == 2) {
             Property property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);
@@ -137,20 +136,9 @@ public class PublishAnnouncementController {
         return Arrays.stream(TypeOfBusiness.values()).toList();
     }
 
-   /* public List<Employee> getAgent() {
-        List<Employee> agent= new ArrayList();
-        for(Employee employee : employeeRepository.getEmployeeList()) {
-
-            if(employee.getRole().equals("Agent")) {
-                agent.add(employee);
-            }
-        }
-        return agent;
-
-    }
-    public Employee getEmployee(String name){
-        return employeeRepository.getEmployee(name);
-    }*/
+   public String getAgentName(){
+        return String.valueOf(authenticationRepository.getCurrentUserSession().getUserName());
+   }
 
 
 }

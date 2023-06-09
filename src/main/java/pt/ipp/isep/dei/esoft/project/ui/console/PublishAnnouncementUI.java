@@ -70,7 +70,7 @@ public class PublishAnnouncementUI implements Runnable {
 
         //Agent
         //String agentsList = this.controller.getAgent().toString();
-        String agentName = String.valueOf(authenticationController.getCurrentSession());
+        String agentName = controller.getAgentName();
 
 
         //String agent = Utils.readLineFromConsole("Agent, insert your name:: ");

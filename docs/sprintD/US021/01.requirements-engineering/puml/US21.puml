@@ -1,0 +1,49 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Agent" as AG
+participant ":System" as System
+
+activate AG
+
+    AG -> System : asks to register a visit
+    activate System
+
+        System --> AG : shows the list of scheduled visits
+    deactivate System
+
+    AG -> System : select specific visit
+    activate System
+
+        System --> AG : display visit details
+    deactivate System
+
+    AG -> System: Provide opinion about the business
+    activate System
+
+        System --> AG: Validate opinion (alphanumeric, 200 characters)
+        deactivate System
+
+        AG ->System: Select classification from 1 to 5
+        activate System
+
+        System --> AG: Display classification scale
+        deactivate System
+
+        AG -> System: Register visit
+        activate System
+        alt Duplicate Entry
+            System --> AG: Error - Duplicate entry for the visit
+
+        else Valid Entry
+            System --> AG: Success - Visit registered
+            deactivate System
+        end
+
+@enduml

@@ -11,4 +11,6 @@ public class EmailService {
         System.out.println("Sending email to: " + client.getEmail());
         System.out.println("Message: " + message);
     }
+
+
 }
