@@ -1,0 +1,73 @@
+@startuml
+
+class Visit {
+  
+}
+
+class Mapper {
+  
+    +toDTOlist(sortedVisits)
+    +toDTO(visit)
+
+}
+
+class VisitDTO {
+  
+}
+
+class Util {
+  
+    +getChosenSortingAlgorithm()
+    +sortVisitsAscending()
+
+}
+
+
+class ListAllBookingsRequestsToAgentUI {
+
+    
+
+}
+
+class ListAllBookingsRequestsToAgentController {
+
+  
+}
+
+class VisitRepository {
+
+    +getAllVisitsByAgentAndDateRange(Agent,start,end)
+    
+}
+
+
+
+
+class Repositories {
+
+    +getInstance()
+    +getVisitRepository()
+
+}
+
+
+ListAllBookingsRequestsToAgentUI -[dashed]-> ListAllBookingsRequestsToAgentController
+ListAllBookingsRequestsToAgentController-[dashed]-> Repositories
+ListAllBookingsRequestsToAgentController-[dashed]-> VisitRepository
+ListAllBookingsRequestsToAgentController-[dashed]-> Mapper
+ListAllBookingsRequestsToAgentController-[dashed]-> Util
+Mapper -[dashed]-> VisitDTO
+
+
+VisitRepository -down-> "*" Visit
+
+Repositories --> Repositories: Instance
+
+Repositories -->"1" VisitRepository
+
+
+
+
+
+
+@enduml
