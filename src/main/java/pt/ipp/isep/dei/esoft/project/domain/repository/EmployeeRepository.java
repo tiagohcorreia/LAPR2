@@ -63,7 +63,7 @@ public class EmployeeRepository implements Serializable {
 
         if (employee != null && validateEmployee(employee)) {
 
-            return this.employeeList.add(employee);
+            return employeeList.add(employee);
         }
         return false;
     }
@@ -198,15 +198,15 @@ public class EmployeeRepository implements Serializable {
 
     public void saveEmployeeInTheSystem(Employee newEmployee, String password) {
 
-        if (newEmployee.getRole().equals("Administrator")) {
+        if (newEmployee.getRole().equals(Role.ADMNISTRATOR)) {
 
             authenticationRepository.addUserWithRole(newEmployee.getName(), newEmployee.getEmailAddress(), password, AuthenticationController.ROLE_ADMIN);
 
-        } else if (newEmployee.getRole().equals("Network Manager")) {
+        } else if (newEmployee.getRole().equals(Role.NETWORK_MANAGER)) {
 
             authenticationRepository.addUserWithRole(newEmployee.getName(), newEmployee.getEmailAddress(), password, AuthenticationController.ROLE_NETWORK_MANAGER);
 
-        } else if (newEmployee.getRole().equals("Agent")) {
+        } else if (newEmployee.getRole().equals(Role.AGENT)) {
 
             authenticationRepository.addUserWithRole(newEmployee.getName(), newEmployee.getEmailAddress(), password, AuthenticationController.ROLE_AGENT);
         }

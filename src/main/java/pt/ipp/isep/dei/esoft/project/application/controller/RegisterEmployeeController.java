@@ -70,7 +70,7 @@ public class RegisterEmployeeController {
 
             this.employeeRepository.saveEmployee(newEmployee);
             this.employeeRepository.writeObject();
-            this.employeeRepository.saveEmployeeInTheSystem(newEmployee, sendEmail(newEmployee.getName(), newEmployee.getEmailAddress()));
+            this.employeeRepository.saveEmployeeInTheSystem(newEmployee, sendEmail(newEmployee.getEmailAddress()));
             System.out.println();
             System.out.println(newEmployee);
             return newEmployee.toString();
@@ -85,10 +85,9 @@ public class RegisterEmployeeController {
     /**
      * Send email.
      *
-     * @param emplyeeName the emplyee name
      * @param eMail       the e mail
      */
-    public String sendEmail(String emplyeeName, String eMail) {
+    public String sendEmail(String eMail) {
 
         String password = generatePassword();
         String conteudo = "Email: " + eMail + " | Senha: " + password;
