@@ -18,7 +18,7 @@ class VisitDTO {
 class Util {
   
     +getChosenSortingAlgorithm()
-    +sortVisitsAscending()
+    
 
 }
 
@@ -37,7 +37,8 @@ class ListAllBookingsRequestsToAgentController {
 class VisitRepository {
 
     +getAllVisitsByAgentAndDateRange(Agent,start,end)
-    
+    +sortVisitsAscending(visits)
+
 }
 
 
@@ -57,6 +58,7 @@ ListAllBookingsRequestsToAgentController-[dashed]-> VisitRepository
 ListAllBookingsRequestsToAgentController-[dashed]-> Mapper
 ListAllBookingsRequestsToAgentController-[dashed]-> Util
 Mapper -[dashed]-> VisitDTO
+Mapper -[dashed]-> Visit
 
 
 VisitRepository -down-> "*" Visit

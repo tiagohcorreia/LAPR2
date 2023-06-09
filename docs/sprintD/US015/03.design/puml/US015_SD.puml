@@ -51,8 +51,8 @@ return AllVisitsByAgentAndDateRange
 ctrl -> util: getChosenSortingAlgorithm()
 activate util
 return chosenSortingAlgorithm
-ctrl -> util: sortVisitsAscending()
-activate util
+ctrl -> vstR: sortVisitsAscending(visits)
+activate vstR
 
 return sortedVisits
 
