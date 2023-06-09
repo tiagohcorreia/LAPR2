@@ -255,20 +255,6 @@ public class Employee implements Serializable, Validator {
         this.branch = branch;
     }
 
-    private boolean validate(){
-        boolean valid=false;
-        valid = validateString(this.name) &&
-                validatePassportNumber(this.passportNumber) &&
-                validateTaxNumber(this.taxNumber) &&
-                validateEmail(this.emailAddress) &&
-                validatePhoneNumber(this.telephoneNumber);
-
-        if (!valid)
-            throw new IllegalStateException("Employee is invalid");
-
-        return true;
-    }
-
 
     @Override
     public String toString() {
@@ -312,15 +298,18 @@ public class Employee implements Serializable, Validator {
         return Objects.hash(name, passportNumber, taxNumber, address, emailAddress, telephoneNumber, role, branch);
     }
 
-    /*private void verifyIfEmployeeDataIsNotNull(String name, int passportNumber, int taxNumber, String address, String emailAdress, long telephoneNumber) {
+    private boolean validate() {
 
-        if (name.trim().isEmpty() || Integer.toString(passportNumber).trim().isEmpty() || Integer.toString(taxNumber).trim().isEmpty() || address.trim().isEmpty() || emailAdress.trim().isEmpty() || Long.toString(telephoneNumber).trim().isEmpty()) {
-            throw new NullPointerException("Employee data can't be empty. Please fill all the required fields.");
+        boolean valid = false;
+
+        valid = validateString(this.name) && validatePassportNumber(this.passportNumber) && validateTaxNumber(this.taxNumber) &&
+                validateEmail(this.emailAddress) && validatePhoneNumber(this.telephoneNumber);
+
+        if (!valid) {
+
+            throw new IllegalStateException("Employee is invalid");
         }
+        return true;
+    }
 
-        if (name.length() < 1) {
-
-            throw new NullPointerException("Employee data can't be empty. Please fill all the required fields.");
-        }
-    }*/
 }

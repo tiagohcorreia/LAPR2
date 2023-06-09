@@ -1,9 +1,11 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
+import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Role;
 import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
+import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ public class EmployeeRepository implements Serializable {
      * The constant employeeList.
      */
     public static List<Employee> employeeList = new ArrayList<>();
+
+    AuthenticationRepository authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
 
     /**
      * Create employee employee.
@@ -190,6 +194,22 @@ public class EmployeeRepository implements Serializable {
         } catch (IOException ioe) {
 
             ioe.printStackTrace();
+        }
+    }
+
+    public void saveEmployeeInTheSystem(Employee newEmployee, String password) {
+
+        if (newEmployee.getRole().equals("Administrator")) {
+
+            authenticationRepository.addUserWithRole(newEmployee.getName(), newEmployee.getEmailAddress(), password, AuthenticationController.ROLE_ADMIN);
+
+        } else if (newEmployee.getRole().equals("Network Manager")) {
+
+            authenticationRepository.addUserWithRole(newEmployee.getName(), newEmployee.getEmailAddress(), password, AuthenticationController.ROLE_NETWORK_MANAGER);
+
+        } else if (newEmployee.getRole().equals("Agent")) {
+
+            authenticationRepository.addUserWithRole(newEmployee.getName(), newEmployee.getEmailAddress(), password, AuthenticationController.ROLE_AGENT);
         }
     }
 }

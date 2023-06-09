@@ -69,15 +69,21 @@ class Repositories {
     + announcementRepository
 }
 
+class Announcement {
+
+}
+
 
 
 Runnable -left-|> PlaceOrderToBuyPropertyUI
 PlaceOrderToBuyPropertyUI ..> PlaceOrderToBuyPropertyController
-PlaceOrderToBuyPropertyController -> Repositories
+PlaceOrderToBuyPropertyController ..> Repositories
+PlaceOrderToBuyPropertyController ..> AnnouncementRepository
 Repositories -> AnnouncementRepository
-AnnouncementRepository -> AnnouncementMapper
+Repositories -> PlaceOrderToBuyPropertyRepository
+PlaceOrderToBuyPropertyController ..> AnnouncementMapper
+PlaceOrderToBuyPropertyController ..> PlaceOrderToBuyPropertyRepository
 AnnouncementMapper --> AnnouncementDTO
-PlaceOrderToBuyPropertyController ..> Order
 Order --> PlaceOrderToBuyPropertyRepository
 
 @enduml
