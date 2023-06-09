@@ -47,7 +47,7 @@ class DisplayAnnouncementsControllerTest {
             123123123,
             123456789,
             "Somewhere",
-            "email@mail.com",1234567890, Role.AGENT, branch);
+            "email@mail.com",String.valueOf(1234567890), Role.AGENT, branch);
     /**
      * The constant defaultAnnouncement.
      */

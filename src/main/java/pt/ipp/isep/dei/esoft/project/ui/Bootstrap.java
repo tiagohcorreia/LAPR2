@@ -33,6 +33,7 @@ public class Bootstrap implements Runnable {
         organization.addEmployee(new Employee("admin@this.app"));
         organization.addEmployee(new Employee("employee@this.app"));
         organization.addEmployee(new Employee("owner@this.app"));
+        organization.addEmployee(new Employee("network@this.app"));
         //organization.addEmployee(new Employee("client@this.app"));
         organizationRepository.add(organization);
     }
@@ -54,11 +55,13 @@ public class Bootstrap implements Runnable {
     private void addUsers() {
         //TODO: add Authentication users here: should be created for each user in the organization
         AuthenticationRepository authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
+
         authenticationRepository.addUserRole(AuthenticationController.ROLE_ADMIN, AuthenticationController.ROLE_ADMIN);
         authenticationRepository.addUserRole(AuthenticationController.ROLE_EMPLOYEE,
                 AuthenticationController.ROLE_EMPLOYEE);
         authenticationRepository.addUserRole(AuthenticationController.ROLE_OWNER, AuthenticationController.ROLE_OWNER);
         authenticationRepository.addUserRole(AuthenticationController.ROLE_CLIENT, AuthenticationController.ROLE_CLIENT);
+        authenticationRepository.addUserRole(AuthenticationController.ROLE_NETWORK_MANAGER, AuthenticationController.ROLE_NETWORK_MANAGER);
 
         authenticationRepository.addUserWithRole("Main Administrator", "admin@this.app", "admin",
                 AuthenticationController.ROLE_ADMIN);
@@ -83,6 +86,8 @@ public class Bootstrap implements Runnable {
 
         authenticationRepository.addUserWithRole("Store Manager", "store@this.app", "store",
                 AuthenticationController.ROLE_STORE_MANAGER);
+
+
 
         //Get registered clients
         ClientRepository clientRepository = pt.ipp.isep.dei.esoft.project.domain.repository.Repositories.getInstance().getUserRepository();

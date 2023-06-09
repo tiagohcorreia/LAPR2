@@ -38,9 +38,11 @@ with more listings to the one with less listings.
 
 ### 1.4. Found out Dependencies
 
+* Dependency to "US002 - Publish any sale announcement on the system" since there needs to exist annoucements for Acceptance Criteria 2 and 3(AC2 and AC3).
+* Dependency to "US003 - Register a new Employee" since there needs to exist employees to list.
+* Dependency to "US005 - Register a store" since there needs to exist a store for employees to be assigned.
 
-* US003
-* US005
+
 
 ### 1.5 Input and Output Data
 

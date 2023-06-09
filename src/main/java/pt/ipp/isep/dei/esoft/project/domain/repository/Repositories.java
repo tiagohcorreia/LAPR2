@@ -79,6 +79,8 @@ public class Repositories {
 
     BranchRepository branchRepository = new BranchRepository();
 
+    ScheduleRepository scheduleRepository= new ScheduleRepository();
+
     private Repositories() {
     }
 
@@ -147,5 +149,7 @@ public class Repositories {
     public ClientRepository getClientRepository() {return clientRepository;}
 
     public BranchRepository getBranchRepository() {return branchRepository;}
+
+    public ScheduleRepository getScheduleRepository() {return scheduleRepository;}
 
 }

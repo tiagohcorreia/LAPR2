@@ -8,7 +8,7 @@ autonumber
 actor "System Administrator" as sa
 participant ":LegacyImportUI" as ui
 participant ":LegacyImportController" as ctrl
-participant ":FileHandler" as fh
+participant ":FileOps" as fo
 participant ":CsvHandler" as ch
 
 participant ":Repositories" as repos
@@ -53,19 +53,23 @@ return requests file path
 sa -> ui: types file path
 activate ui
 
-ui -> ctrl: importFile(filePath)
+ui -> ctrl: readFile(filePath)
 activate ctrl
 'ctrl -> fh**: create
-ctrl -> fh: readFile(filePath)
-activate fh
+ctrl -> fo: readFile(filePath)
+activate fo
 alt file not found
-fh -> ctrl: null
+fo -> ctrl: FileNotFoundExeption
 ctrl -> ui: false
 ui -> sa: informs file not found
+else file extension is not csv
+fo -> ctrl: InvalidFileTypeException
+ctrl -> ui: false
+ui -> sa: informs file is not CSV
 else file found
     return file
-ctrl -> fh: readCSV(file)
-activate fh
+ctrl -> fo: readCSV(file)
+activate fo
 return csv[]
 
 ctrl -> ctrl: csv[].length()
@@ -77,17 +81,22 @@ else csv[].length >= 2
 
 ctrl -> EmpR: getEmployeeByName("Legacy Agent")
 activate EmpR
-alt
+alt Legacy Agent is registered
     EmpR --> ctrl: Employee legacyAgent
-else
+else Legacy Agent is not registered
     return null
-    ctrl -> EmpR: registerEmployee(\n"Legacy Agent", ...)
+    ctrl -> EmpR: createEmployee(\n"Legacy Agent", ...)
     activate EmpR
     EmpR -> Emp**: create
     activate Emp
     Emp -> Emp: validateEmployee()
     return true
     return true
+    ctrl -> EmpR: saveEmployee(legacyAgent)
+    activate EmpR
+    EmpR -> EmpR: validateEmployee()
+    return true
+
 end
 
 
@@ -95,8 +104,8 @@ ctrl -> ch: parseCsv(csv)
 activate ch
 ref over ch: SD_CsvHandler_parseCsv
 autonumber 56
-return true
-return inform operation success
+return successfulImportCount
+return successfulImportCount
 return inform operation success
 end
 end

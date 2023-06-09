@@ -1,6 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
-import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+import pt.ipp.isep.dei.esoft.project.domain.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 
 import java.io.*;
@@ -9,6 +9,9 @@ import java.util.List;
 
 public class ScheduleRepository {
     public static List<Schedule> scheduleList = new ArrayList<>();
+    public static List<Schedule> schedulesByResposibleAgent= new ArrayList<>();
+
+
     public boolean saveSchedule(Schedule schedule){
         if(validateSchedule(schedule)) {
             return addSchedule(schedule);
@@ -18,7 +21,7 @@ public class ScheduleRepository {
     public boolean validateSchedule(Schedule schedule){
         for(Schedule schedule1: scheduleList) {
 
-            if(schedule.equals(schedule)) {
+            if(schedule.equals(schedule1)) {
                 return false;
             }
         }
@@ -48,7 +51,7 @@ public class ScheduleRepository {
         }
         return stringBuilder.toString();
     }
-    public List<Schedule> readObject() {
+    public List<Schedule> readObjectScheduleRequest() {
 
         try {
 
@@ -67,7 +70,7 @@ public class ScheduleRepository {
     /**
      * Write object.
      */
-    public void writeObject() {
+    public void writeObjectScheduleRequest() {
 
         try {
 
@@ -80,4 +83,40 @@ public class ScheduleRepository {
             ioe.printStackTrace();
         }
     }
+
+    public List<Schedule> getRequestScheduleListByResponsibleAgent(Employee agent){
+
+        for (Schedule schedule:this.scheduleList){
+            if (schedule.getAnnouncementDTO().getAgent().equals(agent)){
+                schedulesByResposibleAgent.add(schedule);
+            }
+        }
+        return schedulesByResposibleAgent;
+    }
+
+    public boolean addConfirmedSchedule(Schedule schedule){
+        for (Schedule schedule1:this.scheduleList){
+            if (schedule1.equals(schedule)){
+                schedule1.setStatus(true);
+                schedule1.setAproved(true);
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean addRejectedSchedule(Schedule schedule){
+        for (Schedule schedule1:this.scheduleList){
+            if (schedule1.equals(schedule)){
+                schedule1.setStatus(true);
+                schedule1.setAproved(false);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
 }

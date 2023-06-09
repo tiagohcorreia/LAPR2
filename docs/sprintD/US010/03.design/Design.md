@@ -35,6 +35,7 @@ Other software classes (i.e. Pure Fabrication) identified:
  *  PlaceOrderToBuyPropertyRepository
  *  AnnouncementDTO
  *  AnnouncementMapper
+ *  Repositories
 
 
 ## 3.2. Sequence Diagram (SD)

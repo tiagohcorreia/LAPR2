@@ -1,0 +1,77 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "Agent" as agent
+participant ":ListAllBookingsRequestsToAgentUI" as ui
+participant ":ListAllBookingsRequestsToAgentController" as ctrl
+
+
+participant ":Repositories" as repos
+participant "repositories\n:Repositories" as repositories
+participant "visitRepository\n:VisitRepository" as vstR
+'participant "propertyRepository\n:PropertyRepository" as propR
+
+
+participant "Mapper" as map
+participant "VisitDTO" as vstDTO
+participant "Util" as util
+
+
+activate agent
+agent -> ui: requests to list all bookings \nrequest managed by me
+activate ui
+ui -> agent: request visit start and end date
+agent -> ui: select dates
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance()
+activate repos
+return repositories
+
+ctrl -> repositories: getVisitRepository()
+activate repositories
+return visitRepository
+
+'ctrl -> repositories: getPropertyRepository()
+'activate repositories
+'return propertyRepository
+
+
+
+ctrl -> vstR: getAllVisitsByAgentIDAndDateRange(Agent,start,end)
+activate vstR
+
+return AllVisitsByAgentAndDateRange
+
+
+ctrl -> util: getChosenSortingAlgorithm()
+activate util
+return chosenSortingAlgorithm
+ctrl -> vstR: sortVisitsAscending(visits)
+activate vstR
+
+return sortedVisits
+
+ctrl -> map: toDTOlist(sortedVisits)
+activate map
+
+loop for each visit
+
+map -> map: toDTO(visit)
+map -> vstDTO: create()
+activate vstDTO
+return visitDTO
+
+end
+
+return visitsDTOlist
+
+ctrl -> ui: visitsDTOlist
+
+ui -> agent: shows sorted list of visits
+
+@enduml

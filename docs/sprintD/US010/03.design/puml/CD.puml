@@ -19,6 +19,7 @@ class PlaceOrderToBuyPropertyController {
 
 class Order {
 
+    - client
     - orderAmount
     - announcement
     - status
@@ -63,13 +64,19 @@ class AnnouncementMapper {
     + toDtoAnnouncement()
 }
 
+class Repositories {
+
+    + announcementRepository
+}
+
 
 
 Runnable -left-|> PlaceOrderToBuyPropertyUI
 PlaceOrderToBuyPropertyUI ..> PlaceOrderToBuyPropertyController
-PlaceOrderToBuyPropertyController -> AnnouncementMapper
-AnnouncementMapper -> AnnouncementDTO
-AnnouncementDTO -> AnnouncementRepository
+PlaceOrderToBuyPropertyController -> Repositories
+Repositories -> AnnouncementRepository
+AnnouncementRepository -> AnnouncementMapper
+AnnouncementMapper --> AnnouncementDTO
 PlaceOrderToBuyPropertyController ..> Order
 Order --> PlaceOrderToBuyPropertyRepository
 

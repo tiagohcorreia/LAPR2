@@ -49,7 +49,6 @@ public class RegisterPropertyController implements Serializable {
      */
     public RegisterPropertyController(AnnouncementRepository announcementRepository) {
         this.employeeRepository.readObject();
-
     }
 
     /**
@@ -81,16 +80,19 @@ public class RegisterPropertyController implements Serializable {
                 Announcement announcement= new Announcement(AnnouncementStatus.REQUESTED,price,0 ,sellOrRent,property,agent);
                 announcement.setAgent(agent);
                 this.announcementRepository.createAnnouncement(announcement);
+                this.announcementRepository.writeObject();
             } else if (posTypeOfProperty==1) {
                 House property= new House(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList,hasBasement,hasInhabitalLoft,sunExposure);
                 Announcement announcement= new Announcement(AnnouncementStatus.REQUESTED,price,0 ,sellOrRent,property,agent);
                 announcement.setAgent(agent);
                 this.announcementRepository.createAnnouncement(announcement);
+                this.announcementRepository.writeObject();
             }else {
                 Land property= new Land(area,location,cityCentreDistance,photographs);
                 Announcement announcement= new Announcement(date,AnnouncementStatus.REQUESTED,price,0 ,sellOrRent,property,agent);
                 announcement.setAgent(agent);
                 this.announcementRepository.createAnnouncement(announcement);
+                this.announcementRepository.writeObject();
             }
         }catch (Exception e) {
 

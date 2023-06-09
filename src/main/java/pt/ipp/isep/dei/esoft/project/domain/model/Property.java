@@ -159,8 +159,8 @@ public abstract class Property implements Serializable {
      * @return the city centre distance
      */
     public float setCityCentreDistance(float cityCentreDistance) {
-        if (cityCentreDistance<=0){
-            throw new IllegalArgumentException("Please insert a distance >0");
+        if (cityCentreDistance<0){
+            throw new IllegalArgumentException("Please insert a distance >=0");
         }
         return cityCentreDistance;
     }

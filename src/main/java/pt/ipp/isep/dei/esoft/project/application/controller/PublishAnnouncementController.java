@@ -73,7 +73,7 @@ public class PublishAnnouncementController {
         // get the employee corresponding to the agent email
         String emailAdress = null;
         Branch branch = new Branch();
-        pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address",1231231230,Role.AGENT,branch);
+        pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address","1231231230",Role.AGENT,branch);
         //Employee agent = employeeRepository.findByEmail(emailAdress);
 
 

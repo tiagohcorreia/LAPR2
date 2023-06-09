@@ -16,36 +16,24 @@ import java.util.List;
 public class LegacyImportController {
     private static final String LEGACY_AGENT_NAME = "Legacy Agent";
     //private static final String LEGACY_AGENT_PASSPORT_NUMBER = "000000000";
-    private static final int LEGACY_AGENT_PASSPORT_NUMBER = 0;
+    private static final int LEGACY_AGENT_PASSPORT_NUMBER = 100000000;
     //private static final String LEGACY_AGENT_TAX_NUMBER = "000000000";
-    private static final int LEGACY_AGENT_TAX_NUMBER = 0;
+    private static final int LEGACY_AGENT_TAX_NUMBER = 100000000;
     private static final String LEGACY_AGENT_EMAIL = "legacy@realstateUSA.com";
+    private static final String LEGACY_AGENT_ADDRESS = "Legacy Employee Address";
     //private static final String LEGACY_AGENT_PHONE_NUMBER = "0000000000";
-    private static final int LEGACY_AGENT_PHONE_NUMBER = 0;
+    private static final int LEGACY_AGENT_PHONE_NUMBER = 1000000000;
 
     AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
     EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
     ClientRepository clientRepository = Repositories.getInstance().getClientRepository();
 
 
-    public void importFile(String filePath) throws InvalidFileTypeException {
+    public int importFile(String filePath) throws InvalidFileTypeException, FileNotFoundException {
         int failedImports = 0;
         File csvFile = null;
-        try {
-            csvFile = FileOps.readFile(filePath);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e){
-            e.printStackTrace();
-        }
-
+        csvFile = FileOps.readFile(filePath);
         List<?> csv = CsvHandler.getDataFromCsvFile(csvFile);
-
-        /*
-        if (csv.size() < 2){
-            throw new RuntimeException("File is empty");
-        }
-         */
 
         Employee legacyEmployee = employeeRepository.getEmployee("Legacy Agent");
         if (legacyEmployee == null){
@@ -53,16 +41,16 @@ public class LegacyImportController {
                     LEGACY_AGENT_NAME,
                     LEGACY_AGENT_PASSPORT_NUMBER,
                     LEGACY_AGENT_TAX_NUMBER,
-                    "",
+                    LEGACY_AGENT_ADDRESS,
                     LEGACY_AGENT_EMAIL,
-                    LEGACY_AGENT_PHONE_NUMBER,
+                    String.valueOf(LEGACY_AGENT_PHONE_NUMBER),
                     null,
                     null
             );
             employeeRepository.saveEmployee(legacyEmployee);
         }
 
-        CsvHandler.parseCSV(csv);
+        return CsvHandler.parseCSV(csv);
 
     }
 }

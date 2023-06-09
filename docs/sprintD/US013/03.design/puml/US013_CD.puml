@@ -48,15 +48,21 @@ class Repositories {
 
 ListAllEmployeesUI -[dashed]-> ListAllEmployeesController
 ListAllEmployeesController-[dashed]-> Repositories
-Repositories --> Repositories
-Repositories --> EmployeeRepository
-Repositories --> BranchRepository
+ListAllEmployeesController-[dashed]-> BranchRepository
+ListAllEmployeesController-[dashed]-> EmployeeRepository
+
+
+Repositories -> Repositories : Instance
+Repositories --> "1" EmployeeRepository
+Repositories --> "1" BranchRepository
 
 
 
 
-Branch -left-> BranchRepository
-Employee -right-> EmployeeRepository
+BranchRepository -down-> "*" Branch
+EmployeeRepository -down-> "*" Employee
+
+Branch "1" -right-> "*" Employee : employes
 
 
 @enduml

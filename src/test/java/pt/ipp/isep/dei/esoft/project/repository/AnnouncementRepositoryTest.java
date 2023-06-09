@@ -37,7 +37,7 @@ public class AnnouncementRepositoryTest {
         String photo = "aa";
         photographs.add(photo);
 
-        Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", 1234567890, Role.AGENT, branch);
+        Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
 
         AnnouncementRepository repository = new AnnouncementRepository();
         Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
@@ -53,7 +53,7 @@ public class AnnouncementRepositoryTest {
         String photo = "aa";
         photographs.add(photo);
 
-        Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", 1234567890, Role.AGENT, branch);
+        Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
         AnnouncementRepository repository = new AnnouncementRepository();
         Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
         assertTrue(repository.createAnnouncement(announcement));
@@ -68,7 +68,7 @@ public class AnnouncementRepositoryTest {
         String photo = "aa";
         photographs.add(photo);
 
-        Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", 1234567890, Role.AGENT, branch);
+        Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
 
         AnnouncementRepository repository = new AnnouncementRepository();
         Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
@@ -86,7 +86,7 @@ public class AnnouncementRepositoryTest {
         String photo = "aa";
         photographs.add(photo);
 
-        Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", 1234567890, Role.AGENT, branch);
+        Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
 
         AnnouncementRepository repository = new AnnouncementRepository();
         Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);

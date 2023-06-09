@@ -1,9 +1,11 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import pt.ipp.isep.dei.esoft.project.ui.console.utils.Validator;
+
 import java.io.Serializable;
 
 
-public class Location implements Serializable {
+public class Location implements Serializable, Validator {
     int doorNumber;
     String street;
     City city;
@@ -37,10 +39,6 @@ public class Location implements Serializable {
 
 
 
-    private boolean isValid(){
-        return false;
-    }
-
     public Location(){
         doorNumber = 0;
         street = "Street Zero";
@@ -55,6 +53,15 @@ public class Location implements Serializable {
         this.district = district;
         this.state = state;
         this.zipCode = zipCode;
+    }
+
+    private boolean isValid(){
+        return (
+                validateZipCode(zipCode) &&
+                validateString(street) &&
+                validateObject(city) &&
+                validateObject(state)
+        );
     }
 
 //    private boolean doorNumberIsValid(int doorNumber){
