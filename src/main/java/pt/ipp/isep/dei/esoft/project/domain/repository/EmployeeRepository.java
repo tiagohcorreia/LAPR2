@@ -21,8 +21,7 @@ public class EmployeeRepository implements Serializable {
      */
     public static List<Employee> employeeList = new ArrayList<>();
 
-    AuthenticationRepository authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
-
+    AuthenticationRepository authenticationRepository = pt.ipp.isep.dei.esoft.project.repository.Repositories.getInstance().getAuthenticationRepository();
     /**
      * Create employee employee.
      *
