@@ -73,7 +73,7 @@ in the system.
 
 
 
-![SSD_16-US16___System_Sequence_Diagram__SSD_.svg](svg%2FSSD_16-US16___System_Sequence_Diagram__SSD_.svg)
+![SSD_16-US16___System_Sequence_Diagram__SSD_.svg](svg/SSD_16-US16___System_Sequence_Diagram__SSD_.svg)
 
 ### 1.7 Other Relevant Remarks
 

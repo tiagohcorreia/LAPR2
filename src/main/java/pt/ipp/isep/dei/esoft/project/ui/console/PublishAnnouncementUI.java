@@ -56,7 +56,7 @@ public class PublishAnnouncementUI implements Runnable {
         ArrayList<String> photographs = new ArrayList<>();
         String photo;
         ArrayList<String> availableEquipment = new ArrayList<>();
-        LocalDate date=null;
+        LocalDate date=LocalDate.now();
         int doorNumber = 0;
         String street = null;
         int postalCode = 0;
@@ -76,19 +76,6 @@ public class PublishAnnouncementUI implements Runnable {
         //String agent = Utils.readLineFromConsole("Agent, insert your name:: ");
         // Employee agentResp = this.controller.getEmployee(agent);
 
-
-        // date
-        while (date == null) {
-            //System.out.print("Enter the date (YYYY-MM-DD): ");
-            String date1 = Utils.readLineFromConsole("Enter the date (YYYY-MM-DD): ");
-            //String dateString = scanner.nextLine();
-
-            try {
-                date = LocalDate.parse(date1);
-            } catch (DateTimeParseException e) {
-                System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
-            }
-        }
 
 
 
@@ -152,7 +139,7 @@ public class PublishAnnouncementUI implements Runnable {
 
 
             //distanceFromCityCenter
-            System.out.println("Distance from city center(km2):");
+            System.out.println("Distance from city center(km):");
             distance = scanner.nextInt();
             scanner.nextLine();
 
@@ -222,7 +209,7 @@ public class PublishAnnouncementUI implements Runnable {
                     if (basement.equalsIgnoreCase("yes")) {
                         hasBasement = true;
                     } else if (!basement.equalsIgnoreCase("no")) {
-                        System.out.println("Invalid. Please, digit 'yes' or 'no'.");
+                        System.out.println("Invalid. Please, insert 'yes' or 'no'.");
                     }
 
                     //loft
@@ -232,7 +219,7 @@ public class PublishAnnouncementUI implements Runnable {
                     if (loft.equalsIgnoreCase("yes")) {
                         hasLoft = true;
                     } else if (!loft.equalsIgnoreCase("no")) {
-                        System.out.println("Invalid. Please, digit 'yes' or 'no'.");
+                        System.out.println("Invalid. Please, insert 'yes' or 'no'.");
                     }
 
                     //sunExposure
@@ -260,13 +247,13 @@ public class PublishAnnouncementUI implements Runnable {
 
 
                     //parkingSpaces
-                    System.out.println("Number of parking spces:");
+                    System.out.println("Number of parking spaces:");
                     parkingSpaces = scanner.nextInt();
                     scanner.nextLine();
 
                     //availableEquipments
 
-                    System.out.println("Insert the available Equipments");
+                    System.out.println("Insert the available equipment");
                     System.out.println("Type 'exit' to finish");
                     equipment = "";
                     while (!equipment.equalsIgnoreCase("exit")) {
@@ -290,7 +277,7 @@ public class PublishAnnouncementUI implements Runnable {
             System.out.println("Photos: " + photographs);
             System.out.println("Area: " + area + " m2");
             System.out.println("Location: " + location);
-            System.out.println("Distance of Centre: " + distance + "km2");
+            System.out.println("Distance of Centre: " + distance + "km");
             System.out.println("Price: " + price + "$");
 
 
@@ -299,7 +286,7 @@ public class PublishAnnouncementUI implements Runnable {
                 System.out.println("Number of bedrooms: " + bedrooms);
                 System.out.println("Number of bathrooms: " + bathrooms);
                 System.out.println("Number of parking spaces: " + parkingSpaces);
-                System.out.println("Available Equipments: " + availableEquipment);
+                System.out.println("Available equipments: " + availableEquipment);
             }
 
 
@@ -317,19 +304,19 @@ public class PublishAnnouncementUI implements Runnable {
                 System.out.println("Sun exposure: " + sunExposure);
             }
             System.out.println("Agent: " + agentName +"\n\n");
-            System.out.print("Confirm ad creation (y/n)? \n");
+            System.out.print("Do you confirm the creation (y/n)? \n");
             String confirm = scanner.next();
             if (confirm.equalsIgnoreCase("y")) {
 
                 this.controller.createAnnouncement(date,sellOrRent, posTypeOfProperty, bedrooms, bathrooms, parkingSpaces, availableEquipment, hasBasement, hasLoft,
                         sunExposure, area, location, distance, commission, price, photographs, agentName);
-                System.out.println("Ad created successfully!\n");
+                System.out.println("Announcement created successfully!\n");
                 confirmed = true;
             } else {
                 System.out.print("Cancel (y/n)?");
                 String cancel = scanner.next();
                 if (cancel.equalsIgnoreCase("y")) {
-                    System.out.println("Ad creation cancelled.\n");
+                    System.out.println("Announcement creation cancelled.\n");
                     confirmed = true;
                 }
             }

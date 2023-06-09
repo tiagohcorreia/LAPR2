@@ -8,7 +8,12 @@ import java.io.Writer;
 public class FileOps {
 
     public static File readFile(String filePath) throws FileNotFoundException{
-        File file = new File(filePath);
+        File file = null;
+        try{
+            file = new File(filePath);
+        } catch (NullPointerException e){
+            throw new IllegalArgumentException("Filepath is null");
+        }
 
         if (!file.exists())
             throw new FileNotFoundException("File not found.");

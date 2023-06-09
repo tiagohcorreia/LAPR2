@@ -1,0 +1,99 @@
+@startuml
+
+autonumber
+
+actor Agent as agent
+participant ValidateVisitUI as ui
+participant ScheduleVisitController as ctr
+participant ":ApplicationSession" as _APP
+participant "appSession\n:ApplicationSession" as APP
+participant "currentSession\n:UserSession" as sessao
+participant ScheduleRepository
+participant ":Repositories" as RepositorySingleton
+participant "repositories\n:Repositories" as rep
+participant ScheduleRepository
+
+autonumber
+
+activate agent
+
+agent -> ui: starts placing an order to purchase the property
+
+activate ui
+
+ui -> ctr** : create
+
+ui -> ctr: getRequestScheduleListByResponsibleAgent()
+
+activate ctr
+ctr -> ctr: getAgentFromSession()
+ctr -> _APP: getInstance()
+activate _APP
+_APP ->ctr: return appSession
+deactivate _APP
+ctr -> APP: getCurrentSession()
+activate APP
+APP --> ctr: currentSession
+deactivate APP
+ctr -> sessao: agentName = getUserNameByEmail()
+activate sessao
+sessao --> ctr : agentName
+deactivate sessao
+
+ctr -> RepositorySingleton: getInstance()
+activate RepositorySingleton
+RepositorySingleton --> ctr: return repositories
+deactivate RepositorySingleton
+
+ctr-> rep: getScheduleRepository()
+activate rep
+rep-->ctr: return ScheduleRepository
+deactivate rep
+
+ctr -> ScheduleRepository: getRequestScheduleListByResponsibleAgent()
+
+activate ScheduleRepository
+ScheduleRepository -> ctr: return RequestScheduleListByResposibleAgent
+deactivate ScheduleRepository
+
+ctr -> ui: return RequestScheduleListByResposibleAgent
+
+ui --> agent: requests to select a schedule request
+agent -> ui: selects the schedule request
+
+ui-> agent: requests to accept or reject the schedule request and asks for cofirmation
+
+alt accept the schedule request
+
+    agent-> ui: accept the schedule request
+
+    ui -> ctr: addConfirmedSchedule(schedulePos)
+
+    ctr -> ScheduleRepository: addConfirmedSchedule(Schedule)
+    activate ScheduleRepository
+
+    deactivate ScheduleRepository
+
+else reject the schedule request
+
+    agent-> ui: reject the schedule request
+
+    ui -> ctr: addRejectedSchedule(schedulePos)
+
+    ctr -> ScheduleRepository: addRejectedSchedule(Schedule)
+    activate ScheduleRepository
+
+    deactivate ScheduleRepository
+
+end
+
+ui-> agent: informs operation sucess
+
+
+deactivate ctr
+deactivate ui
+
+
+deactivate agent
+
+@enduml

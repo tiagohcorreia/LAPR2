@@ -77,6 +77,10 @@ public class StateRepository implements Serializable {
         return new State(name, districts);
     }
 
+    public State createState(String name){
+        return new State(name, new ArrayList<>());
+    }
+
     public void readObject() {
 
         try {

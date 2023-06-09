@@ -1,9 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
-import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
-import pt.ipp.isep.dei.esoft.project.domain.shared.GenericRepository;
 import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
 
 import java.io.*;
@@ -13,7 +11,7 @@ import java.util.List;
 /**
  * The type Register branch repository.
  */
-public class BranchRepository {
+public class BranchRepository implements Serializable {
 
     public static List<Branch> branches = new ArrayList<>();
 
@@ -45,7 +43,7 @@ public class BranchRepository {
         return branch;
     }
 
-    public Branch createBranch(int id, String name, Location location, int phoneNumber, String email) {
+    public Branch createBranch(int id, String name, Location location, String phoneNumber, String email) {
         return new Branch(id, name, location, phoneNumber, email);
     }
 
@@ -98,19 +96,19 @@ public class BranchRepository {
         return null;
     }
 
-    public void readObject() {
+    public List<Branch> readObject() {
 
         try {
 
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ser/branch.ser"));
             branches = (List<Branch>) ois.readObject();
-            System.out.println(branches);
             ois.close();
 
         } catch (IOException | ClassNotFoundException e) {
 
             e.printStackTrace();
         }
+        return branches;
     }
 
     /**

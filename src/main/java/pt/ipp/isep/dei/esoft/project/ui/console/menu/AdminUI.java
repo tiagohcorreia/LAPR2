@@ -30,19 +30,10 @@ public class AdminUI implements Runnable {
 
         //options.add(new MenuItem("Create Task", new CreateTaskUI()));
         options.add(new MenuItem("Specify states, districts or cities", new SpecifyStatesDistrictsCitiesUI()));
-
-        EmployeeRepository er = new EmployeeRepository();
-        RegisterEmployeeController rec = new RegisterEmployeeController(er);
-        options.add(new MenuItem("Register Employee ", new RegisterEmployeeUI(rec)));
+        options.add(new MenuItem("Register Employee ", new RegisterEmployeeUI()));
         //options.add(new MenuItem("Register Employee ", new RegisterEmployeeUI(new RegisterEmployeeController(new EmployeeRepository()))));
-
-        //options.add(new MenuItem("Option 3 ", new ShowTextUI("You have chosen Option C.")));
-
         options.add(new MenuItem("Import from legacy system ", new LegacyImportUI()));
-
-        BranchRepository branchRepository = new BranchRepository();
-        RegisterBranchController branchController = new RegisterBranchController(branchRepository);
-        options.add(new MenuItem("Register a store/branch", new RegisterBranchUI(branchController)));
+        options.add(new MenuItem("Register a store/branch", new RegisterBranchUI()));
 
         int option = 0;
         do {

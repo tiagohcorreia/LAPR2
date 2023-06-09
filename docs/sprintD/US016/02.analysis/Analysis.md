@@ -4,7 +4,7 @@
 
 ### 2.1. Relevant Domain Model Excerpt 
 
-![US016-domain-model-Domain_Model.svg](svg%2FUS016-domain-model-Domain_Model.svg)
+![US016-domain-model-Domain_Model.svg](svg/US016-domain-model-Domain_Model.svg)
 ### 2.2. Other Remarks
 
 n/a

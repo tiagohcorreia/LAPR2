@@ -7,12 +7,7 @@ import java.util.List;
 public abstract class GenericRepository<T> {
     private List<T> elements;
 
-    public boolean add(T element){
-        validate(element);
-        return elements.add(element);
-    }
-
-    public boolean validate(T element){
+    public boolean isValid(T element){
         for (T e: elements) {
             if (e.equals(element))
                 throw new DuplicateDataException("Element is duplicate");
@@ -20,7 +15,8 @@ public abstract class GenericRepository<T> {
         return true;
     }
 
-
-
-
+    public boolean save(T element){
+        isValid(element);
+        return elements.add(element);
+    }
 }

@@ -38,8 +38,8 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ## 3.2. Sequence Diagram (SD)
 
-![SD.svg](svg%2FSD.svg)
+![SD.svg](svg/SD.svg)
 
 ## 3.3. Class Diagram (CD)
 
-![CD.svg](svg%2FCD.svg)
+![CD.svg](svg/CD.svg)

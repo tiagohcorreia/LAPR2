@@ -2,26 +2,18 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.RegisterBranchController;
 
+import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
+import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 /**
  * The type Register branch ui.
  */
 public class RegisterBranchUI implements Runnable {
+    private RegisterBranchController controller = new RegisterBranchController();
 
-
-    private RegisterBranchController controller = new RegisterBranchController(new BranchRepository());
-
-    /**
-     * Instantiates a new Register branch ui.
-     *
-     * @param controller the controller
-     */
-    public RegisterBranchUI(RegisterBranchController controller) {
-        //this.controller = controller;
-    }
     @Override
     public void run() {
 
@@ -32,29 +24,62 @@ public class RegisterBranchUI implements Runnable {
         String branchName = Utils.readLineFromConsole("Insert Branch name: ");
 
         //Branch location
-        String branchLocation = Utils.readLineFromConsole("Insert Branch location: ");
+        System.out.println("Branch location");
+        String branchDoorNumber = String.valueOf(Utils.readIntegerFromConsole("Branch door number: "));
+        //int branchDoorNumber = Utils.readIntegerFromConsole("Branch door number: ");
+        String branchStreet = Utils.readLineFromConsole("Branch street: ");
+        String branchState =  Utils.readLineFromConsole("Branch state: ");
+        String branchDistrict = Utils.readLineFromConsole("Branch district: ");
+        String branchCity = Utils.readLineFromConsole("Branch city: ");
+        String branchZipCode = String.valueOf(Utils.readIntegerFromConsole("Branch zip code: "));
+        //int branchZipCode = Utils.readIntegerFromConsole("Branch zip code: ");
+
+        Location branchLocation = controller.createLocation(branchDoorNumber, branchStreet, branchCity, branchDistrict, branchState, branchZipCode);
 
         //Branch phoneNumber
-        Integer branchPhoneNumber = Utils.readIntegerFromConsole("Insert Branch phone number: ");
+        String branchPhoneNumber = Utils.readLineFromConsole("Insert Branch phone number: ");
 
         //Branch email
         String branchEmail = Utils.readLineFromConsole("Insert Branch email: ");
 
 
+        try {
 
-        int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
+            Branch branch = controller.createBranch(branchID, branchName, branchLocation, branchPhoneNumber, branchEmail);
+            System.out.println(branch);
 
-        if (optValidation == 1) {
+            int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
-            //TODO: fix location
-            //controller.createBranch(branchID, branchName, branchLocation, branchPhoneNumber, branchEmail);
-            controller.createBranch(branchID, branchName, new Location(), branchPhoneNumber, branchEmail);
+            if (optValidation == 1) {
 
-            System.out.println("Branch created!");
+                if (controller.saveBranch(branch))
 
-        } else {
+                    System.out.println("Branch created!");
 
-            System.err.println("Operation Canceled!");
+                else
+
+                    System.err.println("Failed to create branch!");
+
+            } else {
+
+                System.err.println("Operation Canceled!");
+            }
+
+
+        } catch (DuplicateDataException e) {
+
+            System.err.println(e.getMessage());
+
+        } catch (NullPointerException e) {
+
+            System.err.println(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            System.err.println(e.getMessage());
+
+        } catch (IllegalStateException e) {
+
 
         }
 

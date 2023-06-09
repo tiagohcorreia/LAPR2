@@ -43,11 +43,19 @@ public class City implements Serializable {
         this.name = name;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "City{" +
                 "name='" + name + '\'' +
                 '}';
+    }*/
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("City{");
+        sb.append("name='").append(name).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 
     @Override

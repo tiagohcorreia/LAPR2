@@ -14,7 +14,8 @@ class ScheduleVisitController {
     - scheduleRepository
     - AnnouncementRepository
     + createSchedule()
-    + getAnnouncementList()
+    + announcementDTOList()
+    + getAnnouncementDTO()
     + validateScheduleHour()
 
 }
@@ -30,6 +31,10 @@ class Schedule {
     - note
     - status
 }
+class Repositories {
+
+    + announcementRepository
+}
 
 class ScheduleRepository {
 
@@ -38,7 +43,6 @@ class ScheduleRepository {
     + validateSchedule()
     + addSchedule()
     + getScheduleList()
-    + getScheduleListAsString()
 }
 
 class AnnouncementRepository {
@@ -72,10 +76,11 @@ class AnnouncementMapper {
 
 Runnable -left-|> ScheduleVisitUI
 ScheduleVisitUI ..> ScheduleVisitController
-ScheduleVisitController -> AnnouncementMapper
-AnnouncementMapper -> AnnouncementDTO
-AnnouncementDTO -> AnnouncementRepository
-ScheduleVisitController ..> Schedule
-Schedule --> ScheduleRepository
+ScheduleVisitController -> Repositories
+Repositories -> AnnouncementRepository
+AnnouncementRepository -> AnnouncementMapper
+AnnouncementMapper --> AnnouncementDTO
+ScheduleVisitController ..> ScheduleRepository
+ScheduleRepository --> Schedule
 
 @enduml

@@ -1,19 +1,21 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import pt.ipp.isep.dei.esoft.project.ui.console.utils.Validator;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * The type Employee.
  */
-public class Employee implements Serializable {
+public class Employee implements Serializable, Validator {
 
     private String name;
     private int passportNumber;
     private int taxNumber;
     private String address;
     private String emailAddress;
-    private int telephoneNumber;
+    private String telephoneNumber;
     private Role role;
     private Branch branch;
 
@@ -30,7 +32,7 @@ public class Employee implements Serializable {
      * @param role            the role
      * @param branch          the agency
      */
-    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAddress, int telephoneNumber, Role role, Branch branch) {
+    public Employee(String name, int passportNumber, int taxNumber, String address, String emailAddress, String telephoneNumber, Role role, Branch branch) {
 
         this.name = setName(name);
         this.passportNumber = setPassportNumber(passportNumber);
@@ -40,6 +42,8 @@ public class Employee implements Serializable {
         this.telephoneNumber = setTelephoneNumber(telephoneNumber);
         this.role = role;
         this.branch = branch;
+
+        validate();
     }
 
     /**
@@ -48,6 +52,7 @@ public class Employee implements Serializable {
      * @param employeeName the employee name
      */
     public Employee(String employeeName) {
+        this.name = employeeName;
     }
 
     /**
@@ -100,7 +105,7 @@ public class Employee implements Serializable {
      *
      * @return the telephone number
      */
-    public long getTelephoneNumber() {
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
 
@@ -113,14 +118,7 @@ public class Employee implements Serializable {
         return role;
     }
 
-    /**
-     * Gets agency.
-     *
-     * @return the agency
-     */
-    /*public Agency getAgency() {
-        return agency;
-    }*/
+
     public Branch getBranch() {
         return branch;
     }
@@ -231,13 +229,13 @@ public class Employee implements Serializable {
      * @param telephoneNumber the telephone number
      * @return the telephone number
      */
-    public int setTelephoneNumber(int telephoneNumber) {
+    public String setTelephoneNumber(String telephoneNumber) {
 
-        if (telephoneNumber < 0) {
+        if (Long.parseLong(telephoneNumber) < 0) {
 
             throw new IllegalArgumentException("Telephone Number can't be negative");
 
-        } else if (Integer.toString(telephoneNumber).trim().length() != 10) {
+        } else if (telephoneNumber.trim().length() != 10) {
 
             throw new IllegalArgumentException("Telephone Number must have 10 digits");
         }
@@ -257,20 +255,34 @@ public class Employee implements Serializable {
         this.branch = branch;
     }
 
+    private boolean validate(){
+        boolean valid=false;
+        valid = validateString(this.name) &&
+                validatePassportNumber(this.passportNumber) &&
+                validateTaxNumber(this.taxNumber) &&
+                validateEmail(this.emailAddress) &&
+                validatePhoneNumber(this.telephoneNumber);
+
+        if (!valid)
+            throw new IllegalStateException("Employee is invalid");
+
+        return true;
+    }
+
 
     @Override
     public String toString() {
 
         final StringBuilder sb = new StringBuilder("Employee{ ");
 
-        sb.append("name='").append(name).append('\'');
-        sb.append(", PassportNumber=").append(passportNumber);
-        sb.append(", taxNumber=").append(taxNumber);
-        sb.append(", address='").append(address).append('\'');
-        sb.append(", emailAdress='").append(emailAddress).append('\'');
-        sb.append(", contactNumber=").append(telephoneNumber);
-        sb.append(", role=").append(role);
-        sb.append(", branch=").append(branch);
+        sb.append("Name:'").append(name).append('\'');
+        sb.append(", Passport Number:").append(passportNumber);
+        sb.append(", Tax Number:").append(taxNumber);
+        sb.append(", Address='").append(address).append('\'');
+        sb.append(", E-mail Adress:'").append(emailAddress).append('\'');
+        sb.append(", Contact Number:").append(telephoneNumber);
+        sb.append(", Role:").append(role);
+        sb.append(", Branch:").append(branch);
         sb.append('}');
 
         return sb.toString();

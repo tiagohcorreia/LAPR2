@@ -159,8 +159,8 @@ public abstract class Property implements Serializable {
      * @return the city centre distance
      */
     public float setCityCentreDistance(float cityCentreDistance) {
-        if (cityCentreDistance<=0){
-            throw new IllegalArgumentException("Please insert a distance >0");
+        if (cityCentreDistance<0){
+            throw new IllegalArgumentException("Please insert a distance >=0");
         }
         return cityCentreDistance;
     }
@@ -186,9 +186,8 @@ public abstract class Property implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Property - Details:\n");
         sb.append(String.format("Area:              %s\n", area));
-        sb.append(String.format("Address:           %s\n", location));
+        sb.append(String.format("%s\n", location));
         sb.append(String.format("City Centre Dist.: %s\n", cityCentreDistance));
         sb.append(String.format("Photographs:       %s\n", photographs));
         return sb.toString();

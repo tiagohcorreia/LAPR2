@@ -1,0 +1,71 @@
+@startuml
+
+interface Runnable {
+    + run()
+}
+
+class ValidateVisitUI {
+    - controller
+}
+
+class ScheduleVisitController {
+    - ScheduleRepository
+
+    + requestScheduleListByResposibleAgent()
+    + addConfirmedSchedule()
+    + addRejectedSchedule()
+    + sendEmail()
+    + getAgentFromSession()
+}
+
+class ApplicationSession
+{
+    + static getInstance()
+    + getCurrentSession()
+}
+
+class UserSession
+{
+    + getUserNameByEmail()
+}
+class Schedule {
+
+    - name
+    - phoneNumber
+    - announcement
+    - day
+    - begiHour
+    - endHour
+    - note
+    - status
+}
+class Repositories {
+
+    + scheduleRepository
+}
+class ScheduleRepository {
+
+    - ScheduleList
+    - schedulesByResposibleAgent
+    + addConfirmedSchedule()
+    + addRejectedSchedule()
+    + getRequestScheduleListByResponsibleAgent()
+    + readObjectScheduleRequest()
+    + writeObjectScheduleRequest()
+
+}
+
+
+Runnable -left-|> ValidateVisitUI
+ApplicationSession -> ApplicationSession : instance
+ApplicationSession --> "1" UserSession : userSession
+ScheduleVisitController ..> ApplicationSession
+ScheduleVisitController ..> UserSession
+
+ValidateVisitUI ..> ScheduleVisitController
+ScheduleVisitController -> Repositories
+Repositories -> ScheduleRepository
+
+ScheduleRepository --> Schedule
+
+@enduml

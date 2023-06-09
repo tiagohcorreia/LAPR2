@@ -1,7 +1,5 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
-import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
@@ -42,18 +40,10 @@ public class RegisterEmployeeController {
         return Arrays.stream(Role.values()).toList();
     }
 
-    /**
-     * Gets agency.
-     *
-     * @return the agency
-     */
-    public List<Agency> getAgency() {
-        return Arrays.stream(Agency.values()).toList();
-    }
 
     public List<Branch> getBranchList() {
 
-        return branchRepository.getBranchList();
+        return branchRepository.readObject();
     }
 
 
@@ -71,7 +61,7 @@ public class RegisterEmployeeController {
      * @return the string
      */
     public String createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
-                                 int telephoneNumber, Integer posRole, Integer posBranch) {
+                                 String telephoneNumber, Integer posRole, Integer posBranch) {
 
         Employee newEmployee = new Employee(employeeName, passportNumber, taxNumber, address, eMail, telephoneNumber,
                 Role.getRoleById(posRole), BranchRepository.getBranchByID(posBranch));
@@ -81,6 +71,7 @@ public class RegisterEmployeeController {
             this.employeeRepository.saveEmployee(newEmployee);
             this.employeeRepository.writeObject();
             System.out.println();
+            System.out.println(newEmployee);
             return newEmployee.toString();
 
         } catch (Exception e) {
@@ -114,6 +105,5 @@ public class RegisterEmployeeController {
             e.printStackTrace();
         }
     }
-
 
 }

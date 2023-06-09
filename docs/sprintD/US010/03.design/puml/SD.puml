@@ -8,6 +8,7 @@ participant PlaceOrderToBuyPropertyController as ctr
 participant AnnouncementMapper
 participant AnnouncementDTO
 participant AnnouncementRepository
+participant Repositories
 participant PlaceOrderToBuyPropertyRepository
 participant Order as order
 
@@ -24,43 +25,36 @@ ui -> ctr** : create
 ui -> ctr: getAnnouncementList()
 
 deactivate ui
-
 activate ctr
 
-ctr -> AnnouncementDTO: getAnnouncementList()
+ctr -> Repositories: getAnnouncementList()
 
 deactivate ctr
+activate Repositories
 
-activate AnnouncementDTO
+Repositories -> AnnouncementRepository: return AnnouncementList
 
-AnnouncementDTO -> AnnouncementRepository: getAnnouncementList()
-
-deactivate AnnouncementDTO
-
+deactivate Repositories
 activate AnnouncementRepository
 
 AnnouncementRepository -> AnnouncementDTO: return AnnouncementList
 
 deactivate AnnouncementRepository
-
 activate AnnouncementDTO
 
 AnnouncementDTO -> AnnouncementMapper: return AnnouncementList
 
 deactivate AnnouncementDTO
-
 activate AnnouncementMapper
 
 AnnouncementMapper -> ctr:  return AnnouncementList
 
 deactivate AnnouncementMapper
-
 activate ctr
 
 ctr -> ui: return AnnouncementList
 
 deactivate ctr
-
 activate ui
 
 ui -> client: shows Announcement list and requests the user to select one
@@ -74,13 +68,11 @@ client -> ui: types order amount
 ui -> ctr: createOrder()
 
 deactivate ui
-
 activate ctr
 
 ctr -> order: createOrder()
 
 deactivate ctr
-
 activate order
 
 order -> order: validates
@@ -88,13 +80,11 @@ order -> order: validates
 order -> ctr: return created order
 
 deactivate order
-
 activate ctr
 
 ctr -> ui: return created order
 
 deactivate ctr
-
 activate ui
 
 ui -> client: shows selected property and the order amount and asks for confirmation
@@ -104,17 +94,14 @@ client -> ui: confirms the data
 ui -> ctr: saveOrder()
 
 deactivate ui
-
 activate ctr
 
 ctr -> PlaceOrderToBuyPropertyRepository: saveOrder()
 
 activate PlaceOrderToBuyPropertyRepository
-
 activate ui
 
 ui -> client: informs operation sucess
-
 
 deactivate client
 

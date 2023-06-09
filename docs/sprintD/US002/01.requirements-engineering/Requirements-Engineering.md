@@ -54,13 +54,17 @@ As an agent, I can publish any sale announcement on the system.
 
 ### 1.3. Acceptance Criteria
 
-* **AC1:** An agent must be registered to publish an advertisement;
-* **AC2:** A property needs to be registered to be published;
-* **AC3:** All characteristics of the property , as well as its price; must be provided;
-* **AC4:** An agent can publish more than one advertisement;
-* **AC5:** A property can only be published once;
-* **AC6:** The publication of an advertisement is withdrawn when the property is sold;
-
+* **AC1:** A property needs to be registered to be published;
+* **AC2:** All characteristics of the property , as well as its price; must be provided;
+* **AC3:** An agent can publish more than one advertisement;
+* **AC4:** An announcement can only be published once;
+* **AC5:** The publication of an advertisement is withdrawn when the property is sold;
+* **AC6** An SMS notification should be sent to the owner when the listing of the
+property becomes available.
+* **AC7** The notification must include the property identification and the date it
+became available. 
+* **AC8** The Notification must include the name and phone number of the
+responsible Agent.
 
 ### 1.4. Found out Dependencies
 
@@ -87,6 +91,7 @@ As an agent, I can publish any sale announcement on the system.
   * Existence of a basement - Depends on the type of property
   * Loft - Depends on the type of property
   * Sun exposure - Depends on the type of property
+  
 	
 * Selected data:
 	* Type of property
@@ -103,7 +108,7 @@ As an agent, I can publish any sale announcement on the system.
 
 
 
-![System Sequence Diagram](svg/SSD-US2.svg)
+![System Sequence Diagram](svg/US2-SSD.svg)
 
 
 ### 1.7 Other Relevant Remarks

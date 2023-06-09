@@ -41,6 +41,11 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
             Double orderAmount = Utils.readDoubleFromConsole("Insert order amount: ");
 
 
+            System.out.println("=== Review Order Detail ===");
+            System.out.println("Client: ");
+            System.out.println("Order amount: " + orderAmount + "$");
+            System.out.println("Selected Announcement:\n" + AnnouncementMapper.getAnnouncementDTOById(posAnouncement));
+
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
             if (optValidation == 1) {
@@ -58,10 +63,6 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
                     System.err.println(e.getMessage());
                 }
-
-                System.out.println("=== Review Order Detail ===");
-                System.out.println("Order amount: " + orderAmount + "$");
-                System.out.println("Selected Announcement:\n" + AnnouncementMapper.getAnnouncementDTOById(posAnouncement));
 
             } else {
 

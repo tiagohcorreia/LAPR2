@@ -1,12 +1,16 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
+import pt.ipp.isep.dei.esoft.project.ui.console.utils.Validator;
+
 import java.io.Serializable;
 
 
-public class Location implements Serializable {
+public class Location implements Serializable, Validator {
     int doorNumber;
     String street;
     City city;
+    District district;
+    State state;
     int zipCode;
 
     public Location(String street, City city, int zipCode) {
@@ -35,15 +39,29 @@ public class Location implements Serializable {
 
 
 
-    private boolean isValid(){
-        return false;
-    }
-
     public Location(){
         doorNumber = 0;
         street = "Street Zero";
         city = new City("City Zero");
         zipCode = 0;
+    }
+
+    public Location(int doorNumber, String street, City city, District district, State state, int zipCode){
+        this.doorNumber = doorNumber;
+        this.street = street;
+        this.city = city;
+        this.district = district;
+        this.state = state;
+        this.zipCode = zipCode;
+    }
+
+    private boolean isValid(){
+        return (
+                validateZipCode(zipCode) &&
+                validateString(street) &&
+                validateObject(city) &&
+                validateObject(state)
+        );
     }
 
 //    private boolean doorNumberIsValid(int doorNumber){
@@ -75,13 +93,23 @@ public class Location implements Serializable {
     }
 
 
-    public String toString() {
+    /*public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Location - Details:\n");
         sb.append(String.format("Door Number: %s\n", doorNumber));
         sb.append(String.format("Street:      %s\n", street));
         sb.append(String.format("City:        %s\n", city));
         sb.append(String.format("Zip Code:    %s\n", zipCode));
+        return sb.toString();
+    }*/
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Location{");
+        sb.append("doorNumber=").append(doorNumber);
+        sb.append(", street='").append(street).append('\'');
+        sb.append(", city=").append(city);
+        sb.append(", zipCode=").append(zipCode);
+        sb.append('}');
         return sb.toString();
     }
 }
