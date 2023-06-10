@@ -1,6 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
-import pt.ipp.isep.dei.esoft.project.domain.Employee;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 
 import java.io.*;

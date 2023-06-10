@@ -1,11 +1,12 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import pt.ipp.isep.dei.esoft.project.domain.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
 
@@ -25,6 +26,8 @@ public class ScheduleVisitController {
     Repositories repositories = Repositories.getInstance();
     private AnnouncementRepository announcementRepository = repositories.getAnnouncementRepository();
     private ScheduleRepository scheduleRepository= repositories.getScheduleRepository();
+    private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
+    private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
     private AnnouncementMapper announcementMapper;
 
     public ScheduleVisitController(ScheduleRepository scheduleRepository) {
@@ -76,9 +79,12 @@ public class ScheduleVisitController {
     public AnnouncementDTO getAnnouncementDTO(int posAnnouncement) {
         return AnnouncementMapper.getAnnouncementDTOById(posAnnouncement);
     }
-    //falta ir buscar o agente através da sessão
-    public List<Schedule> getRequestScheduleListByResponsibleAgent(Employee agentName){
-        return scheduleRepository.getRequestScheduleListByResponsibleAgent(agentName);
+
+
+    public List<Schedule> getRequestScheduleListByResponsibleAgent(){
+        String agentName=String.valueOf(authenticationRepository.getCurrentUserSession().getUserName());
+        pt.ipp.isep.dei.esoft.project.domain.model.Employee agent= employeeRepository.findByName(agentName);
+        return scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
     }
     public boolean addConfirmedSchedule(int schedulePos){
         if (schedulePos>=0 && schedulePos< scheduleRepository.schedulesByResposibleAgent.size()){

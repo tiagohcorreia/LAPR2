@@ -160,7 +160,14 @@ public class EmployeeRepository implements Serializable {
         }
         return null;
     }
-
+    public Employee findByName(String name) {
+        for (Employee employee : employeeList) {
+            if (employee.getName().equals(name)) {
+                return employee;
+            }
+        }
+        return null;
+    }
     /**
      * Read object.
      */
