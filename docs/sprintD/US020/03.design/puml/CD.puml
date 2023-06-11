@@ -11,9 +11,7 @@ class ReadResponseOfAppointmentRequestController {
 
 }
 
-class Repositories {
 
-}
 
 class Schedule {
 
@@ -29,7 +27,7 @@ class Schedule {
 
 class Repositories {
 
-    + announcementRepository
+    + scheduleRepository
 }
 
 class ScheduleRepository {
