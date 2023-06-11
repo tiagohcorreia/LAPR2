@@ -20,6 +20,7 @@ public class PurchaseOrderUI implements Runnable {
     }
 
     public void run() {
+
         while (true) {
             System.out.println("1. List purchase orders");
             System.out.println("2. Accept purchase order");
@@ -27,27 +28,35 @@ public class PurchaseOrderUI implements Runnable {
             System.out.println("4. Exit");
             String option = scanner.nextLine();
 
-            switch (option) {
-                case "1":
-                    List<Order> purchaseOrders = purchaseOrderController.getPurchaseOrdersByProperty(property);
-                    purchaseOrders.forEach(System.out::println);
-                    break;
-                case "2":
-                    System.out.println("Enter the id of the purchase order to accept:");
-                    String acceptId = scanner.nextLine();
-                    purchaseOrderController.acceptPurchaseOrder(acceptId, "agent@example.com"); // replace with the agent's email
-                    break;
-                case "3":
-                    System.out.println("Enter the id of the purchase order to decline:");
-                    String declineId = scanner.nextLine();
-                    purchaseOrderController.declinePurchaseOrder(declineId, "agent@example.com"); // replace with the agent's email
-                    break;
-                case "4":
-                    return;
-                default:
-                    System.out.println("Invalid option");
-                    break;
+
+            try {
+
+                switch (option) {
+                    case "1":
+                        List<Order> purchaseOrders = purchaseOrderController.getPurchaseOrdersByProperty(property);
+                        purchaseOrders.forEach(System.out::println);
+                        break;
+                    case "2":
+                        System.out.println("Enter the id of the purchase order to accept:");
+                        String acceptId = scanner.nextLine();
+                        purchaseOrderController.acceptPurchaseOrder(acceptId, "agent@example.com"); // replace with the agent's email
+                        break;
+                    case "3":
+                        System.out.println("Enter the id of the purchase order to decline:");
+                        String declineId = scanner.nextLine();
+                        purchaseOrderController.declinePurchaseOrder(declineId, "agent@example.com"); // replace with the agent's email
+                        break;
+                    case "4":
+                        return;
+                    default:
+                        System.out.println("Invalid option");
+                        break;
+                }
+            } catch (Exception e) {
+
+                System.out.println(e.getStackTrace());
             }
+
         }
     }
 }

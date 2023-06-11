@@ -105,12 +105,6 @@ l
 <src/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/Readme.md,d\c\dc39a93105e346f11afedb3793424d0f9efae8c2
 s
 Csrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/StateUI.java,d\c\dca24e167226abcaa67bbe7041b6d8423d9f8644
-[
-+docs/sprintD/US020/02.analysis/puml/DM.puml,2\0\20f61649afcce56eae5020a42a81a8e5b6687ec1
-l
-<docs/sprintD/US020/01.requirements-engineering/puml/SSD.puml,c\1\c174a4293913f87b618eeed762d691bce916a619
-L
-docs/sprintD/US020/Readme.md,7\d\7d45c97787dc22deeea983a61db32bcb73e6e034
 z
 Jdocs/sprintD/US003/04.tests-and-implementation/Tests and Implementation.md,6\5\65f84aaa3ddc88c875c0ce48a5d5495223f0100d
 z
@@ -119,10 +113,6 @@ C
 docs/auth/README.md,a\3\a37dd0cad7ca009057adb1641903e10082949cc2
 x
 Hdocs/sprintD/global-artifacts/02.analysis/puml/project-domain-model.puml,f\b\fbd9b8bf0cf2952e3b8bcfe8c6d3dfa00a0ccf88
-Y
-)docs/sprintD/US020/03.design/puml/CD.puml,f\5\f509a5b1c36b8cb7247a08175c1bdba82691f78d
-Y
-)docs/sprintD/US020/03.design/puml/SD.puml,4\3\43c89ede42b245f9265bd555424bca51054bbdea
 ‹
 [src/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/ReadResponseOfAppointmentRequestGUI.java,0\3\037c0316cfed2410537b932efedffa788c430587
 ¢
@@ -161,8 +151,6 @@ fsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/DisplayAnnou
 Ssrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/ClientRepository.java,6\c\6cc1f9a5f807500332d7b06530ad59859591cec9
 
 `src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterClientController.java,7\9\791942c1bf51b73186d60b66c611c56fac10aa31
-m
-=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
 Y
 )docs/sprintD/US010/03.design/puml/CD.puml,7\a\7a5af0c42e63927857510f9016847bc2d31d44dc
 …
