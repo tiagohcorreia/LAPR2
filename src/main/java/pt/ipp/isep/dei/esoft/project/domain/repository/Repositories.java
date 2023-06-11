@@ -81,6 +81,8 @@ public class Repositories {
 
     ScheduleRepository scheduleRepository= new ScheduleRepository();
 
+    PurchaseOrderRepository purchaseOrderRepository = new PurchaseOrderRepository();
+
     private Repositories() {
     }
 
@@ -152,4 +154,5 @@ public class Repositories {
 
     public ScheduleRepository getScheduleRepository() {return scheduleRepository;}
 
+    public PurchaseOrderRepository getPurchaseOrderRepository() {return purchaseOrderRepository;}
 }
