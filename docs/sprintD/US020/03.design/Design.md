@@ -22,13 +22,19 @@
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * N/A
+ *   Announcement
+ *   AnnouncementDTO
+ *   AnnouncementMapper
+ *   Schedule
 
 
 Other software classes (i.e. Pure Fabrication) identified: 
 
  *   ReadResponseOfAppointmentRequestGUI
  *   ReadResponseOfAppointmentRequestController
+ *   AnnouncementRepository
+ *   ScheduleRepository
+ *   Repositories
 
 
 ## 3.2. Sequence Diagram (SD)
