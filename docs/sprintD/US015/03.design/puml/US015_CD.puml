@@ -4,7 +4,7 @@ class Visit {
   
 }
 
-class Mapper {
+class VisitMapper {
   
     +toDTOlist(sortedVisits)
     +toDTO(visit)
@@ -55,10 +55,10 @@ class Repositories {
 ListAllBookingsRequestsToAgentUI -[dashed]-> ListAllBookingsRequestsToAgentController
 ListAllBookingsRequestsToAgentController-[dashed]-> Repositories
 ListAllBookingsRequestsToAgentController-[dashed]-> VisitRepository
-ListAllBookingsRequestsToAgentController-[dashed]-> Mapper
+ListAllBookingsRequestsToAgentController-[dashed]-> VisitMapper
 ListAllBookingsRequestsToAgentController-[dashed]-> Util
-Mapper -[dashed]-> VisitDTO
-Mapper -[dashed]-> Visit
+VisitMapper -[dashed]-> VisitDTO
+VisitMapper -[dashed]-> Visit
 
 
 VisitRepository -down-> "*" Visit

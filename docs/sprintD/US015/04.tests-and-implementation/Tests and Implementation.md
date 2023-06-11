@@ -1,4 +1,4 @@
-# US 005 - Register a Store
+# US 015 - List all booking requests managed by agent
 
 # 4. Tests 
 
@@ -79,51 +79,17 @@
 # 5. Construction (Implementation)
 
 
-## Class RegisterBranchUI 
+## Class ListAllBookingsRequestsToAgentUI 
 
 ```java
-public class RegisterBranchUI implements Runnable {
+public class ListAllBookingsRequestsToAgentUI implements Runnable {
 
 
-    private RegisterBranchController controller = new RegisterBranchController(new RegisterBranchRepository());
+    private ListAllBookingsRequestsToAgentController controller = new ListAllBookingsRequestsToAgentController();
 
-    public RegisterBranchUI(RegisterBranchController controller) {
-        //this.controller = controller;
-    }
     @Override
     public void run() {
 
-        //Branch ID
-        Integer branchID = Utils.readIntegerFromConsole("Insert Branch ID: ");
-
-        //Branch name
-        String branchName = Utils.readLineFromConsole("Insert Branch name: ");
-
-        //Branch location
-        String branchLocation = Utils.readLineFromConsole("Insert Branch location: ");
-
-        //Branch phoneNumber
-        Integer branchPhoneNumber = Utils.readIntegerFromConsole("Insert Branch phone number: ");
-
-        //Branch email
-        String branchEmail = Utils.readLineFromConsole("Insert Branch email: ");
-
-
-
-        int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
-
-        if (optValidation == 1) {
-
-            controller.createBranch(branchID, branchName, branchLocation, branchPhoneNumber, branchEmail);
-
-            System.out.println("Branch created!");
-
-        } else {
-
-            System.err.println("Operation Canceled!");
-
-        }
-
     }
 
 
@@ -131,173 +97,71 @@ public class RegisterBranchUI implements Runnable {
 ```
 
 
-## Class RegisterBranchController
+## Class ListAllBookingsRequestsToAgentController
 
 ```java
-public class RegisterBranchController {
+public class ListAllBookingsRequestsToAgentController {
 
-    private RegisterBranchRepository branchRepository;
+}
 
-    public RegisterBranchController(RegisterBranchRepository branchRepo) {
-        branchRepository = branchRepo;
+```
+
+## Class Repositories
+
+```java
+public class Repositories {
+
+    VisitRepository visitRepository = new VisitRepository();
+
+    public static Repositories getInstance() 
+    {
+    
     }
 
-    public String createBranch(int ID, String name, String location, int phoneNumber,  String email) {
-
-        Branch newBranch = new Branch(ID, name, location, phoneNumber, email);
-
-        try {
-
-            branchRepository.saveBranch(newBranch);
-
-            return newBranch.toString();
-
-        } catch (Exception e) {
-
-            throw new IllegalStateException(e.getMessage().toString());
-        }
-
-
+    public VisitRepository getVisitRepository() {
+       
     }
 
 }
 
 ```
 
-## Class Branch
+
+## Class VisitRepository
 
 ```java
-public class Branch {
+public class VisitRepository {
 
-    private int ID;
-    private String name;
-    private String location;
-    private int phoneNumber;
-    private String email;
+   private final List<Visit> visits = new ArrayList<>();
 
-    public Branch(int ID, String name, String location, int phoneNumber, String email) {
 
-        checkIfDataIsNull(ID,name,location,phoneNumber,email);
-        checkNameLength(name);
-        checkValidEmail(email);
-        checkValidPhoneNumber(phoneNumber);
+    public List<Visit> getAllVisitsByAgentAndDateRange(Agent agent, Date start, Date end){}
 
-        this.ID = ID;
-        this.name = name;
-        this.location = location;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-    }
+    public List<Visit> sortVisitsAscending(List<Visit> visits){}
 
-    public Branch(){
-
-    }
-
-    /**
-     *
-     * @param ID
-     * @param name
-     * @param location
-     * @param phoneNumber
-     * @param email
-     */
-    public void checkIfDataIsNull(int ID, String name, String location, int phoneNumber, String email){
-
-        if (ID == 0 || name == null || location == null || phoneNumber == 0 || email == null) {
-            throw new NullPointerException("All fields required");
-        }
-    }
-
-    /**
-     *
-     * @param name
-     */
-    public void checkNameLength(String name){
-        if(!(name.length() <= 40)){
-            throw new IllegalArgumentException("Name should be 40 chars or less");
-        }
-    }
-
-    /**
-     *
-     * @param email
-     */
-    public void checkValidEmail(String email){
-        if(Pattern.matches("[a-z0-9]+@[a-z]+\\.[a-z]", email)){
-            throw new IllegalArgumentException("Email doesn't match the email pattern ***@***.***");
-        }
-    }
-
-    /**
-     *
-     * @param phoneNumber
-     */
-    public void checkValidPhoneNumber(int phoneNumber){
-
-        if(!Pattern.matches("[0-9]{9}", Integer.toString(phoneNumber))){
-            throw new IllegalArgumentException("Phone Number can only have 9 digits");
-        }
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setName(String name) {
-        checkNameLength(name);
-        this.name = name;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        checkValidPhoneNumber(phoneNumber);
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setEmail(String email) {
-        checkValidEmail(email);
-        this.email = email;
-    }
 }
 
 ```
 
-## Class RegisterBranchRepository
+## Class Util
 
 ```java
-public class RegisterBranchRepository {
+public class Util {
 
+  public String getChosenSortingAlgorithm(){}
 
+}
 
-    /**
-     *
-     * @param branch object to be saved
-     */
-    public void saveBranch(Branch branch){
+```
 
-        System.out.println("Saving branch...");
-        //does nothing for now
+## Class VisitMapper
 
-    }
+```java
+public class VisitMapper {
+
+  public List<VisitDTO> toDTOlist(List<Visit> visits){}
+
+  public VisitDTO toDTO(Visit visit){}
 
 }
 

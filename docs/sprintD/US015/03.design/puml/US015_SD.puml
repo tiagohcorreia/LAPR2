@@ -16,7 +16,7 @@ participant "visitRepository\n:VisitRepository" as vstR
 'participant "propertyRepository\n:PropertyRepository" as propR
 
 
-participant "Mapper" as map
+participant "VisitMapper" as map
 participant "VisitDTO" as vstDTO
 participant "Util" as util
 
