@@ -4,7 +4,7 @@
 
 **Insert below the Class Diagram in a SVG format**
 
-![Class Diagram](svg/class-diagram.svg)
+![Class Diagram](svg/Class Diagram.svg)
 
 
 
