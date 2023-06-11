@@ -25,8 +25,6 @@ public class ClientUI implements Runnable {
         options.add(new MenuItem("Place an order to purchase the property", new PlaceOrderToBuyPropertyUI(new PlaceOrderToBuyPropertyController(new PlaceOrderToBuyPropertyRepository()))));
         options.add(new MenuItem("Schedule a visit to your future property", new ScheduleVisitUI(new ScheduleVisitController(new ScheduleRepository()))));
 
-
-
         int option = 0;
         do {
             option = Utils.showAndSelectIndex(options, "\n\nClient Menu:");

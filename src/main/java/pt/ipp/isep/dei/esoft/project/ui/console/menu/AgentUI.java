@@ -31,7 +31,6 @@ public class AgentUI implements Runnable {
         options.add(new MenuItem("Publish announcement", new PublishAnnouncementUI()));
         options.add(new MenuItem("See announcements requests", new AnnouncementRequestsUI()));
         options.add(new MenuItem("List and manage purchase orders", new PurchaseOrderUI())); // nova opção no menu
-        options.add(new MenuItem("Exit", (Runnable) new MainMenuUI()));
 
         int option = 0;
         do {

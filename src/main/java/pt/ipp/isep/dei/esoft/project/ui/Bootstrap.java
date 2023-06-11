@@ -74,6 +74,9 @@ public class Bootstrap implements Runnable {
         authenticationRepository.addUserWithRole("Employee", "employee@this.app", "pwd",
                 AuthenticationController.ROLE_EMPLOYEE);
 
+        authenticationRepository.addUserWithRole("Agent", "agent@isep.ipp.pt", "agent",
+                AuthenticationController.ROLE_AGENT);
+
         authenticationRepository.addUserWithRole("Owner", "owner@this.app", "owner",
                 AuthenticationController.ROLE_OWNER);
 
@@ -84,6 +87,9 @@ public class Bootstrap implements Runnable {
                 AuthenticationController.ROLE_CLIENT);
 
         authenticationRepository.addUserWithRole("Network Manager", "network@this.app", "net",
+                AuthenticationController.ROLE_NETWORK_MANAGER);
+
+        authenticationRepository.addUserWithRole("Network Manager", "network@isep.ipp.pt", "net",
                 AuthenticationController.ROLE_NETWORK_MANAGER);
 
         authenticationRepository.addUserWithRole("Store Manager", "store@this.app", "store",
