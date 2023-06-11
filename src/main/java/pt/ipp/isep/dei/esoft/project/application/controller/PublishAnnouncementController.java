@@ -7,6 +7,7 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
+import pt.isep.lei.esoft.auth.UserSession;
 
 
 import java.util.ArrayList;
@@ -66,31 +67,29 @@ public class PublishAnnouncementController {
      */
     public void createAnnouncement(LocalDate date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
                                    ArrayList<String> equipmentList, boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
-                                   int area, Location location, int cityCentreDistance, float commission, float price, ArrayList photographs, String agentName){
+                                   int area, Location location, int cityCentreDistance, float commission, float price, ArrayList photographs, Employee agentName){
 
-        EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
+
 
         // get the employee corresponding to the agent email
-        String emailAdress = null;
-        Branch branch = new Branch();
-        pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address","1231231230",Role.AGENT,branch);
-        //Employee agent = employeeRepository.findByEmail(emailAdress);
-
+       //String emailAdress = null;
+       // Branch branch = new Branch();
+       //pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address","1231231230",Role.AGENT,branch);
 
 
         if (posTypeOfProperty == 2) {
             Property property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);
-            Announcement announcement = new Announcement(date,AnnouncementStatus.PUBLISHED,  commission, price ,sellOrRent, property, agent);
+            Announcement announcement = new Announcement(date,AnnouncementStatus.PUBLISHED,  commission, price ,sellOrRent, property, agentName);
             this.announcementRepository.createAnnouncement(announcement);
             this.announcementRepository.writeObject();
         } else if (posTypeOfProperty == 1) {
             Property property = new House(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
-            Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED,  commission, price, sellOrRent, property, agent);
+            Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED,  commission, price, sellOrRent, property, agentName);
             this.announcementRepository.createAnnouncement(announcement);
             this.announcementRepository.writeObject();
         } else {
             Property property = new Land(area, location, cityCentreDistance, photographs);
-            Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, commission, price, sellOrRent, property, agent);
+            Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, commission, price, sellOrRent, property, agentName);
             this.announcementRepository.createAnnouncement(announcement);
             this.announcementRepository.writeObject();
         }
@@ -136,9 +135,32 @@ public class PublishAnnouncementController {
         return Arrays.stream(TypeOfBusiness.values()).toList();
     }
 
-   public String getAgentName(){
+  /*public String getAgentName(){
         return String.valueOf(authenticationRepository.getCurrentUserSession().getUserName());
    }
+
+   public Employee getAgentName() {
+        UserSession userSession = authenticationRepository.getCurrentUserSession();
+        String userEmail = userSession.getUserId().getEmail();
+        if (userSession != null) {
+            return employeeRepository.findByEmail(userEmail);
+        }
+        throw new IllegalStateException("Agente correspondente ao email não encontrado.");
+
+    } */
+
+    public String getCurrentAgent() {
+        pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();
+        if (userSession.getUserRoles() == Role.AGENT) {
+            return userSession.getUserName();
+        } else {
+            throw new IllegalStateException("Current user is not an employee (agent).");
+        }
+    }
+
+    public Employee getEmployeeByName(String employeeName) {
+        return employeeRepository.findByEmail(employeeName);
+    }
 
 
 }

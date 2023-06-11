@@ -27,6 +27,8 @@ public class Announcement implements Serializable {
     private Employee agent;
     private String reason;
 
+    private Client Owner;
+
     /**
      * Instantiates a new Announcement.
      *
