@@ -183,7 +183,7 @@ public abstract class Property implements Serializable {
 
 
     //ToString()
-    @Override
+    /*@Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("Area:              %s\n", area));
@@ -191,7 +191,19 @@ public abstract class Property implements Serializable {
         sb.append(String.format("City Centre Dist.: %s\n", cityCentreDistance));
         sb.append(String.format("Photographs:       %s\n", photographs));
         return sb.toString();
+    }*/
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Property{");
+        sb.append(", Area:").append(area);
+        sb.append(", Location:").append(location);
+        sb.append(", City Centre Distance:").append(cityCentreDistance);
+        sb.append(", Photographs:").append(photographs);
+        sb.append('}');
+        return sb.toString();
     }
+
     //equals
 
 

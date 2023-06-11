@@ -61,12 +61,8 @@ jsrc/test/java/pt/ipp/isep/dei/esoft/project/application/controller/DisplayAnnou
 [src/test/java/pt/ipp/isep/dei/esoft/project/application/controller/StateControllerTest.java,0\a\0a8ee98c97c137ecdd95af920e8927f2e0a9e581
 t
 Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTest.java,1\0\1009d2015c9fc4a9f50d9b819006a88ce2e99b09
-Å
-Qsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/shared/AnnouncementStatus.java,a\e\ae96421f79588899840d0471d8a72e362b4a223f
 ã
 [src/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AuthenticationRepository.java,1\7\1720d6ff593ca0ef6086cab4c10507516a643e8d
-r
-Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/City.java,d\4\d44dbabadc8daa53f934827c02cb3e5a4fe3a1b7
 w
 Gsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTwoTest.java,0\b\0b38d53ea00375a88cd95f700d85b70a8c9a55b3
 z
@@ -97,10 +93,6 @@ Ssrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/BranchRepository.
 Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/ScheduleRepository.java,a\c\ac7fcfc44391b1baaeb7000a558f67099a294a93
 {
 Ksrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/PurchaseOrder.java,d\7\d75e00186075a3ff5a0013b110de3bf94a511b6f
-z
-Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
-â
-Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepository.java,c\8\c805ca1cbd80f0ac94482e0d78c0adf7bc47eeb0
 l
 <src/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/Readme.md,d\c\dc39a93105e346f11afedb3793424d0f9efae8c2
 s
@@ -123,8 +115,6 @@ s
 Csrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Order.java,2\0\20aae18838b3f671aa33ec2f9a8e90e3bd49a809
 ä
 Zsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/PurchaseOrderRepository.java,1\b\1b308069e3f2b9b2ceee966f5ec5fa6085cee738
-ô
-isrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PlaceOrderToBuyPropertyController.java,f\2\f23e3482c7029e1e6c436ec449042c4065f6a470
 ï
 esrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PublishAnnouncementController.java,5\a\5aa707f0b07a84d4c69be7429e1838ed656307e8
 |
@@ -153,8 +143,6 @@ Ssrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/ClientRepository.
 `src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterClientController.java,7\9\791942c1bf51b73186d60b66c611c56fac10aa31
 Y
 )docs/sprintD/US010/03.design/puml/CD.puml,7\a\7a5af0c42e63927857510f9016847bc2d31d44dc
-Ö
-Usrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PlaceOrderToBuyPropertyUI.java,1\1\11c3f0e6ee016f152206f9eb3b0b10bb8157d0ef
 Ñ
 Tsrc/main/java/pt/ipp/isep/dei/esoft/project/repository/AuthenticationRepository.java,8\e\8e52c5a55aa923452dc261f1029d0bf94f3441fd
 x

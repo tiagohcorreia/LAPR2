@@ -1,4 +1,5 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
+
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
@@ -61,7 +62,8 @@ public class Announcement implements Serializable {
 
         this.status = status;
     }
-    public AnnouncementStatus getStatus(){
+
+    public AnnouncementStatus getStatus() {
 
         return status;
     }
@@ -89,7 +91,7 @@ public class Announcement implements Serializable {
      * @param commission the commission
      */
     public void setCommission(float commission) {
-        if (commission < 0){
+        if (commission < 0) {
             throw new IllegalArgumentException("Invalid commission value.");
         }
         this.commission = commission;
@@ -99,7 +101,7 @@ public class Announcement implements Serializable {
      * Instantiates a new Announcement.
      */
 //Default constructor
-    public Announcement(){
+    public Announcement() {
         this.setStatus(AnnouncementStatus.PENDENT);
         this.setPrice(0);
         this.setCommission(0);
@@ -114,7 +116,7 @@ public class Announcement implements Serializable {
      * @param anotherAnnouncement the another announcement
      */
 //Copy constructor
-    public Announcement(Announcement anotherAnnouncement){
+    public Announcement(Announcement anotherAnnouncement) {
         this.setDate(anotherAnnouncement.getDate());
         this.setStatus(anotherAnnouncement.getStatus());
         this.setPrice(anotherAnnouncement.getPrice());
@@ -130,7 +132,8 @@ public class Announcement implements Serializable {
      * @return the announcement
      */
     public Announcement getAnnouncement() {
-        return new Announcement(this); }
+        return new Announcement(this);
+    }
 
     /**
      * Get announcement announcement.
@@ -140,12 +143,12 @@ public class Announcement implements Serializable {
      * @param numberOfBedrooms the number of bedrooms
      * @return the announcement
      */
-    public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
+    public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms) {
         if (!typeOfBusiness.equals("LAND")) {
             if (this.status == AnnouncementStatus.PUBLISHED && typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase()) && numberOfBedrooms == this.getProperty().getNumberOfBedrooms()) {
                 return new Announcement(this);
             }
-        } else if(this.status == AnnouncementStatus.PUBLISHED&& typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase())){
+        } else if (this.status == AnnouncementStatus.PUBLISHED && typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) && typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase())) {
             return new Announcement(this);
         }
         return null;
@@ -186,7 +189,7 @@ public class Announcement implements Serializable {
      * @param price the price
      */
     public void setPrice(float price) {
-        if (price < 0){
+        if (price < 0) {
             throw new IllegalArgumentException("Invalid price value.");
         }
         this.price = price;
@@ -245,6 +248,7 @@ public class Announcement implements Serializable {
     public void setAgent(Employee agent) {
         this.agent = agent;
     }
+
     public void setRejectionReason(String reason) {
         this.reason = reason;
     }
@@ -272,45 +276,64 @@ public class Announcement implements Serializable {
                 this.commission,
                this.agent.toString());
         }*/
-    public String toString() {
+
+    /*public String toString() {
         String status = (this.status == AnnouncementStatus.PUBLISHED) ? "Published" : "Not Published";
         String formattedDate = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 
-            StringBuilder sb = new StringBuilder();
-            sb.append("Announcement - Details:\n");
-            sb.append(String.format("Date:              %s\n", formattedDate));
-            sb.append(String.format("Status:            %s\n", status));
-            sb.append(String.format("Price:             %.2f\n", price));
-            sb.append(String.format("Type of Business:  %s\n", typeOfBusiness));
-            sb.append(String.format("Property:          %s\n", property));
-            return sb.toString();
-        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("Announcement - Details:\n");
+        sb.append(String.format("Date:              %s\n", formattedDate));
+        sb.append(String.format("Status:            %s\n", status));
+        sb.append(String.format("Price:             %.2f\n", price));
+        sb.append(String.format("Type of Business:  %s\n", typeOfBusiness));
+        sb.append(String.format("Property:          %s\n", property));
+        return sb.toString();
+    }*/
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Announcement{");
+        sb.append("date=").append(date);
+        sb.append(", status=").append(status);
+        sb.append(", price=").append(price);
+        sb.append(", commission=").append(commission);
+        sb.append(", typeOfBusiness=").append(typeOfBusiness);
+        sb.append(", property=").append(property);
+        sb.append(", agent=").append(agent);
+        sb.append(", reason='").append(reason).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+
     public String getAnnouncementAsString() {
         String agentName = getAgent() != null ? getAgent().getName() : "";
 
         String result =
                 //getDate().toString() +"\t" +
                 (getDate() != null ? getDate().toString() : "") + "\t" +
-                getTypeOfBusiness().toString() + "\t" +
-                getProperty().getClass().getSimpleName() + "\t" +
-                getPrice() + "\t" +
-                getProperty().getLocation() + "\t" +
-                getProperty().getArea() + "\t" +
-                getProperty().getCityCentreDistance() + "\t" +
-                getProperty().getNumberOfBedrooms() + "\t" +
-                getProperty().getPhotographs() + "\t" +
-               // getAgent().getName();
-                 agentName;
+                        getTypeOfBusiness().toString() + "\t" +
+                        getProperty().getClass().getSimpleName() + "\t" +
+                        getPrice() + "\t" +
+                        getProperty().getLocation() + "\t" +
+                        getProperty().getArea() + "\t" +
+                        getProperty().getCityCentreDistance() + "\t" +
+                        getProperty().getNumberOfBedrooms() + "\t" +
+                        getProperty().getPhotographs() + "\t" +
+                        // getAgent().getName();
+                        agentName;
         return result;
     }
 
     public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment) {
         return new Apartment(area, location, cityCentreDistance, equipment, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipment);
     }
-    public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
-        return new House(area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipment ,hasBasement, hasInhabitableLoft, sunExposure);
+
+    public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
+        return new House(area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipment, hasBasement, hasInhabitableLoft, sunExposure);
     }
+
     public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs) {
         return new Land(area, location, cityCentreDistance, photographs);
     }
