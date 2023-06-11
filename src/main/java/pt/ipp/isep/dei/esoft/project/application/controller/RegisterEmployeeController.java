@@ -1,8 +1,10 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
+import pt.ipp.isep.dei.esoft.project.domain.repository.AuthenticationRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -17,16 +19,14 @@ import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.gene
  */
 public class RegisterEmployeeController {
 
-    private EmployeeRepository employeeRepository = new EmployeeRepository();
+    private EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
 
-    private BranchRepository branchRepository = new BranchRepository();
+    private BranchRepository branchRepository = Repositories.getInstance().getBranchRepository();
 
-    /**
-     * Instantiates a new Register employee controller.
-     *
-     * @param employeeRepository the employee repository
-     */
-    public RegisterEmployeeController(EmployeeRepository employeeRepository) {
+    AuthenticationRepository authenticationRepository;
+
+
+    public RegisterEmployeeController() {
 
         this.branchRepository.readObject();
     }
@@ -70,6 +70,7 @@ public class RegisterEmployeeController {
 
             this.employeeRepository.saveEmployee(newEmployee);
             this.employeeRepository.writeObject();
+            this.employeeRepository.saveEmployeeInTheSystem(newEmployee, sendEmail(newEmployee.getEmailAddress()));
             System.out.println();
             System.out.println(newEmployee);
             return newEmployee.toString();
@@ -84,10 +85,9 @@ public class RegisterEmployeeController {
     /**
      * Send email.
      *
-     * @param emplyeeName the emplyee name
      * @param eMail       the e mail
      */
-    public void sendEmail(String emplyeeName, String eMail) {
+    public String sendEmail(String eMail) {
 
         String password = generatePassword();
         String conteudo = "Email: " + eMail + " | Senha: " + password;
@@ -104,6 +104,8 @@ public class RegisterEmployeeController {
             System.out.println("Error creating file");
             e.printStackTrace();
         }
+        return password;
     }
+
 
 }

@@ -6,6 +6,7 @@ import pt.ipp.isep.dei.esoft.project.domain.Organization;
 import pt.ipp.isep.dei.esoft.project.domain.TaskCategory;
 import pt.ipp.isep.dei.esoft.project.domain.model.Client;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ClientRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.OrganizationRepository;
 import pt.ipp.isep.dei.esoft.project.repository.Repositories;
@@ -34,6 +35,7 @@ public class Bootstrap implements Runnable {
         organization.addEmployee(new Employee("employee@this.app"));
         organization.addEmployee(new Employee("owner@this.app"));
         organization.addEmployee(new Employee("network@this.app"));
+        organization.addEmployee(new Employee("agent@this.app"));
         //organization.addEmployee(new Employee("client@this.app"));
         organizationRepository.add(organization);
     }
@@ -57,11 +59,11 @@ public class Bootstrap implements Runnable {
         AuthenticationRepository authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
 
         authenticationRepository.addUserRole(AuthenticationController.ROLE_ADMIN, AuthenticationController.ROLE_ADMIN);
-        authenticationRepository.addUserRole(AuthenticationController.ROLE_EMPLOYEE,
-                AuthenticationController.ROLE_EMPLOYEE);
+        authenticationRepository.addUserRole(AuthenticationController.ROLE_EMPLOYEE, AuthenticationController.ROLE_EMPLOYEE);
         authenticationRepository.addUserRole(AuthenticationController.ROLE_OWNER, AuthenticationController.ROLE_OWNER);
         authenticationRepository.addUserRole(AuthenticationController.ROLE_CLIENT, AuthenticationController.ROLE_CLIENT);
         authenticationRepository.addUserRole(AuthenticationController.ROLE_NETWORK_MANAGER, AuthenticationController.ROLE_NETWORK_MANAGER);
+        authenticationRepository.addUserRole(AuthenticationController.ROLE_AGENT, AuthenticationController.ROLE_AGENT);
 
         authenticationRepository.addUserWithRole("Main Administrator", "admin@this.app", "admin",
                 AuthenticationController.ROLE_ADMIN);
@@ -95,6 +97,7 @@ public class Bootstrap implements Runnable {
         for (Client client : clientList) {
             authenticationRepository.addUserWithRole(client.getName(), client.getEmail(), client.getPassword(), AuthenticationController.ROLE_CLIENT);
         }
+
     }
 
 

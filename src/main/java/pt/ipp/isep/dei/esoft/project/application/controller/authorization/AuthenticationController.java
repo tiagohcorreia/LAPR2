@@ -30,6 +30,7 @@ public class AuthenticationController {
     public static final String ROLE_UNREGISTERED = "UNREGISTERED_USER";
     public static final String ROLE_STORE_MANAGER = "STORE_MANAGER";
     public static final String ROLE_CLIENT = "CLIENT";
+    public static final String ROLE_AGENT = "AGENT";
 
     //private final ApplicationSession applicationSession;
     private final AuthenticationRepository authenticationRepository;

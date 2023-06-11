@@ -1,9 +1,11 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
+import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Role;
 import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
+import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class EmployeeRepository implements Serializable {
      */
     public static List<Employee> employeeList = new ArrayList<>();
 
+    AuthenticationRepository authenticationRepository = pt.ipp.isep.dei.esoft.project.repository.Repositories.getInstance().getAuthenticationRepository();
     /**
      * Create employee employee.
      *
@@ -60,7 +63,7 @@ public class EmployeeRepository implements Serializable {
 
         if (employee != null && validateEmployee(employee)) {
 
-            return this.employeeList.add(employee);
+            return employeeList.add(employee);
         }
         return false;
     }
@@ -157,7 +160,14 @@ public class EmployeeRepository implements Serializable {
         }
         return null;
     }
-
+    public Employee findByName(String name) {
+        for (Employee employee : employeeList) {
+            if (employee.getName().equals(name)) {
+                return employee;
+            }
+        }
+        return null;
+    }
     /**
      * Read object.
      */
@@ -193,5 +203,19 @@ public class EmployeeRepository implements Serializable {
         }
     }
 
+    public void saveEmployeeInTheSystem(Employee newEmployee, String password) {
 
+        if (newEmployee.getRole().equals(Role.ADMNISTRATOR)) {
+
+            authenticationRepository.addUserWithRole(newEmployee.getName(), newEmployee.getEmailAddress(), password, AuthenticationController.ROLE_ADMIN);
+
+        } else if (newEmployee.getRole().equals(Role.NETWORK_MANAGER)) {
+
+            authenticationRepository.addUserWithRole(newEmployee.getName(), newEmployee.getEmailAddress(), password, AuthenticationController.ROLE_NETWORK_MANAGER);
+
+        } else if (newEmployee.getRole().equals(Role.AGENT)) {
+
+            authenticationRepository.addUserWithRole(newEmployee.getName(), newEmployee.getEmailAddress(), password, AuthenticationController.ROLE_AGENT);
+        }
+    }
 }

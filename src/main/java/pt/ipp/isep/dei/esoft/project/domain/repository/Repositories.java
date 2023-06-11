@@ -80,7 +80,8 @@ public class Repositories {
     BranchRepository branchRepository = new BranchRepository();
 
     ScheduleRepository scheduleRepository= new ScheduleRepository();
-    VisitRepository visitRepository = new VisitRepository();
+
+    PurchaseOrderRepository purchaseOrderRepository = new PurchaseOrderRepository();
 
     private Repositories() {
     }
@@ -153,9 +154,5 @@ public class Repositories {
 
     public ScheduleRepository getScheduleRepository() {return scheduleRepository;}
 
-    public VisitRepository getVisitRepository() {
-        return visitRepository;
-    }
-
-
+    public PurchaseOrderRepository getPurchaseOrderRepository() {return purchaseOrderRepository;}
 }

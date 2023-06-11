@@ -3,8 +3,10 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
+import pt.ipp.isep.dei.esoft.project.domain.model.Order;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+import pt.isep.lei.esoft.auth.domain.model.User;
 
 import java.util.List;
 
@@ -40,9 +42,15 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
             //OrderAmount
             Double orderAmount = Utils.readDoubleFromConsole("Insert order amount: ");
 
+            //Client
+
+
+            //Status
+
 
             System.out.println("=== Review Order Detail ===");
             System.out.println("Client: ");
+            System.out.println("Status: " + Order.isStatus());
             System.out.println("Order amount: " + orderAmount + "$");
             System.out.println("Selected Announcement:\n" + AnnouncementMapper.getAnnouncementDTOById(posAnouncement));
 
