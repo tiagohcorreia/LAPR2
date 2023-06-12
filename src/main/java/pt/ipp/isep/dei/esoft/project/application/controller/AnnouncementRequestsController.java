@@ -121,7 +121,7 @@ public class AnnouncementRequestsController {
         AnnouncementRequestDTO dto = getAnnouncementByIndex(index, agent);
         if (dto != null) {
             Announcement announcement = this.announcementRequestMapper.toEntity(dto);
-            announcement.setRejectionReason(reason);
+            //announcement.setRejectionReason(reason);
             announcement.setStatus(AnnouncementStatus.REJECTED);
             this.announcementRepository.saveAnnouncement(announcement);
         }
