@@ -22,17 +22,12 @@
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- *   Announcement
- *   AnnouncementDTO
- *   AnnouncementMapper
  *   Schedule
-
 
 Other software classes (i.e. Pure Fabrication) identified: 
 
  *   ReadResponseOfAppointmentRequestGUI
  *   ReadResponseOfAppointmentRequestController
- *   AnnouncementRepository
  *   ScheduleRepository
  *   Repositories
 
@@ -43,7 +38,19 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 This diagram shows the full sequence of interactions between the classes involved in the realization of this user story.
 
-![Sequence Diagram](svg/SD.svg)
+![Sequence Diagram](svg/SD-Full.svg)
+
+### Alternative 2
+
+This diagram shows the sequence of interactions when the client accepts the appointment request
+
+![Sequence Diagram](svg/SD-Alternative 2.svg)
+
+### Alternative 3
+
+This diagram shows the sequence of interactions when the client rejects the appointment request
+
+![Sequence Diagram](svg/SD-Alternative 3.svg)
 
 
 ## 3.3. Class Diagram (CD)

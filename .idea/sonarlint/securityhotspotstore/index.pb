@@ -65,8 +65,6 @@ Y
 )docs/sprintD/US009/03.design/puml/CD.puml,e\a\ea8f307cc0b2064e3a2b47b9647d8580e8a6ac6b
 z
 Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
-Y
-)docs/sprintD/US020/03.design/puml/CD.puml,f\5\f509a5b1c36b8cb7247a08175c1bdba82691f78d
 W
 'docs/sprintD/US020/03.design/svg/CD.svg,e\9\e938a1bc95a5602f8586ec5e1f1d0ccef7942e4f
 
