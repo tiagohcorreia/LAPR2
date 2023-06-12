@@ -46,6 +46,10 @@ public class Client {
         return password;
     }
 
+    public long getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
     public Client(String name, String email, String password, int cCNumber, int taxNumber, String address, int telephoneNumber) {
         this.name = name;
         this.email = email;

@@ -26,9 +26,10 @@ public class Announcement implements Serializable {
     private TypeOfBusiness typeOfBusiness;
     private Property property;
     private Employee agent;
-    private String reason;
 
     private Client Owner;
+
+    private int numberOfMonthsRent;
 
     /**
      * Instantiates a new Announcement.
@@ -40,7 +41,7 @@ public class Announcement implements Serializable {
      * @param agent          the agent
      */
 //Full constructor
-    public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
+    public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent, Client owner) {
         this.setDate(date);
         this.setStatus(status);
         this.setPrice(price);
@@ -48,6 +49,19 @@ public class Announcement implements Serializable {
         this.setTypeOfBusiness(typeOfBusiness);
         this.setProperty(property);
         this.setAgent(agent);
+        this.setOwner(owner);
+    }
+
+    public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent, Client owner, int numberOfMonthsRent) {
+        this.setDate(date);
+        this.setStatus(status);
+        this.setPrice(price);
+        this.setCommission(commission);
+        this.setTypeOfBusiness(typeOfBusiness);
+        this.setProperty(property);
+        this.setAgent(agent);
+        this.setOwner(owner);
+        this.setNumberOfMonthsRent(numberOfMonthsRent);
     }
 
     public Announcement(AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
@@ -71,10 +85,12 @@ public class Announcement implements Serializable {
     }
 
     public LocalDate getDate() {
+
         return date;
     }
 
     public void setDate(LocalDate date) {
+
         this.date = date;
     }
 
@@ -157,24 +173,6 @@ public class Announcement implements Serializable {
     }
 
 
-    /**
-     * Is visible boolean.
-     *
-     * @return the boolean
-     */
-   /* public boolean isVisible() {
-        return this.visible;
-    }/*
-
-    /**
-     * Sets visible.
-     *
-     * @param visible the visible
-     */
-   /* public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-    */
 
     /**
      * Gets price.
@@ -182,6 +180,7 @@ public class Announcement implements Serializable {
      * @return the price
      */
     public float getPrice() {
+
         return price;
     }
 
@@ -203,6 +202,7 @@ public class Announcement implements Serializable {
      * @return the type of business
      */
     public TypeOfBusiness getTypeOfBusiness() {
+
         return typeOfBusiness;
     }
 
@@ -212,6 +212,7 @@ public class Announcement implements Serializable {
      * @param typeOfBusiness the type of business
      */
     public void setTypeOfBusiness(TypeOfBusiness typeOfBusiness) {
+
         this.typeOfBusiness = typeOfBusiness;
     }
 
@@ -221,6 +222,7 @@ public class Announcement implements Serializable {
      * @return the property
      */
     public Property getProperty() {
+
         return property;
     }
 
@@ -239,6 +241,7 @@ public class Announcement implements Serializable {
      * @return the agent
      */
     public Employee getAgent() {
+
         return agent;
     }
 
@@ -248,12 +251,26 @@ public class Announcement implements Serializable {
      * @param agent the agent
      */
     public void setAgent(Employee agent) {
+
         this.agent = agent;
     }
 
-    public void setRejectionReason(String reason) {
-        this.reason = reason;
+    public Client getOwner() {
+        return Owner;
     }
+
+    public void setOwner(Client owner) {
+        Owner = owner;
+    }
+
+    public int getNumberOfMonthsRent() {
+        return numberOfMonthsRent;
+    }
+
+    public void setNumberOfMonthsRent(int numberOfMonthsRent) {
+        this.numberOfMonthsRent = numberOfMonthsRent;
+    }
+
 
     //TO-FIX
    /* public String toString(){
@@ -304,8 +321,7 @@ public class Announcement implements Serializable {
         sb.append(", typeOfBusiness=").append(typeOfBusiness);
         sb.append(", property=").append(property);
         sb.append(", agent=").append(agent);
-        sb.append(", reason='").append(reason).append('\'');
-        sb.append('}');
+       sb.append('}');
         return sb.toString();
     }
 

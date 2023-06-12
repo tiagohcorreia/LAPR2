@@ -3,19 +3,16 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.PublishAnnouncementController;
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
-import pt.ipp.isep.dei.esoft.project.domain.model.City;
-import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
-import pt.ipp.isep.dei.esoft.project.domain.model.Location;
+import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 
-
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -51,7 +48,7 @@ public class PublishAnnouncementUI implements Runnable {
         boolean hasLoft = false;
         SunExposure sunExposure = null;
         int area;
-        Location location;
+        Location location = null;
         int distance;
         float price;
         ArrayList<String> photographs = new ArrayList<>();
@@ -62,6 +59,7 @@ public class PublishAnnouncementUI implements Runnable {
         String street = null;
         int postalCode = 0;
         boolean confirmed = false;
+        int rentalMonths = 0;
 
 
 
@@ -82,8 +80,11 @@ public class PublishAnnouncementUI implements Runnable {
 
 
 
+
+
         //typeOfBusiness
-        List<TypeOfBusiness> typeOfBusinessList = this.controller.getTypeOfBusinessAsList();
+
+        /*List<TypeOfBusiness> typeOfBusinessList = this.controller.getTypeOfBusinessAsList();
         Utils.showList(typeOfBusinessList, "Type of Business");
         TypeOfBusiness selectedTypeOfBusiness = null;
         while (selectedTypeOfBusiness == null) {
@@ -93,10 +94,38 @@ public class PublishAnnouncementUI implements Runnable {
                 System.out.println("Invalid input. Please try again.");
             }
         }
-        sellOrRent = selectedTypeOfBusiness;
+        sellOrRent = selectedTypeOfBusiness; */
+
+        List<TypeOfBusiness> typeOfBusinessList = this.controller.getTypeOfBusinessAsList();
+        Utils.showList(typeOfBusinessList, "Type of Business");
+         sellOrRent = null;
+
+        while (sellOrRent == null) {
+            try {
+                Integer posTypeOfBusiness = Utils.readIntegerFromConsole("Choose the Type of Business: ");
+                TypeOfBusiness selectedTypeOfBusiness = TypeOfBusiness.getTypeOfBusinessById(posTypeOfBusiness);
+
+                if (selectedTypeOfBusiness == null) {
+                    throw new IllegalArgumentException();
+                }
+
+                sellOrRent = selectedTypeOfBusiness;
+
+                if (sellOrRent == TypeOfBusiness.RENT) {
+                    System.out.print("Number of months: ");
+                    rentalMonths = scanner.nextInt();
+
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid input. Please try again.");
+            }
+        }
+
 
         //TypeOfProperty
-        List<TypeOfProperty> types = this.controller.getTypeOfPropertyAsList();
+        /*List<TypeOfProperty> types = this.controller.getTypeOfPropertyAsList();
         System.out.println("Select the property type:");
         for (int i = 0; i < types.size(); i++) {
             System.out.println((i + 1) + " - " + types.get(i));
@@ -116,7 +145,40 @@ public class PublishAnnouncementUI implements Runnable {
                     scanner.next();
                 }
             }
-            TypeOfProperty selectedType = types.get(posTypeOfProperty - 1);
+            TypeOfProperty selectedType = types.get(posTypeOfProperty - 1); */
+
+        List<TypeOfProperty> types = this.controller.getTypeOfPropertyAsList();
+        System.out.println("Select the property type:");
+        for (int i = 0; i < types.size(); i++) {
+            System.out.println((i + 1) + " - " + types.get(i));
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        int posTypeOfProperty = 0;
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                if (scanner.hasNextInt()) {
+                    posTypeOfProperty = scanner.nextInt();
+                    if (posTypeOfProperty > 0 && posTypeOfProperty <= types.size()) {
+                        validInput = true;
+                    } else {
+                        System.out.println("Invalid input. Please choose a number between 1 and " + types.size() + ".");
+                        scanner.nextLine(); // Descartar a entrada inválida do usuário
+                    }
+                } else {
+                    System.out.println("Invalid input. Please enter a number.");
+                    scanner.nextLine(); // Descartar a entrada inválida do usuário
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine(); // Descartar a entrada inválida do usuário
+            }
+        }
+
+        TypeOfProperty selectedType = types.get(posTypeOfProperty - 1);
+
 
             // Dados comuns a todas as propriedades
 
@@ -126,7 +188,7 @@ public class PublishAnnouncementUI implements Runnable {
             scanner.nextLine();
 
             //location
-            String city = Utils.readLineFromConsole("Insert the city:");
+           /* String city = Utils.readLineFromConsole("Insert the city:");
 
             City existingCity = this.controller.getCity(city);
             if (existingCity != null) {
@@ -138,7 +200,57 @@ public class PublishAnnouncementUI implements Runnable {
             } else {
 
                 System.out.println("City not found in the repository. Please enter a valid city.");
+            } */
+
+
+        // Location
+        List<City> cityList = this.controller.getCityList();
+        Utils.showList(cityList, "Cities");
+
+        String city = null;
+        City existingCity = null;
+
+        while (existingCity == null) {
+            city = Utils.readLineFromConsole("Insert the city:");
+            existingCity = this.controller.getCity(city);
+
+            if (existingCity == null) {
+                System.out.println("City not found in the repository. Please enter a valid city.");
             }
+        }
+
+        street = null;
+        boolean validStreet = false;
+
+        while (!validStreet) {
+            street = Utils.readLineFromConsole("Insert the street:");
+
+            if (location.streetIsValid(street)) {
+                validStreet = true;
+            } else {
+                System.out.println("Street is invalid. Please enter a valid street.");
+            }
+        }
+
+        postalCode = 0;
+        boolean validPostalCode = false;
+
+        while (!validPostalCode) {
+            String postalCodeStr = Utils.readLineFromConsole("Insert the postal code (5 digits):");
+
+            try {
+                int postalCodeValue = Integer.parseInt(postalCodeStr);
+
+                if (location.zipCodeIsValid(postalCodeValue)) {
+                    postalCode = postalCodeValue;
+                    validPostalCode = true;
+                } else {
+                    System.out.println("Postal code is invalid. Please enter a valid postal code.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Postal code must be a number.");
+            }
+        }
 
 
             //distanceFromCityCenter
@@ -158,15 +270,21 @@ public class PublishAnnouncementUI implements Runnable {
 
 
             //photographs
-            System.out.println("Insert the photos");
-            System.out.println("Type 'exit' to finish");
-            photo= "";
-            while (!photo.equalsIgnoreCase("exit")) {
-                photo= scanner.nextLine();
-                if (!photo.equalsIgnoreCase("exit")) {
+        System.out.println("Insert the photos");
+        System.out.println("Type 'exit' to finish");
+        photo = "";
+        int maxPhotos = 30;
+        while (!photo.equalsIgnoreCase("exit")) {
+            photo = scanner.nextLine();
+            if (!photo.equalsIgnoreCase("exit")) {
+                if (photographs.size() < maxPhotos) {
                     photographs.add(photo);
+                } else {
+                    System.out.println("Maximum number of photos (30) reached.");
+                    break;
                 }
             }
+        }
 
 
 
@@ -307,14 +425,39 @@ public class PublishAnnouncementUI implements Runnable {
                 System.out.println("Sun exposure: " + sunExposure);
             }
             System.out.println("Agent: " + agentName +"\n\n");
+
+
             System.out.print("Do you confirm the creation (y/n)? \n");
             String confirm = scanner.next();
             if (confirm.equalsIgnoreCase("y")) {
 
+                String ownerEmail = Utils.readLineFromConsole("Enter the owner's email: ");
+                Client owner = controller.getClientByEmail(ownerEmail);
+
                 this.controller.createAnnouncement(date,sellOrRent, posTypeOfProperty, bedrooms, bathrooms, parkingSpaces, availableEquipment, hasBasement, hasLoft,
-                        sunExposure, area, location, distance, commission, price, photographs, agent);
+                        sunExposure, area, location, distance, commission, price, photographs, agent, owner, rentalMonths );
                 System.out.println("Announcement created successfully!\n");
                 confirmed = true;
+                if (owner != null) {
+
+                    String ownerName = owner.getName();
+
+                    String notificationSubject = "New Announcement Published";
+                    String notificationMessage = "Dear " + ownerName + ",\n\n"
+                            + "Your property has been published with the following details:\n"
+                            + "Announcement ID: " + location.toString() + "\n"
+                            + "Publication Date: " + date.toString() + "\n"
+                            + "Responsible Agent: " + agent.getName() + "\n"
+                            + "Agent Phone Number: " + agent.getTelephoneNumber() + "\n";
+
+                    // Enviar a notificação para o EmailService
+                    NotificationService notificationService = new NotificationService();
+                    notificationService.sendNotification(ownerEmail, notificationSubject, notificationMessage);
+
+                    System.out.println("Notification sent to owner: " + ownerEmail);
+                } else {
+                    System.out.println("Owner not found. Please enter a valid email address.");
+                }
             } else {
                 System.out.print("Cancel (y/n)?");
                 String cancel = scanner.next();
@@ -324,8 +467,14 @@ public class PublishAnnouncementUI implements Runnable {
                 }
             }
 
-        }
+         String ownerEmail = Utils.readLineFromConsole("Enter the owner's email: ");
+            Client owner = controller.getClientByEmail(ownerEmail);
+
+
+
+
+    }
     }
 
-}
+
 
