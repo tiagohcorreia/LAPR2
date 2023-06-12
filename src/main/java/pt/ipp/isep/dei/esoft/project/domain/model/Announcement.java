@@ -27,7 +27,7 @@ public class Announcement implements Serializable {
     private Property property;
     private Employee agent;
 
-    private Client Owner;
+    private Client owner;
 
     private int numberOfMonthsRent;
 
@@ -256,11 +256,11 @@ public class Announcement implements Serializable {
     }
 
     public Client getOwner() {
-        return Owner;
+        return owner;
     }
 
     public void setOwner(Client owner) {
-        Owner = owner;
+        this.owner = owner;
     }
 
     public int getNumberOfMonthsRent() {
@@ -313,17 +313,18 @@ public class Announcement implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Announcement{");
-        sb.append("date=").append(date);
-        sb.append(", status=").append(status);
-        sb.append(", price=").append(price);
-        sb.append(", commission=").append(commission);
-        sb.append(", typeOfBusiness=").append(typeOfBusiness);
-        sb.append(", property=").append(property);
-        sb.append(", agent=").append(agent);
-       sb.append('}');
+        final StringBuilder sb = new StringBuilder("Announcement");
+        sb.append("date:").append(date);
+        sb.append(", status:").append(status);
+        sb.append(", price:").append(price);
+        sb.append(", commission:").append(commission);
+        sb.append(", typeOfBusiness:").append(typeOfBusiness);
+        sb.append(", property:").append(property);
+        sb.append(", agent:").append(agent);
+        sb.append(", owner: ").append(owner).append("\n");
         return sb.toString();
     }
+
 
     public String getAnnouncementAsString() {
         String agentName = getAgent() != null ? getAgent().getName() : "";
@@ -342,6 +343,21 @@ public class Announcement implements Serializable {
                         // getAgent().getName();
                         agentName;
         return result;
+    }
+
+    public String toStringRent() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Announcement\n");
+        sb.append("Date: ").append(date).append("\n");
+        sb.append("Status: ").append(status).append("\n");
+        sb.append("Price: ").append(price).append("\n");
+        sb.append("Commission: ").append(commission).append("\n");
+        sb.append("Type of Business: ").append(typeOfBusiness).append("\n");
+        sb.append("Property: ").append(property).append("\n");
+        sb.append("Agent: ").append(agent).append("\n");
+        sb.append("Owner: ").append(owner).append("\n");
+        sb.append("Number of Months Rent: ").append(numberOfMonthsRent).append("\n");
+        return sb.toString();
     }
 
     public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment) {
