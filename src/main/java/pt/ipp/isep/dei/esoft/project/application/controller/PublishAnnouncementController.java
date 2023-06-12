@@ -7,12 +7,15 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
+import pt.isep.lei.esoft.auth.UserSession;
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.time.LocalDate;
 import java.util.List;
+
+import static pt.ipp.isep.dei.esoft.project.domain.model.Announcement.createProperty;
 
 /**
  * The type Publish announcement controller.
@@ -42,6 +45,7 @@ public class PublishAnnouncementController {
      * The City repository.
      */
     CityRepository cityRepository = Repositories.getInstance().getCityRepository();
+    ClientRepository clientRepository = repositories.getInstance().getClientRepository();
 
     /**
      * Create announcement.
@@ -66,36 +70,44 @@ public class PublishAnnouncementController {
      */
     public void createAnnouncement(LocalDate date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
                                    ArrayList<String> equipmentList, boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
-                                   int area, Location location, int cityCentreDistance, float commission, float price, ArrayList photographs, String agentName){
+                                   int area, Location location, int cityCentreDistance, float commission, float price, ArrayList photographs, Employee agentName, Client owner, int rentalMonths ) {
 
-        EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
 
         // get the employee corresponding to the agent email
-        String emailAdress = null;
-        Branch branch = new Branch();
-        pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address","1231231230",Role.AGENT,branch);
-        //Employee agent = employeeRepository.findByEmail(emailAdress);
+        //String emailAdress = null;
+        // Branch branch = new Branch();
+        //pt.ipp.isep.dei.esoft.project.domain.model.Employee agent = new pt.ipp.isep.dei.esoft.project.domain.model.Employee("john",123123123,123123123,"address","e@mail.address","1231231230",Role.AGENT,branch);
 
 
+        if (sellOrRent == TypeOfBusiness.SELL) {
+            Property property = createProperty(posTypeOfProperty, area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
+            Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, commission, price, sellOrRent, property, agentName, owner);
+            this.announcementRepository.createAnnouncement(announcement);
+            this.announcementRepository.writeObject();
 
-        if (posTypeOfProperty == 2) {
-            Property property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);
-            Announcement announcement = new Announcement(date,AnnouncementStatus.PUBLISHED,  commission, price ,sellOrRent, property, agent);
-            this.announcementRepository.createAnnouncement(announcement);
-            this.announcementRepository.writeObject();
-        } else if (posTypeOfProperty == 1) {
-            Property property = new House(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
-            Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED,  commission, price, sellOrRent, property, agent);
-            this.announcementRepository.createAnnouncement(announcement);
-            this.announcementRepository.writeObject();
-        } else {
-            Property property = new Land(area, location, cityCentreDistance, photographs);
-            Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, commission, price, sellOrRent, property, agent);
-            this.announcementRepository.createAnnouncement(announcement);
-            this.announcementRepository.writeObject();
+        } else if (sellOrRent == TypeOfBusiness.RENT) {
+            if (rentalMonths != 0 && rentalMonths > 0) {
+
+                Property property = createProperty(posTypeOfProperty, area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
+                Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, commission, price, sellOrRent, property, agentName, owner, rentalMonths);
+                this.announcementRepository.createAnnouncement(announcement);
+                this.announcementRepository.writeObject();
+
+            }
         }
+    }
 
-
+    private Property createProperty(int posTypeOfProperty, int area, Location location, int cityCentreDistance, ArrayList photographs, int bedrooms, int bathrooms,
+                                    int parkingSpaces, ArrayList<String> equipmentList, boolean hasBasement, boolean hasLoft, SunExposure sunExposure) {
+        Property property;
+        if (posTypeOfProperty == 2) {
+            property = new Apartment(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList);
+        } else if (posTypeOfProperty == 1) {
+            property = new House(area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
+        } else {
+            property = new Land(area, location, cityCentreDistance, photographs);
+        }
+        return property;
     }
 
 
@@ -106,7 +118,13 @@ public class PublishAnnouncementController {
      * @return the city
      */
     public City getCity (String city){
+
         return cityRepository.findByName(city);
+    }
+    public List<City> getCityList() {
+
+        List<City> cityList = cityRepository.findAll();
+        return cityList;
     }
 
     /**
@@ -115,6 +133,7 @@ public class PublishAnnouncementController {
      * @return the sun exposure as list
      */
     public List<SunExposure> getSunExposureAsList () {
+
         return Arrays.stream(SunExposure.values()).toList();
     }
 
@@ -136,9 +155,37 @@ public class PublishAnnouncementController {
         return Arrays.stream(TypeOfBusiness.values()).toList();
     }
 
-   public String getAgentName(){
+  /*public String getAgentName(){
         return String.valueOf(authenticationRepository.getCurrentUserSession().getUserName());
    }
+
+   public Employee getAgentName() {
+        UserSession userSession = authenticationRepository.getCurrentUserSession();
+        String userEmail = userSession.getUserId().getEmail();
+        if (userSession != null) {
+            return employeeRepository.findByEmail(userEmail);
+        }
+        throw new IllegalStateException("Agente correspondente ao email não encontrado.");
+
+    } */
+
+    public String getCurrentAgent() {
+        pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();
+        if (userSession.getUserRoles() == Role.AGENT) {
+            return userSession.getUserName();
+        } else {
+            throw new IllegalStateException("Current user is not an employee (agent).");
+        }
+    }
+
+    public Employee getEmployeeByName(String employeeName) {
+
+        return employeeRepository.findByEmail(employeeName);
+    }
+
+    public Client getClientByEmail(String email) {
+        return clientRepository.findByEmail(email);
+    }
 
 
 }

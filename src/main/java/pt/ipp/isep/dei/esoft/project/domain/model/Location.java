@@ -55,7 +55,7 @@ public class Location implements Serializable, Validator {
         this.zipCode = zipCode;
     }
 
-    private boolean isValid(){
+    public boolean isValid(){
         return (
                 validateZipCode(zipCode) &&
                 validateString(street) &&
@@ -70,19 +70,19 @@ public class Location implements Serializable, Validator {
 //        return true;
 //    }
 
-    private boolean streetIsValid(String street){
+    public boolean streetIsValid(String street){
         if (street.isBlank())
             throw new IllegalArgumentException("Street can't be blank");
         return true;
     }
 
-    private boolean cityIsValid(City city){
+    public boolean cityIsValid(City city){
         if (city == null)
             throw new IllegalArgumentException("City is invalid");
         return true;
     }
 
-    private boolean zipCodeIsValid(int zipCode){
+    public boolean zipCodeIsValid(int zipCode){
         if (zipCode < 10000 || zipCode > 99999)
             throw new IllegalArgumentException("Zip code must have 5 digits");
         return true;

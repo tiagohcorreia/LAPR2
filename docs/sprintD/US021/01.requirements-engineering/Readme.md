@@ -1,6 +1,6 @@
 # US 021 -  Register Visit
 
-## 1. Requirements Engineering
+## 1. Requirements Engineering 
 
 
 ### 1.1. User Story Description
@@ -26,10 +26,10 @@ the deal will take place.
 
 **From the client clarifications:**
 
-> N/A
+> N/A 
 
 
-> N/A
+> N/A 
 
 ### 1.3. Acceptance Criteria**
 

@@ -73,7 +73,7 @@ activate AG
 
                     AG -> UI : select the scheduled visit to register
 
-                    UI --> AG: show the scheduled visit and request the opinion about the business
+                    UI --> AG: request the opinion about the business
 
                     AG -> UI: type the opinion about the business
 
@@ -83,20 +83,47 @@ activate AG
 
                      AG -> UI: Register visit
 
-                            alt Duplicate Entry
-                                UI --> AG: Error - Duplicate entry for the visit
 
-                            else Valid Entry
+
+
+
+
+
 
                                         UI -> CTRL: createVisit(scheduledVisit,opinionAboutBusiness,classification)
-                                        CTRl -> VisitRepository**: create
-                                        CTRL -> VisitRepository : createVisit(scheduledVisit,opinionAboutBusiness,classification)
-                                        VisitRepository -> VISIT**: create
 
-                                        VisitRepository -> VISIT: createVisit(scheduledVisit,opinionAboutBusiness,classification)
-                                        VISIT -> VISIT: validate()
-                                        VISIT --> VisitRepository: validate(Visit)
-                                        VISIT --> VisitRepository: add(Visit)
+                                        alt Duplicate Entry
+                                        CTRL -> VisitRepository** : createVisit(scheduledVisit,opinionAboutBusiness,classification)
+
+                                        activate VisitRepository
+
+                                        VisitRepository --> CTRL: error
+
+                                        CTRL --> UI: error
+
+                                        UI --> AG: Error - Duplicate entry for the visit
+
+
+
+                                        else Valid Entry
+
+                                        VisitRepository -> VISIT**: createVisit(scheduledVisit,opinionAboutBusiness,classification)
+
+
+
+                                        activate VISIT
+                                        VISIT -> VISIT: validateVisit(Visit)
+
+                                        VISIT --> VisitRepository: Visit
+
+                                        deactivate VISIT
+
+                                        activate VisitRepository
+                                        VisitRepository --> VisitRepository: validateVisit(Visit)
+                                        activate VisitRepository
+                                        VisitRepository --> VisitRepository: addVisit(Visit)
+                                        activate VisitRepository
+
                                         VisitRepository --> CTRL: Visit
                                         CTRL --> UI: Visit
 
