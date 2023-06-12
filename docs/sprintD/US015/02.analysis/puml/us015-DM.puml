@@ -38,6 +38,7 @@ class Visit{
 date
 time
 prediction
+status
 }
 
 

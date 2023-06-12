@@ -2,78 +2,145 @@
 
 # 4. Tests 
 
-**Tests for Branch Name:** 
+**Tests for sortVisitsAscending:** 
 
-    @DisplayName("Ensure name equal 40 chars works")
+    ```java
+
+     @DisplayName("Ensure sorting a null array returns null")
     @Test
-    void EnsureNameEqual40CharsWorks() {
+    public void ensureSortingNullArrayReturnsNull() {
+        // Act
+        Employee[] employees = EmployeeRepository.sortEmployeesAlphabetically(null);
 
-        assertDoesNotThrow( ()->{
+        // Assert
+        assertNull(employees); // check result is null
 
-          Branch b = new Branch();
-
-         b.setName("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-
-        });
-    }
-
-    @DisplayName("Ensure name bigger than 40 chars fails")
-    @Test
-    void EnsureNameBiggerThan40CharsFails() {
-
-        assertThrows(IllegalArgumentException.class, () -> {
-
-            Branch b = new Branch();
-
-            b.setName("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqa");
-
-
-        });
-    }
-
-    @DisplayName("Ensure name smaller than 40 chars works")
-    @Test
-    void EnsureNameSmallerThan40CharsWorks() {
-
-        assertDoesNotThrow( ()->{
-
-            Branch b = new Branch();
-
-            b.setName("a");
-
-        });
-    }
-
-**Tests for Branch Phone Number:**
-
-
-
-    @DisplayName("Ensure phone number with 9 digits works")
-    @Test
-    void EnsurePhoneNumberWith9DigitsWorks() {
-
-        assertDoesNotThrow( ()->{
-
-            Branch b = new Branch();
-
-            b.setPhoneNumber(981321232);
-
-        });
     }
 
 
-    @DisplayName("Ensure phone number with 7 digits fails")
+    @DisplayName("Ensure sorting an array with empty array works")
     @Test
-    void EnsurePhoneNumberWith7DigitsFails() {
+    public void ensureSortingAnEmptyArrayWorks() {
+       
+        Employee[] employees = {};
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
 
-            Branch b = new Branch();
+        Employee[] expected = {};
 
-            b.setPhoneNumber(9813232);
-
-        });
+        assertArrayEquals(expected, result);
+       
     }
+
+    @DisplayName("Ensure sorting an array with one element works")
+    @Test
+    public void ensureSortingOneElementArrayWorks() {
+    
+        Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee};
+
+        assertArrayEquals(expected, result);
+
+
+    }
+
+    @DisplayName("Ensure sorting an array with two (already sorted) elements works.")
+    @Test
+    public void ensureSortingArrayWithTwoSortedElementsWorks() {
+       
+        Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee1 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee employee2 = new Employee("Teste2", 999123123, "Rua de cima2, México2", "teste2@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee1, employee2};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee1, employee2};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @DisplayName("Ensure sorting an array with two (unsorted) elements works.")
+    @Test
+    public void ensureSortingArrayWithTwoUnsortedElementsWorks() {
+        
+        Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee1 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee employee2 = new Employee("Teste2", 999123123, "Rua de cima2, México2", "teste2@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee2, employee1};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee1, employee2};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @DisplayName("Ensure sorting an array with two equal elements works.")
+    @Test
+    public void ensureSortingArrayWithTwoEqualElementsWorks() {
+        
+        Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee1 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee employee2 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee1, employee2};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee1, employee2};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @DisplayName("Ensure sorting an array with several unordered elements works.")
+    @Test
+    public void ensureSortingArrayWithSeveralUnsortedElementsWorks() {
+       
+        Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee1 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee employee2 = new Employee("Teste2", 999123123, "Rua de cima2, México2", "teste2@gmail.com", "4213123123", role, branch);
+        
+        Employee employee3 = new Employee("Teste3", 999123123, "Rua de cima3, México3", "teste3@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee2, employee3, employee1};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee1, employee2, employee3};
+
+        assertArrayEquals(expected, result);
+    }
+
+```
+    
 
 
 # 5. Construction (Implementation)
