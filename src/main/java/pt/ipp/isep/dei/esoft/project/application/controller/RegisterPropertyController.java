@@ -89,9 +89,9 @@ public class RegisterPropertyController implements Serializable {
                 this.announcementRepository.writeObject();
             }else {
                 Land property= new Land(area,location,cityCentreDistance,photographs);
-                Announcement announcement= new Announcement(date,AnnouncementStatus.REQUESTED,price,0 ,sellOrRent,property,agent);
-                announcement.setAgent(agent);
-                this.announcementRepository.createAnnouncement(announcement);
+                //Announcement announcement= new Announcement(date,AnnouncementStatus.REQUESTED,price,0 ,sellOrRent,property,agent);
+                //announcement.setAgent(agent);
+                //this.announcementRepository.createAnnouncement(announcement);
                 this.announcementRepository.writeObject();
             }
         }catch (Exception e) {
