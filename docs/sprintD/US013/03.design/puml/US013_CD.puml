@@ -32,7 +32,7 @@ class BranchRepository {
 class EmployeeRepository {
 
     +getEmployeesByBranchID(ID)
-    +sortEmployeesAlphabetically(Branch)
+    +sortEmployeesAlphabetically(Employees)
 
 }
 
