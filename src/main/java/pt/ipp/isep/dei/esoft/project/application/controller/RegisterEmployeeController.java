@@ -94,7 +94,7 @@ public class RegisterEmployeeController {
 
         try {
 
-            FileWriter file = new FileWriter(new File("APP_FILES/email.txt"));
+            FileWriter file = new FileWriter(new File("APP_FILES/email.txt"), true);
             file.write(conteudo + "\n");
             file.close();
             System.out.println("File with employee credentials generated with success");
