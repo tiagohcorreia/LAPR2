@@ -55,7 +55,7 @@ public class Location implements Serializable, Validator {
         this.zipCode = zipCode;
     }
 
-    private boolean isValid(){
+    public boolean isValid(){
         return (
                 validateZipCode(zipCode) &&
                 validateString(street) &&
@@ -70,19 +70,19 @@ public class Location implements Serializable, Validator {
 //        return true;
 //    }
 
-    private boolean streetIsValid(String street){
+    public boolean streetIsValid(String street){
         if (street.isBlank())
             throw new IllegalArgumentException("Street can't be blank");
         return true;
     }
 
-    private boolean cityIsValid(City city){
+    public boolean cityIsValid(City city){
         if (city == null)
             throw new IllegalArgumentException("City is invalid");
         return true;
     }
 
-    private boolean zipCodeIsValid(int zipCode){
+    public boolean zipCodeIsValid(int zipCode){
         if (zipCode < 10000 || zipCode > 99999)
             throw new IllegalArgumentException("Zip code must have 5 digits");
         return true;
@@ -105,10 +105,10 @@ public class Location implements Serializable, Validator {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Location{");
-        sb.append("doorNumber=").append(doorNumber);
-        sb.append(", street='").append(street).append('\'');
-        sb.append(", city=").append(city);
-        sb.append(", zipCode=").append(zipCode);
+        sb.append("Door Number:").append(doorNumber);
+        sb.append(", Street:'").append(street).append('\'');
+        sb.append(", City:").append(city);
+        sb.append(", Zip Code: ").append(zipCode);
         sb.append('}');
         return sb.toString();
     }

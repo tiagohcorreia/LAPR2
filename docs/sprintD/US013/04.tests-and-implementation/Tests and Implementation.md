@@ -1,129 +1,161 @@
-# US 005 - Register a Store
+# US 013 - List all employees
 
 # 4. Tests 
 
-**Tests for Branch Name:** 
+**Tests sortEmployeesAlphabetically:** 
 
-    @DisplayName("Ensure name equal 40 chars works")
+
+```java
+
+     @DisplayName("Ensure sorting a null array returns null")
     @Test
-    void EnsureNameEqual40CharsWorks() {
+    public void ensureSortingNullArrayReturnsNull() {
+        // Act
+        Employee[] employees = EmployeeRepository.sortEmployeesAlphabetically(null);
 
-        assertDoesNotThrow( ()->{
+        // Assert
+        assertNull(employees); // check result is null
 
-          Branch b = new Branch();
-
-         b.setName("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-
-        });
-    }
-
-    @DisplayName("Ensure name bigger than 40 chars fails")
-    @Test
-    void EnsureNameBiggerThan40CharsFails() {
-
-        assertThrows(IllegalArgumentException.class, () -> {
-
-            Branch b = new Branch();
-
-            b.setName("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqa");
-
-
-        });
-    }
-
-    @DisplayName("Ensure name smaller than 40 chars works")
-    @Test
-    void EnsureNameSmallerThan40CharsWorks() {
-
-        assertDoesNotThrow( ()->{
-
-            Branch b = new Branch();
-
-            b.setName("a");
-
-        });
-    }
-
-**Tests for Branch Phone Number:**
-
-
-
-    @DisplayName("Ensure phone number with 9 digits works")
-    @Test
-    void EnsurePhoneNumberWith9DigitsWorks() {
-
-        assertDoesNotThrow( ()->{
-
-            Branch b = new Branch();
-
-            b.setPhoneNumber(981321232);
-
-        });
     }
 
 
-    @DisplayName("Ensure phone number with 7 digits fails")
+    @DisplayName("Ensure sorting an array with empty array works")
     @Test
-    void EnsurePhoneNumberWith7DigitsFails() {
+    public void ensureSortingAnEmptyArrayWorks() {
+       
+        Employee[] employees = {};
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
 
-            Branch b = new Branch();
+        Employee[] expected = {};
 
-            b.setPhoneNumber(9813232);
-
-        });
+        assertArrayEquals(expected, result);
+       
     }
 
+    @DisplayName("Ensure sorting an array with one element works")
+    @Test
+    public void ensureSortingOneElementArrayWorks() {
+    
+        Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee};
+
+        assertArrayEquals(expected, result);
+
+
+    }
+
+    @DisplayName("Ensure sorting an array with two (already sorted) elements works.")
+    @Test
+    public void ensureSortingArrayWithTwoSortedElementsWorks() {
+       
+        Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee1 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee employee2 = new Employee("Teste2", 999123123, "Rua de cima2, México2", "teste2@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee1, employee2};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee1, employee2};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @DisplayName("Ensure sorting an array with two (unsorted) elements works.")
+    @Test
+    public void ensureSortingArrayWithTwoUnsortedElementsWorks() {
+        
+        Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee1 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee employee2 = new Employee("Teste2", 999123123, "Rua de cima2, México2", "teste2@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee2, employee1};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee1, employee2};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @DisplayName("Ensure sorting an array with two equal elements works.")
+    @Test
+    public void ensureSortingArrayWithTwoEqualElementsWorks() {
+        
+        Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee1 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee employee2 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee1, employee2};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee1, employee2};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @DisplayName("Ensure sorting an array with several unordered elements works.")
+    @Test
+    public void ensureSortingArrayWithSeveralUnsortedElementsWorks() {
+       
+       Role role = new Role(1);
+
+        Branch branch = new Branch(1,"Loja Teste","location teste","9823232323","loga@gmail.com");
+
+        Employee employee1 = new Employee("Teste", 999123123, "Rua de cima, México", "teste@gmail.com", "4213123123", role, branch);
+
+        Employee employee2 = new Employee("Teste2", 999123123, "Rua de cima2, México2", "teste2@gmail.com", "4213123123", role, branch);
+        
+        Employee employee3 = new Employee("Teste3", 999123123, "Rua de cima3, México3", "teste3@gmail.com", "4213123123", role, branch);
+
+        Employee[] employees = {employee2, employee3, employee1};
+
+        Employee[] result = EmployeeRepository.sortEmployeesAlphabetically(employees);
+
+        Employee[] expected = {employee1, employee2, employee3};
+
+        assertArrayEquals(expected, result);
+    }
+
+```
 
 # 5. Construction (Implementation)
 
 
-## Class RegisterBranchUI 
+## Class ListAllEmployeesUI 
 
 ```java
-public class RegisterBranchUI implements Runnable {
+public class ListAllEmployeesUI implements Runnable {
 
 
-    private RegisterBranchController controller = new RegisterBranchController(new RegisterBranchRepository());
+    private ListAllEmployeesController controller = new ListAllEmployeesController();
 
-    public RegisterBranchUI(RegisterBranchController controller) {
-        //this.controller = controller;
-    }
     @Override
     public void run() {
 
-        //Branch ID
-        Integer branchID = Utils.readIntegerFromConsole("Insert Branch ID: ");
-
-        //Branch name
-        String branchName = Utils.readLineFromConsole("Insert Branch name: ");
-
-        //Branch location
-        String branchLocation = Utils.readLineFromConsole("Insert Branch location: ");
-
-        //Branch phoneNumber
-        Integer branchPhoneNumber = Utils.readIntegerFromConsole("Insert Branch phone number: ");
-
-        //Branch email
-        String branchEmail = Utils.readLineFromConsole("Insert Branch email: ");
-
-
-
-        int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
-
-        if (optValidation == 1) {
-
-            controller.createBranch(branchID, branchName, branchLocation, branchPhoneNumber, branchEmail);
-
-            System.out.println("Branch created!");
-
-        } else {
-
-            System.err.println("Operation Canceled!");
-
-        }
-
     }
 
 
@@ -131,177 +163,81 @@ public class RegisterBranchUI implements Runnable {
 ```
 
 
-## Class RegisterBranchController
+## Class ListAllEmployeesController
 
 ```java
-public class RegisterBranchController {
-
-    private RegisterBranchRepository branchRepository;
-
-    public RegisterBranchController(RegisterBranchRepository branchRepo) {
-        branchRepository = branchRepo;
-    }
-
-    public String createBranch(int ID, String name, String location, int phoneNumber,  String email) {
-
-        Branch newBranch = new Branch(ID, name, location, phoneNumber, email);
-
-        try {
-
-            branchRepository.saveBranch(newBranch);
-
-            return newBranch.toString();
-
-        } catch (Exception e) {
-
-            throw new IllegalStateException(e.getMessage().toString());
-        }
-
-
-    }
+public class ListAllEmployeesController {
 
 }
 
 ```
 
-## Class Branch
+## Class Repositories
 
 ```java
-public class Branch {
+public class Repositories {
 
-    private int ID;
-    private String name;
-    private String location;
-    private int phoneNumber;
-    private String email;
+    EmployeeRepository employeeRepository = new EmployeeRepository();
 
-    public Branch(int ID, String name, String location, int phoneNumber, String email) {
+    BranchRepository branchRepository = new BranchRepository();
 
-        checkIfDataIsNull(ID,name,location,phoneNumber,email);
-        checkNameLength(name);
-        checkValidEmail(email);
-        checkValidPhoneNumber(phoneNumber);
 
-        this.ID = ID;
-        this.name = name;
-        this.location = location;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    public static Repositories getInstance() 
+    {
+    
     }
 
-    public Branch(){
 
+    public EmployeeRepository getEmployeeRepository() {
+       
     }
 
-    /**
-     *
-     * @param ID
-     * @param name
-     * @param location
-     * @param phoneNumber
-     * @param email
-     */
-    public void checkIfDataIsNull(int ID, String name, String location, int phoneNumber, String email){
-
-        if (ID == 0 || name == null || location == null || phoneNumber == 0 || email == null) {
-            throw new NullPointerException("All fields required");
-        }
+    public BranchRepository getBranchRepository() 
+    {
+        
     }
 
-    /**
-     *
-     * @param name
-     */
-    public void checkNameLength(String name){
-        if(!(name.length() <= 40)){
-            throw new IllegalArgumentException("Name should be 40 chars or less");
-        }
-    }
 
-    /**
-     *
-     * @param email
-     */
-    public void checkValidEmail(String email){
-        if(Pattern.matches("[a-z0-9]+@[a-z]+\\.[a-z]", email)){
-            throw new IllegalArgumentException("Email doesn't match the email pattern ***@***.***");
-        }
-    }
-
-    /**
-     *
-     * @param phoneNumber
-     */
-    public void checkValidPhoneNumber(int phoneNumber){
-
-        if(!Pattern.matches("[0-9]{9}", Integer.toString(phoneNumber))){
-            throw new IllegalArgumentException("Phone Number can only have 9 digits");
-        }
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setName(String name) {
-        checkNameLength(name);
-        this.name = name;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        checkValidPhoneNumber(phoneNumber);
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setEmail(String email) {
-        checkValidEmail(email);
-        this.email = email;
-    }
 }
 
 ```
 
-## Class RegisterBranchRepository
+
+## Class BranchRepository
 
 ```java
-public class RegisterBranchRepository {
+public class BranchRepository {
+
+   private final List<Branch> branches = new ArrayList<>();
 
 
+    public List<Branch> getAllBranches(){}
 
-    /**
-     *
-     * @param branch object to be saved
-     */
-    public void saveBranch(Branch branch){
+    public List<Branch> sortBranchesByListings(List<Branch> branches){}
 
-        System.out.println("Saving branch...");
-        //does nothing for now
+    public int getListingTotalByBranch(Branch branch){}
 
-    }
 
 }
 
 ```
+
+## Class EmployeeRepository
+
+```java
+public class EmployeeRepository {
+
+   private final List<Employee> employees = new ArrayList<>();
+
+
+    public List<Employee> getEmployeesByBranchID(Branch branch){}
+
+    public List<Employee> sortEmployeesAlphabetically(List<Employee> employees){}
+
+}
+
+```
+
 
 # 6. Integration and Demo 
 

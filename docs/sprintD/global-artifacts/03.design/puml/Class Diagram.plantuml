@@ -1,0 +1,1267 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AdminUI {
+  + AdminUI(): 
+  + run(): void
+}
+enum Agency << enumeration >> {
+  - Agency(int): 
+  + AGENCY3: 
+  + AGENCY1: 
+  - valor: int
+  + AGENCY2: 
+  + getAgencyID(): int
+  + valueOf(String): Agency
+  + getAgencyById(int): Agency?
+  + values(): Agency[]
+}
+class AgentUI {
+  + AgentUI(): 
+  + run(): void
+}
+class Announcement {
+  + Announcement(Announcement): 
+  + Announcement(): 
+  + Announcement(LocalDate, AnnouncementStatus, float, float, TypeOfBusiness, Property, Employee): 
+  + Announcement(AnnouncementStatus, float, float, TypeOfBusiness, Property, Employee): 
+  - date: LocalDate
+  - status: AnnouncementStatus
+  - commission: float
+  - agent: Employee
+  - property: Property
+  - price: float
+  - reason: String
+  - typeOfBusiness: TypeOfBusiness
+  + createProperty(float, Location, float, ArrayList<String>, int, int, int, ArrayList<String>, boolean, boolean, SunExposure): Property
+  + getAnnouncement(): Announcement
+  + getPrice(): float
+  + getTypeOfBusiness(): TypeOfBusiness
+  + getAgent(): Employee
+  + getProperty(): Property
+  + createProperty(float, Location, float, ArrayList<String>, int, int, int, ArrayList<String>): Property
+  + getDate(): LocalDate
+  + getStatus(): AnnouncementStatus
+  + setRejectionReason(String): void
+  + setAgent(Employee): void
+  + toString(): String
+  + getCommission(): float
+  + getAnnouncementAsString(): String
+  + setCommission(float): void
+  + setDate(LocalDate): void
+  + getAnnouncement(String, String, int): Announcement
+  + createProperty(float, Location, float, ArrayList<String>): Property
+  + setTypeOfBusiness(TypeOfBusiness): void
+  + setStatus(AnnouncementStatus): void
+  + setPrice(float): void
+  + setProperty(Property): void
+}
+class AnnouncementDTO {
+  + AnnouncementDTO(): 
+  + AnnouncementDTO(Announcement): 
+  + AnnouncementDTO(float, TypeOfBusiness, Property, Employee): 
+  - typeOfBusiness: TypeOfBusiness
+  - property: Property
+  ~ announcementDTOs: List<AnnouncementDTO>
+  - price: float
+  - agent: Employee
+  + getTypeOfBusiness(): TypeOfBusiness
+  + getPrice(): float
+  + getProperty(): Property
+  + toString(): String
+  + getAnnouncement(): AnnouncementDTO
+  + getAgent(): Employee
+}
+class AnnouncementLocationComparator {
+  + AnnouncementLocationComparator(): 
+  + compare(Announcement, Announcement): int
+}
+class AnnouncementMapper {
+  + AnnouncementMapper(): 
+  - announcementDTOList: List<AnnouncementDTO>
+  ~ announcementRepository: AnnouncementRepository
+  + getAnnouncementDTOById(int): AnnouncementDTO?
+  + convert(List<Announcement>): List<AnnouncementDTO>
+  + getAllAnnouncements(): List<AnnouncementDTO>
+  + getAllAnnouncementsRecentToOldest(): List<AnnouncementDTO>
+  + toDto(List<Announcement>): List<AnnouncementDTO>
+  + toDtoAnnouncement(Announcement): AnnouncementDTO
+}
+class AnnouncementPriceComparator {
+  + AnnouncementPriceComparator(): 
+  + compare(Announcement, Announcement): int
+}
+class AnnouncementRepository {
+  + AnnouncementRepository(): 
+  ~ announcements: List<Announcement>
+  ~ publishedAnnouncements: List<Announcement>
+  ~ requestedAnnouncements: List<Announcement>
+  ~ rentedAnnouncements: List<Announcement>
+  ~ soldAnnouncements: List<Announcement>
+  ~ rejectedAnnouncements: List<Announcement>
+  ~ pendentAnnouncements: List<Announcement>
+  + readObject(): List<Announcement>
+  + createAnnouncement(Announcement): boolean
+  + getPendentAnnouncements(): List<Announcement>
+  + getAnnouncements(String, String, int): List<Announcement>
+  + getRentedAnnouncements(): List<Announcement>
+  + getAllAnnouncements(): List<Announcement>
+  + createAnnouncement(LocalDate, AnnouncementStatus, float, float, TypeOfBusiness, Property, Employee): Announcement
+  + getSoldAnnouncements(): List<Announcement>
+  + getRequestsByAgentName(String): List<Announcement>
+  + getAvailableFields(): List<List<Object>>
+  + addAnnouncement(Announcement): boolean
+  + getRejectedAnnouncements(): List<Announcement>
+  + getRequestedAnnouncements(): List<Announcement>
+  + validateAnnouncement(Announcement): boolean
+  + save(Announcement): boolean
+  + writeObject(): void
+  + saveAnnouncement(Announcement): void
+  + getPublishedAnnouncements(): List<Announcement>
+}
+class AnnouncementRequestDTO {
+  + AnnouncementRequestDTO(): 
+  - typeOfBusiness: TypeOfBusiness
+  - price: float
+  - date: LocalDate
+  - status: AnnouncementStatus
+  - property: Property
+  + getProperty(): Property
+  + setStatus(AnnouncementStatus): void
+  + getPrice(): float
+  + setDate(LocalDate): void
+  + setProperty(Property): void
+  + getTypeOfBusiness(): TypeOfBusiness
+  + AnnouncementRequestDTO(LocalDate, AnnouncementStatus, float, TypeOfBusiness, Property): void
+  + getStatus(): AnnouncementStatus
+  + getDate(): LocalDate
+  + setPrice(float): void
+  + setTypeOfBusiness(TypeOfBusiness): void
+  + toString(): String
+}
+class AnnouncementRequestMapper {
+  + AnnouncementRequestMapper(): 
+  + toEntity(AnnouncementRequestDTO): Announcement
+  + toDto(Announcement): AnnouncementRequestDTO
+}
+class AnnouncementRequestsController {
+  + AnnouncementRequestsController(): 
+  - authenticationController: AuthenticationController
+  - employeeRepository: EmployeeRepository
+  - announcementRepository: AnnouncementRepository
+  - announcementRequestMapper: AnnouncementRequestMapper
+  + getAnnouncementByIndex(int, Employee): AnnouncementRequestDTO
+  + acceptAnnouncementRequest(int, float, Employee): void
+  + rejectAnnouncementRequest(int, String, Employee): void
+  + isEmployee(String): boolean
+  + getEmployee(String): Employee
+  + getAnnouncementRequests(Employee): List<AnnouncementRequestDTO>
+}
+class AnnouncementRequestsUI {
+  + AnnouncementRequestsUI(): 
+  - scanner: Scanner
+  - controller: AnnouncementRequestsController
+  + run(): void
+}
+enum AnnouncementStatus << enumeration >> {
+  + AnnouncementStatus(): 
+  + REQUESTED: 
+  + RENTED: 
+  + PENDENT: 
+  + PUBLISHED: 
+  + SOLD: 
+  + REJECTED: 
+  + values(): AnnouncementStatus[]
+  + valueOf(String): AnnouncementStatus
+}
+class Apartment {
+  + Apartment(float, Location, float, ArrayList<String>, int, int, int, ArrayList<String>): 
+  - equipment: ArrayList<String>
+  - numberOfBedrooms: int
+  - numberOfBathrooms: int
+  - numberOfParkingSpaces: int
+  + getNumberOfBedrooms(): int
+  + getNumberOfBathrooms(): int
+  + setNumberOfBathrooms(int): int
+  + getEquipment(): ArrayList<String>
+  + setEquipment(List<String>): List<String>
+  + toString(): String
+  + getNumberOfParkingSpaces(): int
+  + setNumberOfParkingSpaces(int): int
+  + setNumberOfBedrooms(int): int
+}
+class ApplicationSession {
+  + ApplicationSession(): 
+  - COMPANY_DESIGNATION: String
+  - authenticationRepository: AuthenticationRepository
+  - CONFIGURATION_FILENAME: String
+  - singleton: ApplicationSession
+  + getCurrentSession(): UserSession
+  - getProperties(): Properties
+  + getInstance(): ApplicationSession
+}
+class AuthenticationController {
+  + AuthenticationController(): 
+  + ROLE_STORE_MANAGER: String
+  + ROLE_CLIENT: String
+  + ROLE_NETWORK_MANAGER: String
+  + ROLE_AGENT: String
+  + ROLE_UNREGISTERED: String
+  + ROLE_OWNER: String
+  - authenticationRepository: AuthenticationRepository
+  + ROLE_ADMIN: String
+  + ROLE_EMPLOYEE: String
+  + doLogin(String, String): boolean
+  + getAgentName(): String
+  + doLogout(): void
+  + getUserRoles(): List<UserRoleDTO>
+  + getCurrentSession(): UserSession
+  + getCurrentUserSession(): String
+}
+class AuthenticationRepository {
+  + AuthenticationRepository(): 
+  - authenticationFacade: AuthFacade
+  + doLogout(): void
+  + addUserRole(String, String): boolean
+  + doLogin(String, String): boolean
+  + addUserWithRole(String, String, String, String): boolean
+  + getCurrentUserSession(): UserSession
+}
+class AuthenticationRepository {
+  + AuthenticationRepository(): 
+  - authenticationFacade: AuthFacade
+  + addUserWithRole(String, String, String, String): boolean
+  + addUserRole(String, String): boolean
+  + getCurrentUserSession(): UserSession
+  + doLogin(String, String): boolean
+  + doLogout(): void
+}
+class AuthenticationUI {
+  + AuthenticationUI(): 
+  - ctrl: AuthenticationController
+  + run(): void
+  - logout(): void
+  - selectsRole(List<UserRoleDTO>): UserRoleDTO
+  - getMenuItemForRoles(): List<MenuItem>
+  - doLogin(): boolean
+  - redirectToRoleUI(List<MenuItem>, UserRoleDTO): void
+}
+class Bootstrap {
+  + Bootstrap(): 
+  + run(): void
+  - addTaskCategories(): void
+  - addOrganization(): void
+  - addUsers(): void
+}
+class Branch {
+  + Branch(): 
+  + Branch(int, String, Location, String, String): 
+  - location: Location
+  - ID: int
+  - phoneNumber: String
+  - name: String
+  - email: String
+  + getLocation(): Location
+  + setLocation(Location): void
+  + setPhoneNumber(String): void
+  + setName(String): void
+  + checkIfDataIsNull(int, String, Location, String, String): void
+  + checkNameLength(String): void
+  + hashCode(): int
+  + toString(): String
+  + checkValidPhoneNumber(String): void
+  + getPhoneNumber(): String
+  + getEmail(): String
+  + getName(): String
+  + setEmail(String): void
+  + equals(Object): boolean
+  + checkValidEmail(String): void
+  + getID(): int
+}
+class BranchRepository {
+  + BranchRepository(): 
+  + branches: List<Branch>
+  + saveBranch(Branch): boolean
+  + findBranch(Branch): int
+  + indexOf(Branch): int
+  + createBranch(int, String, Location, String, String): Branch
+  - getLowestAvailableID(): int
+  + writeObject(): void
+  + getBranchList(): List<Branch>
+  + create(List<?>): Branch
+  + getBranchByID(int): Branch?
+  + validate(Branch): boolean
+  + save(Branch): boolean
+  + readObject(): List<Branch>
+}
+class ChooseRoleUI {
+  + ChooseRoleUI(): 
+  + run(): void
+}
+class City {
+  + City(String): 
+  + City(): 
+  - name: String
+  + getName(): String
+  + equals(Object): boolean
+  + setName(String): void
+  + toString(): String
+}
+class CityController {
+  + CityController(CityRepository): 
+  - cityRepository: CityRepository
+  ~ repositories: Repositories
+  + findCityByName(String): City
+  + addCity(String): void
+  + getAllCities(): List<City>
+}
+class CityRepository {
+  + CityRepository(): 
+  - cities: List<City>
+  + findAll(): List<City>
+  + readObject(): void
+  - cityIsValid(City): boolean
+  + isEmpty(): boolean
+  + save(City): void
+  + createCity(String): City
+  + findByName(String): City
+  + writeObject(): void
+}
+class CityUI {
+  + CityUI(CityController): 
+  - scanner: Scanner
+  - cityController: CityController
+  + run(): void
+  - listCities(): void
+  - addCity(): void
+  - findCity(): void
+}
+class Client {
+  + Client(String, String, int, int, String, Location, long): 
+  + Client(String, String, String, int, int, String, int): 
+  + Client(List<String>): 
+  + Client(String, String, String, int, int, Location, int): 
+  + Client(String, String, int, int, long): 
+  - email: String
+  - name: String
+  - password: String
+  - address: String
+  # location: Location
+  - taxNumber: int
+  - cCNumber: int
+  - telephoneNumber: long
+  - isValidEmail(): void
+  - isValidLocation(): void
+  - isValidPassword(): void
+  + getName(): String
+  - isValidTaxNumber(): void
+  - isValidTelephoneNumber(): void
+  - validate(): boolean
+  - isValidAddress(): void
+  - isValidName(): void
+  + getEmail(): String
+  + getPassword(): String
+  - isValidCCNumber(): void
+}
+class ClientRepository {
+  + ClientRepository(): 
+  - clients: List<Client>
+  + createClient(String, String, int, int, long): Client
+  + getUsers(): List<Client>
+  + userExists(Client): boolean
+  + add(Client): boolean
+}
+class ClientUI {
+  + ClientUI(): 
+  + run(): void
+}
+class CreateTaskController {
+  + CreateTaskController(OrganizationRepository, TaskCategoryRepository, AuthenticationRepository): 
+  + CreateTaskController(): 
+  - organizationRepository: OrganizationRepository
+  - taskCategoryRepository: TaskCategoryRepository
+  - authenticationRepository: AuthenticationRepository
+  - getOrganizationRepository(): OrganizationRepository
+  + getTaskCategories(): List<TaskCategory>
+  + createTask(String, String, String, String, Integer, Double, String): Optional<Task>
+  - getTaskCategoryRepository(): TaskCategoryRepository
+  - getAuthenticationRepository(): AuthenticationRepository
+  - getEmployeeFromSession(): Employee
+  - getTaskCategoryByDescription(String): TaskCategory
+}
+class CreateTaskUI {
+  + CreateTaskUI(): 
+  - taskDuration: Integer
+  - taskTechnicalDescription: String
+  - controller: CreateTaskController
+  - taskCategoryDescription: String
+  - empployeeEmail: String
+  - taskCost: Double
+  - taskReference: String
+  - taskInformalDescription: String
+  - taskDescription: String
+  - requestTaskDuration(): Integer
+  - submitData(): void
+  - requestTaskTechnicalDescription(): String
+  - getController(): CreateTaskController
+  + run(): void
+  - requestTaskCost(): Double
+  - displayTaskCategoryOptions(List<TaskCategory>): void
+  - requestTaskDescription(): String
+  - displayAndSelectTaskCategory(): String
+  - requestData(): void
+  - requestTaskReference(): String
+  - requestTaskInformalDescription(): String
+}
+class CsvHandler {
+  + CsvHandler(): 
+  - COLUMN_ANNOUNCEMENT_DATE: int
+  - COLUMN_BRANCH_EMAIL: int
+  - CSV_VALUE_YES: String
+  + CSV_DELIMITER: String
+  - CSV_VALUE_NO: String
+  ~ clientRepository: ClientRepository
+  - COLUMN_PROPERTY_NUMBER_PARKING: int
+  - COLUMN_OWNER_EMAIL: int
+  - COLUMN_PROPERTY_NUMBER_BATHROOMS: int
+  - COLUMN_BRANCH_ID: int
+  - COLUMN_BRANCH_LOCATION: int
+  ~ branchRepository: BranchRepository
+  - COLUMN_OWNER_PASSPORT: int
+  ~ employeeRepository: EmployeeRepository
+  - COLUMN_ANNOUNCEMENT_TYPE_BUSINESS: int
+  - COLUMN_ANNOUNCEMENT_COMMISSION: int
+  - COLUMN_ANNOUNCEMENT_PRICE: int
+  - COLUMN_ANNOUNCEMENT_ID: int
+  - COLUMN_OWNER_PHONE: int
+  - COLUMN_PROPERTY_BASEMENT: int
+  - COLUMN_PROPERTY_TYPE: int
+  - COLUMN_OWNER_NAME: int
+  - COLUMN_BRANCH_PHONE: int
+  - COLUMN_PROPERTY_LOCATION: int
+  - COLUMN_PROPERTY_AREA: int
+  - COLUMN_PROPERTY_REQUESTED_PRICE: int
+  - COLUMN_PROPERTY_SUN_EXPOSURE: int
+  ~ stateRepository: StateRepository
+  - CSV_VALUE_NA: String
+  - COLUMN_PROPERTY_EQUIPMENT_AIRCON: int
+  + LEGACY_AGENT_NAME: String
+  - COLUMN_OWNER_TAX_NUMBER: int
+  - COLUMN_PROPERTY_EQUIPMENT_HEATING: int
+  - COLUMN_PROPERTY_NUMBER_BEDROOMS: int
+  - COLUMN_PROPERTY_CITY_CENTER_DISTANCE: int
+  - COLUMN_PROPERTY_LOFT: int
+  ~ announcementRepository: AnnouncementRepository
+  - COLUMN_BRANCH_NAME: int
+  ~ cityRepository: CityRepository
+  - extensionIsCsv(File): boolean
+  + getDataFromCsvFile(File): List<?>
+  + csvIsEmpty(List<?>): boolean
+  - parseBranchData(List<?>): Branch
+  + parseCSV(List<?>): int
+  - parseLocation(String): Location
+  - parseNumber(String): int
+  - removeDashes(String): String
+  - parsePropertyData(List<?>): Property
+  - parseYyyyMmDdDate(String): LocalDate
+  - parseClientData(List<?>): Client
+  - parseAnnouncementData(List<?>): Announcement
+}
+class DevTeamUI {
+  + DevTeamUI(): 
+  + run(): void
+}
+class DisplayAnnouncementsController {
+  + DisplayAnnouncementsController(): 
+  ~ announcementRepository: AnnouncementRepository
+  + getAllVisibleAnnouncements(): List<Announcement>
+  + getAvailableFields(): List<List<Object>>
+  + getAnnouncements(String, String, int): List<Announcement>
+}
+class DisplayAnnouncementsUI {
+  + DisplayAnnouncementsUI(): 
+  - controller: DisplayAnnouncementsController
+  + sortAnnouncements(int, List<Announcement>): List<Announcement>
+  - runUS(): void
+  + run(): void
+  + getAvailableFields(): List<List<Object>>
+  + requestFilterData(List<List<Object>>): String[]
+  - displayAnnouncements(List<Announcement>): void
+  + displayAvailableFields(List<List<Object>>): boolean
+  + getMatchingAnnouncements(String[]): List<Announcement>
+}
+class District {
+  + District(String, List<City>): 
+  - cities: List<City>
+  - name: String
+  + setCities(List<City>): void
+  + setName(String): void
+  + getCities(): List<City>
+  + getName(): String
+  + equals(Object): boolean
+  + toString(): String
+}
+class DistrictController {
+  + DistrictController(DistrictRepository): 
+  - districtRepository: DistrictRepository
+  + getAllDistricts(): List<District>
+  + addDistrict(String): void
+  + findDistrictByName(String): District
+  + addCityToDistrict(String, City): void
+}
+class DistrictRepository {
+  + DistrictRepository(): 
+  - districts: List<District>
+  + readObject(): void
+  - districtIsValid(District): boolean
+  + isEmpty(): boolean
+  + findByName(String): District
+  + save(District): void
+  + findAll(): List<District>
+  + addCity(String, City): void
+  + writeObject(): void
+}
+class DistrictUI {
+  + DistrictUI(DistrictController, CityController): 
+  - districtController: DistrictController
+  - cityController: CityController
+  - scanner: Scanner
+  - findDistrict(): void
+  - addDistrict(): void
+  - listDistricts(): void
+  + run(): void
+  - addCityToDistrict(): void
+}
+class DuplicateDataException {
+  + DuplicateDataException(String): 
+}
+class EmailService {
+  + EmailService(): 
+  + sendNotification(Client, String): void
+}
+class Employee {
+  + Employee(String): 
+  - phone: String
+  - email: String
+  - name: String
+  - position: String
+  + clone(): Employee
+  + equals(Object): boolean
+  + hashCode(): int
+  + hasEmail(String): boolean
+}
+class Employee {
+  + Employee(String): 
+  + Employee(String, int, int, String, String, String, Role, Branch): 
+  - emailAddress: String
+  - role: Role
+  - address: String
+  - taxNumber: int
+  - telephoneNumber: String
+  - passportNumber: int
+  - branch: Branch
+  - name: String
+  + getName(): String
+  + getTaxNumber(): int
+  + setName(String): String
+  + equals(Object): boolean
+  + setTaxNumber(int): int
+  + hashCode(): int
+  + getTelephoneNumber(): String
+  + setBranch(Branch): void
+  + getAddress(): String
+  + setEmailAdress(String): String
+  + getRole(): Role
+  + getBranch(): Branch
+  + setTelephoneNumber(String): String
+  + toString(): String
+  + setPassportNumber(int): int
+  + getEmailAddress(): String
+  + equals1(Object): boolean
+  - validate(): boolean
+  + setRole(Role): void
+  + getPassportNumber(): int
+  + setAddress(String): String
+}
+class EmployeeRepository {
+  + EmployeeRepository(): 
+  ~ authenticationRepository: AuthenticationRepository
+  + employeeList: List<Employee>
+  + getUserByEmail(String): Employee
+  + getEmployeeListAsString(): String
+  + getEmployeeList(): List<Employee>
+  + validateEmployee(Employee): boolean
+  + saveEmployee(Employee): boolean
+  + readObject(): List<Employee>
+  + addEmployee(Employee): boolean
+  + findByEmail(String): Employee
+  + createEmployee(String): Employee
+  + createEmployee(String, int, int, String, String, String, Role, Branch): Employee
+  + saveEmployeeInTheSystem(Employee, String): void
+  + getEmployee(String): Employee?
+  + findByName(String): Employee
+  + writeObject(): void
+}
+class FileOps {
+  + FileOps(): 
+  + deleteFile(String): boolean
+  + createFile(String, String): boolean
+  + isFileEmpty(File): boolean
+  + appendToFile(String, String): boolean
+  + readFile(String): File
+}
+class GenericRepository<T> {
+  + GenericRepository(): 
+  - elements: List<T>
+  + save(T): boolean
+  + isValid(T): boolean
+}
+class House {
+  + House(float, Location, float, ArrayList<String>, int, int, int, ArrayList<String>, boolean, boolean, SunExposure): 
+  - hasInhabitableLoft: boolean
+  ~ sunExposure: SunExposure
+  - equipment: ArrayList<String>
+  - numberOfParkingSpaces: int
+  - hasBasement: boolean
+  - numberOfBedrooms: int
+  - numberOfBathrooms: int
+  + toString(): String
+  + getNumberOfBedrooms(): int
+  + setSunExposure(SunExposure): void
+  + getNumberOfParkingSpaces(): int
+  + setHasInhabitableLoft(boolean): void
+  + getEquipment(): ArrayList<String>
+  + getHasInhabitableLoft(): boolean
+  + setEquipment(ArrayList<String>): ArrayList<String>
+  + setHasBasement(boolean): void
+  + getSunExposure(): SunExposure
+  + setNumberOfBedrooms(int): int
+  + setNumberOfBathrooms(int): int
+  + setNumberOfParkingSpaces(int): int
+  + getHasBasement(): boolean
+  + getNumberOfBathrooms(): int
+}
+interface InhabitableProperty << interface >> {
+  + getNumberOfBathrooms(): int
+  + getEquipment(): List<String>
+  + getNumberOfBedrooms(): int
+  + getNumberOfParkingSpaces(): int
+}
+class InvalidFileTypeException {
+  + InvalidFileTypeException(String): 
+}
+class Land {
+  + Land(float, Location, float, ArrayList<String>): 
+  + toString(): String
+}
+class LegacyImportController {
+  + LegacyImportController(): 
+  - LEGACY_AGENT_TAX_NUMBER: int
+  - LEGACY_AGENT_EMAIL: String
+  - LEGACY_AGENT_PHONE_NUMBER: int
+  - LEGACY_AGENT_PASSPORT_NUMBER: int
+  ~ announcementRepository: AnnouncementRepository
+  ~ employeeRepository: EmployeeRepository
+  - LEGACY_AGENT_NAME: String
+  - LEGACY_AGENT_ADDRESS: String
+  ~ clientRepository: ClientRepository
+  + importFile(String): int
+}
+class LegacyImportUI {
+  + LegacyImportUI(): 
+  ~ controller: LegacyImportController
+  - getFilePath(): String
+  + run(): void
+}
+class ListAllEmployeesController {
+  + ListAllEmployeesController(): 
+  ~ employeeRepository: EmployeeRepository
+  + getAllEmployees(): List
+}
+class ListAllEmplyeesUI {
+  + ListAllEmplyeesUI(): 
+  - controller: ListAllEmployeesController
+  + run(): void
+}
+class Location {
+  + Location(): 
+  + Location(int, String, City, int): 
+  + Location(String, City, int): 
+  + Location(int, String, City, District, State, int): 
+  ~ doorNumber: int
+  ~ city: City
+  ~ district: District
+  ~ zipCode: int
+  ~ street: String
+  ~ state: State
+  - streetIsValid(String): boolean
+  - cityIsValid(City): boolean
+  + toString(): String
+  + getStreet(): String
+  - isValid(): boolean
+  - zipCodeIsValid(int): boolean
+}
+class Main {
+  + Main(): 
+  + main(String[]): void
+}
+class MainMenuUI {
+  + MainMenuUI(): 
+  + run(): void
+}
+class MenuItem {
+  + MenuItem(String, Runnable): 
+  - ui: Runnable
+  - description: String
+  + toString(): String
+  + run(): void
+  + hasDescription(String): boolean
+}
+interface MultiStoryInhabitableProperty << interface >> {
+  + getHasBasement(): boolean
+  + getHasInhabitableLoft(): boolean
+}
+class NameNullException {
+  + NameNullException(String): 
+}
+class NegativeNumberException {
+  + NegativeNumberException(String): 
+}
+class NetworkManagerUI {
+  + NetworkManagerUI(): 
+  + run(): void
+}
+class Order {
+  + Order(double, AnnouncementDTO): 
+  + Order(String, double, AnnouncementDTO, Client): 
+  - announcementDTO: AnnouncementDTO
+  - id: String
+  - orderAmount: double
+  - status: boolean
+  - client: Client
+  + getAnnouncementDTO(): AnnouncementDTO
+  + equals(Object): boolean
+  + getOrderAmount(): double
+  + setAnnouncementDTO(AnnouncementDTO): AnnouncementDTO
+  + getId(): String
+  + isStatus(): boolean
+  + hashCode(): int
+  + setOrderAmount(double): double
+  + toString(): String
+  + setStatus(boolean): void
+  + getClient(): Client
+}
+class Organization {
+  + Organization(String): 
+  - name: String
+  - website: String
+  ~ tasks: List<Task>
+  - phone: String
+  - vatNumber: String
+  - email: String
+  ~ employees: List<Employee>
+  - validateEmployee(Employee): boolean
+  + employs(Employee): boolean
+  + createTask(String, String, String, String, Integer, Double, TaskCategory, Employee): Optional<Task>
+  + addEmployee(Employee): boolean
+  + hashCode(): int
+  - employeesDoNotContain(Employee): boolean
+  - tasksDoNotContain(Task): boolean
+  - validate(Task): boolean
+  - addTask(Task): boolean
+  + anyEmployeeHasEmail(String): boolean
+  + equals(Object): boolean
+  + clone(): Organization
+}
+class OrganizationRepository {
+  + OrganizationRepository(): 
+  ~ organizations: List<Organization>
+  + getOrganizationByEmployee(Employee): Optional<Organization>
+  + add(Organization): Optional<Organization>
+  - validateOrganization(Organization): boolean
+  + getOrganizationByEmployeeEmail(String): Optional<Organization>
+}
+class OwnerUI {
+  + OwnerUI(): 
+  + run(): void
+}
+class PasswordGenerator {
+  + PasswordGenerator(): 
+  - PASSWORD_SIZE: int
+  + generatePassword(): String
+}
+class PlaceOrderToBuyPropertyController {
+  + PlaceOrderToBuyPropertyController(PlaceOrderToBuyPropertyRepository): 
+  - announcementRepository: AnnouncementRepository
+  - announcementMapper: AnnouncementMapper
+  - orderRepository: PlaceOrderToBuyPropertyRepository
+  + createOrder(Double, Integer): String
+  + announcementDTOList(): List<AnnouncementDTO>
+}
+class PlaceOrderToBuyPropertyRepository {
+  + PlaceOrderToBuyPropertyRepository(): 
+  + orderList: List<Order>
+  + getOrderList(): List<Order>
+  + addOrder(Order): boolean
+  + validateOrder(Order): boolean
+  + writeObject(): void
+  + getOrdersListAsString(): String
+  + saveOrder(Order): boolean
+  + readObject(): void
+}
+class PlaceOrderToBuyPropertyUI {
+  + PlaceOrderToBuyPropertyUI(PlaceOrderToBuyPropertyController): 
+  - controller: PlaceOrderToBuyPropertyController
+  + run(): void
+}
+class Property {
+  + Property(Property): 
+  + Property(): 
+  + Property(float, Location, float, ArrayList<String>): 
+  + Property(String, float, Location, float, ArrayList<String>): 
+  - DEFAULT_AREA: float
+  - DEFAULT_LOCATION: Location
+  - DEFAULT_PHOTOGRAPHS: ArrayList<String>
+  - id: String
+  - location: Location
+  - photographs: ArrayList<String>
+  - cityCentreDistance: float
+  - area: float
+  - DEFAULT_CITY_CENTER_DISTANCE: float
+  + getNumberOfBedrooms(): int
+  + setCityCentreDistance(float): float
+  + equals(Object): boolean
+  + getId(): String
+  + getCityCentreDistance(): float
+  + getPhotographs(): ArrayList<String>
+  + hashCode(): int
+  + getLocation(): Location
+  + toString(): String
+  + setPhotographs(ArrayList<String>): ArrayList<String>
+  + setArea(float): float
+  + getArea(): float
+}
+class PublishAnnouncementController {
+  + PublishAnnouncementController(): 
+  ~ employeeRepository: EmployeeRepository
+  ~ cityRepository: CityRepository
+  ~ stateRepository: StateRepository
+  - authenticationRepository: AuthenticationRepository
+  ~ repositories: Repositories
+  - authenticationController: AuthenticationController
+  ~ districtRepository: DistrictRepository
+  - announcementRepository: AnnouncementRepository
+  + getTypeOfPropertyAsList(): List<TypeOfProperty>
+  + getCity(String): City
+  + getTypeOfBusinessAsList(): List<TypeOfBusiness>
+  + createAnnouncement(LocalDate, TypeOfBusiness, int, int, int, int, ArrayList<String>, boolean, boolean, SunExposure, int, Location, int, float, float, ArrayList, String): void
+  + getSunExposureAsList(): List<SunExposure>
+  + getAgentName(): String
+}
+class PublishAnnouncementUI {
+  + PublishAnnouncementUI(): 
+  - scanner: Scanner
+  - controller: PublishAnnouncementController
+  - authenticationController: AuthenticationController
+  + run(): void
+}
+class PurchaseOrderController {
+  + PurchaseOrderController(): 
+  - emailService: EmailService
+  - purchaseOrderRepository: PurchaseOrderRepository
+  + acceptPurchaseOrder(String, String): void
+  + getPurchaseOrdersByProperty(Property): List<Order>
+  + declinePurchaseOrder(String, String): void
+  + getPurchaseOrderById(String): Order
+  - declineOtherPurchaseOrders(String): void
+}
+class PurchaseOrderRepository {
+  + PurchaseOrderRepository(): 
+  - purchaseOrders: List<Order>
+  + updatePurchaseOrder(Order): void
+  + delete(Order): void
+  + save(Order): void
+  + getPurchaseOrderById(String): Order
+  + getByProperty(Property): List<Order>
+  + accept(Order): void
+  + getAll(): List<Order>
+  + decline(Order): void
+}
+class PurchaseOrderUI {
+  + PurchaseOrderUI(): 
+  - purchaseOrderController: PurchaseOrderController
+  - scanner: Scanner
+  - property: Property
+  + run(): void
+}
+class ReadInput {
+  + ReadInput(): 
+  + validateInteger(int, int, int): boolean
+  + validateEmail(String): boolean
+  + integer(String, int, int): int
+  + email(String): String
+}
+class ReadResponseOfAppointmentRequestController {
+  + ReadResponseOfAppointmentRequestController(): 
+}
+class RegisterBranchController {
+  + RegisterBranchController(): 
+  ~ branchRepository: BranchRepository
+  ~ districtRepository: DistrictRepository
+  ~ cityRepository: CityRepository
+  ~ stateRepository: StateRepository
+  + saveBranch(Branch): boolean
+  + createLocation(String, String, String, String, String, String): Location
+  + createBranch(int, String, Location, String, String): Branch
+}
+class RegisterBranchUI {
+  + RegisterBranchUI(): 
+  - controller: RegisterBranchController
+  + run(): void
+}
+class RegisterClientController {
+  + RegisterClientController(): 
+  - authenticationRepository: AuthenticationRepository
+  - clientRepository: ClientRepository
+  + createClient(List<String>): Client
+  + saveClient(Client): boolean
+}
+class RegisterClientUI {
+  + RegisterClientUI(): 
+  - controller: RegisterClientController
+  + run(): void
+}
+class RegisterEmployeeController {
+  + RegisterEmployeeController(): 
+  - branchRepository: BranchRepository
+  - employeeRepository: EmployeeRepository
+  ~ authenticationRepository: AuthenticationRepository
+  + createEmployee(String, int, int, String, String, String, Integer, Integer): String
+  + getBranchList(): List<Branch>
+  + sendEmail(String): String
+  + getRolesAsList(): List<Role>
+}
+class RegisterEmployeeUI {
+  + RegisterEmployeeUI(): 
+  - controller: RegisterEmployeeController
+  + run(): void
+}
+class RegisterPropertyController {
+  + RegisterPropertyController(AnnouncementRepository): 
+  ~ cityRepository: CityRepository
+  ~ employeeRepository: EmployeeRepository
+  ~ repositories: Repositories
+  ~ stateRepository: StateRepository
+  - announcementRepository: AnnouncementRepository
+  ~ districtRepository: DistrictRepository
+  + getTypeOfPropertyAsList(): List<TypeOfProperty>
+  + createAnnouncement(LocalDate, TypeOfBusiness, int, int, int, int, ArrayList<String>, boolean, boolean, SunExposure, int, Location, int, float, ArrayList<String>, Employee): void
+  + getAgent(): List<Employee>
+  + getEmployee(String): Employee
+  + getSunExposureAsList(): List<SunExposure>
+  + getCity(String): City
+  + getTypeOfBusinessAsList(): List<TypeOfBusiness>
+}
+class RegisterPropertyUI {
+  + RegisterPropertyUI(RegisterPropertyController): 
+  - controller: RegisterPropertyController
+  + run(): void
+}
+class Repositories {
+  - Repositories(): 
+  ~ taskCategoryRepository: TaskCategoryRepository
+  - instance: Repositories
+  ~ organizationRepository: OrganizationRepository
+  ~ authenticationRepository: AuthenticationRepository
+  + getAuthenticationRepository(): AuthenticationRepository
+  + getOrganizationRepository(): OrganizationRepository
+  + getInstance(): Repositories
+  + getTaskCategoryRepository(): TaskCategoryRepository
+}
+class Repositories {
+  - Repositories(): 
+  ~ employeeRepository: EmployeeRepository
+  ~ scheduleRepository: ScheduleRepository
+  ~ announcementRepository: AnnouncementRepository
+  ~ stateRepository: StateRepository
+  ~ clientRepository: ClientRepository
+  ~ districtRepository: DistrictRepository
+  ~ cityRepository: CityRepository
+  ~ authenticationRepository: AuthenticationRepository
+  - instance: Repositories
+  ~ branchRepository: BranchRepository
+  + getUserRepository(): ClientRepository
+  + getStateRepository(): StateRepository
+  + getCityRepository(): CityRepository
+  + getEmployeeRepository(): EmployeeRepository
+  + getBranchRepository(): BranchRepository
+  + getScheduleRepository(): ScheduleRepository
+  + getAnnouncementRepository(): AnnouncementRepository
+  + getInstance(): Repositories
+  + getAuthenticationRepository(): AuthenticationRepository
+  + getDistrictRepository(): DistrictRepository
+  + getClientRepository(): ClientRepository
+}
+enum Role << enumeration >> {
+  - Role(int): 
+  - valor: int
+  + ADMNISTRATOR: 
+  + AGENT: 
+  + NETWORK_MANAGER: 
+  + getRoleById(int): Role?
+  + values(): Role[]
+  + valueOf(String): Role
+  + getRoleID(): int
+}
+class Schedule {
+  + Schedule(String, int, AnnouncementDTO, LocalDate, LocalTime, LocalTime, String, boolean, boolean): 
+  - beginHour: LocalTime
+  - endHour: LocalTime
+  - announcementDTO: AnnouncementDTO
+  - name: String
+  - phoneNumber: int
+  - day: LocalDate
+  - note: String
+  - aproved: boolean
+  - status: boolean
+  + getAnnouncementDTO(): AnnouncementDTO
+  + setName(String): String
+  + setAproved(boolean): boolean
+  + getPhoneNumber(): int
+  + setNote(String): String
+  + getEndHour(): LocalTime
+  + setBeginHour(LocalTime): LocalTime
+  + toString(): String
+  + getStatus(): boolean
+  + setPhoneNumber(int): Integer
+  + getName(): String
+  + getAproved(): boolean
+  + setDay(LocalDate): LocalDate
+  + setStatus(boolean): boolean
+  + equals(Object): boolean
+  + getBeginHour(): LocalTime
+  + getNote(): String
+  + hashCode(): int
+  + setAnnouncementDTO(AnnouncementDTO): AnnouncementDTO
+  + getDay(): LocalDate
+  + setEndHour(LocalTime): LocalTime
+}
+class ScheduleRepository {
+  + ScheduleRepository(): 
+  + schedulesByResposibleAgent: List<Schedule>
+  + scheduleList: List<Schedule>
+  + addConfirmedSchedule(Schedule): boolean
+  + saveSchedule(Schedule): boolean
+  + readObjectScheduleRequest(): List<Schedule>
+  + validateSchedule(Schedule): boolean
+  + writeObjectScheduleRequest(): void
+  + addSchedule(Schedule): boolean
+  + addRejectedSchedule(Schedule): boolean
+  + getScheduleList(): List<Schedule>
+  + getScheduleListAsString(): String
+  + getRequestScheduleListByResponsibleAgent(Employee): List<Schedule>
+}
+class ScheduleVisitController {
+  + ScheduleVisitController(ScheduleRepository): 
+  ~ repositories: Repositories
+  - authenticationRepository: AuthenticationRepository
+  - employeeRepository: EmployeeRepository
+  - scheduleRepository: ScheduleRepository
+  - announcementRepository: AnnouncementRepository
+  - announcementMapper: AnnouncementMapper
+  + createSchedule(String, int, Integer, LocalDate, LocalTime, LocalTime, String): String
+  + getAnnouncementDTO(int): AnnouncementDTO
+  + announcementDTOList(): List<AnnouncementDTO>
+  + validateScheduleHour(AnnouncementDTO, LocalDate, LocalTime, LocalTime): boolean
+}
+class ScheduleVisitUI {
+  + ScheduleVisitUI(ScheduleVisitController): 
+  - controller: ScheduleVisitController
+  + run(): void
+}
+class ShowTextUI {
+  + ShowTextUI(String): 
+  - text: String
+  + run(): void
+}
+class SpecifyStatesDistrictsCitiesUI {
+  + SpecifyStatesDistrictsCitiesUI(): 
+  + run(): void
+}
+class State {
+  + State(String, List<District>): 
+  - districts: List<District>
+  - name: String
+  + equals(Object): boolean
+  + getName(): String
+  + toString(): String
+  + setName(String): void
+  + getDistricts(): List<District>
+  + setDistricts(List<District>): void
+}
+class StateController {
+  + StateController(StateRepository): 
+  - stateRepository: StateRepository
+  + findStateByName(String): State
+  + addDistrictToState(State, District): void
+  + getAllStates(): List<State>
+  + addState(String): void
+}
+class StateRepository {
+  + StateRepository(): 
+  - states: List<State>
+  + findByName(String): State
+  + isEmpty(): boolean
+  - stateIsValid(State): boolean
+  + createState(String, List<District>): State
+  + writeObject(): void
+  + createState(String): State
+  + readObject(): void
+  + addDistrictToState(State, District): void
+  + save(State): void
+  + findAll(): List<State>
+}
+class StateUI {
+  + StateUI(StateController, DistrictController): 
+  - stateController: StateController
+  - districtController: DistrictController
+  - scanner: Scanner
+  - addState(): void
+  - findState(): void
+  - listStates(): void
+  + run(): void
+  - addDistrictToState(): void
+}
+enum SunExposure << enumeration >> {
+  - SunExposure(int): 
+  + NORTH: 
+  + WEST: 
+  - valor: int
+  + SOUTH: 
+  + EAST: 
+  + values(): SunExposure[]
+  + valueOf(String): SunExposure
+  + getSunExposureID(): int
+  + getSunExposureById(int): SunExposure?
+}
+class Task {
+  + Task(String, String, String, String, Integer, Double, TaskCategory, Employee): 
+  - taskCategory: TaskCategory
+  - informalDescription: String
+  - employee: Employee
+  - duration: Integer
+  - technicalDescription: String
+  - cost: Double
+  - description: String
+  - reference: String
+  - validateReference(String): void
+  + hashCode(): int
+  + equals(Object): boolean
+  + clone(): Task
+}
+class TaskCategory {
+  + TaskCategory(String): 
+  - description: String
+  + hashCode(): int
+  + clone(): TaskCategory
+  + getDescription(): String
+  + equals(Object): boolean
+}
+class TaskCategoryRepository {
+  + TaskCategoryRepository(): 
+  - taskCategories: List<TaskCategory>
+  - validateTaskCategory(TaskCategory): boolean
+  + getTaskCategories(): List<TaskCategory>
+  + add(TaskCategory): Optional<TaskCategory>
+  + getTaskCategoryByDescription(String): TaskCategory
+}
+enum TypeOfBusiness << enumeration >> {
+  - TypeOfBusiness(int): 
+  + SELL: 
+  + RENT: 
+  - valor: int
+  + getTypeOfBusinessById(int): TypeOfBusiness?
+  + valueOf(String): TypeOfBusiness
+  + values(): TypeOfBusiness[]
+  + getTypeOfBusinessID(): int
+}
+enum TypeOfProperty << enumeration >> {
+  - TypeOfProperty(int): 
+  - valor: int
+  + HOUSE: 
+  + LAND: 
+  + APARTMENT: 
+  + valueOf(String): TypeOfProperty
+  + values(): TypeOfProperty[]
+  + getTypeOfPropertyID(): int
+  + getTypeOfPropertyById(int): TypeOfProperty?
+}
+class UnregisteredUserUI {
+  + UnregisteredUserUI(): 
+  + run(): void
+}
+class UserSession {
+  + UserSession(UserSession): 
+  - userSession: UserSession
+  + getUserEmail(): String
+  + isLoggedInWithRole(String): boolean
+  + getUserName(): String
+  + isLoggedIn(): boolean
+  + getUserRoles(): List<UserRoleDTO>
+  + doLogout(): void
+}
+class Utils {
+  + Utils(): 
+  + readIntegerFromConsole(String): int
+  + readDateFromConsole(String): Date
+  + showAndSelectOne(List, String): Object
+  + selectsObject(List): Object?
+  + showAndSelectIndex(List, String): int
+  + confirm(String): boolean
+  + enterToContinue(): void
+  + readDoubleFromConsole(String): double
+  + readLongFromConsole(String): long
+  + sendEmail(String, String): boolean
+  + showList(List, String): void
+  + selectsIndex(List): int
+  + readLineFromConsole(String): String?
+}
+class ValidateScheduleController {
+  + ValidateScheduleController(ScheduleRepository): 
+  ~ repositories: Repositories
+  - scheduleRepository: ScheduleRepository
+  - authenticationRepository: AuthenticationRepository
+  - employeeRepository: EmployeeRepository
+  - announcementRepository: AnnouncementRepository
+  + addRejectedSchedule(int): boolean
+  + addConfirmedSchedule(int): boolean
+  + getRequestScheduleListByResponsibleAgent(): List<Schedule>
+}
+interface Validator << interface >> {
+  + validatePhoneNumber(String): boolean
+  + validateZipCode(String): boolean
+  + validateString(String): boolean
+  + validateEmail(String): boolean
+  + validatePhoneNumber(int): boolean
+  + validateTaxNumber(int): boolean
+  + validatePassportNumber(int): boolean
+  + validateInteger(int): boolean
+  + validateTaxNumber(String): boolean
+  + validatePassportNumber(String): boolean
+  + validateZipCode(int): boolean
+  + validateInteger(String): boolean
+  + validateObject(Object): boolean
+}
+
+Apartment                                   -[#008200,dashed]-^  InhabitableProperty                        
+Apartment                                   -[#000082,plain]-^  Property                                   
+Employee                                    -[#008200,dashed]-^  Validator                                  
+House                                       -[#008200,dashed]-^  MultiStoryInhabitableProperty              
+House                                       -[#000082,plain]-^  Property                                   
+Land                                        -[#000082,plain]-^  Property                                   
+Location                                    -[#008200,dashed]-^  Validator                                  
+MultiStoryInhabitableProperty               -[#008200,plain]-^  InhabitableProperty                        
+@enduml

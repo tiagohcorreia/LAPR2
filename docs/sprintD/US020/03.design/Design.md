@@ -5,35 +5,31 @@
 ### 3.1. Rationale
 
 
-| Interaction ID | Question: Which class is responsible for... | Answer               | Justification (with patterns)                                                                                 |
-|:-------------  |:--------------------- |:---------------------|:--------------------------------------------------------------------------------------------------------------|
-| Step 1  		 |	... interacting with the actor? |          | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
-| 			  		 |	... coordinating the US? |  | Controller                                                                                                    |
-| 			  		 |	... instantiating a new Task? |          | Creator (Rule 1): in the DM Organization has a Task.                                                          |
-| 			  		 | ... knowing the user using the system?  | UserSession          | IE: cf. A&A component documentation.                                                                          |
-| 			  		 |							 | Organization         | IE: knows/has its own Employees                                                                               |
-| 			  		 |							 | Employee             | IE: knows its own data (e.g. email)                                                                           |
-| Step 2  		 |							 |                      |                                                                                                               |
-| Step 3  		 |	...saving the inputted data? |                  | IE: object created in step 1 has its own data.                                                                |
-| Step 4  		 |	...knowing the task categories to show? |                | IE: Task Categories are defined by the Administrators.                                                        |
-| Step 5  		 |	... saving the selected category? |                  | IE: object created in step 1 is classified in one Category.                                                   |
-| Step 6  		 |							 |                      |                                                                                                               |              
-| Step 7  		 |	... validating all data (local validation)? |                  | IE: owns its data.                                                                                            | 
-| 			  		 |	... validating all data (global validation)? |          | IE: knows all its tasks.                                                                                      | 
-| 			  		 |	... saving the created task? | Organization         | IE: owns all its tasks.                                                                                       | 
-| Step 8  		 |	... informing operation success?| CreateTaskUI         | IE: is responsible for user interactions.                                                                     | 
+| Interaction ID  | Question: Which class is responsible for...  | Answer               | Justification (with patterns)                                                                                 |
+|:----------------|:---------------------------------------------|:---------------------|:--------------------------------------------------------------------------------------------------------------|
+| Step 1  	       | ... interacting with the actor?              |ReadResponseOfAppointmentRequestGUI          | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
+| 			  		         | 	... coordinating the US?                    | ReadResponseOfAppointmentRequestController | Controller                                                                                                    |
+| 			  		         | 	... knowing the user using the system?      |   UserSession          |  IE: cf. A&A component documentation.                                                          |
+| Step 2  		      | 							                                      |                      |                                                                                                               |
+| Step 3  		      | 	                                            |                  |                                                                |
+| Step 4  		      | 	                                            |                |                                                        |
+| Step 5  		      | 	                                            |                  |                                                    |
+| Step 6  		      | 							                                      |                      |                                                                                                               |              
+| Step 7  		      | 	                                            |                  |                                                                                        | 
+| Step 8  		      | 	                                            |          |                                                                     | 
 
 ### Systematization ##
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * N/A
-
+ *   Schedule
 
 Other software classes (i.e. Pure Fabrication) identified: 
 
  *   ReadResponseOfAppointmentRequestGUI
  *   ReadResponseOfAppointmentRequestController
+ *   ScheduleRepository
+ *   Repositories
 
 
 ## 3.2. Sequence Diagram (SD)
@@ -42,7 +38,19 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 This diagram shows the full sequence of interactions between the classes involved in the realization of this user story.
 
-![Sequence Diagram](svg/SD.svg)
+![Sequence Diagram](svg/SD-Full.svg)
+
+### Alternative 2
+
+This diagram shows the sequence of interactions when the client accepts the appointment request
+
+![Sequence Diagram](svg/SD-Alternative 2.svg)
+
+### Alternative 3
+
+This diagram shows the sequence of interactions when the client rejects the appointment request
+
+![Sequence Diagram](svg/SD-Alternative 3.svg)
 
 
 ## 3.3. Class Diagram (CD)

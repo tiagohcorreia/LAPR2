@@ -37,5 +37,14 @@ public class ClientRepository {
         return clientList;
     }
 
+    public Client findByEmail(String email) {
+        for (Client client : clients) {
+            if (client.getEmail().equals(email)) {
+                return client;
+            }
+        }
+        return null;
+    }
+
 
 }

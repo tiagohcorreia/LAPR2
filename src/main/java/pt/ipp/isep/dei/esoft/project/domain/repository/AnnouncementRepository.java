@@ -108,7 +108,8 @@ public class AnnouncementRepository {
     }
 
     public Announcement createAnnouncement (LocalDate date, AnnouncementStatus announcementStatus, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee employee){
-        return new Announcement(date, announcementStatus,price ,commission,typeOfBusiness,property,employee);
+        //return new Announcement(date, announcementStatus,price ,commission,typeOfBusiness,property,employee);
+        return null;
     }
 
     /**

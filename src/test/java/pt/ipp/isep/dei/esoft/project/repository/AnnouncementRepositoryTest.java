@@ -38,9 +38,10 @@ public class AnnouncementRepositoryTest {
         photographs.add(photo);
 
         Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
+        Client owner = new Client("client1", "client@this.app", 113456789, 113456789, 113456789);
 
         AnnouncementRepository repository = new AnnouncementRepository();
-        Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
+        Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location("Liria", new City("Porto"), 12345),1,photographs), agent, owner);
         assertTrue(repository.save(announcement));
     }
 
@@ -54,8 +55,10 @@ public class AnnouncementRepositoryTest {
         photographs.add(photo);
 
         Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
+        Client owner = new Client("client1", "client@this.app", 113456789, 113456789, 113456789);
+
         AnnouncementRepository repository = new AnnouncementRepository();
-        Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
+        Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location("Liria", new City("Porto"),123455),1,photographs), agent, owner);
         assertTrue(repository.createAnnouncement(announcement));
     }
 
@@ -69,9 +72,10 @@ public class AnnouncementRepositoryTest {
         photographs.add(photo);
 
         Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
+        Client owner = new Client("client1", "client@this.app", 113456789, 113456789, 113456789);
 
         AnnouncementRepository repository = new AnnouncementRepository();
-        Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
+        Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location("Cassia", new City("Lisboa"), 55555),1,photographs), agent, owner);
         assertTrue(repository.validateAnnouncement(announcement));
         repository.save(announcement);
         //assertFalse(repository.validateAnnouncement(announcement));
@@ -87,9 +91,10 @@ public class AnnouncementRepositoryTest {
         photographs.add(photo);
 
         Employee agent = new Employee("emp1", 113456789, 113456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
+        Client owner = new Client("client1", "client@this.app", 113456789, 113456789, 113456789);
 
         AnnouncementRepository repository = new AnnouncementRepository();
-        Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location(),1,photographs), agent);
+        Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location("Rua 10", new City("Braga"), 98765),1,photographs), agent, owner);
         assertTrue(repository.addAnnouncement(announcement));
         assertFalse(repository.addAnnouncement(null));
         //assertFalse(repository.addAnnouncement(announcement));

@@ -1,7 +1,60 @@
 @startuml
 
-object Client
+title Domain Model US020
+
+object Client {
+
+}
+
+object Visit {
+
+}
+
+object Announcement {
+
+}
+
+object Property {
+
+}
+
+object House {
 
 
+}
+
+object Apartment {
+
+}
+
+object Land {
+
+}
+
+object Commission{
+
+}
+
+object FixedCommission {
+
+}
+
+object PercentageCommission {
+
+}
+
+Client -> Visit: read the response
+
+Announcement "1" -- "1" Property: contains >
+Announcement "1" ---> "1" Commission: has a >
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+Commission <|-- FixedCommission
+Commission <|-- PercentageCommission
+
+Visit --> Property: to visit >
 
 @enduml

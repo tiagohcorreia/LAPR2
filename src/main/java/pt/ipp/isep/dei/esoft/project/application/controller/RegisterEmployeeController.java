@@ -90,11 +90,11 @@ public class RegisterEmployeeController {
     public String sendEmail(String eMail) {
 
         String password = generatePassword();
-        String conteudo = "Email: " + eMail + " | Senha: " + password;
+        String conteudo = "Email: " + eMail + " | Password: " + password;
 
         try {
 
-            FileWriter file = new FileWriter(new File("APP_FILES/email.txt"));
+            FileWriter file = new FileWriter(new File("APP_FILES/email.txt"), true);
             file.write(conteudo + "\n");
             file.close();
             System.out.println("File with employee credentials generated with success");

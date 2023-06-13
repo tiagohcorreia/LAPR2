@@ -1,129 +1,281 @@
-# US 005 - Register a Store
+# US 015 - List all booking requests managed by agent
 
 # 4. Tests 
 
-**Tests for Branch Name:** 
+**Tests for sortVisitsAscending:** 
 
-    @DisplayName("Ensure name equal 40 chars works")
+    ```java
+
+     @DisplayName("Ensure sorting a null array returns null")
     @Test
-    void EnsureNameEqual40CharsWorks() {
+    public void ensureSortingNullArrayReturnsNull() {
+        // Act
+        Visit[] visits = VisitRepository.sortVisitsAscending(null);
 
-        assertDoesNotThrow( ()->{
+        // Assert
+        assertNull(visits); // check result is null
 
-          Branch b = new Branch();
-
-         b.setName("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-
-        });
-    }
-
-    @DisplayName("Ensure name bigger than 40 chars fails")
-    @Test
-    void EnsureNameBiggerThan40CharsFails() {
-
-        assertThrows(IllegalArgumentException.class, () -> {
-
-            Branch b = new Branch();
-
-            b.setName("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqa");
-
-
-        });
-    }
-
-    @DisplayName("Ensure name smaller than 40 chars works")
-    @Test
-    void EnsureNameSmallerThan40CharsWorks() {
-
-        assertDoesNotThrow( ()->{
-
-            Branch b = new Branch();
-
-            b.setName("a");
-
-        });
-    }
-
-**Tests for Branch Phone Number:**
-
-
-
-    @DisplayName("Ensure phone number with 9 digits works")
-    @Test
-    void EnsurePhoneNumberWith9DigitsWorks() {
-
-        assertDoesNotThrow( ()->{
-
-            Branch b = new Branch();
-
-            b.setPhoneNumber(981321232);
-
-        });
     }
 
 
-    @DisplayName("Ensure phone number with 7 digits fails")
+    @DisplayName("Ensure sorting an array with empty array works")
     @Test
-    void EnsurePhoneNumberWith7DigitsFails() {
+    public void ensureSortingAnEmptyArrayWorks() {
+       
+        Visit[] visits = {};
 
-        assertThrows(IllegalArgumentException.class, () -> {
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
 
-            Branch b = new Branch();
+        Visit[] expected = {};
 
-            b.setPhoneNumber(9813232);
-
-        });
+        assertArrayEquals(expected, result);
+       
     }
+
+    @DisplayName("Ensure sorting an array with one element works")
+    @Test
+    public void ensureSortingOneElementArrayWorks() {
+    
+        LocalDate date = LocalDate.now();
+
+        LocalTime time = LocalTime.now();
+
+        Visit visit = new Visit(date, time, true);
+
+        Visit[] visits = {visit};
+
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
+
+        Visit[] expected = {visit};
+
+        assertArrayEquals(expected, result);
+
+
+    }
+
+    @DisplayName("Ensure sorting an array with two (already sorted) elements works.")
+    @Test
+    public void ensureSortingArrayWithTwoSortedElementsWorks() {
+       
+        LocalDate date1 = LocalDate.now();
+
+        LocalDate date2 = LocalDate.plusDays(2);
+
+        LocalTime time1 = LocalTime.of(10:0:0);
+
+        LocalTime time2 = LocalTime.of(11:0:0);
+
+        Visit visit1 = new Visit(date1, time1, true);
+
+        Visit visit2 = new Visit(date2, time2, true);
+
+        Visit[] visits = {visit1, visit2};
+
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
+
+        Visit[] expected = {visit1, visit2};
+
+        assertArrayEquals(expected, result);
+    }
+
+
+    @DisplayName("Ensure sorting an array with two (unsorted) elements works.")
+    @Test
+    public void ensureSortingArrayWithTwoUnsortedElementsWorks() {
+        
+        LocalDate date1 = LocalDate.now();
+
+        LocalDate date2 = LocalDate.plusDays(2);
+
+        LocalTime time1 = LocalTime.of(10:0:0);
+
+        LocalTime time2 = LocalTime.of(11:0:0);
+
+        Visit visit1 = new Visit(date1, time1, true);
+
+        Visit visit2 = new Visit(date2, time2, true);
+
+        Visit[] visits = {visit2, visit1};
+
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
+
+        Visit[] expected = {visit1, visit2};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @DisplayName("Ensure sorting an array with two (sorted) elements works where they have the same date different time.")
+    @Test
+    public void ensureSortingArrayWithTwoSortedElementsWorksWhereTheyHaveSameDateDifferentTime() {
+        
+        LocalDate date1 = LocalDate.now();
+
+        LocalTime time1 = LocalTime.of(10:0:0);
+
+        LocalTime time2 = LocalTime.of(11:0:0);
+
+        Visit visit1 = new Visit(date1, time1, true);
+
+        Visit visit2 = new Visit(date1, time2, true);
+
+        Visit[] visits = {visit1, visit2};
+
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
+
+        Visit[] expected = {visit1, visit2};
+
+        assertArrayEquals(expected, result);
+    }
+
+
+    @DisplayName("Ensure sorting an array with two (unsorted) elements works where they have the same date different time.")
+    @Test
+    public void ensureSortingArrayWithTwoUnsortedElementsWorksWhereTheyHaveSameDateDifferentTime() {
+        
+        LocalDate date1 = LocalDate.now();
+
+        LocalTime time1 = LocalTime.of(10:0:0);
+
+        LocalTime time2 = LocalTime.of(11:0:0);
+
+        Visit visit1 = new Visit(date1, time1, true);
+
+        Visit visit2 = new Visit(date1, time2, true);
+
+        Visit[] visits = {visit2, visit1};
+
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
+
+        Visit[] expected = {visit1, visit2};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @DisplayName("Ensure sorting an array with two (sorted) elements works where they have the same time different date.")
+    @Test
+    public void ensureSortingArrayWithTwoSortedElementsWorksWhereTheyHaveSameTimeDifferentDate() {
+        
+        LocalDate date1 = LocalDate.now();
+
+        LocalDate date2 = LocalDate.plusDays(2);
+
+        LocalTime time1 = LocalTime.of(10:0:0);
+
+        Visit visit1 = new Visit(date1, time1, true);
+
+        Visit visit2 = new Visit(date2, time1, true);
+
+        Visit[] visits = {visit1, visit2};
+
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
+
+        Visit[] expected = {visit1, visit2};
+
+        assertArrayEquals(expected, result);
+    }
+
+
+    @DisplayName("Ensure sorting an array with two (unsorted) elements works where they have the same time different date.")
+    @Test
+    public void ensureSortingArrayWithTwoUnsortedElementsWorksWhereTheyHaveSameTimeDifferentDate() {
+        
+        LocalDate date1 = LocalDate.now();
+
+        LocalDate date2 = LocalDate.plusDays(2);
+
+        LocalTime time1 = LocalTime.of(10:0:0);
+
+        Visit visit1 = new Visit(date1, time1, true);
+
+        Visit visit2 = new Visit(date2, time1, true);
+
+        Visit[] visits = {visit2, visit1};
+
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
+
+        Visit[] expected = {visit1, visit2};
+
+        assertArrayEquals(expected, result);
+    }
+
+
+
+    @DisplayName("Ensure sorting an array with two equal elements works.")
+    @Test
+    public void ensureSortingArrayWithTwoEqualElementsWorks() {
+        
+        LocalDate date1 = LocalDate.now();
+
+        LocalTime time1 = LocalTime.of(10:0:0);
+
+        Visit visit1 = new Visit(date1, time1, true);
+
+        Visit visit2 = new Visit(date1, time1, true);
+
+        Visit[] visits = {visit1, visit2};
+
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
+
+        Visit[] expected = {visit1, visit2};
+
+        assertArrayEquals(expected, result);
+    }
+
+    @DisplayName("Ensure sorting an array with several unordered elements works.")
+    @Test
+    public void ensureSortingArrayWithSeveralUnsortedElementsWorks() {
+       
+        LocalDate date1 = LocalDate.now();
+
+        LocalDate date2 = LocalDate.plusDays(2);
+
+        LocalDate date3 = LocalDate.plusDays(1);
+
+        LocalDate date4 = LocalDate.plusDays(3);
+
+        LocalTime time1 = LocalTime.of(10:0:0);
+
+        LocalTime time2 = LocalTime.of(11:0:0);
+
+        LocalTime time3 = LocalTime.of(13:0:0);
+
+        LocalTime time4 = LocalTime.of(14:0:0);
+
+        Visit visit1 = new Visit(date1, time1, true);
+
+        Visit visit2 = new Visit(date2, time2, true);
+
+        Visit visit3 = new Visit(date3, time3, true);
+
+        Visit visit4 = new Visit(date4, time4, true);
+
+        Visit[] visits = {visit4, visit3, visit2, visit1};
+
+        Visit[] result = VisitRepository.sortVisitsAscending(visits);
+
+        Visit[] expected = {visit1, visit3, visit2, visit4};
+
+        assertArrayEquals(expected, result);
+    }
+
+```
+    
 
 
 # 5. Construction (Implementation)
 
 
-## Class RegisterBranchUI 
+## Class ListAllBookingsRequestsToAgentUI 
 
 ```java
-public class RegisterBranchUI implements Runnable {
+public class ListAllBookingsRequestsToAgentUI implements Runnable {
 
 
-    private RegisterBranchController controller = new RegisterBranchController(new RegisterBranchRepository());
+    private ListAllBookingsRequestsToAgentController controller = new ListAllBookingsRequestsToAgentController();
 
-    public RegisterBranchUI(RegisterBranchController controller) {
-        //this.controller = controller;
-    }
     @Override
     public void run() {
 
-        //Branch ID
-        Integer branchID = Utils.readIntegerFromConsole("Insert Branch ID: ");
-
-        //Branch name
-        String branchName = Utils.readLineFromConsole("Insert Branch name: ");
-
-        //Branch location
-        String branchLocation = Utils.readLineFromConsole("Insert Branch location: ");
-
-        //Branch phoneNumber
-        Integer branchPhoneNumber = Utils.readIntegerFromConsole("Insert Branch phone number: ");
-
-        //Branch email
-        String branchEmail = Utils.readLineFromConsole("Insert Branch email: ");
-
-
-
-        int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
-
-        if (optValidation == 1) {
-
-            controller.createBranch(branchID, branchName, branchLocation, branchPhoneNumber, branchEmail);
-
-            System.out.println("Branch created!");
-
-        } else {
-
-            System.err.println("Operation Canceled!");
-
-        }
-
     }
 
 
@@ -131,173 +283,71 @@ public class RegisterBranchUI implements Runnable {
 ```
 
 
-## Class RegisterBranchController
+## Class ListAllBookingsRequestsToAgentController
 
 ```java
-public class RegisterBranchController {
+public class ListAllBookingsRequestsToAgentController {
 
-    private RegisterBranchRepository branchRepository;
+}
 
-    public RegisterBranchController(RegisterBranchRepository branchRepo) {
-        branchRepository = branchRepo;
+```
+
+## Class Repositories
+
+```java
+public class Repositories {
+
+    VisitRepository visitRepository = new VisitRepository();
+
+    public static Repositories getInstance() 
+    {
+    
     }
 
-    public String createBranch(int ID, String name, String location, int phoneNumber,  String email) {
-
-        Branch newBranch = new Branch(ID, name, location, phoneNumber, email);
-
-        try {
-
-            branchRepository.saveBranch(newBranch);
-
-            return newBranch.toString();
-
-        } catch (Exception e) {
-
-            throw new IllegalStateException(e.getMessage().toString());
-        }
-
-
+    public VisitRepository getVisitRepository() {
+       
     }
 
 }
 
 ```
 
-## Class Branch
+
+## Class VisitRepository
 
 ```java
-public class Branch {
+public class VisitRepository {
 
-    private int ID;
-    private String name;
-    private String location;
-    private int phoneNumber;
-    private String email;
+   private final List<Visit> visits = new ArrayList<>();
 
-    public Branch(int ID, String name, String location, int phoneNumber, String email) {
 
-        checkIfDataIsNull(ID,name,location,phoneNumber,email);
-        checkNameLength(name);
-        checkValidEmail(email);
-        checkValidPhoneNumber(phoneNumber);
+    public List<Visit> getAllVisitsByAgentAndDateRange(Agent agent, Date start, Date end){}
 
-        this.ID = ID;
-        this.name = name;
-        this.location = location;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-    }
+    public List<Visit> sortVisitsAscending(List<Visit> visits){}
 
-    public Branch(){
-
-    }
-
-    /**
-     *
-     * @param ID
-     * @param name
-     * @param location
-     * @param phoneNumber
-     * @param email
-     */
-    public void checkIfDataIsNull(int ID, String name, String location, int phoneNumber, String email){
-
-        if (ID == 0 || name == null || location == null || phoneNumber == 0 || email == null) {
-            throw new NullPointerException("All fields required");
-        }
-    }
-
-    /**
-     *
-     * @param name
-     */
-    public void checkNameLength(String name){
-        if(!(name.length() <= 40)){
-            throw new IllegalArgumentException("Name should be 40 chars or less");
-        }
-    }
-
-    /**
-     *
-     * @param email
-     */
-    public void checkValidEmail(String email){
-        if(Pattern.matches("[a-z0-9]+@[a-z]+\\.[a-z]", email)){
-            throw new IllegalArgumentException("Email doesn't match the email pattern ***@***.***");
-        }
-    }
-
-    /**
-     *
-     * @param phoneNumber
-     */
-    public void checkValidPhoneNumber(int phoneNumber){
-
-        if(!Pattern.matches("[0-9]{9}", Integer.toString(phoneNumber))){
-            throw new IllegalArgumentException("Phone Number can only have 9 digits");
-        }
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setName(String name) {
-        checkNameLength(name);
-        this.name = name;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        checkValidPhoneNumber(phoneNumber);
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setEmail(String email) {
-        checkValidEmail(email);
-        this.email = email;
-    }
 }
 
 ```
 
-## Class RegisterBranchRepository
+## Class Util
 
 ```java
-public class RegisterBranchRepository {
+public class Util {
 
+  public String getChosenSortingAlgorithm(){}
 
+}
 
-    /**
-     *
-     * @param branch object to be saved
-     */
-    public void saveBranch(Branch branch){
+```
 
-        System.out.println("Saving branch...");
-        //does nothing for now
+## Class VisitMapper
 
-    }
+```java
+public class VisitMapper {
+
+  public List<VisitDTO> toDTOlist(List<Visit> visits){}
+
+  public VisitDTO toDTO(Visit visit){}
 
 }
 
