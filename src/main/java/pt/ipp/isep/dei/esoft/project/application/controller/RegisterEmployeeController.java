@@ -90,7 +90,7 @@ public class RegisterEmployeeController {
     public String sendEmail(String eMail) {
 
         String password = generatePassword();
-        String conteudo = "Email: " + eMail + " | Senha: " + password;
+        String conteudo = "Email: " + eMail + " | Password: " + password;
 
         try {
 
