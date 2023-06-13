@@ -18,7 +18,7 @@ public class VisitRepositoryTest {
     public void setup() {
         visitRepository = new VisitRepository();
 
-        LocalDate day = LocalDate.of(2023, 5, 2);
+        LocalDate day = LocalDate.of(2023, 8, 2);
         LocalTime beginHour = LocalTime.of(14, 0);
         LocalTime endHour = LocalTime.of(15, 0);
         Schedule scheduleVisit = new Schedule("John Smith", 1234567890, null, day, beginHour, endHour, "Note", true, true);
