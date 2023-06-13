@@ -60,7 +60,7 @@ public class ValidateScheduleController {
     private TableColumn<AnnouncementDTO, Float> rowPrice;
 
     @FXML
-    private TableColumn<Schedule, TypeOfBusiness> rowTypeOfBusiness;
+    private TableColumn<TypeOfBusiness, String> rowTypeOfBusiness;
 
     @FXML
     private TableView<Schedule> tblScheduleList;
@@ -70,11 +70,18 @@ public class ValidateScheduleController {
         this.scheduleRepository = scheduleRepository;
     }
     public void initialize(){
-        /*List<Schedule> scheduleList = getRequestScheduleListByResponsibleAgent();
+        List<Schedule> scheduleList = getRequestScheduleListByResponsibleAgent();
         for (Schedule schedule:scheduleList){
             rowClientName.setText(schedule.getName());
-            rowTypeOfBusiness.set   ;
-        }*/
+            rowTypeOfBusiness.setText(String.valueOf(schedule.getAnnouncementDTO().getTypeOfBusiness()));
+            rowPrice.setText(String.valueOf(schedule.getAnnouncementDTO().getPrice()));
+            rowLocation.setText(String.valueOf(schedule.getAnnouncementDTO().getProperty().getLocation()));
+            rowDay.setText(String.valueOf(schedule.getDay()));
+            rowBeginHour.setText(String.valueOf(schedule.getBeginHour()));
+            rowEndHour.setText(String.valueOf(schedule.getEndHour()));
+            rowNote.setText(schedule.getNote());
+        }
+
 
     }
     @FXML
