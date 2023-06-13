@@ -48,6 +48,9 @@ class DisplayAnnouncementsControllerTest {
             123456789,
             "Somewhere",
             "email@mail.com",String.valueOf(1234567890), Role.AGENT, branch);
+
+   public static final Client owner = new Client("owner1", "owner@this.app", 123456789, 111111111, 1234567890);
+
     /**
      * The constant defaultAnnouncement.
      */
@@ -58,7 +61,9 @@ class DisplayAnnouncementsControllerTest {
             5,
             TypeOfBusiness.RENT,
             defaultProprty,
-            defaultEmployee
+            defaultEmployee,
+            owner
+
     );
 
     /**
@@ -93,7 +98,7 @@ class DisplayAnnouncementsControllerTest {
                             :
                             TypeOfBusiness.RENT),
                 defaultProprty,
-                defaultEmployee);
+                defaultEmployee, owner);
 
             mockAnnouncements.add(newAnnouncement);
         }

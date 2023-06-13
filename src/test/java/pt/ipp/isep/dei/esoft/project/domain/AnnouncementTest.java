@@ -36,9 +36,10 @@ class AnnouncementTest {
 
         Branch branch = new Branch();
         Employee agent = new Employee("employee", 123456789, 123456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
+        Client owner = new Client("owner1", "owner@this.app", 123456789, 111111111, 1234567890);
 
         // Act
-        Announcement announcement = new Announcement(date, announcementStatus, price, commission, typeOfBusiness, property, agent);
+        Announcement announcement = new Announcement(date, announcementStatus, price, commission, typeOfBusiness, property, agent, owner);
 
         // Assert
         Assertions.assertEquals(date, announcement.getDate());

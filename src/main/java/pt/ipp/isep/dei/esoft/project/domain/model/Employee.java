@@ -275,22 +275,19 @@ public class Employee implements Serializable, Validator {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return passportNumber == employee.passportNumber && taxNumber == employee.taxNumber && telephoneNumber == employee.telephoneNumber && Objects.equals(name, employee.name) && Objects.equals(address, employee.address) && Objects.equals(emailAddress, employee.emailAddress) && role == employee.role && branch == employee.branch;
-    }
+    public boolean equals(Object obj) {
 
-    public boolean equals1(Object obj) {
         if (this == obj) {
             return true;
         }
+
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
         Employee other = (Employee) obj;
-        return Objects.equals(name, other.name);
+        return Objects.equals(passportNumber, other.passportNumber) && Objects.equals(taxNumber, other.taxNumber) &&
+               Objects.equals(telephoneNumber, other.telephoneNumber) && Objects.equals(emailAddress, other.emailAddress);
+
     }
 
     @Override

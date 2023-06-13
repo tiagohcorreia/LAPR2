@@ -122,12 +122,27 @@ public class Schedule {
     }
 
     @Override
-    public boolean equals(Object o) {
+   /* public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Schedule schedule = (Schedule) o;
         return phoneNumber == schedule.phoneNumber && day == schedule.day && note == schedule.note && beginHour == schedule.beginHour && endHour == schedule.endHour && Objects.equals(name, schedule.name) && Objects.equals(announcementDTO, schedule.announcementDTO);
+    }*/
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Schedule schedule = (Schedule) o;
+        return phoneNumber == schedule.phoneNumber &&
+                Objects.equals(name, schedule.name) &&
+                Objects.equals(announcementDTO, schedule.announcementDTO) &&
+                Objects.equals(day, schedule.day) &&
+                Objects.equals(beginHour, schedule.beginHour) &&
+                Objects.equals(endHour, schedule.endHour) &&
+                Objects.equals(note, schedule.note);
     }
+
+
 
     @Override
     public int hashCode() {

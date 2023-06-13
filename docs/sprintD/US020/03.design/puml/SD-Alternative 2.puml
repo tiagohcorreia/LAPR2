@@ -1,0 +1,84 @@
+@startuml
+
+actor Client as client
+participant ReadResponseOfAppointmentRequestGUI as ui
+participant ReadResponseOfAppointmentRequestController as ctr
+participant Repositories as repos
+participant ScheduleRepository as repo
+participant Schedule
+
+autonumber
+
+
+activate client
+
+client -> ui: starts to read the response for the appointment request
+
+activate ui
+
+ui -> ctr**: create
+
+ui -> ctr: getScheduleList()
+
+activate ctr
+
+ctr -> repos: getScheduleList()
+
+deactivate ctr
+activate repos
+
+repos -> repo: getScheduleList()
+
+deactivate repos
+activate repo
+
+repo -> repos: return getScheduleList
+
+deactivate repo
+activate repos
+
+repos -> ctr: return scheduleList
+
+deactivate repos
+activate ctr
+
+ctr -> ui: return scheduleList
+
+deactivate ctr
+
+ui -> client: shows appointment list and requests to select one
+
+client -> ui: select appointment
+
+ui -> client: asks the client to accept or reject
+
+client -> ui: accepts the request
+
+ui -> client: asks confirmation
+
+client -> ui: confirms
+
+ui -> ctr: setClientApproval()
+
+activate ctr
+
+ctr -> repos: setClientApproval()
+
+deactivate ctr
+activate repos
+
+repos -> repo: setClientApproval()
+
+deactivate repos
+activate repo
+
+repo -> Schedule: setClientApproval()
+
+deactivate repo
+activate Schedule
+
+ui -> client: informs the operation success
+
+deactivate Schedule
+
+@enduml

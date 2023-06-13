@@ -64,7 +64,6 @@ public class PublishAnnouncementUI implements Runnable {
 
 
 
-
         System.out.println("===== Publish a new announcement =====\n");
 
         //Agent

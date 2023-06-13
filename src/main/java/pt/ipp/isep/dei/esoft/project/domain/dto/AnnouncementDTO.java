@@ -8,6 +8,7 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * The type Announcement dto.
@@ -96,7 +97,21 @@ public class AnnouncementDTO implements Serializable {
         return agent;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AnnouncementDTO that = (AnnouncementDTO) o;
+        return Float.compare(that.price, price) == 0 &&
+                typeOfBusiness == that.typeOfBusiness &&
+                Objects.equals(property, that.property) &&
+                Objects.equals(agent, that.agent);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(price, typeOfBusiness, property, agent);
+    }
 }
 
 

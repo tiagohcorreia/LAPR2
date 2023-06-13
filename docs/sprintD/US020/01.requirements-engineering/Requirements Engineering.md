@@ -63,7 +63,7 @@ As a client, I want to read the response for the appointment request, to accept 
 * Typed data:
  
 
-	* N/A 
+	* In case the client rejects the appointment request - reason
 	 
 
 	

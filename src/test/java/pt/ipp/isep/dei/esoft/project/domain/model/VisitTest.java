@@ -13,7 +13,7 @@ public class VisitTest {
 
     @BeforeEach
     public void setup() {
-        LocalDate day = LocalDate.of(2023, 5, 1);
+        LocalDate day = LocalDate.of(2023, 8, 1);
         LocalTime beginHour = LocalTime.of(10, 0);
         LocalTime endHour = LocalTime.of(11, 0);
         Schedule scheduleVisit = new Schedule("John Doe", 1234567890, null, day, beginHour, endHour, "Note", true, true);
@@ -25,7 +25,7 @@ public class VisitTest {
 
     @Test
     public void ensureGetScheduleVisitReturnsCorrectValue() {
-        LocalDate expectedDay = LocalDate.of(2023, 5, 1);
+        LocalDate expectedDay = LocalDate.of(2023, 8, 1);
         LocalTime expectedBeginHour = LocalTime.of(10, 0);
         LocalTime expectedEndHour = LocalTime.of(11, 0);
         Schedule expected = new Schedule("John Doe", 1234567890, null, expectedDay, expectedBeginHour, expectedEndHour, "Note", true, true);
@@ -82,7 +82,7 @@ public class VisitTest {
 
     @Test
     public void ensureEqualsReturnsTrueForEqualVisits() {
-        LocalDate day = LocalDate.of(2023, 5, 1);
+        LocalDate day = LocalDate.of(2023, 8, 1);
         LocalTime beginHour = LocalTime.of(10, 0);
         LocalTime endHour = LocalTime.of(11, 0);
         Schedule scheduleVisit = new Schedule("John Doe", 1234567890, null, day, beginHour, endHour, "Note", true, true);
@@ -114,10 +114,10 @@ public class VisitTest {
 
     @Test
     public void ensureEqualsReturnsFalseForDifferentScheduleVisit() {
-        LocalDate day = LocalDate.of(2023, 5, 2);
+        LocalDate day = LocalDate.of(2023, 8, 2);
         LocalTime beginHour = LocalTime.of(14, 0);
         LocalTime endHour = LocalTime.of(15, 0);
-        Schedule scheduleVisit = new Schedule("Jane Smith", 987654321, null, day, beginHour, endHour, "Note", true, true);
+        Schedule scheduleVisit = new Schedule("Jane Smith", 1234567890, null, day, beginHour, endHour, "Note", true, true);
         String opinionAboutBusiness = "Great experience!";
         Rating rating = Rating.VERY_ABOVE_EXPECTATIONS;
 
