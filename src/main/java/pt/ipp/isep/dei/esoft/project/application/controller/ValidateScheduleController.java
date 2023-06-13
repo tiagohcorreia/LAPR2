@@ -1,20 +1,22 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
+import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
-import pt.ipp.isep.dei.esoft.project.utils.FileOps;
+
 
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.FileHandler;
-
-import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.generatePassword;
+import javafx.fxml.FXML;
+import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 public class ValidateScheduleController {
 
@@ -24,16 +26,84 @@ public class ValidateScheduleController {
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
     private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
 
+    @FXML
+    private ToggleGroup ScheduleAnswer;
+
+    @FXML
+    private Button btnSubmit;
+
+    @FXML
+    private RadioButton rbAcceptSchedule;
+
+    @FXML
+    private RadioButton rbRejectSchedule;
+
+    @FXML
+    private TableColumn<Schedule, LocalTime> rowBeginHour;
+
+    @FXML
+    private TableColumn<Schedule, String> rowClientName;
+
+    @FXML
+    private TableColumn<Schedule, LocalDate> rowDay;
+
+    @FXML
+    private TableColumn<Schedule, LocalTime> rowEndHour;
+
+    @FXML
+    private TableColumn<Location,String> rowLocation;
+
+    @FXML
+    private TableColumn<Schedule, String> rowNote;
+
+    @FXML
+    private TableColumn<AnnouncementDTO, Float> rowPrice;
+
+    @FXML
+    private TableColumn<Schedule, TypeOfBusiness> rowTypeOfBusiness;
+
+    @FXML
+    private TableView<Schedule> tblScheduleList;
+
+
     public ValidateScheduleController(ScheduleRepository scheduleRepository) {
         this.scheduleRepository = scheduleRepository;
     }
+    public void initialize(){
+        /*List<Schedule> scheduleList = getRequestScheduleListByResponsibleAgent();
+        for (Schedule schedule:scheduleList){
+            rowClientName.setText(schedule.getName());
+            rowTypeOfBusiness.set   ;
+        }*/
 
+    }
+    @FXML
+    private void submit() {
+        Schedule selectedSchedule = tblScheduleList.getSelectionModel().getSelectedItem();
+        if (selectedSchedule != null) {
+            int schedulePos = tblScheduleList.getItems().indexOf(selectedSchedule);
+            RadioButton selectedRadioButton = (RadioButton) ScheduleAnswer.getSelectedToggle();
+            if (selectedRadioButton != null) {
+                String radioButtonId = selectedRadioButton.getId();
+                switch (radioButtonId) {
+                    case "rbAcceptSchedule":
+                        addConfirmedSchedule(schedulePos);
+                        break;
+                    case "rbRejectSchedule":
+                        addRejectedSchedule(schedulePos);
+                        break;
+                }
+            }
+        }
+    }
 
     public List<Schedule> getRequestScheduleListByResponsibleAgent(){
         String agentName=String.valueOf(authenticationRepository.getCurrentUserSession().getUserName());
         pt.ipp.isep.dei.esoft.project.domain.model.Employee agent= employeeRepository.findByName(agentName);
-        return scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
+        List<Schedule> scheduleList= scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
+        return scheduleList;
     }
+
     public boolean addConfirmedSchedule(int schedulePos){
         if (schedulePos>=0 && schedulePos< scheduleRepository.schedulesByResposibleAgent.size()){
             Schedule schedule= scheduleRepository.schedulesByResposibleAgent.get(schedulePos);
@@ -52,6 +122,7 @@ public class ValidateScheduleController {
             return false;
         }
     }
+
     public boolean addRejectedSchedule(int schedulePos){
         if (schedulePos>=0 && schedulePos< scheduleRepository.schedulesByResposibleAgent.size()){
             Schedule schedule= scheduleRepository.schedulesByResposibleAgent.get(schedulePos);
