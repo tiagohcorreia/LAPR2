@@ -100,7 +100,7 @@ should be used.
 
 **Other alternatives might exist.**
 
-![Sequence Diagram](svg/US18_SSD.svg)
+![System Sequence Diagram](svg/US18_SSD.svg)
 
 ### 1.7 Functional Requirements
 
