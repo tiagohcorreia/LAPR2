@@ -84,7 +84,9 @@ public class Repositories {
     PurchaseOrderRepository purchaseOrderRepository = new PurchaseOrderRepository();
 
     VisitRepository visitRepository = new VisitRepository();
-    
+
+    PlaceOrderToBuyPropertyRepository orderToBuyPropertyRepository = new PlaceOrderToBuyPropertyRepository();
+
 
     private Repositories() {
     }
@@ -161,5 +163,9 @@ public class Repositories {
 
     public VisitRepository getVisitRepository(){
         return visitRepository;
+    }
+
+    public PlaceOrderToBuyPropertyRepository getOrderToBuyPropertyRepository() {
+        return orderToBuyPropertyRepository;
     }
 }

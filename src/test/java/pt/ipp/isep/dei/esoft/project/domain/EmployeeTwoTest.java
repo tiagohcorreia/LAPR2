@@ -249,12 +249,25 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", String.valueOf(123456789), Role.AGENT, branch);
-
+            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", "9876543210", Role.AGENT, branch);
+            e1.setTelephoneNumber("987654321");
         });
     }
 
-    // ---------------------------------------------------------------------------------------------------------------
+    @DisplayName("Ensure Employee Telephone Number with digits fails")
+    @Test
+    void EnsureEmployeeTelephoneNumberWithDigitsFails() {
+
+
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", "9876543210", Role.AGENT, branch);
+            e1.setTelephoneNumber("987654321a");
+        });
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
