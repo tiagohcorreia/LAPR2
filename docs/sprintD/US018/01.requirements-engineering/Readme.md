@@ -76,23 +76,44 @@ should be used.
 
 ### 1.4. Found out Dependencies
 
-
-* 
+* There must be sold properties in order for us to view the regression graph and the requested data. 
+* Dependency on the library org.apache.commons.math4.stat for performing regression analyses.
 
 ### 1.5 Input and Output Data
 
 **Input Data:**
+
+* CSV file with property information: property area (in square feet), distance from downtown (in miles), number of bedrooms, number of bathrooms, and number of parking spaces.
 
 **Selected Data:**
     
 
 **Output Data:**
 
-* 
+* Property sales prices estimated by the regression model.
+* Regression model statistics: R (for SLR), R2 and adjusted R2 (for SLR and MLR), confidence intervals, hypothesis tests for regression coefficients, and model significance with Anova.
+
+
+
 
 ### 1.6. System Sequence Diagram (SSD)
 
 **Other alternatives might exist.**
 
-![System Sequence Diagram - Alternative One](svg/US0-SSD.svg)
+![Sequence Diagram](svg/US18_SSD.svg)
 
+### 1.7 Functional Requirements
+
+* RF1. The system should allow the store manager to select a regression model (simple linear or multilinear) to analyze real estate deals.
+* RF2. The system should allow the store manager to select an independent variable (area of the property, distance from downtown, number of bedrooms, number of bathrooms, or number of parking spaces) for model fitting.
+* RF3. The system should use the data from all the houses and apartments sold in the system to fit the regression models.
+* RF4. The system should calculate the sales price estimates for the properties using the selected regression model.
+* RF5. The system should present the store manager with the price estimates, the selected regression model, and all necessary statistics.
+* RF6. The system should document the regression analysis, including the values of R(SLR), R2 and adjusted R2 for SLR and MLR, confidence intervals, hypothesis tests for regression coefficients, and the significance of the model with Anova, in the application's user manual.
+
+### 1.8 Non-Functional Requirements
+* RNF1. The system must use the org.apache.commons.math4.stat package for the implementation of regression analysis (Compliance).
+* RNF2. The user interface for the selection of the regression model and the independent variable must be intuitive and easy to use (Usability).
+* RNF3. The system should process the regression model and present the price estimates and statistics in an acceptable time, so as not to make the store manager wait too long (Performance).
+* RNF4. The system must ensure that the real estate sales data is kept secure and protected from unauthorized access (Security).
+* RNF5. Regression analysis and property sales price estimates must be accurate and reliable to support the store manager's business decisions (Reliability).
