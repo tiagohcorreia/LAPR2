@@ -88,7 +88,7 @@ public class ScheduleRepository {
     public List<Schedule> getRequestScheduleListByResponsibleAgent(Employee agent){
 
         for (Schedule schedule:this.scheduleList){
-            if (schedule.getAnnouncementDTO().getAgent().equals(agent)){
+            if (schedule.getAnnouncementDTO().getAgent().equals(agent) && schedule.getStatus()!=true){
                 schedulesByResposibleAgent.add(schedule);
             }
         }
