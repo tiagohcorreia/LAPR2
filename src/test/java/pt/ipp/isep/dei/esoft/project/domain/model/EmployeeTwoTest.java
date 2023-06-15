@@ -1,12 +1,7 @@
-package pt.ipp.isep.dei.esoft.project.domain;
-
-import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
-import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
-import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+package pt.ipp.isep.dei.esoft.project.domain.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pt.ipp.isep.dei.esoft.project.domain.model.Role;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,7 +56,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", -12345678 , 123456789, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
+            Employee e1 = new Employee("Employee", -12345678, 123456789, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
 
 
         });
@@ -76,7 +71,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 982822882 , 123456789, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
+            Employee e1 = new Employee("Employee", 982822882, 123456789, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
 
         });
     }
@@ -90,7 +85,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 12345678 , 123456789, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
+            Employee e1 = new Employee("Employee", 12345678, 123456789, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
 
         });
     }
@@ -109,7 +104,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , -23456789, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
+            Employee e1 = new Employee("Employee", 123456789, -23456789, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
 
         });
     }
@@ -123,7 +118,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 982822882 , 982822882, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
+            Employee e1 = new Employee("Employee", 982822882, 982822882, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
 
         });
     }
@@ -137,7 +132,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 12345678 , 12345678, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
+            Employee e1 = new Employee("Employee", 12345678, 12345678, "Rua 1", "e1@gmail.com", String.valueOf(982822882), Role.AGENT, branch);
 
         });
     }
@@ -234,7 +229,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", String.valueOf(-234567891), Role.AGENT, branch);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", String.valueOf(-234567891), Role.AGENT, branch);
 
         });
     }
@@ -249,7 +244,7 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", "9876543210", Role.AGENT, branch);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", "9876543210", Role.AGENT, branch);
             e1.setTelephoneNumber("987654321");
         });
     }
@@ -261,17 +256,34 @@ class EmployeeTwoTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
-            Employee e1 = new Employee("Employee", 123456789 , 123456789, "Rua 1", "e1@gmail.com", "9876543210", Role.AGENT, branch);
+            Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", "9876543210", Role.AGENT, branch);
             e1.setTelephoneNumber("987654321a");
         });
     }
 
     // ---------------------------------------------------------------------------------------------------------------------------------------------
 
+    @DisplayName("Ensure isNumeric is working")
+    @Test
+    void ensureIsNumericWorking2() {
 
+        Employee e4 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", "9876543210", Role.AGENT, branch);
+        String num = e4.getTelephoneNumber();
+        assertTrue(e4.isNumeric(num));
 
+    }
 
+    //isNumeric
 
+    /*@DisplayName("Ensure isNumeric is working")
+    @Test
+    void ensureIsNumericWorking() {
 
+        Employee e4 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", "P876543210", Role.AGENT, branch);
+        String num = e4.getTelephoneNumber();
+        assertFalse(e4.isNumeric(num));
+
+    }
+*/
 
 }

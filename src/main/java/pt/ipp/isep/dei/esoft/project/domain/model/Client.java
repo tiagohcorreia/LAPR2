@@ -1,10 +1,11 @@
 package pt.ipp.isep.dei.esoft.project.domain.model;
 
 import javax.management.InvalidAttributeValueException;
+import java.io.Serializable;
 import java.util.List;
 import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.generatePassword;
 
-public class Client {
+public class Client implements Serializable {
     private String name;
     private String email;
     private String password;

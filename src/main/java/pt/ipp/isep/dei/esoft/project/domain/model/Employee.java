@@ -4,6 +4,8 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Validator;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * The type Employee.
@@ -231,6 +233,11 @@ public class Employee implements Serializable, Validator {
      */
     public String setTelephoneNumber(String telephoneNumber) {
 
+        if(!isNumeric(telephoneNumber)) {
+
+            throw new IllegalArgumentException("Telephone number must contain only numbers");
+        }
+
         if (Long.parseLong(telephoneNumber) < 0) {
 
             throw new IllegalArgumentException("Telephone Number can't be negative");
@@ -307,6 +314,14 @@ public class Employee implements Serializable, Validator {
             throw new IllegalStateException("Employee is invalid");
         }
         return true;
+    }
+
+    public boolean isNumeric(String telephoneNumber) {
+
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(telephoneNumber);
+
+        return matcher.matches();
     }
 
 }

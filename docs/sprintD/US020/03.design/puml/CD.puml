@@ -11,18 +11,19 @@ class ReadResponseOfAppointmentRequestController {
 
 }
 
-
-
 class Schedule {
 
     - name
-    - phoneNumber
-    - announcement
+    - phoneNumber;
+    - announcementDTO
     - day
-    - begiHour
+    - beginHour
     - endHour
-    - note
+    - noteFromAgent
     - status
+    - agentAproved
+    - clientApproval
+    - noteFromClient
 }
 
 class Repositories {
@@ -39,56 +40,11 @@ class ScheduleRepository {
     + getScheduleList()
 }
 
-class AnnouncementRepository {
-
-    + save()
-    + createAnnouncement()
-    + validateAnnouncement()
-    + addAnnouncement()
-    + getAllVisibleAnnouncements()
-    + getAvailableFields()
-    + getAnnouncements()
-}
-
-class AnnouncementDTO {
-
-    - price
-    - typeOfBusiness
-    - property
-    - agent
-}
-
-class AnnouncementMapper {
-
-    - announcementDTOList
-    + convert()
-    + toDto()
-    + getAllAnnouncements()
-    + getAllAnnouncementsRecentToOldest()
-    + toDtoAnnouncement()
-}
-
-class Announcement {
-
-    -  date
-    -  status
-    -  price
-    -  commission
-    -  typeOfBusiness
-    -  property
-    -  agent
-    -  reason
-}
-
 
 ReadResponseOfAppointmentRequestGUI ..> ReadResponseOfAppointmentRequestController
 ReadResponseOfAppointmentRequestController ..> Repositories
-Repositories ..> AnnouncementRepository
-AnnouncementRepository --> Announcement
-Repositories ..> AnnouncementMapper
 Repositories ..> ScheduleRepository
-AnnouncementMapper --> AnnouncementDTO
-ScheduleRepository --> Schedule
+ScheduleRepository -right-> Schedule
 Application -left-|> ReadResponseOfAppointmentRequestGUI
 
 
