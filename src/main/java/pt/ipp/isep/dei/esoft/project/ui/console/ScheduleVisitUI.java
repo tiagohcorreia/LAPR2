@@ -20,12 +20,6 @@ public class ScheduleVisitUI implements Runnable{
         boolean success= true;
         while (success==true){
 
-            //name
-            String name= Utils.readLineFromConsole("Insert your name:");
-
-            //phoneNumber
-            int phoneNumber=Utils.readIntegerFromConsole("Insert your phone number:");
-
             //List of anouncements
             List<AnnouncementDTO> x = this.controller.announcementDTOList();
             Utils.showList(x, "Anouncements");
@@ -60,9 +54,7 @@ public class ScheduleVisitUI implements Runnable{
 
                 try {
                     if (controller.validateScheduleHour(controller.getAnnouncementDTO(posAnouncement),day,beginTime,endTime)==true){
-                        this.controller.createSchedule(name,phoneNumber, posAnouncement,day,beginTime,endTime, note);
-                        System.out.println("Name: " + name);
-                        System.out.println("Phone Number: " + phoneNumber);
+                        this.controller.createSchedule(posAnouncement,day,beginTime,endTime, note);
                         System.out.println("Announcement Number:\n" + posAnouncement);
                         System.out.println("Day: " + day);
                         System.out.println("Begin Time: " + beginTime );
