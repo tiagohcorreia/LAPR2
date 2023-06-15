@@ -52,20 +52,18 @@ public class ScheduleVisitController {
     public boolean validateScheduleHour(AnnouncementDTO announcementDTO, LocalDate day, LocalTime beginTime, LocalTime endTime) {
         boolean isOverlap = false;
         for(Schedule schedule : scheduleRepository.getScheduleList()) {
+            if (schedule.getAnnouncementDTO().equals(announcementDTO) && schedule.getDay().equals(day)){
+                if (beginTime.isBefore(schedule.getEndHour()) && endTime.isAfter(schedule.getBeginHour())) {
+                    isOverlap = true;
+                    throw new IllegalArgumentException("That hour is already scheduled, please insert data again.");
 
-            if (beginTime.isBefore(schedule.getEndHour()) && endTime.isAfter(schedule.getBeginHour())) {
-                isOverlap = true;
-                throw new IllegalArgumentException("That hour is already scheduled, please insert data again.");
+                } else if (beginTime.equals(schedule.getBeginHour()) || endTime.equals(schedule.getEndHour())) {
+                    isOverlap = true;
 
-            } else if (beginTime.equals(schedule.getBeginHour()) || endTime.equals(schedule.getEndHour())) {
-                isOverlap = true;
-
-                throw new IllegalArgumentException("That hour is already scheduled, please insert data again.");
+                    throw new IllegalArgumentException("That hour is already scheduled, please insert data again.");
+                }else return true;
             }
 
-            if (schedule.getAnnouncementDTO().equals(announcementDTO) && schedule.getDay().equals(day) && isOverlap==false) {
-                return true;
-            }
         }
         return true;
     }

@@ -74,6 +74,5 @@ class ScheduleVisitControllerTest {
         boolean expected= true;
         boolean actual=scheduleVisitController.validateScheduleHour(announcementDTO, day2, beginHour2, endHour2);
         assertEquals(expected,actual);
-
     }
 }
