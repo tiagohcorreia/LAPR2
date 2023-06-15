@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.lei232s1dmg61.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.application.controller.ReadResponseOfAppointmentRequestController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="76.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="795.0" minWidth="10.0" prefWidth="795.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+    <RowConstraints maxHeight="339.0" minHeight="10.0" prefHeight="339.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="107.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="195.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <ListView fx:id="lstSchedule" prefHeight="179.0" prefWidth="680.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label alignment="CENTER" contentDisplay="CENTER" text="Schedule List:" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <children>
+            <Button fx:id="btnAccept" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#acceptRequest" text="Accept" textAlignment="JUSTIFY" />
+            <Button fx:id="btnReject" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rejectRequest" text="Reject" textAlignment="JUSTIFY" />
+            <Button fx:id="btnCancel" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancel" text="Cancel" textAlignment="JUSTIFY" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <Label text="Selected Schedule Message:" GridPane.rowIndex="2" />
+      <Text fx:id="txtScheduleMessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="791.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   </children>
+</GridPane>

@@ -29,8 +29,6 @@ E
 ser/announcements.ser,e\1\e1ae287c9e65eae5c117c270cadae6c77a770d7b
 =
 ser/order.ser,4\5\455d6dbe56d6f11a7a8d1b9d00207912445f2591
-Z
-*docs/sprintD/US020/02.analysis/Analysis.md,6\6\66d57d3a25f7e69fbc9c5dc8cd8feb90639e9be2
 k
 ;docs/sprintD/US011/02.analysis/puml/us006-domain-model.puml,1\0\10ed020a11f334ca1f095e084b90ff45d08caf9c
 k
@@ -89,8 +87,6 @@ m
 =src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
 |
 Lsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterClientUI.java,c\6\c6df044e3c8a5c1d0573c229dd05f3f640964ffa
-~
-Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565
 w
 Gsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/utils/Utils.java,4\7\47b9d33bd8a0fd938bcc084cafee57a55d924ff0
 Å
@@ -131,3 +127,41 @@ t
 Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/PropertyTest.java,e\8\e85bbda46feff2831dc0832af987cfc18ebeb775
 í
 bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ValidateScheduleController.java,c\9\c9d2a4c16c22307d644134a44ab13b829207d164
+V
+&docs/sprintD/US010/03.design/Design.md,e\9\e9392e80ae7eb1e0cb848143863edf64293586aa
+Y
+)docs/sprintD/US010/03.design/puml/CD.puml,7\a\7a5af0c42e63927857510f9016847bc2d31d44dc
+g
+7docs/sprintD/US020/03.design/puml/SD-Alternative 2.puml,5\b\5b4eeb1db32013a6805261f5a6b740b23887c59c
+v
+Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Schedule.java,c\6\c6fe938a0dc8996aacef89e92933e0061c4f3f0b
+C
+APP_FILES/email.txt,6\c\6cc5cd8f7f8c046eed62aee2a0fb3aa1bcf8090f
+t
+Dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Client.java,7\b\7b1d1b5c3900635eb647b41e7776828ca940f3ad
+V
+&docs/sprintD/US020/03.design/Design.md,a\8\a8d1849be434bb7603fbc4ce1b2fbbdbee48d816
+v
+Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
+ò
+hsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/repository/PlaceOrderToBuyPropertyRepositoryTest.java,a\2\a2fade887651ca82067c326626c4aeb201d89239
+Y
+)docs/sprintD/US020/03.design/puml/CD.puml,f\5\f509a5b1c36b8cb7247a08175c1bdba82691f78d
+â
+Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepository.java,c\8\c805ca1cbd80f0ac94482e0d78c0adf7bc47eeb0
+s
+Csrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Order.java,2\0\20aae18838b3f671aa33ec2f9a8e90e3bd49a809
+ô
+isrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PlaceOrderToBuyPropertyController.java,f\2\f23e3482c7029e1e6c436ec449042c4065f6a470
+Ö
+Usrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PlaceOrderToBuyPropertyUI.java,1\1\11c3f0e6ee016f152206f9eb3b0b10bb8157d0ef
+y
+Isrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/ClientUI.java,d\8\d895ba200ee2621c2e68a3f7f60e7e6c84ac310d
+}
+Msrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/EmployeeTwoTest.java,3\9\39007893bc6ef57fa4a72332dc3a16fcb1f0b168
+~
+Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565
+Z
+*docs/sprintD/US020/02.analysis/Analysis.md,6\6\66d57d3a25f7e69fbc9c5dc8cd8feb90639e9be2
+z
+Jdocs/sprintD/US020/01.requirements-engineering/Requirements Engineering.md,c\7\c775e2d78699a6ad3cdc651376ece33eee603187
