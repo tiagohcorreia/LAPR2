@@ -20,6 +20,8 @@ multilinear regression algorithms.
 >
 
 
+
+
 **From the client clarifications:**
 
 >Question: A report containing regression methods, confidence intervals, and other US-related aspects of MATCP is mentioned in the Sprint D requirements document for US018. The team is wondering if this "report" refers to information that should be displayed in the application itself, the user manual, or both. And if the "report" isn't going to be displayed in the app, are we only going to show the user the forecasted price in relation to the chosen property and the regression model with all the necessary statistics?
@@ -100,7 +102,9 @@ should be used.
 
 **Other alternatives might exist.**
 
-![System Sequence Diagram](svg/US18_SSD.svg)
+
+![System Sequence Diagram - Alternative One](svg/US018-SSD.svg)
+
 
 ### 1.7 Functional Requirements
 
@@ -110,6 +114,7 @@ should be used.
 * RF4. The system should calculate the sales price estimates for the properties using the selected regression model.
 * RF5. The system should present the store manager with the price estimates, the selected regression model, and all necessary statistics.
 * RF6. The system should document the regression analysis, including the values of R(SLR), R2 and adjusted R2 for SLR and MLR, confidence intervals, hypothesis tests for regression coefficients, and the significance of the model with Anova, in the application's user manual.
+
 
 ### 1.8 Non-Functional Requirements
 * RNF1. The system must use the org.apache.commons.math4.stat package for the implementation of regression analysis (Compliance).
