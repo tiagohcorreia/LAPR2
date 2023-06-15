@@ -5,18 +5,16 @@
 ### 3.1. Rationale
 
 
-| Interaction ID  | Question: Which class is responsible for...  | Answer               | Justification (with patterns)                                                                                 |
-|:----------------|:---------------------------------------------|:---------------------|:--------------------------------------------------------------------------------------------------------------|
-| Step 1  	       | ... interacting with the actor?              |ReadResponseOfAppointmentRequestGUI          | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
-| 			  		         | 	... coordinating the US?                    | ReadResponseOfAppointmentRequestController | Controller                                                                                                    |
-| 			  		         | 	... knowing the user using the system?      |   UserSession          |  IE: cf. A&A component documentation.                                                          |
-| Step 2  		      | 							                                      |                      |                                                                                                               |
-| Step 3  		      | 	                                            |                  |                                                                |
-| Step 4  		      | 	                                            |                |                                                        |
-| Step 5  		      | 	                                            |                  |                                                    |
-| Step 6  		      | 							                                      |                      |                                                                                                               |              
-| Step 7  		      | 	                                            |                  |                                                                                        | 
-| Step 8  		      | 	                                            |          |                                                                     | 
+| Interaction ID  | Question: Which class is responsible for...                | Answer                                     | Justification (with patterns)                                                                                 |
+|:----------------|:-----------------------------------------------------------|:-------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
+| Step 1  	       | ... interacting with the actor?                            | ReadResponseOfAppointmentRequestGUI        | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
+| 			  		         | 	... coordinating the US?                                  | ReadResponseOfAppointmentRequestController | Controller                                                                                                    |
+| 			  		         | 	... knowing the user using the system?                    | UserSession                                | IE: cf. A&A component documentation.                                                                          |
+| Step 2  		      | ...holding the instance of the schedule repository 							 | Repositories                               | Singleton                                                                                                     |
+| Step 3  		      | ...holding the schedule list	                              | ScheduleRepository                         | Repository                                                                                                    |
+| Step 4  		      | ...having the necessary atributes of the schedule	         | Schedule                                   |                                                                                                               |
+| Step 5  		      | ...saving the input data?	                                 | Schedule                                   |                                                                                                               |
+| Step 6  		      | ...informing operation success							                      |ReadResponseOfAppointmentRequestGUI                                            |                                                                                                               |              
 
 ### Systematization ##
 

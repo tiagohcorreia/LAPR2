@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.RegisterPropertyController;
 import pt.ipp.isep.dei.esoft.project.domain.model.City;
+import pt.ipp.isep.dei.esoft.project.domain.model.Client;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
@@ -68,6 +69,7 @@ public class RegisterPropertyUI implements Runnable {
             int doorNumber = 0;
             String street = null;
             int postalCode = 0;
+            int rentalMonths = 0;
 
 
             //Type of property
@@ -166,6 +168,10 @@ public class RegisterPropertyUI implements Runnable {
             Utils.showList(z, "Type of Business");
             Integer posTypeOfBusiness = Utils.readIntegerFromConsole("Choose the Type of Business: ");
             sellOrRent = TypeOfBusiness.getTypeOfBusinessById(posTypeOfBusiness);
+            if (sellOrRent == TypeOfBusiness.RENT) {
+                rentalMonths = Utils.readIntegerFromConsole("Insert the number of months you want to rent: ");
+
+            }
 
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
@@ -174,9 +180,9 @@ public class RegisterPropertyUI implements Runnable {
             if (optValidation == 1) {
 
                 try {
-
+                    Client owner = controller.getCurrentOwner();
                     this.controller.createAnnouncement(date, sellOrRent, posTypeOfProperty, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipmentList, hasBasement, hasInhabitalLoft,
-                            sunExposure, area, location, cityCenterDistance, price, photographs, choosedAgent);
+                            sunExposure, area, location, cityCenterDistance, price, photographs, choosedAgent,owner,rentalMonths);
                     success = false;
                     if (success) {
 

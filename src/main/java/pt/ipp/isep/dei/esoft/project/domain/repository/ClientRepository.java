@@ -3,6 +3,7 @@ package pt.ipp.isep.dei.esoft.project.domain.repository;
 //import pt.isep.lei.esoft.auth.domain.model.User;
 import com.sun.jdi.request.DuplicateRequestException;
 import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
 
 import java.util.ArrayList;
@@ -45,6 +46,13 @@ public class ClientRepository {
         }
         return null;
     }
-
+    public Client findByName(String name) {
+        for (Client client : clients) {
+            if (client.getName().equals(name)) {
+                return client;
+            }
+        }
+        return null;
+    }
 
 }

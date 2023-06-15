@@ -41,6 +41,8 @@ public class RegisterPropertyController implements Serializable {
      * The City repository.
      */
     CityRepository cityRepository=repositories.getCityRepository();
+    private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
+    ClientRepository clientRepository = repositories.getInstance().getClientRepository();
 
     /**
      * Instantiates a new Register property controller.
@@ -73,34 +75,47 @@ public class RegisterPropertyController implements Serializable {
      */
     public void createAnnouncement(LocalDate date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
                                    ArrayList<String> equipmentList, boolean hasBasement, boolean hasInhabitalLoft, SunExposure sunExposure,
-                                   int area, Location location, int cityCentreDistance, float price, ArrayList<String> photographs, Employee agent) {
+                                   int area, Location location, int cityCentreDistance, float price, ArrayList<String> photographs, Employee agent,Client owner, int rentalMonths) {
         try {
-            if (posTypeOfProperty==2){
-                Apartment property= new Apartment(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList);
-                Announcement announcement= new Announcement(AnnouncementStatus.REQUESTED,price,0 ,sellOrRent,property,agent);
+            Property property = createProperty(posTypeOfProperty, area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipmentList, hasBasement, hasInhabitalLoft, sunExposure);
+
+            if (sellOrRent == TypeOfBusiness.SELL) {
+                Announcement announcement = new Announcement(date,AnnouncementStatus.REQUESTED,price,0,sellOrRent,property,agent,owner);
                 announcement.setAgent(agent);
                 this.announcementRepository.createAnnouncement(announcement);
                 this.announcementRepository.writeObject();
-            } else if (posTypeOfProperty==1) {
-                House property= new House(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList,hasBasement,hasInhabitalLoft,sunExposure);
-                Announcement announcement= new Announcement(AnnouncementStatus.REQUESTED,price,0 ,sellOrRent,property,agent);
-                announcement.setAgent(agent);
-                this.announcementRepository.createAnnouncement(announcement);
-                this.announcementRepository.writeObject();
-            }else {
-                Land property= new Land(area,location,cityCentreDistance,photographs);
-                //Announcement announcement= new Announcement(date,AnnouncementStatus.REQUESTED,price,0 ,sellOrRent,property,agent);
-                //announcement.setAgent(agent);
-                //this.announcementRepository.createAnnouncement(announcement);
-                this.announcementRepository.writeObject();
+
+            } else if (sellOrRent == TypeOfBusiness.RENT) {
+                if (rentalMonths != 0 && rentalMonths > 0) {
+                    Announcement announcement = new Announcement(date,AnnouncementStatus.REQUESTED,price,0,sellOrRent,property,agent,owner, rentalMonths);
+                    announcement.setAgent(agent);
+                    this.announcementRepository.createAnnouncement(announcement);
+                    this.announcementRepository.writeObject();
+
+                }
             }
         }catch (Exception e) {
 
             throw new IllegalArgumentException(e.getMessage().toString());
         }
-
-
     }
+
+    private Property createProperty(int posTypeOfProperty,int area,Location location,int cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
+                                    ArrayList<String> equipmentList, boolean hasBasement, boolean hasInhabitalLoft, SunExposure sunExposure) {
+        Property property;
+        if (posTypeOfProperty==2){
+             property= new Apartment(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList);
+
+        } else if (posTypeOfProperty==1) {
+            property= new House(area,location,cityCentreDistance,photographs,numberOfBedrooms,numberOfBathrooms,numberOfParkingSpaces,equipmentList,hasBasement,hasInhabitalLoft,sunExposure);
+
+        }else {
+            property= new Land(area,location,cityCentreDistance,photographs);
+
+        }
+        return property;
+    }
+
 
     /**
      * Gets agent.
@@ -170,5 +185,19 @@ public class RegisterPropertyController implements Serializable {
     public List<TypeOfBusiness> getTypeOfBusinessAsList() {
 
         return Arrays.stream(TypeOfBusiness.values()).toList();
+    }
+
+    public Client getCurrentOwner() {
+        pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();
+        if (userSession.getUserRoles().equals("Role-Owner") ) {
+            String ownerName=userSession.getUserName();
+            return getOwnerByName(ownerName);
+        } else {
+            throw new IllegalStateException("Current user is not a Client (owner).");
+        }
+    }
+    public Client getOwnerByName(String ownerName) {
+
+        return clientRepository.findByEmail(ownerName);
     }
 }

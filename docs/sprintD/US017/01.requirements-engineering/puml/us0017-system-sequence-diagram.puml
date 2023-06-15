@@ -1,0 +1,37 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title System Sequence Diagram (SSD)
+
+autonumber
+
+actor "Network Administrator" as Employee
+participant ":System" as System
+
+activate Employee
+
+    Employee -> System : asks to list all deals made
+    activate System
+
+        System --> Employee : displays data sorted by most recent
+    deactivate System
+opt
+loop
+    Employee -> System : selects sorting algorithm
+    'activate System
+
+     '   System --> Employee : shows task category list and asks to select one
+    'deactivate System
+loop
+    Employee -> System : selects ascending/descending order
+    activate System
+
+        System --> Employee : shows sorted list of deals
+    deactivate System
+end
+end
+end
+
+@enduml
