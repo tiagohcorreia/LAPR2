@@ -14,7 +14,7 @@ public class Order implements Serializable {
     private String id;
     private double orderAmount;
     private AnnouncementDTO announcementDTO;
-    private static boolean status = false;     //True - the order was accepted   False - the order is not accepted
+    private boolean status = false;     //True - the order was accepted   False - the order is not accepted
     private Client client;
 
     /**
@@ -27,6 +27,7 @@ public class Order implements Serializable {
 
         this.orderAmount = setOrderAmount(orderAmount);
         this.announcementDTO = setAnnouncementDTO(announcementDTO);
+        this.status = false;
     }
 
     public Order(String id, double orderAmount, AnnouncementDTO announcementDTO, Client client) {
@@ -62,12 +63,7 @@ public class Order implements Serializable {
         return client;
     }
 
-    /**
-     * Is status boolean.
-     *
-     * @return the boolean
-     */
-    public static boolean isStatus() {
+    public boolean isStatus() {
         return status;
     }
 
@@ -97,13 +93,8 @@ public class Order implements Serializable {
         return this.announcementDTO;
     }
 
-    /**
-     * Sets status.
-     *
-     * @param status the status
-     */
-    public static void setStatus(boolean status) {
-        Order.status = status;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     @Override

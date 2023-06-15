@@ -126,7 +126,13 @@ public class Schedule {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Schedule schedule = (Schedule) o;
-        return phoneNumber == schedule.phoneNumber && day == schedule.day && note == schedule.note && beginHour == schedule.beginHour && endHour == schedule.endHour && Objects.equals(name, schedule.name) && Objects.equals(announcementDTO, schedule.announcementDTO);
+        return phoneNumber == schedule.phoneNumber &&
+         day == schedule.day &&
+         note == schedule.note &&
+         beginHour == schedule.beginHour &&
+         endHour == schedule.endHour &&
+         Objects.equals(name, schedule.name) &&
+         Objects.equals(announcementDTO, schedule.announcementDTO);
     }*/
 
     public boolean equals(Object o) {
@@ -146,7 +152,13 @@ public class Schedule {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, phoneNumber, announcementDTO, day, beginHour,endHour, note);
+        return Objects.hash(name,
+                phoneNumber,
+                announcementDTO,
+                day,
+                beginHour,
+                endHour,
+                note);
     }
 
     @Override
