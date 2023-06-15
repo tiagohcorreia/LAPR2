@@ -18,6 +18,7 @@ import java.util.Properties;
 import javafx.fxml.FXML;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
+
 public class ValidateScheduleController {
 
     Repositories repositories = Repositories.getInstance();
