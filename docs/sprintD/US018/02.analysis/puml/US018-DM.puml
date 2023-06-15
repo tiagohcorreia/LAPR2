@@ -46,7 +46,7 @@ cityCenterDistance
 photographs
 }
 
-class InhabitableProperty{
+class HabitableProperty{
 numberOfBedrooms
 numberOfBathrooms
 numberOfParkingSpaces
@@ -67,9 +67,9 @@ class Apartment{
 Branch "1" -- "*" Announcement: publishes >
 Announcement "1" -- "1" Property: contains >
 
-Property <|-- InhabitableProperty
-InhabitableProperty <|-- House
-InhabitableProperty <|-- Apartment
+Property <|-- HabitableProperty
+HabitableProperty <|-- House
+HabitableProperty <|-- Apartment
 
 StoreMan "1" -> "1" Branch: manages >
 
