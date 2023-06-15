@@ -13,7 +13,7 @@ import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
-public class ReadResponseOfAppointmentRequestGUI extends Application {
+public class ReadResponseOfAppointmentRequestGUI extends Application implements Runnable {
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -72,4 +72,8 @@ public class ReadResponseOfAppointmentRequestGUI extends Application {
         return alert;
     }
 
+    @Override
+    public void run() {
+        launch();
+    }
 }

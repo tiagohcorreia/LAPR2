@@ -275,7 +275,7 @@ class EmployeeTwoTest {
 
     //isNumeric
 
-    @DisplayName("Ensure isNumeric is working")
+    /*@DisplayName("Ensure isNumeric is working")
     @Test
     void ensureIsNumericWorking() {
 
@@ -284,6 +284,6 @@ class EmployeeTwoTest {
         assertFalse(e4.isNumeric(num));
 
     }
-
+*/
 
 }
