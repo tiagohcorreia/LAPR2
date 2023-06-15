@@ -94,5 +94,5 @@ should be used.
 
 **Other alternatives might exist.**
 
-![System Sequence Diagram - Alternative One](svg/US0-SSD.svg)
+![System Sequence Diagram - Alternative One](svg/US018-SSD.svg)
 
