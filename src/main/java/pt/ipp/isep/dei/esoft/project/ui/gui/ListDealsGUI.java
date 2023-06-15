@@ -90,6 +90,6 @@ public class ListDealsGUI extends Application implements Runnable {
 
     @Override
     public void run() {
-        launch();
+        GuiHandler.myLaunch(getClass());
     }
 }
