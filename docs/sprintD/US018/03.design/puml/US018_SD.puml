@@ -1,0 +1,82 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "Store Manager" as agent
+participant ":AnalyseDealsUI" as ui
+participant ":AnalyseDealsController" as ctrl
+
+
+participant ":Repositories" as repos
+participant "repositories\n:Repositories" as repositories
+participant "purchaseorderRepository\n:PurchaseOrderRepository" as poR
+
+
+
+
+activate agent
+agent -> ui: requests analyse deals
+activate ui
+ui -> agent: request to select simple linear \nregression or multilinear regression
+
+alt simple linear regression
+
+agent -> ui: selects simple linear regression
+
+ui -> agent: request to select independent variable
+
+agent -> ui: selects independent variable
+
+else multilinear regression
+
+agent -> ui: selects multilinear regression
+
+end
+
+
+
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance()
+activate repos
+return repositories
+
+ctrl -> repositories: getPurchaseOrderRepository()
+
+activate repositories
+return purchaseOrderRepository
+
+
+ctrl -> poR: getAllPurchaseOrderAccepted() 
+activate poR
+
+
+return allPurchaseOrderAccepted
+
+loop for each accepted purchase order
+
+ctrl -> poR: getPurchaseOrderProperty()
+activate poR
+
+return property
+
+alt simple linear regression
+
+ctrl -> ctrl: simpleLinearRegression()
+
+else multilinear regression
+
+ctrl -> ctrl: multilinearRegression()
+
+end
+
+end
+
+return analysedDealsList
+
+ui -> agent: shows analysed deals
+
+@enduml
