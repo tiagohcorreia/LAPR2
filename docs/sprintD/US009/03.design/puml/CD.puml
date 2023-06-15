@@ -11,8 +11,11 @@ class ScheduleVisitUI {
 
 class ScheduleVisitController {
 
+    - repositories
+    - authenticationRepository
+    - clientRepository
     - scheduleRepository
-    - AnnouncementRepository
+    - announcementRepository
     + createSchedule()
     + announcementDTOList()
     + getAnnouncementDTO()
@@ -43,6 +46,8 @@ class ScheduleRepository {
     + validateSchedule()
     + addSchedule()
     + getScheduleList()
+    + readObjectScheduleRequest ()
+    + writeObjectScheduleRequest ()
 }
 
 class AnnouncementRepository {

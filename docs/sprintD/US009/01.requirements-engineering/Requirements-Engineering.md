@@ -84,8 +84,6 @@ A: System behavior must be consistent. For instance, the filters to be applied w
 **Input Data:**
 
 * Typed data:
-	* a name, 
-	* a phone number, 
 	* a day,
 	* a begin hour,
     * a end hour,
