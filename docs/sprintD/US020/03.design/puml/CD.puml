@@ -14,13 +14,16 @@ class ReadResponseOfAppointmentRequestController {
 class Schedule {
 
     - name
-    - phoneNumber
-    - announcement
+    - phoneNumber;
+    - announcementDTO
     - day
-    - begiHour
+    - beginHour
     - endHour
-    - note
+    - noteFromAgent
     - status
+    - agentAproved
+    - clientApproval
+    - noteFromClient
 }
 
 class Repositories {
