@@ -3,10 +3,9 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
-import pt.ipp.isep.dei.esoft.project.domain.model.Order;
-import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
+
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
-import pt.isep.lei.esoft.auth.domain.model.User;
+
 
 import java.util.List;
 
@@ -15,14 +14,10 @@ import java.util.List;
  */
 public class PlaceOrderToBuyPropertyUI implements Runnable {
 
-    private PlaceOrderToBuyPropertyController controller = new PlaceOrderToBuyPropertyController(new PlaceOrderToBuyPropertyRepository());
+    private PlaceOrderToBuyPropertyController controller = new PlaceOrderToBuyPropertyController();
 
-    /**
-     * Instantiates a new Place order to buy property ui.
-     *
-     * @param controller the controller
-     */
-    public PlaceOrderToBuyPropertyUI(PlaceOrderToBuyPropertyController controller) {
+
+    public PlaceOrderToBuyPropertyUI() {
         //this.controller = controller;
     }
 
@@ -46,11 +41,11 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
 
             //Status
-
+            boolean status = false;
 
             System.out.println("=== Review Order Detail ===");
             System.out.println("Client: ");
-            System.out.println("Status: " + Order.isStatus());
+            System.out.println("Status: " + status);
             System.out.println("Order amount: " + orderAmount + "$");
             System.out.println("Selected Announcement:\n" + AnnouncementMapper.getAnnouncementDTOById(posAnouncement));
 
