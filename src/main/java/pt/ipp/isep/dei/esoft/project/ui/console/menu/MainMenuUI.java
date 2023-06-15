@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.ui.console.menu;
 
+import javafx.application.Platform;
 import pt.ipp.isep.dei.esoft.project.ui.console.DevTeamUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.authorization.AuthenticationUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
@@ -34,6 +35,13 @@ public class MainMenuUI implements Runnable {
 
             if ((option >= 0) && (option < options.size())) {
                 options.get(option).run();
+            }
+            if(option == 0){
+                try {
+                    Platform.exit();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         } while (option != -1);
     }

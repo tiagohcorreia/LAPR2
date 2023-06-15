@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="944px" preserveAspectRatio="none" style="width:1044px;height:944px;background:#FFFFFF;" version="1.1" viewBox="0 0 1044 944" width="1044px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="761.0156" style="stroke:#181818;stroke-width:1.0;" width="10" x="65" y="92.6094"/><rect fill="#FFFFFF" height="738.6641" style="stroke:#181818;stroke-width:1.0;" width="10" x="328" y="114.9609"/><rect fill="#FFFFFF" height="442.6641" style="stroke:#181818;stroke-width:1.0;" width="10" x="487" y="371.6094"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="675" y="404.2188"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="782" y="464.9219"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="932" y="525.625"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="932" y="611.6797"/><rect fill="none" height="155.5938" style="stroke:#000000;stroke-width:1.5;" width="391" x="10" y="176.6641"/><rect fill="none" height="213.9453" style="stroke:#000000;stroke-width:1.5;" width="649.5" x="389" y="570.9766"/><rect fill="none" height="120.8906" style="stroke:#000000;stroke-width:1.5;" width="281" x="399" y="657.0313"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="70" x2="70" y1="82.6094" y2="862.625"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="333" x2="333" y1="82.6094" y2="862.625"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="492" x2="492" y1="370.5625" y2="862.625"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="679.5" x2="679.5" y1="82.6094" y2="862.625"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="786.5" x2="786.5" y1="82.6094" y2="862.625"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="936.5" x2="936.5" y1="82.6094" y2="862.625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="20" y="79.5332">Store Manager</text><ellipse cx="70" cy="13.5" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M70,21.5 L70,48.5 M57,29.5 L83,29.5 M70,48.5 L57,63.5 M70,48.5 L83,63.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="20" y="876.1582">Store Manager</text><ellipse cx="70" cy="887.7344" fill="#E3E3E3" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M70,895.7344 L70,922.7344 M57,903.7344 L83,903.7344 M70,922.7344 L57,937.7344 M70,922.7344 L83,937.7344 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="116" x="275" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="282" y="71.5332">:AnalyseDealsUI</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="116" x="275" y="861.625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="282" y="883.1582">:AnalyseDealsUI</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="166" x="409" y="861.625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="416" y="883.1582">:AnalyseDealsController</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="631.5" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="638.5" y="71.5332">:Repositories</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="631.5" y="861.625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="638.5" y="883.1582">:Repositories</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="738.5" y="32.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="750" y="53.9238">repositories</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="745.5" y="71.5332">:Repositories</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97" x="738.5" y="861.625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="750" y="883.1582">repositories</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="745.5" y="900.7676">:Repositories</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="183" x="845.5" y="32.3906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="856.5" y="53.9238">purchaseorderRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169" x="852.5" y="71.5332">:PurchaseOrderRepository</text><rect fill="#E3E3E3" height="49.2188" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="183" x="845.5" y="861.625"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="856.5" y="883.1582">purchaseorderRepository</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169" x="852.5" y="900.7676">:PurchaseOrderRepository</text><rect fill="#FFFFFF" height="761.0156" style="stroke:#181818;stroke-width:1.0;" width="10" x="65" y="92.6094"/><rect fill="#FFFFFF" height="738.6641" style="stroke:#181818;stroke-width:1.0;" width="10" x="328" y="114.9609"/><rect fill="#FFFFFF" height="442.6641" style="stroke:#181818;stroke-width:1.0;" width="10" x="487" y="371.6094"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="675" y="404.2188"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="782" y="464.9219"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="932" y="525.625"/><rect fill="#FFFFFF" height="30.3516" style="stroke:#181818;stroke-width:1.0;" width="10" x="932" y="611.6797"/><polygon fill="#181818" points="316,110.9609,326,114.9609,316,118.9609,320,114.9609" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="75" x2="322" y1="114.9609" y2="114.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82" y="110.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="134" x="93" y="110.1045">requests analyse deals</text><polygon fill="#181818" points="86,157.6641,76,161.6641,86,165.6641,82,161.6641" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="80" x2="327" y1="161.6641" y2="161.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="92" y="148.6318">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="174" x="103" y="140.4561">request to select simple linear</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202" x="103" y="156.8076">regression or multilinear regression</text><path d="M10,176.6641 L71,176.6641 L71,185.0156 L61,195.0156 L10,195.0156 L10,176.6641 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="155.5938" style="stroke:#000000;stroke-width:1.5;" width="391" x="10" y="176.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="25" y="191.1592">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="145" x="86" y="190.083">[simple linear regression]</text><polygon fill="#181818" points="316,213.3672,326,217.3672,316,221.3672,320,217.3672" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="75" x2="322" y1="217.3672" y2="217.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82" y="212.5107">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="183" x="93" y="212.5107">selects simple linear regression</text><polygon fill="#181818" points="86,243.7188,76,247.7188,86,251.7188,82,247.7188" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="80" x2="327" y1="247.7188" y2="247.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="92" y="242.8623">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="218" x="103" y="242.8623">request to select independent variable</text><polygon fill="#181818" points="316,274.0703,326,278.0703,316,282.0703,320,278.0703" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="75" x2="322" y1="278.0703" y2="278.0703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82" y="273.2139">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="163" x="93" y="273.2139">selects independent variable</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="10" x2="401" y1="287.0703" y2="287.0703"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="132" x="15" y="298.4893">[multilinear regression]</text><polygon fill="#181818" points="316,320.2578,326,324.2578,316,328.2578,320,324.2578" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="75" x2="322" y1="324.2578" y2="324.2578"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82" y="319.4014">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="169" x="93" y="319.4014">selects multilinear regression</text><polygon fill="#181818" points="397,357.6094,407,361.6094,397,365.6094,401,361.6094" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="338" x2="403" y1="361.6094" y2="361.6094"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="345" y="356.7529">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="36" x="356" y="356.7529">create</text><rect fill="#E3E3E3" height="31.6094" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="166" x="409" y="339.2578"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="416" y="360.791">:AnalyseDealsController</text><polygon fill="#181818" points="663,400.2188,673,404.2188,663,408.2188,667,404.2188" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="497" x2="669" y1="404.2188" y2="404.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="504" y="399.3623">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="75" x="515" y="399.3623">getInstance()</text><polygon fill="#181818" points="508,430.5703,498,434.5703,508,438.5703,504,434.5703" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="502" x2="679" y1="434.5703" y2="434.5703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="514" y="429.7139">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="525" y="429.7139">repositories</text><polygon fill="#181818" points="770,460.9219,780,464.9219,770,468.9219,774,464.9219" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="497" x2="776" y1="464.9219" y2="464.9219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="504" y="460.0654">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="175" x="522" y="460.0654">getPurchaseOrderRepository()</text><polygon fill="#181818" points="508,491.2734,498,495.2734,508,499.2734,504,495.2734" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="502" x2="786" y1="495.2734" y2="495.2734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="514" y="490.417">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="147" x="532" y="490.417">purchaseOrderRepository</text><polygon fill="#181818" points="920,521.625,930,525.625,920,529.625,924,525.625" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="497" x2="926" y1="525.625" y2="525.625"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="504" y="520.7686">12</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="183" x="522" y="520.7686">getAllPurchaseOrderAccepted()</text><polygon fill="#181818" points="508,551.9766,498,555.9766,508,559.9766,504,555.9766" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="502" x2="936" y1="555.9766" y2="555.9766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="514" y="551.1201">13</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="155" x="532" y="551.1201">allPurchaseOrderAccepted</text><path d="M389,570.9766 L462,570.9766 L462,579.3281 L452,589.3281 L389,589.3281 L389,570.9766 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="213.9453" style="stroke:#000000;stroke-width:1.5;" width="649.5" x="389" y="570.9766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="28" x="404" y="585.4717">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="195" x="477" y="584.3955">[for each accepted purchase order]</text><polygon fill="#181818" points="920,607.6797,930,611.6797,920,615.6797,924,611.6797" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="497" x2="926" y1="611.6797" y2="611.6797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="504" y="606.8232">14</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="162" x="522" y="606.8232">getPurchaseOrderProperty()</text><polygon fill="#181818" points="508,638.0313,498,642.0313,508,646.0313,504,642.0313" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="502" x2="936" y1="642.0313" y2="642.0313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="514" y="637.1748">15</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="47" x="532" y="637.1748">property</text><path d="M399,657.0313 L460,657.0313 L460,665.3828 L450,675.3828 L399,675.3828 L399,657.0313 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="120.8906" style="stroke:#000000;stroke-width:1.5;" width="281" x="399" y="657.0313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="414" y="671.5264">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="145" x="475" y="670.4502">[simple linear regression]</text><line style="stroke:#181818;stroke-width:1.0;" x1="497" x2="539" y1="697.7344" y2="697.7344"/><line style="stroke:#181818;stroke-width:1.0;" x1="539" x2="539" y1="697.7344" y2="710.7344"/><line style="stroke:#181818;stroke-width:1.0;" x1="498" x2="539" y1="710.7344" y2="710.7344"/><polygon fill="#181818" points="508,706.7344,498,710.7344,508,714.7344,504,710.7344" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="504" y="692.8779">16</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="522" y="692.8779">simpleLinearRegression()</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="399" x2="680" y1="719.7344" y2="719.7344"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="132" x="404" y="731.1533">[multilinear regression]</text><line style="stroke:#181818;stroke-width:1.0;" x1="497" x2="539" y1="756.9219" y2="756.9219"/><line style="stroke:#181818;stroke-width:1.0;" x1="539" x2="539" y1="756.9219" y2="769.9219"/><line style="stroke:#181818;stroke-width:1.0;" x1="498" x2="539" y1="769.9219" y2="769.9219"/><polygon fill="#181818" points="508,765.9219,498,769.9219,508,773.9219,504,769.9219" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="504" y="752.0654">17</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="522" y="752.0654">multilinearRegression()</text><polygon fill="#181818" points="349,810.2734,339,814.2734,349,818.2734,345,814.2734" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="343" x2="491" y1="814.2734" y2="814.2734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="355" y="809.417">18</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="106" x="373" y="809.417">analysedDealsList</text><polygon fill="#181818" points="86,840.625,76,844.625,86,848.625,82,844.625" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="80" x2="327" y1="844.625" y2="844.625"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="92" y="839.7686">19</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="128" x="110" y="839.7686">shows analysed deals</text><!--MD5=[93c287bc30e7183348fb5ff54a770a0d]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "Store Manager" as agent
+participant ":AnalyseDealsUI" as ui
+participant ":AnalyseDealsController" as ctrl
+
+
+participant ":Repositories" as repos
+participant "repositories\n:Repositories" as repositories
+participant "purchaseorderRepository\n:PurchaseOrderRepository" as poR
+
+
+
+
+activate agent
+agent -> ui: requests analyse deals
+activate ui
+ui -> agent: request to select simple linear \nregression or multilinear regression
+
+alt simple linear regression
+
+agent -> ui: selects simple linear regression
+
+ui -> agent: request to select independent variable
+
+agent -> ui: selects independent variable
+
+else multilinear regression
+
+agent -> ui: selects multilinear regression
+
+end
+
+
+
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance()
+activate repos
+return repositories
+
+ctrl -> repositories: getPurchaseOrderRepository()
+
+activate repositories
+return purchaseOrderRepository
+
+
+ctrl -> poR: getAllPurchaseOrderAccepted() 
+activate poR
+
+
+return allPurchaseOrderAccepted
+
+loop for each accepted purchase order
+
+ctrl -> poR: getPurchaseOrderProperty()
+activate poR
+
+return property
+
+alt simple linear regression
+
+ctrl -> ctrl: simpleLinearRegression()
+
+else multilinear regression
+
+ctrl -> ctrl: multilinearRegression()
+
+end
+
+end
+
+return analysedDealsList
+
+ui -> agent: shows analysed deals
+
+@enduml
+
+@startuml
+
+skinparam monochrome true
+skinparam shadowing false
+autonumber
+
+actor "Store Manager" as agent
+participant ":AnalyseDealsUI" as ui
+participant ":AnalyseDealsController" as ctrl
+
+
+participant ":Repositories" as repos
+participant "repositories\n:Repositories" as repositories
+participant "purchaseorderRepository\n:PurchaseOrderRepository" as poR
+
+
+
+
+activate agent
+agent -> ui: requests analyse deals
+activate ui
+ui -> agent: request to select simple linear \nregression or multilinear regression
+
+alt simple linear regression
+
+agent -> ui: selects simple linear regression
+
+ui -> agent: request to select independent variable
+
+agent -> ui: selects independent variable
+
+else multilinear regression
+
+agent -> ui: selects multilinear regression
+
+end
+
+
+
+ui -> ctrl**: create
+activate ctrl
+ctrl -> repos: getInstance()
+activate repos
+return repositories
+
+ctrl -> repositories: getPurchaseOrderRepository()
+
+activate repositories
+return purchaseOrderRepository
+
+
+ctrl -> poR: getAllPurchaseOrderAccepted() 
+activate poR
+
+
+return allPurchaseOrderAccepted
+
+loop for each accepted purchase order
+
+ctrl -> poR: getPurchaseOrderProperty()
+activate poR
+
+return property
+
+alt simple linear regression
+
+ctrl -> ctrl: simpleLinearRegression()
+
+else multilinear regression
+
+ctrl -> ctrl: multilinearRegression()
+
+end
+
+end
+
+return analysedDealsList
+
+ui -> agent: shows analysed deals
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 BST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

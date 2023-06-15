@@ -1,0 +1,34 @@
+@startuml
+
+class AnalyseDealsUI {
+}
+
+class AnalyseDealsController {
+}
+
+class PurchaseOrderRepository {
+
+    +getAllPurchaseOrderAccepted()
+    +getPurchaseOrderProperty()
+
+}
+
+class Repositories {
+
+    +getInstance()
+    +getPurchaseOrderRepository()
+
+}
+
+
+AnalyseDealsUI -[dashed]-> AnalyseDealsController
+AnalyseDealsController-[dashed]-> Repositories
+AnalyseDealsController-[dashed]-> PurchaseOrderRepository
+
+PurchaseOrderRepository -down-> "*" PurchaseOrder
+
+Repositories --> Repositories: Instance
+
+Repositories -->"1" PurchaseOrderRepository
+
+@enduml

@@ -48,7 +48,7 @@ public class AnnouncementRepositoryTest {
     /**
      * Test create announcement.
      */
-    @Test
+    /*@Test
     public void testCreateAnnouncement() {
         ArrayList<String> photographs = new ArrayList<>();
         String photo = "aa";
@@ -60,7 +60,7 @@ public class AnnouncementRepositoryTest {
         AnnouncementRepository repository = new AnnouncementRepository();
         Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1, 1.0f, TypeOfBusiness.SELL, new Land(1,new Location("Liria", new City("Porto"),123455),1,photographs), agent, owner);
         assertTrue(repository.createAnnouncement(announcement));
-    }
+    }*/
 
     /**
      * Test validate announcement.

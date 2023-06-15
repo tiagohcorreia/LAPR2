@@ -1,0 +1,41 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title US018(SSD) - Analyse the deals made, based on the characteristics of the property using simple liner regression and multilinear regression
+
+autonumber
+
+actor "Store Manager" as storemanager
+participant ":System" as System
+
+    activate storemanager
+    storemanager -> System : request to analyse the deals
+    activate System
+    System --> storemanager : requests to select Simple linear or Multilinear regression
+    deactivate System
+
+alt simple linear regression
+
+    storemanager -> System: selects simple linear regression
+    activate System
+    System -> storemanager: request to select the independent variable
+    deactivate System
+    storemanager -> System: selects the independent variable
+    activate System
+
+
+else multilinear regression
+
+    storemanager -> System: selects multilinear regression
+
+end
+
+    
+    
+    System --> storemanager : shows list of analysed deals with regression chosen 
+    deactivate System
+
+deactivate storemanager
+@enduml

@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
+import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.*;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
@@ -43,7 +44,7 @@ public class RegisterPropertyController implements Serializable {
     CityRepository cityRepository=repositories.getCityRepository();
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
     ClientRepository clientRepository = repositories.getInstance().getClientRepository();
-
+    AuthenticationController authenticationController;
     /**
      * Instantiates a new Register property controller.
      *
@@ -189,7 +190,7 @@ public class RegisterPropertyController implements Serializable {
 
     public Client getCurrentOwner() {
         pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();
-        if (userSession.getUserRoles().equals("Role-Owner") ) {
+        if (userSession.getUserRoles().equals(authenticationController.ROLE_OWNER) ) {
             String ownerName=userSession.getUserName();
             return getOwnerByName(ownerName);
         } else {

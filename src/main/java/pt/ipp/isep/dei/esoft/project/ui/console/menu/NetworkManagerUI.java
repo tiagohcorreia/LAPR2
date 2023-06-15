@@ -17,6 +17,7 @@ public class NetworkManagerUI implements Runnable {
         List<MenuItem> options = new ArrayList<MenuItem>();
 
         options.add(new MenuItem("List All Employees", new ListAllEmplyeesUI()));
+        //options.add(new MenuItem("List all deals made", new ListDealsGUI()));
         options.add(new MenuItem("List all deals made", new ListDealsGUI()));
 
         int option = 0;

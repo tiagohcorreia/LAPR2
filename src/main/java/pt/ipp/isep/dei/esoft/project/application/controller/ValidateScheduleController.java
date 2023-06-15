@@ -1,6 +1,5 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
@@ -80,7 +79,7 @@ public class ValidateScheduleController {
             rowDay.setText(String.valueOf(schedule.getDay()));
             rowBeginHour.setText(String.valueOf(schedule.getBeginHour()));
             rowEndHour.setText(String.valueOf(schedule.getEndHour()));
-            rowNote.setText(schedule.getNote());
+            rowNote.setText(schedule.getNoteFromAgent());
         }
 
 

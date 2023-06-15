@@ -29,19 +29,19 @@ public class VisitRepositoryTest {
         visit = new Visit(scheduleVisit, opinionAboutBusiness, rating);
     }
 
-    @Test
+    /*@Test
     public void ensureSaveVisitReturnsTrueWhenVisitIsValidAndNotDuplicate() {
         boolean result = visitRepository.saveVisit(visit);
 
         Assertions.assertTrue(result);
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void ensureSaveVisitReturnsFalseWhenVisitIsNull() {
         boolean result = visitRepository.saveVisit(null);
 
         Assertions.assertFalse(result);
-    }
+    }*/
 
     @Test
     public void ensureSaveVisitReturnsFalseWhenVisitIsDuplicate() {

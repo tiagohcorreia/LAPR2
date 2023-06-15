@@ -1,6 +1,6 @@
 # US 006 - To create a Task 
 
-[Requirements Engineering](01.requirements-engineering/Requirements-Engeneering.md)
+[Requirements Engineering](01.requirements-engineering/Requirements-Engineering.md)
 
 [Analysis](02.analysis/Analysis.md)
 
