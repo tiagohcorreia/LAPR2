@@ -89,8 +89,6 @@ m
 =src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
 |
 Lsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterClientUI.java,c\6\c6df044e3c8a5c1d0573c229dd05f3f640964ffa
-‰
-Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepository.java,c\8\c805ca1cbd80f0ac94482e0d78c0adf7bc47eeb0
 ~
 Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565
 w
@@ -127,13 +125,9 @@ Gsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/OrderTest.java,e\9\e9
 Psrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/UserSession.java,3\a\3ad8f79dc5d9e6193112010503c93310b92234d1
 t
 Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTest.java,1\0\1009d2015c9fc4a9f50d9b819006a88ce2e99b09
-…
-Usrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PlaceOrderToBuyPropertyUI.java,1\1\11c3f0e6ee016f152206f9eb3b0b10bb8157d0ef
 }
 Msrc/main/java/pt/ipp/isep/dei/esoft/project/domain/shared/TypeOfBusiness.java,b\3\b374a0b40db2e71644d9ff45a0f9a42a5f7a15c1
 t
 Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/PropertyTest.java,e\8\e85bbda46feff2831dc0832af987cfc18ebeb775
-™
-isrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PlaceOrderToBuyPropertyController.java,f\2\f23e3482c7029e1e6c436ec449042c4065f6a470
 ’
 bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ValidateScheduleController.java,c\9\c9d2a4c16c22307d644134a44ab13b829207d164

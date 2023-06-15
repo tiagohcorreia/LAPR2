@@ -6,6 +6,7 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.model.Order;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
+import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
 import java.util.List;
 
@@ -14,19 +15,9 @@ import java.util.List;
  */
 public class PlaceOrderToBuyPropertyController {
 
-    private AnnouncementRepository announcementRepository = new AnnouncementRepository();
+    private AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
     private AnnouncementMapper announcementMapper;
-    private PlaceOrderToBuyPropertyRepository orderRepository = new PlaceOrderToBuyPropertyRepository();
-
-    /**
-     * Instantiates a new Place order to buy property controller.
-     *
-     * @param orderRepository the order repository
-     */
-    public PlaceOrderToBuyPropertyController(PlaceOrderToBuyPropertyRepository orderRepository) {
-
-        this.orderRepository = orderRepository;
-    }
+    private PlaceOrderToBuyPropertyRepository orderRepository = Repositories.getInstance().getOrderToBuyPropertyRepository();
 
     /**
      * Announcement dto list list.
