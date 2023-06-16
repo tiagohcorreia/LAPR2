@@ -1,9 +1,18 @@
 @startuml
+interface Runnable {
+    + run()
+}
 
-class AnalyseDealsUI {
+class AnalyseDealsGUI {
+    + start()
+    + main()
 }
 
 class AnalyseDealsController {
+    - housesAndApartmentsList
+    + getApartmentsAndHouses()
+    + simpleLinearRegression()
+    + multiLinearRegression()
 }
 
 class PurchaseOrderRepository {
@@ -20,8 +29,9 @@ class Repositories {
 
 }
 
-
-AnalyseDealsUI -[dashed]-> AnalyseDealsController
+Application -right-|> AnalyseDealsGUI
+Runnable -left-|> AnalyseDealsGUI
+AnalyseDealsGUI -[dashed]-> AnalyseDealsController
 AnalyseDealsController-[dashed]-> Repositories
 AnalyseDealsController-[dashed]-> PurchaseOrderRepository
 

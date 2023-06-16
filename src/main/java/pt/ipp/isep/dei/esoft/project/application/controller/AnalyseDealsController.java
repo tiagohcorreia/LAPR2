@@ -13,8 +13,6 @@ public class AnalyseDealsController {
     Repositories repositories = Repositories.getInstance();
     PurchaseOrderRepository purchaseOrderRepository= repositories.getPurchaseOrderRepository();
 
-    SimpleRegression regression = new SimpleRegression();
-
     public List<Order> getApartmentsAndHouses() {
         List<Order> orderList = purchaseOrderRepository.getAll();
         List<Order> housesAndApartmentsList = purchaseOrderRepository.getAll();
@@ -50,10 +48,8 @@ public class AnalyseDealsController {
                 regression.addData(order.getAnnouncementDTO().getProperty().getNumberOfParkingSpaces(), order.getOrderAmount());
             }
         }
-
         double slope = regression.getSlope();
         double intercept = regression.getIntercept();
-
     }
 
 }

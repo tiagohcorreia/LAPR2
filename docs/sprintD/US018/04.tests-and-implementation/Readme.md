@@ -1,23 +1,24 @@
-# US 006 - To create a Task 
+# US 018 - Analyse the deals made, based on the characteristics of the property using simple liner regression and multilinear regression
 
 # 4. Tests 
 
-**Test 1:** Check that it is not possible to create an instance of the Task class with null values. 
+**Test 1:** Check if filters by houses and apartments orders 
 
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Task instance = new Task(null, null, null, null, null, null, null);
-	}
-	
+	@Test
+    void getApartmentsAndHouses() {
+        List<Order> expectedHouseAndApartmentsList = new ArrayList<>();
+        pt.ipp.isep.dei.esoft.project.domain.model.Order orderHouse1 = new Order(123,DTOHouse);
+        pt.ipp.isep.dei.esoft.project.domain.model.Order orderApartment1 = new Order(123,DTOApartment);
+        expectedHouseAndApartmentsList.add(orderHouse1);
+        expectedHouseAndApartmentsList.add(orderApartment1);
 
-**Test 2:** Check that it is not possible to create an instance of the Task class with a reference containing less than five chars - AC2. 
+        List<Order> result= analyseDealsController.getApartmentsAndHouses();
 
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureReferenceMeetsAC2() {
-		Category cat = new Category(10, "Category 10");
-		
-		Task instance = new Task("Ab1", "Task Description", "Informal Data", "Technical Data", 3, 3780, cat);
-	}
+        assertEquals(expectedHouseAndApartmentsList, result);
+
+
+    }
+
 
 
 *It is also recommended to organize this content by subsections.* 
@@ -25,7 +26,7 @@
 # 5. Construction (Implementation)
 
 
-## Class CreateTaskController 
+## Class AnalyseDealsController 
 
 ```java
 public Task createTask(String reference, String description, String informalDescription,
