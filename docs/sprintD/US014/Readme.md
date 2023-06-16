@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 014 - As a client, I want to read the response for the appointment requests, to accept or reject it
 
 [Requirements Engineering](01.requirements-engineering/Readme.md)
 

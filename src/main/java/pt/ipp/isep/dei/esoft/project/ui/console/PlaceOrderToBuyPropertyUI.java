@@ -2,7 +2,6 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
-import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
 
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
@@ -18,7 +17,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
 
     public PlaceOrderToBuyPropertyUI() {
-        //this.controller = controller;
+
     }
 
     @Override
@@ -47,7 +46,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
             System.out.println("Client: ");
             System.out.println("Status: " + status);
             System.out.println("Order amount: " + orderAmount + "$");
-            System.out.println("Selected Announcement:\n" + AnnouncementMapper.getAnnouncementDTOById(posAnouncement));
+            System.out.println("Selected Announcement:\n" + this.controller.showSelectedAnnouncement(posAnouncement));
 
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 

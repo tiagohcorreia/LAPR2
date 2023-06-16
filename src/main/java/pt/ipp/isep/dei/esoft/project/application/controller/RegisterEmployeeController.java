@@ -28,7 +28,7 @@ public class RegisterEmployeeController {
 
     public RegisterEmployeeController() {
 
-        this.branchRepository.readObject();
+        //this.branchRepository.readObject();
     }
 
     /**
@@ -105,6 +105,18 @@ public class RegisterEmployeeController {
             e.printStackTrace();
         }
         return password;
+    }
+
+    public Branch showSelectedBranch(int posBranch) {
+
+        for (int i = 0; i < branchRepository.getBranchList().size(); i++) {
+
+            if(posBranch >= branchRepository.getBranchList().size() && posBranch < branchRepository.getBranchList().size() && posBranch == i) {
+
+                return branchRepository.getBranchList().get(posBranch);
+            }
+        }
+        return null;
     }
 
 
