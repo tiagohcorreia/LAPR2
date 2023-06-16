@@ -22,4 +22,8 @@ public class ListDealsController {
         AnnouncementRepository.sortAnnouncements(announcements, "date", SortingOrder.DESCENDING);
         return announcements;
     }
+
+//    public static List<Announcement> sortByAreaWithAlgorithm(List<Announcement> announcements, String sortingAlgorithm, SortingOrder sortingorder){
+//        return AnnouncementRepository.sortByAreaWithAlgoritm(announcements, sortingAlgorithm, sortingorderorder);
+//    }
 }
