@@ -122,13 +122,15 @@ public class ListDealsGUI extends Application implements Runnable, Initializable
 
         //branchIdColumn.setCellValueFactory(data -> data.getValue().getAgent().getBranch().getID());
 
-
+/*
         TableColumn<Announcement, String> branchNameColumn = new TableColumn<>("Branch Name");
         branchNameColumn.setCellValueFactory(data ->
                 new ReadOnlyStringWrapper(data.getValue().getAgent().getBranch().getName()));
 
+ */
+
         //tblView.getColumns().setAll(dateColumn, clientColumn, branchIdColumn, branchNameColumn);
-        tblView.getColumns().setAll(dateColumn, clientColumn, branchNameColumn);
+        tblView.getColumns().setAll(dateColumn, clientColumn);
 
         return;
     }

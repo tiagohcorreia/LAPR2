@@ -4,7 +4,11 @@ import javafx.collections.ObservableList;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
+import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementDateComparator;
+import pt.ipp.isep.dei.esoft.project.domain.shared.SortingOrder;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListDealsController {
@@ -12,7 +16,10 @@ public class ListDealsController {
 
 
     public static List<Announcement> getDeals() {
-        return announcementRepository.getSoldAnnouncements();
-
+        List<Announcement> announcements = new ArrayList<>();
+        announcements.addAll(announcementRepository.getSoldAnnouncements());
+        //announcements.sort(new AnnouncementDateComparator());
+        AnnouncementRepository.sortAnnouncements(announcements, "date", SortingOrder.DESCENDING);
+        return announcements;
     }
 }
