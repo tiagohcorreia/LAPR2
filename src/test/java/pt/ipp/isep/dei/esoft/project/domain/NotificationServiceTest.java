@@ -38,7 +38,7 @@ public class NotificationServiceTest {
 
         notificationService.sendNotification(RECIPIENT, SUBJECT, MESSAGE);
 
-        String expected = String.format("[*]%nRecipient: %s%nSubject: %s%nMessage: %s%n%n", RECIPIENT, SUBJECT, MESSAGE);
+        String expected = String.format("[*]\nRecipient: %s\nSubject: %s\nMessage: %s\n\n", RECIPIENT, SUBJECT, MESSAGE);
 
         writeToFile(tempFile, expected);
 
