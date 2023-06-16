@@ -75,7 +75,7 @@ global behaviour of the network on a daily basis.
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram](svg/us0017-system-sequence-diagram.svg)
+![System Sequence Diagram](svg/us017-system-sequence-diagram.svg)
 
 ### 1.7 Other Relevant Remarks
 
