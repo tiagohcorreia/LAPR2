@@ -85,17 +85,22 @@ should be used.
 
 **Input Data:**
 
-* CSV file with property information: property area (in square feet), distance from downtown (in miles), number of bedrooms, number of bathrooms, and number of parking spaces.
 
 **Selected Data:**
-    
+* Type of regression:
+  * Simple Linear Regression
+  * Multilinear Regression
+* Simple Linear Regression Independent Variables:
+  * property are (in square feet)
+  * distance from downtown (in miles)
+  * number of bedrooms
+  * number of bathrooms
+  * number of parking spaces
 
 **Output Data:**
 
 * Property sales prices estimated by the regression model.
 * Regression model statistics: R (for SLR), R2 and adjusted R2 (for SLR and MLR), confidence intervals, hypothesis tests for regression coefficients, and model significance with Anova.
-
-
 
 
 ### 1.6. System Sequence Diagram (SSD)

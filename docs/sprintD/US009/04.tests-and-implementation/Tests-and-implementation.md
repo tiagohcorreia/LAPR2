@@ -2,7 +2,7 @@
 
 # 4. Tests 
 
-**Pre-Tests:** To simplify and not repeat the same code in all tests, I created a "Schedule" that will run before each test.
+**Pre-Tests Class Schedule:** To simplify and not repeat the same code in all tests, I created a "Schedule" that will run before each test.
 
 	Schedule schedule;
     Property property;
@@ -80,8 +80,66 @@
         });
     }
 
+**Pre-Test Class ScheduleVisitController:** 
 
+	static ScheduleRepository scheduleRepository;
+    ScheduleVisitController scheduleVisitController;
+    AnnouncementDTO announcementDTO;
+    LocalDate day;
+    LocalTime beginHour;
+    LocalTime endHour;
 
+    LocalDate day2;
+    LocalTime beginHour2;
+    LocalTime endHour2;
+    Schedule scheduleNotOverlap;
+    @BeforeAll
+    static void setup() {
+        scheduleRepository = Repositories.getInstance().getScheduleRepository();
+    }
+
+    @BeforeEach
+    void init() {
+        scheduleVisitController = new ScheduleVisitController(scheduleRepository);
+
+        Branch branch = new Branch();
+        ArrayList<String> photographs = new ArrayList<String>();
+        photographs.add("photo1");
+        City city = new City("Porto");
+        day = LocalDate.of(2024, 06, 20);
+        beginHour = LocalTime.of(12, 30, 0);
+        endHour = LocalTime.of(13, 30, 0);
+        day2 = LocalDate.of(2024, 06, 20);
+        beginHour2 = LocalTime.of(14, 30, 0);
+        endHour2 = LocalTime.of(15, 30, 0);
+        Property property = new Land(123, new Location(), 123, photographs);
+        Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", String.valueOf(1234567891), Role.AGENT, branch);
+        Client owner = new Client("owner1", "owner@this.app", 123456789, 111111111, 1234567890);
+
+        Announcement announcement = new Announcement(LocalDate.now(), AnnouncementStatus.PUBLISHED, 1231, 121, TypeOfBusiness.SELL, property, e1, owner);
+
+        announcementDTO = new AnnouncementDTO(123, TypeOfBusiness.SELL, property, e1);
+        scheduleRepository.addSchedule(new Schedule("vitor", 1234567891, announcementDTO, day, beginHour, endHour, "no more notes", false, false));
+        scheduleNotOverlap= new Schedule("vitor2",1234567891, announcementDTO, day2, beginHour2, endHour2, "no more notes", false, false);
+    }
+**Test 1 ScheduleVisitController:** Check if schedule time overlap fails
+
+	@DisplayName("Ensure the schedule time overlap fails")
+    @Test
+    void validateScheduleHourOverlap() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            scheduleVisitController.validateScheduleHour(announcementDTO, day, beginHour, endHour);
+        });
+    }
+**Test 2 ScheduleVisitController:** Check if schedule time not overlap 
+
+	@DisplayName("Ensure the schedule time not overlap")
+    @Test
+    void validateScheduleHourNotOverlap() {
+        boolean expected= true;
+        boolean actual=scheduleVisitController.validateScheduleHour(announcementDTO, day2, beginHour2, endHour2);
+        assertEquals(expected,actual);
+    }
 
 # 5. Construction (Implementation)
 
@@ -259,20 +317,18 @@ public class ScheduleVisitController {
     public boolean validateScheduleHour(AnnouncementDTO announcementDTO, LocalDate day, LocalTime beginTime, LocalTime endTime) {
         boolean isOverlap = false;
         for(Schedule schedule : scheduleRepository.getScheduleList()) {
+            if (schedule.getAnnouncementDTO().equals(announcementDTO) && schedule.getDay().equals(day)){
+                if (beginTime.isBefore(schedule.getEndHour()) && endTime.isAfter(schedule.getBeginHour())) {
+                    isOverlap = true;
+                    throw new IllegalArgumentException("That hour is already scheduled, please insert data again.");
 
-            if (beginTime.isBefore(schedule.getEndHour()) && endTime.isAfter(schedule.getBeginHour())) {
-                isOverlap = true;
-                throw new IllegalArgumentException("That hour is already scheduled, please insert data again.");
+                } else if (beginTime.equals(schedule.getBeginHour()) || endTime.equals(schedule.getEndHour())) {
+                    isOverlap = true;
 
-            } else if (beginTime.equals(schedule.getBeginHour()) || endTime.equals(schedule.getEndHour())) {
-                isOverlap = true;
-
-                throw new IllegalArgumentException("That hour is already scheduled, please insert data again.");
+                    throw new IllegalArgumentException("That hour is already scheduled, please insert data again.");
+                }else return true;
             }
 
-            if (schedule.getAnnouncementDTO().equals(announcementDTO) && schedule.getDay().equals(day) && isOverlap==false) {
-                return true;
-            }
         }
         return true;
     }
@@ -296,12 +352,6 @@ public class ScheduleVisitUI implements Runnable{
     public void run() {
         boolean success= true;
         while (success==true){
-
-            //name
-            String name= Utils.readLineFromConsole("Insert your name:");
-
-            //phoneNumber
-            int phoneNumber=Utils.readIntegerFromConsole("Insert your phone number:");
 
             //List of anouncements
             List<AnnouncementDTO> x = this.controller.announcementDTOList();
@@ -337,9 +387,16 @@ public class ScheduleVisitUI implements Runnable{
 
                 try {
                     if (controller.validateScheduleHour(controller.getAnnouncementDTO(posAnouncement),day,beginTime,endTime)==true){
-                        this.controller.createSchedule(name,phoneNumber, posAnouncement,day,beginTime,endTime, note);
+                        this.controller.createSchedule(posAnouncement,day,beginTime,endTime, note);
+                        System.out.println("Announcement Number:\n" + posAnouncement);
+                        System.out.println("Day: " + day);
+                        System.out.println("Begin Time: " + beginTime );
+                        System.out.println("End Hour: " + endTime);
+                        System.out.println("Note: " + note);
+                        System.out.println();
                         System.out.println("Schedule message confirmed");
                         success = false;
+
                     } else{
                         System.out.println("Please insert Schedule data again");
                     }
@@ -358,9 +415,6 @@ public class ScheduleVisitUI implements Runnable{
                     System.out.println(e.getMessage());
 
                 }
-
-
-
 
             } else {
 

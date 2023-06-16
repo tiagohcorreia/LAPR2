@@ -1,0 +1,79 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'skinparam linetype ortho
+'left to right direction
+skinparam classAttributeIconSize 0
+'skinparam groupInheritance 2
+hide circle
+hide methods
+
+class Branch{
+name
+address
+email
+phoneNumber
+}
+
+together {
+class "Store Manager" as StoreMan
+
+}
+
+
+class Buyer
+
+
+
+class Order{
+orderAmount
+}
+
+
+class Announcement{
+state
+price
+typeOfBusiness
+}
+
+class Property{
+area
+cityCenterDistance
+photographs
+}
+
+class HabitableProperty{
+numberOfBedrooms
+numberOfBathrooms
+numberOfParkingSpaces
+equipment
+}
+
+class House{
+hasBasement
+hasInhabitableLoft
+sunExposure
+}
+
+class Apartment{
+}
+
+
+
+Branch "1" -- "*" Announcement: publishes >
+Announcement "1" -- "1" Property: contains >
+
+Property <|-- HabitableProperty
+HabitableProperty <|-- House
+HabitableProperty <|-- Apartment
+
+StoreMan "1" -> "1" Branch: manages >
+
+Buyer --> Order: submits >
+Order --> Property: to buy/rent >
+
+@enduml

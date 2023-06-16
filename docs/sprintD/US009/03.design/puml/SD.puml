@@ -64,14 +64,17 @@ deactivate AnnouncementDTO
 ctrl -> ui: return AnnouncementList
 
 
-ui -> client: shows announcement list and requests the user to select one\n and insert all the information (name, phoneNumber,day,\n beginHour,endHour, note)
+ui -> client: shows announcement list and requests the user to select one\n and insert all the information (day, beginHour,endHour, note)
 
 client -> ui: selects announcement with the property and types all the information
 
 ui -> ctrl: createSchedule()
 
+ctrl -> ScheduleRepository: validateScheduleHour()
 
-
+activate ScheduleRepository
+ScheduleRepository->ctrl: return bolean
+deactivate ScheduleRepository
 ctrl -> schedule: createSchedule()
 
 

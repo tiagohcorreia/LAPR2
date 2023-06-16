@@ -1,0 +1,20 @@
+[2023-06-15T12:14:29.039781]
+Recipient: john@example.com
+Subject: Test Notification
+Message: This is a test notification.
+
+[2023-06-15T12:20:11.084993]
+Recipient: john@example.com
+Subject: Test Notification
+Message: This is a test notification.
+
+[2023-06-15T12:29:53.545314]
+Recipient: test@example.com
+Subject: Test Subject
+Message: Test Message
+
+[2023-06-15T21:40:05.370437]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
