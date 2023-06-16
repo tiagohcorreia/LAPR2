@@ -104,12 +104,11 @@ public class Location implements Serializable, Validator {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Location{");
-        sb.append("Door Number:").append(doorNumber);
-        sb.append(", Street:'").append(street).append('\'');
-        sb.append(", City:").append(city);
-        sb.append(", Zip Code: ").append(zipCode);
-        sb.append('}');
+        final StringBuilder sb = new StringBuilder();
+        sb.append("Door Number:").append(doorNumber).append("\t");
+        sb.append("Street:").append(street).append("\t");
+        sb.append("").append(city).append("");
+        sb.append("Zip Code:").append(zipCode);
         return sb.toString();
     }
 }

@@ -20,8 +20,7 @@ class Agent {
 
 
 
-class Advertisement {
-    id
+class Announcement {
     status
     date
 }
@@ -29,6 +28,7 @@ class Client {
     name
     email
     phoneNumber
+
 }
 
 
@@ -50,7 +50,7 @@ class Apartment {
 
 }
 class Land {
-     description
+
 }
 
 class Commission {
@@ -58,16 +58,17 @@ class Commission {
 }
 
 class Property {
-
      area
      distance_from_the_city_centre
      price
      photographs
      Type_Business
+     numberOfMonthsRent
 
 }
 
 class Location{
+     doorNumber
      street
      postalCode
 }
@@ -82,20 +83,26 @@ class State{
     stateName
 }
 
+class Notification{
+    reasonToReject
+}
 
 
 
-Advertisement "1" -- "1" Property: contains >
-Agent "1" -- "*" Advertisement: accept/reject/publish >
-Client "1" - "*" Advertisement: request >
+
+Announcement "1" -- "1" Property: contains >
+Agent "1" -- "*" Announcement: accept/reject/publish >
+Client "1" - "*" Announcement: request >
 House "1" --"1" Property: is >
 Apartment"1" -- "1" Property: is >
 Land"1" - "1" Property: is >
-Advertisement"1" - "1" Commission: it has >
+Announcement"1" - "1" Commission: it has >
 Property "1" -- "1" Location: it has >
 Location "1" -- "1" City: contains >
 City "1" -- "1" District: contains >
 District "1" -- "1" State: contains >
+Notification "1" -- "1" Client: sent to >
+Agent "1" -- "*" Notification : send >
 
 
 

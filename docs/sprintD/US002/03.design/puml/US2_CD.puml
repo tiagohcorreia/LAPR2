@@ -17,6 +17,7 @@ class PublishAnnouncementController {
     + createAnnouncement(date,Property,commission,agentName)
     + createNotification(ownerName, ownerPhoneNumber,ID,date,agentName,agentPhoneNumber)
     - getEmployeeFromSession()
+    - getCityList()
 
 }
 
@@ -46,24 +47,29 @@ class AnnouncementRepository{
     +validateAnnouncement()
     +addAnnouncement()
 }
+
+class CityRepository{
+    +getCityList()
+
+}
 class EmployeeRepository{
     +getAgentPhoneNumber()
 
 }
 
 class Announcement{
-    + Announcement(date,Property,commission,agentName)
+    + Announcement(date,Property,commission,agentName,owner)
 
 }
 
 class Property{
-  -String ID
   -TypeOfBusiness TypeOfBusiness
   -float size
   -string location
   -float distance_from_the_city_center
   -String photographs
   -float price
+  -int numberOfMonthsRent
 
 }
 class House{
@@ -100,12 +106,7 @@ class Agent {
     +publishAnnouncement(date,Property,commission,agentName)
 }
 class NotificationService{
-    -String ownerName
-    -int ownerPhoneNumber
-    -String id
-    -LocalDate date
-    -String agentName
-    -int agentPhoneNumber
+
     +CreateNotification()
     +SendSMS()
 }
@@ -115,6 +116,8 @@ ApplicationSession -> ApplicationSession : instance
 PublishAnnouncementController .> Repositories : repositories
 
 Repositories --> "1" EmployeeRepository
+Repositories --> "1" CityRepository
+
 
 EmployeeRepository --> "*" Agent: Agent
 ApplicationSession --> "1" UserSession : userSession
@@ -127,6 +130,8 @@ PublishAnnouncementUI .> PublishAnnouncementController
 
 
 PublishAnnouncementController ..> AnnouncementRepository : AnnouncementRepository
+
+PublishAnnouncementController ..> CityRepository : CityRepository
 
 AnnouncementRepository --> "*" Announcement
 
