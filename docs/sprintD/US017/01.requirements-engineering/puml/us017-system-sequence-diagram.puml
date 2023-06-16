@@ -18,12 +18,12 @@ activate Employee
         System --> Employee : displays data sorted by most recent
     deactivate System
 opt
-loop
-    Employee -> System : selects sorting algorithm
-    activate System
 
-     '   System --> Employee : shows task category list and asks to select one
-    deactivate System
+    Employee -> System : selects sorting algorithm
+    'activate System
+
+    '   System --> Employee : shows task category list and asks to select one
+    'deactivate System
 
     Employee -> System : selects ascending/descending order
     activate System
@@ -31,7 +31,7 @@ loop
         System --> Employee : shows sorted list of deals
     deactivate System
 
-end
+
 end
 
 @enduml

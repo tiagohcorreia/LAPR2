@@ -56,7 +56,7 @@ global behaviour of the network on a daily basis.
 ### 1.4. Found out Dependencies
 
 
-* There is a dependency to "US003 Create a task category" since at least a task category must exist to classify the task being created.
+* There are dependencies to US2 because we rely on the ability to publish Announcements and US11 for the ability to accept purchase orders.
 
 
 ### 1.5 Input and Output Data
@@ -75,8 +75,8 @@ global behaviour of the network on a daily basis.
 
 ### 1.6. System Sequence Diagram (SSD)
 
-![System Sequence Diagram](svg/us0017-system-sequence-diagram.svg)
+![System Sequence Diagram](svg/us017-system-sequence-diagram.svg)
 
 ### 1.7 Other Relevant Remarks
 
-* The created task stays in a "not published" state in order to distinguish from "published" tasks.
+* N/A

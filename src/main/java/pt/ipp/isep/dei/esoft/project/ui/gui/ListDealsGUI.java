@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,23 +35,22 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ListDealsGUI extends Application implements Runnable, Initializable {
-    ListDealsController controller = new ListDealsController();
+    private ListDealsController controller = new ListDealsController();
 
     @FXML
     private TableView<Announcement> tblView;
 
-
-   @FXML
-    private Button btnExit;
-   @FXML
+    @FXML
     private Button btnAsc;
-   @FXML
-    private Button btnDsc;
-//    @FXML
-//    private TableColumn col1;
-//    @FXML
-//    private TableColumn col2;
 
+    @FXML
+    private Button btnDsc;
+
+    @FXML
+    private RadioButton rdbBubble;
+
+    @FXML
+    private RadioButton rdbInsertion;
 
 
 

@@ -11,6 +11,7 @@ import java.util.Date;
 import java.time.LocalDate;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
+import java.util.List;
 
 
 /**
@@ -30,6 +31,10 @@ public class Announcement implements Serializable {
     private Client owner;
 
     private int numberOfMonthsRent;
+
+    private List<Order> orders;
+
+    private Branch branch;
 
     /**
      * Instantiates a new Announcement.

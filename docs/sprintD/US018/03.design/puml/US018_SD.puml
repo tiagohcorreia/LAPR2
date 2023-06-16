@@ -6,7 +6,7 @@ skinparam shadowing false
 autonumber
 
 actor "Store Manager" as agent
-participant ":AnalyseDealsUI" as ui
+participant ":AnalyseDealsGUI" as gui
 participant ":AnalyseDealsController" as ctrl
 
 
@@ -18,27 +18,27 @@ participant "purchaseorderRepository\n:PurchaseOrderRepository" as poR
 
 
 activate agent
-agent -> ui: requests analyse deals
-activate ui
-ui -> agent: request to select simple linear \nregression or multilinear regression
+agent -> gui: requests analyse deals
+activate gui
+gui -> agent: request to select simple linear \nregression or multilinear regression
 
 alt simple linear regression
 
-agent -> ui: selects simple linear regression
+agent -> gui: selects simple linear regression
 
-ui -> agent: request to select independent variable
+gui -> agent: request to select independent variable
 
-agent -> ui: selects independent variable
+agent -> gui: selects independent variable
 
 else multilinear regression
 
-agent -> ui: selects multilinear regression
+agent -> gui: selects multilinear regression
 
 end
 
 
 
-ui -> ctrl**: create
+gui -> ctrl**: create
 activate ctrl
 ctrl -> repos: getInstance()
 activate repos
@@ -77,6 +77,6 @@ end
 
 return analysedDealsList
 
-ui -> agent: shows analysed deals
+gui -> agent: shows analysed deals
 
 @enduml
