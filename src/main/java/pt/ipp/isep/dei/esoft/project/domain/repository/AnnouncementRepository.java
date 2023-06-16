@@ -4,12 +4,15 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.model.Client;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Property;
+import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementDateComparator;
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
+import pt.ipp.isep.dei.esoft.project.domain.shared.SortingOrder;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -257,6 +260,17 @@ public class AnnouncementRepository {
             ioe.printStackTrace();
         }
     }
+
+    public static void sortAnnouncements(List<Announcement> announcements, String property, SortingOrder sortingOrder){
+        switch (property){
+            case "date":
+                announcements.sort(new AnnouncementDateComparator());
+                if (sortingOrder.equals(SortingOrder.DESCENDING))
+                    Collections.reverse(announcements);
+                break;
+        }
+    }
+
 }
 
 
