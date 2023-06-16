@@ -1,5 +1,7 @@
 @startuml
 
+title Class Diagram US010
+
 interface Runnable {
 
     + run()
@@ -69,18 +71,13 @@ class Repositories {
     + announcementRepository
 }
 
-class Announcement {
-
-}
-
-
 
 Runnable -left-|> PlaceOrderToBuyPropertyUI
 PlaceOrderToBuyPropertyUI ..> PlaceOrderToBuyPropertyController
 PlaceOrderToBuyPropertyController ..> Repositories
 PlaceOrderToBuyPropertyController ..> AnnouncementRepository
 Repositories -> AnnouncementRepository
-Repositories -> PlaceOrderToBuyPropertyRepository
+Repositories --> PlaceOrderToBuyPropertyRepository
 PlaceOrderToBuyPropertyController ..> AnnouncementMapper
 PlaceOrderToBuyPropertyController ..> PlaceOrderToBuyPropertyRepository
 AnnouncementMapper --> AnnouncementDTO
