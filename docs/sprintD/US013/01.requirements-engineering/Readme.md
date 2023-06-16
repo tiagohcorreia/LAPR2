@@ -24,6 +24,13 @@ global behaviour of the network on a daily basis.
 
 >Answer: Yes.
 
+>Question: Do you want a list where the header is ID, the name of the store, and the total number of listings that the store has?
+
+>Answer: Yes.
+
+>Question: And the alphabetical list of employees of that store repeated from the store with the most property listings to the one with the least property listings.
+
+>Answer: The answer to this question is to read carefully the acceptance criteria for this US and discuss them with your team.
 
 
 
