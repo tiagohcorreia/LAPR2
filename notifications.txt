@@ -1,0 +1,60 @@
+[2023-06-15T12:14:29.039781]
+Recipient: john@example.com
+Subject: Test Notification
+Message: This is a test notification.
+
+[2023-06-15T12:20:11.084993]
+Recipient: john@example.com
+Subject: Test Notification
+Message: This is a test notification.
+
+[2023-06-15T12:29:53.545314]
+Recipient: test@example.com
+Subject: Test Subject
+Message: Test Message
+
+[2023-06-15T21:40:05.370437]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
+[2023-06-16T01:24:21.991526700]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
+[2023-06-16T01:25:26.169935300]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
+[2023-06-16T01:25:54.026354500]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
+[2023-06-16T01:26:18.966177500]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
+[2023-06-16T01:27:45.051692500]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
+[2023-06-16T01:43:09.576912900]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
+[2023-06-16T01:44:57.238976200]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
+[2023-06-16T04:12:49.441279400]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+

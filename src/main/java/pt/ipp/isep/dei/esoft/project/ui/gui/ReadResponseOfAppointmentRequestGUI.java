@@ -3,17 +3,19 @@ package pt.ipp.isep.dei.esoft.project.ui.gui;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import pt.ipp.isep.dei.esoft.project.application.controller.ReadResponseOfAppointmentRequestController;
 
 import java.io.IOException;
 
 public class ReadResponseOfAppointmentRequestGUI extends Application implements Runnable {
+
+    ReadResponseOfAppointmentRequestController controller = new ReadResponseOfAppointmentRequestController();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -21,7 +23,6 @@ public class ReadResponseOfAppointmentRequestGUI extends Application implements 
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(ReadResponseOfAppointmentRequestGUI.class.getResource("ReadAppointmentRequest.fxml"));
-            //Parent root = fxmlLoader.load();
             Scene scene = new Scene(fxmlLoader.load());
 
             stage.setTitle("US020");
@@ -58,7 +59,11 @@ public class ReadResponseOfAppointmentRequestGUI extends Application implements 
 
     public static void main(final String[] args) {
         launch();
-        //Application.launch(ReadResponseOfAppointmentRequestGUI.class, args);
+    }
+
+    @Override
+    public void run() {
+        GuiHandler.myLaunch(getClass());
     }
 
     private Alert createErrorAlert(Exception ex) {
@@ -72,8 +77,5 @@ public class ReadResponseOfAppointmentRequestGUI extends Application implements 
         return alert;
     }
 
-    @Override
-    public void run() {
-        launch();
-    }
+
 }

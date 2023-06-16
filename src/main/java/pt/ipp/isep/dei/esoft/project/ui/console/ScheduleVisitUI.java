@@ -7,18 +7,19 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
-public class ScheduleVisitUI implements Runnable{
-    private ScheduleVisitController controller= new ScheduleVisitController(new ScheduleRepository());
+public class ScheduleVisitUI implements Runnable {
+    private ScheduleVisitController controller = new ScheduleVisitController(new ScheduleRepository());
 
     public ScheduleVisitUI(ScheduleVisitController scheduleVisitController) {
     }
 
     @Override
     public void run() {
-        boolean success= true;
-        while (success==true){
+        boolean success = true;
+        while (success == true) {
 
             //List of anouncements
             List<AnnouncementDTO> x = this.controller.announcementDTOList();
@@ -33,38 +34,38 @@ public class ScheduleVisitUI implements Runnable{
 
             //Begin Hour
             System.out.println("Insert the time you want to start the visit");
-            int beginHour=Utils.readIntegerFromConsole("Hour :");
-            int begunMin=Utils.readIntegerFromConsole("Minute:");
-            int beginSec=Utils.readIntegerFromConsole("Second :");
-            LocalTime beginTime = LocalTime.of(beginHour,begunMin,beginSec);
+            int beginHour = Utils.readIntegerFromConsole("Hour :");
+            int begunMin = Utils.readIntegerFromConsole("Minute:");
+            int beginSec = Utils.readIntegerFromConsole("Second :");
+            LocalTime beginTime = LocalTime.of(beginHour, begunMin, beginSec);
 
             //End Hour
             System.out.println("Insert the time you want to end the visit");
-            int endHour=Utils.readIntegerFromConsole("Hour :");
-            int endMin=Utils.readIntegerFromConsole("Minute :");
-            int endSec=Utils.readIntegerFromConsole("Second:");
-            LocalTime endTime = LocalTime.of(endHour,endMin,endSec);
+            int endHour = Utils.readIntegerFromConsole("Hour :");
+            int endMin = Utils.readIntegerFromConsole("Minute :");
+            int endSec = Utils.readIntegerFromConsole("Second:");
+            LocalTime endTime = LocalTime.of(endHour, endMin, endSec);
 
             //Extra note
-            String note= Utils.readLineFromConsole("Insert a note for the agent:");
+            String note = Utils.readLineFromConsole("Insert a note for the agent:");
 
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
             if (optValidation == 1) {
 
                 try {
-                    if (controller.validateScheduleHour(controller.getAnnouncementDTO(posAnouncement),day,beginTime,endTime)==true){
-                        this.controller.createSchedule(posAnouncement,day,beginTime,endTime, note);
+                    if (controller.validateScheduleHour(controller.getAnnouncementDTO(posAnouncement), day, beginTime, endTime) == true) {
+                        this.controller.createSchedule(posAnouncement, day, beginTime, endTime, note);
                         System.out.println("Announcement Number:\n" + posAnouncement);
                         System.out.println("Day: " + day);
-                        System.out.println("Begin Time: " + beginTime );
+                        System.out.println("Begin Time: " + beginTime);
                         System.out.println("End Hour: " + endTime);
                         System.out.println("Note: " + note);
                         System.out.println();
                         System.out.println("Schedule message confirmed");
                         success = false;
 
-                    } else{
+                    } else {
                         System.out.println("Please insert Schedule data again");
                     }
 
@@ -77,10 +78,13 @@ public class ScheduleVisitUI implements Runnable{
 
                     System.err.println(e.getMessage());
 
+                } catch (DateTimeParseException e) {
+
+                    e.getStackTrace();
+
                 } catch (Exception e) {
 
                     System.out.println(e.getMessage());
-
                 }
 
             } else {

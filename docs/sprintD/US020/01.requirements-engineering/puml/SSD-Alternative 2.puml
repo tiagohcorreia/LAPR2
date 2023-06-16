@@ -12,15 +12,14 @@ client -> ui: starts to read the response for the appointment request
 
 ui -> client: shows appointment request
 
-ui -> client: asks the user to accept or reject
+ui -> client: asks the user to accept
 
-client -> ui: accepts or rejects the request
+client -> ui: accepts the request
 
 ui -> client: asks confirmation
 
 client -> ui: confirms
 
 ui -> client: informs the operation success
-
 
 @enduml

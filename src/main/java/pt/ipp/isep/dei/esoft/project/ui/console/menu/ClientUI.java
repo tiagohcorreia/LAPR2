@@ -1,9 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.ui.console.menu;
 
-import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
 import pt.ipp.isep.dei.esoft.project.application.controller.ScheduleVisitController;
-import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
-import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.*;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;

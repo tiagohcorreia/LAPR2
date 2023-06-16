@@ -6,7 +6,7 @@ object Client {
 
 }
 
-object Visit {
+object Schedule {
 
 }
 
@@ -31,7 +31,7 @@ object Land {
 
 }
 
-object Commission{
+object Commission {
 
 }
 
@@ -43,7 +43,7 @@ object PercentageCommission {
 
 }
 
-Client -> Visit: read the response
+Client -> Schedule: read the response
 
 Announcement "1" -- "1" Property: contains >
 Announcement "1" ---> "1" Commission: has a >
@@ -55,6 +55,6 @@ Property <|-- Land
 Commission <|-- FixedCommission
 Commission <|-- PercentageCommission
 
-Visit --> Property: to visit >
+Schedule --> Property: to visit >
 
 @enduml

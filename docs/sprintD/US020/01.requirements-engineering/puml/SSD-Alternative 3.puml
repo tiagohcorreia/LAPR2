@@ -14,7 +14,11 @@ ui -> client: shows appointment request
 
 ui -> client: asks the user to accept or reject
 
-client -> ui: accepts or rejects the request
+client -> ui: rejects the request
+
+ui -> client: asks the user to specify a reason for rejecting the appointment request
+
+client -> ui: types the reason for for rejecting the appointment request
 
 ui -> client: asks confirmation
 

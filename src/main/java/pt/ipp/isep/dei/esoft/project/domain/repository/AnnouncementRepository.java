@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+import pt.ipp.isep.dei.esoft.project.domain.model.Client;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Property;
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
@@ -110,6 +111,10 @@ public class AnnouncementRepository {
     public Announcement createAnnouncement (LocalDate date, AnnouncementStatus announcementStatus, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee employee){
         //return new Announcement(date, announcementStatus,price ,commission,typeOfBusiness,property,employee);
         return null;
+    }
+
+    public Announcement createAnnouncement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent, Client owner, int numberOfMonthsRent) {
+        return new Announcement(date, status, price, commission, typeOfBusiness, property, agent, owner, numberOfMonthsRent);
     }
 
     /**

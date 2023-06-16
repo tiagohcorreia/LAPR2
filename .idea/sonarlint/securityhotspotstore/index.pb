@@ -11,8 +11,6 @@ a
 1docs/sprintD/global-artifacts/03.design/readme.md,5\c\5c3d202049ba320b0508a6370804697ce1d18c75
 L
 docs/sprintD/US020/Readme.md,7\d\7d45c97787dc22deeea983a61db32bcb73e6e034
-l
-<docs/sprintD/US020/01.requirements-engineering/puml/SSD.puml,c\1\c174a4293913f87b618eeed762d691bce916a619
 Z
 *docs/sprintD/US011/02.analysis/Analysis.md,2\a\2aa71acb943517a09956f620495913384363bc08
 
@@ -23,8 +21,6 @@ Ksrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PurchaseOrderUI.java,1\
 Qsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/shared/AnnouncementStatus.java,a\e\ae96421f79588899840d0471d8a72e362b4a223f
 r
 Bsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/City.java,d\4\d44dbabadc8daa53f934827c02cb3e5a4fe3a1b7
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Property.java,1\d\1d552c1006ef511d6f57b98c18b4837269e359d4
 E
 ser/announcements.ser,e\1\e1ae287c9e65eae5c117c270cadae6c77a770d7b
 =
@@ -38,10 +34,6 @@ k
 k
 ;docs/sprintD/US010/02.analysis/puml/US010-Domain Modal.puml,6\8\686553a958533dfdc0cb13acc373b4929bb7fa05
 Y
-)docs/sprintD/US020/02.analysis/svg/DM.svg,8\4\843f1a7524ff4413fd4c875d42ce8c9e28a88dcd
-[
-+docs/sprintD/US020/02.analysis/puml/DM.puml,2\0\20f61649afcce56eae5020a42a81a8e5b6687ec1
-Y
 )docs/sprintD/US009/03.design/puml/CD.puml,e\a\ea8f307cc0b2064e3a2b47b9647d8580e8a6ac6b
 ‹
 [src/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AuthenticationRepository.java,1\7\1720d6ff593ca0ef6086cab4c10507516a643e8d
@@ -51,8 +43,6 @@ Wsrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/ApplicationSess
 nsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/authorization/AuthenticationController.java,9\2\924cc26509fe56f70bcb36cee23fcc0cfec42aff
 x
 Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AdminUI.java,5\6\56e0b5ce6530e817cb5beddc7029295eb5a8cfb0
-
-Qsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/NetworkManagerUI.java,b\9\b9d7f9cddf0a7eab5f9c4e941a71c5d9d714c1ed
 x
 Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/OwnerUI.java,8\7\879643df093eb812d6e520ad981e3e2701d4f84d
 ƒ
@@ -79,10 +69,6 @@ e
 .docs/sprintD/US020/03.design/puml/SD-Full.puml,c\c\ccac63b91d2f4546878ea0222ff515a7f57fec42
 g
 7docs/sprintD/US020/03.design/puml/SD-Alternative 3.puml,a\c\ac53e0f8f52dee9905d111b526d82cdaf0769e2a
-z
-Jdocs/sprintD/US020/04.tests-and-implementation/Tests and Implementation.md,a\8\a870042f720728ffd8cac30b4ab2d2331aa560a3
-m
-=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
 |
 Lsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterClientUI.java,c\6\c6df044e3c8a5c1d0573c229dd05f3f640964ffa
 w
@@ -93,46 +79,30 @@ Qsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PublishAnnouncementUI.ja
 Ssrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/BranchRepository.java,8\2\829fbd7133c10ef8651d0c7e9545e6c03d4fcbd2
 t
 Dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Branch.java,5\e\5ee4012e1371b548690c7d2478592df3cc0ca63a
-’
-bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterEmployeeController.java,4\2\42631d9afe0f6a476ab9cf53b2f0bd3afdc285d2
 @
 ser/employee.ser,7\0\70f2570e547eec371f9fc3064d92dad94209bd8d
 …
 Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/ScheduleRepository.java,a\c\ac7fcfc44391b1baaeb7000a558f67099a294a93
 {
 Ksrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MainMenuUI.java,2\2\22428664b7374892da9feb82daf0750a9e8871ac
-y
-Isrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MenuItem.java,4\4\44d6df232cccbbbcadf2c5f04efd539b5cf2deee
 9
 	Readme.md,0\c\0c1945d7443c2e154bd3e421c0d438bd4086d8c3
-8
-mvnw.cmd,1\f\1f1763f358c257ea3515417352b82b0165647ad1
-z
-Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Location.java,f\9\f9d5f8d871d172963ef8f0118b6894d61f486871
 w
 Gsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/OrderTest.java,e\9\e92b1115be037b10477776a12196d88c5ae58345
 €
 Psrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/UserSession.java,3\a\3ad8f79dc5d9e6193112010503c93310b92234d1
 t
 Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTest.java,1\0\1009d2015c9fc4a9f50d9b819006a88ce2e99b09
-}
-Msrc/main/java/pt/ipp/isep/dei/esoft/project/domain/shared/TypeOfBusiness.java,b\3\b374a0b40db2e71644d9ff45a0f9a42a5f7a15c1
 t
 Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/PropertyTest.java,e\8\e85bbda46feff2831dc0832af987cfc18ebeb775
 V
 &docs/sprintD/US010/03.design/Design.md,e\9\e9392e80ae7eb1e0cb848143863edf64293586aa
-Y
-)docs/sprintD/US010/03.design/puml/CD.puml,7\a\7a5af0c42e63927857510f9016847bc2d31d44dc
 g
 7docs/sprintD/US020/03.design/puml/SD-Alternative 2.puml,5\b\5b4eeb1db32013a6805261f5a6b740b23887c59c
 C
 APP_FILES/email.txt,6\c\6cc5cd8f7f8c046eed62aee2a0fb3aa1bcf8090f
 t
 Dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Client.java,7\b\7b1d1b5c3900635eb647b41e7776828ca940f3ad
-V
-&docs/sprintD/US020/03.design/Design.md,a\8\a8d1849be434bb7603fbc4ce1b2fbbdbee48d816
 v
 Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
 ˜
@@ -147,19 +117,25 @@ isrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PlaceOrderTo
 Usrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PlaceOrderToBuyPropertyUI.java,1\1\11c3f0e6ee016f152206f9eb3b0b10bb8157d0ef
 ~
 Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565
-Z
-*docs/sprintD/US020/02.analysis/Analysis.md,6\6\66d57d3a25f7e69fbc9c5dc8cd8feb90639e9be2
-z
-Jdocs/sprintD/US020/01.requirements-engineering/Requirements Engineering.md,c\7\c775e2d78699a6ad3cdc651376ece33eee603187
 ^
 .docs/sprintD/US021/03.design/puml/US21_CD.puml,1\6\16622bd4695c7fdca23c396f46d7dc8a167a4f7b
-Y
-)docs/sprintD/US020/03.design/puml/CD.puml,f\5\f509a5b1c36b8cb7247a08175c1bdba82691f78d
-W
-'docs/sprintD/US020/03.design/svg/CD.svg,e\9\e938a1bc95a5602f8586ec5e1f1d0ccef7942e4f
 
 _src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ScheduleVisitController.java,d\e\def9dc4b28edd3634d956f9bdfafb8d5652465d1
-‹
-[src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ListDealsController.java,a\e\aebf1b2fe612e1666c5dbe5c0d8e44a56da905cd
-t
-Dsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/ListDealsGUI.java,e\8\e8b6ad3a182d3efbbf3b5667a413cda3a823e4e2
+h
+8src/main/java/pt/ipp/isep/dei/esoft/project/ui/Main.java,c\9\c94ae3eefc44bf4778c1b1c7de640658b9d015a7
+v
+Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Schedule.java,c\6\c6fe938a0dc8996aacef89e92933e0061c4f3f0b
+’
+bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ValidateScheduleController.java,c\9\c9d2a4c16c22307d644134a44ab13b829207d164
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+
+Qsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/VisitRepositoryTest.java,3\4\34bd7cee6c2f2488b40b48259d80c53d83231581
+8
+mvnw.cmd,1\f\1f1763f358c257ea3515417352b82b0165647ad1
+†
+Vsrc/test/java/pt/ipp/isep/dei/esoft/project/repository/AnnouncementRepositoryTest.java,b\5\b5afb3d6f707c5b4cb8f7d9cb10f2526bdd770ee
+}
+Msrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/EmployeeTwoTest.java,3\9\39007893bc6ef57fa4a72332dc3a16fcb1f0b168
+y
+Isrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MenuItem.java,4\4\44d6df232cccbbbcadf2c5f04efd539b5cf2deee
