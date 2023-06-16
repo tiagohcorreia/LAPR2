@@ -20,7 +20,7 @@ public class LegacyImportUI implements Runnable{
             System.out.println(e.getMessage());
         }
 
-        Utils.enterToContinue();
+        //Utils.enterToContinue();
     }
 
     private String getFilePath(){

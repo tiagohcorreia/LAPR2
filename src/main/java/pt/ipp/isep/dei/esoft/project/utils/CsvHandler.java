@@ -43,6 +43,7 @@ public class CsvHandler {
 
     private static final int COLUMN_ANNOUNCEMENT_PRICE = 19;
     private static final int COLUMN_ANNOUNCEMENT_COMMISSION = 20;
+    private static final int COLUMN_ANNOUNCEMENT_CONTRACT_DURATION = 21;
     private static final int COLUMN_ANNOUNCEMENT_DATE = 22;
     //...
     private static final int COLUMN_ANNOUNCEMENT_TYPE_BUSINESS = 24;
@@ -122,8 +123,8 @@ public class CsvHandler {
              csv) {
             Branch branch = parseBranchData((List<?>) line);
             Client client = parseClientData((List<?>) line);
-            Announcement announcement = parseAnnouncementData((List<?>) line);
-
+            Announcement announcement = parseAnnouncementData((List<?>) line, client);
+            //System.out.println("here");
             try {
                 //success = branchRepository.saveBranch(branch);
                 //success = (clientRepository.add(client) && success);
@@ -300,13 +301,14 @@ public class CsvHandler {
         return property;
     }
 
-    private static Announcement parseAnnouncementData(List<?> line){
+    private static Announcement parseAnnouncementData(List<?> line, Client client){
         LocalDate date;
         AnnouncementStatus announcementStatus;
         float price, commission;
         TypeOfBusiness typeOfBusiness;
         Property property;
         Employee employee;
+        int contractDuration;
 
         date = parseYyyyMmDdDate(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_DATE)));
         //typeOfBusiness = TypeOfBusiness.valueOf(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_TYPE_BUSINESS)));
@@ -324,8 +326,18 @@ public class CsvHandler {
         price = Float.parseFloat(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_PRICE)));
         commission = Float.parseFloat(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_COMMISSION))) * (float) 0.01;
         employee = employeeRepository.getEmployee(LEGACY_AGENT_NAME);
+        String duration = String.valueOf(line.get(COLUMN_ANNOUNCEMENT_CONTRACT_DURATION));
+        try {
+            contractDuration = Integer.valueOf(duration);
+        } catch (NumberFormatException e){
+            contractDuration = 0;
+        }
+        //Client client = clientRepository.findByName(String.valueOf(line.get(COLUMN_OWNER_NAME)));
 
-        return announcementRepository.createAnnouncement(date,announcementStatus,price,commission,typeOfBusiness,property,employee);
+        //Announcement announcement = announcementRepository.createAnnouncement(date,announcementStatus, price, commission, typeOfBusiness, property, employee, )
+        return announcementRepository.createAnnouncement(date, announcementStatus, price, commission,typeOfBusiness, property,employee, client, contractDuration);
+
+        //return announcementRepository.createAnnouncement(date,announcementStatus,price,commission,typeOfBusiness,property,employee);
     }
 
 
