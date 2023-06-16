@@ -20,13 +20,13 @@ import java.util.ArrayList;
 
 
 public class AnnouncementRequestsController {
-    private AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
+    public  AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
 
-    private EmployeeRepository employeeRepository=Repositories.getInstance().getEmployeeRepository();;
+    public EmployeeRepository employeeRepository=Repositories.getInstance().getEmployeeRepository();;
 
     private AuthenticationController authenticationController;
 
-    private AnnouncementRequestMapper announcementRequestMapper = new AnnouncementRequestMapper();
+    public AnnouncementRequestMapper announcementRequestMapper = new AnnouncementRequestMapper();
 
     public Employee getEmployee(String name) {
         for (Employee employee : employeeRepository.getEmployeeList()) {

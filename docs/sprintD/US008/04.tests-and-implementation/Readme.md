@@ -1,79 +1,71 @@
-# US 006 - To create a Task 
+# US 006 - Accept/Reject Announcements Requests
 
 # 4. Tests 
 
-**Test 1:** Check that it is not possible to create an instance of the Task class with null values. 
+**Test 1:** Check the correct employee. 
 
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Task instance = new Task(null, null, null, null, null, null, null);
-	}
-	
+	 @Test
+    public void ensureGetEmployeeReturnsCorrectEmployee() {
+        AnnouncementRequestsController controller = new AnnouncementRequestsController();
+        String name = "John Doe";
+        Employee expectedEmployee = new Employee(name);
 
-**Test 2:** Check that it is not possible to create an instance of the Task class with a reference containing less than five chars - AC2. 
+        controller.employeeRepository.addEmployee(expectedEmployee);
+        Employee actualEmployee = controller.getEmployee(name);
 
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureReferenceMeetsAC2() {
-		Category cat = new Category(10, "Category 10");
-		
-		Task instance = new Task("Ab1", "Task Description", "Informal Data", "Technical Data", 3, 3780, cat);
-	}
+        Assert.assertEquals(expectedEmployee, actualEmployee);
+    }
 
 
-*It is also recommended to organize this content by subsections.* 
+
+
+**Test 2:** Check that the employee exists. 
+
+	@Test
+    public void ensureIsEmployeeReturnsTrueForExistingEmployee() {
+        AnnouncementRequestsController controller = new AnnouncementRequestsController();
+        String agentName = "John Doe";
+        Employee existingEmployee = new Employee(agentName);
+        controller.employeeRepository.addEmployee(existingEmployee);
+
+        boolean result = controller.isEmployee(agentName);
+
+        Assert.assertTrue(result);
+    }
+
+
 
 # 5. Construction (Implementation)
 
 
-## Class CreateTaskController 
+## Class AnnouncementRequestController 
 
 ```java
-public Task createTask(String reference, String description, String informalDescription,
-								 String technicalDescription, Integer duration, Double cost,
-								 String taskCategoryDescription) {
+ public List<AnnouncementRequestDTO> getAnnouncementRequests(Employee agent) {
+        List<AnnouncementRequestDTO> requestsForAgent = new ArrayList<>();
+        for (Announcement announcement : this.announcementRepository.getAllAnnouncements()) {
+        if (announcement.getStatus() == AnnouncementStatus.REQUESTED && announcement.getAgent().equals(agent)) {
+        AnnouncementRequestDTO dto = this.announcementRequestMapper.toDto(announcement);
+        requestsForAgent.add(dto);
+        }
+        }
 
-	TaskCategory taskCategory = getTaskCategoryByDescription(taskCategoryDescription);
+        Collections.sort(requestsForAgent, Comparator.comparing(AnnouncementRequestDTO::getDate).reversed());
 
-	Employee employee = getEmployeeFromSession();
-	Organization organization = getOrganizationRepository().getOrganizationByEmployee(employee);
-
-	newTask = organization.createTask(reference, description, informalDescription, technicalDescription, 
-			duration, cost,taskCategory, employee);
-    
-	return newTask;
-}
+        return requestsForAgent;
+        }
 ```
 
 
-## Class Organization
 
-```java
-public Optional<Task> createTask(String reference, String description, String informalDescription,
-                                     String technicalDescription, Integer duration, Double cost,
-                                     TaskCategory taskCategory, Employee employee) {
-    
-        Task task = new Task(reference, description, informalDescription, technicalDescription, duration, cost,
-                taskCategory, employee);
-
-        addTask(task);
-        
-        return task;
-    }
-```
 
 # 6. Integration and Demo 
 
-* A new option on the Employee menu options was added.
-
-* Some demo purposes some tasks are bootstrapped while system starts.
-
+N/A
 
 # 7. Observations
 
-Platform and Organization classes are getting too many responsibilities due to IE pattern and, therefore, they are becoming huge and harder to maintain. 
-
-Is there any way to avoid this to happen?
-
+N/A
 
 
 
