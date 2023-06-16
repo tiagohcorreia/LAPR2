@@ -43,3 +43,13 @@ Recipient: Nilsa Gil
 Subject: ANNOUNCEMENT NOTIFICATION
 Message: D
 
+[2023-06-16T01:43:09.576912900]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+
+[2023-06-16T01:44:57.238976200]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: D
+

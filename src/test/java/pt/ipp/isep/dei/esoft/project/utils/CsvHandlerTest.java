@@ -111,7 +111,7 @@ class CsvHandlerTest {
     void ensureReadCSVWorks() throws InvalidFileTypeException {
         //Arrange
         File csvFile = new File(CSV_FILE_FILEPATH);
-        List<?> dataWithoutHeader = this.data.subList(1,this.data.size());
+        List<?> dataWithoutHeader = data.subList(1,data.size());
         List<?> a =CsvHandler.getDataFromCsvFile(csvFile);
         //Act & Assert
         assertEquals(dataWithoutHeader,CsvHandler.getDataFromCsvFile(csvFile));
