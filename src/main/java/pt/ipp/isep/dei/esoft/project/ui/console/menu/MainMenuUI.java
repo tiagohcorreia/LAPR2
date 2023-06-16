@@ -36,6 +36,7 @@ public class MainMenuUI implements Runnable {
             if ((option >= 0) && (option < options.size())) {
                 options.get(option).run();
             }
+            /*
             if(option == 0){
                 try {
                     Platform.exit();
@@ -43,7 +44,9 @@ public class MainMenuUI implements Runnable {
                     e.printStackTrace();
                 }
             }
+             */
         } while (option != -1);
+        Platform.exit();
     }
 
 
