@@ -28,6 +28,10 @@ _Specifies functionalities that:_
 * (System administrator) Registers all employees;
 * (System administrator) Registers the branches of the network.
 
+Security
+
+* All those who wish to use the application must be authenticated.
+
 
 
 ## Usability 
@@ -50,6 +54,10 @@ documentation; consistency and standards._
 * In case the user is a system administrator, shows a sub-menu with the options of register a new employee, register a store, and specify districts, municipalities and parishes;
 * In case the user is an owner, shows the option of submit a request for listing a property sale or rent, choosing the responsible agent;
 * In case the user is an agent, shows the option of publishing any a sale announcement on the system.
+
+Help and Documentation
+
+* Javadoc must be used during the software development to generate useful documentation for Java code.
 
 
 
@@ -79,6 +87,15 @@ configurability, installability, scalability and more._
 
 (fill in here )
 
+Testability
+
+* The development team must implement unit tests for all methods, except for methods that implement Input/Output operations.
+
+
+Locality
+
+* The application must support the English language.
+
 
 ## +
 
@@ -89,6 +106,17 @@ _Specifies or constraints the system design process. Examples may include: progr
 
 (fill in here )
 
+Programming Languages
+
+* The application must be developed in Java Language using Intellij or NetBeans.
+
+
+Use of Development Tools
+
+* The JaCoCo plugin should be used to generate the coverage report.
+* The application graphical interface is to be developed in JavaFX II.
+* All the images/figures produced during the software development process should be recorded in SVG format.
+
 
 ### Implementation Constraints
 
@@ -96,13 +124,25 @@ _Specifies or constraints the code or construction of a system such
 such as: mandatory standards/patterns, implementation languages,
 database integrity, resource limits, operating system._
 
--Must be developed in Java
--Must be developed using IntelliJ or NetBeans
+
 -Interface must be developed in JavaFX 11
 
 
 
 (fill in here )
+
+
+Platform
+
+* The unit tests should be implemented using the JUnit 5 framework.
+
+Mandatory standards/patterns
+
+* The application must adopt recognized coding conventions and standards (e.g., CamelCase);
+
+Database Integrity
+
+* The application should use object serialization to ensure data persistence between two runs of the application.
 
 
 ### Interface Constraints
