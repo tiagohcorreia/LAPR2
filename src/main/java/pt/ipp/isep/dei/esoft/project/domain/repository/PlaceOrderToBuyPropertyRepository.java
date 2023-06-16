@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.domain.repository;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Order;
+import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -56,9 +57,9 @@ public class PlaceOrderToBuyPropertyRepository implements Serializable {
 
         for (Order order1 : orderList) {
 
-            if (order.equals(order)) {
+            if (order1.equals(order)) {
 
-                return false;
+                throw new DuplicateDataException("Order is already registered");
             }
         }
         return true;

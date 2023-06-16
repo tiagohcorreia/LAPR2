@@ -1,6 +1,6 @@
 @startuml
 
-autonumber
+title Sequence Diagram US010
 
 actor Client as client
 participant PlaceOrderToBuyPropertyUI as ui
@@ -61,9 +61,12 @@ ui -> client: shows Announcement list and requests the user to select one
 
 client -> ui: selects Announcement with the property
 
-ui -> client: requests order amount
+loop (when order amount is not equal or lower than the price of the property)
 
-client -> ui: types order amount
+    ui -> client: requests order amount
+    client -> ui: types order amount
+
+end
 
 ui -> ctr: createOrder()
 
@@ -93,13 +96,12 @@ client -> ui: confirms the data
 
 ui -> ctr: saveOrder()
 
-deactivate ui
 activate ctr
 
 ctr -> PlaceOrderToBuyPropertyRepository: saveOrder()
 
+deactivate ctr
 activate PlaceOrderToBuyPropertyRepository
-activate ui
 
 ui -> client: informs operation sucess
 

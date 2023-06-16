@@ -1,9 +1,14 @@
 @startuml
 
+title System Sequence Diagram US010
+
 actor Client as client
 participant System as ui
 
 autonumber
+
+activate client
+activate ui
 
 client -> ui: starts placing an order to purchase the property
 
@@ -11,11 +16,14 @@ ui -> client: shows announcements list and requests the user to select one
 
 client -> ui: selects announcement with the desire property
 
-ui -> client: requests order amount
+loop (order amount is not equal or lower than the price of the property)
 
-client -> ui: types order amount
+        ui -> client: requests order amount
+        client -> ui: types order amount
 
-ui -> client: shows selected announcement and the order amount and asks for confirmation
+end
+
+ui -> client: shows the order data and asks for confirmation
 
 client -> ui: confirms the data
 
