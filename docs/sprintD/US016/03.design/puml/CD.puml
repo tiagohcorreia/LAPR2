@@ -4,18 +4,34 @@ interface Runnable {
     + run()
 }
 
-class ValidateVisitUI {
-    - controller
+class ValidateScheduleGUI {
+    + start()
+    + main()
 }
 
-class ScheduleVisitController {
-    - ScheduleRepository
 
-    + requestScheduleListByResposibleAgent()
+class ScheduleVisitController {
+
+    - ScheduleRepository
+    - ScheduleAnswer
+    - btnSubmit
+    - rbAcceptSchedule
+    - rbRejectSchedule
+    - rowBeginHour
+    - rowClientName
+    - rowDay
+    - rowEndHour
+    - rowLocation
+    - rowNote
+    - rowPrice
+    - rowTypeOfBusiness
+    - tblScheduleList
+    + initialize()
+    + submit()
+    + getRequestScheduleListByResponsibleAgent()
     + addConfirmedSchedule()
     + addRejectedSchedule()
     + sendEmail()
-    + getAgentFromSession()
 }
 
 class ApplicationSession
@@ -56,15 +72,16 @@ class ScheduleRepository {
 }
 
 
-Runnable -left-|> ValidateVisitUI
+Runnable -left-|> ValidateScheduleGUI
+Application -right-|> ValidateScheduleGUI
 ApplicationSession -> ApplicationSession : instance
 ApplicationSession --> "1" UserSession : userSession
 ScheduleVisitController ..> ApplicationSession
 ScheduleVisitController ..> UserSession
 
-ValidateVisitUI ..> ScheduleVisitController
-ScheduleVisitController -> Repositories
-Repositories -> ScheduleRepository
+ValidateScheduleGUI ..> ScheduleVisitController
+ScheduleVisitController .right.> Repositories
+Repositories .right.> ScheduleRepository
 
 ScheduleRepository --> Schedule
 

@@ -3,7 +3,7 @@
 autonumber
 
 actor Agent as agent
-participant ValidateVisitUI as ui
+participant ValidateScheduleGUI as gui
 participant ScheduleVisitController as ctr
 participant ":ApplicationSession" as _APP
 participant "appSession\n:ApplicationSession" as APP
@@ -17,13 +17,13 @@ autonumber
 
 activate agent
 
-agent -> ui: starts placing an order to purchase the property
+agent -> gui: starts placing an order to purchase the property
 
-activate ui
+activate gui
 
-ui -> ctr** : create
+gui -> ctr** : create
 
-ui -> ctr: getRequestScheduleListByResponsibleAgent()
+gui -> ctr: getRequestScheduleListByResponsibleAgent()
 
 activate ctr
 ctr -> ctr: getAgentFromSession()
@@ -56,18 +56,18 @@ activate ScheduleRepository
 ScheduleRepository -> ctr: return RequestScheduleListByResposibleAgent
 deactivate ScheduleRepository
 
-ctr -> ui: return RequestScheduleListByResposibleAgent
+ctr -> gui: return RequestScheduleListByResposibleAgent
 
-ui --> agent: requests to select a schedule request
-agent -> ui: selects the schedule request
+gui --> agent: requests to select a schedule request
+agent -> gui: selects the schedule request
 
-ui-> agent: requests to accept or reject the schedule request and asks for cofirmation
+gui-> agent: requests to accept or reject the schedule request and asks for cofirmation
 
 alt accept the schedule request
 
-    agent-> ui: accept the schedule request
+    agent-> gui: accept the schedule request
 
-    ui -> ctr: addConfirmedSchedule(schedulePos)
+    gui -> ctr: addConfirmedSchedule(schedulePos)
 
     ctr -> ScheduleRepository: addConfirmedSchedule(Schedule)
     activate ScheduleRepository
@@ -76,9 +76,9 @@ alt accept the schedule request
 
 else reject the schedule request
 
-    agent-> ui: reject the schedule request
+    agent-> gui: reject the schedule request
 
-    ui -> ctr: addRejectedSchedule(schedulePos)
+    gui -> ctr: addRejectedSchedule(schedulePos)
 
     ctr -> ScheduleRepository: addRejectedSchedule(Schedule)
     activate ScheduleRepository
@@ -87,11 +87,11 @@ else reject the schedule request
 
 end
 
-ui-> agent: informs operation sucess
+gui-> agent: informs operation sucess
 
 
 deactivate ctr
-deactivate ui
+deactivate gui
 
 
 deactivate agent
