@@ -20,17 +20,17 @@ activate Employee
 opt
 loop
     Employee -> System : selects sorting algorithm
-    'activate System
+    activate System
 
      '   System --> Employee : shows task category list and asks to select one
-    'deactivate System
-loop
+    deactivate System
+
     Employee -> System : selects ascending/descending order
     activate System
 
         System --> Employee : shows sorted list of deals
     deactivate System
-end
+
 end
 end
 
