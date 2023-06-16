@@ -1,26 +1,4 @@
-# US 006 - To create a Task 
-
-# 4. Tests 
-
-**Test 1:** Check that it is not possible to create an instance of the Task class with null values. 
-
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Task instance = new Task(null, null, null, null, null, null, null);
-	}
-	
-
-**Test 2:** Check that it is not possible to create an instance of the Task class with a reference containing less than five chars - AC2. 
-
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureReferenceMeetsAC2() {
-		Category cat = new Category(10, "Category 10");
-		
-		Task instance = new Task("Ab1", "Task Description", "Informal Data", "Technical Data", 3, 3780, cat);
-	}
-
-
-*It is also recommended to organize this content by subsections.* 
+# US 017 - List all deals made
 
 # 5. Construction (Implementation)
 
@@ -28,51 +6,39 @@
 ## Class CreateTaskController 
 
 ```java
-public Task createTask(String reference, String description, String informalDescription,
-								 String technicalDescription, Integer duration, Double cost,
-								 String taskCategoryDescription) {
+public class ListDealsController {
+    static AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
 
-	TaskCategory taskCategory = getTaskCategoryByDescription(taskCategoryDescription);
 
-	Employee employee = getEmployeeFromSession();
-	Organization organization = getOrganizationRepository().getOrganizationByEmployee(employee);
-
-	newTask = organization.createTask(reference, description, informalDescription, technicalDescription, 
-			duration, cost,taskCategory, employee);
+    public static List<Announcement> getDeals() {
+        List<Announcement> announcements = new ArrayList<>();
+        announcements.addAll(announcementRepository.getSoldAnnouncements());
+        AnnouncementRepository.sortAnnouncements(announcements, "date", SortingOrder.DESCENDING);
+        return announcements;
+    }
     
-	return newTask;
+    public static List<Announcement> sortByAreaWithAlgorithm(List<Announcement> announcements, String sortingAlgorithm, SortingOrder sortingorder){
+        return AnnouncementRepository.sortByAreaWithAlgoritm(announcements, sortingAlgorithm, sortingorderorder);
+    }
 }
 ```
 
 
-## Class Organization
+## Class AnnouncementRepository
 
 ```java
-public Optional<Task> createTask(String reference, String description, String informalDescription,
-                                     String technicalDescription, Integer duration, Double cost,
-                                     TaskCategory taskCategory, Employee employee) {
+public class AnnouncementRepository {
+    List<Announcement> soldAnnouncements = new ArrayList<>();
     
-        Task task = new Task(reference, description, informalDescription, technicalDescription, duration, cost,
-                taskCategory, employee);
+    public List<Announcement> getSoldAnnouncements() { return soldAnnouncements; }
 
-        addTask(task);
-        
-        return task;
+    public static void sortAnnouncements(List<Announcement> announcements, String property, SortingOrder sortingOrder){
+        announcements.sort(new AnnouncementDateComparator());
+        if (sortingOrder.equals(SortingOrder.DESCENDING))
+            Collections.reverse(announcements);
     }
+}
 ```
-
-# 6. Integration and Demo 
-
-* A new option on the Employee menu options was added.
-
-* Some demo purposes some tasks are bootstrapped while system starts.
-
-
-# 7. Observations
-
-Platform and Organization classes are getting too many responsibilities due to IE pattern and, therefore, they are becoming huge and harder to maintain. 
-
-Is there any way to avoid this to happen?
 
 
 
