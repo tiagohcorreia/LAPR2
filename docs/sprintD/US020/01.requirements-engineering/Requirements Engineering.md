@@ -6,7 +6,7 @@
 ### 1.1. User Story Description
 
 
-As a client, I want to read the response for the appointment request, to accept or reject it
+As a client, I want to read the response for the appointment request, to accept or reject it.
 
 
 ### 1.2. Customer Specifications and Clarifications 
@@ -18,7 +18,7 @@ As a client, I want to read the response for the appointment request, to accept 
 >	After consulting a list of properties, the client can request to schedule a visit to the real estate agent
     for a specific property to verify its conditions. The agent receives the request, checks the
     availability and sends the response. If the customer accepts the order, it is automatically scheduled
-    in the system
+    in the system.
 
 
 **From the client clarifications:**
@@ -52,7 +52,8 @@ As a client, I want to read the response for the appointment request, to accept 
 ### 1.4. Found out Dependencies
 
 
-* The system must have appointment request already registered (US009)
+* The system must have appointment request already registered (US009). The system must have an announcement already 
+  registered (US002).
 
 
 ### 1.5 Input and Output Data
@@ -77,11 +78,26 @@ As a client, I want to read the response for the appointment request, to accept 
 
     *  Request confirmation
 	*  Success of the operation
+	*  List of schedules
 
 ### 1.6. System Sequence Diagram (SSD)
 
+### Alternative 1 - Full Diagram
 
 ![System Sequence Diagram](svg/SSD.svg)
+
+### Alternative 2
+
+This diagram shows the sequence of interactions when the client accepts the appointment request
+
+![System Sequence Diagram](svg/SSD-Alternative 2.svg)
+
+### Alternative 3
+
+This diagram shows the sequence of interactions when the client rejects the appointment request
+
+![System Sequence Diagram](svg/SSD-Alternative 3.svg)
+
 
 
 ### 1.7 Other Relevant Remarks

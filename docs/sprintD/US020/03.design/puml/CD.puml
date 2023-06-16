@@ -1,5 +1,9 @@
 @startuml
 
+interface Runnable {
+
+    + run()
+}
 
 class ReadResponseOfAppointmentRequestGUI {
 
@@ -9,6 +13,19 @@ class ReadResponseOfAppointmentRequestGUI {
 
 class ReadResponseOfAppointmentRequestController {
 
+        - btnAccept;
+        - btnCancel;
+        - lstSchedule;
+        - txtScheduleMessage;
+        - txtReason;
+        - btnReject;
+
+        + acceptRequest()
+        + rejectRequest()
+        + cancel(ActionEvent event)
+        + getScheduleList()
+        + initialize()
+        + sendNotificationToAgent()
 }
 
 class Schedule {
@@ -46,6 +63,6 @@ ReadResponseOfAppointmentRequestController ..> Repositories
 Repositories ..> ScheduleRepository
 ScheduleRepository -right-> Schedule
 Application -left-|> ReadResponseOfAppointmentRequestGUI
-
+Runnable -right-|> ReadResponseOfAppointmentRequestGUI
 
 @enduml
