@@ -81,9 +81,9 @@ class AnnouncementMapper {
 
 Runnable -left-|> ScheduleVisitUI
 ScheduleVisitUI ..> ScheduleVisitController
-ScheduleVisitController -> Repositories
-Repositories -> AnnouncementRepository
-AnnouncementRepository -> AnnouncementMapper
+ScheduleVisitController .right.> Repositories
+Repositories .right.> AnnouncementRepository
+AnnouncementRepository ..> AnnouncementMapper
 AnnouncementMapper --> AnnouncementDTO
 ScheduleVisitController ..> ScheduleRepository
 ScheduleRepository --> Schedule

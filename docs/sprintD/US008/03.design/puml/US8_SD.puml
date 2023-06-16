@@ -14,6 +14,7 @@ participant "appSession\n:ApplicationSession" as APP
 participant "currentSession\n:UserSession" as SESSAO
 participant "repositories\n:Repositories" as REP
 participant ":AnnouncementRepository" as AnnouncementREP
+participant "notificationService\n:NotificationService" as NOT
 
 
 
@@ -81,8 +82,7 @@ activate AG
 
                CTRL --> UI : Announcement
 
-        UI --> AG : present all the information about the announcement request selected
-
+        UI --> AG : present the announcement
         AG -> UI : select an option - accept or reject
 
         alt Accept
@@ -91,7 +91,7 @@ activate AG
         UI --> AG: requests the commission
         AG -> UI : set the commission
 
-        UI -> CTRL : getAccept()
+        UI -> CTRL : Accept(commission)
          CTRL -> REP : getInstance()
                        activate REP
 
@@ -99,19 +99,21 @@ activate AG
                        deactivate REP
 
         CTRL -> CTRL: getAnnouncementRepository()
-        CTRL -> AnnouncementREP : getAccept()
+        CTRL -> AnnouncementREP : Accept(announcement)
         activate AnnouncementREP
+        AnnouncementREP -> AnnouncementREP : validate(announcement)
+        AnnouncementREP -> AnnouncementREP : save(announcement)
         AnnouncementREP --> CTRL : Accept
         deactivate AnnouncementREP
         CTRL --> UI : accept
-        UI --> AG: display operation sucess
+        UI --> AG: display operation success
 
 
         else reject
         AG -> UI : reject
         UI --> AG : request the motive to reject
         AG -> UI : type the motive to reject
-        UI -> CTRL : getReject()
+        UI -> CTRL : Reject(reason)
         CTRL -> REP : getInstance()
            activate REP
 
@@ -119,18 +121,26 @@ activate AG
            deactivate REP
 
                 CTRL -> CTRL: getAnnouncementRepository()
-                CTRL -> AnnouncementREP : getReject()
+                CTRL -> AnnouncementREP : Reject(announcement))
                 activate AnnouncementREP
-                AnnouncementREP --> CTRL : Reject
+                AnnouncementREP -> AnnouncementREP : validate(announcement)
+                AnnouncementREP -> AnnouncementREP : save(announcement)
+                 AnnouncementREP --> CTRL : Reject
+
+               activate NOT
+                CTRL --> NOT: sendNotification(owner, reason)
+
+                deactivate NOT
+
                 CTRL --> UI : reject
                 deactivate AnnouncementREP
-                 UI --> AG: display operation sucess
+                 UI --> AG: display operation success
 
 
 
         end
 
-         UI --> AG: display operation sucess
+         UI --> AG: display operation success
 
 
                     deactivate UI

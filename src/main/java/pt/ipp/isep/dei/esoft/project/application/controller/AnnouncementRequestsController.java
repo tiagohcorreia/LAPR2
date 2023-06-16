@@ -31,10 +31,10 @@ public class AnnouncementRequestsController {
     public Employee getEmployee(String name) {
         for (Employee employee : employeeRepository.getEmployeeList()) {
             if (employee.getName().equalsIgnoreCase(name)) {
-                return employee; // Retorna o funcionário correspondente ao nome fornecido
+                return employee;
             }
         }
-        return null; // Nenhum funcionário corresponde ao nome fornecido
+        return null; //
     }
 
     // ...

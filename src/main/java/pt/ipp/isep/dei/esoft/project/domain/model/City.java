@@ -52,9 +52,8 @@ public class City implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("City{");
-        sb.append("name='").append(name).append('\'');
-        sb.append('}');
+        final StringBuilder sb = new StringBuilder();
+        sb.append("City:").append(name).append('\t');
         return sb.toString();
     }
 

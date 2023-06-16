@@ -65,6 +65,7 @@ property becomes available.
 became available. 
 * **AC8** The Notification must include the name and phone number of the
 responsible Agent.
+* **AC8** The commission, the area, the price, the distance from the city center, the location are mandatory data.
 
 ### 1.4. Found out Dependencies
 
@@ -79,29 +80,45 @@ responsible Agent.
 
 * Typed data:
   * Photo
-  * Dimension
+  * Area
   * Location
   * Distance from city center
   * Price
   * Commission
-  * Number of bedrooms
-  * Number of bathrooms
-  * Number of equipment - Depends on the type of property
-  * Number of parking spaces - Depends on the type of property
-  * Existence of a basement - Depends on the type of property
-  * Loft - Depends on the type of property
-  * Sun exposure - Depends on the type of property
-  
+  * House/Apartment
+    * Number of bedrooms
+    * Number of bathrooms
+    * Number of equipment 
+    * Number of parking spaces 
+  * House
+    * Existence of a basement 
+    * Loft 
+  * Rent
+    * Number of months rent 
+ 
 	
 * Selected data:
 	* Type of property
         * House
         * Apartment
         * Land
+    * Sun exposure
+      * North
+      * South
+      * East
+      * West
+    * Type of Business
+      * Sell
+      * Rent
+    * City
 
 
 **Output Data:**
 
+* City List
+* Type of Business list
+* Type of Property list
+* Sun exposure list
 * (In)Success of the operation
 
 ### 1.6. System Sequence Diagram (SSD)

@@ -12,11 +12,12 @@ hide methods
 
 
 class Agent {
-    citizenCard
+    name
+    email
+    passport
     taxNumber
     address
     phoneNumber
-    agency
 }
 
 
@@ -47,7 +48,7 @@ class Apartment {
 
 }
 class Land {
-     description
+
 }
 
 class Commission {
@@ -55,14 +56,16 @@ class Commission {
 }
 
 class Property {
-     id
      area
      distance_from_the_city_centre
      price
      photographs
-     TypeofBusiness
+     numberOfMonthsRent
+     typeofBusiness
+
 
 }
+
 
 class Location{
     street
@@ -83,6 +86,14 @@ class State{
 class Owner{
         name
         phoneNumber
+        email
+}
+
+class Notification{
+        propertyID
+        publicationDate
+        agentName
+        agentPhoneNumber
 }
 
 
@@ -94,11 +105,15 @@ House "1" --"1" Property: is >
 Apartment"1" -- "1" Property: is >
 Land"1" - "1" Property: is >
 Announcement"1" - "1" Commission: it has >
-Agent "1" - "*" Owner:  send a notification >
 Property "1" - "1"Location: it has >
 Location "1" - "1" City: contains >
 City "1" - "1" District: contains >
 District "1" - "1" State: contains >
+Owner "1" -- "*" Announcement : requests >
+Agent "1" -- "1" Notification : sends >
+Notification "1" - "1" Owner : sent to >
+Notification "1" - "1" Announcement : contains >
+
 
 
 

@@ -61,8 +61,6 @@ Gsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/utils/Utils.java,4\7\47
 Qsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PublishAnnouncementUI.java,e\3\e39d570332e455cb8f6bdecc4c2babee30369fc9
 @
 ser/employee.ser,7\0\70f2570e547eec371f9fc3064d92dad94209bd8d
-…
-Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/ScheduleRepository.java,a\c\ac7fcfc44391b1baaeb7000a558f67099a294a93
 {
 Ksrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MainMenuUI.java,2\2\22428664b7374892da9feb82daf0750a9e8871ac
 9
@@ -91,8 +89,6 @@ Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepos
 _src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ScheduleVisitController.java,d\e\def9dc4b28edd3634d956f9bdfafb8d5652465d1
 h
 8src/main/java/pt/ipp/isep/dei/esoft/project/ui/Main.java,c\9\c94ae3eefc44bf4778c1b1c7de640658b9d015a7
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Schedule.java,c\6\c6fe938a0dc8996aacef89e92933e0061c4f3f0b
 ’
 bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ValidateScheduleController.java,c\9\c9d2a4c16c22307d644134a44ab13b829207d164
 7
@@ -151,10 +147,6 @@ z
 Jsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/ScheduleTest.java,5\0\50d95e80184c3bba868ce10a56fb9ac378cf5550
 –
 fsrc/test/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterEmployeeControllerTest.java,f\3\f39e34e5ee6ab781d2cbb1a10576df44bf10485b
-¢
-rsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ReadResponseOfAppointmentRequestController.java,1\e\1e40d22c829608cdec9c2fc7972d25c110fbdaf9
-t
-Dsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/ListDealsGUI.java,e\8\e8b6ad3a182d3efbbf3b5667a413cda3a823e4e2
 Z
 *docs/sprintD/US020/02.analysis/Analysis.md,6\6\66d57d3a25f7e69fbc9c5dc8cd8feb90639e9be2
 z

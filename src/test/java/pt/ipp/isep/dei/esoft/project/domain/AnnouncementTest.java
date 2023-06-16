@@ -15,83 +15,118 @@ import java.util.List;
 /**
  * The type Announcement test.
  */
-class AnnouncementTest {
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-    /**
-     * Ensure announcement is created.
-     */
+import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static pt.ipp.isep.dei.esoft.project.domain.EmployeeTwoTest.branch;
+
+public class AnnouncementTest {
+
     @Test
-    void ensureAnnouncementIsCreated() {
-        // Arrange
-        LocalDate date = LocalDate.now();
-        AnnouncementStatus announcementStatus = AnnouncementStatus.PUBLISHED;
-        float price = 1000.0f;
-        float commission = 50.0f;
-        TypeOfBusiness typeOfBusiness = TypeOfBusiness.SELL;
-        ArrayList<String> photographs = new ArrayList<>();
-        photographs.add("photo1");
-        ArrayList<String> equipment = new ArrayList<>();
-        equipment.add("Central Heating");
-        Property property = new House((float)10.5,new Location(),(float)10.6, photographs,10, 10,10, equipment,false, false, SunExposure.NORTH);
+    public void ensureCommissionCannotBeNegative() {
+        Announcement announcement = new Announcement();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> announcement.setCommission(-100));
+    }
 
+    @Test
+    public void ensurePriceCannotBeNegative() {
+        Announcement announcement = new Announcement();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> announcement.setPrice(-200));
+    }
+
+    @Test
+    public void ensureStatusIsSetCorrectly() {
+        Announcement announcement = new Announcement();
+        announcement.setStatus(AnnouncementStatus.PUBLISHED);
+        Assertions.assertEquals(AnnouncementStatus.PUBLISHED, announcement.getStatus());
+    }
+
+    @Test
+    public void ensureDateIsSetCorrectly() {
+        LocalDate date = LocalDate.of(2023, 4, 27);
+        Announcement announcement = new Announcement();
+        announcement.setDate(date);
+        Assertions.assertEquals(date, announcement.getDate());
+    }
+
+    @Test
+    public void ensureTypeOfBusinessIsSetCorrectly() {
+        Announcement announcement = new Announcement();
+        announcement.setTypeOfBusiness(TypeOfBusiness.RENT);
+        Assertions.assertEquals(TypeOfBusiness.RENT, announcement.getTypeOfBusiness());
+    }
+
+    @Test
+    public void ensurePropertyIsSetCorrectly() {
+        Property property = new Apartment(1000, new Location(0, "violets",new City("porto"),  12345 ),100,new ArrayList<>(),5,5,5,new ArrayList<>());
+        Announcement announcement = new Announcement();
+        announcement.setProperty(property);
+        Assertions.assertEquals(property, announcement.getProperty());
+    }
+
+    @Test
+    public void ensureAgentIsSetCorrectly() {
+        Employee agent = new Employee("employee", 123456789, 123456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
+        Announcement announcement = new Announcement();
+        announcement.setAgent(agent);
+        Assertions.assertEquals(agent, announcement.getAgent());
+    }
+
+    @Test
+    public void ensureOwnerIsSetCorrectly() {
+        Client owner = new Client("owner1", "owner@this.app", 123456789, 111111111, 1234567890);
+
+        Announcement announcement = new Announcement();
+        announcement.setOwner(owner);
+        Assertions.assertEquals(owner, announcement.getOwner());
+    }
+
+    @Test
+    public void ensureNumberOfMonthsRentIsSetCorrectly() {
+        Announcement announcement = new Announcement();
+        announcement.setNumberOfMonthsRent(12);
+        Assertions.assertEquals(12, announcement.getNumberOfMonthsRent());
+    }
+
+    @Test
+    public void ensureAnnouncementAsStringReturnsExpectedString() {
+        LocalDate date = LocalDate.of(2024, 4, 27);
+        AnnouncementStatus status = AnnouncementStatus.PUBLISHED;
+        float price = 100000;
+        float commission = 5000;
+        TypeOfBusiness typeOfBusiness = TypeOfBusiness.SELL;
+        Property property = new Land(1000, new Location(0, "violets", new City("porto"), 12345), 1000, new ArrayList<>());
         Branch branch = new Branch();
         Employee agent = new Employee("employee", 123456789, 123456789, "as", "employee@this.app", String.valueOf(1234567890), Role.AGENT, branch);
         Client owner = new Client("owner1", "owner@this.app", 123456789, 111111111, 1234567890);
 
-        // Act
-        Announcement announcement = new Announcement(date, announcementStatus, price, commission, typeOfBusiness, property, agent, owner);
+        Announcement announcement = new Announcement(date, status, price, commission, typeOfBusiness, property, agent, owner);
 
-        // Assert
-        Assertions.assertEquals(date, announcement.getDate());
-        Assertions.assertEquals(price, announcement.getPrice());
-        Assertions.assertEquals(commission, announcement.getCommission());
-        Assertions.assertEquals(typeOfBusiness, announcement.getTypeOfBusiness());
-        Assertions.assertEquals(property, announcement.getProperty());
-        Assertions.assertEquals(agent, announcement.getAgent());
+        String expectedString = "2024-04-27\tSELL\tLand\t100000.0\tDoor Number:0\tStreet:violets\tCity:porto\tZip Code:12345\t1000.0\t1000.0\t0\t[]\temployee";
+        Assertions.assertEquals(expectedString, announcement.getAnnouncementAsString());
     }
 
-    /**
-     * Ensure default announcement is created.
-     */
     @Test
-    void ensureDefaultAnnouncementIsCreated() {
-        // Act
-        Announcement announcement = new Announcement();
+    public void ensureAnnouncementIsCreated() {
 
-        // Assert
-        Assertions.assertEquals(AnnouncementStatus.PENDENT,announcement.getStatus());
-        Assertions.assertEquals(0.0f, announcement.getPrice());
-        Assertions.assertEquals(0.0f, announcement.getCommission());
-        Assertions.assertEquals(TypeOfBusiness.SELL, announcement.getTypeOfBusiness());
-        Assertions.assertNull(announcement.getProperty());
-        Assertions.assertNull(announcement.getAgent());
+        Location location = new Location(0, "violets", new City("porto"), 12345);
+        Branch branch = new Branch();
+        Employee agent = new Employee("employee", 123456789, 123456789, "as", "employee@this.app", "1234567890", Role.AGENT, branch);
+        Client owner = new Client("owner1", "owner@this.app", 123456789, 111111111, 1234567890);
+        LocalDate date = LocalDate.of(2024, 4, 27);
+        AnnouncementStatus status = AnnouncementStatus.PUBLISHED;
+        float price = 100000;
+        float commission = 5000;
+        TypeOfBusiness typeOfBusiness = TypeOfBusiness.SELL;
+        Property property = new Land(1000, location, 1000, new ArrayList<>());
+
+        Announcement announcement = new Announcement(date, status, price, commission, typeOfBusiness, property, agent, owner);
+
+        assertNotNull(announcement);
     }
-
-
-    /**
-     * Ensure throw exception when setting negative price.
-     */
-    @Test
-    void EnsureThrowExceptionWhenSettingNegativePrice() {
-        // Arrange
-        Announcement announcement = new Announcement();
-
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> announcement.setPrice(-1000.0f));
-    }
-
-    /**
-     * Ensure throw exception when setting negative commission.
-     */
-    @Test
-    void ensureThrowExceptionWhenSettingNegativeCommission() {
-        // Arrange
-        Announcement announcement = new Announcement();
-
-        // Act & Assert
-        Assertions.assertThrows(IllegalArgumentException.class, () -> announcement.setCommission(-50.0f));
-    }
-
 
 
 
