@@ -10,6 +10,8 @@ class AnalyseDealsGUI {
 
 class AnalyseDealsController {
     - housesAndApartmentsList
+    + createPredictorMatrix()
+    + calculateMultilinearRegression()
     + getApartmentsAndHouses()
     + simpleLinearRegression()
     + multiLinearRegression()
