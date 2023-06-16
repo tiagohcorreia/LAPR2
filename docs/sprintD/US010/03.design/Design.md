@@ -4,22 +4,21 @@
 
 ### 3.1. Rationale
 
-| Interaction ID         | Question: Which class is responsible for...            | Answer                            | Justification (with patterns)                                                                                 |
-|:-----------------------|:-------------------------------------------------------|:----------------------------------|:--------------------------------------------------------------------------------------------------------------|
-| Step 1  		             | 	... interacting with the actor?                       | PlaceOrderToBuyPropertyUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
-| 			  		                | 	... coordinating the US?                              | PlaceOrderToBuyPropertyController | Controller                                                                                                    |
-| 			  		                | 	... instantiating a new Order?                        | Order                             | Creator                                                                                                       |
-| 			  		                | ... knowing the user using the system?                 | UserSession                       | IE: cf. A&A component documentation.                                                                          |
-| Step 2	  		            | ...haveing the necessary atributes of the announcement |       AnnouncementDTO                |                                                                        |
-| 		                     | 	...convert announcements into DTO		                   | AnnouncementMapper                |                                                                                                               |
-| 		                     | 	...saving announcementsDTO		                          | AnnouncementMapper                |                                                                                                               |
-| Step 3  		             | 	...saving the inputted data?                          | Order                             | IE: object created in step 1 has its own data.                                                                | 
-| Step 5  		             | 	... saving the selected order?                        | Order                             |                                                   |
-| Step 6  		             | 							                                                |                                   |                                                                                                               |              
-| Step 7  		             | 	... validating all data (local validation)?           | Order                             | IE: owns its data.                                                                                            | 
-| 			                    | 
-| 			  		                | 	... saving the created order?                         | PlaceOrderToBuyPropertyRepository | IE: owns all its tasks.                                                                                       | 
-| Step 8  		             | 	... informing operation success?                      | PlaceOrderToBuyPropertyUI         | IE: is responsible for user interactions.                                                                     | 
+| Interaction ID | Question: Which class is responsible for...            | Answer                            | Justification (with patterns)                                                                                 |
+|:---------------|:-------------------------------------------------------|:----------------------------------|:--------------------------------------------------------------------------------------------------------------|
+| Step 1  		     | 	... interacting with the actor?                       | PlaceOrderToBuyPropertyUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
+| 			  		        | 	... coordinating the US?                              | PlaceOrderToBuyPropertyController | Controller                                                                                                    |
+| 			  		        | 	... instantiating a new Order?                        | Order                             | Creator                                                                                                       |
+| 			  		        | ... knowing the user using the system?                 | UserSession                       | IE: cf. A&A component documentation.                                                                          |
+| Step 2	  		    | ...haveing the necessary atributes of the announcement |       AnnouncementDTO                |                                                                        |
+| 		             | 	...convert announcements into DTO		                   | AnnouncementMapper                |                                                                                                               |
+| 		             | 	...saving announcementsDTO		                          | AnnouncementMapper                |                                                                                                               |
+| Step 3  		     | 	...saving the inputted data?                          | Order                             | IE: object created in step 1 has its own data.                                                                | 
+| Step 5  		     | 	... saving the selected order?                        | Order                             |                                                   |
+| Step 6  		     | 	... validating all data (local validation)?           | Order                             | IE: owns its data.                                                                                            | 
+| 			            | 
+| 			  		        | 	... saving the created order?                         | PlaceOrderToBuyPropertyRepository | IE: owns all its tasks.                                                                                       | 
+| Step 7  		     | 	... informing operation success?                      | PlaceOrderToBuyPropertyUI         | IE: is responsible for user interactions.                                                                     | 
 
 ### Systematization ##
 
