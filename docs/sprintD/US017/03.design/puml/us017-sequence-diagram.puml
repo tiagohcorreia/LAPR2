@@ -6,22 +6,24 @@ skinparam shadowing false
 autonumber
 
 participant "Network Administrator" as admin
-participant ListDealsGui as gui
-participant ListDealsController as ctrl
-participant Repositories
+participant ":ListDealsGui" as gui
+participant ":ListDealsController" as ctrl
+participant ":Repositories" as Repos
 participant ":AnnouncementRepository" as ARepo
 participant "announcementRepository\n:AnnouncementRepository" as aRepo
+participant ":AlgorithmSorter" as sorter
 
 activate admin
-    gui -> ctrl**: create
-    activate ctrl
-    ctrl -> Repositories: getInstance().\ngetAnnouncementRepository()
-    activate Repositories
-    return announcementRepository
-    deactivate ctrl
 
     admin -> gui : asks to list all deals made
     activate gui
+    gui -> ctrl**: create
+        activate ctrl
+        ctrl -> Repos: getInstance().\ngetAnnouncementRepository()
+        activate Repos
+        return announcementRepository
+        deactivate ctrl
+
     gui -> ctrl: getDeals()
     activate ctrl
 
@@ -37,21 +39,34 @@ activate admin
         gui --> admin : displays data sorted by most recent
     deactivate gui
 opt
-loop
     admin -> gui : selects sorting algorithm
-    activate gui
+'    activate gui
 
      '   gui --> Employee : shows task category list and asks to select one
-    deactivate gui
+'    deactivate gui
 
     admin -> gui : selects ascending/descending order
     activate gui
-
+    gui -> ctrl: sortByAreaWithAlgorithm(\nannouncements, sortingAlgorithm, order)
+    activate ctrl
+    ctrl -> ARepo: sortByAreaWithAlgorithm(\nannouncements, sortingAlgorithm, order)
+    activate ARepo
+        alt selected algorithm = bubble sort
+        ARepo -> sorter: bubbleSort(announcements, order)
+        activate sorter
+        deactivate sorter
+        else selected algorithm = insertion sort
+        ARepo -> sorter: insertionSort(announcements, order)
+        activate sorter
+        deactivate sorter
+        end
+    deactivate ARepo
+    return sortedAnnouncements
         gui --> admin : shows sorted list of deals
     deactivate gui
 
 end
-end
+
 
 
 '

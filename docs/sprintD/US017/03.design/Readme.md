@@ -6,36 +6,34 @@
 
 **SSD - Alternative 1 is adopted.**
 
-| Interaction ID | Question: Which class is responsible for... | Answer               | Justification (with patterns)                                                                                 |
-|:-------------  |:--------------------- |:---------------------|:--------------------------------------------------------------------------------------------------------------|
-| Step 1  		 |	... interacting with the actor? | CreateTaskUI         | Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
-| 			  		 |	... coordinating the US? | CreateTaskController | Controller                                                                                                    |
-| 			  		 |	... instantiating a new Task? | Organization         | Creator (Rule 1): in the DM Organization has a Task.                                                          |
-| 			  		 | ... knowing the user using the system?  | UserSession          | IE: cf. A&A component documentation.                                                                          |
-| 			  		 |							 | Organization         | IE: knows/has its own Employees                                                                               |
-| 			  		 |							 | Employee             | IE: knows its own data (e.g. email)                                                                           |
-| Step 2  		 |							 |                      |                                                                                                               |
-| Step 3  		 |	...saving the inputted data? | Task                 | IE: object created in step 1 has its own data.                                                                |
-| Step 4  		 |	...knowing the task categories to show? | System               | IE: Task Categories are defined by the Administrators.                                                        |
-| Step 5  		 |	... saving the selected category? | Task                 | IE: object created in step 1 is classified in one Category.                                                   |
-| Step 6  		 |							 |                      |                                                                                                               |              
-| Step 7  		 |	... validating all data (local validation)? | Task                 | IE: owns its data.                                                                                            | 
-| 			  		 |	... validating all data (global validation)? | Organization         | IE: knows all its tasks.                                                                                      | 
-| 			  		 |	... saving the created task? | Organization         | IE: owns all its tasks.                                                                                       | 
-| Step 8  		 |	... informing operation success?| CreateTaskUI         | IE: is responsible for user interactions.                                                                     | 
+| Interaction ID | Question: Which class is responsible for...            | Answer                 | Justification (with patterns)                                                                                                                                          |
+|:---------------|:-------------------------------------------------------|:-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Step 1  		     | 	... interacting with the actor?                       | ListDealsUI            | Information Expert: responsible for user interaction<br/>Pure Fabrication: there is no reason to assign this responsibility to any existing class in the Domain Model. |
+| 			  		        | 	... coordinating the US?                              | ListDealsController    | Controller: controls the flow of the US.                                                                                                                               |
+| 			  		        | 	... maintaining a single instance of repositories?    | Repositories           | Singleton                                                                                                                                                              |
+| 			  		        | 	... obtaining the AnnouncementRepository instance?    | Repositories           | Information Expert: knows all Repositories                                                                                                                             |
+| 			  		        | 	... obtaining the list of announcements?              | AnnouncementRepository | Information Expert: knows all Announcements                                                                                                                            |
+| 			  		        | ... sorting announcements by date?                     | AnnouncementRepository | Information Expert: knows all Announcements                                                                                                                            |
+| 			  		        | ... comparing dates?                                   | Announcement           | Information Expert: knows its own information                                                                                                                          |
+| 			  		        | 	... displaying the announcements?					                | ListDealsUI            | Information Expert: responsible for user interaction                                                                                                                   |
+| 			  		        | 	... requesting data from the selectable fields?						 | ListDealsUI            | Information Expert: responsible for user interaction                                                                                                                   |
+| 			  		        | ... sorting announcements by property area?            | AnnouncementRepository | Information Expert: knows all Announcements                                                                                                                            |
+| 			  		        | ... comparing property areas?                          | Property               | Information Expert: knows its own information                                                                                                                          |
+ 
 
 ### Systematization ##
 
 According to the taken rationale, the conceptual classes promoted to software classes are: 
 
- * Organization
- * Task
+ * Announcement
+ * Property
 
 Other software classes (i.e. Pure Fabrication) identified: 
 
- * CreateTaskUI  
- * CreateTaskController
-
+ * ListDealsUI 
+ * ListDealsController
+ * Repositories
+ * AnnouncementRepository
 
 ## 3.2. Sequence Diagram (SD)
 
@@ -43,32 +41,8 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 This diagram shows the full sequence of interactions between the classes involved in the realization of this user story.
 
-![Sequence Diagram - Full](svg/us006-sequence-diagram-full.svg)
-
-### Alternative 2 - Split Diagram
-
-This diagram shows the same sequence of interactions between the classes involved in the realization of this user story, but it is split in partial diagrams to better illustrate the interactions between the classes.
-
-It uses interaction ocurrence.
-
-![Sequence Diagram - split](svg/us006-sequence-diagram-split.svg)
-
-**Get Task Category List Partial SD**
-
-![Sequence Diagram - Partial - Get Task Category List](svg/us006-sequence-diagram-partial-get-task-category-list.svg)
-
-**Get Task Category Object**
-
-![Sequence Diagram - Partial - Get Task Category Object](svg/us006-sequence-diagram-partial-get-task-category.svg)
-
-**Get Employee**
-
-![Sequence Diagram - Partial - Get Employee](svg/us006-sequence-diagram-partial-get-employee.svg)
-
-**Create Task**
-
-![Sequence Diagram - Partial - Create Task](svg/us006-sequence-diagram-partial-create-task.svg)
+![Sequence Diagram](svg/us017-sequence-diagram.svg)
 
 ## 3.3. Class Diagram (CD)
 
-![Class Diagram](svg/us006-class-diagram.svg)
+![Class Diagram](svg/us017-class-diagram.svg)
