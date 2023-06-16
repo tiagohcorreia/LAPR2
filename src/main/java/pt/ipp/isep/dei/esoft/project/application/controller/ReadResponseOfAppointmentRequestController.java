@@ -17,15 +17,15 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.menu.MainMenuUI;
 
 
-public class ReadResponseOfAppointmentRequestController implements Initializable {
+public class ReadResponseOfAppointmentRequestController {
 
     ScheduleRepository scheduleRepository = Repositories.getInstance().getScheduleRepository();
 
-    @Override
+    /*@Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        getScheduleList();
-    }
+
+    }*/
 
 
     @FXML
@@ -63,9 +63,7 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
 
     public List<Schedule> getScheduleList() {
 
-        List<Schedule> lstSchedule = scheduleRepository.readObjectScheduleRequest();
-
-        return lstSchedule;
+        return scheduleRepository.readObjectScheduleRequest();
     }
 
 
