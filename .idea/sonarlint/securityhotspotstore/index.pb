@@ -1,14 +1,8 @@
 
 j
 :docs/sprintD/US001/03.design/puml/us001-class-diagram.puml,d\f\df42bc184015b35a21eda9985cfced5564376344
-o
-?docs/sprintD/global-artifacts/03.design/puml/class-diagram.puml,0\7\078831492e6c31912c5eb3ba06bc9550703790b0
-s
-Cdocs/sprintD/global-artifacts/03.design/puml/Class Diagram.plantuml,0\f\0fcd6cad2e1bab8017535b062841c563b7a8b073
 m
 =docs/sprintD/global-artifacts/03.design/svg/Class Diagram.svg,b\9\b9d56fc8d733b521efdef6248584f9bfab34d10e
-a
-1docs/sprintD/global-artifacts/03.design/readme.md,5\c\5c3d202049ba320b0508a6370804697ce1d18c75
 Z
 *docs/sprintD/US011/02.analysis/Analysis.md,2\a\2aa71acb943517a09956f620495913384363bc08
 è
@@ -183,7 +177,5 @@ V
 &docs/sprintD/US020/03.design/Design.md,a\8\a8d1849be434bb7603fbc4ce1b2fbbdbee48d816
 E
 ser/announcements.ser,e\1\e1ae287c9e65eae5c117c270cadae6c77a770d7b
-s
-Csrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Order.java,2\0\20aae18838b3f671aa33ec2f9a8e90e3bd49a809
 É
 Ssrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/BranchRepository.java,8\2\829fbd7133c10ef8651d0c7e9545e6c03d4fcbd2
