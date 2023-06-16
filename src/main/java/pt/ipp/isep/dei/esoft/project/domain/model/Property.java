@@ -126,7 +126,8 @@ public abstract class Property implements Serializable {
      * @return the int
      */
     public int getNumberOfBedrooms(){ return 0; }
-
+    public int getNumberOfBathrooms(){ return 0; }
+    public int getNumberOfParkingSpaces(){ return 0; }
 
     /**
      * Sets area.
