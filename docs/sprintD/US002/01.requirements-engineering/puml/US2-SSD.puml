@@ -16,52 +16,121 @@ activate Employee
     Employee -> System : asks to publish an announcement
     activate System
 
-        System --> Employee : requests data
-    deactivate System
+        System --> Employee : presents the type of property list
 
     Employee -> System : Select the property type
-    activate System
-
-
-
-        System --> Employee : presents the data to be filled in by the type of property
-
     deactivate System
 
-    Employee -> System : insert the requested data common to all property (size, location, distance from the city center, price, commission)
+        System --> Employee : requests all common data to all property (area, distance from city center, photographs)
     activate System
+
+    Employee -> System : insert the requested data common to all property (area, distance from the city center, photographs)
+    deactivate System
+
+    System --> Employee : presents cities list
+    activate System
+
+    Employee -> System : select the city
+    deactivate System
+
+    System --> Employee : requests the other location data (street, zipcode)
+    activate System
+
+    Employee -> System : insert the location data (street, zipcode)
+    deactivate System
+
+      deactivate System
 
     alt House
 
-    deactivate System
 
-        Employee -> System : insert the data of the house (number of bedrooms, number of bathrooms,\n number  of parking spaces, available equipments, sun exposure,inhabitable loft,\ existence of basement )
-            activate System
+        System --> Employee : requests the door number
+        activate System
+
+        Employee -> System : insert the door number
+        deactivate System
+
+        System --> Employee : requests the  house data (number of bedrooms, number of bathrooms,number  of parking spaces, available equipments,inhabitable loft,\n existence of basement )
+         activate System
+
+        Employee -> System : insert the house data (number of bedrooms, number of bathrooms, number  of parking spaces, available equipments,inhabitable loft,\n existence of basement )
+            deactivate System
+
+        System -->Employee : present sun exposure list
+        activate System
+
+        Employee -> System: select sun exposure
+        deactivate System
+
 
        else Apartment
-             Employee -> System : insert the data of the apartment (number of bedrooms, number of bathrooms, number  of parking spaces, available equipments)
-                        deactivate System
+
+
+        System --> Employee : requests the door number
+               activate System
+
+               Employee -> System : insert the door number
+               deactivate System
+
+             System --> Employee : requests the apartment data (number of bedrooms, number of bathrooms, number  of parking spaces, available equipments)
+               activate System
+
+             Employee -> System : insert house data (number of bedrooms, number of bathrooms, number  of parking spaces, available equipments)
+                 deactivate System
 
              end
 
-    activate System
+             alt Sell
 
-          System --> Employee : requests owner's name and phone number
-          deactivate System
+             System --> Employee : requests the price
+             activate System
 
-         Employee -> System : insert the data
-            activate System
+             Employee -> System : insert the price
+             deactivate System
 
+             else Rent
+
+             System --> Employee : requests the price
+              activate System
+
+             Employee -> System : insert the price
+              deactivate System
+
+              System --> Employee : requests the number of months rent
+                activate System
+
+              Employee -> System : insert the number of months rent
+               deactivate System
+
+
+
+             end
+
+              System --> Employee : requests the commission
+                           activate System
+
+                          Employee -> System : insert the commission
+                           deactivate System
+
+                          
+
+          System --> Employee : requests owner's name
+          activate System
+
+         Employee -> System : insert the name
+            deactivate System
 
 
         System --> Employee : validate the data
-    deactivate System
+    activate System
 
     Employee -> System : submits data
-    activate System
+    deactivate System
 
      System --> Owner : Sends a notification about the publication of the\n announcement (id, publication date, agent name, agent number )
         activate Owner
+
+    activate System
 
      System --> Employee : displays operation success
             deactivate System

@@ -13,6 +13,7 @@ participant ":ApplicationSession" as _APP
 participant "appSession\n:ApplicationSession" as APP
 participant "currentSession\n:UserSession" as SESSAO
 participant "repositories\n:Repositories" as REP
+participant "city repository\n:CityRepository" as CITY
 participant "employee Repository\n:EmployeeRepository" as EMP
 participant "Notification Service\n:NotificationService" as NS
 participant ":AnnouncementRepository" as AnnouncementREP
@@ -24,57 +25,110 @@ participant "new Land\n:Land" as Land
 
 
 
+
 activate AG
 
         AG -> UI : asks to publish an announcement
         activate UI
 
-        UI --> AG : request data
+        UI --> AG : presents the type of property list
 
         AG -> UI : select the property type
 
-        UI --> AG : presents the data to be\n filled in by the type of porperty
+        UI --> AG : requests all common data to all property (area, distance from city center, photographs)
 
-        AG -> UI : insert the requested data common of all properties(area, location, distance \nfrom the city center, price, commission, photographs)
+
+        AG -> UI : insert the requested data common of all properties(area,distance \nfrom the city center photographs)
+
+      UI -> CTRL** : create
+
+      CTRL -> CTRL : getCityList()
+      activate CTRL
+
+      CTRL -> REP : getInstance
+      activate REP
+
+       REP --> CTRL: repositories
+        deactivate REP
+
+         CTRL -> REP : getCityRepository()
+            activate REP
+             REP-> CTRL : CityRepository
+              deactivate REP
+               CTRL -> CITY : getCityList()
+               activate CITY
+
+                CITY --> CTRL : CityList
+                deactivate CITY
+
+                  CTRL --> CTRL : CityList
+
+                  CTRL --> UI : CityList
+
+        UI --> AG : presents the list of cities
+
+            AG -> UI : select the city
+
+            UI --> AG : request the other location data (street, zipcode)
+
+            AG -> UI : insert the data (street, zipcode)
+
 
         alt House
 
-        AG -> UI : insert data for the house (number of bedrooms, number of bathrooms,\n number of parking spaces, available equipments, sun exposure,\n existence of basement, inhabitable loft )
+        AG -> UI : insert the house (door number, number of bedrooms, number of bathrooms,\n number of parking spaces, available equipments, sun exposure,\n existence of basement, inhabitable loft )
 
         else Apartment
 
-        AG -> UI : insert data for the apartment (number of bedrooms, number of bathrooms,\n number of parking spaces, available equipments)
+        AG -> UI : insert data for the apartment (door number, number of bedrooms, number of bathrooms,\n number of parking spaces, available equipments)
 
            else Land
            AG -> UI : Land (  )
 
            end
 
+           UI --> AG : request the type of Business : RENT or SELL
+
+           AG -> UI : select the type of business
+
+           alt RENT
+
+            UI --> AG : request the price
+
+            AG -> UI : insert the price
+
+            UI --> AG : request the number of months rent
+
+            AG -> UI : insert the data
+
+            else SELL
+
+            UI --> AG : request the price
+
+            AG -> UI : insert the price
+            end
+
+            UI --> AG : request the commission
+
+            AG -> UI : insert the commission
 
            UI -> AG: requests owner´s name
 
            AG --> UI: insert owner´s name
-
-            UI -> AG: requests owner´s phone number
-
-             AG --> UI: insert owner´s phone number
-
 
         UI --> AG : validate data
 
         AG -> UI : submits data
 
 
-               UI -> CTRL** : create
-
-               UI -> CTRL : createAnnouncement((ID,date,Business,size, location,\n distance from the city \n center, price, commission, photographs, type of property))
+               UI -> CTRL : createAnnouncement((date,typeOfBusiness,area, location(city,street,zipcode, doorNumber),\n distance from the city \n center, price, numberOfMonthsRent, commission, photographs, type of property, owner))
 
                CTRL -> CTRL : getEmployeeFromSession()
                            activate CTRL
 
                                 CTRL -> _APP: getInstance()
                                             activate _APP
-                                         _APP -> CTRL: appSession
+                                         _APP --> CTRL: appSession
                                              deactivate _APP
 
                                          CTRL -> APP: getCurrentSession()
@@ -96,10 +150,17 @@ activate AG
 
 
 
+                alt RENT
 
+                CTRL -> AnnouncementREP**: createAnnouncement(date,RENT,area, location(city,street,zipcode,doorNumber),\n distance from the city \n center, price, numberOfMonthsRent, commission, photographs, type of property, owner, agentName))
 
-                CTRL -> AnnouncementREP**: createAnnouncement(ID,date,Business,size, location,\n distance from the city \n center, price, commission, photographs, type of property, agentName))
                 activate AnnouncementREP
+
+                else SELL
+
+               CTRL -> AnnouncementREP: createAnnouncement(date,SELL,area, location(city,street,zipcode,doorNumber),\n distance from the city \n center, price,commission, photographs, type of property, owner, agentName))
+
+                end
 
 
 

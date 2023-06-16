@@ -48,8 +48,7 @@ should be refreshed, and that request should not be shown again.
 
 ### 1.4. Found out Dependencies
 
-
-* 
+* There is dependency on US4 - submit a request for listing a property sale or rent, since there must be advertisement requests
 
 ### 1.5 Input and Output Data
 

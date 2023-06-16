@@ -25,7 +25,7 @@ public class NotificationServiceTest {
 
     private static final String RECIPIENT = "Nilsa Gil";
     private static final String SUBJECT = "ANNOUNCEMENT NOTIFICATION";
-    private static final String MESSAGE = "D";
+    private static final String MESSAGE = "Dear client, your announcement was published. ";
 
     @BeforeEach
     public void setUp() {
@@ -72,5 +72,21 @@ public class NotificationServiceTest {
         }
 
         return sb.toString();
+    }
+    @Test
+    public void ensureNotificationServiceSerialization() throws IOException, ClassNotFoundException {
+
+        NotificationService originalService = new NotificationService();
+
+        String filename = "notificationService.ser";
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(filename));
+        outputStream.writeObject(originalService);
+        outputStream.close();
+
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(filename));
+        NotificationService deserializedService = (NotificationService) inputStream.readObject();
+        inputStream.close();
+
+        Assertions.assertEquals(originalService, deserializedService);
     }
 }
