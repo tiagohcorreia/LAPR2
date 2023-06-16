@@ -149,4 +149,9 @@ public class Client implements Serializable {
             throw new InvalidAttributeValueException("Location is invalid.");
     }
 
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

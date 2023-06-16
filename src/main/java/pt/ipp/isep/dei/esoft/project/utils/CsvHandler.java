@@ -145,7 +145,8 @@ public class CsvHandler {
             }
 
             try{
-                success = announcementRepository.addAnnouncement(announcement);
+                //success = announcementRepository.addAnnouncement(announcement);
+                announcementRepository.saveAnnouncement(announcement);
             }catch (Exception e) {
                 e.printStackTrace();
             } finally {
