@@ -2,11 +2,12 @@ package pt.ipp.isep.dei.esoft.project.domain.model;
 
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
-public class Schedule {
+public class Schedule implements Serializable {
     private String name;
     private int phoneNumber;
     private AnnouncementDTO announcementDTO;
