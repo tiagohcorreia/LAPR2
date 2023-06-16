@@ -1,6 +1,8 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
+import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
 import pt.ipp.isep.dei.esoft.project.domain.model.Order;
+import pt.ipp.isep.dei.esoft.project.domain.model.Property;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PurchaseOrderRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
@@ -52,4 +54,52 @@ public class AnalyseDealsController {
         double intercept = regression.getIntercept();
     }
 
+    public void performMultilinearRegression() {
+        List<Order> apartmentsAndHousesList = getApartmentsAndHouses();
+        double[] areas = new double[apartmentsAndHousesList.size()];
+        double[] distances = new double[apartmentsAndHousesList.size()];
+        int[] bedrooms = new int[apartmentsAndHousesList.size()];
+        int[] bathrooms = new int[apartmentsAndHousesList.size()];
+        int[] parkingSpaces = new int[apartmentsAndHousesList.size()];
+        double[] salePrices = new double[apartmentsAndHousesList.size()];
+
+        for (int i = 0; i < apartmentsAndHousesList.size(); i++) {
+            Order order = apartmentsAndHousesList.get(i);
+            Property property = order.getAnnouncementDTO().getProperty();
+            areas[i] = property.getArea();
+            distances[i] = property.getCityCentreDistance();
+            bedrooms[i] = property.getNumberOfBedrooms();
+            bathrooms[i] = property.getNumberOfBathrooms();
+            parkingSpaces[i] = property.getNumberOfParkingSpaces();
+            salePrices[i] = order.getAnnouncementDTO().getPrice();
+        }
+
+        double[] coefficients = calculateMultilinearRegression(areas, distances, bedrooms, bathrooms, parkingSpaces, salePrices);
+
+    }
+
+
+
+    private double[] calculateMultilinearRegression(double[] areas, double[] distances, int[] bedrooms, int[] bathrooms, int[] parkingSpaces, double[] salePrices) {
+        OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
+        double[][] predictors = createPredictorMatrix(areas, distances, bedrooms, bathrooms, parkingSpaces);
+        regression.newSampleData(salePrices, predictors);
+        return regression.estimateRegressionParameters();
+    }
+
+    private double[][] createPredictorMatrix(double[] areas, double[] distances, int[] bedrooms, int[] bathrooms, int[] parkingSpaces) {
+        int n = areas.length;
+        double[][] predictors = new double[n][5];
+
+        for (int i = 0; i < n; i++) {
+            predictors[i][0] = areas[i];
+            predictors[i][1] = distances[i];
+            predictors[i][2] = bedrooms[i];
+            predictors[i][3] = bathrooms[i];
+            predictors[i][4] = parkingSpaces[i];
+        }
+
+        return predictors;
+    }
 }
+
