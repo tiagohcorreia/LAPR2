@@ -1,6 +1,5 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -58,7 +57,7 @@ class ValidateScheduleControllerTest {
         authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
         employeeRepository= Repositories.getInstance().getEmployeeRepository();
         scheduleVisitController = new ScheduleVisitController(scheduleRepository);
-        validateScheduleController = new ValidateScheduleController(scheduleRepository);
+        validateScheduleController = new ValidateScheduleController();
         Branch branch = new Branch();
         ArrayList<String> photographs = new ArrayList<String>();
         photographs.add("photo1");

@@ -1,4 +1,5 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
@@ -10,18 +11,20 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
 
 
 import java.io.*;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Properties;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 
-public class ValidateScheduleController {
+public class ValidateScheduleController implements Initializable {
 
     Repositories repositories = Repositories.getInstance();
-    private AnnouncementRepository announcementRepository = repositories.getAnnouncementRepository();
     private ScheduleRepository scheduleRepository= repositories.getScheduleRepository();
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
     private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
@@ -66,10 +69,8 @@ public class ValidateScheduleController {
     private TableView<Schedule> tblScheduleList;
 
 
-    public ValidateScheduleController(ScheduleRepository scheduleRepository) {
-        this.scheduleRepository = scheduleRepository;
-    }
-    public void initialize(){
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Schedule> scheduleList = getRequestScheduleListByResponsibleAgent();
         for (Schedule schedule:scheduleList){
             rowClientName.setText(schedule.getName());
@@ -81,8 +82,6 @@ public class ValidateScheduleController {
             rowEndHour.setText(String.valueOf(schedule.getEndHour()));
             rowNote.setText(schedule.getNoteFromAgent());
         }
-
-
     }
     @FXML
     private void submit() {
@@ -105,6 +104,7 @@ public class ValidateScheduleController {
     }
 
     public List<Schedule> getRequestScheduleListByResponsibleAgent(){
+        scheduleRepository.readObjectScheduleRequest();
         String agentName=String.valueOf(authenticationRepository.getCurrentUserSession().getUserName());
         pt.ipp.isep.dei.esoft.project.domain.model.Employee agent= employeeRepository.findByName(agentName);
         List<Schedule> scheduleList= scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
@@ -172,4 +172,6 @@ public class ValidateScheduleController {
         }
         return null;
     }
+
+
 }
