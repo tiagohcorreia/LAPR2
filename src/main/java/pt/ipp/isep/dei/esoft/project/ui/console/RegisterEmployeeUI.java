@@ -3,8 +3,6 @@ package pt.ipp.isep.dei.esoft.project.ui.console;
 import pt.ipp.isep.dei.esoft.project.application.controller.RegisterEmployeeController;
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 import pt.ipp.isep.dei.esoft.project.domain.model.Role;
-import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
-import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.List;
@@ -67,7 +65,7 @@ public class RegisterEmployeeUI implements Runnable {
             System.out.println("Employee E-mail: " + eMail);
             System.out.println("Employee Telephone Number: " + telephoneNumber);
             System.out.println("Employee Role: " + Role.getRoleById(posRole));
-            System.out.println("Employee Branch: " + BranchRepository.getBranchByID(posBranch));
+            System.out.println("Employee Branch: " + this.controller.showSelectedBranch(posBranch));
 
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
@@ -77,12 +75,6 @@ public class RegisterEmployeeUI implements Runnable {
 
                     this.controller.createEmployee(emplyeeName, employeePassportNumber, taxNumber, address, eMail, telephoneNumber, posRole, posBranch);
                     success = false;
-
-                    if (success) {
-
-                        System.out.println("Please insert Employee data again");
-
-                    }
 
 
                 } catch (IllegalArgumentException e) {
@@ -102,14 +94,16 @@ public class RegisterEmployeeUI implements Runnable {
                     System.out.println(e.getMessage());
                 }
 
-
             } else {
 
                 System.err.println("Operation Canceled!");
             }
 
+            if (success) {
 
+                System.out.println("Please insert Employee data again");
+
+            }
         }
-
     }
 }

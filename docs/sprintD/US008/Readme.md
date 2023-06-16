@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 008 - View announcement requests, review and approve/reject 
 
 [Requirements Engineering](01.requirements-engineering/Requirements Engineering.md)
 

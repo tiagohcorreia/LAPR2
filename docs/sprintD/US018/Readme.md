@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 018 - Analyse the deals made, based on the characteristics of the property using simple liner regression and multilinear regression 
 
 [Requirements Engineering](01.requirements-engineering/Requirements-Engineering.md)
 

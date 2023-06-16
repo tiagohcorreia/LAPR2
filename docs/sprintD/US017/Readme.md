@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 017 - List all deals made
 
 [Requirements Engineering](01.requirements-engineering/Readme.md)
 

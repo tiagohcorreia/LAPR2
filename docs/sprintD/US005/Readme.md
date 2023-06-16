@@ -1,4 +1,4 @@
-# US 006 - To create a Task 
+# US 006 - Register a store 
 
 [Requirements Engineering](01.requirements-engineering/Readme.md)
 
