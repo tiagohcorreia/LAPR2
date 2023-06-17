@@ -25,7 +25,7 @@ public class ReadResponseOfAppointmentRequestGUI extends Application implements 
             FXMLLoader fxmlLoader = new FXMLLoader(ReadResponseOfAppointmentRequestGUI.class.getResource("ReadAppointmentRequest.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
 
-            stage.setTitle("US020");
+            stage.setTitle("Read Response Of Appointment Request");
             stage.setScene(scene);
             stage.show();
 
