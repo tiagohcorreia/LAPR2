@@ -1,5 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +12,8 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,6 +25,8 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
 
     ScheduleRepository scheduleRepository = Repositories.getInstance().getScheduleRepository();
 
+    Schedule currentSchedule;
+
     @FXML
     private Button btnAccept;
 
@@ -31,7 +37,7 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
     private TextField txtClientReason;
 
     @FXML
-    private ListView<?> lstSchedules;
+    private ListView<Schedule> lstSchedules;
 
     @FXML
     private Button btnReject;
@@ -44,12 +50,15 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
     @FXML
     void rejectRequest(ActionEvent event) {
 
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         sendNotificationToAgent();
+        lstSchedules.getItems().addAll(getScheduleList());
+        lstSchedules.getSelectionModel().selectedItemProperty().addListener(this::selectionChanged);
 
     }
 
@@ -74,6 +83,12 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
     public List<Schedule> getScheduleList() {
 
         return scheduleRepository.readObjectScheduleRequest();
+    }
+
+    private void selectionChanged(ObservableValue< ? extends Schedule> observable, Schedule oldVal, Schedule newVal) {
+
+        currentSchedule = lstSchedules.getSelectionModel().getSelectedItem();
+        txtSchedule.setText(currentSchedule.getNoteFromAgent());
     }
 
 }

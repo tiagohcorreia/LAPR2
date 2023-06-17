@@ -93,8 +93,6 @@ y
 Isrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MenuItem.java,4\4\44d6df232cccbbbcadf2c5f04efd539b5cf2deee
 Å
 Qsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/NetworkManagerUI.java,b\9\b9d7f9cddf0a7eab5f9c4e941a71c5d9d714c1ed
-ã
-[src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ListDealsController.java,a\e\aebf1b2fe612e1666c5dbe5c0d8e44a56da905cd
 {
 Ksrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/ScheduleVisitUI.java,a\5\a5befd3fc6a8a90e1cff21fabbc449d52c414df7
 y
