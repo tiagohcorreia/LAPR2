@@ -190,12 +190,10 @@ public class RegisterPropertyController implements Serializable {
 
     public Client getCurrentOwner() {
         pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();
-        if (userSession.getUserRoles().equals(authenticationController.ROLE_OWNER) ) {
+
             String ownerName=userSession.getUserName();
             return getOwnerByName(ownerName);
-        } else {
-            throw new IllegalStateException("Current user is not a Client (owner).");
-        }
+
     }
     public Client getOwnerByName(String ownerName) {
 

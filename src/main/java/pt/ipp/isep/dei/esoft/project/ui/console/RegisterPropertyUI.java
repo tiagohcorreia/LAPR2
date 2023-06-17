@@ -88,8 +88,7 @@ public class RegisterPropertyUI implements Runnable {
             if (existingCity != null) {
 
                  street = Utils.readLineFromConsole("Insert the street:");
-                postalCode = Integer.parseInt(Utils.readLineFromConsole("Insert the postal code(5 digits):"));
-
+                postalCode = Utils.readIntegerFromConsole("Insert the postal code(5 digits):");
 
             } else {
 
@@ -108,7 +107,7 @@ public class RegisterPropertyUI implements Runnable {
 
             if (posTypeOfProperty == 1 || posTypeOfProperty == 2) {
 
-                doorNumber = Integer.getInteger(Utils.readLineFromConsole("Insert the door number:"));
+                doorNumber = Utils.readIntegerFromConsole("Insert door number");
 
                 //Number of bedrooms
                 numberOfBedrooms = Utils.readIntegerFromConsole("Insert Number of bedrooms: ");
@@ -161,6 +160,7 @@ public class RegisterPropertyUI implements Runnable {
             Utils.showList(agentsList, "Agents List");
             agent = Utils.readLineFromConsole("Insert the Name of the responsible agent: ");
             choosedAgent = this.controller.getEmployee(agent);
+            System.out.println(choosedAgent);
 
 
             //Sell or Rent a property
@@ -189,11 +189,7 @@ public class RegisterPropertyUI implements Runnable {
                         System.out.println("Please insert Announcement data again");
                     }
 
-                } catch (IllegalArgumentException e) {
-
-                    System.err.println(e.getMessage());
-
-                } catch (NullPointerException e) {
+                } catch (IllegalArgumentException | NullPointerException e) {
 
                     System.err.println(e.getMessage());
 
@@ -220,6 +216,8 @@ public class RegisterPropertyUI implements Runnable {
                 System.out.println("Distance of Centre: " + cityCenterDistance+" Km");
                 System.out.println("Price: " + price + "$");
                 System.out.println("Responsible Agent: " + choosedAgent.getName());
+
+                success=false;
 
             } else {
                 System.err.println("Operation Canceled!");

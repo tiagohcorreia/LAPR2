@@ -34,6 +34,7 @@ public class RegisterClientController {
         //authFacade.addUserWithRole(newUser.getName(), newUser.getEmail(), newUser.getPassword(), AuthenticationController.ROLE_CLIENT);
         try {
             authenticationRepository.addUserWithRole(newClient.getName(), newClient.getEmail(), newClient.getPassword(), AuthenticationController.ROLE_CLIENT);
+
         } catch (Exception e){
             System.out.println("Couldn't register user with authentication system. " + e.getMessage());
         }
