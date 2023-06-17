@@ -1,6 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
@@ -71,17 +74,22 @@ public class ValidateScheduleController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        scheduleRepository.readObjectScheduleRequest();
+
+        rowClientName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        rowTypeOfBusiness.setCellValueFactory(new PropertyValueFactory<>("typeOfBusiness"));
+        rowPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        rowLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
+        rowDay.setCellValueFactory(new PropertyValueFactory<>("day"));
+        rowBeginHour.setCellValueFactory(new PropertyValueFactory<>("beginHour"));
+        rowEndHour.setCellValueFactory(new PropertyValueFactory<>("endHour"));
+        rowNote.setCellValueFactory(new PropertyValueFactory<>("note"));
+
         List<Schedule> scheduleList = getRequestScheduleListByResponsibleAgent();
-        for (Schedule schedule:scheduleList){
-            rowClientName.setText(schedule.getName());
-            rowTypeOfBusiness.setText(String.valueOf(schedule.getAnnouncementDTO().getTypeOfBusiness()));
-            rowPrice.setText(String.valueOf(schedule.getAnnouncementDTO().getPrice()));
-            rowLocation.setText(String.valueOf(schedule.getAnnouncementDTO().getProperty().getLocation()));
-            rowDay.setText(String.valueOf(schedule.getDay()));
-            rowBeginHour.setText(String.valueOf(schedule.getBeginHour()));
-            rowEndHour.setText(String.valueOf(schedule.getEndHour()));
-            rowNote.setText(schedule.getNoteFromAgent());
-        }
+
+        ObservableList<Schedule> observableList = FXCollections.observableArrayList(scheduleList);
+
+        tblScheduleList.setItems(observableList);
     }
     @FXML
     private void submit() {

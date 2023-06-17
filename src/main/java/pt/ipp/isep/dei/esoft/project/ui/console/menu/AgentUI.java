@@ -5,6 +5,7 @@ import pt.ipp.isep.dei.esoft.project.ui.console.PublishAnnouncementUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.PurchaseOrderUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.AnnouncementRequestsUI;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+import pt.ipp.isep.dei.esoft.project.ui.gui.ValidateScheduleGUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class AgentUI implements Runnable {
 
         options.add(new MenuItem("Publish announcement", new PublishAnnouncementUI()));
         options.add(new MenuItem("See announcements requests", new AnnouncementRequestsUI()));
+        options.add(new MenuItem("Validate schedules requests", new ValidateScheduleGUI()));
         options.add(new MenuItem("List and manage purchase orders", new PurchaseOrderUI())); // nova opção no menu
 
         int option = 0;
