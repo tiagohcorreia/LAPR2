@@ -189,14 +189,11 @@ public class RegisterPropertyController implements Serializable {
     }
 
     public Client getCurrentOwner() {
-        pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();
 
-            String ownerName=userSession.getUserName();
-            return getOwnerByName(ownerName);
+        pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();
+        String ownerEmail= String.valueOf(userSession.getUserEmail());
+        Client owner= clientRepository.findByEmail(ownerEmail);
 
-    }
-    public Client getOwnerByName(String ownerName) {
-
-        return clientRepository.findByEmail(ownerName);
+        return owner;
     }
 }
