@@ -22,6 +22,7 @@ public class Order implements Serializable {
      *
      * @param orderAmount     the order amount
      * @param announcementDTO the announcement dto
+     * @param status          the status
      */
     public Order(double orderAmount, AnnouncementDTO announcementDTO, boolean status) {
 
@@ -30,6 +31,14 @@ public class Order implements Serializable {
         this.status = false;
     }
 
+    /**
+     * Instantiates a new Order.
+     *
+     * @param id              the id
+     * @param orderAmount     the order amount
+     * @param announcementDTO the announcement dto
+     * @param client          the client
+     */
     public Order(String id, double orderAmount, AnnouncementDTO announcementDTO, Client client) {
         this.id = id;
         this.orderAmount = orderAmount;
@@ -38,6 +47,11 @@ public class Order implements Serializable {
     }
 
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public String getId() {
         return id;
     }
@@ -60,10 +74,20 @@ public class Order implements Serializable {
         return announcementDTO;
     }
 
+    /**
+     * Gets client.
+     *
+     * @return the client
+     */
     public Client getClient() {
         return client;
     }
 
+    /**
+     * Is status boolean.
+     *
+     * @return the boolean
+     */
     public boolean isStatus() {
         return status;
     }
@@ -93,6 +117,11 @@ public class Order implements Serializable {
         return this.announcementDTO;
     }
 
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
     public void setStatus(boolean status) {
         this.status = status;
     }

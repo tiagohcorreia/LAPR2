@@ -18,10 +18,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * The type Read response of appointment request controller.
+ */
 public class ReadResponseOfAppointmentRequestController implements Initializable {
 
+    /**
+     * The Schedule repository.
+     */
     ScheduleRepository scheduleRepository = Repositories.getInstance().getScheduleRepository();
 
+    /**
+     * The Current schedule.
+     */
     Schedule currentSchedule = new Schedule();
 
     @FXML
@@ -39,6 +48,11 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
     @FXML
     private Button btnClear;
 
+    /**
+     * Accept request.
+     *
+     * @param event the event
+     */
     @FXML
     void acceptRequest(ActionEvent event) {
 
@@ -60,6 +74,11 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
         });
     }
 
+    /**
+     * Reject request.
+     *
+     * @param event the event
+     */
     @FXML
     void rejectRequest(ActionEvent event) {
 
@@ -90,11 +109,21 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
         lstSchedules.getSelectionModel().selectedItemProperty().addListener(this::selectionChanged);
     }
 
+    /**
+     * Clear.
+     *
+     * @param event the event
+     */
     @FXML
     void clear(ActionEvent event) {
         txtSchedule.clear();
     }
 
+    /**
+     * Gets schedule list.
+     *
+     * @return the schedule list
+     */
     public List<Schedule> getScheduleList() {
 
         return scheduleRepository.readObjectScheduleRequest();
@@ -112,6 +141,9 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
         stage.close();
     }
 
+    /**
+     * Send notification to agent.
+     */
     public void sendNotificationToAgent() {
 
         String conteudo = "A client have just view the response for a schedule";
