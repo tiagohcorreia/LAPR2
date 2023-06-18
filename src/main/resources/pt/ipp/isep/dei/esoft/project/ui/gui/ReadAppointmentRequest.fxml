@@ -10,17 +10,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="966.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.application.controller.ReadResponseOfAppointmentRequestController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="873.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.application.controller.ReadResponseOfAppointmentRequestController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="190.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="820.0" minWidth="10.0" prefWidth="814.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="158.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="820.0" minWidth="10.0" prefWidth="715.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-    <RowConstraints maxHeight="374.0" minHeight="10.0" prefHeight="252.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="16.0" minHeight="0.0" prefHeight="0.0" />
+    <RowConstraints maxHeight="374.0" minHeight="10.0" prefHeight="243.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="99.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" text="Schedule List:" GridPane.rowIndex="1">
@@ -41,12 +40,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label text="Reason:" GridPane.rowIndex="4">
-         <font>
-            <Font size="18.0" />
-         </font></Label>
       <TextField fx:id="txtSchedule" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField fx:id="txtClientReason" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <ListView fx:id="lstSchedules" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>

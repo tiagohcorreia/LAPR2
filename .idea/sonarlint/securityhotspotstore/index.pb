@@ -161,5 +161,3 @@ t
 Dsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/ListDealsGUI.java,e\8\e8b6ad3a182d3efbbf3b5667a413cda3a823e4e2
 ‹
 [src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ListDealsController.java,a\e\aebf1b2fe612e1666c5dbe5c0d8e44a56da905cd
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Schedule.java,c\6\c6fe938a0dc8996aacef89e92933e0061c4f3f0b
