@@ -7,13 +7,10 @@
 
 <?import javafx.scene.layout.HBox?>
 <AnchorPane prefHeight="420.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.application.controller.AnalyseDealsController">
-    <HBox layoutX="700.0" layoutY="0.0" spacing="5">
-        <Button text="Minimize" onAction="#handleMinimizeButtonClick" />
-        <Button text="Close" onAction="#handleCloseButtonClick" />
-    </HBox>
 
 <TableView fx:id="table" layoutX="6.0" layoutY="24.0" prefHeight="326.0" prefWidth="674.0">
     <columns>
+        <TableColumn fx:id="propertyColumn" text="Property" />
         <TableColumn fx:id="areaColumn" text="Area" />
         <TableColumn fx:id="distanceColumn" text="Distance" />
         <TableColumn fx:id="bedroomsColumn" text="Bedrooms" />
@@ -22,6 +19,8 @@
         <TableColumn fx:id="salePriceColumn" text="Sale Price" />
         <TableColumn fx:id="estimatedPriceSLRColumn" text="Estimated Price (SLR)" />
         <TableColumn fx:id="estimatedPriceMLRColumn" text="Estimated Price (MLR)" />
+        <TableColumn fx:id="forecastPriceSLRColumn" text="Forecast Price (SLR)" />
+        <TableColumn fx:id="forecastPriceMLRColumn" text="Forecast Price (MLR)" />
     </columns>
 </TableView>
 
