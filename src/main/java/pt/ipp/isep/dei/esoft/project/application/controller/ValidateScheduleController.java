@@ -1,5 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,6 +34,7 @@ public class ValidateScheduleController implements Initializable {
     private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
     private AuthenticationController authenticationController;
     private ScheduleRepository scheduleRepository = repositories.getScheduleRepository();
+    Schedule currentSchedule = new Schedule();
     @FXML
     private ToggleGroup ScheduleAnswer;
 
@@ -47,97 +49,93 @@ public class ValidateScheduleController implements Initializable {
 
     @FXML
     private RadioButton rbRejectSchedule;
-
-    @FXML
-    void submit(ActionEvent event) {
-        Alert accepted= new Alert(Alert.AlertType.CONFIRMATION);
-        accepted.setTitle("Accepted");
-       /*Schedule selectedSchedule = lvschedules.getSelectionModel().getSelectedItem();
-
-        if (selectedSchedule != null) {
-
-            int schedulePos = lvschedules.getItems().indexOf(selectedSchedule);
-            RadioButton selectedRadioButton = (RadioButton) ScheduleAnswer.getSelectedToggle();
-
-            if (selectedRadioButton != null) {
-                String radioButtonId = selectedRadioButton.getId();
-                switch (radioButtonId) {
-                    case "rbAcceptSchedule":
-                        addConfirmedSchedule(schedulePos);
-                        break;
-                    case "rbRejectSchedule":
-                        addRejectedSchedule(schedulePos);
-                        break;
-                }
-            }
-        }*/
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getScheduleList();
         authenticationController = new AuthenticationController();
         Employee agent = getLoggedAgent();
         getRequestScheduleListByResponsibleAgent(agent);
+        lvschedules.getSelectionModel().selectedItemProperty().addListener(this::selectionChanged);
     }
     public void getRequestScheduleListByResponsibleAgent(Employee agent){
 
         //List<Schedule> scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
-
         lvschedules.getItems().addAll(getScheduleList());
 
     }
-    private Employee getLoggedAgent() {
-        String agentEmail = authenticationController.getCurrentSession().getUserEmail();
-        EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
-        return employeeRepository.findByEmail(agentEmail);
+    @FXML
+    void submit(ActionEvent event) {
+
+        RadioButton selectedRadioButton = (RadioButton) ScheduleAnswer.getSelectedToggle();
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+
+        confirmation.setTitle("CONFIRMATION");
+        confirmation.setHeaderText("Are you sure you want to send this information?");
+
+        confirmation.showAndWait().ifPresent(reponse -> {
+
+            if (reponse == ButtonType.OK) {
+
+                String radioButtonId = selectedRadioButton.getId();
+                switch (radioButtonId) {
+                    case "rbAcceptSchedule":
+                        addConfirmedSchedule(currentSchedule);
+                        break;
+                    case "rbRejectSchedule":
+                        addRejectedSchedule(currentSchedule);
+                        break;
+                }
+            }
+
+        });
+
+
     }
-    public Alert addConfirmedSchedule(int schedulePos){
-        Alert accepted= new Alert(Alert.AlertType.CONFIRMATION);
-        accepted.setTitle("Accepted");
-        /*if (schedulePos>=0  && schedulePos < lvschedules.getItems().size()) {
 
-            Schedule schedule= lvschedules.getItems().get(schedulePos);
+
+
+
+    public boolean addConfirmedSchedule(Schedule schedule){
+        if (schedule!=null) {
             scheduleRepository.writeObjectScheduleRequest();
-            scheduleRepository.addConfirmedSchedule(schedule);
-
-            String agentName= schedule.getAnnouncementDTO().getAgent().getName();
-            String agentPhoneNumber= schedule.getAnnouncementDTO().getAgent().getTelephoneNumber();
-            Location location= schedule.getAnnouncementDTO().getProperty().getLocation();
-            LocalDate day= schedule.getDay();
-            LocalTime beginHour= schedule.getBeginHour();
-            LocalTime endHour=schedule.getEndHour();
+            scheduleRepository.addConfirmedSchedule(currentSchedule);
+            String agentName= currentSchedule.getName();
+            String agentPhoneNumber= currentSchedule.getAnnouncementDTO().getAgent().getTelephoneNumber();
+            Location location= currentSchedule.getAnnouncementDTO().getProperty().getLocation();
+            LocalDate day= currentSchedule.getDay();
+            LocalTime beginHour= currentSchedule.getBeginHour();
+            LocalTime endHour=currentSchedule.getEndHour();
             sendEmail(agentName,agentPhoneNumber,location,day, beginHour, endHour,"accepted");
 
             return true;
 
         } else {
             return false;
-        }*/
-        return accepted;
+        }
+
     }
 
-    public Alert addRejectedSchedule(int schedulePos){
-        Alert rejected= new Alert(Alert.AlertType.CONFIRMATION);
-        rejected.setTitle("Rejected");
-        /*if (schedulePos>=0 && schedulePos < lvschedules.getItems().size() ){
-            Schedule schedule= lvschedules.getItems().get(schedulePos);
+    public boolean addRejectedSchedule(Schedule schedule){
+
+        if (schedule!=null){
             scheduleRepository.writeObjectScheduleRequest();
             scheduleRepository.addRejectedSchedule(schedule);
 
-            /*String agentName= schedule.getAnnouncementDTO().getAgent().getName();
-            String agentPhoneNumber= schedule.getAnnouncementDTO().getAgent().getTelephoneNumber();
-            Location location= schedule.getAnnouncementDTO().getProperty().getLocation();
-            LocalDate day= schedule.getDay();
-            LocalTime beginHour= schedule.getBeginHour();
-            LocalTime endHour=schedule.getEndHour();
+            String agentName= currentSchedule.getName();
+            String agentPhoneNumber= currentSchedule.getAnnouncementDTO().getAgent().getTelephoneNumber();
+            Location location= currentSchedule.getAnnouncementDTO().getProperty().getLocation();
+            LocalDate day= currentSchedule.getDay();
+            LocalTime beginHour= currentSchedule.getBeginHour();
+            LocalTime endHour=currentSchedule.getEndHour();
             sendEmail(agentName,agentPhoneNumber,location,day, beginHour, endHour,"rejected");
             return true;
         }else {
             return false;
-        }*/
-        return rejected;
+        }
     }
-
+    private void selectionChanged(ObservableValue<? extends Schedule> observable, Schedule oldVal, Schedule newVal) {
+        currentSchedule = lvschedules.getSelectionModel().getSelectedItem();
+    }
     public void sendEmail(String agentName, String agentPhoneNumber, Location location, LocalDate day, LocalTime beginHour, LocalTime endHour,String answer) {
         Properties properties=new Properties();
 
@@ -162,6 +160,11 @@ public class ValidateScheduleController implements Initializable {
     }
     public List<Schedule> getScheduleList() {
         return scheduleRepository.readObjectScheduleRequest();
+    }
+    private Employee getLoggedAgent() {
+        String agentEmail = authenticationController.getCurrentSession().getUserEmail();
+        EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
+        return employeeRepository.findByEmail(agentEmail);
     }
 }
 

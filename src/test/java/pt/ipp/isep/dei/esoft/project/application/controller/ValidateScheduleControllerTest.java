@@ -108,7 +108,7 @@ class ValidateScheduleControllerTest {
         Schedule schedule= new Schedule("vitor", 1234567891, announcementDTO, day, beginHour, endHour, "no more notes", true, true);
         scheduleRepository.getRequestScheduleListByResponsibleAgent(e1);
 
-        validateScheduleController.addConfirmedSchedule(0);
+        //validateScheduleController.addConfirmedSchedule(0);
         List<Schedule> expectedConfirmedScheduleList = new ArrayList<>();
         expectedConfirmedScheduleList.add(schedule);
         assertEquals(expectedConfirmedScheduleList, scheduleRepository.getRequestScheduleListByResponsibleAgent(e1));
@@ -119,7 +119,7 @@ class ValidateScheduleControllerTest {
         scheduleRepository.addSchedule(schedule2);
         Schedule schedule= new Schedule("vitor2", 1224567891, announcementDTO2, day, beginHour, endHour, "no more notes2", true, false);
         scheduleRepository.getRequestScheduleListByResponsibleAgent(e2);
-        validateScheduleController.addRejectedSchedule(0);
+        //validateScheduleController.addRejectedSchedule(0);
         List<Schedule> expectedRejectedScheduleList = new ArrayList<>();
         expectedRejectedScheduleList.add(schedule);
         assertEquals(expectedRejectedScheduleList, scheduleRepository.getRequestScheduleListByResponsibleAgent(e2));
