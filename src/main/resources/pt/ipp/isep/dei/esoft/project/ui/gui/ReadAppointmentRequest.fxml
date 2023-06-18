@@ -22,9 +22,9 @@
       <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Schedule List:" GridPane.rowIndex="1">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="157.0" text="Schedule List:" textAlignment="CENTER" GridPane.rowIndex="1">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font></Label>
       <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
@@ -36,7 +36,7 @@
             <Insets />
          </opaqueInsets>
       </HBox>
-      <Label text="Schedule Message:" GridPane.rowIndex="2">
+      <Label alignment="CENTER" prefHeight="27.0" prefWidth="159.0" text="Schedule Message:" textAlignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
          </font></Label>
