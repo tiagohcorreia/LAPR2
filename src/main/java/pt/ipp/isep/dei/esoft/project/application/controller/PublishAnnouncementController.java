@@ -24,9 +24,6 @@ import static pt.ipp.isep.dei.esoft.project.domain.model.Announcement.createProp
  */
 public class PublishAnnouncementController {
 
-    /**
-     * The Repositories.
-     */
     Repositories repositories = Repositories.getInstance();
     private AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
 
@@ -50,15 +47,12 @@ public class PublishAnnouncementController {
      * The City repository.
      */
     CityRepository cityRepository = Repositories.getInstance().getCityRepository();
-    /**
-     * The Client repository.
-     */
     ClientRepository clientRepository = repositories.getInstance().getClientRepository();
 
     /**
      * Create announcement.
      *
-     * @param date               the date
+     * @param date
      * @param sellOrRent         the sell or rent
      * @param posTypeOfProperty  the pos type of property
      * @param bedrooms           the bedrooms
@@ -75,8 +69,6 @@ public class PublishAnnouncementController {
      * @param price              the price
      * @param photographs        the photographs
      * @param agentName          the agent name
-     * @param owner              the owner
-     * @param rentalMonths       the rental months
      */
     public void createAnnouncement(LocalDate date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int bedrooms, int bathrooms, int parkingSpaces,
                                    ArrayList<String> equipmentList, boolean hasBasement, boolean hasLoft, SunExposure sunExposure,
@@ -131,12 +123,6 @@ public class PublishAnnouncementController {
 
         return cityRepository.findByName(city);
     }
-
-    /**
-     * Gets city list.
-     *
-     * @return the city list
-     */
     public List<City> getCityList() {
 
         List<City> cityList = cityRepository.findAll();
@@ -199,11 +185,7 @@ public class PublishAnnouncementController {
         }*/
 
 
-    /**
-     * Gets current agent.
-     *
-     * @return the current agent
-     */
+
     public Employee getCurrentAgent() {
 
         pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();
@@ -214,12 +196,6 @@ public class PublishAnnouncementController {
     }
 
 
-    /**
-     * Gets client by email.
-     *
-     * @param email the email
-     * @return the client by email
-     */
     public Client getClientByEmail(String email) {
         return clientRepository.findByEmail(email);
     }

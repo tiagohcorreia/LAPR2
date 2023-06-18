@@ -43,9 +43,6 @@ public class RegisterPropertyController implements Serializable {
      */
     CityRepository cityRepository=repositories.getCityRepository();
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
-    /**
-     * The Client repository.
-     */
     ClientRepository clientRepository = repositories.getInstance().getClientRepository();
 
     private AuthenticationController authenticationController=new AuthenticationController();
@@ -62,7 +59,7 @@ public class RegisterPropertyController implements Serializable {
     /**
      * Create announcement.
      *
-     * @param date                  the date
+     * @param date
      * @param sellOrRent            the sell or rent
      * @param posTypeOfProperty     the pos type of property
      * @param numberOfBedrooms      the number of bedrooms
@@ -78,8 +75,6 @@ public class RegisterPropertyController implements Serializable {
      * @param price                 the price
      * @param photographs           the photographs
      * @param agent                 the agent
-     * @param owner                 the owner
-     * @param rentalMonths          the rental months
      */
     public void createAnnouncement(LocalDate date, TypeOfBusiness sellOrRent, int posTypeOfProperty, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces,
                                    ArrayList<String> equipmentList, boolean hasBasement, boolean hasInhabitalLoft, SunExposure sunExposure,
@@ -142,6 +137,7 @@ public class RegisterPropertyController implements Serializable {
     }
 
 
+
     /**
      * Get employee employee.
      *
@@ -194,11 +190,6 @@ public class RegisterPropertyController implements Serializable {
         return Arrays.stream(TypeOfBusiness.values()).toList();
     }
 
-    /**
-     * Gets current owner.
-     *
-     * @return the current owner
-     */
     public Client getCurrentOwner() {
 
         pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();

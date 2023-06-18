@@ -9,20 +9,11 @@ import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 
 import java.util.List;
 
-/**
- * The type Register client controller.
- */
 public class RegisterClientController {
     private AuthenticationRepository authenticationRepository = pt.ipp.isep.dei.esoft.project.repository.Repositories.getInstance().getAuthenticationRepository();
     private ClientRepository clientRepository = Repositories.getInstance().getUserRepository();
     //private AuthFacade authFacade = new AuthFacade();
 
-    /**
-     * Create client client.
-     *
-     * @param input the input
-     * @return the client
-     */
     public Client createClient(List<String> input) {
         Client newClient = null;
         try {
@@ -33,12 +24,6 @@ public class RegisterClientController {
         return newClient;
     }
 
-    /**
-     * Save client boolean.
-     *
-     * @param newClient the new client
-     * @return the boolean
-     */
     public boolean saveClient(Client newClient){
         boolean success = false;
         try {

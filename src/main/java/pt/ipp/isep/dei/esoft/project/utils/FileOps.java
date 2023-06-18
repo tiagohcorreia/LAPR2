@@ -5,18 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.Writer;
 
-/**
- * The type File ops.
- */
 public class FileOps {
 
-    /**
-     * Read file file.
-     *
-     * @param filePath the file path
-     * @return the file
-     * @throws FileNotFoundException the file not found exception
-     */
     public static File readFile(String filePath) throws FileNotFoundException{
         File file = null;
         try{
@@ -33,13 +23,6 @@ public class FileOps {
             return file;
     }
 
-    /**
-     * Append to file boolean.
-     *
-     * @param filepath the filepath
-     * @param content  the content
-     * @return the boolean
-     */
     public static boolean appendToFile(String filepath, String content){
         File file = new File(filepath);
         try {
@@ -58,13 +41,6 @@ public class FileOps {
         return true;
     }
 
-    /**
-     * Create file boolean.
-     *
-     * @param filepath the filepath
-     * @param content  the content
-     * @return the boolean
-     */
     public static boolean createFile(String filepath, String content) {
         File file = new File(filepath);
         try {
@@ -80,24 +56,11 @@ public class FileOps {
         return true;
     }
 
-    /**
-     * Delete file boolean.
-     *
-     * @param filepath the filepath
-     * @return the boolean
-     * @throws FileNotFoundException the file not found exception
-     */
     public static boolean deleteFile(String filepath) throws FileNotFoundException {
         File file = readFile(filepath);
         return file.delete();
     }
 
-    /**
-     * Is file empty boolean.
-     *
-     * @param file the file
-     * @return the boolean
-     */
     public static boolean isFileEmpty(File file){
         return (file.length() == 0L);
     }

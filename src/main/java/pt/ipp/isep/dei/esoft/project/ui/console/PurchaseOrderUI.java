@@ -7,16 +7,10 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.List;
 
-/**
- * The type Purchase order ui.
- */
 public class PurchaseOrderUI implements Runnable {
     private final PurchaseOrderController controller;
     private Property property;
 
-    /**
-     * Instantiates a new Purchase order ui.
-     */
     public PurchaseOrderUI() {
         this.controller = new PurchaseOrderController();
     }

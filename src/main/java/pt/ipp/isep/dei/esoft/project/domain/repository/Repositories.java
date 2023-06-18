@@ -75,45 +75,22 @@ public class Repositories {
      */
     AuthenticationRepository authenticationRepository = new AuthenticationRepository();
 
-    /**
-     * The Client repository.
-     */
     ClientRepository clientRepository = new ClientRepository();
 
-    /**
-     * The Branch repository.
-     */
     BranchRepository branchRepository = new BranchRepository();
 
-    /**
-     * The Schedule repository.
-     */
     ScheduleRepository scheduleRepository= new ScheduleRepository();
 
-    /**
-     * The Purchase order repository.
-     */
     PurchaseOrderRepository purchaseOrderRepository = new PurchaseOrderRepository();
 
-    /**
-     * The Visit repository.
-     */
     VisitRepository visitRepository = new VisitRepository();
 
-    /**
-     * The Order to buy property repository.
-     */
     PlaceOrderToBuyPropertyRepository orderToBuyPropertyRepository = new PlaceOrderToBuyPropertyRepository();
 
 
     private Repositories() {
     }
 
-    /**
-     * Gets user repository.
-     *
-     * @return the user repository
-     */
     public ClientRepository getUserRepository() {
         return clientRepository;
     }
@@ -178,41 +155,16 @@ public class Repositories {
      */
     public ClientRepository getClientRepository() {return clientRepository;}
 
-    /**
-     * Gets branch repository.
-     *
-     * @return the branch repository
-     */
     public BranchRepository getBranchRepository() {return branchRepository;}
 
-    /**
-     * Gets schedule repository.
-     *
-     * @return the schedule repository
-     */
     public ScheduleRepository getScheduleRepository() {return scheduleRepository;}
 
-    /**
-     * Gets purchase order repository.
-     *
-     * @return the purchase order repository
-     */
     public PurchaseOrderRepository getPurchaseOrderRepository() {return purchaseOrderRepository;}
 
-    /**
-     * Get visit repository visit repository.
-     *
-     * @return the visit repository
-     */
     public VisitRepository getVisitRepository(){
         return visitRepository;
     }
 
-    /**
-     * Gets order to buy property repository.
-     *
-     * @return the order to buy property repository
-     */
     public PlaceOrderToBuyPropertyRepository getOrderToBuyPropertyRepository() {
         return orderToBuyPropertyRepository;
     }

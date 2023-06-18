@@ -9,7 +9,6 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRe
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,13 +22,6 @@ public class PlaceOrderToBuyPropertyController {
     private AuthenticationRepository authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
 
     /**
-     * Instantiates a new Place order to buy property controller.
-     */
-    public PlaceOrderToBuyPropertyController() {
-        this.announcementMapper = new AnnouncementMapper();
-    }
-
-    /**
      * Announcement dto list list.
      *
      * @return the list
@@ -41,25 +33,21 @@ public class PlaceOrderToBuyPropertyController {
         return AnnouncementMapper.convert(announcements);
     }
 
-
     /**
-     * Create order order.
+     * Create order string.
      *
-     * @param orderAmount  the order amount
-     * @param announcement the announcement
-     * @param status       the status
-     * @return the order
+     * @param orderAmount     the order amount
+     * @param posAnnouncement the pos announcement
+     * @return the string
      */
-    public Order createOrder(Double orderAmount, AnnouncementDTO announcement, boolean status) {
+    public Order createOrder(Double orderAmount, Integer posAnnouncement, boolean status) {
 
-        Order newOrder = new Order(orderAmount, announcement, status);
+        Order newOrder = new Order(orderAmount, AnnouncementMapper.getAnnouncementDTOById(posAnnouncement), status);
 
         try {
 
             this.orderRepository.saveOrder(newOrder);
             this.orderRepository.writeObject();
-            System.out.println();
-            System.out.println(newOrder);
 
         } catch (Exception e) {
 
@@ -68,34 +56,14 @@ public class PlaceOrderToBuyPropertyController {
         return newOrder;
     }
 
-
     /**
-     * Gets announcement dto.
-     *
-     * @return the announcement dto
-     */
-    public List<AnnouncementDTO> getAnnouncementDTO() {
-
-        List<AnnouncementDTO> dtoList = new ArrayList<>();
-
-        for (Announcement announcement : this.announcementRepository.readObject()) {
-
-            AnnouncementDTO dto = this.announcementMapper.toDto2(announcement);
-            dtoList.add(dto);
-        }
-        return dtoList;
-    }
-
-    /**
-     * Gets announcement by pos.
+     * Show selected announcement announcement dto.
      *
      * @param posAnnouncement the pos announcement
-     * @return the announcement by pos
+     * @return the announcement dto
      */
-    public AnnouncementDTO getAnnouncementByPos(int posAnnouncement) {
+    public AnnouncementDTO getAnnouncementDTO(int posAnnouncement) {
 
-        List<AnnouncementDTO> announcements = getAnnouncementDTO();
-
-        return announcements.get(posAnnouncement);
+        return AnnouncementMapper.getAnnouncementDTOById(posAnnouncement);
     }
 }

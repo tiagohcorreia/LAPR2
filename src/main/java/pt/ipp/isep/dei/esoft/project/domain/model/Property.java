@@ -45,15 +45,6 @@ public abstract class Property implements Serializable {
         this.photographs = setPhotographs(photographs);
     }
 
-    /**
-     * Instantiates a new Property.
-     *
-     * @param id                 the id
-     * @param area               the area
-     * @param location           the location
-     * @param cityCentreDistance the city centre distance
-     * @param photographs        the photographs
-     */
     public Property(String id, float area, Location location, float cityCentreDistance, ArrayList<String> photographs) {
         this.id = id;
         this.area = area;
@@ -89,11 +80,6 @@ public abstract class Property implements Serializable {
 
     // Getters and Setters
 
-    /**
-     * Gets id.
-     *
-     * @return the id
-     */
     public String getId() {
         return id;
     }
@@ -140,19 +126,7 @@ public abstract class Property implements Serializable {
      * @return the int
      */
     public int getNumberOfBedrooms(){ return 0; }
-
-    /**
-     * Get number of bathrooms int.
-     *
-     * @return the int
-     */
     public int getNumberOfBathrooms(){ return 0; }
-
-    /**
-     * Get number of parking spaces int.
-     *
-     * @return the int
-     */
     public int getNumberOfParkingSpaces(){ return 0; }
 
     /**

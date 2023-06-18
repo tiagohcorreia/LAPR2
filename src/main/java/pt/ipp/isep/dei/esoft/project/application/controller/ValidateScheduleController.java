@@ -27,18 +27,13 @@ import java.util.List;
 import java.util.Properties;
 
 
-/**
- * The type Validate schedule controller.
- */
+
 public class ValidateScheduleController implements Initializable {
     private Repositories repositories = Repositories.getInstance();
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
     private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
     private AuthenticationController authenticationController;
     private ScheduleRepository scheduleRepository = repositories.getScheduleRepository();
-    /**
-     * The Current schedule.
-     */
     Schedule currentSchedule = new Schedule();
     @FXML
     private ToggleGroup ScheduleAnswer;
@@ -62,24 +57,12 @@ public class ValidateScheduleController implements Initializable {
         getRequestScheduleListByResponsibleAgent(agent);
         lvschedules.getSelectionModel().selectedItemProperty().addListener(this::selectionChanged);
     }
-
-    /**
-     * Get request schedule list by responsible agent.
-     *
-     * @param agent the agent
-     */
     public void getRequestScheduleListByResponsibleAgent(Employee agent){
 
         List<Schedule> scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
         lvschedules.getItems().addAll(scheduleList);
 
     }
-
-    /**
-     * Submit.
-     *
-     * @param event the event
-     */
     @FXML
     void submit(ActionEvent event) {
 
@@ -110,12 +93,8 @@ public class ValidateScheduleController implements Initializable {
     }
 
 
-    /**
-     * Add confirmed schedule boolean.
-     *
-     * @param schedule the schedule
-     * @return the boolean
-     */
+
+
     public boolean addConfirmedSchedule(Schedule schedule){
         if (schedule!=null) {
             scheduleRepository.writeObjectScheduleRequest();
@@ -136,12 +115,6 @@ public class ValidateScheduleController implements Initializable {
 
     }
 
-    /**
-     * Add rejected schedule boolean.
-     *
-     * @param schedule the schedule
-     * @return the boolean
-     */
     public boolean addRejectedSchedule(Schedule schedule){
 
         if (schedule!=null){
@@ -163,18 +136,6 @@ public class ValidateScheduleController implements Initializable {
     private void selectionChanged(ObservableValue<? extends Schedule> observable, Schedule oldVal, Schedule newVal) {
         currentSchedule = lvschedules.getSelectionModel().getSelectedItem();
     }
-
-    /**
-     * Send email.
-     *
-     * @param agentName        the agent name
-     * @param agentPhoneNumber the agent phone number
-     * @param location         the location
-     * @param day              the day
-     * @param beginHour        the begin hour
-     * @param endHour          the end hour
-     * @param answer           the answer
-     */
     public void sendEmail(String agentName, String agentPhoneNumber, Location location, LocalDate day, LocalTime beginHour, LocalTime endHour,String answer) {
         Properties properties=new Properties();
 
@@ -197,12 +158,6 @@ public class ValidateScheduleController implements Initializable {
             e.printStackTrace();
         }
     }
-
-    /**
-     * Gets schedule list.
-     *
-     * @return the schedule list
-     */
     public List<Schedule> getScheduleList() {
         return scheduleRepository.readObjectScheduleRequest();
     }

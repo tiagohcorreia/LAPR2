@@ -10,21 +10,9 @@ import java.util.ArrayList;
  */
 public class RegisterBranchController {
 
-    /**
-     * The Branch repository.
-     */
     BranchRepository branchRepository = Repositories.getInstance().getBranchRepository();
-    /**
-     * The City repository.
-     */
     CityRepository cityRepository = Repositories.getInstance().getCityRepository();
-    /**
-     * The State repository.
-     */
     StateRepository stateRepository = Repositories.getInstance().getStateRepository();
-    /**
-     * The District repository.
-     */
     DistrictRepository districtRepository = Repositories.getInstance().getDistrictRepository();
 
 
@@ -62,17 +50,6 @@ public class RegisterBranchController {
         return newBranch;
     }
 
-    /**
-     * Create location location.
-     *
-     * @param doorNumberString the door number string
-     * @param street           the street
-     * @param cityString       the city string
-     * @param districtString   the district string
-     * @param stateString      the state string
-     * @param zipCodeString    the zip code string
-     * @return the location
-     */
     public Location createLocation(String doorNumberString, String street, String cityString, String districtString, String stateString, String zipCodeString) {
 
         int doorNumber = Integer.parseInt(doorNumberString);

@@ -7,13 +7,7 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 import java.io.FileNotFoundException;
 
 
-/**
- * The type Legacy import ui.
- */
 public class LegacyImportUI implements Runnable{
-    /**
-     * The Controller.
-     */
     LegacyImportController controller = new LegacyImportController();
     @Override
     public void run() {

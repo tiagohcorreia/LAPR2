@@ -1,15 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.ui.console.utils;
 
-/**
- * The type Read input.
- */
 public class ReadInput {
-    /**
-     * Email string.
-     *
-     * @param prompt the prompt
-     * @return the string
-     */
     public String email(String prompt) {
         boolean valid = false;
         String input = "";
@@ -23,25 +14,11 @@ public class ReadInput {
         return input;
     }
 
-    /**
-     * Validate email boolean.
-     *
-     * @param email the email
-     * @return the boolean
-     */
     public boolean validateEmail(String email){
         return email.contains("@") ? true : false;
     }
 
 
-    /**
-     * Integer int.
-     *
-     * @param prompt the prompt
-     * @param min    the min
-     * @param max    the max
-     * @return the int
-     */
     public int integer(String prompt, int min, int max){
         boolean valid = false;
         int input = 0;
@@ -55,14 +32,6 @@ public class ReadInput {
         return input;
     }
 
-    /**
-     * Validate integer boolean.
-     *
-     * @param number the number
-     * @param min    the min
-     * @param max    the max
-     * @return the boolean
-     */
     public boolean validateInteger(int number, int min, int max) {
         if (number < min || number > max)
             return false;

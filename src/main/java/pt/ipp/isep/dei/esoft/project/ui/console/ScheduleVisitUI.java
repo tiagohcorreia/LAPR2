@@ -12,16 +12,9 @@ import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 
-/**
- * The type Schedule visit ui.
- */
 public class ScheduleVisitUI implements Runnable {
 
     private final ScheduleVisitController controller;
-
-    /**
-     * Instantiates a new Schedule visit ui.
-     */
     public ScheduleVisitUI() {
         this.controller = new ScheduleVisitController();
     }

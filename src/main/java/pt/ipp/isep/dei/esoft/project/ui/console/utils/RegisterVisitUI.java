@@ -12,16 +12,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 
-/**
- * The type Register visit ui.
- */
 public class RegisterVisitUI implements Runnable {
 
     private final RegisterVisitController controller;
 
-    /**
-     * Instantiates a new Register visit ui.
-     */
     public RegisterVisitUI() {
         this.controller = new RegisterVisitController();
 

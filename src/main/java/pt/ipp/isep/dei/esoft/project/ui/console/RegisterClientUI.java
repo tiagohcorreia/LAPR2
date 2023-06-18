@@ -7,9 +7,6 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The type Register client ui.
- */
 public class RegisterClientUI implements Runnable{
     private RegisterClientController controller = new RegisterClientController();
 

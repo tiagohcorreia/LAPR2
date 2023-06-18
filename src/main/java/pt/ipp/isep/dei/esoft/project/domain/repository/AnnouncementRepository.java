@@ -23,29 +23,11 @@ public class AnnouncementRepository {
      * The Announcements.
      */
     List<Announcement> announcements = new ArrayList<>();
-    /**
-     * The Published announcements.
-     */
     List<Announcement> publishedAnnouncements = new ArrayList<>();
-    /**
-     * The Requested announcements.
-     */
-    List<Announcement> requestedAnnouncements = new ArrayList<>();
-    /**
-     * The Sold announcements.
-     */
+     List<Announcement> requestedAnnouncements = new ArrayList<>();
     List<Announcement> soldAnnouncements = new ArrayList<>();
-    /**
-     * The Rented announcements.
-     */
     List<Announcement> rentedAnnouncements = new ArrayList<>();
-    /**
-     * The Pendent announcements.
-     */
     List<Announcement> pendentAnnouncements = new ArrayList<>();
-    /**
-     * The Rejected announcements.
-     */
     List<Announcement> rejectedAnnouncements = new ArrayList<>();
 
     /**
@@ -60,11 +42,6 @@ public class AnnouncementRepository {
         return announcements.add(announcement.getAnnouncement());
     }
 
-    /**
-     * Save announcement.
-     *
-     * @param announcement the announcement
-     */
     public void saveAnnouncement(Announcement announcement) {
         AnnouncementStatus status = announcement.getStatus();
         switch (status) {
@@ -90,76 +67,41 @@ public class AnnouncementRepository {
         announcements.add(announcement);
     }
 
-    /**
-     * Gets published announcements.
-     *
-     * @return the published announcements
-     */
     public List<Announcement> getPublishedAnnouncements() {
         return publishedAnnouncements;
     }
 
-    /**
-     * Gets requested announcements.
-     *
-     * @return the requested announcements
-     */
     public List<Announcement> getRequestedAnnouncements() {
         return requestedAnnouncements;
     }
 
-    /**
-     * Gets sold announcements.
-     *
-     * @return the sold announcements
-     */
     public List<Announcement> getSoldAnnouncements() {
         return soldAnnouncements;
     }
 
-    /**
-     * Gets rented announcements.
-     *
-     * @return the rented announcements
-     */
     public List<Announcement> getRentedAnnouncements() {
         return rentedAnnouncements;
     }
 
-    /**
-     * Gets pendent announcements.
-     *
-     * @return the pendent announcements
-     */
     public List<Announcement> getPendentAnnouncements() {
         return pendentAnnouncements;
     }
 
-    /**
-     * Gets rejected announcements.
-     *
-     * @return the rejected announcements
-     */
     public List<Announcement> getRejectedAnnouncements() {
         return rejectedAnnouncements;
     }
 
-    /**
-     * Gets all announcements.
-     *
-     * @return the all announcements
-     */
     public List<Announcement> getAllAnnouncements() {
         return announcements;
     }
 
 
-    /**
-     * Create announcement boolean.
-     *
-     * @param announcement the announcement
-     * @return the boolean
-     */
+/**
+ * Create announcement boolean.
+ *
+ * @param announcement the announcement
+ * @return the boolean
+ */
     public boolean createAnnouncement (Announcement announcement) {
 
         if(validateAnnouncement(announcement)) {
@@ -169,37 +111,11 @@ public class AnnouncementRepository {
         return false;
     }
 
-    /**
-     * Create announcement announcement.
-     *
-     * @param date               the date
-     * @param announcementStatus the announcement status
-     * @param price              the price
-     * @param commission         the commission
-     * @param typeOfBusiness     the type of business
-     * @param property           the property
-     * @param employee           the employee
-     * @return the announcement
-     */
     public Announcement createAnnouncement (LocalDate date, AnnouncementStatus announcementStatus, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee employee){
         //return new Announcement(date, announcementStatus,price ,commission,typeOfBusiness,property,employee);
         return null;
     }
 
-    /**
-     * Create announcement announcement.
-     *
-     * @param date               the date
-     * @param status             the status
-     * @param price              the price
-     * @param commission         the commission
-     * @param typeOfBusiness     the type of business
-     * @param property           the property
-     * @param agent              the agent
-     * @param owner              the owner
-     * @param numberOfMonthsRent the number of months rent
-     * @return the announcement
-     */
     public Announcement createAnnouncement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent, Client owner, int numberOfMonthsRent) {
         return new Announcement(date, status, price, commission, typeOfBusiness, property, agent, owner, numberOfMonthsRent);
     }
@@ -253,6 +169,7 @@ public class AnnouncementRepository {
     */
 
 
+
     /**
      * Get available fields list.
      *
@@ -300,12 +217,6 @@ public class AnnouncementRepository {
         return matchingAnnouncements;
     }
 
-    /**
-     * Gets requests by agent name.
-     *
-     * @param agentName the agent name
-     * @return the requests by agent name
-     */
     public List<Announcement> getRequestsByAgentName(String agentName) {
         List<Announcement> agentRequests = new ArrayList<>();
 
@@ -318,11 +229,6 @@ public class AnnouncementRepository {
         return agentRequests;
     }
 
-    /**
-     * Read object list.
-     *
-     * @return the list
-     */
     public List<Announcement> readObject() {
 
         try {
@@ -355,13 +261,6 @@ public class AnnouncementRepository {
         }
     }
 
-    /**
-     * Sort announcements.
-     *
-     * @param announcements the announcements
-     * @param property      the property
-     * @param sortingOrder  the sorting order
-     */
     public static void sortAnnouncements(List<Announcement> announcements, String property, SortingOrder sortingOrder){
         switch (property){
             case "date":

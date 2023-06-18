@@ -8,21 +8,11 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 
-/**
- * The type Notification service.
- */
-public class NotificationService implements Serializable {
+        public class NotificationService implements Serializable {
             private static final long serialVersionUID = 1L;
             private static final String NOTIFICATION_FILE = "notifications.txt";
 
-    /**
-     * Send notification.
-     *
-     * @param recipient the recipient
-     * @param subject   the subject
-     * @param message   the message
-     */
-    public void sendNotification(String recipient, String subject, String message) {
+            public void sendNotification(String recipient, String subject, String message) {
                 String formattedMessage = formatMessage(recipient, subject, message);
                 saveNotificationToFile(formattedMessage);
             }

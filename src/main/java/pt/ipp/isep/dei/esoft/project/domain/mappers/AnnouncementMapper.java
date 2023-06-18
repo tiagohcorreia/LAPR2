@@ -16,9 +16,6 @@ import java.util.stream.Collectors;
 public class AnnouncementMapper {
 
     private static List<AnnouncementDTO> announcementDTOList = new ArrayList<>();
-    /**
-     * The Announcement repository.
-     */
     AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
 
     /**
@@ -49,12 +46,6 @@ public class AnnouncementMapper {
         return dtoList;
     }
 
-    /**
-     * To dto 2 announcement dto.
-     *
-     * @param announcement the announcement
-     * @return the announcement dto
-     */
     public AnnouncementDTO toDto2(Announcement announcement) {
 
         AnnouncementDTO dto = new AnnouncementDTO();
@@ -65,7 +56,6 @@ public class AnnouncementMapper {
 
         return dto;
     }
-
     /**
      * Gets all announcements.
      *
@@ -82,11 +72,6 @@ public class AnnouncementMapper {
         return allAnnouncements;
     }
 
-    /**
-     * Gets all announcements recent to oldest.
-     *
-     * @return the all announcements recent to oldest
-     */
     public List<AnnouncementDTO> getAllAnnouncementsRecentToOldest() {
 
         List<AnnouncementDTO> allAnnouncements = new ArrayList<>();
@@ -102,12 +87,6 @@ public class AnnouncementMapper {
         return allAnnouncementsFromRecentToOldest;
     }
 
-    /**
-     * Gets announcement dto by id.
-     *
-     * @param id the id
-     * @return the announcement dto by id
-     */
     public static AnnouncementDTO getAnnouncementDTOById(int id) {
 
         if (id >= 0 && id < announcementDTOList.size()) {

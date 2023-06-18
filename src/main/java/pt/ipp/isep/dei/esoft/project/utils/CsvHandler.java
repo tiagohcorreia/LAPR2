@@ -14,19 +14,10 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.*;
 
-/**
- * The type Csv handler.
- */
 //TODO: get csv delimiter from settings file
 public class CsvHandler {
-    /**
-     * The constant CSV_DELIMITER.
-     */
     public static final String CSV_DELIMITER = ";";
 
-    /**
-     * The constant LEGACY_AGENT_NAME.
-     */
     public static final String LEGACY_AGENT_NAME = "Legacy Agent";
 
     private static final int COLUMN_ANNOUNCEMENT_ID = 0;
@@ -68,39 +59,18 @@ public class CsvHandler {
     private static final String CSV_VALUE_NA = "NA";
 
 
-    /**
-     * The State repository.
-     */
+
     static StateRepository stateRepository = Repositories.getInstance().getStateRepository();
-    /**
-     * The City repository.
-     */
     static CityRepository cityRepository = Repositories.getInstance().getCityRepository();
-    /**
-     * The Branch repository.
-     */
     static BranchRepository branchRepository = Repositories.getInstance().getBranchRepository();
-    /**
-     * The Client repository.
-     */
     static ClientRepository clientRepository = Repositories.getInstance().getClientRepository();
-    /**
-     * The Announcement repository.
-     */
     static AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
-    /**
-     * The Employee repository.
-     */
     static EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
 
 
-    /**
-     * Gets data from csv file.
-     *
-     * @param file the file
-     * @return the data from csv file
-     * @throws InvalidFileTypeException the invalid file type exception
-     */
+
+
+
     public static List<?> getDataFromCsvFile(File file) throws InvalidFileTypeException {
         //Check if the filename ends with ".csv"
         //String[] filepath = file.getAbsolutePath().split("\\.");
@@ -131,12 +101,6 @@ public class CsvHandler {
         }
     }
 
-    /**
-     * Csv is empty boolean.
-     *
-     * @param csv the csv
-     * @return the boolean
-     */
     public static boolean csvIsEmpty(List<?> csv){
         if (csv.size() < 2){
             throw new IllegalArgumentException("The file contains no data.");
@@ -152,12 +116,6 @@ public class CsvHandler {
         return true;
     }
 
-    /**
-     * Parse csv int.
-     *
-     * @param csv the csv
-     * @return the int
-     */
     public static int parseCSV(List<?> csv){
         int successfulImportCount = 0;
         boolean success = false;
