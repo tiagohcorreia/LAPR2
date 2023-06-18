@@ -124,5 +124,16 @@ class ValidateScheduleControllerTest {
         expectedRejectedScheduleList.add(schedule);
         assertEquals(expectedRejectedScheduleList, scheduleRepository.getRequestScheduleListByResponsibleAgent(e2));
     }
+    @Test
+    void sendEmail(){
+        String nome="Joao2";
+        String phoneNumber= "123456789";
+        Location location= new Location("Rua",new City("Porto"),12345);
+        LocalDate localDate= LocalDate.of(2025, 05, 20);
+        beginHour = LocalTime.of(12, 30, 0);
+        endHour = LocalTime.of(13, 30, 0);
+
+        validateScheduleController.sendEmail(nome,phoneNumber,location,localDate, beginHour, endHour,"Accepted");
+    }
 
 }

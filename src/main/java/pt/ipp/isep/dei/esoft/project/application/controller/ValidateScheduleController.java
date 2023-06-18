@@ -1,26 +1,30 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
-import pt.ipp.isep.dei.esoft.project.domain.model.Location;
-import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import pt.ipp.isep.dei.esoft.project.domain.model.Location;
+import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
+
+
 
 import java.io.*;
-import java.net.URL;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
-import javafx.fxml.FXML;
 
 
 public class ValidateScheduleController implements Initializable {
@@ -29,8 +33,6 @@ public class ValidateScheduleController implements Initializable {
     private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
     private AuthenticationController authenticationController;
     private ScheduleRepository scheduleRepository = repositories.getScheduleRepository();
-
-
     @FXML
     private ToggleGroup ScheduleAnswer;
 
@@ -46,17 +48,11 @@ public class ValidateScheduleController implements Initializable {
     @FXML
     private RadioButton rbRejectSchedule;
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        getScheduleList();
-        authenticationController = new AuthenticationController();
-        Employee agent = getLoggedAgent();
-        getRequestScheduleListByResponsibleAgent(agent);
-    }
-
-   public void submit(javafx.event.ActionEvent actionEvent) {
-       Schedule selectedSchedule = lvschedules.getSelectionModel().getSelectedItem();
+    @FXML
+    void submit(ActionEvent event) {
+        Alert accepted= new Alert(Alert.AlertType.CONFIRMATION);
+        accepted.setTitle("Accepted");
+       /*Schedule selectedSchedule = lvschedules.getSelectionModel().getSelectedItem();
 
         if (selectedSchedule != null) {
 
@@ -74,9 +70,15 @@ public class ValidateScheduleController implements Initializable {
                         break;
                 }
             }
-        }
+        }*/
     }
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        getScheduleList();
+        authenticationController = new AuthenticationController();
+        Employee agent = getLoggedAgent();
+        getRequestScheduleListByResponsibleAgent(agent);
+    }
     public void getRequestScheduleListByResponsibleAgent(Employee agent){
 
         //List<Schedule> scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
@@ -107,7 +109,8 @@ public class ValidateScheduleController implements Initializable {
             sendEmail(agentName,agentPhoneNumber,location,day, beginHour, endHour,"accepted");
 
             return true;
-        }else {
+
+        } else {
             return false;
         }*/
         return accepted;
@@ -135,18 +138,18 @@ public class ValidateScheduleController implements Initializable {
         return rejected;
     }
 
-    public String sendEmail(String agentName, String agentPhoneNumber, Location location, LocalDate day, LocalTime beginHour, LocalTime endHour,String answer) {
+    public void sendEmail(String agentName, String agentPhoneNumber, Location location, LocalDate day, LocalTime beginHour, LocalTime endHour,String answer) {
         Properties properties=new Properties();
-        try {
-            FileInputStream propertiesFile= new FileInputStream("resources/config.properties");
-            properties.load(propertiesFile);
 
+        try {
+            FileInputStream propertiesFile= new FileInputStream("src/main/resources/config.properties");
+            properties.load(propertiesFile);
             String host = properties.getProperty("host");
             String emailService=properties.getProperty("emailService");
             String header = "You are sending this email with " + emailService + " service.";
             String conteudo="Hi, the request to schedule a visit to the property with the location "+location+", on the day "+day+", starting at "+beginHour+" and ending at "+endHour+", was "+answer+".";
             String footer= "With best regards, \n"+agentName+" - "+agentPhoneNumber+", responsible agent.";
-            FileWriter file = new FileWriter(new File(host),true);
+            FileWriter file = new FileWriter(new File(host), true);
             file.write(header+"\n"+conteudo+"\n"+footer+"\n\n");
             file.close();
             System.out.println("File with employee credentials generated with success");
@@ -156,11 +159,9 @@ public class ValidateScheduleController implements Initializable {
             System.out.println("Error creating file");
             e.printStackTrace();
         }
-        return null;
     }
     public List<Schedule> getScheduleList() {
         return scheduleRepository.readObjectScheduleRequest();
     }
-
-
 }
+
