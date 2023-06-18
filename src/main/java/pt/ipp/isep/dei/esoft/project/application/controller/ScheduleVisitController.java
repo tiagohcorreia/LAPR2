@@ -22,11 +22,12 @@ public class ScheduleVisitController {
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
     private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
     private ClientRepository clientRepository= repositories.getClientRepository();
-    AuthenticationController authenticationController = new AuthenticationController();
+    AuthenticationController authenticationController;
     private AnnouncementMapper announcementMapper;
 
     public ScheduleVisitController(ScheduleRepository scheduleRepository) {
         this.scheduleRepository = scheduleRepository;
+        authenticationController = new AuthenticationController();
     }
 
     public List<AnnouncementDTO> announcementDTOList() {
@@ -38,9 +39,11 @@ public class ScheduleVisitController {
 
     public String createSchedule(Integer posAnnouncement, LocalDate day, LocalTime beginHour, LocalTime endHour, String note) {
         pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();
-        String ownerEmail= String.valueOf(userSession.getUserEmail());
-        Client owner= clientRepository.findByEmail(ownerEmail);
-        Schedule schedule = new Schedule(owner.getName(), (int) owner.getTelephoneNumber(), AnnouncementMapper.getAnnouncementDTOById(posAnnouncement),day,beginHour,endHour,note,false,false);
+        String clientEmail= userSession.getUserEmail();
+        Client client= clientRepository.findByEmail(clientEmail);
+        String name= client.getName();
+        long phoneNumber= client.getTelephoneNumber();
+        Schedule schedule = new Schedule(name, (int) phoneNumber, AnnouncementMapper.getAnnouncementDTOById(posAnnouncement),day,beginHour,endHour,note,false,false);
 
         try {
 

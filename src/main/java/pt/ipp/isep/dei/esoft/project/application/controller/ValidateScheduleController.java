@@ -51,7 +51,8 @@ public class ValidateScheduleController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getScheduleList();
         authenticationController = new AuthenticationController();
-        getRequestScheduleListByResponsibleAgent();
+        Employee agent = getLoggedAgent();
+        getRequestScheduleListByResponsibleAgent(agent);
     }
 
    public void submit(javafx.event.ActionEvent actionEvent) {
@@ -76,20 +77,22 @@ public class ValidateScheduleController implements Initializable {
         }
     }
 
-    private void getRequestScheduleListByResponsibleAgent(){
-        Employee agent = getLoggedAgent();
-        //ERRO ESTA AQUI -> TESTAR getRequestScheduleListByResponsibleAgent()
-        List<Schedule> scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
-        lvschedules.getItems().addAll(scheduleList);
+    public void getRequestScheduleListByResponsibleAgent(Employee agent){
+
+        //List<Schedule> scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
+
+        lvschedules.getItems().addAll(getScheduleList());
+
     }
     private Employee getLoggedAgent() {
         String agentEmail = authenticationController.getCurrentSession().getUserEmail();
         EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
         return employeeRepository.findByEmail(agentEmail);
     }
-    public boolean addConfirmedSchedule(int schedulePos){
-
-        if (schedulePos>=0  && schedulePos < lvschedules.getItems().size()) {
+    public Alert addConfirmedSchedule(int schedulePos){
+        Alert accepted= new Alert(Alert.AlertType.CONFIRMATION);
+        accepted.setTitle("Accepted");
+        /*if (schedulePos>=0  && schedulePos < lvschedules.getItems().size()) {
 
             Schedule schedule= lvschedules.getItems().get(schedulePos);
             scheduleRepository.writeObjectScheduleRequest();
@@ -102,18 +105,23 @@ public class ValidateScheduleController implements Initializable {
             LocalTime beginHour= schedule.getBeginHour();
             LocalTime endHour=schedule.getEndHour();
             sendEmail(agentName,agentPhoneNumber,location,day, beginHour, endHour,"accepted");
+
             return true;
         }else {
             return false;
-        }
+        }*/
+        return accepted;
     }
 
-    public boolean addRejectedSchedule(int schedulePos){
-        if (schedulePos>=0 && schedulePos < lvschedules.getItems().size() ){
+    public Alert addRejectedSchedule(int schedulePos){
+        Alert rejected= new Alert(Alert.AlertType.CONFIRMATION);
+        rejected.setTitle("Rejected");
+        /*if (schedulePos>=0 && schedulePos < lvschedules.getItems().size() ){
             Schedule schedule= lvschedules.getItems().get(schedulePos);
             scheduleRepository.writeObjectScheduleRequest();
             scheduleRepository.addRejectedSchedule(schedule);
-            String agentName= schedule.getAnnouncementDTO().getAgent().getName();
+
+            /*String agentName= schedule.getAnnouncementDTO().getAgent().getName();
             String agentPhoneNumber= schedule.getAnnouncementDTO().getAgent().getTelephoneNumber();
             Location location= schedule.getAnnouncementDTO().getProperty().getLocation();
             LocalDate day= schedule.getDay();
@@ -123,7 +131,8 @@ public class ValidateScheduleController implements Initializable {
             return true;
         }else {
             return false;
-        }
+        }*/
+        return rejected;
     }
 
     public String sendEmail(String agentName, String agentPhoneNumber, Location location, LocalDate day, LocalTime beginHour, LocalTime endHour,String answer) {

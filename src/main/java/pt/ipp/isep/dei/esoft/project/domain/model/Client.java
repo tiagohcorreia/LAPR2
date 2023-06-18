@@ -51,7 +51,7 @@ public class Client implements Serializable {
         return telephoneNumber;
     }
 
-    public Client(String name, String email, String password, int cCNumber, int taxNumber, String address, int telephoneNumber) {
+    public Client(String name, String email, String password, int cCNumber, int taxNumber, String address, long telephoneNumber) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -61,7 +61,7 @@ public class Client implements Serializable {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public Client(String name, String email, String password, int cCNumber, int taxNumber, Location location, int telephoneNumber) {
+    public Client(String name, String email, String password, int cCNumber, int taxNumber, Location location, long telephoneNumber) {
         this.name = name;
         this.email = email;
         this.password = password;

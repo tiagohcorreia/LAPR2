@@ -29,6 +29,7 @@ class ValidateScheduleControllerTest {
     private EmployeeRepository employeeRepository;
     AnnouncementDTO announcementDTO;
     AnnouncementDTO announcementDTO2;
+    AnnouncementDTO announcementDTO3;
     LocalDate day;
     LocalTime beginHour;
     LocalTime endHour;
@@ -72,7 +73,7 @@ class ValidateScheduleControllerTest {
         endHour3 = LocalTime.of(17, 30, 0);
         Property property = new Land(123, new Location(), 123, photographs);
         e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", String.valueOf(1234567891), Role.AGENT, branch);
-        e2 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e2@gmail.com", String.valueOf(1234567891), Role.AGENT, branch);
+        e2 = new Employee("Employee2", 113456789, 113456789, "Rua 2", "e2@gmail.com", String.valueOf(1134567891), Role.AGENT, branch);
 
         Client owner = new Client("owner1", "owner@this.app", 123456789, 111111111, 1234567890);
 
@@ -81,26 +82,25 @@ class ValidateScheduleControllerTest {
 
         announcementDTO = new AnnouncementDTO(123, TypeOfBusiness.SELL, property, e1);
         announcementDTO2 = new AnnouncementDTO(123, TypeOfBusiness.SELL, property, e2);
+        announcementDTO3 = new AnnouncementDTO(1123123, TypeOfBusiness.SELL, property, e1);
         schedule1= new Schedule("vitor", 1234567891, announcementDTO, day, beginHour, endHour, "no more notes", false, false);
         schedule2= new Schedule("vitor2", 1224567891, announcementDTO2, day, beginHour, endHour, "no more notes2", false, false);
-        scheduleRepository.getScheduleList().clear();
-        scheduleRepository.getRequestScheduleListByResponsibleAgent(e1).clear();
-        scheduleRepository.getRequestScheduleListByResponsibleAgent(e2).clear();
+        schedule3= new Schedule("vitor3", 1254567891, announcementDTO3, day2, beginHour2, endHour2, "no more notes3", false, false);
+
+        //scheduleRepository.getScheduleList().clear();
+        //scheduleRepository.getRequestScheduleListByResponsibleAgent(e1).clear();
+        //scheduleRepository.getRequestScheduleListByResponsibleAgent(e2).clear();
     }
 
-    /*@Test
+    @Test
     void getRequestScheduleListByResponsibleAgent() {
-
-        employeeRepository.saveEmployeeInTheSystem(e1,"pwd");
-        authenticationRepository.doLogin("e1@gmail.com","pwd");
-
-        List<Schedule> expectedScheduleList = new ArrayList<>();
-        expectedScheduleList.add(new Schedule("vitor", 1234567891, announcementDTO, day, beginHour, endHour, "no more notes", false, false));
-
-        List<Schedule> result = validateScheduleController.getRequestScheduleListByResponsibleAgent();
-        System.out.println(result);
-        assertEquals(expectedScheduleList, result);
-    }*/
+        /*scheduleRepository.addSchedule(schedule1);
+        scheduleRepository.addSchedule(schedule3);
+        List<Schedule> expected= new ArrayList<>();
+        expected.add(schedule1);
+        List<Schedule> result = validateScheduleController.getRequestScheduleListByResponsibleAgent(e1);
+        System.out.println("EXPECTED: \n"+ expected+"\nRESULT:\n"+result);*/
+    }
 
     @Test
     void addConfirmedSchedule() {
