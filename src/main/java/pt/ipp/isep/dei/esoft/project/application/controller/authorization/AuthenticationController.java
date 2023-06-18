@@ -26,10 +26,25 @@ public class AuthenticationController {
      * The constant ROLE_OWNER.
      */
     public static final String ROLE_OWNER = "OWNER";
+    /**
+     * The constant ROLE_NETWORK_MANAGER.
+     */
     public static final String ROLE_NETWORK_MANAGER = "NETWORK_MANAGER";
+    /**
+     * The constant ROLE_UNREGISTERED.
+     */
     public static final String ROLE_UNREGISTERED = "UNREGISTERED_USER";
+    /**
+     * The constant ROLE_STORE_MANAGER.
+     */
     public static final String ROLE_STORE_MANAGER = "STORE_MANAGER";
+    /**
+     * The constant ROLE_CLIENT.
+     */
     public static final String ROLE_CLIENT = "CLIENT";
+    /**
+     * The constant ROLE_AGENT.
+     */
     public static final String ROLE_AGENT = "AGENT";
 
     //private final ApplicationSession applicationSession;
@@ -86,6 +101,12 @@ public class AuthenticationController {
         pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();
         return new pt.ipp.isep.dei.esoft.project.application.session.UserSession(userSession);
     }
+
+    /**
+     * Gets agent name.
+     *
+     * @return the agent name
+     */
     public String getAgentName() {
        pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();
         if (userSession != null) {
@@ -96,7 +117,12 @@ public class AuthenticationController {
         }
     }
 
-   public String getCurrentUserSession() {
+    /**
+     * Gets current user session.
+     *
+     * @return the current user session
+     */
+    public String getCurrentUserSession() {
        pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();
         return userSession.getUserName();
    }

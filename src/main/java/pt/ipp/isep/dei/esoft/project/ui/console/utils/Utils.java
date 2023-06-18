@@ -219,6 +219,13 @@ public class Utils {
         return value - 1;
     }
 
+    /**
+     * Send email boolean.
+     *
+     * @param email   the email
+     * @param content the content
+     * @return the boolean
+     */
     static public boolean sendEmail(String email, String content){
         String filename = email.replace("@", "_at_");
         try {
@@ -232,6 +239,9 @@ public class Utils {
         return true;
     }
 
+    /**
+     * Enter to continue.
+     */
     static public void enterToContinue(){
         readLineFromConsole("Press [Enter] to continue...");
     }

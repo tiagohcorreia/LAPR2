@@ -25,6 +25,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * The type Analyse deals application.
+ */
 public class AnalyseDealsApplication extends Application implements Runnable, Initializable {
 
         @Override
@@ -35,7 +38,12 @@ public class AnalyseDealsApplication extends Application implements Runnable, In
             primaryStage.show();
         }
 
-        public static void main(String[] args) {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
             launch(args);
         }
 

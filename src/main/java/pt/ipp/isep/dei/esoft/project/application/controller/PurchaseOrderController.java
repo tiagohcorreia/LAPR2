@@ -9,14 +9,26 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * The type Purchase order controller.
+ */
 public class PurchaseOrderController {
 
     private PurchaseOrderRepository purchaseOrderRepository = Repositories.getInstance().getPurchaseOrderRepository();
 
+    /**
+     * Instantiates a new Purchase order controller.
+     */
     public PurchaseOrderController() {
         this.purchaseOrderRepository = purchaseOrderRepository;
     }
 
+    /**
+     * Gets purchase orders by property.
+     *
+     * @param property the property
+     * @return the purchase orders by property
+     */
     public List<Order> getPurchaseOrdersByProperty(Property property) {
         List<Order> purchaseOrders = purchaseOrderRepository.getByProperty(property);
 
@@ -29,18 +41,33 @@ public class PurchaseOrderController {
         return purchaseOrders;
     }
 
+    /**
+     * Accept purchase order.
+     *
+     * @param purchaseOrder the purchase order
+     */
     public void acceptPurchaseOrder(Order purchaseOrder) {
         if(!purchaseOrder.isStatus()){
             purchaseOrderRepository.updatePurchaseOrder(purchaseOrder);
         }
     }
 
+    /**
+     * Decline purchase order.
+     *
+     * @param purchaseOrder the purchase order
+     */
     public void declinePurchaseOrder(Order purchaseOrder) {
         if(purchaseOrder.isStatus()){
             purchaseOrderRepository.updatePurchaseOrder(purchaseOrder);
         }
     }
 
+    /**
+     * Decline other purchase orders.
+     *
+     * @param property the property
+     */
     public void declineOtherPurchaseOrders(Property property) {
         List<Order> ordersForProperty = purchaseOrderRepository.getByProperty(property);
         for (Order order : ordersForProperty) {

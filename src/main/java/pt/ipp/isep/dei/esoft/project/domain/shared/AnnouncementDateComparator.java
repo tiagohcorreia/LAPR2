@@ -6,6 +6,9 @@ import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.util.Comparator;
 
+/**
+ * The type Announcement date comparator.
+ */
 public class AnnouncementDateComparator implements Comparator<Announcement>{
     @Override
     public int compare(Announcement o1, Announcement o2) {

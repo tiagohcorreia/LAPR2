@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.util.List;
 import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.generatePassword;
 
+/**
+ * The type Client.
+ */
 public class Client implements Serializable {
     private String name;
     private String email;
@@ -12,9 +15,21 @@ public class Client implements Serializable {
     private int cCNumber;
     private int taxNumber;
     private String address;
+    /**
+     * The Location.
+     */
     protected Location location;
     private long telephoneNumber;
 
+    /**
+     * Instantiates a new Client.
+     *
+     * @param name            the name
+     * @param email           the email
+     * @param cCNumber        the c c number
+     * @param taxNumber       the tax number
+     * @param telephoneNumber the telephone number
+     */
     public Client(String name, String email, int cCNumber, int taxNumber, long telephoneNumber) {
         this.name = name;
         this.email = email;
@@ -23,6 +38,17 @@ public class Client implements Serializable {
         this.telephoneNumber = telephoneNumber;
     }
 
+    /**
+     * Instantiates a new Client.
+     *
+     * @param name            the name
+     * @param email           the email
+     * @param cCNumber        the c c number
+     * @param taxNumber       the tax number
+     * @param address         the address
+     * @param location        the location
+     * @param telephoneNumber the telephone number
+     */
     public Client(String name, String email, int cCNumber, int taxNumber, String address, Location location, long telephoneNumber) {
         this.name = name;
         this.email = email;
@@ -35,22 +61,53 @@ public class Client implements Serializable {
     }
 
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Gets password.
+     *
+     * @return the password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Gets telephone number.
+     *
+     * @return the telephone number
+     */
     public long getTelephoneNumber() {
         return telephoneNumber;
     }
 
+    /**
+     * Instantiates a new Client.
+     *
+     * @param name            the name
+     * @param email           the email
+     * @param password        the password
+     * @param cCNumber        the c c number
+     * @param taxNumber       the tax number
+     * @param address         the address
+     * @param telephoneNumber the telephone number
+     */
     public Client(String name, String email, String password, int cCNumber, int taxNumber, String address, long telephoneNumber) {
         this.name = name;
         this.email = email;
@@ -61,6 +118,17 @@ public class Client implements Serializable {
         this.telephoneNumber = telephoneNumber;
     }
 
+    /**
+     * Instantiates a new Client.
+     *
+     * @param name            the name
+     * @param email           the email
+     * @param password        the password
+     * @param cCNumber        the c c number
+     * @param taxNumber       the tax number
+     * @param location        the location
+     * @param telephoneNumber the telephone number
+     */
     public Client(String name, String email, String password, int cCNumber, int taxNumber, Location location, long telephoneNumber) {
         this.name = name;
         this.email = email;
@@ -71,6 +139,11 @@ public class Client implements Serializable {
         this.telephoneNumber = telephoneNumber;
     }
 
+    /**
+     * Instantiates a new Client.
+     *
+     * @param input the input
+     */
     public Client(List<String> input){
 
         try {

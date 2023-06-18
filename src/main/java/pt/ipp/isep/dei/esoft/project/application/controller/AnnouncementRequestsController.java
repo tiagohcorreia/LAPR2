@@ -19,17 +19,34 @@ import java.util.List;
 import java.util.ArrayList;
 
 
+/**
+ * The type Announcement requests controller.
+ */
 public class AnnouncementRequestsController {
+    /**
+     * The Announcement repository.
+     */
     public  AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
 
+    /**
+     * The Employee repository.
+     */
     public EmployeeRepository employeeRepository=Repositories.getInstance().getEmployeeRepository();;
 
     private AuthenticationController authenticationController=new AuthenticationController();
 
 
+    /**
+     * The Announcement request mapper.
+     */
     public AnnouncementRequestMapper announcementRequestMapper = new AnnouncementRequestMapper();
 
 
+    /**
+     * Gets current agent.
+     *
+     * @return the current agent
+     */
     public Employee getCurrentAgent() {
 
         pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();
@@ -39,6 +56,12 @@ public class AnnouncementRequestsController {
         return agent;
     }
 
+    /**
+     * Gets employee.
+     *
+     * @param name the name
+     * @return the employee
+     */
     public Employee getEmployee(String name) {
         for (Employee employee : employeeRepository.getEmployeeList()) {
             if (employee.getName().equalsIgnoreCase(name)) {
@@ -49,12 +72,24 @@ public class AnnouncementRequestsController {
     }
 
 
+    /**
+     * Is employee boolean.
+     *
+     * @param agentName the agent name
+     * @return the boolean
+     */
     public boolean isEmployee(String agentName) {
         Employee agent = getEmployee(agentName);
         return agent != null;
     }
 
 
+    /**
+     * Gets announcement requests.
+     *
+     * @param agent the agent
+     * @return the announcement requests
+     */
     public List<AnnouncementRequestDTO> getAnnouncementRequests(Employee agent) {
         List<AnnouncementRequestDTO> requestsForAgent = new ArrayList<>();
         for (Announcement announcement : this.announcementRepository.getAllAnnouncements()) {
@@ -69,6 +104,13 @@ public class AnnouncementRequestsController {
         return requestsForAgent;
     }
 
+    /**
+     * Gets announcement by index.
+     *
+     * @param index the index
+     * @param agent the agent
+     * @return the announcement by index
+     */
     public AnnouncementRequestDTO getAnnouncementByIndex(int index, Employee agent) {
         List<AnnouncementRequestDTO> announcements = getAnnouncementRequests(agent);
         if (index >= 0 && index < announcements.size()) {
@@ -77,6 +119,13 @@ public class AnnouncementRequestsController {
         return null;
     }
 
+    /**
+     * Accept announcement request.
+     *
+     * @param index      the index
+     * @param commission the commission
+     * @param agent      the agent
+     */
     public void acceptAnnouncementRequest(int index, float commission, Employee agent) {
         AnnouncementRequestDTO dto = getAnnouncementByIndex(index, agent);
         if (dto != null) {
@@ -87,6 +136,13 @@ public class AnnouncementRequestsController {
         }
     }
 
+    /**
+     * Reject announcement request.
+     *
+     * @param index  the index
+     * @param reason the reason
+     * @param agent  the agent
+     */
     public void rejectAnnouncementRequest(int index, String reason, Employee agent) {
         AnnouncementRequestDTO dto = getAnnouncementByIndex(index, agent);
         if (dto != null) {

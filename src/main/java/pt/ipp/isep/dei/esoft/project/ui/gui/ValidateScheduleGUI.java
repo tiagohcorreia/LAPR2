@@ -13,9 +13,15 @@ import pt.ipp.isep.dei.esoft.project.application.controller.ValidateScheduleCont
 
 import java.io.IOException;
 
+/**
+ * The type Validate schedule gui.
+ */
 public class ValidateScheduleGUI extends Application implements Runnable{
 
 
+    /**
+     * The Controller.
+     */
     ValidateScheduleController controller = new ValidateScheduleController();
     @Override
     public void start(Stage stage) throws IOException {
@@ -57,6 +63,11 @@ public class ValidateScheduleGUI extends Application implements Runnable{
         }
     }
 
+    /**
+     * Main.
+     *
+     * @param args the args
+     */
     public static void main(final String[] args) {
         launch();
     }

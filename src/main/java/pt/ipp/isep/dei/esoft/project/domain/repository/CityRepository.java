@@ -62,10 +62,19 @@ public class CityRepository implements Serializable {
         return cities.isEmpty();
     }
 
+    /**
+     * Create city city.
+     *
+     * @param name the name
+     * @return the city
+     */
     public City createCity(String name) {
         return new City(name);
     }
 
+    /**
+     * Read object.
+     */
     public void readObject() {
 
         try {

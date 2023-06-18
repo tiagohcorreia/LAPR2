@@ -73,14 +73,30 @@ public class StateRepository implements Serializable {
         }
     }
 
+    /**
+     * Create state state.
+     *
+     * @param name      the name
+     * @param districts the districts
+     * @return the state
+     */
     public State createState(String name, List<District> districts){
         return new State(name, districts);
     }
 
+    /**
+     * Create state state.
+     *
+     * @param name the name
+     * @return the state
+     */
     public State createState(String name){
         return new State(name, new ArrayList<>());
     }
 
+    /**
+     * Read object.
+     */
     public void readObject() {
 
         try {

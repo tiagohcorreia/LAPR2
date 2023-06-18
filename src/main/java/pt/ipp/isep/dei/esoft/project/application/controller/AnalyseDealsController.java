@@ -25,7 +25,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
-
+/**
+ * The type Analyse deals controller.
+ */
 public class AnalyseDealsController {
 
         @FXML
@@ -56,16 +58,33 @@ public class AnalyseDealsController {
 
         private List<Order> housesAndApartmentsList;
 
-        Repositories repositories = Repositories.getInstance();
-        PurchaseOrderRepository purchaseOrderRepository = repositories.getPurchaseOrderRepository();
+    /**
+     * The Repositories.
+     */
+    Repositories repositories = Repositories.getInstance();
+    /**
+     * The Purchase order repository.
+     */
+    PurchaseOrderRepository purchaseOrderRepository = repositories.getPurchaseOrderRepository();
 
-        public static class PropertyData {
+    /**
+     * The type Property data.
+     */
+    public static class PropertyData {
             private final StringProperty property;
             private final DoubleProperty salePrice;
             private final DoubleProperty forecastPriceSLR;
             private final DoubleProperty forecastPriceMLR;
 
-            public PropertyData(String property, double salePrice, double forecastPriceSLR, double forecastPriceMLR) {
+        /**
+         * Instantiates a new Property data.
+         *
+         * @param property         the property
+         * @param salePrice        the sale price
+         * @param forecastPriceSLR the forecast price slr
+         * @param forecastPriceMLR the forecast price mlr
+         */
+        public PropertyData(String property, double salePrice, double forecastPriceSLR, double forecastPriceMLR) {
                 this.property = new SimpleStringProperty(property);
                 this.salePrice = new SimpleDoubleProperty(salePrice);
                 this.forecastPriceSLR = new SimpleDoubleProperty(forecastPriceSLR);
@@ -73,39 +92,77 @@ public class AnalyseDealsController {
             }
 
 
-            public StringProperty propertyProperty() {
+        /**
+         * Property property string property.
+         *
+         * @return the string property
+         */
+        public StringProperty propertyProperty() {
                 return property;
             }
 
-            public String getProperty() {
+        /**
+         * Gets property.
+         *
+         * @return the property
+         */
+        public String getProperty() {
                 return property.get();
             }
 
-            public void setProperty(String value) {
+        /**
+         * Sets property.
+         *
+         * @param value the value
+         */
+        public void setProperty(String value) {
                 property.setValue(value);
             }
 
-            public DoubleProperty salePriceProperty() {
+        /**
+         * Sale price property double property.
+         *
+         * @return the double property
+         */
+        public DoubleProperty salePriceProperty() {
                 return salePrice;
             }
 
-            public DoubleProperty forecastPriceSLRProperty() {
+        /**
+         * Forecast price slr property double property.
+         *
+         * @return the double property
+         */
+        public DoubleProperty forecastPriceSLRProperty() {
                 return forecastPriceSLR;
             }
 
-            public DoubleProperty forecastPriceMLRProperty() {
+        /**
+         * Forecast price mlr property double property.
+         *
+         * @return the double property
+         */
+        public DoubleProperty forecastPriceMLRProperty() {
                 return forecastPriceMLR;
             }
         }
 
-        public void initialize() {
+    /**
+     * Initialize.
+     */
+    public void initialize() {
             propertyColumn.setCellValueFactory(new PropertyValueFactory<>("property"));
             salePriceColumn.setCellValueFactory(new PropertyValueFactory<>("salePrice"));
             forecastPriceSLRColumn.setCellValueFactory(new PropertyValueFactory<>("forecastPriceSLR"));
             forecastPriceMLRColumn.setCellValueFactory(new PropertyValueFactory<>("forecastPriceMLR"));
         }
 
-        public List<Order> getApartmentsAndHouses() {
+    /**
+     * Gets apartments and houses.
+     *
+     * @return the apartments and houses
+     */
+    public List<Order> getApartmentsAndHouses() {
             List<Order> orderList = purchaseOrderRepository.getAll();
             List<Order> housesAndApartmentsList = purchaseOrderRepository.getAll();
             for (Order order : orderList) {

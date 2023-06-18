@@ -75,6 +75,9 @@ public class DistrictRepository implements Serializable {
         }
     }
 
+    /**
+     * Read object.
+     */
     public void readObject() {
 
         try {

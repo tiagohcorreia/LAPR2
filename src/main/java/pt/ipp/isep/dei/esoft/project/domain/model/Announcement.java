@@ -30,11 +30,14 @@ public class Announcement implements Serializable {
     /**
      * Instantiates a new Announcement.
      *
+     * @param date           the date
+     * @param status         the status
      * @param price          the price
      * @param commission     the  agent commission
      * @param typeOfBusiness the type of business (sellor/rent)
      * @param property       the property
      * @param agent          the agent
+     * @param owner          the owner
      */
 //Full constructor
     public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent, Client owner) {
@@ -48,6 +51,19 @@ public class Announcement implements Serializable {
         this.setOwner(owner);
     }
 
+    /**
+     * Instantiates a new Announcement.
+     *
+     * @param date               the date
+     * @param status             the status
+     * @param price              the price
+     * @param commission         the commission
+     * @param typeOfBusiness     the type of business
+     * @param property           the property
+     * @param agent              the agent
+     * @param owner              the owner
+     * @param numberOfMonthsRent the number of months rent
+     */
     public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent, Client owner, int numberOfMonthsRent) {
         this.setDate(date);
         this.setStatus(status);
@@ -60,6 +76,16 @@ public class Announcement implements Serializable {
         this.setNumberOfMonthsRent(numberOfMonthsRent);
     }
 
+    /**
+     * Instantiates a new Announcement.
+     *
+     * @param status         the status
+     * @param price          the price
+     * @param commission     the commission
+     * @param typeOfBusiness the type of business
+     * @param property       the property
+     * @param agent          the agent
+     */
     public Announcement(AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {
 
         this.setStatus(status);
@@ -70,21 +96,41 @@ public class Announcement implements Serializable {
         this.setAgent(agent);
     }
 
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
     public void setStatus(AnnouncementStatus status) {
 
         this.status = status;
     }
 
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
     public AnnouncementStatus getStatus() {
 
         return status;
     }
 
+    /**
+     * Gets date.
+     *
+     * @return the date
+     */
     public LocalDate getDate() {
 
         return date;
     }
 
+    /**
+     * Sets date.
+     *
+     * @param date the date
+     */
     public void setDate(LocalDate date) {
 
         this.date = date;
@@ -114,7 +160,7 @@ public class Announcement implements Serializable {
     /**
      * Instantiates a new Announcement.
      */
-    //Default constructor
+//Default constructor
     public Announcement() {
         this.setStatus(AnnouncementStatus.PENDENT);
         this.setPrice(0);
@@ -129,7 +175,7 @@ public class Announcement implements Serializable {
      *
      * @param anotherAnnouncement the another announcement
      */
-    //Copy constructor
+//Copy constructor
     public Announcement(Announcement anotherAnnouncement) {
         this.setDate(anotherAnnouncement.getDate());
         this.setStatus(anotherAnnouncement.getStatus());
@@ -249,18 +295,38 @@ public class Announcement implements Serializable {
         this.agent = agent;
     }
 
+    /**
+     * Gets owner.
+     *
+     * @return the owner
+     */
     public Client getOwner() {
         return owner;
     }
 
+    /**
+     * Sets owner.
+     *
+     * @param owner the owner
+     */
     public void setOwner(Client owner) {
         this.owner = owner;
     }
 
+    /**
+     * Gets number of months rent.
+     *
+     * @return the number of months rent
+     */
     public int getNumberOfMonthsRent() {
         return numberOfMonthsRent;
     }
 
+    /**
+     * Sets number of months rent.
+     *
+     * @param numberOfMonthsRent the number of months rent
+     */
     public void setNumberOfMonthsRent(int numberOfMonthsRent) {
         this.numberOfMonthsRent = numberOfMonthsRent;
     }
@@ -299,6 +365,11 @@ public class Announcement implements Serializable {
     }
 
 
+    /**
+     * Gets announcement as string.
+     *
+     * @return the announcement as string
+     */
     public String getAnnouncementAsString() {
         String agentName = getAgent() != null ? getAgent().getName() : "";
 
@@ -318,6 +389,11 @@ public class Announcement implements Serializable {
         return result;
     }
 
+    /**
+     * To string rent string.
+     *
+     * @return the string
+     */
     public String toStringRent() {
         StringBuilder sb = new StringBuilder();
         sb.append("Announcement\n");
@@ -333,14 +409,52 @@ public class Announcement implements Serializable {
         return sb.toString();
     }
 
+    /**
+     * Create property property.
+     *
+     * @param area                  the area
+     * @param location              the location
+     * @param cityCentreDistance    the city centre distance
+     * @param photographs           the photographs
+     * @param numberOfBedrooms      the number of bedrooms
+     * @param numberOfBathrooms     the number of bathrooms
+     * @param numberOfParkingSpaces the number of parking spaces
+     * @param equipment             the equipment
+     * @return the property
+     */
     public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment) {
         return new Apartment(area, location, cityCentreDistance, equipment, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipment);
     }
 
+    /**
+     * Create property property.
+     *
+     * @param area                  the area
+     * @param location              the location
+     * @param cityCentreDistance    the city centre distance
+     * @param photographs           the photographs
+     * @param numberOfBedrooms      the number of bedrooms
+     * @param numberOfBathrooms     the number of bathrooms
+     * @param numberOfParkingSpaces the number of parking spaces
+     * @param equipment             the equipment
+     * @param hasBasement           the has basement
+     * @param hasInhabitableLoft    the has inhabitable loft
+     * @param sunExposure           the sun exposure
+     * @return the property
+     */
     public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces, ArrayList<String> equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
         return new House(area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipment, hasBasement, hasInhabitableLoft, sunExposure);
     }
 
+    /**
+     * Create property property.
+     *
+     * @param area               the area
+     * @param location           the location
+     * @param cityCentreDistance the city centre distance
+     * @param photographs        the photographs
+     * @return the property
+     */
     public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList<String> photographs) {
         return new Land(area, location, cityCentreDistance, photographs);
     }

@@ -9,19 +9,40 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * The type Visit repository.
+ */
 public class VisitRepository {
 
+    /**
+     * The constant VisitList.
+     */
     public static List<Visit> VisitList = new ArrayList<>();
+    /**
+     * The constant VisitByAgent.
+     */
     public static List<Visit> VisitByAgent= new ArrayList<>();
 
 
-
+    /**
+     * Save visit boolean.
+     *
+     * @param visit the visit
+     * @return the boolean
+     */
     public boolean saveVisit(Visit visit){
         if(validateVisit(visit)) {
             return addVisit(visit);
         }
         return false;
     }
+
+    /**
+     * Validate visit boolean.
+     *
+     * @param visit the visit
+     * @return the boolean
+     */
     public boolean validateVisit(Visit visit){
         for(Visit visit1: VisitList) {
 
@@ -32,6 +53,12 @@ public class VisitRepository {
         return true;
     }
 
+    /**
+     * Add visit boolean.
+     *
+     * @param visit the visit
+     * @return the boolean
+     */
     public boolean addVisit(Visit visit){
         if(visit != null && validateVisit(visit)) {
 

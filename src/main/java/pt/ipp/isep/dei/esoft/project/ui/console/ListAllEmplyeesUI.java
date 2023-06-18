@@ -6,6 +6,9 @@ import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
 import java.util.List;
 
+/**
+ * The type List all emplyees ui.
+ */
 public class ListAllEmplyeesUI implements Runnable {
 
     private ListAllEmployeesController controller = new ListAllEmployeesController();

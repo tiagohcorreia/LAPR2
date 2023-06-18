@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * The type List deals gui.
+ */
 public class ListDealsGUI extends Application implements Runnable, Initializable {
     private ListDealsController controller = new ListDealsController();
 
@@ -54,8 +57,11 @@ public class ListDealsGUI extends Application implements Runnable, Initializable
 
     ToggleGroup toggleGroup = new ToggleGroup();
 
-
-
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }

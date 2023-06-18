@@ -4,9 +4,17 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
+/**
+ * The type Gui handler.
+ */
 public class GuiHandler {
     private static volatile boolean javaFxLaunched = false;
 
+    /**
+     * My launch.
+     *
+     * @param applicationClass the application class
+     */
     public static void myLaunch(Class<? extends Application> applicationClass) {
         if (!javaFxLaunched) { // First time
             Platform.setImplicitExit(false);

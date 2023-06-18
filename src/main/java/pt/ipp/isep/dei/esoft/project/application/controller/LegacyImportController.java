@@ -13,6 +13,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+/**
+ * The type Legacy import controller.
+ */
 public class LegacyImportController {
     private static final String LEGACY_AGENT_NAME = "Legacy Agent";
     //private static final String LEGACY_AGENT_PASSPORT_NUMBER = "000000000";
@@ -24,11 +27,28 @@ public class LegacyImportController {
     //private static final String LEGACY_AGENT_PHONE_NUMBER = "0000000000";
     private static final int LEGACY_AGENT_PHONE_NUMBER = 1000000000;
 
+    /**
+     * The Announcement repository.
+     */
     AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
+    /**
+     * The Employee repository.
+     */
     EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
+    /**
+     * The Client repository.
+     */
     ClientRepository clientRepository = Repositories.getInstance().getClientRepository();
 
 
+    /**
+     * Import file int.
+     *
+     * @param filePath the file path
+     * @return the int
+     * @throws InvalidFileTypeException the invalid file type exception
+     * @throws FileNotFoundException    the file not found exception
+     */
     public int importFile(String filePath) throws InvalidFileTypeException, FileNotFoundException {
         int failedImports = 0;
         File csvFile = null;

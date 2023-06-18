@@ -11,8 +11,10 @@ import java.util.List;
  */
 public class CityController {
     private CityRepository cityRepository = Repositories.getInstance().getCityRepository();
+    /**
+     * The Repositories.
+     */
     Repositories repositories = Repositories.getInstance();
-
 
 
     /**

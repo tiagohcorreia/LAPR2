@@ -42,6 +42,7 @@ public class AnnouncementDTO implements Serializable {
         this.property = property;
         this.agent = agent;
     }
+
     /**
      * Instantiates a new Announcement dto.
      */
@@ -83,34 +84,74 @@ public class AnnouncementDTO implements Serializable {
         return null;
     }
 
+    /**
+     * Gets price.
+     *
+     * @return the price
+     */
     public float getPrice() {
         return price;
     }
 
+    /**
+     * Gets type of business.
+     *
+     * @return the type of business
+     */
     public TypeOfBusiness getTypeOfBusiness() {
         return typeOfBusiness;
     }
 
+    /**
+     * Gets property.
+     *
+     * @return the property
+     */
     public Property getProperty() {
         return property;
     }
 
+    /**
+     * Gets agent.
+     *
+     * @return the agent
+     */
     public Employee getAgent() {
         return agent;
     }
 
+    /**
+     * Sets price.
+     *
+     * @param price the price
+     */
     public void setPrice(float price) {
         this.price = price;
     }
 
+    /**
+     * Sets type of business.
+     *
+     * @param typeOfBusiness the type of business
+     */
     public void setTypeOfBusiness(TypeOfBusiness typeOfBusiness) {
         this.typeOfBusiness = typeOfBusiness;
     }
 
+    /**
+     * Sets property.
+     *
+     * @param property the property
+     */
     public void setProperty(Property property) {
         this.property = property;
     }
 
+    /**
+     * Sets agent.
+     *
+     * @param agent the agent
+     */
     public void setAgent(Employee agent) {
         this.agent = agent;
     }

@@ -10,6 +10,9 @@ import pt.ipp.isep.dei.esoft.project.ui.gui.ListDealsGUI;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Network manager ui.
+ */
 public class NetworkManagerUI implements Runnable {
 
 

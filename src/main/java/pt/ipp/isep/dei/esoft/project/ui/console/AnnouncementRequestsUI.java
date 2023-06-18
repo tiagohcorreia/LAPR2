@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Scanner;
 
 
+/**
+ * The type Announcement requests ui.
+ */
 public class AnnouncementRequestsUI implements Runnable{
 
     private Scanner scanner;
@@ -20,8 +23,10 @@ public class AnnouncementRequestsUI implements Runnable{
     private final AnnouncementRequestsController controller;
 
 
-
-            public AnnouncementRequestsUI() {
+    /**
+     * Instantiates a new Announcement requests ui.
+     */
+    public AnnouncementRequestsUI() {
                 this.controller = new AnnouncementRequestsController();
             }
 

@@ -15,6 +15,9 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
 
 
+ /**
+  * The type Register visit controller.
+  */
  public class RegisterVisitController {
 
     private  ScheduleRepository scheduleRepository = Repositories.getInstance().getScheduleRepository();
@@ -23,12 +26,21 @@ import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
 
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authRepository = Repositories.getInstance().getAuthenticationRepository();
 
-    public RegisterVisitController() {
+     /**
+      * Instantiates a new Register visit controller.
+      */
+     public RegisterVisitController() {
         this.scheduleRepository = scheduleRepository;
         this.visitRepository = visitRepository;
     }
 
-    public List<Schedule> getScheduleForAgent( Employee agentName) {
+     /**
+      * Gets schedule for agent.
+      *
+      * @param agentName the agent name
+      * @return the schedule for agent
+      */
+     public List<Schedule> getScheduleForAgent( Employee agentName) {
         List<Schedule> scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agentName);
         List<Schedule> filteredVisits = new ArrayList<>();
 
@@ -44,7 +56,14 @@ import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
         return filteredVisits;
     }
 
-    public void registerVisit(Schedule scheduledVisit, String opinionAboutBusiness, Rating rating) {
+     /**
+      * Register visit.
+      *
+      * @param scheduledVisit       the scheduled visit
+      * @param opinionAboutBusiness the opinion about business
+      * @param rating               the rating
+      */
+     public void registerVisit(Schedule scheduledVisit, String opinionAboutBusiness, Rating rating) {
         Visit visit = new Visit(scheduledVisit, opinionAboutBusiness, rating);
         visitRepository.addVisit(visit);
     }
@@ -54,6 +73,11 @@ import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
 
     } */
 
+     /**
+      * Gets current agent.
+      *
+      * @return the current agent
+      */
      public String getCurrentAgent() {
          pt.isep.lei.esoft.auth.UserSession userSession = authRepository.getCurrentUserSession();
          if (userSession.getUserRoles() == Role.AGENT) {
@@ -63,6 +87,12 @@ import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
          }
      }
 
+     /**
+      * Gets employee by name.
+      *
+      * @param employeeName the employee name
+      * @return the employee by name
+      */
      public Employee getEmployeeByName(String employeeName) {
          return employeeRepository.findByEmail(employeeName);
      }

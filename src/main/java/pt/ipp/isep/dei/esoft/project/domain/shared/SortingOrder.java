@@ -1,5 +1,15 @@
 package pt.ipp.isep.dei.esoft.project.domain.shared;
 
+/**
+ * The enum Sorting order.
+ */
 public enum SortingOrder {
-    ASCENDING, DESCENDING
+    /**
+     * Ascending sorting order.
+     */
+    ASCENDING,
+    /**
+     * Descending sorting order.
+     */
+    DESCENDING
 }
