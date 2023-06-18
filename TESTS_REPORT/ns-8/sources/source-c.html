@@ -1,0 +1,204 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ScheduleRepository</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.repository</a>
+</div>
+
+<h1>Coverage Summary for Class: ScheduleRepository (pt.ipp.isep.dei.esoft.project.domain.repository)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ScheduleRepository</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    45,5%
+  </span>
+  <span class="absValue">
+    (5/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    28,3%
+  </span>
+  <span class="absValue">
+    (15/53)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.repository;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
+&nbsp;
+&nbsp;import java.io.*;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="fc">&nbsp;public class ScheduleRepository {</b>
+<b class="fc">&nbsp;    private List&lt;Schedule&gt; scheduleList = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;    public boolean saveSchedule(Schedule schedule) {
+<b class="nc">&nbsp;        if (validateSchedule(schedule)) {</b>
+<b class="nc">&nbsp;            return addSchedule(schedule);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean validateSchedule(Schedule schedule) {
+<b class="fc">&nbsp;        for (Schedule schedule1 : scheduleList) {</b>
+<b class="fc">&nbsp;            if (schedule.equals(schedule1)) {</b>
+<b class="nc">&nbsp;                return false;</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean addSchedule(Schedule schedule) {
+<b class="fc">&nbsp;        if (schedule != null &amp;&amp; validateSchedule(schedule)) {</b>
+<b class="fc">&nbsp;            return scheduleList.add(schedule);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Schedule&gt; getScheduleList() {
+<b class="fc">&nbsp;        return new ArrayList&lt;&gt;(scheduleList);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getScheduleListAsString() {
+<b class="nc">&nbsp;        StringBuilder stringBuilder = new StringBuilder();</b>
+<b class="nc">&nbsp;        for (Schedule schedule : scheduleList) {</b>
+<b class="nc">&nbsp;            stringBuilder.append(&quot;-&quot;).append(schedule.toString()).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return stringBuilder.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Schedule&gt; readObjectScheduleRequest() {
+&nbsp;        try {
+<b class="nc">&nbsp;            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;ser/schedulesRequests.ser&quot;));</b>
+<b class="nc">&nbsp;            scheduleList = (List&lt;Schedule&gt;) ois.readObject();</b>
+<b class="nc">&nbsp;            System.out.println(scheduleList);</b>
+<b class="nc">&nbsp;            ois.close();</b>
+<b class="nc">&nbsp;        } catch (IOException | ClassNotFoundException e) {</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return scheduleList;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void writeObjectScheduleRequest() {
+&nbsp;        try {
+<b class="nc">&nbsp;            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;ser/schedulesRequests.ser&quot;));</b>
+<b class="nc">&nbsp;            oos.writeObject(scheduleList);</b>
+<b class="nc">&nbsp;            oos.close();</b>
+<b class="nc">&nbsp;        } catch (IOException ioe) {</b>
+<b class="nc">&nbsp;            ioe.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Schedule&gt; getRequestScheduleListByResponsibleAgent(Employee agent) {
+<b class="fc">&nbsp;        List&lt;Schedule&gt; schedulesByResposibleAgent = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        for (Schedule schedule : scheduleList) {</b>
+<b class="fc">&nbsp;            if (schedule.getAnnouncementDTO().getAgent().equals(agent) &amp;&amp; !schedule.getStatus()) {</b>
+<b class="fc">&nbsp;                schedulesByResposibleAgent.add(schedule);</b>
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return schedulesByResposibleAgent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean addConfirmedSchedule(Schedule schedule) {
+<b class="nc">&nbsp;        for (Schedule schedule1 : scheduleList) {</b>
+<b class="nc">&nbsp;            if (schedule1.equals(schedule)) {</b>
+<b class="nc">&nbsp;                schedule1.setStatus(true);</b>
+<b class="nc">&nbsp;                schedule1.setAproved(true);</b>
+<b class="nc">&nbsp;                return true;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean addRejectedSchedule(Schedule schedule) {
+<b class="nc">&nbsp;        for (Schedule schedule1 : scheduleList) {</b>
+<b class="nc">&nbsp;            if (schedule1.equals(schedule)) {</b>
+<b class="nc">&nbsp;                schedule1.setStatus(true);</b>
+<b class="nc">&nbsp;                schedule1.setAproved(false);</b>
+<b class="nc">&nbsp;                return true;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

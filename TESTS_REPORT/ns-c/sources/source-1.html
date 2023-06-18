@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > AuthenticationUI</title>
+  <title>Coverage Report > Bootstrap</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console.authorization</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui</a>
 </div>
 
-<h1>Coverage Summary for Class: AuthenticationUI (pt.ipp.isep.dei.esoft.project.ui.console.authorization)</h1>
+<h1>Coverage Summary for Class: Bootstrap (pt.ipp.isep.dei.esoft.project.ui)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">AuthenticationUI</td>
+  <td class="name">Bootstrap</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -54,7 +54,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/7)
+    (0/5)
   </span>
 </td>
 <td class="coverageStat">
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/44)
+    (0/42)
   </span>
 </td>
 </tr>
@@ -74,110 +74,114 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console.authorization;
-&nbsp;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui;
 &nbsp;
 &nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.AdminUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.AgentUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.MenuItem;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.OwnerUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
-&nbsp;import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.Employee;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.Organization;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.TaskCategory;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.ClientRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.repository.OrganizationRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.repository.Repositories;
+&nbsp;import pt.ipp.isep.dei.esoft.project.repository.TaskCategoryRepository;
 &nbsp;
-&nbsp;import java.util.ArrayList;
-&nbsp;import java.util.Iterator;
 &nbsp;import java.util.List;
-&nbsp;import java.util.Objects;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Authentication ui.
+&nbsp; * The type Bootstrap.
 &nbsp; */
-&nbsp;public class AuthenticationUI implements Runnable {
-&nbsp;    private final AuthenticationController ctrl;
+<b class="nc">&nbsp;public class Bootstrap implements Runnable {</b>
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Instantiates a new Authentication ui.
-&nbsp;     */
-<b class="nc">&nbsp;    public AuthenticationUI() {</b>
-<b class="nc">&nbsp;        ctrl = new AuthenticationController();</b>
-&nbsp;    }
-&nbsp;
+&nbsp;    //Add some task categories to the repository as bootstrap
 &nbsp;    public void run() {
-<b class="nc">&nbsp;        boolean success = doLogin();</b>
-&nbsp;
-<b class="nc">&nbsp;        if (success) {</b>
-<b class="nc">&nbsp;            List&lt;UserRoleDTO&gt; roles = this.ctrl.getUserRoles();</b>
-<b class="nc">&nbsp;            if ((roles == null) || (roles.isEmpty())) {</b>
-<b class="nc">&nbsp;                System.out.println(&quot;No role assigned to user.&quot;);</b>
-&nbsp;            } else {
-<b class="nc">&nbsp;                UserRoleDTO role = selectsRole(roles);</b>
-<b class="nc">&nbsp;                if (!Objects.isNull(role)) {</b>
-<b class="nc">&nbsp;                    List&lt;MenuItem&gt; rolesUI = getMenuItemForRoles();</b>
-<b class="nc">&nbsp;                    this.redirectToRoleUI(rolesUI, role);</b>
-<b class="nc">&nbsp;                } else {</b>
-<b class="nc">&nbsp;                    System.out.println(&quot;No role selected.&quot;);</b>
-&nbsp;                }
-&nbsp;            }
-&nbsp;        }
-<b class="nc">&nbsp;        this.logout();</b>
+<b class="nc">&nbsp;        addTaskCategories();</b>
+<b class="nc">&nbsp;        addOrganization();</b>
+<b class="nc">&nbsp;        addUsers();</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    private List&lt;MenuItem&gt; getMenuItemForRoles() {
-<b class="nc">&nbsp;        List&lt;MenuItem&gt; rolesUI = new ArrayList&lt;&gt;();</b>
-<b class="nc">&nbsp;        rolesUI.add(new MenuItem(AuthenticationController.ROLE_ADMIN, new AdminUI()));</b>
-<b class="nc">&nbsp;        rolesUI.add(new MenuItem(AuthenticationController.ROLE_OWNER, new OwnerUI()));</b>
-<b class="nc">&nbsp;        rolesUI.add(new MenuItem(AuthenticationController.ROLE_EMPLOYEE, new AgentUI()));</b>
-&nbsp;
-&nbsp;        //TODO: Complete with other user roles and related RoleUI
-<b class="nc">&nbsp;        return rolesUI;</b>
+&nbsp;    private void addOrganization() {
+&nbsp;        //TODO: add organizations bootstrap here
+&nbsp;        //get organization repository
+<b class="nc">&nbsp;        OrganizationRepository organizationRepository = Repositories.getInstance().getOrganizationRepository();</b>
+<b class="nc">&nbsp;        Organization organization = new Organization(&quot;This Company&quot;);</b>
+<b class="nc">&nbsp;        organization.addEmployee(new Employee(&quot;admin@this.app&quot;));</b>
+<b class="nc">&nbsp;        organization.addEmployee(new Employee(&quot;employee@this.app&quot;));</b>
+<b class="nc">&nbsp;        organization.addEmployee(new Employee(&quot;owner@this.app&quot;));</b>
+<b class="nc">&nbsp;        organization.addEmployee(new Employee(&quot;network@this.app&quot;));</b>
+<b class="nc">&nbsp;        organization.addEmployee(new Employee(&quot;agent@this.app&quot;));</b>
+&nbsp;        //organization.addEmployee(new Employee(&quot;client@this.app&quot;));
+<b class="nc">&nbsp;        organizationRepository.add(organization);</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    private boolean doLogin() {
-<b class="nc">&nbsp;        System.out.println(&quot;\n=============== Real Estate USA ===============:&quot;);</b>
+&nbsp;    private void addTaskCategories() {
+&nbsp;        //TODO: add bootstrap Task Categories here
 &nbsp;
-<b class="nc">&nbsp;        int maxAttempts = 3;</b>
-<b class="nc">&nbsp;        boolean success = false;</b>
-&nbsp;        do {
-<b class="nc">&nbsp;            maxAttempts--;</b>
-<b class="nc">&nbsp;            String id = Utils.readLineFromConsole(&quot;Email: &quot;);</b>
-<b class="nc">&nbsp;            String pwd = Utils.readLineFromConsole(&quot;Password: &quot;);</b>
-&nbsp;
-<b class="nc">&nbsp;            success = ctrl.doLogin(id, pwd);</b>
-<b class="nc">&nbsp;            if (!success) {</b>
-<b class="nc">&nbsp;                System.out.println(&quot;Invalid UserId and/or Password. \n You have  &quot; + maxAttempts + &quot; more attempt(s).&quot;);</b>
-&nbsp;            }
-&nbsp;
-<b class="nc">&nbsp;        } while (!success &amp;&amp; maxAttempts &gt; 0);</b>
-<b class="nc">&nbsp;        return success;</b>
+&nbsp;        //get task category repository
+<b class="nc">&nbsp;        TaskCategoryRepository taskCategoryRepository = Repositories.getInstance().getTaskCategoryRepository();</b>
+<b class="nc">&nbsp;        taskCategoryRepository.add(new TaskCategory(&quot;Analysis&quot;));</b>
+<b class="nc">&nbsp;        taskCategoryRepository.add(new TaskCategory(&quot;Design&quot;));</b>
+<b class="nc">&nbsp;        taskCategoryRepository.add(new TaskCategory(&quot;Implementation&quot;));</b>
+<b class="nc">&nbsp;        taskCategoryRepository.add(new TaskCategory(&quot;Development&quot;));</b>
+<b class="nc">&nbsp;        taskCategoryRepository.add(new TaskCategory(&quot;Testing&quot;));</b>
+<b class="nc">&nbsp;        taskCategoryRepository.add(new TaskCategory(&quot;Deployment&quot;));</b>
+<b class="nc">&nbsp;        taskCategoryRepository.add(new TaskCategory(&quot;Maintenance&quot;));</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    private void logout() {
-<b class="nc">&nbsp;        ctrl.doLogout();</b>
-&nbsp;    }
+&nbsp;    private void addUsers() {
+&nbsp;        //TODO: add Authentication users here: should be created for each user in the organization
+<b class="nc">&nbsp;        AuthenticationRepository authenticationRepository = Repositories.getInstance().getAuthenticationRepository();</b>
 &nbsp;
-&nbsp;    private void redirectToRoleUI(List&lt;MenuItem&gt; rolesUI, UserRoleDTO role) {
-<b class="nc">&nbsp;        boolean found = false;</b>
-<b class="nc">&nbsp;        Iterator&lt;MenuItem&gt; it = rolesUI.iterator();</b>
-<b class="nc">&nbsp;        while (it.hasNext() &amp;&amp; !found) {</b>
-<b class="nc">&nbsp;            MenuItem item = it.next();</b>
-<b class="nc">&nbsp;            found = item.hasDescription(role.getDescription());</b>
-<b class="nc">&nbsp;            if (found) {</b>
-<b class="nc">&nbsp;                item.run();</b>
-&nbsp;            }
+<b class="nc">&nbsp;        authenticationRepository.addUserRole(AuthenticationController.ROLE_ADMIN, AuthenticationController.ROLE_ADMIN);</b>
+<b class="nc">&nbsp;        authenticationRepository.addUserRole(AuthenticationController.ROLE_EMPLOYEE, AuthenticationController.ROLE_EMPLOYEE);</b>
+<b class="nc">&nbsp;        authenticationRepository.addUserRole(AuthenticationController.ROLE_OWNER, AuthenticationController.ROLE_OWNER);</b>
+<b class="nc">&nbsp;        authenticationRepository.addUserRole(AuthenticationController.ROLE_CLIENT, AuthenticationController.ROLE_CLIENT);</b>
+<b class="nc">&nbsp;        authenticationRepository.addUserRole(AuthenticationController.ROLE_NETWORK_MANAGER, AuthenticationController.ROLE_NETWORK_MANAGER);</b>
+<b class="nc">&nbsp;        authenticationRepository.addUserRole(AuthenticationController.ROLE_AGENT, AuthenticationController.ROLE_AGENT);</b>
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Main Administrator&quot;, &quot;admin@this.app&quot;, &quot;admin&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_ADMIN);
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Main Administrator&quot;, &quot;1211742@isep.ipp.pt&quot;, &quot;1211742&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_ADMIN);
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Employee&quot;, &quot;employee@this.app&quot;, &quot;pwd&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_EMPLOYEE);
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Agent&quot;, &quot;agent@isep.ipp.pt&quot;, &quot;agent&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_AGENT);
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Owner&quot;, &quot;owner@this.app&quot;, &quot;owner&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_OWNER);
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Client&quot;, &quot;client@this.app&quot;, &quot;clt&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_CLIENT);
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Client&quot;, &quot;client@isep.ipp.pt&quot;, &quot;client&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_CLIENT);
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Network Manager&quot;, &quot;network@this.app&quot;, &quot;net&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_NETWORK_MANAGER);
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Network Manager&quot;, &quot;network@isep.ipp.pt&quot;, &quot;net&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_NETWORK_MANAGER);
+&nbsp;
+<b class="nc">&nbsp;        authenticationRepository.addUserWithRole(&quot;Store Manager&quot;, &quot;store@this.app&quot;, &quot;store&quot;,</b>
+&nbsp;                AuthenticationController.ROLE_STORE_MANAGER);
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;        //Get registered clients
+<b class="nc">&nbsp;        ClientRepository clientRepository = pt.ipp.isep.dei.esoft.project.domain.repository.Repositories.getInstance().getUserRepository();</b>
+<b class="nc">&nbsp;        List&lt;Client&gt; clientList = clientRepository.getUsers();</b>
+<b class="nc">&nbsp;        for (Client client : clientList) {</b>
+<b class="nc">&nbsp;            authenticationRepository.addUserWithRole(client.getName(), client.getEmail(), client.getPassword(), AuthenticationController.ROLE_CLIENT);</b>
 <b class="nc">&nbsp;        }</b>
-<b class="nc">&nbsp;        if (!found) {</b>
-<b class="nc">&nbsp;            System.out.println(&quot;There is no UI for users with role &#39;&quot; + role.getDescription() + &quot;&#39;&quot;);</b>
-&nbsp;        }
+&nbsp;
 &nbsp;    }
 &nbsp;
-&nbsp;    private UserRoleDTO selectsRole(List&lt;UserRoleDTO&gt; roles) {
-<b class="nc">&nbsp;        if (roles.size() == 1) {</b>
-<b class="nc">&nbsp;            return roles.get(0);</b>
-&nbsp;        } else {
-<b class="nc">&nbsp;            return (UserRoleDTO) Utils.showAndSelectOne(roles, &quot;Select the role you want to adopt in this session:&quot;);</b>
-&nbsp;        }
-&nbsp;    }
 &nbsp;
 &nbsp;}
 </code>
@@ -203,7 +207,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

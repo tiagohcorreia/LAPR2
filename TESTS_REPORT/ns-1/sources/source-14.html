@@ -1,0 +1,167 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > StateController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: StateController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StateController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.District;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.State;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.StateRepository;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type State controller.
+&nbsp; */
+&nbsp;public class StateController {
+&nbsp;    private StateRepository stateRepository;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Instantiates a new State controller.
+&nbsp;     *
+&nbsp;     * @param stateRepository the state repository
+&nbsp;     */
+<b class="nc">&nbsp;    public StateController(StateRepository stateRepository) {</b>
+<b class="nc">&nbsp;        this.stateRepository = stateRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add state.
+&nbsp;     *
+&nbsp;     * @param name the name
+&nbsp;     */
+&nbsp;    public void addState(String name) {
+<b class="nc">&nbsp;        State state = new State(name, new ArrayList&lt;&gt;());</b>
+<b class="nc">&nbsp;        stateRepository.save(state);</b>
+<b class="nc">&nbsp;        stateRepository.writeObject();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Find state by name state.
+&nbsp;     *
+&nbsp;     * @param name the name
+&nbsp;     * @return the state
+&nbsp;     */
+&nbsp;    public State findStateByName(String name) {
+<b class="nc">&nbsp;        return stateRepository.findByName(name);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets all states.
+&nbsp;     *
+&nbsp;     * @return the all states
+&nbsp;     */
+&nbsp;    public List&lt;State&gt; getAllStates() {
+<b class="nc">&nbsp;        return stateRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add district to state.
+&nbsp;     *
+&nbsp;     * @param state    the state
+&nbsp;     * @param district the district
+&nbsp;     */
+&nbsp;    public void addDistrictToState(State state, District district) {
+<b class="nc">&nbsp;        stateRepository.addDistrictToState(state, district);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

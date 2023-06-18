@@ -1,0 +1,563 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CsvHandler</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.utils</a>
+</div>
+
+<h1>Coverage Summary for Class: CsvHandler (pt.ipp.isep.dei.esoft.project.utils)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CsvHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    28,6%
+  </span>
+  <span class="absValue">
+    (4/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    15,8%
+  </span>
+  <span class="absValue">
+    (29/183)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CsvHandler$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    26,7%
+  </span>
+  <span class="absValue">
+    (4/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    15,8%
+  </span>
+  <span class="absValue">
+    (29/184)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.utils;
+&nbsp;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.*;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.*;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
+&nbsp;import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
+&nbsp;import pt.ipp.isep.dei.esoft.project.exceptions.InvalidFileTypeException;
+&nbsp;
+&nbsp;import java.io.File;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;//TODO: get csv delimiter from settings file
+<b class="nc">&nbsp;public class CsvHandler {</b>
+&nbsp;    public static final String CSV_DELIMITER = &quot;;&quot;;
+&nbsp;
+&nbsp;    public static final String LEGACY_AGENT_NAME = &quot;Legacy Agent&quot;;
+&nbsp;
+&nbsp;    private static final int COLUMN_ANNOUNCEMENT_ID = 0;
+&nbsp;    private static final int COLUMN_OWNER_NAME = 1;
+&nbsp;    private static final int COLUMN_OWNER_PASSPORT = 2;
+&nbsp;    private static final int COLUMN_OWNER_TAX_NUMBER = 3;
+&nbsp;    private static final int COLUMN_OWNER_EMAIL = 4;
+&nbsp;    private static final int COLUMN_OWNER_PHONE = 5;
+&nbsp;
+&nbsp;    private static final int COLUMN_PROPERTY_TYPE = 6;
+&nbsp;    private static final int COLUMN_PROPERTY_AREA = 7;
+&nbsp;    private static final int COLUMN_PROPERTY_LOCATION = 8;
+&nbsp;    private static final int COLUMN_PROPERTY_CITY_CENTER_DISTANCE = 9;
+&nbsp;    private static final int COLUMN_PROPERTY_NUMBER_BEDROOMS = 10;
+&nbsp;    private static final int COLUMN_PROPERTY_NUMBER_BATHROOMS = 11;
+&nbsp;    private static final int COLUMN_PROPERTY_NUMBER_PARKING = 12;
+&nbsp;    private static final int COLUMN_PROPERTY_EQUIPMENT_HEATING = 13;
+&nbsp;    private static final int COLUMN_PROPERTY_EQUIPMENT_AIRCON = 14;
+&nbsp;    private static final int COLUMN_PROPERTY_BASEMENT = 15;
+&nbsp;    private static final int COLUMN_PROPERTY_LOFT = 16;
+&nbsp;    private static final int COLUMN_PROPERTY_SUN_EXPOSURE = 17;
+&nbsp;    private static final int COLUMN_PROPERTY_REQUESTED_PRICE = 18;
+&nbsp;
+&nbsp;    private static final int COLUMN_ANNOUNCEMENT_PRICE = 19;
+&nbsp;    private static final int COLUMN_ANNOUNCEMENT_COMMISSION = 20;
+&nbsp;    private static final int COLUMN_ANNOUNCEMENT_CONTRACT_DURATION = 21;
+&nbsp;    private static final int COLUMN_ANNOUNCEMENT_DATE = 22;
+&nbsp;    //...
+&nbsp;    private static final int COLUMN_ANNOUNCEMENT_TYPE_BUSINESS = 24;
+&nbsp;
+&nbsp;    private static final int COLUMN_BRANCH_ID = 25;
+&nbsp;    private static final int COLUMN_BRANCH_NAME = 26;
+&nbsp;    private static final int COLUMN_BRANCH_LOCATION = 27;
+&nbsp;    private static final int COLUMN_BRANCH_PHONE = 28;
+&nbsp;    private static final int COLUMN_BRANCH_EMAIL = 29;
+&nbsp;
+&nbsp;    private static final String CSV_VALUE_YES = &quot;Y&quot;;
+&nbsp;    private static final String CSV_VALUE_NO = &quot;N&quot;;
+&nbsp;    private static final String CSV_VALUE_NA = &quot;NA&quot;;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    static StateRepository stateRepository = Repositories.getInstance().getStateRepository();</b>
+<b class="fc">&nbsp;    static CityRepository cityRepository = Repositories.getInstance().getCityRepository();</b>
+<b class="fc">&nbsp;    static BranchRepository branchRepository = Repositories.getInstance().getBranchRepository();</b>
+<b class="fc">&nbsp;    static ClientRepository clientRepository = Repositories.getInstance().getClientRepository();</b>
+<b class="fc">&nbsp;    static AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();</b>
+<b class="fc">&nbsp;    static EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();</b>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public static List&lt;?&gt; getDataFromCsvFile(File file) throws InvalidFileTypeException {
+&nbsp;        //Check if the filename ends with &quot;.csv&quot;
+&nbsp;        //String[] filepath = file.getAbsolutePath().split(&quot;\\.&quot;);
+&nbsp;        //String extension = filepath[filepath.length-1];
+&nbsp;        //if(!extension.equalsIgnoreCase(&quot;csv&quot;))
+&nbsp;        //    throw new InvalidFileTypeException(&quot;Selected file is not a CSV file&quot;);
+&nbsp;
+<b class="fc">&nbsp;        extensionIsCsv(file);</b>
+&nbsp;
+<b class="fc">&nbsp;        List&lt;List&lt;String&gt;&gt; csv = new ArrayList&lt;&gt;();</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Scanner sc = new Scanner(file);</b>
+<b class="fc">&nbsp;            sc.useDelimiter(CSV_DELIMITER);</b>
+&nbsp;            //boolean a=sc.hasNext();
+<b class="fc">&nbsp;            while (sc.hasNextLine()) {</b>
+<b class="fc">&nbsp;                List&lt;String&gt; thisLine = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;                String line = sc.nextLine();</b>
+<b class="fc">&nbsp;                String[] lineElements = line.split(CSV_DELIMITER);</b>
+<b class="fc">&nbsp;                Collections.addAll(thisLine, lineElements);</b>
+<b class="fc">&nbsp;                csv.add(thisLine);</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            sc.close();</b>
+&nbsp;        } finally {
+<b class="fc">&nbsp;            csvIsEmpty(csv);</b>
+&nbsp;            //Remove the header
+<b class="fc">&nbsp;            csv.remove(0);</b>
+<b class="fc">&nbsp;            return csv;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public static boolean csvIsEmpty(List&lt;?&gt; csv){
+<b class="fc">&nbsp;        if (csv.size() &lt; 2){</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;The file contains no data.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static boolean extensionIsCsv(File file) throws InvalidFileTypeException {
+<b class="fc">&nbsp;        String[] filepath = file.getAbsolutePath().split(&quot;\\.&quot;);</b>
+<b class="fc">&nbsp;        String extension = filepath[filepath.length-1];</b>
+<b class="fc">&nbsp;        if(!extension.equalsIgnoreCase(&quot;csv&quot;))</b>
+<b class="fc">&nbsp;            throw new InvalidFileTypeException(&quot;Selected file is not a CSV file&quot;);</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static int parseCSV(List&lt;?&gt; csv){
+<b class="nc">&nbsp;        int successfulImportCount = 0;</b>
+<b class="nc">&nbsp;        boolean success = false;</b>
+&nbsp;        for (Object line:
+<b class="nc">&nbsp;             csv) {</b>
+<b class="nc">&nbsp;            Branch branch = parseBranchData((List&lt;?&gt;) line);</b>
+<b class="nc">&nbsp;            Client client = parseClientData((List&lt;?&gt;) line);</b>
+<b class="nc">&nbsp;            Announcement announcement = parseAnnouncementData((List&lt;?&gt;) line, client);</b>
+&nbsp;            //System.out.println(&quot;here&quot;);
+&nbsp;            try {
+&nbsp;                //success = branchRepository.saveBranch(branch);
+&nbsp;                //success = (clientRepository.add(client) &amp;&amp; success);
+&nbsp;                //success = (announcementRepository.save(announcement) &amp;&amp; success);
+<b class="nc">&nbsp;                branchRepository.saveBranch(branch);</b>
+<b class="nc">&nbsp;            }catch (DuplicateDataException e){</b>
+&nbsp;                //System.out.println(&quot;Branch already registered.&quot;);
+<b class="nc">&nbsp;            } catch (Exception e){</b>
+<b class="nc">&nbsp;                e.printStackTrace();</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;
+&nbsp;            try{
+<b class="nc">&nbsp;                clientRepository.add(client);</b>
+<b class="nc">&nbsp;            }catch (DuplicateDataException e) {</b>
+&nbsp;                //System.out.println(&quot;Client already registered.&quot;);
+<b class="nc">&nbsp;            }catch (Exception e) {</b>
+<b class="nc">&nbsp;                e.printStackTrace();</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;
+&nbsp;            try{
+&nbsp;                //success = announcementRepository.addAnnouncement(announcement);
+<b class="nc">&nbsp;                announcementRepository.saveAnnouncement(announcement);</b>
+<b class="nc">&nbsp;            }catch (Exception e) {</b>
+<b class="nc">&nbsp;                e.printStackTrace();</b>
+&nbsp;            } finally {
+<b class="nc">&nbsp;                if (success) successfulImportCount++;</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        return successfulImportCount;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static Branch parseBranchData(List&lt;?&gt; line){
+<b class="nc">&nbsp;        int branchID = Integer.parseInt(String.valueOf(line.get(COLUMN_BRANCH_ID)));</b>
+<b class="nc">&nbsp;        String branchName = (String) line.get(COLUMN_BRANCH_NAME);</b>
+<b class="nc">&nbsp;        String branchLocation = (String) line.get(COLUMN_BRANCH_LOCATION);</b>
+<b class="nc">&nbsp;        String s = removeDashes(String.valueOf(line.get(COLUMN_BRANCH_PHONE)));</b>
+<b class="nc">&nbsp;        long branchPhoneNumber = Long.valueOf(s);</b>
+<b class="nc">&nbsp;        String branchEmail = (String) line.get(COLUMN_BRANCH_EMAIL);</b>
+&nbsp;
+<b class="nc">&nbsp;        Location location = parseLocation(branchLocation);</b>
+&nbsp;
+<b class="nc">&nbsp;        return branchRepository.createBranch(branchID, branchName, location, String.valueOf(branchPhoneNumber), branchEmail);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static Client parseClientData(List&lt;?&gt; line){
+&nbsp;        //int clientID = Integer.parseInt(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_ID)));
+<b class="nc">&nbsp;        String clientName = String.valueOf(line.get(COLUMN_OWNER_NAME));</b>
+<b class="nc">&nbsp;        String clientPassportNumber = String.valueOf(line.get(COLUMN_OWNER_PASSPORT));</b>
+<b class="nc">&nbsp;        String clientTaxNumber = String.valueOf(line.get(COLUMN_OWNER_TAX_NUMBER));</b>
+<b class="nc">&nbsp;        String clientEmail = String.valueOf(line.get(COLUMN_OWNER_EMAIL));</b>
+<b class="nc">&nbsp;        String clientPhoneNumber = String.valueOf(line.get(COLUMN_OWNER_PHONE));</b>
+<b class="nc">&nbsp;        clientTaxNumber = removeDashes(clientTaxNumber);</b>
+<b class="nc">&nbsp;        clientPassportNumber = removeDashes(clientPassportNumber);</b>
+<b class="nc">&nbsp;        clientPhoneNumber = removeDashes(clientPhoneNumber);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        return clientRepository.createClient(</b>
+&nbsp;                clientName,
+&nbsp;                clientEmail,
+<b class="nc">&nbsp;                Integer.valueOf(clientPassportNumber),</b>
+<b class="nc">&nbsp;                Integer.valueOf(clientTaxNumber),</b>
+<b class="nc">&nbsp;                Long.valueOf(clientPhoneNumber)</b>
+&nbsp;        );
+&nbsp;    }
+&nbsp;
+&nbsp;    private static Property parsePropertyData(List&lt;?&gt; line){
+&nbsp;        String propertyTypeString, locationString;
+&nbsp;        int numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces;
+&nbsp;        float area, cityCenterDistance;
+&nbsp;        boolean hasCentralHeating, hasAirCon, hasBasement, hasInhabitableLoft;
+&nbsp;        TypeOfProperty typeOfProperty;
+&nbsp;        SunExposure sunExposure;
+<b class="nc">&nbsp;        ArrayList&lt;String&gt; equipment = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        propertyTypeString = String.valueOf(line.get(COLUMN_PROPERTY_TYPE)).toLowerCase();</b>
+&nbsp;        //typeOfProperty = TypeOfProperty.valueOf(propertyTypeString);
+<b class="nc">&nbsp;        switch (propertyTypeString){</b>
+&nbsp;            case &quot;house&quot;:
+<b class="nc">&nbsp;                typeOfProperty = TypeOfProperty.HOUSE;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &quot;apartment&quot;:
+<b class="nc">&nbsp;                typeOfProperty = TypeOfProperty.APARTMENT;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            default:
+<b class="nc">&nbsp;                typeOfProperty = TypeOfProperty.LAND;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        locationString = String.valueOf(line.get(COLUMN_PROPERTY_LOCATION));</b>
+<b class="nc">&nbsp;        Location location = parseLocation(locationString);</b>
+&nbsp;
+<b class="nc">&nbsp;        area = Float.valueOf(String.valueOf(line.get(COLUMN_PROPERTY_AREA)));</b>
+<b class="nc">&nbsp;        cityCenterDistance = Float.valueOf(String.valueOf(line.get(COLUMN_PROPERTY_CITY_CENTER_DISTANCE)));</b>
+&nbsp;        //sunExposure = SunExposure.valueOf(String.valueOf(line.get(COLUMN_PROPERTY_SUN_EXPOSURE)));
+<b class="nc">&nbsp;        String sunExposureString = String.valueOf(line.get(COLUMN_PROPERTY_SUN_EXPOSURE));</b>
+<b class="nc">&nbsp;        switch (sunExposureString){</b>
+&nbsp;            case &quot;N&quot;:
+<b class="nc">&nbsp;                sunExposure = SunExposure.NORTH;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &quot;S&quot;:
+<b class="nc">&nbsp;                sunExposure = SunExposure.SOUTH;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &quot;E&quot;:
+<b class="nc">&nbsp;                sunExposure = SunExposure.EAST;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case &quot;W&quot;:
+<b class="nc">&nbsp;                sunExposure = SunExposure.WEST;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            default:
+<b class="nc">&nbsp;                sunExposure = null;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        if (!typeOfProperty.equals(TypeOfProperty.LAND)) {</b>
+<b class="nc">&nbsp;            numberOfBedrooms = Integer.valueOf(String.valueOf(COLUMN_PROPERTY_NUMBER_BEDROOMS));</b>
+<b class="nc">&nbsp;            numberOfBathrooms = Integer.valueOf(String.valueOf(COLUMN_PROPERTY_NUMBER_BATHROOMS));</b>
+<b class="nc">&nbsp;            numberOfParkingSpaces = Integer.valueOf(String.valueOf(COLUMN_PROPERTY_NUMBER_PARKING));</b>
+&nbsp;
+<b class="nc">&nbsp;            hasCentralHeating = String.valueOf(line.get(COLUMN_PROPERTY_EQUIPMENT_HEATING)).equals(CSV_VALUE_YES);</b>
+<b class="nc">&nbsp;            if (hasCentralHeating) equipment.add(&quot;central heating&quot;);</b>
+<b class="nc">&nbsp;            hasAirCon = String.valueOf(line.get(COLUMN_PROPERTY_EQUIPMENT_AIRCON)).equals(CSV_VALUE_YES);</b>
+<b class="nc">&nbsp;            if (hasAirCon) equipment.add(&quot;air conditioner&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            hasBasement = String.valueOf(line.get(COLUMN_PROPERTY_BASEMENT)).equals(CSV_VALUE_YES);</b>
+<b class="nc">&nbsp;            hasInhabitableLoft = String.valueOf(line.get(COLUMN_PROPERTY_LOFT)).equals(CSV_VALUE_YES);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            numberOfBedrooms = 0;</b>
+<b class="nc">&nbsp;            numberOfBathrooms = 0;</b>
+<b class="nc">&nbsp;            numberOfParkingSpaces = 0;</b>
+<b class="nc">&nbsp;            hasBasement = false;</b>
+<b class="nc">&nbsp;            hasInhabitableLoft = false;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        Property property = null;</b>
+<b class="nc">&nbsp;        switch (typeOfProperty){</b>
+&nbsp;            case HOUSE:
+<b class="nc">&nbsp;                property = Announcement.createProperty(</b>
+&nbsp;                        area,
+&nbsp;                        location,
+&nbsp;                        cityCenterDistance,
+&nbsp;                        new ArrayList&lt;&gt;(),
+&nbsp;                        numberOfBedrooms,
+&nbsp;                        numberOfBathrooms,
+&nbsp;                        numberOfParkingSpaces,
+&nbsp;                        equipment,
+&nbsp;                        hasBasement,
+&nbsp;                        hasInhabitableLoft,
+&nbsp;                        sunExposure
+&nbsp;                        );
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case APARTMENT:
+<b class="nc">&nbsp;                property = Announcement.createProperty(</b>
+&nbsp;                        area,
+&nbsp;                        location,
+&nbsp;                        cityCenterDistance,
+&nbsp;                        new ArrayList&lt;&gt;(),
+&nbsp;                        numberOfBedrooms,
+&nbsp;                        numberOfBathrooms,
+&nbsp;                        numberOfParkingSpaces,
+&nbsp;                        equipment
+&nbsp;                );
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case LAND:
+<b class="nc">&nbsp;                property = Announcement.createProperty(</b>
+&nbsp;                        area,
+&nbsp;                        location,
+&nbsp;                        cityCenterDistance,
+&nbsp;                        new ArrayList&lt;&gt;()
+&nbsp;                );
+&nbsp;                break;
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return property;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static Announcement parseAnnouncementData(List&lt;?&gt; line, Client client){
+&nbsp;        LocalDate date;
+&nbsp;        AnnouncementStatus announcementStatus;
+&nbsp;        float price, commission;
+&nbsp;        TypeOfBusiness typeOfBusiness;
+&nbsp;        Property property;
+&nbsp;        Employee employee;
+&nbsp;        int contractDuration;
+<b class="nc">&nbsp;        date = parseYyyyMmDdDate(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_DATE)));</b>
+&nbsp;       /*String dateStr = String.valueOf(line.get(COLUMN_ANNOUNCEMENT_DATE));
+&nbsp;       String[] dateParts = dateStr.split(&quot;/&quot;);
+&nbsp;        int year = Integer.parseInt(dateParts[0]);
+&nbsp;        int month = Integer.parseInt(dateParts[1]);
+&nbsp;        int day = Integer.parseInt(dateParts[2]);
+&nbsp;        date = LocalDate.of(year, month, day);
+&nbsp;*/
+&nbsp;        //typeOfBusiness = TypeOfBusiness.valueOf(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_TYPE_BUSINESS)));
+<b class="nc">&nbsp;        String typeOfBusinessString = String.valueOf(line.get(COLUMN_ANNOUNCEMENT_TYPE_BUSINESS));</b>
+<b class="nc">&nbsp;        switch (typeOfBusinessString){</b>
+&nbsp;            case &quot;sale&quot;:
+<b class="nc">&nbsp;                typeOfBusiness = TypeOfBusiness.SELL;</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            default:
+<b class="nc">&nbsp;                typeOfBusiness = TypeOfBusiness.RENT;</b>
+&nbsp;                break;
+&nbsp;        }
+<b class="nc">&nbsp;        announcementStatus = typeOfBusiness.equals(TypeOfBusiness.SELL) ? AnnouncementStatus.SOLD : AnnouncementStatus.RENTED;</b>
+<b class="nc">&nbsp;        property = parsePropertyData(line);</b>
+<b class="nc">&nbsp;        price = Float.parseFloat(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_PRICE)));</b>
+<b class="nc">&nbsp;        commission = Float.parseFloat(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_COMMISSION))) * (float) 0.01;</b>
+<b class="nc">&nbsp;        employee = employeeRepository.getEmployee(LEGACY_AGENT_NAME);</b>
+<b class="nc">&nbsp;        String duration = String.valueOf(line.get(COLUMN_ANNOUNCEMENT_CONTRACT_DURATION));</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            contractDuration = Integer.valueOf(duration);</b>
+<b class="nc">&nbsp;        } catch (NumberFormatException e){</b>
+<b class="nc">&nbsp;            contractDuration = 0;</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        //Client client = clientRepository.findByName(String.valueOf(line.get(COLUMN_OWNER_NAME)));
+&nbsp;
+&nbsp;        //Announcement announcement = announcementRepository.createAnnouncement(date,announcementStatus, price, commission, typeOfBusiness, property, employee, )
+<b class="nc">&nbsp;        return announcementRepository.createAnnouncement(date, announcementStatus, price, commission,typeOfBusiness, property,employee, client, contractDuration);</b>
+&nbsp;
+&nbsp;        //return announcementRepository.createAnnouncement(date,announcementStatus,price,commission,typeOfBusiness,property,employee);
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    private static Location parseLocation(String location){
+<b class="nc">&nbsp;        String[] fields = location.split(&quot;,&quot;);</b>
+<b class="nc">&nbsp;        int numberOfFields = fields.length;</b>
+<b class="nc">&nbsp;        boolean hasDistrictField = (numberOfFields == 5);</b>
+&nbsp;
+&nbsp;        int doorNumber;
+&nbsp;        try {
+<b class="nc">&nbsp;            doorNumber = Integer.parseInt(fields[0].split(&quot; &quot;)[0]);</b>
+<b class="nc">&nbsp;        } catch (NumberFormatException e){</b>
+<b class="nc">&nbsp;            doorNumber = -1;</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        String street;
+&nbsp;        City city;
+<b class="nc">&nbsp;        int zipCode = 0;</b>
+&nbsp;
+<b class="nc">&nbsp;        if(doorNumber != -1){</b>
+<b class="nc">&nbsp;            street = fields[0].substring(fields[0].indexOf(&quot; &quot;)+1).trim();</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            street = fields[0].trim();</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        String cityName = fields[1].trim();</b>
+<b class="nc">&nbsp;        String districtName = null;</b>
+<b class="nc">&nbsp;        String stateName = null;</b>
+&nbsp;
+<b class="nc">&nbsp;        if(hasDistrictField)</b>
+<b class="nc">&nbsp;            districtName = fields[2].trim();</b>
+&nbsp;
+<b class="nc">&nbsp;        stateName = fields[fields.length-2].strip();</b>
+<b class="nc">&nbsp;        zipCode = Integer.valueOf(fields[fields.length-1].strip());</b>
+&nbsp;
+&nbsp;        //TODO: associate state with city
+&nbsp;        State state;
+<b class="nc">&nbsp;        state = stateRepository.findByName(stateName);</b>
+<b class="nc">&nbsp;        if(state == null){</b>
+<b class="nc">&nbsp;            state = stateRepository.createState(stateName, new ArrayList&lt;&gt;());</b>
+<b class="nc">&nbsp;            stateRepository.save(state);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        city = cityRepository.findByName(cityName);</b>
+<b class="nc">&nbsp;        if(city == null) {</b>
+<b class="nc">&nbsp;            city = cityRepository.createCity(cityName);</b>
+<b class="nc">&nbsp;            cityRepository.save(city);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        Location locationObj = new Location(doorNumber, street, city, zipCode);</b>
+&nbsp;
+<b class="nc">&nbsp;        return locationObj;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static LocalDate parseYyyyMmDdDate(String date){
+<b class="nc">&nbsp;        LocalDate result = null;</b>
+<b class="nc">&nbsp;        String[] splitDate = date.split(&quot;-&quot;);</b>
+&nbsp;        try{
+<b class="nc">&nbsp;            result = LocalDate.of(</b>
+<b class="nc">&nbsp;                    Integer.valueOf(splitDate[2]),</b>
+<b class="nc">&nbsp;                    Integer.valueOf(splitDate[1]),</b>
+<b class="nc">&nbsp;                    Integer.valueOf(splitDate[0])</b>
+&nbsp;            );
+<b class="nc">&nbsp;        } catch (Exception e){</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Couldn&#39;t parse number: &quot; + date + &quot;\n&quot;);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return result;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static int parseNumber (String number){
+<b class="nc">&nbsp;        int result = -1;</b>
+<b class="nc">&nbsp;        number = number.trim();</b>
+<b class="nc">&nbsp;        number = number.replaceAll(&quot;-&quot;, &quot;&quot;);</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            result = Integer.valueOf(number);</b>
+<b class="nc">&nbsp;        } catch (Exception e){</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Couldn&#39;t parse number: &quot; + number + &quot;\n&quot;);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return result;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private static String removeDashes(String string){
+<b class="nc">&nbsp;        return string.replaceAll(&quot;-&quot;,&quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

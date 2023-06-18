@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > RegisterEmployeeController</title>
+  <title>Coverage Report > LegacyImportController</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -21,7 +21,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
 </div>
 
-<h1>Coverage Summary for Class: RegisterEmployeeController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+<h1>Coverage Summary for Class: LegacyImportController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">RegisterEmployeeController</td>
+  <td class="name">LegacyImportController</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -54,7 +54,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/5)
+    (0/2)
   </span>
 </td>
 <td class="coverageStat">
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/21)
+    (0/14)
   </span>
 </td>
 </tr>
@@ -76,112 +76,59 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Agency;
 &nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Role;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.ClientRepository;
 &nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
+&nbsp;import pt.ipp.isep.dei.esoft.project.exceptions.InvalidFileTypeException;
+&nbsp;import pt.ipp.isep.dei.esoft.project.utils.CsvHandler;
+&nbsp;import pt.ipp.isep.dei.esoft.project.utils.FileOps;
 &nbsp;
 &nbsp;import java.io.File;
-&nbsp;import java.io.FileWriter;
-&nbsp;import java.io.IOException;
-&nbsp;import java.util.Arrays;
+&nbsp;import java.io.FileNotFoundException;
 &nbsp;import java.util.List;
 &nbsp;
-&nbsp;import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.generatePassword;
+<b class="nc">&nbsp;public class LegacyImportController {</b>
+&nbsp;    private static final String LEGACY_AGENT_NAME = &quot;Legacy Agent&quot;;
+&nbsp;    //private static final String LEGACY_AGENT_PASSPORT_NUMBER = &quot;000000000&quot;;
+&nbsp;    private static final int LEGACY_AGENT_PASSPORT_NUMBER = 100000000;
+&nbsp;    //private static final String LEGACY_AGENT_TAX_NUMBER = &quot;000000000&quot;;
+&nbsp;    private static final int LEGACY_AGENT_TAX_NUMBER = 100000000;
+&nbsp;    private static final String LEGACY_AGENT_EMAIL = &quot;legacy@realstateUSA.com&quot;;
+&nbsp;    private static final String LEGACY_AGENT_ADDRESS = &quot;Legacy Employee Address&quot;;
+&nbsp;    //private static final String LEGACY_AGENT_PHONE_NUMBER = &quot;0000000000&quot;;
+&nbsp;    private static final int LEGACY_AGENT_PHONE_NUMBER = 1000000000;
 &nbsp;
-&nbsp;/**
-&nbsp; * The type Register employee controller.
-&nbsp; */
-&nbsp;public class RegisterEmployeeController {
-&nbsp;
-&nbsp;    private RegisterEmployeeRepository employeeRepository;
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Instantiates a new Register employee controller.
-&nbsp;     *
-&nbsp;     * @param employeeRepository the employee repository
-&nbsp;     */
-<b class="nc">&nbsp;    public RegisterEmployeeController(RegisterEmployeeRepository employeeRepository) {</b>
-<b class="nc">&nbsp;        this.employeeRepository = employeeRepository;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Gets roles as list.
-&nbsp;     *
-&nbsp;     * @return the roles as list
-&nbsp;     */
-&nbsp;    public List&lt;Role&gt; getRolesAsList() {
-<b class="nc">&nbsp;        return Arrays.stream(Role.values()).toList();</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Gets agency.
-&nbsp;     *
-&nbsp;     * @return the agency
-&nbsp;     */
-&nbsp;    public List&lt;Agency&gt; getAgency() {
-<b class="nc">&nbsp;        return Arrays.stream(Agency.values()).toList();</b>
-&nbsp;    }
+<b class="nc">&nbsp;    AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();</b>
+<b class="nc">&nbsp;    EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();</b>
+<b class="nc">&nbsp;    ClientRepository clientRepository = Repositories.getInstance().getClientRepository();</b>
 &nbsp;
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Create employee string.
-&nbsp;     *
-&nbsp;     * @param employeeName    the employee name
-&nbsp;     * @param passportNumber  the passport number
-&nbsp;     * @param taxNumber       the tax number
-&nbsp;     * @param address         the address
-&nbsp;     * @param eMail           the e mail
-&nbsp;     * @param telephoneNumber the telephone number
-&nbsp;     * @param posRole         the pos role
-&nbsp;     * @param posAgency       the pos agency
-&nbsp;     * @return the string
-&nbsp;     */
-&nbsp;    public String createEmployee(String employeeName, int passportNumber, int taxNumber, String address, String eMail,
-&nbsp;                                 int telephoneNumber, Integer posRole, Integer posAgency) {
+&nbsp;    public int importFile(String filePath) throws InvalidFileTypeException, FileNotFoundException {
+<b class="nc">&nbsp;        int failedImports = 0;</b>
+<b class="nc">&nbsp;        File csvFile = null;</b>
+<b class="nc">&nbsp;        csvFile = FileOps.readFile(filePath);</b>
+<b class="nc">&nbsp;        List&lt;?&gt; csv = CsvHandler.getDataFromCsvFile(csvFile);</b>
 &nbsp;
-<b class="nc">&nbsp;        Employee newEmployee = new Employee(employeeName, passportNumber, taxNumber, address, eMail, telephoneNumber,</b>
-<b class="nc">&nbsp;                Role.getRoleById(posRole), Agency.getAgencyById(posAgency));</b>
-&nbsp;
-&nbsp;        try {
-&nbsp;
-<b class="nc">&nbsp;            this.employeeRepository.saveEmployee(newEmployee);</b>
-<b class="nc">&nbsp;            System.out.println();</b>
-<b class="nc">&nbsp;            return newEmployee.toString();</b>
-&nbsp;
-<b class="nc">&nbsp;        } catch (Exception e) {</b>
-&nbsp;
-<b class="nc">&nbsp;            throw new IllegalStateException(e.getMessage().toString());</b>
+<b class="nc">&nbsp;        Employee legacyEmployee = employeeRepository.getEmployee(&quot;Legacy Agent&quot;);</b>
+<b class="nc">&nbsp;        if (legacyEmployee == null){</b>
+<b class="nc">&nbsp;            legacyEmployee = employeeRepository.createEmployee(</b>
+&nbsp;                    LEGACY_AGENT_NAME,
+&nbsp;                    LEGACY_AGENT_PASSPORT_NUMBER,
+&nbsp;                    LEGACY_AGENT_TAX_NUMBER,
+&nbsp;                    LEGACY_AGENT_ADDRESS,
+&nbsp;                    LEGACY_AGENT_EMAIL,
+<b class="nc">&nbsp;                    String.valueOf(LEGACY_AGENT_PHONE_NUMBER),</b>
+&nbsp;                    null,
+&nbsp;                    null
+&nbsp;            );
+<b class="nc">&nbsp;            employeeRepository.saveEmployee(legacyEmployee);</b>
 &nbsp;        }
 &nbsp;
+<b class="nc">&nbsp;        return CsvHandler.parseCSV(csv);</b>
+&nbsp;
 &nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Send email.
-&nbsp;     *
-&nbsp;     * @param emplyeeName the emplyee name
-&nbsp;     * @param eMail       the e mail
-&nbsp;     */
-&nbsp;    public void sendEmail(String emplyeeName, String eMail) {
-&nbsp;
-<b class="nc">&nbsp;        String password = generatePassword();</b>
-<b class="nc">&nbsp;        String conteudo = &quot;Email: &quot; + eMail + &quot; | Senha: &quot; + password;</b>
-&nbsp;
-&nbsp;        try {
-&nbsp;
-<b class="nc">&nbsp;            FileWriter file = new FileWriter(new File(&quot;APP_FILES/email.txt&quot;));</b>
-<b class="nc">&nbsp;            file.write(conteudo + &quot;\n&quot;);</b>
-<b class="nc">&nbsp;            file.close();</b>
-<b class="nc">&nbsp;            System.out.println(&quot;File with employee credentials generated with success&quot;);</b>
-&nbsp;
-<b class="nc">&nbsp;        } catch (IOException e) {</b>
-&nbsp;
-<b class="nc">&nbsp;            System.out.println(&quot;Error creating file&quot;);</b>
-<b class="nc">&nbsp;            e.printStackTrace();</b>
-<b class="nc">&nbsp;        }</b>
-&nbsp;    }
-&nbsp;
-&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -206,7 +153,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

@@ -139,7 +139,3 @@ Psrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/UserSession.jav
 [src/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AuthenticationRepository.java,1\7\1720d6ff593ca0ef6086cab4c10507516a643e8d
 ž
 nsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/authorization/AuthenticationController.java,9\2\924cc26509fe56f70bcb36cee23fcc0cfec42aff
-t
-Dsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/ListDealsGUI.java,e\8\e8b6ad3a182d3efbbf3b5667a413cda3a823e4e2
-‹
-[src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ListDealsController.java,a\e\aebf1b2fe612e1666c5dbe5c0d8e44a56da905cd

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > OwnerUI</title>
+  <title>Coverage Report > DevTeamUI</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console.menu</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
 </div>
 
-<h1>Coverage Summary for Class: OwnerUI (pt.ipp.isep.dei.esoft.project.ui.console.menu)</h1>
+<h1>Coverage Summary for Class: DevTeamUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">OwnerUI</td>
+  <td class="name">DevTeamUI</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/8)
+    (0/11)
   </span>
 </td>
 </tr>
@@ -74,45 +74,31 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console.menu;
-&nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.RegisterEmployeeController;
-&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.RegisterPropertyController;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.RegisterEmployeeUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.RegisterPropertyUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.SpecifyStatesDistrictsCitiesUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
-&nbsp;
-&nbsp;import java.util.ArrayList;
-&nbsp;import java.util.List;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Owner ui.
+&nbsp; * The type Dev team ui.
 &nbsp; */
-&nbsp;public class OwnerUI  implements Runnable{
+&nbsp;public class DevTeamUI implements Runnable {
+&nbsp;
 &nbsp;    /**
-&nbsp;     * Instantiates a new Owner ui.
+&nbsp;     * Instantiates a new Dev team ui.
 &nbsp;     */
-<b class="nc">&nbsp;    public OwnerUI() {</b>
+<b class="nc">&nbsp;    public DevTeamUI() {</b>
 &nbsp;
 &nbsp;    }
 &nbsp;
 &nbsp;    public void run() {
-&nbsp;
-<b class="nc">&nbsp;        List&lt;MenuItem&gt; options = new ArrayList&lt;MenuItem&gt;();</b>
-&nbsp;
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Listing a Property&quot;, new RegisterPropertyUI(new RegisterPropertyController(new AnnouncementRepository()))));</b>
-&nbsp;
-<b class="nc">&nbsp;        int option = 0;</b>
-&nbsp;        do {
-<b class="nc">&nbsp;            option = Utils.showAndSelectIndex(options, &quot;\n\nAdmin Menu:&quot;);</b>
-&nbsp;
-<b class="nc">&nbsp;            if ((option &gt;= 0) &amp;&amp; (option &lt; options.size())) {</b>
-<b class="nc">&nbsp;                options.get(option).run();</b>
-&nbsp;            }
-<b class="nc">&nbsp;        } while (option != -1);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        System.out.print(&quot;Development Team:\n&quot;);</b>
+<b class="nc">&nbsp;        System.out.print(&quot;\t Hugo Nogueira - 1170504@isep.ipp.pt \n&quot;);</b>
+<b class="nc">&nbsp;        System.out.print(&quot;\t Tiago Correia - 1211742@isep.ipp.pt \n&quot;);</b>
+<b class="nc">&nbsp;        System.out.print(&quot;\t Diogo Queiroz - 1210789@isep.ipp.pt \n&quot;);</b>
+<b class="nc">&nbsp;        System.out.print(&quot;\t Rafael Rocha - 1201260@isep.ipp.pt \n&quot;);</b>
+<b class="nc">&nbsp;        System.out.print(&quot;\t Vitor Fardilha - 1211273@isep.ipp.pt \n&quot;);</b>
+<b class="nc">&nbsp;        System.out.print(&quot;\t Nilsa Gil - 1221792@isep.ipp.pt \n&quot;);</b>
+<b class="nc">&nbsp;        System.out.print(&quot;\t Tiago Sousa - 1191583@isep.ipp.pt \n&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;\n&quot;);</b>
 &nbsp;    }
 &nbsp;}
 </code>
@@ -138,7 +124,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > ChooseRoleUI</title>
+  <title>Coverage Report > AuthenticationRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: ChooseRoleUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
+<h1>Coverage Summary for Class: AuthenticationRepository (pt.ipp.isep.dei.esoft.project.repository)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,29 +40,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">ChooseRoleUI</td>
+  <td class="name">AuthenticationRepository</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/1)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    83,3%
   </span>
   <span class="absValue">
-    (0/2)
+    (5/6)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    85,7%
   </span>
   <span class="absValue">
-    (0/16)
+    (6/7)
   </span>
 </td>
 </tr>
@@ -74,50 +74,69 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.repository;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.AdminUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.OwnerUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.UnregisteredUserUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+&nbsp;
+&nbsp;import pt.isep.lei.esoft.auth.AuthFacade;
+&nbsp;import pt.isep.lei.esoft.auth.UserSession;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Choose role ui.
+&nbsp; * The type Authentication repository.
 &nbsp; */
-<b class="nc">&nbsp;public class ChooseRoleUI implements Runnable {</b>
+<b class="fc">&nbsp;public class AuthenticationRepository {</b>
+<b class="fc">&nbsp;    private final AuthFacade authenticationFacade = new AuthFacade();</b>
 &nbsp;
-&nbsp;    @Override
-&nbsp;    public void run() {
-&nbsp;
-<b class="nc">&nbsp;        System.out.println(&quot;1.Administrator&quot;);</b>
-<b class="nc">&nbsp;        System.out.println(&quot;2.Owner&quot;);</b>
-<b class="nc">&nbsp;        System.out.println(&quot;3.Agent&quot;);</b>
-<b class="nc">&nbsp;        System.out.println(&quot;4.Unregistered User&quot;);</b>
-&nbsp;
-&nbsp;
-<b class="nc">&nbsp;        int option = Utils.readIntegerFromConsole(&quot;Choose your role&quot;);</b>
-&nbsp;
-<b class="nc">&nbsp;        switch (option) {</b>
-&nbsp;
-&nbsp;            case 1:
-<b class="nc">&nbsp;                AdminUI adminUI = new AdminUI();</b>
-<b class="nc">&nbsp;                adminUI.run();</b>
-<b class="nc">&nbsp;                break;</b>
-&nbsp;            case 2:
-&nbsp;                //TO DO - Create a UI for the owner
-<b class="nc">&nbsp;                OwnerUI ownerUI = new OwnerUI();</b>
-<b class="nc">&nbsp;                ownerUI.run();</b>
-<b class="nc">&nbsp;                break;</b>
-&nbsp;            case 3:
-&nbsp;                //TO DO - Create a UI for the agent
-&nbsp;
-<b class="nc">&nbsp;                break;</b>
-&nbsp;            case 4:
-<b class="nc">&nbsp;                UnregisteredUserUI unregisteredUserUI = new UnregisteredUserUI();</b>
-<b class="nc">&nbsp;                unregisteredUserUI.run();</b>
-&nbsp;                break;
-&nbsp;        }
+&nbsp;    /**
+&nbsp;     * Do login boolean.
+&nbsp;     *
+&nbsp;     * @param email the email
+&nbsp;     * @param pwd   the pwd
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean doLogin(String email, String pwd) {
+<b class="fc">&nbsp;        return authenticationFacade.doLogin(email, pwd).isLoggedIn();</b>
 &nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Do logout.
+&nbsp;     */
+&nbsp;    public void doLogout() {
+<b class="nc">&nbsp;        authenticationFacade.doLogout();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets current user session.
+&nbsp;     *
+&nbsp;     * @return the current user session
+&nbsp;     */
+&nbsp;    public UserSession getCurrentUserSession() {
+<b class="fc">&nbsp;        return authenticationFacade.getCurrentUserSession();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add user role boolean.
+&nbsp;     *
+&nbsp;     * @param id          the id
+&nbsp;     * @param description the description
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean addUserRole(String id, String description) {
+<b class="fc">&nbsp;        return authenticationFacade.addUserRole(id, description);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add user with role boolean.
+&nbsp;     *
+&nbsp;     * @param name   the name
+&nbsp;     * @param email  the email
+&nbsp;     * @param pwd    the pwd
+&nbsp;     * @param roleId the role id
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean addUserWithRole(String name, String email, String pwd, String roleId) {
+<b class="fc">&nbsp;        return authenticationFacade.addUserWithRole(name, email, pwd, roleId);</b>
+&nbsp;    }
+&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -142,7 +161,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > Repositories</title>
+  <title>Coverage Report > AnnouncementPriceComparator</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.repository</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.shared</a>
 </div>
 
-<h1>Coverage Summary for Class: Repositories (pt.ipp.isep.dei.esoft.project.repository)</h1>
+<h1>Coverage Summary for Class: AnnouncementPriceComparator (pt.ipp.isep.dei.esoft.project.domain.shared)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,29 +40,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">Repositories</td>
+  <td class="name">AnnouncementPriceComparator</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/1)
+    (0/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (6/6)
+    (0/2)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (9/9)
+    (0/2)
   </span>
 </td>
 </tr>
@@ -74,67 +74,20 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.repository;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.shared;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+&nbsp;
+&nbsp;import java.util.Comparator;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Repositories.
+&nbsp; * The type Announcement price comparator.
 &nbsp; */
-&nbsp;public class Repositories {
-&nbsp;
-<b class="fc">&nbsp;    private static final Repositories instance = new Repositories();</b>
-&nbsp;    /**
-&nbsp;     * The Task category repository.
-&nbsp;     */
-<b class="fc">&nbsp;    TaskCategoryRepository taskCategoryRepository = new TaskCategoryRepository();</b>
-&nbsp;    /**
-&nbsp;     * The Organization repository.
-&nbsp;     */
-<b class="fc">&nbsp;    OrganizationRepository organizationRepository = new OrganizationRepository();</b>
-&nbsp;    /**
-&nbsp;     * The Authentication repository.
-&nbsp;     */
-<b class="fc">&nbsp;    AuthenticationRepository authenticationRepository = new AuthenticationRepository();</b>
-&nbsp;
-<b class="fc">&nbsp;    private Repositories() {</b>
+<b class="nc">&nbsp;public class AnnouncementPriceComparator implements Comparator&lt;Announcement&gt; {</b>
+&nbsp;    @Override
+&nbsp;    public int compare(Announcement o1, Announcement o2) {
+<b class="nc">&nbsp;        return Float.compare(o1.getPrice(), o2.getPrice());</b>
 &nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Gets instance.
-&nbsp;     *
-&nbsp;     * @return the instance
-&nbsp;     */
-&nbsp;    public static Repositories getInstance() {
-<b class="fc">&nbsp;        return instance;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Gets organization repository.
-&nbsp;     *
-&nbsp;     * @return the organization repository
-&nbsp;     */
-&nbsp;    public OrganizationRepository getOrganizationRepository() {
-<b class="fc">&nbsp;        return organizationRepository;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Gets task category repository.
-&nbsp;     *
-&nbsp;     * @return the task category repository
-&nbsp;     */
-&nbsp;    public TaskCategoryRepository getTaskCategoryRepository() {
-<b class="fc">&nbsp;        return taskCategoryRepository;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Gets authentication repository.
-&nbsp;     *
-&nbsp;     * @return the authentication repository
-&nbsp;     */
-&nbsp;    public AuthenticationRepository getAuthenticationRepository() {
-<b class="fc">&nbsp;        return authenticationRepository;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -159,7 +112,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

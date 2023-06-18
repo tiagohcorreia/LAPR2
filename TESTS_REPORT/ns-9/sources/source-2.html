@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > OrganizationRepository</title>
+  <title>Coverage Report > AnnouncementLocationComparator</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.repository</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.shared</a>
 </div>
 
-<h1>Coverage Summary for Class: OrganizationRepository (pt.ipp.isep.dei.esoft.project.repository)</h1>
+<h1>Coverage Summary for Class: AnnouncementLocationComparator (pt.ipp.isep.dei.esoft.project.domain.shared)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,29 +40,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">OrganizationRepository</td>
+  <td class="name">AnnouncementLocationComparator</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/1)
+    (0/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (5/5)
+    (0/2)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (24/24)
+    (0/2)
   </span>
 </td>
 </tr>
@@ -74,91 +74,21 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.repository;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.shared;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.Employee;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.Organization;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 &nbsp;
-&nbsp;import java.util.ArrayList;
-&nbsp;import java.util.List;
-&nbsp;import java.util.Optional;
+&nbsp;import java.util.Comparator;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Organization repository.
+&nbsp; * The type Announcement location comparator.
 &nbsp; */
-<b class="fc">&nbsp;public class OrganizationRepository {</b>
-&nbsp;
-&nbsp;    /**
-&nbsp;     * The Organizations.
-&nbsp;     */
-<b class="fc">&nbsp;    List&lt;Organization&gt; organizations = new ArrayList&lt;&gt;();</b>
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Gets organization by employee.
-&nbsp;     *
-&nbsp;     * @param employee the employee
-&nbsp;     * @return the organization by employee
-&nbsp;     */
-&nbsp;    public Optional&lt;Organization&gt; getOrganizationByEmployee(Employee employee) {
-&nbsp;
-<b class="fc">&nbsp;        Optional&lt;Organization&gt; returnOrganization = Optional.empty();</b>
-&nbsp;
-<b class="fc">&nbsp;        for (Organization organization : organizations) {</b>
-<b class="fc">&nbsp;            if (organization.employs(employee)) {</b>
-<b class="fc">&nbsp;                returnOrganization = Optional.of(organization);</b>
-&nbsp;            }
-<b class="fc">&nbsp;        }</b>
-&nbsp;
-<b class="fc">&nbsp;        return returnOrganization;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Gets organization by employee email.
-&nbsp;     *
-&nbsp;     * @param email the email
-&nbsp;     * @return the organization by employee email
-&nbsp;     */
-&nbsp;    public Optional&lt;Organization&gt; getOrganizationByEmployeeEmail(String email) {
-&nbsp;
-<b class="fc">&nbsp;        Optional&lt;Organization&gt; returnOrganization = Optional.empty();</b>
-&nbsp;
-<b class="fc">&nbsp;        for (Organization organization : organizations) {</b>
-<b class="fc">&nbsp;            if (organization.anyEmployeeHasEmail(email)) {</b>
-<b class="fc">&nbsp;                returnOrganization = Optional.of(organization);</b>
-&nbsp;            }
-<b class="fc">&nbsp;        }</b>
-&nbsp;
-<b class="fc">&nbsp;        return returnOrganization;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Add optional.
-&nbsp;     *
-&nbsp;     * @param organization the organization
-&nbsp;     * @return the optional
-&nbsp;     */
-&nbsp;    public Optional&lt;Organization&gt; add(Organization organization) {
-&nbsp;
-<b class="fc">&nbsp;        Optional&lt;Organization&gt; newOrganization = Optional.empty();</b>
-<b class="fc">&nbsp;        boolean operationSuccess = false;</b>
-&nbsp;
-<b class="fc">&nbsp;        if (validateOrganization(organization)) {</b>
-<b class="fc">&nbsp;            newOrganization = Optional.of(organization.clone());</b>
-<b class="fc">&nbsp;            operationSuccess = organizations.add(newOrganization.get());</b>
-&nbsp;        }
-&nbsp;
-<b class="fc">&nbsp;        if (!operationSuccess) {</b>
-<b class="fc">&nbsp;            newOrganization = Optional.empty();</b>
-&nbsp;        }
-&nbsp;
-<b class="fc">&nbsp;        return newOrganization;</b>
-&nbsp;
-&nbsp;    }
-&nbsp;
-&nbsp;    private boolean validateOrganization(Organization organization) {
-<b class="fc">&nbsp;        boolean isValid = !organizations.contains(organization);</b>
-&nbsp;
-<b class="fc">&nbsp;        return isValid;</b>
+<b class="nc">&nbsp;public class AnnouncementLocationComparator implements Comparator&lt;Announcement&gt; {</b>
+&nbsp;    @Override
+&nbsp;    public int compare(Announcement o1, Announcement o2) {
+&nbsp;        //return CharSequence.compare(o1.getProperty().getLocation().getStreet(), o2.getProperty().getLocation().getStreet());
+&nbsp;        //return CharSequence.compare(o1.getProperty().getLocation().getCity().getName(), o2.getProperty().getLocation().getCity().getName());
+<b class="nc">&nbsp;        return CharSequence.compare(o1.getProperty().getLocation().getStreet(), o2.getProperty().getLocation().getStreet());</b>
 &nbsp;    }
 &nbsp;}
 </code>
@@ -184,7 +114,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

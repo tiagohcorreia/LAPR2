@@ -1,0 +1,237 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > TypeOfProperty</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.shared</a>
+</div>
+
+<h1>Coverage Summary for Class: TypeOfProperty (pt.ipp.isep.dei.esoft.project.domain.shared)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TypeOfProperty</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">TypeOfProperty$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">TypeOfProperty$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">TypeOfProperty$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/18)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.shared;
+&nbsp;
+&nbsp;/**
+&nbsp; * The enum Type of property.
+&nbsp; */
+<b class="nc">&nbsp;public enum TypeOfProperty {</b>
+&nbsp;    /**
+&nbsp;     * The House.
+&nbsp;     */
+<b class="nc">&nbsp;    HOUSE(1){</b>
+&nbsp;        @Override
+&nbsp;        public String toString() {
+<b class="nc">&nbsp;            return String.format(&quot;House&quot;);</b>
+&nbsp;        }
+&nbsp;    },
+&nbsp;    /**
+&nbsp;     * The Apartment.
+&nbsp;     */
+<b class="nc">&nbsp;    APARTMENT(2){</b>
+&nbsp;        @Override
+&nbsp;        public String toString() {
+<b class="nc">&nbsp;            return String.format(&quot;Apartment&quot;);</b>
+&nbsp;        }
+&nbsp;    },
+&nbsp;    /**
+&nbsp;     * The Land.
+&nbsp;     */
+<b class="nc">&nbsp;    LAND(3){</b>
+&nbsp;        @Override
+&nbsp;        public String toString() {
+<b class="nc">&nbsp;            return String.format(&quot;Land&quot;);</b>
+&nbsp;        }
+&nbsp;    };
+&nbsp;
+&nbsp;    private final int valor;
+&nbsp;
+<b class="nc">&nbsp;    TypeOfProperty(int valor) {</b>
+<b class="nc">&nbsp;        this.valor = valor;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets type of property id.
+&nbsp;     *
+&nbsp;     * @return the type of property id
+&nbsp;     */
+&nbsp;    public int getTypeOfPropertyID() {
+<b class="nc">&nbsp;        return this.valor;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets type of property by id.
+&nbsp;     *
+&nbsp;     * @param id the id
+&nbsp;     * @return the type of property by id
+&nbsp;     */
+&nbsp;    public static TypeOfProperty getTypeOfPropertyById(int id) {
+&nbsp;
+<b class="nc">&nbsp;        TypeOfProperty[] array = TypeOfProperty.values();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (int i = 0; i &lt; array.length; i++) {</b>
+&nbsp;
+<b class="nc">&nbsp;            if (id == array[i].getTypeOfPropertyID()) {</b>
+&nbsp;
+<b class="nc">&nbsp;                return array[i];</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

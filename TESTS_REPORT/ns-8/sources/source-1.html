@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > NameNullException</title>
+  <title>Coverage Report > AnnouncementRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,18 +18,15 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.exceptions</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: NameNullException (pt.ipp.isep.dei.esoft.project.exceptions)</h1>
+<h1>Coverage Summary for Class: AnnouncementRepository (pt.ipp.isep.dei.esoft.project.domain.repository)</h1>
 
 <table class="coverageStats">
+
 <tr>
   <th class="name">Class</th>
-<th class="coverageStat 
-">
-  Class, %
-</th>
 <th class="coverageStat 
 ">
   Method, %
@@ -40,33 +37,62 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">NameNullException</td>
+  <td class="name">AnnouncementRepository</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    23,8%
   </span>
   <span class="absValue">
-    (0/1)
+    (5/21)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    32,2%
   </span>
   <span class="absValue">
-    (0/1)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    0%
-  </span>
-  <span class="absValue">
-    (0/1)
+    (28/87)
   </span>
 </td>
 </tr>
-
+  <tr>
+    <td class="name">AnnouncementRepository$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    22,7%
+  </span>
+  <span class="absValue">
+    (5/22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    31,8%
+  </span>
+  <span class="absValue">
+    (28/88)
+  </span>
+</td>
+</tr>
 </table>
 
 <br/>
@@ -74,23 +100,284 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.exceptions;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.repository;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Property;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementDateComparator;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.SortingOrder;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
+&nbsp;
+&nbsp;import java.io.*;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Collections;
+&nbsp;import java.util.List;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Name null exception.
+&nbsp; * The type Announcement repository.
 &nbsp; */
-&nbsp;public class NameNullException extends Exception {
+<b class="fc">&nbsp;public class AnnouncementRepository {</b>
+&nbsp;    /**
+&nbsp;     * The Announcements.
+&nbsp;     */
+<b class="fc">&nbsp;    List&lt;Announcement&gt; announcements = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    List&lt;Announcement&gt; publishedAnnouncements = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;     List&lt;Announcement&gt; requestedAnnouncements = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    List&lt;Announcement&gt; soldAnnouncements = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    List&lt;Announcement&gt; rentedAnnouncements = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    List&lt;Announcement&gt; pendentAnnouncements = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    List&lt;Announcement&gt; rejectedAnnouncements = new ArrayList&lt;&gt;();</b>
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Instantiates a new Name null exception.
+&nbsp;     * Save boolean.
 &nbsp;     *
-&nbsp;     * @param message the message
+&nbsp;     * @param announcement the announcement
+&nbsp;     * @return the boolean
 &nbsp;     */
-&nbsp;    public NameNullException(String message) {
 &nbsp;
-<b class="nc">&nbsp;        super(message);</b>
+&nbsp;
+&nbsp;    public boolean save(Announcement announcement) {
+<b class="fc">&nbsp;        return announcements.add(announcement.getAnnouncement());</b>
 &nbsp;    }
+&nbsp;
+&nbsp;    public void saveAnnouncement(Announcement announcement) {
+<b class="nc">&nbsp;        AnnouncementStatus status = announcement.getStatus();</b>
+<b class="nc">&nbsp;        switch (status) {</b>
+&nbsp;            case PUBLISHED:
+<b class="nc">&nbsp;                publishedAnnouncements.add(announcement);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case REQUESTED:
+<b class="nc">&nbsp;                requestedAnnouncements.add(announcement);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case SOLD:
+<b class="nc">&nbsp;                soldAnnouncements.add(announcement);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case RENTED:
+<b class="nc">&nbsp;                rentedAnnouncements.add(announcement);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case PENDENT:
+<b class="nc">&nbsp;                pendentAnnouncements.add(announcement);</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case REJECTED:
+<b class="nc">&nbsp;                rejectedAnnouncements.add(announcement);</b>
+&nbsp;                break;
+&nbsp;        }
+<b class="nc">&nbsp;        announcements.add(announcement);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Announcement&gt; getPublishedAnnouncements() {
+<b class="nc">&nbsp;        return publishedAnnouncements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Announcement&gt; getRequestedAnnouncements() {
+<b class="nc">&nbsp;        return requestedAnnouncements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Announcement&gt; getSoldAnnouncements() {
+<b class="nc">&nbsp;        return soldAnnouncements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Announcement&gt; getRentedAnnouncements() {
+<b class="nc">&nbsp;        return rentedAnnouncements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Announcement&gt; getPendentAnnouncements() {
+<b class="nc">&nbsp;        return pendentAnnouncements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Announcement&gt; getRejectedAnnouncements() {
+<b class="nc">&nbsp;        return rejectedAnnouncements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Announcement&gt; getAllAnnouncements() {
+<b class="nc">&nbsp;        return announcements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;/**
+&nbsp; * Create announcement boolean.
+&nbsp; *
+&nbsp; * @param announcement the announcement
+&nbsp; * @return the boolean
+&nbsp; */
+&nbsp;    public boolean createAnnouncement (Announcement announcement) {
+&nbsp;
+<b class="nc">&nbsp;        if(validateAnnouncement(announcement)) {</b>
+&nbsp;
+<b class="nc">&nbsp;            return addAnnouncement(announcement);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Announcement createAnnouncement (LocalDate date, AnnouncementStatus announcementStatus, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee employee){
+&nbsp;        //return new Announcement(date, announcementStatus,price ,commission,typeOfBusiness,property,employee);
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Announcement createAnnouncement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent, Client owner, int numberOfMonthsRent) {
+<b class="nc">&nbsp;        return new Announcement(date, status, price, commission, typeOfBusiness, property, agent, owner, numberOfMonthsRent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Checks if the announcement to be saved is a duplicate.
+&nbsp;     *
+&nbsp;     * @param announcement the announcement to be saved
+&nbsp;     * @return true if successful, false otherwise
+&nbsp;     */
+&nbsp;    public boolean validateAnnouncement(Announcement announcement) {
+<b class="fc">&nbsp;        for(Announcement i : announcements) {</b>
+<b class="nc">&nbsp;            if(announcement.equals(i)) {</b>
+<b class="nc">&nbsp;                return false;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add announcement boolean.
+&nbsp;     *
+&nbsp;     * @param announcement the announcement
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean addAnnouncement(Announcement announcement) {
+&nbsp;
+<b class="fc">&nbsp;        if(announcement != null &amp;&amp; validateAnnouncement(announcement)) {</b>
+&nbsp;
+<b class="fc">&nbsp;            return announcements.add(announcement.getAnnouncement());</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets all visible announcements.
+&nbsp;     *
+&nbsp;     * @return the all visible announcements
+&nbsp;     */
+&nbsp;   /* public List&lt;Announcement&gt; getAllVisibleAnnouncements() {
+&nbsp;        List&lt;Announcement&gt; allVisibleAnnouncements = new ArrayList&lt;&gt;();
+&nbsp;        for(Announcement announcement : announcements){
+&nbsp;            if (announcement.isVisible()){
+&nbsp;                allVisibleAnnouncements.add(announcement.getAnnouncement());
+&nbsp;            }
+&nbsp;        }
+&nbsp;        return allVisibleAnnouncements;
+&nbsp;    }
+&nbsp;
+&nbsp;    */
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Get available fields list.
+&nbsp;     *
+&nbsp;     * @return the list
+&nbsp;     */
+&nbsp;    public List&lt;List&lt;Object&gt;&gt; getAvailableFields(){
+<b class="fc">&nbsp;        List&lt;List&lt;Object&gt;&gt; availableFields = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        availableFields.add(new ArrayList&lt;&gt;());</b>
+<b class="fc">&nbsp;        availableFields.add(new ArrayList&lt;&gt;());</b>
+<b class="fc">&nbsp;        availableFields.add(new ArrayList&lt;&gt;());</b>
+&nbsp;
+&nbsp;        //TO-FIX
+<b class="fc">&nbsp;        for(Announcement announcement : announcements){</b>
+<b class="fc">&nbsp;            if ( announcement != null &amp;&amp; announcement.getStatus() == AnnouncementStatus.PUBLISHED){</b>
+<b class="fc">&nbsp;                if (!availableFields.get(0).contains(announcement.getTypeOfBusiness())){</b>
+<b class="fc">&nbsp;                    availableFields.get(0).add(announcement.getTypeOfBusiness());</b>
+&nbsp;                }
+<b class="fc">&nbsp;                if (!availableFields.get(1).contains(announcement.getProperty().getClass().getSimpleName().toUpperCase())){</b>
+<b class="fc">&nbsp;                    availableFields.get(1).add(announcement.getProperty().getClass().getSimpleName().toUpperCase());</b>
+&nbsp;                }
+<b class="fc">&nbsp;                if (!announcement.getProperty().getClass().getSimpleName().equals(&quot;Land&quot;) &amp;&amp; !availableFields.get(2).contains(announcement.getProperty().getNumberOfBedrooms())){</b>
+<b class="fc">&nbsp;                    availableFields.get(2).add(announcement.getProperty().getNumberOfBedrooms());</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return availableFields;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Get announcements list.
+&nbsp;     *
+&nbsp;     * @param typeOfBusiness   the type of business
+&nbsp;     * @param typeOfProperty   the type of property
+&nbsp;     * @param numberOfBedrooms the number of bedrooms
+&nbsp;     * @return the list
+&nbsp;     */
+&nbsp;    public List&lt;Announcement&gt; getAnnouncements(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
+<b class="nc">&nbsp;        List&lt;Announcement&gt; matchingAnnouncements = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        for(Announcement announcement : announcements){</b>
+<b class="nc">&nbsp;            Announcement gotAnnouncement = announcement.getAnnouncement(typeOfBusiness, typeOfProperty, numberOfBedrooms);</b>
+<b class="nc">&nbsp;            if(gotAnnouncement != null){</b>
+<b class="nc">&nbsp;                matchingAnnouncements.add(gotAnnouncement);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return matchingAnnouncements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Announcement&gt; getRequestsByAgentName(String agentName) {
+<b class="nc">&nbsp;        List&lt;Announcement&gt; agentRequests = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Announcement announcement : announcements) {</b>
+<b class="nc">&nbsp;            if (announcement.getStatus() == AnnouncementStatus.REQUESTED &amp;&amp; announcement.getAgent().equals(agentName)) {</b>
+<b class="nc">&nbsp;                agentRequests.add(announcement);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        return agentRequests;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Announcement&gt; readObject() {
+&nbsp;
+&nbsp;        try {
+&nbsp;
+<b class="nc">&nbsp;            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;ser/announcements.ser&quot;));</b>
+<b class="nc">&nbsp;            announcements = (List&lt;Announcement&gt;) ois.readObject();</b>
+<b class="nc">&nbsp;            ois.close();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (IOException | ClassNotFoundException e) {</b>
+&nbsp;
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return announcements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Write object.
+&nbsp;     */
+&nbsp;    public void writeObject() {
+&nbsp;
+&nbsp;        try {
+&nbsp;
+<b class="nc">&nbsp;            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;ser/announcements.ser&quot;));</b>
+<b class="nc">&nbsp;            oos.writeObject(announcements);</b>
+<b class="nc">&nbsp;            oos.close();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (IOException ioe) {</b>
+&nbsp;
+<b class="nc">&nbsp;            ioe.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static void sortAnnouncements(List&lt;Announcement&gt; announcements, String property, SortingOrder sortingOrder){
+<b class="nc">&nbsp;        switch (property){</b>
+&nbsp;            case &quot;date&quot;:
+<b class="nc">&nbsp;                announcements.sort(new AnnouncementDateComparator());</b>
+<b class="nc">&nbsp;                if (sortingOrder.equals(SortingOrder.DESCENDING))</b>
+<b class="nc">&nbsp;                    Collections.reverse(announcements);</b>
+&nbsp;                break;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
 &nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 </code>
 </pre>
 </div>
@@ -114,7 +401,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

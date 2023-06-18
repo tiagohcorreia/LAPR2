@@ -43,26 +43,26 @@ Current scope:     <a href="../../index.html">all classes</a>
   <td class="name">AuthenticationController</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/1)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    14,3%
   </span>
   <span class="absValue">
-    (0/5)
+    (1/7)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    11,1%
   </span>
   <span class="absValue">
-    (0/11)
+    (2/18)
   </span>
 </td>
 </tr>
@@ -76,13 +76,12 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller.authorization;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.application.session.ApplicationSession;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
 &nbsp;import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 &nbsp;import pt.ipp.isep.dei.esoft.project.repository.Repositories;
-&nbsp;import pt.isep.lei.esoft.auth.UserSession;
 &nbsp;import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
+&nbsp;import pt.isep.lei.esoft.auth.AuthFacade;
+&nbsp;
 &nbsp;
 &nbsp;import java.util.List;
 &nbsp;
@@ -103,6 +102,11 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;     * The constant ROLE_OWNER.
 &nbsp;     */
 &nbsp;    public static final String ROLE_OWNER = &quot;OWNER&quot;;
+&nbsp;    public static final String ROLE_NETWORK_MANAGER = &quot;NETWORK_MANAGER&quot;;
+&nbsp;    public static final String ROLE_UNREGISTERED = &quot;UNREGISTERED_USER&quot;;
+&nbsp;    public static final String ROLE_STORE_MANAGER = &quot;STORE_MANAGER&quot;;
+&nbsp;    public static final String ROLE_CLIENT = &quot;CLIENT&quot;;
+&nbsp;    public static final String ROLE_AGENT = &quot;AGENT&quot;;
 &nbsp;
 &nbsp;    //private final ApplicationSession applicationSession;
 &nbsp;    private final AuthenticationRepository authenticationRepository;
@@ -110,8 +114,8 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    /**
 &nbsp;     * Instantiates a new Authentication controller.
 &nbsp;     */
-<b class="nc">&nbsp;    public AuthenticationController() {</b>
-<b class="nc">&nbsp;        this.authenticationRepository = Repositories.getInstance().getAuthenticationRepository();</b>
+<b class="fc">&nbsp;    public AuthenticationController() {</b>
+<b class="fc">&nbsp;        this.authenticationRepository = Repositories.getInstance().getAuthenticationRepository();</b>
 &nbsp;    }
 &nbsp;
 &nbsp;    /**
@@ -158,11 +162,20 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="nc">&nbsp;        pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();</b>
 <b class="nc">&nbsp;        return new pt.ipp.isep.dei.esoft.project.application.session.UserSession(userSession);</b>
 &nbsp;    }
+&nbsp;    public String getAgentName() {
+<b class="nc">&nbsp;       pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();</b>
+<b class="nc">&nbsp;        if (userSession != null) {</b>
+<b class="nc">&nbsp;            userSession.getUserName();</b>
+<b class="nc">&nbsp;            return userSession.getUserName();</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
 &nbsp;
-&nbsp;   //* public String getCurrentUserName() {
-&nbsp;      //  UserSession userSession = this.authenticationRepository.getCurrentUserSession();
-&nbsp;       // return userSession.getUserName();
-&nbsp;   //}
+&nbsp;   public String getCurrentUserSession() {
+<b class="nc">&nbsp;       pt.isep.lei.esoft.auth.UserSession userSession = this.authenticationRepository.getCurrentUserSession();</b>
+<b class="nc">&nbsp;        return userSession.getUserName();</b>
+&nbsp;   }
 &nbsp;
 &nbsp;}
 </code>
@@ -188,7 +201,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

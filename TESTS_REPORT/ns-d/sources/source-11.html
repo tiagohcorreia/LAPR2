@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ScheduleVisitUI</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
+</div>
+
+<h1>Coverage Summary for Class: ScheduleVisitUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ScheduleVisitUI</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/45)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.AnnouncementRequestsController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.ScheduleVisitController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementRequestDTO;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.LocalTime;
+&nbsp;import java.time.format.DateTimeParseException;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public class ScheduleVisitUI implements Runnable {
+&nbsp;
+&nbsp;    private final ScheduleVisitController controller;
+<b class="nc">&nbsp;    public ScheduleVisitUI() {</b>
+<b class="nc">&nbsp;        this.controller = new ScheduleVisitController();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void run() {
+<b class="nc">&nbsp;        boolean success = true;</b>
+<b class="nc">&nbsp;        while (success == true) {</b>
+&nbsp;
+&nbsp;            //List of anouncements
+<b class="nc">&nbsp;            List&lt;AnnouncementDTO&gt; x = this.controller.getAnnouncementsList();</b>
+<b class="nc">&nbsp;            Utils.showList(x, &quot;Anouncements&quot;);</b>
+<b class="nc">&nbsp;            Integer posAnouncement = Utils.readIntegerFromConsole(&quot;Select the anouncement with the desire property&quot;)-1;</b>
+<b class="nc">&nbsp;            AnnouncementDTO announcement = controller.getAnnouncementByPos(posAnouncement);</b>
+&nbsp;
+&nbsp;            //Day
+<b class="nc">&nbsp;            String stringDay = Utils.readLineFromConsole(&quot;Insert the day you want to schedule: (yyyy-mm-dd)&quot;);</b>
+<b class="nc">&nbsp;            LocalDate day = LocalDate.parse(stringDay);</b>
+&nbsp;
+&nbsp;
+&nbsp;            //Begin Hour
+<b class="nc">&nbsp;            System.out.println(&quot;Insert the time you want to start the visit&quot;);</b>
+<b class="nc">&nbsp;            int beginHour = Utils.readIntegerFromConsole(&quot;Hour :&quot;);</b>
+<b class="nc">&nbsp;            int begunMin = Utils.readIntegerFromConsole(&quot;Minute:&quot;);</b>
+<b class="nc">&nbsp;            int beginSec = Utils.readIntegerFromConsole(&quot;Second :&quot;);</b>
+<b class="nc">&nbsp;            LocalTime beginTime = LocalTime.of(beginHour, begunMin, beginSec);</b>
+&nbsp;
+&nbsp;            //End Hour
+<b class="nc">&nbsp;            System.out.println(&quot;Insert the time you want to end the visit&quot;);</b>
+<b class="nc">&nbsp;            int endHour = Utils.readIntegerFromConsole(&quot;Hour :&quot;);</b>
+<b class="nc">&nbsp;            int endMin = Utils.readIntegerFromConsole(&quot;Minute :&quot;);</b>
+<b class="nc">&nbsp;            int endSec = Utils.readIntegerFromConsole(&quot;Second:&quot;);</b>
+<b class="nc">&nbsp;            LocalTime endTime = LocalTime.of(endHour, endMin, endSec);</b>
+&nbsp;
+&nbsp;            //Extra note
+<b class="nc">&nbsp;            String note = Utils.readLineFromConsole(&quot;Insert a note for the agent:&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            int optValidation = Utils.readIntegerFromConsole(&quot;1-CONFIRM\n0-CANCEL&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            if (optValidation == 1) {</b>
+&nbsp;
+&nbsp;                try {
+<b class="nc">&nbsp;                    if (controller.validateScheduleHour(announcement, day, beginTime, endTime) == true) {</b>
+<b class="nc">&nbsp;                        this.controller.createSchedule(announcement, day, beginTime, endTime, note);</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Announcement:\n&quot; + announcement);</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Day: &quot; + day);</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Begin Time: &quot; + beginTime);</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;End Hour: &quot; + endTime);</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Note: &quot; + note);</b>
+<b class="nc">&nbsp;                        System.out.println();</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Schedule message confirmed&quot;);</b>
+<b class="nc">&nbsp;                        success = false;</b>
+&nbsp;
+&nbsp;                    } else {
+<b class="nc">&nbsp;                        System.out.println(&quot;Please insert Schedule data again&quot;);</b>
+&nbsp;                    }
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;                } catch (IllegalArgumentException e) {</b>
+&nbsp;
+<b class="nc">&nbsp;                    System.err.println(e.getMessage());</b>
+&nbsp;
+<b class="nc">&nbsp;                } catch (NullPointerException e) {</b>
+&nbsp;
+<b class="nc">&nbsp;                    System.err.println(e.getMessage());</b>
+&nbsp;
+<b class="nc">&nbsp;                } catch (DateTimeParseException e) {</b>
+&nbsp;
+<b class="nc">&nbsp;                    e.getStackTrace();</b>
+&nbsp;
+<b class="nc">&nbsp;                } catch (Exception e) {</b>
+&nbsp;
+<b class="nc">&nbsp;                    System.out.println(e.getMessage());</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;
+&nbsp;            } else {
+&nbsp;
+<b class="nc">&nbsp;                System.err.println(&quot;Operation Canceled&quot;);</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

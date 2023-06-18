@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > TypeOfProperty</title>
+  <title>Coverage Report > Client</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,15 +18,18 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.shared</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.model</a>
 </div>
 
-<h1>Coverage Summary for Class: TypeOfProperty (pt.ipp.isep.dei.esoft.project.domain.shared)</h1>
+<h1>Coverage Summary for Class: Client (pt.ipp.isep.dei.esoft.project.domain.model)</h1>
 
 <table class="coverageStats">
-
 <tr>
   <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
 <th class="coverageStat 
 ">
   Method, %
@@ -37,100 +40,33 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">TypeOfProperty</td>
+  <td class="name">Client</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/5)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    5,3%
   </span>
   <span class="absValue">
-    (0/12)
-  </span>
-</td>
-</tr>
-  <tr>
-    <td class="name">TypeOfProperty$1</td>
-<td class="coverageStat">
-  <span class="percent">
-    0%
-  </span>
-  <span class="absValue">
-    (0/2)
+    (1/19)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    7,7%
   </span>
   <span class="absValue">
-    (0/2)
-  </span>
-</td>
-  </tr>
-  <tr>
-    <td class="name">TypeOfProperty$2</td>
-<td class="coverageStat">
-  <span class="percent">
-    0%
-  </span>
-  <span class="absValue">
-    (0/2)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    0%
-  </span>
-  <span class="absValue">
-    (0/2)
-  </span>
-</td>
-  </tr>
-  <tr>
-    <td class="name">TypeOfProperty$3</td>
-<td class="coverageStat">
-  <span class="percent">
-    0%
-  </span>
-  <span class="absValue">
-    (0/2)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    0%
-  </span>
-  <span class="absValue">
-    (0/2)
-  </span>
-</td>
-  </tr>
-<tr>
-  <td class="name"><strong>Total</strong></td>
-<td class="coverageStat">
-  <span class="percent">
-    0%
-  </span>
-  <span class="absValue">
-    (0/11)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    0%
-  </span>
-  <span class="absValue">
-    (0/18)
+    (6/78)
   </span>
 </td>
 </tr>
+
 </table>
 
 <br/>
@@ -138,75 +74,162 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.shared;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.model;
 &nbsp;
-&nbsp;/**
-&nbsp; * The enum Type of property.
-&nbsp; */
-<b class="nc">&nbsp;public enum TypeOfProperty {</b>
-&nbsp;    /**
-&nbsp;     * The House.
-&nbsp;     */
-<b class="nc">&nbsp;    HOUSE(1){</b>
-&nbsp;        @Override
-&nbsp;        public String toString() {
-<b class="nc">&nbsp;            return String.format(&quot;House&quot;);</b>
-&nbsp;        }
-&nbsp;    },
-&nbsp;    /**
-&nbsp;     * The Apartment.
-&nbsp;     */
-<b class="nc">&nbsp;    APARTMENT(2){</b>
-&nbsp;        @Override
-&nbsp;        public String toString() {
-<b class="nc">&nbsp;            return String.format(&quot;Apartment&quot;);</b>
-&nbsp;        }
-&nbsp;    },
-&nbsp;    /**
-&nbsp;     * The Land.
-&nbsp;     */
-<b class="nc">&nbsp;    LAND(3){</b>
-&nbsp;        @Override
-&nbsp;        public String toString() {
-<b class="nc">&nbsp;            return String.format(&quot;Land&quot;);</b>
-&nbsp;        }
-&nbsp;    };
+&nbsp;import javax.management.InvalidAttributeValueException;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.List;
+&nbsp;import static pt.ipp.isep.dei.esoft.project.domain.shared.PasswordGenerator.generatePassword;
 &nbsp;
-&nbsp;    private final int valor;
+&nbsp;public class Client implements Serializable {
+&nbsp;    private String name;
+&nbsp;    private String email;
+&nbsp;    private String password;
+&nbsp;    private int cCNumber;
+&nbsp;    private int taxNumber;
+&nbsp;    private String address;
+&nbsp;    protected Location location;
+&nbsp;    private long telephoneNumber;
 &nbsp;
-<b class="nc">&nbsp;    TypeOfProperty(int valor) {</b>
-<b class="nc">&nbsp;        this.valor = valor;</b>
+<b class="fc">&nbsp;    public Client(String name, String email, int cCNumber, int taxNumber, long telephoneNumber) {</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.email = email;</b>
+<b class="fc">&nbsp;        this.cCNumber = cCNumber;</b>
+<b class="fc">&nbsp;        this.taxNumber = taxNumber;</b>
+<b class="fc">&nbsp;        this.telephoneNumber = telephoneNumber;</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Gets type of property id.
-&nbsp;     *
-&nbsp;     * @return the type of property id
-&nbsp;     */
-&nbsp;    public int getTypeOfPropertyID() {
-<b class="nc">&nbsp;        return this.valor;</b>
+<b class="nc">&nbsp;    public Client(String name, String email, int cCNumber, int taxNumber, String address, Location location, long telephoneNumber) {</b>
+<b class="nc">&nbsp;        this.name = name;</b>
+<b class="nc">&nbsp;        this.email = email;</b>
+<b class="nc">&nbsp;        this.cCNumber = cCNumber;</b>
+<b class="nc">&nbsp;        this.taxNumber = taxNumber;</b>
+<b class="nc">&nbsp;        this.address = address;</b>
+<b class="nc">&nbsp;        this.location = location;</b>
+<b class="nc">&nbsp;        this.telephoneNumber = telephoneNumber;</b>
+<b class="nc">&nbsp;        this.password = generatePassword();</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Gets type of property by id.
-&nbsp;     *
-&nbsp;     * @param id the id
-&nbsp;     * @return the type of property by id
-&nbsp;     */
-&nbsp;    public static TypeOfProperty getTypeOfPropertyById(int id) {
 &nbsp;
-<b class="nc">&nbsp;        TypeOfProperty[] array = TypeOfProperty.values();</b>
-&nbsp;
-<b class="nc">&nbsp;        for (int i = 0; i &lt; array.length; i++) {</b>
-&nbsp;
-<b class="nc">&nbsp;            if (id == array[i].getTypeOfPropertyID()) {</b>
-&nbsp;
-<b class="nc">&nbsp;                return array[i];</b>
-&nbsp;            }
-&nbsp;        }
-<b class="nc">&nbsp;        return null;</b>
+&nbsp;    public String getName() {
+<b class="nc">&nbsp;        return name;</b>
 &nbsp;    }
 &nbsp;
+&nbsp;    public String getEmail() {
+<b class="nc">&nbsp;        return email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getPassword() {
+<b class="nc">&nbsp;        return password;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public long getTelephoneNumber() {
+<b class="nc">&nbsp;        return telephoneNumber;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Client(String name, String email, String password, int cCNumber, int taxNumber, String address, long telephoneNumber) {</b>
+<b class="nc">&nbsp;        this.name = name;</b>
+<b class="nc">&nbsp;        this.email = email;</b>
+<b class="nc">&nbsp;        this.password = password;</b>
+<b class="nc">&nbsp;        this.cCNumber = cCNumber;</b>
+<b class="nc">&nbsp;        this.taxNumber = taxNumber;</b>
+<b class="nc">&nbsp;        this.address = address;</b>
+<b class="nc">&nbsp;        this.telephoneNumber = telephoneNumber;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Client(String name, String email, String password, int cCNumber, int taxNumber, Location location, long telephoneNumber) {</b>
+<b class="nc">&nbsp;        this.name = name;</b>
+<b class="nc">&nbsp;        this.email = email;</b>
+<b class="nc">&nbsp;        this.password = password;</b>
+<b class="nc">&nbsp;        this.cCNumber = cCNumber;</b>
+<b class="nc">&nbsp;        this.taxNumber = taxNumber;</b>
+<b class="nc">&nbsp;        this.location = location;</b>
+<b class="nc">&nbsp;        this.telephoneNumber = telephoneNumber;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Client(List&lt;String&gt; input){</b>
+&nbsp;
+&nbsp;        try {
+<b class="nc">&nbsp;            name = input.get(0);</b>
+<b class="nc">&nbsp;            email = input.get(1);</b>
+<b class="nc">&nbsp;            password = input.get(2);</b>
+<b class="nc">&nbsp;            cCNumber = Integer.parseInt(input.get(3));</b>
+<b class="nc">&nbsp;            taxNumber = Integer.parseInt(input.get(4));</b>
+<b class="nc">&nbsp;            address = input.get(5);</b>
+<b class="nc">&nbsp;            telephoneNumber = Integer.parseInt(input.get(6));</b>
+&nbsp;
+<b class="nc">&nbsp;            validate();</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Couldn&#39;t create user. &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    //TODO: check validation
+&nbsp;    private boolean validate(){
+&nbsp;        try{
+<b class="nc">&nbsp;            isValidName();</b>
+<b class="nc">&nbsp;            isValidAddress();</b>
+<b class="nc">&nbsp;            isValidEmail();</b>
+<b class="nc">&nbsp;            isValidPassword();</b>
+<b class="nc">&nbsp;            isValidCCNumber();</b>
+<b class="nc">&nbsp;            isValidTaxNumber();</b>
+<b class="nc">&nbsp;            isValidAddress();</b>
+<b class="nc">&nbsp;            isValidTelephoneNumber();</b>
+<b class="nc">&nbsp;        } catch (InvalidAttributeValueException e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Invalid attribute: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        } catch (Exception e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Error: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void isValidName() throws InvalidAttributeValueException {
+<b class="nc">&nbsp;        if (name == null || name.equals(&quot;&quot;))</b>
+<b class="nc">&nbsp;            throw new InvalidAttributeValueException(&quot;Name is invalid.&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void isValidEmail() throws InvalidAttributeValueException {
+<b class="nc">&nbsp;        if (email == null || email.equals(&quot;&quot;))</b>
+<b class="nc">&nbsp;            throw new InvalidAttributeValueException(&quot;Email is invalid.&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void isValidPassword() throws InvalidAttributeValueException {
+<b class="nc">&nbsp;        if (password == null || password.equals(&quot;&quot;))</b>
+<b class="nc">&nbsp;            throw new InvalidAttributeValueException(&quot;Password is invalid.&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void isValidCCNumber() throws InvalidAttributeValueException {
+<b class="nc">&nbsp;        if (cCNumber &lt; 1_000_000 || cCNumber &gt; 10_000_000)</b>
+<b class="nc">&nbsp;            throw new InvalidAttributeValueException(&quot;CC Number is invalid.&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void isValidTaxNumber() throws InvalidAttributeValueException {
+<b class="nc">&nbsp;        if (taxNumber &lt; 1_000_000 || taxNumber &gt; 10_000_000)</b>
+<b class="nc">&nbsp;            throw new InvalidAttributeValueException(&quot;Tax Number is invalid.&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void isValidAddress() throws InvalidAttributeValueException {
+<b class="nc">&nbsp;        if (address == null)</b>
+<b class="nc">&nbsp;            throw new InvalidAttributeValueException(&quot;Address is invalid.&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void isValidTelephoneNumber() throws InvalidAttributeValueException {
+<b class="nc">&nbsp;        if (telephoneNumber &lt; 100_000_000 || telephoneNumber &gt; 999_999_999)</b>
+<b class="nc">&nbsp;            throw new InvalidAttributeValueException(&quot;Telephone Number is invalid&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void isValidLocation() throws InvalidAttributeValueException {
+<b class="nc">&nbsp;        if (location == null)</b>
+<b class="nc">&nbsp;            throw new InvalidAttributeValueException(&quot;Location is invalid.&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return name;</b>
+&nbsp;    }
 &nbsp;}
 </code>
 </pre>
@@ -231,7 +254,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

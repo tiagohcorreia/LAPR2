@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > AnnouncementPriceComparator</title>
+  <title>Coverage Report > Announcement</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.shared</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.model</a>
 </div>
 
-<h1>Coverage Summary for Class: AnnouncementPriceComparator (pt.ipp.isep.dei.esoft.project.domain.shared)</h1>
+<h1>Coverage Summary for Class: Announcement (pt.ipp.isep.dei.esoft.project.domain.model)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,29 +40,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">AnnouncementPriceComparator</td>
+  <td class="name">Announcement</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/1)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    74,2%
   </span>
   <span class="absValue">
-    (0/2)
+    (23/31)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    54,7%
   </span>
   <span class="absValue">
-    (0/2)
+    (58/106)
   </span>
 </td>
 </tr>
@@ -74,20 +74,353 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.shared;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.model;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 &nbsp;
-&nbsp;import java.util.Comparator;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.List;
+&nbsp;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Announcement price comparator.
+&nbsp; * The type Announcement.
 &nbsp; */
-<b class="nc">&nbsp;public class AnnouncementPriceComparator implements Comparator&lt;Announcement&gt; {</b>
-&nbsp;    @Override
-&nbsp;    public int compare(Announcement o1, Announcement o2) {
-<b class="nc">&nbsp;        return Float.compare(o1.getPrice(), o2.getPrice());</b>
+&nbsp;public class Announcement implements Serializable {
+&nbsp;
+&nbsp;    private LocalDate date;
+&nbsp;    private AnnouncementStatus status;
+&nbsp;    private float price;
+&nbsp;    private float commission;
+&nbsp;    private TypeOfBusiness typeOfBusiness;
+&nbsp;    private Property property;
+&nbsp;    private Employee agent;
+&nbsp;    private Client owner;
+&nbsp;    private int numberOfMonthsRent;
+&nbsp;    private List&lt;Order&gt; orders;
+&nbsp;    private Branch branch;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Instantiates a new Announcement.
+&nbsp;     *
+&nbsp;     * @param price          the price
+&nbsp;     * @param commission     the  agent commission
+&nbsp;     * @param typeOfBusiness the type of business (sellor/rent)
+&nbsp;     * @param property       the property
+&nbsp;     * @param agent          the agent
+&nbsp;     */
+&nbsp;//Full constructor
+<b class="fc">&nbsp;    public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent, Client owner) {</b>
+<b class="fc">&nbsp;        this.setDate(date);</b>
+<b class="fc">&nbsp;        this.setStatus(status);</b>
+<b class="fc">&nbsp;        this.setPrice(price);</b>
+<b class="fc">&nbsp;        this.setCommission(commission);</b>
+<b class="fc">&nbsp;        this.setTypeOfBusiness(typeOfBusiness);</b>
+<b class="fc">&nbsp;        this.setProperty(property);</b>
+<b class="fc">&nbsp;        this.setAgent(agent);</b>
+<b class="fc">&nbsp;        this.setOwner(owner);</b>
 &nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Announcement(LocalDate date, AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent, Client owner, int numberOfMonthsRent) {</b>
+<b class="nc">&nbsp;        this.setDate(date);</b>
+<b class="nc">&nbsp;        this.setStatus(status);</b>
+<b class="nc">&nbsp;        this.setPrice(price);</b>
+<b class="nc">&nbsp;        this.setCommission(commission);</b>
+<b class="nc">&nbsp;        this.setTypeOfBusiness(typeOfBusiness);</b>
+<b class="nc">&nbsp;        this.setProperty(property);</b>
+<b class="nc">&nbsp;        this.setAgent(agent);</b>
+<b class="nc">&nbsp;        this.setOwner(owner);</b>
+<b class="nc">&nbsp;        this.setNumberOfMonthsRent(numberOfMonthsRent);</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Announcement(AnnouncementStatus status, float price, float commission, TypeOfBusiness typeOfBusiness, Property property, Employee agent) {</b>
+&nbsp;
+<b class="nc">&nbsp;        this.setStatus(status);</b>
+<b class="nc">&nbsp;        this.setPrice(price);</b>
+<b class="nc">&nbsp;        this.setCommission(commission);</b>
+<b class="nc">&nbsp;        this.setTypeOfBusiness(typeOfBusiness);</b>
+<b class="nc">&nbsp;        this.setProperty(property);</b>
+<b class="nc">&nbsp;        this.setAgent(agent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setStatus(AnnouncementStatus status) {
+&nbsp;
+<b class="fc">&nbsp;        this.status = status;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public AnnouncementStatus getStatus() {
+&nbsp;
+<b class="fc">&nbsp;        return status;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public LocalDate getDate() {
+&nbsp;
+<b class="fc">&nbsp;        return date;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDate(LocalDate date) {
+&nbsp;
+<b class="fc">&nbsp;        this.date = date;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets commission.
+&nbsp;     *
+&nbsp;     * @return the commission
+&nbsp;     */
+&nbsp;    public float getCommission() {
+<b class="fc">&nbsp;        return commission;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets commission.
+&nbsp;     *
+&nbsp;     * @param commission the commission
+&nbsp;     */
+&nbsp;    public void setCommission(float commission) {
+<b class="fc">&nbsp;        if (commission &lt; 0) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Invalid commission value.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        this.commission = commission;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Instantiates a new Announcement.
+&nbsp;     */
+&nbsp;    //Default constructor
+<b class="fc">&nbsp;    public Announcement() {</b>
+<b class="fc">&nbsp;        this.setStatus(AnnouncementStatus.PENDENT);</b>
+<b class="fc">&nbsp;        this.setPrice(0);</b>
+<b class="fc">&nbsp;        this.setCommission(0);</b>
+<b class="fc">&nbsp;        this.setTypeOfBusiness(TypeOfBusiness.SELL);</b>
+<b class="fc">&nbsp;        this.setProperty(null);</b>
+<b class="fc">&nbsp;        this.setAgent(null);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Instantiates a new Announcement.
+&nbsp;     *
+&nbsp;     * @param anotherAnnouncement the another announcement
+&nbsp;     */
+&nbsp;    //Copy constructor
+<b class="fc">&nbsp;    public Announcement(Announcement anotherAnnouncement) {</b>
+<b class="fc">&nbsp;        this.setDate(anotherAnnouncement.getDate());</b>
+<b class="fc">&nbsp;        this.setStatus(anotherAnnouncement.getStatus());</b>
+<b class="fc">&nbsp;        this.setPrice(anotherAnnouncement.getPrice());</b>
+<b class="fc">&nbsp;        this.setCommission(anotherAnnouncement.getCommission());</b>
+<b class="fc">&nbsp;        this.setTypeOfBusiness(anotherAnnouncement.getTypeOfBusiness());</b>
+<b class="fc">&nbsp;        this.setProperty(anotherAnnouncement.getProperty());</b>
+<b class="fc">&nbsp;        this.setAgent(anotherAnnouncement.getAgent());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets announcement.
+&nbsp;     *
+&nbsp;     * @return the announcement
+&nbsp;     */
+&nbsp;    public Announcement getAnnouncement() {
+<b class="fc">&nbsp;        return new Announcement(this);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Get announcement announcement.
+&nbsp;     *
+&nbsp;     * @param typeOfBusiness   the type of business
+&nbsp;     * @param typeOfProperty   the type of property
+&nbsp;     * @param numberOfBedrooms the number of bedrooms
+&nbsp;     * @return the announcement
+&nbsp;     */
+&nbsp;    public Announcement getAnnouncement(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms) {
+<b class="nc">&nbsp;        if (!typeOfBusiness.equals(&quot;LAND&quot;)) {</b>
+<b class="nc">&nbsp;            if (this.status == AnnouncementStatus.PUBLISHED &amp;&amp; typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) &amp;&amp; typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase()) &amp;&amp; numberOfBedrooms == this.getProperty().getNumberOfBedrooms()) {</b>
+<b class="nc">&nbsp;                return new Announcement(this);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } else if (this.status == AnnouncementStatus.PUBLISHED &amp;&amp; typeOfBusiness.equals(this.typeOfBusiness.toString().toUpperCase()) &amp;&amp; typeOfProperty.equals(this.property.getClass().getSimpleName().toUpperCase())) {</b>
+<b class="nc">&nbsp;            return new Announcement(this);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets price.
+&nbsp;     *
+&nbsp;     * @return the price
+&nbsp;     */
+&nbsp;    public float getPrice() {
+&nbsp;
+<b class="fc">&nbsp;        return price;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets price.
+&nbsp;     *
+&nbsp;     * @param price the price
+&nbsp;     */
+&nbsp;    public void setPrice(float price) {
+<b class="fc">&nbsp;        if (price &lt; 0) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Invalid price value.&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        this.price = price;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets type of business.
+&nbsp;     *
+&nbsp;     * @return the type of business
+&nbsp;     */
+&nbsp;    public TypeOfBusiness getTypeOfBusiness() {
+&nbsp;
+<b class="fc">&nbsp;        return typeOfBusiness;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets type of business.
+&nbsp;     *
+&nbsp;     * @param typeOfBusiness the type of business
+&nbsp;     */
+&nbsp;    public void setTypeOfBusiness(TypeOfBusiness typeOfBusiness) {
+&nbsp;
+<b class="fc">&nbsp;        this.typeOfBusiness = typeOfBusiness;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets property.
+&nbsp;     *
+&nbsp;     * @return the property
+&nbsp;     */
+&nbsp;    public Property getProperty() {
+&nbsp;
+<b class="fc">&nbsp;        return property;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets property.
+&nbsp;     *
+&nbsp;     * @param property the property
+&nbsp;     */
+&nbsp;    public void setProperty(Property property) {
+<b class="fc">&nbsp;        this.property = property;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets agent.
+&nbsp;     *
+&nbsp;     * @return the agent
+&nbsp;     */
+&nbsp;    public Employee getAgent() {
+&nbsp;
+<b class="fc">&nbsp;        return agent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets agent.
+&nbsp;     *
+&nbsp;     * @param agent the agent
+&nbsp;     */
+&nbsp;    public void setAgent(Employee agent) {
+&nbsp;
+<b class="fc">&nbsp;        this.agent = agent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Client getOwner() {
+<b class="fc">&nbsp;        return owner;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setOwner(Client owner) {
+<b class="fc">&nbsp;        this.owner = owner;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getNumberOfMonthsRent() {
+<b class="fc">&nbsp;        return numberOfMonthsRent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setNumberOfMonthsRent(int numberOfMonthsRent) {
+<b class="fc">&nbsp;        this.numberOfMonthsRent = numberOfMonthsRent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /*public String toString() {
+&nbsp;        String status = (this.status == AnnouncementStatus.PUBLISHED) ? &quot;Published&quot; : &quot;Not Published&quot;;
+&nbsp;        String formattedDate = date.format(DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;));
+&nbsp;
+&nbsp;
+&nbsp;        StringBuilder sb = new StringBuilder();
+&nbsp;        sb.append(&quot;Announcement - Details:\n&quot;);
+&nbsp;        sb.append(String.format(&quot;Date:              %s\n&quot;, formattedDate));
+&nbsp;        sb.append(String.format(&quot;Status:            %s\n&quot;, status));
+&nbsp;        sb.append(String.format(&quot;Price:             %.2f\n&quot;, price));
+&nbsp;        sb.append(String.format(&quot;Type of Business:  %s\n&quot;, typeOfBusiness));
+&nbsp;        sb.append(String.format(&quot;Property:          %s\n&quot;, property));
+&nbsp;        return sb.toString();
+&nbsp;    }*/
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+&nbsp;
+<b class="nc">&nbsp;        final StringBuilder sb = new StringBuilder(&quot;Announcement = &quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        sb.append(&quot;Date:&quot;).append(date);</b>
+<b class="nc">&nbsp;        sb.append(&quot;, Status:&quot;).append(status);</b>
+<b class="nc">&nbsp;        sb.append(&quot;, Price:&quot;).append(price);</b>
+<b class="nc">&nbsp;        sb.append(&quot;, Commission:&quot;).append(commission);</b>
+<b class="nc">&nbsp;        sb.append(&quot;, Type Of Business:&quot;).append(typeOfBusiness);</b>
+<b class="nc">&nbsp;        sb.append(&quot;, Property:&quot;).append(property);</b>
+<b class="nc">&nbsp;        sb.append(&quot;, Agent:&quot;).append(agent);</b>
+<b class="nc">&nbsp;        sb.append(&quot;, Owner: &quot;).append(owner).append(&quot;\n&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        return sb.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public String getAnnouncementAsString() {
+<b class="fc">&nbsp;        String agentName = getAgent() != null ? getAgent().getName() : &quot;&quot;;</b>
+&nbsp;
+&nbsp;        String result =
+&nbsp;                //getDate().toString() +&quot;\t&quot; +
+<b class="fc">&nbsp;                (getDate() != null ? getDate().toString() : &quot;&quot;) + &quot;\t&quot; +</b>
+<b class="fc">&nbsp;                        getTypeOfBusiness().toString() + &quot;\t&quot; +</b>
+<b class="fc">&nbsp;                        getProperty().getClass().getSimpleName() + &quot;\t&quot; +</b>
+<b class="fc">&nbsp;                        getPrice() + &quot;\t&quot; +</b>
+<b class="fc">&nbsp;                        getProperty().getLocation() + &quot;\t&quot; +</b>
+<b class="fc">&nbsp;                        getProperty().getArea() + &quot;\t&quot; +</b>
+<b class="fc">&nbsp;                        getProperty().getCityCentreDistance() + &quot;\t&quot; +</b>
+<b class="fc">&nbsp;                        getProperty().getNumberOfBedrooms() + &quot;\t&quot; +</b>
+<b class="fc">&nbsp;                        getProperty().getPhotographs() + &quot;\t&quot; +</b>
+&nbsp;                        // getAgent().getName();
+&nbsp;                        agentName;
+<b class="fc">&nbsp;        return result;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String toStringRent() {
+<b class="nc">&nbsp;        StringBuilder sb = new StringBuilder();</b>
+<b class="nc">&nbsp;        sb.append(&quot;Announcement\n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(&quot;Date: &quot;).append(date).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(&quot;Status: &quot;).append(status).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(&quot;Price: &quot;).append(price).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(&quot;Commission: &quot;).append(commission).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(&quot;Type of Business: &quot;).append(typeOfBusiness).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(&quot;Property: &quot;).append(property).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(&quot;Agent: &quot;).append(agent).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(&quot;Owner: &quot;).append(owner).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(&quot;Number of Months Rent: &quot;).append(numberOfMonthsRent).append(&quot;\n&quot;);</b>
+<b class="nc">&nbsp;        return sb.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList&lt;String&gt; photographs, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces, ArrayList&lt;String&gt; equipment) {
+<b class="nc">&nbsp;        return new Apartment(area, location, cityCentreDistance, equipment, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipment);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList&lt;String&gt; photographs, int numberOfBedrooms, int numberOfBathrooms, int numberOfParkingSpaces, ArrayList&lt;String&gt; equipment, boolean hasBasement, boolean hasInhabitableLoft, SunExposure sunExposure) {
+<b class="nc">&nbsp;        return new House(area, location, cityCentreDistance, photographs, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipment, hasBasement, hasInhabitableLoft, sunExposure);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static Property createProperty(float area, Location location, float cityCentreDistance, ArrayList&lt;String&gt; photographs) {
+<b class="nc">&nbsp;        return new Land(area, location, cityCentreDistance, photographs);</b>
+&nbsp;    }
+&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -112,7 +445,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

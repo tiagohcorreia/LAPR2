@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > AdminUI</title>
+  <title>Coverage Report > AnnouncementRequestsUI</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console.menu</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
 </div>
 
-<h1>Coverage Summary for Class: AdminUI (pt.ipp.isep.dei.esoft.project.ui.console.menu)</h1>
+<h1>Coverage Summary for Class: AnnouncementRequestsUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">AdminUI</td>
+  <td class="name">AnnouncementRequestsUI</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/11)
+    (0/50)
   </span>
 </td>
 </tr>
@@ -74,47 +74,112 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console.menu;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.AnnouncementRequestsController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementRequestDTO;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementRequestMapper;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.NotificationService;
 &nbsp;
-&nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.RegisterEmployeeController;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.CreateTaskUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.RegisterEmployeeUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.ShowTextUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.SpecifyStatesDistrictsCitiesUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
-&nbsp;
-&nbsp;import java.util.ArrayList;
 &nbsp;import java.util.List;
+&nbsp;import java.util.Scanner;
 &nbsp;
-&nbsp;/**
-&nbsp; * The type Admin ui.
-&nbsp; */
-&nbsp;public class AdminUI implements Runnable {
-&nbsp;    /**
-&nbsp;     * Instantiates a new Admin ui.
-&nbsp;     */
-<b class="nc">&nbsp;    public AdminUI() {</b>
-&nbsp;    }
+&nbsp;
+&nbsp;public class AnnouncementRequestsUI implements Runnable{
+&nbsp;
+&nbsp;    private Scanner scanner;
+&nbsp;
+&nbsp;    private final AnnouncementRequestsController controller;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;            public AnnouncementRequestsUI() {</b>
+<b class="nc">&nbsp;                this.controller = new AnnouncementRequestsController();</b>
+&nbsp;            }
 &nbsp;
 &nbsp;    public void run() {
-<b class="nc">&nbsp;        List&lt;MenuItem&gt; options = new ArrayList&lt;MenuItem&gt;();</b>
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Create Task&quot;, new CreateTaskUI()));</b>
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Specify states, districts or cities&quot;, new SpecifyStatesDistrictsCitiesUI()));</b>
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Register Employee &quot;, new RegisterEmployeeUI(new RegisterEmployeeController(new RegisterEmployeeRepository()))));</b>
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Option 3 &quot;, new ShowTextUI(&quot;You have chosen Option C.&quot;)));</b>
 &nbsp;
-<b class="nc">&nbsp;        int option = 0;</b>
-&nbsp;        do {
-<b class="nc">&nbsp;            option = Utils.showAndSelectIndex(options, &quot;\n\nAdmin Menu:&quot;);</b>
+<b class="nc">&nbsp;        Scanner scanner = new Scanner(System.in);</b>
 &nbsp;
-<b class="nc">&nbsp;            if ((option &gt;= 0) &amp;&amp; (option &lt; options.size())) {</b>
-<b class="nc">&nbsp;                options.get(option).run();</b>
+<b class="nc">&nbsp;        Employee agent = controller.getCurrentAgent();</b>
+<b class="nc">&nbsp;        String agentName = agent.getName();</b>
+&nbsp;
+<b class="nc">&nbsp;        System.out.print(&quot;======Requests======\n\n &quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        if (controller.isEmployee(agentName)) {</b>
+&nbsp;
+<b class="nc">&nbsp;            List&lt;AnnouncementRequestDTO&gt; announcements = controller.getAnnouncementRequests(agent);</b>
+<b class="nc">&nbsp;            if (!announcements.isEmpty()) {</b>
+<b class="nc">&nbsp;             System.out.println(&quot;=== Announcement Requests ===\n\n&quot;);</b>
+<b class="nc">&nbsp;            for (int i = 0; i &lt; announcements.size(); i++) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Index: &quot; + i);</b>
+<b class="nc">&nbsp;                System.out.println(announcements.get(i).toString());</b>
 &nbsp;            }
-<b class="nc">&nbsp;        } while (option != -1);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;                System.out.print(&quot;Enter the index of the announcement to view details: &quot;);</b>
+<b class="nc">&nbsp;                int index = scanner.nextInt();</b>
+<b class="nc">&nbsp;                scanner.nextLine();</b>
+&nbsp;
+<b class="nc">&nbsp;                AnnouncementRequestDTO announcement = controller.getAnnouncementByIndex(index, agent);</b>
+<b class="nc">&nbsp;                if (announcement != null) {</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;=== Announcement Details ===\n\n&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(announcement);</b>
+&nbsp;
+<b class="nc">&nbsp;                    System.out.println(&quot;Choose an option:&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;1. Accept&quot;);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;2. Reject&quot;);</b>
+<b class="nc">&nbsp;                    System.out.print(&quot;Enter your choice: &quot;);</b>
+<b class="nc">&nbsp;                    int choice = scanner.nextInt();</b>
+<b class="nc">&nbsp;                    scanner.nextLine();</b>
+<b class="nc">&nbsp;                    Client owner = announcement.getOwner();</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;                    switch (choice) {</b>
+&nbsp;                        case 1:
+<b class="nc">&nbsp;                            System.out.print(&quot;Enter the commission: &quot;);</b>
+<b class="nc">&nbsp;                            float commission = scanner.nextFloat();</b>
+<b class="nc">&nbsp;                            scanner.nextLine();</b>
+<b class="nc">&nbsp;                            controller.acceptAnnouncementRequest(index, commission, agent);</b>
+<b class="nc">&nbsp;                            System.out.println(&quot;Announcement accepted and saved.&quot;);</b>
+<b class="nc">&nbsp;                            break;</b>
+&nbsp;                        case 2:
+<b class="nc">&nbsp;                            System.out.print(&quot;Enter the reason for rejection: &quot;);</b>
+<b class="nc">&nbsp;                            String reason = scanner.nextLine();</b>
+<b class="nc">&nbsp;                            controller.rejectAnnouncementRequest(index, reason, agent);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;                            String subject = &quot;Rejection of Announcement&quot;;</b>
+<b class="nc">&nbsp;                            String message = &quot;Dear &quot; + owner.getName() + &quot;\nYour announcement has been rejected for the following reason: &quot; + reason;</b>
+<b class="nc">&nbsp;                            NotificationService notificationService = new NotificationService();</b>
+<b class="nc">&nbsp;                            notificationService.sendNotification(owner.getEmail(), subject, message);</b>
+&nbsp;
+<b class="nc">&nbsp;                            System.out.println(&quot;Announcement rejected and reason saved.&quot;);</b>
+<b class="nc">&nbsp;                            break;</b>
+&nbsp;                        default:
+<b class="nc">&nbsp;                            System.out.println(&quot;Invalid choice.&quot;);</b>
+&nbsp;                            break;
+&nbsp;                    }
+<b class="nc">&nbsp;                } else {</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Invalid announcement index.&quot;);</b>
+&nbsp;                }
+<b class="nc">&nbsp;            } else {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;No announcement requests for the agent.&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } else {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Invalid agent name.&quot;);</b>
+&nbsp;        }
 &nbsp;    }
+&nbsp;
 &nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 </code>
 </pre>
 </div>
@@ -138,7 +203,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

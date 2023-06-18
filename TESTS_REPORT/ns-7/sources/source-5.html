@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > TypeOfBusiness</title>
+  <title>Coverage Report > City</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,15 +18,18 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.shared</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.model</a>
 </div>
 
-<h1>Coverage Summary for Class: TypeOfBusiness (pt.ipp.isep.dei.esoft.project.domain.shared)</h1>
+<h1>Coverage Summary for Class: City (pt.ipp.isep.dei.esoft.project.domain.model)</h1>
 
 <table class="coverageStats">
-
 <tr>
   <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
 <th class="coverageStat 
 ">
   Method, %
@@ -37,81 +40,33 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">TypeOfBusiness</td>
+  <td class="name">City</td>
 <td class="coverageStat">
   <span class="percent">
-    60%
+    100%
   </span>
   <span class="absValue">
-    (3/5)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    45,5%
+    100%
   </span>
   <span class="absValue">
-    (5/11)
-  </span>
-</td>
-</tr>
-  <tr>
-    <td class="name">TypeOfBusiness$1</td>
-<td class="coverageStat">
-  <span class="percent">
-    50%
-  </span>
-  <span class="absValue">
-    (1/2)
+    (6/6)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    50%
+    100%
   </span>
   <span class="absValue">
-    (1/2)
-  </span>
-</td>
-  </tr>
-  <tr>
-    <td class="name">TypeOfBusiness$2</td>
-<td class="coverageStat">
-  <span class="percent">
-    50%
-  </span>
-  <span class="absValue">
-    (1/2)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    50%
-  </span>
-  <span class="absValue">
-    (1/2)
-  </span>
-</td>
-  </tr>
-<tr>
-  <td class="name"><strong>Total</strong></td>
-<td class="coverageStat">
-  <span class="percent">
-    55,6%
-  </span>
-  <span class="absValue">
-    (5/9)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    46,7%
-  </span>
-  <span class="absValue">
-    (7/15)
+    (13/13)
   </span>
 </td>
 </tr>
+
 </table>
 
 <br/>
@@ -119,64 +74,73 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.shared;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.model;
+&nbsp;
+&nbsp;import java.io.Serializable;
 &nbsp;
 &nbsp;/**
-&nbsp; * The enum Type of business.
+&nbsp; * The type City.
 &nbsp; */
-<b class="fc">&nbsp;public enum TypeOfBusiness {</b>
-&nbsp;    /**
-&nbsp;     * The Sell.
-&nbsp;     */
-<b class="fc">&nbsp;    SELL(1){</b>
-&nbsp;        @Override
-&nbsp;        public String toString() {
-<b class="nc">&nbsp;            return String.format(&quot;Sell&quot;);</b>
-&nbsp;        }
-&nbsp;    },
-&nbsp;    /**
-&nbsp;     * The Rent.
-&nbsp;     */
-<b class="fc">&nbsp;    RENT(2){</b>
-&nbsp;        @Override
-&nbsp;        public String toString() {
-<b class="nc">&nbsp;            return String.format(&quot;Rent&quot;);</b>
-&nbsp;        }
-&nbsp;    };
-&nbsp;    private final int valor;
-&nbsp;
-<b class="fc">&nbsp;    TypeOfBusiness(int valor) {</b>
-<b class="fc">&nbsp;        this.valor = valor;</b>
-&nbsp;    }
+&nbsp;public class City implements Serializable {
+&nbsp;    private String name;
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Gets type of business id.
+&nbsp;     * Instantiates a new City.
 &nbsp;     *
-&nbsp;     * @return the type of business id
+&nbsp;     * @param name the name
 &nbsp;     */
-&nbsp;    public int getTypeOfBusinessID() {
-<b class="nc">&nbsp;        return this.valor;</b>
+<b class="fc">&nbsp;    public City(String name) {</b>
+<b class="fc">&nbsp;        this.name = name;</b>
 &nbsp;    }
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Gets type of business by id.
-&nbsp;     *
-&nbsp;     * @param id the id
-&nbsp;     * @return the type of business by id
+&nbsp;     * Instantiates a new City.
 &nbsp;     */
-&nbsp;    public static TypeOfBusiness getTypeOfBusinessById(int id) {
-&nbsp;
-<b class="nc">&nbsp;        TypeOfBusiness[] array = TypeOfBusiness.values();</b>
-&nbsp;
-<b class="nc">&nbsp;        for (int i = 0; i &lt; array.length; i++) {</b>
-&nbsp;
-<b class="nc">&nbsp;            if (id == array[i].getTypeOfBusinessID()) {</b>
-&nbsp;
-<b class="nc">&nbsp;                return array[i];</b>
-&nbsp;            }
-&nbsp;        }
-<b class="nc">&nbsp;        return null;</b>
+<b class="fc">&nbsp;    public City() {</b>
+<b class="fc">&nbsp;        this.name = &quot;Default City&quot;;</b>
 &nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets name.
+&nbsp;     *
+&nbsp;     * @return the name
+&nbsp;     */
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets name.
+&nbsp;     *
+&nbsp;     * @param name the name
+&nbsp;     */
+&nbsp;    public void setName(String name) {
+<b class="fc">&nbsp;        this.name = name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /*@Override
+&nbsp;    public String toString() {
+&nbsp;        return &quot;City{&quot; +
+&nbsp;                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }*/
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        final StringBuilder sb = new StringBuilder();</b>
+<b class="fc">&nbsp;        sb.append(&quot;City:&quot;).append(name).append(&#39;\t&#39;);</b>
+<b class="fc">&nbsp;        return sb.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object otherObject) {
+<b class="fc">&nbsp;        if (this == otherObject) return true;</b>
+<b class="fc">&nbsp;        if (otherObject == null || getClass() != otherObject.getClass()) return false;</b>
+<b class="fc">&nbsp;        City city = (City) otherObject;</b>
+<b class="fc">&nbsp;        return name.equals(city.name);</b>
+&nbsp;    }
+&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -201,7 +165,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

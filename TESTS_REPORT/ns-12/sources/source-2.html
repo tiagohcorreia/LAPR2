@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > FileOps</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.utils</a>
+</div>
+
+<h1>Coverage Summary for Class: FileOps (pt.ipp.isep.dei.esoft.project.utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FileOps</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83,3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    71,4%
+  </span>
+  <span class="absValue">
+    (25/35)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.utils;
+&nbsp;
+&nbsp;import java.io.File;
+&nbsp;import java.io.FileNotFoundException;
+&nbsp;import java.io.FileWriter;
+&nbsp;import java.io.Writer;
+&nbsp;
+<b class="nc">&nbsp;public class FileOps {</b>
+&nbsp;
+&nbsp;    public static File readFile(String filePath) throws FileNotFoundException{
+<b class="fc">&nbsp;        File file = null;</b>
+&nbsp;        try{
+<b class="fc">&nbsp;            file = new File(filePath);</b>
+<b class="nc">&nbsp;        } catch (NullPointerException e){</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Filepath is null&quot;);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!file.exists())</b>
+<b class="fc">&nbsp;            throw new FileNotFoundException(&quot;File not found.&quot;);</b>
+<b class="fc">&nbsp;        else if(!file.isFile() || !file.canRead())</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;The selected file is invalid.&quot;);</b>
+&nbsp;        else
+<b class="fc">&nbsp;            return file;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static boolean appendToFile(String filepath, String content){
+<b class="fc">&nbsp;        File file = new File(filepath);</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Writer writer = new FileWriter(file, true);</b>
+&nbsp;            try{
+<b class="fc">&nbsp;                writer.write(content);</b>
+<b class="nc">&nbsp;            } catch (Exception e){</b>
+<b class="nc">&nbsp;                writer.close();</b>
+<b class="nc">&nbsp;                return false;</b>
+&nbsp;            } finally {
+<b class="fc">&nbsp;                writer.close();</b>
+<b class="fc">&nbsp;            }</b>
+<b class="nc">&nbsp;        } catch (Exception e){</b>
+<b class="nc">&nbsp;            return false;</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static boolean createFile(String filepath, String content) {
+<b class="fc">&nbsp;        File file = new File(filepath);</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Writer writer = new FileWriter(file,false);</b>
+&nbsp;            try {
+<b class="fc">&nbsp;                writer.write(content);</b>
+&nbsp;            } finally {
+<b class="fc">&nbsp;                writer.close();</b>
+<b class="fc">&nbsp;            }</b>
+<b class="nc">&nbsp;        } catch (Exception e){</b>
+<b class="nc">&nbsp;            return false;</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static boolean deleteFile(String filepath) throws FileNotFoundException {
+<b class="fc">&nbsp;        File file = readFile(filepath);</b>
+<b class="fc">&nbsp;        return file.delete();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static boolean isFileEmpty(File file){
+<b class="fc">&nbsp;        return (file.length() == 0L);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>
