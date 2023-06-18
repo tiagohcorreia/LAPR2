@@ -17,7 +17,6 @@ public class ValidateScheduleGUI extends Application implements Runnable{
 
 
     ValidateScheduleController controller = new ValidateScheduleController();
-
     @Override
     public void start(Stage stage) throws IOException {
 
