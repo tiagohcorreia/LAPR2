@@ -1,78 +1,93 @@
-# US 006 - To create a Task 
-
-# 4. Tests 
-
-**Test 1:** Check that it is not possible to create an instance of the Task class with null values. 
-
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureNullIsNotAllowed() {
-		Task instance = new Task(null, null, null, null, null, null, null);
-	}
-	
-
-**Test 2:** Check that it is not possible to create an instance of the Task class with a reference containing less than five chars - AC2. 
-
-	@Test(expected = IllegalArgumentException.class)
-		public void ensureReferenceMeetsAC2() {
-		Category cat = new Category(10, "Category 10");
-		
-		Task instance = new Task("Ab1", "Task Description", "Informal Data", "Technical Data", 3, 3780, cat);
-	}
-
-
-*It is also recommended to organize this content by subsections.* 
+# US 014 - Appointment Management 
 
 # 5. Construction (Implementation)
 
 
-## Class CreateTaskController 
+## Class Class ReadResponseOfAppointmentRequestGUI
 
 ```java
-public Task createTask(String reference, String description, String informalDescription,
-								 String technicalDescription, Integer duration, Double cost,
-								 String taskCategoryDescription) {
+public class ReadResponseOfAppointmentRequestController implements Initializable {
 
-	TaskCategory taskCategory = getTaskCategoryByDescription(taskCategoryDescription);
+    ScheduleRepository scheduleRepository = Repositories.getInstance().getScheduleRepository();
 
-	Employee employee = getEmployeeFromSession();
-	Organization organization = getOrganizationRepository().getOrganizationByEmployee(employee);
+    @FXML
+    private Button btnAccept;
 
-	newTask = organization.createTask(reference, description, informalDescription, technicalDescription, 
-			duration, cost,taskCategory, employee);
-    
-	return newTask;
+    @FXML
+    private Button btnCancel;
+
+    @FXML
+    private ListView<Schedule> lstSchedule;
+
+    @FXML
+    private Text txtScheduleMessage;
+
+    @FXML
+    private Text txtReason;
+
+    @FXML
+    private Button btnReject;
+
+    @FXML
+    void acceptRequest(ActionEvent event) {
+
+    }
+
+    @FXML
+    void rejectRequest(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cancel(ActionEvent event) {
+
+    }
+
+    public List<Schedule> getScheduleList() {
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    public void sendNotificationToAgent() {
+
+    }
+
 }
 ```
 
 
-## Class Organization
+## Class ReadResponseOfAppointmentRequestController
 
 ```java
-public Optional<Task> createTask(String reference, String description, String informalDescription,
-                                     String technicalDescription, Integer duration, Double cost,
-                                     TaskCategory taskCategory, Employee employee) {
-    
-        Task task = new Task(reference, description, informalDescription, technicalDescription, duration, cost,
-                taskCategory, employee);
+public class ReadResponseOfAppointmentRequestGUI extends Application implements Runnable {
 
-        addTask(task);
-        
-        return task;
+    ReadResponseOfAppointmentRequestController controller = new ReadResponseOfAppointmentRequestController();
+
+    @Override
+    public void start(Stage stage) throws IOException {
+
     }
+
+    public static void main(final String[] args) {
+
+    }
+
+    @Override
+    public void run() {
+
+    }
+
+    private Alert createErrorAlert(Exception ex) {
+
+    }
+}
 ```
 
-# 6. Integration and Demo 
 
-* A new option on the Employee menu options was added.
-
-* Some demo purposes some tasks are bootstrapped while system starts.
-
-
-# 7. Observations
-
-Platform and Organization classes are getting too many responsibilities due to IE pattern and, therefore, they are becoming huge and harder to maintain. 
-
-Is there any way to avoid this to happen?
 
 
 
