@@ -31,6 +31,7 @@
          <children>
             <Button fx:id="btnAccept" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#acceptRequest" text="Accept" textAlignment="JUSTIFY" />
             <Button fx:id="btnReject" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rejectRequest" text="Reject" textAlignment="JUSTIFY" />
+            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clear" text="Clear" />
          </children>
          <opaqueInsets>
             <Insets />

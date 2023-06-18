@@ -1,7 +1,6 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,8 +11,6 @@ import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -43,14 +40,23 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
     private Button btnReject;
 
     @FXML
+    private Button btnClear;
+
+    @FXML
     void acceptRequest(ActionEvent event) {
 
+        currentSchedule.setClientApproval(true);
+        scheduleRepository.saveSchedule(currentSchedule);
+        scheduleRepository.writeObjectScheduleRequest();
     }
 
     @FXML
     void rejectRequest(ActionEvent event) {
 
-
+        txtClientReason.setText("Insert the reason here");
+        currentSchedule.setNoteFromClient(txtClientReason.getText());
+        scheduleRepository.saveSchedule(currentSchedule);
+        scheduleRepository.writeObjectScheduleRequest();
     }
 
     @Override
@@ -59,7 +65,13 @@ public class ReadResponseOfAppointmentRequestController implements Initializable
         sendNotificationToAgent();
         lstSchedules.getItems().addAll(getScheduleList());
         lstSchedules.getSelectionModel().selectedItemProperty().addListener(this::selectionChanged);
+    }
 
+    @FXML
+    void clear(ActionEvent event) {
+
+        txtClientReason.clear();
+        txtSchedule.clear();
     }
 
     public void sendNotificationToAgent() {
