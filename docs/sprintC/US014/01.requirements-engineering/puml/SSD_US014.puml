@@ -17,6 +17,10 @@
 
         system --> client : shows the list of the appointment requests sorted by oldest
         deactivate system
+        client -> system : clicks on the desired appointment request
+        activate system
+        system --> client : shows the response
+        deactivate system
         alt if the user accepts the appointment
         client -> system : accepts the appointment
         activate system
