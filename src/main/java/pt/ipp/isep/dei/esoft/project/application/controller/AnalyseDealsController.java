@@ -1,6 +1,8 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import javafx.beans.property.*;
+import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
 import pt.ipp.isep.dei.esoft.project.domain.model.Order;
 import pt.ipp.isep.dei.esoft.project.domain.model.Property;
@@ -40,6 +42,17 @@ public class AnalyseDealsController {
 
         @FXML
         private TableColumn<PropertyData, Double> forecastPriceMLRColumn;
+    @FXML
+    private void handleMinimizeButtonClick(ActionEvent event) {
+        Stage stage = (Stage) table.getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    @FXML
+    private void handleCloseButtonClick(ActionEvent event) {
+        Stage stage = (Stage) table.getScene().getWindow();
+        stage.close();
+    }
 
         private List<Order> housesAndApartmentsList;
 
