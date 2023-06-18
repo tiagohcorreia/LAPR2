@@ -1,4 +1,4 @@
-# US 006 - Appointment Request Response Management 
+# US 014 - Appointment Request Response Management 
 
 ## 1. Requirements Engineering
 
@@ -67,4 +67,4 @@ As a client, I want to read the response for the appointment requests, to accept
 
 #### Alternative One
 
-![System Sequence Diagram](svg/SSD_US014.svg)
+![System Sequence Diagram](svg/SSD.svg)
