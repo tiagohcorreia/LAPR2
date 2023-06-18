@@ -1,0 +1,70 @@
+@startuml
+
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram - ???
+
+actor "Client" as client
+
+participant "OptimalPartitionUI" as oui
+participant ":LegacyImportController" as ctrl
+participant "OptimalPartitionController" as ocontroller
+participant ":FileHandler" as fh
+participant ":CsvHandler" as csv
+participant "OptimalPartition" as o
+participant "OptimalPartitionDTO" as odto
+participant "OptimalPartitionRepository" as orepository
+
+
+
+
+
+
+
+
+activate client
+client -> oui: starts the program
+activate oui
+oui -> ctrl**: create
+
+return requests file path
+
+client -> oui: types file path
+activate oui
+
+oui -> ctrl: importFile(filePath)
+deactivate oui
+activate ctrl
+ctrl -> fh: readFile(filePath)
+deactivate ctrl
+activate fh
+fh -> csv: parseCsv(filePath)
+deactivate fh
+activate csv
+csv -> csv : storeCounts(storeId, storeCounts.get(storeId))
+csv ->ocontroller :return needed csv parsed values
+deactivate csv
+activate ocontroller
+ocontroller -> o : optimalPartition(numStores,storeCounts)
+deactivate ocontroller
+activate o
+o -> orepository : optimalPartition(numStores,storeCounts)
+deactivate o
+activate orepository
+orepository -> odto : returns the sublists and their difference
+deactivate orepository
+activate odto
+odto -> ocontroller : returns the sublists and their difference
+deactivate odto
+activate ocontroller
+ocontroller -> oui : returns the sublists and their difference
+deactivate ocontroller
+activate oui
+oui -> client : display the best partition sublists, their difference and the execution time
+deactivate oui
+deactivate client
+
+
+@enduml
