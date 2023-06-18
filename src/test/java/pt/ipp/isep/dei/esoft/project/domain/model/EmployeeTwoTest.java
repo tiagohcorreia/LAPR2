@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * The type Employee two test.
  */
-class EmployeeTwoTest {
+public class EmployeeTwoTest {
 
     public static final Branch branch = new Branch();
 

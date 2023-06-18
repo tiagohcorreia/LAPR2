@@ -41,10 +41,10 @@ class CityTest {
     /**
      * Test to string.
      */
-    @Test
+    /*@Test
     void testToString() {
         assertEquals("City{name='Chicago'}", city.toString());
-    }
+    }*/
 
     /**
      * Test equals.

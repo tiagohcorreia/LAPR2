@@ -23,7 +23,7 @@ public class Order implements Serializable {
      * @param orderAmount     the order amount
      * @param announcementDTO the announcement dto
      */
-    public Order(double orderAmount, AnnouncementDTO announcementDTO) {
+    public Order(double orderAmount, AnnouncementDTO announcementDTO, boolean status) {
 
         this.orderAmount = setOrderAmount(orderAmount);
         this.announcementDTO = setAnnouncementDTO(announcementDTO);
@@ -36,6 +36,7 @@ public class Order implements Serializable {
         this.announcementDTO = announcementDTO;
         this.client = client;
     }
+
 
     public String getId() {
         return id;
@@ -79,7 +80,6 @@ public class Order implements Serializable {
 
             throw new IllegalArgumentException("Order amount must be positive");
         }
-
         return this.orderAmount;
     }
 
@@ -99,11 +99,14 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Order{");
+
+        final StringBuilder sb = new StringBuilder("Order {");
+
         sb.append("Id:").append(id);
         sb.append("Order Amount=").append(orderAmount);
         sb.append(", Announcement:").append(announcementDTO);
         sb.append('}');
+
         return sb.toString();
     }
 
@@ -111,8 +114,8 @@ public class Order implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return Double.compare(order.orderAmount, orderAmount) == 0 && Objects.equals(id, order.id) && Objects.equals(announcementDTO, order.announcementDTO);
+        Order otherOrder = (Order) o;
+        return Objects.equals(orderAmount, otherOrder.orderAmount) && Objects.equals(announcementDTO, otherOrder.announcementDTO);
     }
 
     @Override

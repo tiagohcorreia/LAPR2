@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static pt.ipp.isep.dei.esoft.project.domain.EmployeeTwoTest.branch;
+import static pt.ipp.isep.dei.esoft.project.domain.model.EmployeeTwoTest.branch;
 
 public class AnnouncementTest {
 

@@ -36,8 +36,10 @@ class OrderTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
 
+            boolean status = false;
+
             AnnouncementDTO announcementDTO = new AnnouncementDTO();
-            Order order1 = new Order(123, announcementDTO);
+            Order order1 = new Order(123, announcementDTO, status);
             order1.setOrderAmount(-123);
         });
     }
