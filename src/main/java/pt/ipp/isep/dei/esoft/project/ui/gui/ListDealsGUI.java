@@ -1,44 +1,29 @@
 package pt.ipp.isep.dei.esoft.project.ui.gui;
 
 import javafx.application.Application;
-import javafx.beans.property.ReadOnlyIntegerWrapper;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+
 import javafx.stage.Stage;
-import javafx.util.Callback;
+
 import pt.ipp.isep.dei.esoft.project.application.controller.ListDealsController;
-import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
-import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
-import pt.ipp.isep.dei.esoft.project.domain.model.Client;
-import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
-import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
+import pt.ipp.isep.dei.esoft.project.domain.dto.DealsDto;
+import pt.ipp.isep.dei.esoft.project.domain.shared.SortingOrder;
+
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ListDealsGUI extends Application implements Runnable, Initializable {
     private ListDealsController controller = new ListDealsController();
 
-    @FXML
-    private TableView<Announcement> tblView;
+    private List<DealsDto> deals = new ArrayList<>();
 
     @FXML
     private Button btnAsc;
@@ -52,6 +37,22 @@ public class ListDealsGUI extends Application implements Runnable, Initializable
     @FXML
     private RadioButton rdbInsertion;
 
+    @FXML
+    private TextArea txtArea;
+
+    @FXML
+    void sortWithAlgorithm(ActionEvent event) {
+        String algorithm = toggleGroup.getSelectedToggle().toString();
+        SortingOrder sortingOrder;
+        if (((Button) event.getSource()).getText().equals("Ascending"))
+            sortingOrder = SortingOrder.ASCENDING;
+        else
+            sortingOrder = SortingOrder.DESCENDING;
+
+        controller.sortDealsWithAlgorithm(deals, algorithm, sortingOrder);
+    }
+
+    ToggleGroup toggleGroup = new ToggleGroup();
 
 
 
@@ -77,61 +78,18 @@ public class ListDealsGUI extends Application implements Runnable, Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //TableView tblView = new TableView();
-
-        /*
-        TableColumn<Announcement, LocalDate> column1 =
-                new TableColumn<>("First Name");
-        column1.setCellValueFactory(
-                new PropertyValueFactory<>("date"));
-
-        TableColumn<Announcement, Client> column2 =
-                new TableColumn<>("Last Name");
-        column2.setCellValueFactory(
-                new PropertyValueFactory<>("owner"));
+        rdbBubble.setToggleGroup(toggleGroup);
+        rdbInsertion.setToggleGroup(toggleGroup);
 
 
-        tblView.getColumns().add(column1);
-        tblView.getColumns().add(column2);
-
-        List<Announcement> announcements = ListDealsController.getDeals();
-        for (Announcement a:
-                announcements) {
-            tblView.getItems().add(a);
+        deals = controller.getDeals();
+        controller.sortDealsByDate(deals, SortingOrder.DESCENDING);
+        txtArea.appendText("test");
+        for (DealsDto d:
+             deals) {
+            txtArea.appendText(deals.toString());
+            txtArea.appendText("\n");
         }
-
-         */
-
-
-        ObservableList<Announcement> announcements = FXCollections.observableList(controller.getDeals());
-
-        tblView.setItems(announcements);
-
-        TableColumn<Announcement, Date> dateColumn = new TableColumn<>("Date");
-        dateColumn.setCellValueFactory(new PropertyValueFactory("date"));
-
-        TableColumn<Announcement, Client> clientColumn = new TableColumn<>("Client");
-        clientColumn.setCellValueFactory(new PropertyValueFactory("owner"));
-/*
-        TableColumn<Announcement, Integer> branchIdColumn = new TableColumn<>("Branch Name");
-        branchIdColumn.setCellValueFactory(data ->
-                 new SimpleIntegerProperty(data.getValue().getAgent().getBranch().getID()).asObject());
-
- */
-                //new ReadOnlyIntegerWrapper(data.getValue().getAgent().getBranch().getID()));
-
-        //branchIdColumn.setCellValueFactory(data -> data.getValue().getAgent().getBranch().getID());
-
-/*
-        TableColumn<Announcement, String> branchNameColumn = new TableColumn<>("Branch Name");
-        branchNameColumn.setCellValueFactory(data ->
-                new ReadOnlyStringWrapper(data.getValue().getAgent().getBranch().getName()));
-
- */
-
-        //tblView.getColumns().setAll(dateColumn, clientColumn, branchIdColumn, branchNameColumn);
-        tblView.getColumns().setAll(dateColumn, clientColumn);
-
-        return;
     }
+
 }

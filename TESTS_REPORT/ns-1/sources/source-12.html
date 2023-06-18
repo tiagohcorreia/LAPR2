@@ -1,0 +1,175 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RegisterVisitController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: RegisterVisitController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegisterVisitController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/23)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp; package pt.ipp.isep.dei.esoft.project.application.controller;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Role;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Visit;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.*;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.Rating;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
+&nbsp;
+&nbsp;
+&nbsp; public class RegisterVisitController {
+&nbsp;
+<b class="nc">&nbsp;    private  ScheduleRepository scheduleRepository = Repositories.getInstance().getScheduleRepository();</b>
+<b class="nc">&nbsp;    private  VisitRepository visitRepository = Repositories.getInstance().getVisitRepository();</b>
+<b class="nc">&nbsp;    private  EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();</b>
+&nbsp;
+<b class="nc">&nbsp;    private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authRepository = Repositories.getInstance().getAuthenticationRepository();</b>
+&nbsp;
+<b class="nc">&nbsp;    public RegisterVisitController() {</b>
+<b class="nc">&nbsp;        this.scheduleRepository = scheduleRepository;</b>
+<b class="nc">&nbsp;        this.visitRepository = visitRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Schedule&gt; getScheduleForAgent( Employee agentName) {
+<b class="nc">&nbsp;        List&lt;Schedule&gt; scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agentName);</b>
+<b class="nc">&nbsp;        List&lt;Schedule&gt; filteredVisits = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Schedule scheduled : scheduleList) {</b>
+<b class="nc">&nbsp;            AnnouncementDTO announcementDTO = scheduled.getAnnouncementDTO();</b>
+<b class="nc">&nbsp;            String visitAgentName = announcementDTO.getAgent().getName();</b>
+&nbsp;
+<b class="nc">&nbsp;            if (visitAgentName.equals(agentName)) {</b>
+<b class="nc">&nbsp;                filteredVisits.add(scheduled);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        return filteredVisits;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void registerVisit(Schedule scheduledVisit, String opinionAboutBusiness, Rating rating) {
+<b class="nc">&nbsp;        Visit visit = new Visit(scheduledVisit, opinionAboutBusiness, rating);</b>
+<b class="nc">&nbsp;        visitRepository.addVisit(visit);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;   /* public String getCurrentAgentName() {
+&nbsp;        return authRepository.getCurrentUserSession().getUserName();
+&nbsp;
+&nbsp;    } */
+&nbsp;
+&nbsp;     public String getCurrentAgent() {
+<b class="nc">&nbsp;         pt.isep.lei.esoft.auth.UserSession userSession = authRepository.getCurrentUserSession();</b>
+<b class="nc">&nbsp;         if (userSession.getUserRoles() == Role.AGENT) {</b>
+<b class="nc">&nbsp;             return userSession.getUserName();</b>
+&nbsp;         } else {
+<b class="nc">&nbsp;             throw new IllegalStateException(&quot;Current user is not an employee (agent).&quot;);</b>
+&nbsp;         }
+&nbsp;     }
+&nbsp;
+&nbsp;     public Employee getEmployeeByName(String employeeName) {
+<b class="nc">&nbsp;         return employeeRepository.findByEmail(employeeName);</b>
+&nbsp;     }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

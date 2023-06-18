@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > DevTeamUI</title>
+  <title>Coverage Report > TaskCategoryRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: DevTeamUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
+<h1>Coverage Summary for Class: TaskCategoryRepository (pt.ipp.isep.dei.esoft.project.repository)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,29 +40,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">DevTeamUI</td>
+  <td class="name">TaskCategoryRepository</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/1)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/2)
+    (5/5)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/9)
+    (20/20)
   </span>
 </td>
 </tr>
@@ -74,29 +74,76 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.repository;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.TaskCategory;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Dev team ui.
+&nbsp; * The type Task category repository.
 &nbsp; */
-&nbsp;public class DevTeamUI implements Runnable {
+<b class="fc">&nbsp;public class TaskCategoryRepository {</b>
+&nbsp;
+<b class="fc">&nbsp;    private final List&lt;TaskCategory&gt; taskCategories = new ArrayList&lt;&gt;();</b>
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Instantiates a new Dev team ui.
+&nbsp;     * Gets task category by description.
+&nbsp;     *
+&nbsp;     * @param taskCategoryDescription the task category description
+&nbsp;     * @return the task category by description
 &nbsp;     */
-<b class="nc">&nbsp;    public DevTeamUI() {</b>
-&nbsp;
+&nbsp;    public TaskCategory getTaskCategoryByDescription(String taskCategoryDescription) {
+<b class="fc">&nbsp;        TaskCategory newTaskCategory = new TaskCategory(taskCategoryDescription);</b>
+<b class="fc">&nbsp;        TaskCategory taskCategory = null;</b>
+<b class="fc">&nbsp;        if (taskCategories.contains(newTaskCategory)) {</b>
+<b class="fc">&nbsp;            taskCategory = taskCategories.get(taskCategories.indexOf(newTaskCategory));</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (taskCategory == null) {</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(</b>
+&nbsp;                    &quot;Task Category requested for [&quot; + taskCategoryDescription + &quot;] does not exist.&quot;);
+&nbsp;        }
+<b class="fc">&nbsp;        return taskCategory;</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    public void run() {
-<b class="nc">&nbsp;        System.out.println(&quot;\n&quot;);</b>
-<b class="nc">&nbsp;        System.out.print(&quot;Development Team:\n&quot;);</b>
-<b class="nc">&nbsp;        System.out.print(&quot;\t Hugo Nogueira - 1170504@isep.ipp.pt \n&quot;);</b>
-<b class="nc">&nbsp;        System.out.print(&quot;\t Student Name 2 - 1XXXXXX@isep.ipp.pt \n&quot;);</b>
-<b class="nc">&nbsp;        System.out.print(&quot;\t Student Name 3 - 1XXXXXX@isep.ipp.pt \n&quot;);</b>
-<b class="nc">&nbsp;        System.out.print(&quot;\t Student Name 4 - 1XXXXXX@isep.ipp.pt \n&quot;);</b>
-<b class="nc">&nbsp;        System.out.print(&quot;\t Student Name 5 - 1XXXXXX@isep.ipp.pt \n&quot;);</b>
-<b class="nc">&nbsp;        System.out.println(&quot;\n&quot;);</b>
+&nbsp;    /**
+&nbsp;     * Add optional.
+&nbsp;     *
+&nbsp;     * @param taskCategory the task category
+&nbsp;     * @return the optional
+&nbsp;     */
+&nbsp;    public Optional&lt;TaskCategory&gt; add(TaskCategory taskCategory) {
+&nbsp;
+<b class="fc">&nbsp;        Optional&lt;TaskCategory&gt; newTaskCategory = Optional.empty();</b>
+<b class="fc">&nbsp;        boolean operationSuccess = false;</b>
+&nbsp;
+<b class="fc">&nbsp;        if (validateTaskCategory(taskCategory)) {</b>
+<b class="fc">&nbsp;            newTaskCategory = Optional.of(taskCategory.clone());</b>
+<b class="fc">&nbsp;            operationSuccess = taskCategories.add(newTaskCategory.get());</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        if (!operationSuccess) {</b>
+<b class="fc">&nbsp;            newTaskCategory = Optional.empty();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return newTaskCategory;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private boolean validateTaskCategory(TaskCategory taskCategory) {
+<b class="fc">&nbsp;        boolean isValid = !taskCategories.contains(taskCategory);</b>
+<b class="fc">&nbsp;        return isValid;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets task categories.
+&nbsp;     *
+&nbsp;     * @return the task categories
+&nbsp;     */
+&nbsp;    public List&lt;TaskCategory&gt; getTaskCategories() {
+&nbsp;        //This is a defensive copy, so that the repository cannot be modified from the outside.
+<b class="fc">&nbsp;        return List.copyOf(taskCategories);</b>
 &nbsp;    }
 &nbsp;}
 </code>
@@ -122,7 +169,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

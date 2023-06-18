@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > AnnouncementRepository</title>
+  <title>Coverage Report > AnnouncementMapper</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.repository</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.mappers</a>
 </div>
 
-<h1>Coverage Summary for Class: AnnouncementRepository (pt.ipp.isep.dei.esoft.project.domain.repository)</h1>
+<h1>Coverage Summary for Class: AnnouncementMapper (pt.ipp.isep.dei.esoft.project.domain.mappers)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">AnnouncementRepository</td>
+  <td class="name">AnnouncementMapper</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -51,18 +51,18 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    75%
+    22,2%
   </span>
   <span class="absValue">
-    (6/8)
+    (2/9)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    63,4%
+    9,1%
   </span>
   <span class="absValue">
-    (26/41)
+    (3/33)
   </span>
 </td>
 </tr>
@@ -74,147 +74,117 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.repository;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.mappers;
 &nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementRequestDTO;
 &nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 &nbsp;
 &nbsp;import java.util.ArrayList;
 &nbsp;import java.util.List;
+&nbsp;import java.util.stream.Collectors;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Announcement repository.
+&nbsp; * The type Announcement mapper.
 &nbsp; */
-<b class="fc">&nbsp;public class AnnouncementRepository {</b>
-&nbsp;    /**
-&nbsp;     * The Announcements.
-&nbsp;     */
-<b class="fc">&nbsp;    List&lt;Announcement&gt; announcements = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;public class AnnouncementMapper {</b>
+&nbsp;
+<b class="fc">&nbsp;    private static List&lt;AnnouncementDTO&gt; announcementDTOList = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;    AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();</b>
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Save boolean.
+&nbsp;     * Convert list.
 &nbsp;     *
-&nbsp;     * @param announcement the announcement
-&nbsp;     * @return the boolean
-&nbsp;     */
-&nbsp;    public boolean save(Announcement announcement) {
-<b class="fc">&nbsp;        return announcements.add(announcement.getAnnouncement());</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Create announcement boolean.
-&nbsp;     *
-&nbsp;     * @param announcement the announcement
-&nbsp;     * @return the boolean
-&nbsp;     */
-&nbsp;    public boolean createAnnouncement (Announcement announcement) {
-&nbsp;
-<b class="fc">&nbsp;        if(validateAnnouncement(announcement)) {</b>
-&nbsp;
-<b class="fc">&nbsp;            return addAnnouncement(announcement);</b>
-&nbsp;        }
-<b class="nc">&nbsp;        return false;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Validate announcement boolean.
-&nbsp;     *
-&nbsp;     * @param announcement the announcement
-&nbsp;     * @return the boolean
-&nbsp;     */
-&nbsp;    public boolean validateAnnouncement(Announcement announcement) {
-&nbsp;
-<b class="fc">&nbsp;        for(Announcement announcement1 : announcements) {</b>
-&nbsp;
-<b class="fc">&nbsp;            if(announcement.equals(announcement)) {</b>
-&nbsp;
-<b class="fc">&nbsp;                return false;</b>
-&nbsp;            }
-<b class="nc">&nbsp;        }</b>
-<b class="fc">&nbsp;        return true;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Add announcement boolean.
-&nbsp;     *
-&nbsp;     * @param announcement the announcement
-&nbsp;     * @return the boolean
-&nbsp;     */
-&nbsp;    public boolean addAnnouncement(Announcement announcement) {
-&nbsp;
-<b class="fc">&nbsp;        if(announcement != null &amp;&amp; validateAnnouncement(announcement)) {</b>
-&nbsp;
-<b class="fc">&nbsp;            return this.announcements.add(announcement);</b>
-&nbsp;        }
-<b class="fc">&nbsp;        return false;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Gets all visible announcements.
-&nbsp;     *
-&nbsp;     * @return the all visible announcements
-&nbsp;     */
-&nbsp;    public List&lt;Announcement&gt; getAllVisibleAnnouncements() {
-<b class="nc">&nbsp;        List&lt;Announcement&gt; allVisibleAnnouncements = new ArrayList&lt;&gt;();</b>
-<b class="nc">&nbsp;        for(Announcement announcement : announcements){</b>
-<b class="nc">&nbsp;            if (announcement.isVisible()){</b>
-<b class="nc">&nbsp;                allVisibleAnnouncements.add(announcement.getAnnouncement());</b>
-&nbsp;            }
-<b class="nc">&nbsp;        }</b>
-<b class="nc">&nbsp;        return allVisibleAnnouncements;</b>
-&nbsp;    }
-&nbsp;
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Get available fields list.
-&nbsp;     *
+&nbsp;     * @param announcementList the announcement list
 &nbsp;     * @return the list
 &nbsp;     */
-&nbsp;    public List&lt;List&lt;Object&gt;&gt; getAvailableFields(){
-<b class="fc">&nbsp;        List&lt;List&lt;Object&gt;&gt; availableFields = new ArrayList&lt;&gt;();</b>
-<b class="fc">&nbsp;        availableFields.add(new ArrayList&lt;&gt;());</b>
-<b class="fc">&nbsp;        availableFields.add(new ArrayList&lt;&gt;());</b>
-<b class="fc">&nbsp;        availableFields.add(new ArrayList&lt;&gt;());</b>
+&nbsp;    public static List&lt;AnnouncementDTO&gt; convert(List&lt;Announcement&gt; announcementList) {
 &nbsp;
-&nbsp;        //TO-FIX
-<b class="fc">&nbsp;        for(Announcement announcement : announcements){</b>
-<b class="fc">&nbsp;            if ( announcement != null &amp;&amp; announcement.isVisible()){</b>
-<b class="fc">&nbsp;                if (!availableFields.get(0).contains(announcement.getTypeOfBusiness())){</b>
-<b class="fc">&nbsp;                    availableFields.get(0).add(announcement.getTypeOfBusiness());</b>
-&nbsp;                }
-<b class="fc">&nbsp;                if (!availableFields.get(1).contains(announcement.getProperty().getClass().getSimpleName())){</b>
-<b class="fc">&nbsp;                    availableFields.get(1).add(announcement.getProperty().getClass().getSimpleName());</b>
-&nbsp;                }
-<b class="fc">&nbsp;                if (!announcement.getProperty().getClass().getSimpleName().equals(&quot;Land&quot;) &amp;&amp; !availableFields.get(2).contains(announcement.getProperty().getNumberOfBedrooms())){</b>
-&nbsp;                //if (announcement.getProperty().getClass().getSimpleName().equals(&quot;Land&quot;) &amp;&amp; !availableFields.get(2).contains(announcement.getProperty().getNumberOfBedrooms())){
-<b class="fc">&nbsp;                    availableFields.get(2).add(announcement.getProperty().getNumberOfBedrooms());</b>
-&nbsp;                    //availableFields.get(2).add(announcement.getProperty().getBedrooms());
-&nbsp;                }
-&nbsp;            }
-<b class="fc">&nbsp;        }</b>
-<b class="fc">&nbsp;        return availableFields;</b>
+<b class="nc">&nbsp;        return announcementList.stream().map(AnnouncementDTO::new).collect(Collectors.toList());</b>
 &nbsp;    }
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Get announcements list.
+&nbsp;     * To dto list.
 &nbsp;     *
-&nbsp;     * @param typeOfBusiness   the type of business
-&nbsp;     * @param typeOfProperty   the type of property
-&nbsp;     * @param numberOfBedrooms the number of bedrooms
+&nbsp;     * @param announcementList the announcement list
 &nbsp;     * @return the list
 &nbsp;     */
-&nbsp;    public List&lt;Announcement&gt; getAnnouncements(String typeOfBusiness, String typeOfProperty, int numberOfBedrooms){
-<b class="nc">&nbsp;        List&lt;Announcement&gt; matchingAnnouncements = new ArrayList&lt;&gt;();</b>
-<b class="nc">&nbsp;        for(Announcement announcement : announcements){</b>
-<b class="nc">&nbsp;            Announcement gotAnnouncement = announcement.getAnnouncement(typeOfBusiness, typeOfProperty, numberOfBedrooms);</b>
-<b class="nc">&nbsp;            if(gotAnnouncement != null){</b>
-<b class="nc">&nbsp;                matchingAnnouncements.add(gotAnnouncement);</b>
-&nbsp;            }
+&nbsp;    public List&lt;AnnouncementDTO&gt; toDto(List&lt;Announcement&gt; announcementList) {
+&nbsp;
+<b class="nc">&nbsp;        List&lt;AnnouncementDTO&gt; dtoList = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (Announcement announcement : announcementList) {</b>
+&nbsp;
+<b class="nc">&nbsp;            dtoList.add(toDtoAnnouncement(announcement));</b>
 <b class="nc">&nbsp;        }</b>
-<b class="nc">&nbsp;        return matchingAnnouncements;</b>
+<b class="nc">&nbsp;        return dtoList;</b>
 &nbsp;    }
 &nbsp;
+&nbsp;    public AnnouncementDTO toDto2(Announcement announcement) {
+&nbsp;
+<b class="nc">&nbsp;        AnnouncementDTO dto = new AnnouncementDTO();</b>
+<b class="nc">&nbsp;        dto.setPrice(announcement.getPrice());</b>
+<b class="nc">&nbsp;        dto.setTypeOfBusiness(announcement.getTypeOfBusiness());</b>
+<b class="nc">&nbsp;        dto.setProperty(announcement.getProperty());</b>
+<b class="nc">&nbsp;        dto.setAgent(announcement.getAgent());</b>
+&nbsp;
+<b class="nc">&nbsp;        return dto;</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Gets all announcements.
+&nbsp;     *
+&nbsp;     * @return the all announcements
+&nbsp;     */
+&nbsp;    public List&lt;AnnouncementDTO&gt; getAllAnnouncements() {
+&nbsp;
+<b class="nc">&nbsp;        List&lt;AnnouncementDTO&gt; allAnnouncements = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (AnnouncementDTO announcementDTO : allAnnouncements) {</b>
+&nbsp;
+<b class="nc">&nbsp;            allAnnouncements.add(announcementDTO.getAnnouncement());</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return allAnnouncements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;AnnouncementDTO&gt; getAllAnnouncementsRecentToOldest() {
+&nbsp;
+<b class="nc">&nbsp;        List&lt;AnnouncementDTO&gt; allAnnouncements = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        List&lt;AnnouncementDTO&gt; allAnnouncementsFromRecentToOldest = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;        for (AnnouncementDTO announcementDTO : allAnnouncements) {</b>
+<b class="nc">&nbsp;            allAnnouncements.add(announcementDTO.getAnnouncement());</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        for (int i = allAnnouncements.size() - 1; i &gt;= 0; i--) {</b>
+<b class="nc">&nbsp;            AnnouncementDTO announcementDTO = allAnnouncements.get(i);</b>
+<b class="nc">&nbsp;            allAnnouncementsFromRecentToOldest.add(announcementDTO);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return allAnnouncementsFromRecentToOldest;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public static AnnouncementDTO getAnnouncementDTOById(int id) {
+&nbsp;
+<b class="nc">&nbsp;        if (id &gt;= 0 &amp;&amp; id &lt; announcementDTOList.size()) {</b>
+&nbsp;
+<b class="nc">&nbsp;            return announcementDTOList.get(id);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * To dto announcement announcement dto.
+&nbsp;     *
+&nbsp;     * @param announcement the announcement
+&nbsp;     * @return the announcement dto
+&nbsp;     */
+&nbsp;    public AnnouncementDTO toDtoAnnouncement(Announcement announcement) {
+<b class="nc">&nbsp;        return new AnnouncementDTO();</b>
+&nbsp;    }
 &nbsp;}
+&nbsp;
+&nbsp;
 </code>
 </pre>
 </div>
@@ -238,7 +208,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

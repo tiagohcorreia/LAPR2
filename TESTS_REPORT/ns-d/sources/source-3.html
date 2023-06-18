@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > MainMenuUI</title>
+  <title>Coverage Report > CityUI</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console.menu</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
 </div>
 
-<h1>Coverage Summary for Class: MainMenuUI (pt.ipp.isep.dei.esoft.project.ui.console.menu)</h1>
+<h1>Coverage Summary for Class: CityUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">MainMenuUI</td>
+  <td class="name">CityUI</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -54,7 +54,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/2)
+    (0/5)
   </span>
 </td>
 <td class="coverageStat">
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/10)
+    (0/37)
   </span>
 </td>
 </tr>
@@ -74,50 +74,91 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console.menu;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.DevTeamUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.authorization.AuthenticationUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.CityController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.City;
 &nbsp;
-&nbsp;import java.util.ArrayList;
-&nbsp;import java.util.List;
-&nbsp;
+&nbsp;import java.util.Scanner;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Main menu ui.
+&nbsp; * The type City ui.
 &nbsp; */
-&nbsp;public class MainMenuUI implements Runnable {
+&nbsp;public class CityUI {
+&nbsp;    private final CityController cityController;
+&nbsp;    private final Scanner scanner;
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Instantiates a new Main menu ui.
+&nbsp;     * Instantiates a new City ui.
+&nbsp;     *
+&nbsp;     * @param cityController the city controller
 &nbsp;     */
-<b class="nc">&nbsp;    public MainMenuUI() {</b>
+<b class="nc">&nbsp;    public CityUI(CityController cityController) {</b>
+<b class="nc">&nbsp;        this.cityController = cityController;</b>
+<b class="nc">&nbsp;        this.scanner = new Scanner(System.in);</b>
 &nbsp;    }
 &nbsp;
+&nbsp;    /**
+&nbsp;     * Run.
+&nbsp;     */
 &nbsp;    public void run() {
+<b class="nc">&nbsp;        boolean running = true;</b>
 &nbsp;
+<b class="nc">&nbsp;        while (running) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;\nCity Menu:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;1. Add City&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;2. Find City&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;3. List Cities&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;0. Back&quot;);</b>
 &nbsp;
+<b class="nc">&nbsp;            int choice = scanner.nextInt();</b>
+<b class="nc">&nbsp;            scanner.nextLine(); // Clear the buffer</b>
 &nbsp;
-<b class="nc">&nbsp;        List&lt;MenuItem&gt; options = new ArrayList&lt;MenuItem&gt;();</b>
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Login&quot;, new AuthenticationUI()));</b>
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Unregistered user&quot;, new UnregisteredUserUI()));</b>
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Development Team&quot;, new DevTeamUI()));</b>
-<b class="nc">&nbsp;        int option = 0;</b>
-&nbsp;        do {
-&nbsp;
-<b class="nc">&nbsp;            option = Utils.showAndSelectIndex(options, &quot;\n\n=============== Real Estate USA ===============&quot;);</b>
-&nbsp;
-&nbsp;
-<b class="nc">&nbsp;            if ((option &gt;= 0) &amp;&amp; (option &lt; options.size())) {</b>
-<b class="nc">&nbsp;                options.get(option).run();</b>
+<b class="nc">&nbsp;            switch (choice) {</b>
+&nbsp;                case 1:
+<b class="nc">&nbsp;                    addCity();</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                case 2:
+<b class="nc">&nbsp;                    findCity();</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                case 3:
+<b class="nc">&nbsp;                    listCities();</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                case 0:
+<b class="nc">&nbsp;                    running = false;</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                default:
+<b class="nc">&nbsp;                    System.out.println(&quot;Invalid option. Please try again.&quot;);</b>
 &nbsp;            }
-<b class="nc">&nbsp;        } while (option != -1);</b>
-&nbsp;
+<b class="nc">&nbsp;        }</b>
 &nbsp;    }
 &nbsp;
+&nbsp;    private void addCity() {
+<b class="nc">&nbsp;        System.out.println(&quot;Enter the city name:&quot;);</b>
+<b class="nc">&nbsp;        String cityName = scanner.nextLine();</b>
+<b class="nc">&nbsp;        cityController.addCity(cityName);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;City added successfully.&quot;);</b>
+&nbsp;    }
 &nbsp;
+&nbsp;    private void findCity() {
+<b class="nc">&nbsp;        System.out.println(&quot;Enter the city name to search:&quot;);</b>
+<b class="nc">&nbsp;        String cityName = scanner.nextLine();</b>
+<b class="nc">&nbsp;        City city = cityController.findCityByName(cityName);</b>
+<b class="nc">&nbsp;        if (city != null) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;City found: &quot; + city);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            System.out.println(&quot;City not found.&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private void listCities() {
+<b class="nc">&nbsp;        System.out.println(&quot;Cities:&quot;);</b>
+<b class="nc">&nbsp;        for (City city : cityController.getAllCities()) {</b>
+<b class="nc">&nbsp;            System.out.println(city);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
 &nbsp;}
+&nbsp;
 </code>
 </pre>
 </div>
@@ -141,7 +182,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

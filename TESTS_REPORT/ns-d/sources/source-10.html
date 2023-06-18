@@ -1,0 +1,331 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RegisterPropertyUI</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
+</div>
+
+<h1>Coverage Summary for Class: RegisterPropertyUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegisterPropertyUI</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/106)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.RegisterPropertyController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.City;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Location;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
+&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+&nbsp;
+&nbsp;
+&nbsp;import java.text.ParseException;
+&nbsp;import java.text.SimpleDateFormat;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.format.DateTimeParseException;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type Register property ui.
+&nbsp; */
+&nbsp;public class RegisterPropertyUI implements Runnable {
+&nbsp;
+&nbsp;    private RegisterPropertyController controller;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Instantiates a new Register property ui.
+&nbsp;     *
+&nbsp;     * @param controller the controller
+&nbsp;     */
+<b class="nc">&nbsp;    public RegisterPropertyUI(RegisterPropertyController controller) {</b>
+<b class="nc">&nbsp;        this.controller = controller;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void run() {
+<b class="nc">&nbsp;        boolean success = true;</b>
+&nbsp;
+<b class="nc">&nbsp;        while (success) {</b>
+&nbsp;
+&nbsp;            TypeOfBusiness sellOrRent;
+&nbsp;            TypeOfProperty typeProperty;
+<b class="nc">&nbsp;            int numberOfBedrooms = 0;</b>
+<b class="nc">&nbsp;            int numberOfBathrooms = 0;</b>
+<b class="nc">&nbsp;            int numberOfParkingSpaces = 0;</b>
+<b class="nc">&nbsp;            ArrayList&lt;String&gt; equipmentList = new ArrayList();</b>
+<b class="nc">&nbsp;            int numberEquipment = 1;</b>
+<b class="nc">&nbsp;            String equipment = &quot;&quot;;</b>
+<b class="nc">&nbsp;            boolean hasBasement = false;</b>
+<b class="nc">&nbsp;            boolean hasInhabitalLoft = false;</b>
+<b class="nc">&nbsp;            String hasBasementString=&quot;&quot;;</b>
+<b class="nc">&nbsp;            String hasInhabitalLoftString=&quot;&quot;;</b>
+<b class="nc">&nbsp;            SunExposure sunExposure = null;</b>
+&nbsp;            int area;
+&nbsp;            Location location;
+&nbsp;            int cityCenterDistance;
+&nbsp;            float price;
+<b class="nc">&nbsp;            ArrayList&lt;String&gt; photographs = new ArrayList();</b>
+&nbsp;            String photo;
+<b class="nc">&nbsp;            int numberPhotos = 1;</b>
+&nbsp;            String agent;
+&nbsp;            Employee choosedAgent;
+<b class="nc">&nbsp;            LocalDate date = LocalDate.now();</b>
+<b class="nc">&nbsp;            int doorNumber = 0;</b>
+<b class="nc">&nbsp;            String street = null;</b>
+<b class="nc">&nbsp;            int postalCode = 0;</b>
+<b class="nc">&nbsp;            int rentalMonths = 0;</b>
+&nbsp;
+&nbsp;
+&nbsp;            //Type of property
+<b class="nc">&nbsp;            List&lt;TypeOfProperty&gt; x = this.controller.getTypeOfPropertyAsList();</b>
+<b class="nc">&nbsp;            Utils.showList(x, &quot;Type of Property&quot;);</b>
+<b class="nc">&nbsp;            Integer posTypeOfProperty = Utils.readIntegerFromConsole(&quot;Choose the type of property: &quot;);</b>
+<b class="nc">&nbsp;            typeProperty = TypeOfProperty.getTypeOfPropertyById(posTypeOfProperty);</b>
+&nbsp;
+&nbsp;            //area in m2
+<b class="nc">&nbsp;            area = Utils.readIntegerFromConsole(&quot;Insert area in m2: &quot;);</b>
+&nbsp;
+&nbsp;            //Location
+<b class="nc">&nbsp;            String city = Utils.readLineFromConsole(&quot;Insert the city:&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            City existingCity = this.controller.getCity(city);</b>
+<b class="nc">&nbsp;            if (existingCity != null) {</b>
+&nbsp;
+<b class="nc">&nbsp;                 street = Utils.readLineFromConsole(&quot;Insert the street:&quot;);</b>
+<b class="nc">&nbsp;                postalCode = Utils.readIntegerFromConsole(&quot;Insert the postal code(5 digits):&quot;);</b>
+&nbsp;
+&nbsp;            } else {
+&nbsp;
+<b class="nc">&nbsp;                System.out.println(&quot;City not found in the repository. Please enter a valid city.&quot;);</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            //area in m2
+<b class="nc">&nbsp;            cityCenterDistance = Utils.readIntegerFromConsole(&quot;Insert the distance from the centre (km): &quot;);</b>
+&nbsp;
+&nbsp;            //Photographs
+<b class="nc">&nbsp;            numberPhotos = Utils.readIntegerFromConsole(&quot;Insert how many photos you want to add: &quot;);</b>
+<b class="nc">&nbsp;            for (int i = 0; i &lt; numberPhotos; i++) {</b>
+<b class="nc">&nbsp;                photo = Utils.readLineFromConsole(&quot;Insert the path of the photo &quot; + i + 1 + &quot;: &quot;);</b>
+<b class="nc">&nbsp;                photographs.add(photo);</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            if (posTypeOfProperty == 1 || posTypeOfProperty == 2) {</b>
+&nbsp;
+<b class="nc">&nbsp;                doorNumber = Utils.readIntegerFromConsole(&quot;Insert door number&quot;);</b>
+&nbsp;
+&nbsp;                //Number of bedrooms
+<b class="nc">&nbsp;                numberOfBedrooms = Utils.readIntegerFromConsole(&quot;Insert Number of bedrooms: &quot;);</b>
+&nbsp;
+&nbsp;                //Number of  bathrooms
+<b class="nc">&nbsp;                numberOfBathrooms = Utils.readIntegerFromConsole(&quot;Insert Number of bathrooms: &quot;);</b>
+&nbsp;
+&nbsp;                //Number of parking spaces
+<b class="nc">&nbsp;                numberOfParkingSpaces = Utils.readIntegerFromConsole(&quot;Insert Number of Parking Spaces: &quot;);</b>
+&nbsp;
+&nbsp;                //Equipment Available
+<b class="nc">&nbsp;                numberEquipment = Utils.readIntegerFromConsole(&quot;Insert how many equipments you want to add: &quot;);</b>
+<b class="nc">&nbsp;                for (int i = 0; i &lt; numberEquipment; i++) {</b>
+<b class="nc">&nbsp;                    equipment = Utils.readLineFromConsole(&quot;Insert the equipment: &quot;);</b>
+<b class="nc">&nbsp;                    equipmentList.add(equipment);</b>
+&nbsp;                }
+&nbsp;            }
+<b class="nc">&nbsp;            if (posTypeOfProperty == 1) {</b>
+&nbsp;
+<b class="nc">&nbsp;                int hasBasementInt = Utils.readIntegerFromConsole(&quot;The house has a basement? \n0. NO\n1. YES&quot;);</b>
+<b class="nc">&nbsp;                if (hasBasementInt == 0) {</b>
+<b class="nc">&nbsp;                    hasBasement = false;</b>
+<b class="nc">&nbsp;                    hasBasementString=&quot;No&quot;;</b>
+&nbsp;                } else {
+<b class="nc">&nbsp;                    hasBasement = true;</b>
+<b class="nc">&nbsp;                    hasBasementString= &quot;Yes&quot;;</b>
+&nbsp;                }
+<b class="nc">&nbsp;                int hasInhabitalLoftInt = Utils.readIntegerFromConsole(&quot;The house has an inhabitalLoft? \n0. NO\n1. YES&quot;);</b>
+<b class="nc">&nbsp;                if (hasInhabitalLoftInt == 0) {</b>
+<b class="nc">&nbsp;                    hasInhabitalLoft = false;</b>
+<b class="nc">&nbsp;                    hasInhabitalLoftString=&quot;No&quot;;</b>
+&nbsp;                } else {
+<b class="nc">&nbsp;                    hasInhabitalLoft = true;</b>
+<b class="nc">&nbsp;                    hasInhabitalLoftString=&quot;Yes&quot;;</b>
+&nbsp;                }
+&nbsp;
+&nbsp;                //SunExposure
+<b class="nc">&nbsp;                List&lt;SunExposure&gt; y = this.controller.getSunExposureAsList();</b>
+<b class="nc">&nbsp;                Utils.showList(y, &quot;SunExposure&quot;);</b>
+<b class="nc">&nbsp;                Integer posSunExposure = Utils.readIntegerFromConsole(&quot;Choose the sunExposure: &quot;);</b>
+<b class="nc">&nbsp;                sunExposure = SunExposure.getSunExposureById(posSunExposure);</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+&nbsp;            //price
+<b class="nc">&nbsp;            price = (float) Utils.readDoubleFromConsole(&quot;Insert the price of the property: &quot;);</b>
+&nbsp;
+&nbsp;            //agent
+<b class="nc">&nbsp;            List&lt;Employee&gt; agentsList = this.controller.getAgent();</b>
+<b class="nc">&nbsp;            Utils.showList(agentsList, &quot;Agents List&quot;);</b>
+<b class="nc">&nbsp;            agent = Utils.readLineFromConsole(&quot;Insert the Name of the responsible agent: &quot;);</b>
+<b class="nc">&nbsp;            choosedAgent = this.controller.getEmployee(agent);</b>
+<b class="nc">&nbsp;            System.out.println(choosedAgent);</b>
+&nbsp;
+&nbsp;
+&nbsp;            //Sell or Rent a property
+<b class="nc">&nbsp;            List&lt;TypeOfBusiness&gt; z = this.controller.getTypeOfBusinessAsList();</b>
+<b class="nc">&nbsp;            Utils.showList(z, &quot;Type of Business&quot;);</b>
+<b class="nc">&nbsp;            Integer posTypeOfBusiness = Utils.readIntegerFromConsole(&quot;Choose the Type of Business: &quot;);</b>
+<b class="nc">&nbsp;            sellOrRent = TypeOfBusiness.getTypeOfBusinessById(posTypeOfBusiness);</b>
+<b class="nc">&nbsp;            if (sellOrRent == TypeOfBusiness.RENT) {</b>
+<b class="nc">&nbsp;                rentalMonths = Utils.readIntegerFromConsole(&quot;Insert the number of months you want to rent: &quot;);</b>
+&nbsp;
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            int optValidation = Utils.readIntegerFromConsole(&quot;1-CONFIRM\n0-CANCEL&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            location = new Location(doorNumber, street, existingCity, postalCode);</b>
+&nbsp;
+<b class="nc">&nbsp;            if (optValidation == 1) {</b>
+&nbsp;
+&nbsp;                try {
+<b class="nc">&nbsp;                    Client owner = controller.getCurrentOwner();</b>
+<b class="nc">&nbsp;                    this.controller.createAnnouncement(date, sellOrRent, posTypeOfProperty, numberOfBedrooms, numberOfBathrooms, numberOfParkingSpaces, equipmentList, hasBasement, hasInhabitalLoft,</b>
+&nbsp;                            sunExposure, area, location, cityCenterDistance, price, photographs, choosedAgent,owner,rentalMonths);
+<b class="nc">&nbsp;                    success = false;</b>
+<b class="nc">&nbsp;                    if (success) {</b>
+&nbsp;
+<b class="nc">&nbsp;                        System.out.println(&quot;Please insert Announcement data again&quot;);</b>
+&nbsp;                    }
+&nbsp;
+<b class="nc">&nbsp;                } catch (IllegalArgumentException | NullPointerException e) {</b>
+&nbsp;
+<b class="nc">&nbsp;                    System.err.println(e.getMessage());</b>
+&nbsp;
+<b class="nc">&nbsp;                }</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;                System.out.println(&quot;Type of Business: &quot; + sellOrRent);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Type of property: &quot; + typeProperty);</b>
+<b class="nc">&nbsp;                if (posTypeOfProperty == 1 || posTypeOfProperty == 2) {</b>
+&nbsp;
+<b class="nc">&nbsp;                    System.out.println(&quot;Number of bedrooms: &quot; + numberOfBedrooms);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Number of bathrooms: &quot; + numberOfBathrooms);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Number of parking spaces: &quot; + numberOfParkingSpaces);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;Equipment available: &quot; + equipmentList);</b>
+&nbsp;
+&nbsp;                }
+<b class="nc">&nbsp;                if (posTypeOfProperty == 1) {</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;The house has basement? &quot; + hasBasementString);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;The house has inhabital loft? &quot; + hasInhabitalLoftString);</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;The house has sun exposure? &quot; + sunExposure);</b>
+&nbsp;                }
+<b class="nc">&nbsp;                System.out.println(&quot;Area: &quot; + area + &quot; m2&quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Location: &quot; + location);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Distance of Centre: &quot; + cityCenterDistance+&quot; Km&quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Price: &quot; + price + &quot;$&quot;);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;Responsible Agent: &quot; + choosedAgent.getName());</b>
+&nbsp;
+<b class="nc">&nbsp;                success=false;</b>
+&nbsp;
+&nbsp;            } else {
+<b class="nc">&nbsp;                System.err.println(&quot;Operation Canceled!&quot;);</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

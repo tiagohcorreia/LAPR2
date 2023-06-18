@@ -48,3 +48,18 @@ Recipient: Nilsa Gil
 Subject: ANNOUNCEMENT NOTIFICATION
 Message: Dear client, your announcement was published. 
 
+[2023-06-18T23:34:20.536791500]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-18T23:35:03.111790500]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-18T23:35:22.008364800]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+

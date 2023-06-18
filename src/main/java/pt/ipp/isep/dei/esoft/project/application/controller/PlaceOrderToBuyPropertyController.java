@@ -19,7 +19,6 @@ public class PlaceOrderToBuyPropertyController {
     private AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
     private AnnouncementMapper announcementMapper;
     private PlaceOrderToBuyPropertyRepository orderRepository = Repositories.getInstance().getOrderToBuyPropertyRepository();
-
     private AuthenticationRepository authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
 
     /**
@@ -41,9 +40,7 @@ public class PlaceOrderToBuyPropertyController {
      * @param posAnnouncement the pos announcement
      * @return the string
      */
-    public String createOrder(Double orderAmount, Integer posAnnouncement) {
-
-        boolean status = false;
+    public Order createOrder(Double orderAmount, Integer posAnnouncement, boolean status) {
 
         Order newOrder = new Order(orderAmount, AnnouncementMapper.getAnnouncementDTOById(posAnnouncement), status);
 
@@ -51,14 +48,12 @@ public class PlaceOrderToBuyPropertyController {
 
             this.orderRepository.saveOrder(newOrder);
             this.orderRepository.writeObject();
-            System.out.println(newOrder);
-            return newOrder.toString();
 
         } catch (Exception e) {
 
             throw new IllegalArgumentException(e.getMessage().toString());
         }
-
+        return newOrder;
     }
 
     /**
@@ -67,15 +62,8 @@ public class PlaceOrderToBuyPropertyController {
      * @param posAnnouncement the pos announcement
      * @return the announcement dto
      */
-    public AnnouncementDTO showSelectedAnnouncement(int posAnnouncement) {
+    public AnnouncementDTO getAnnouncementDTO(int posAnnouncement) {
 
-        for (int i = 0; i < announcementDTOList().size(); i++) {
-
-            if (posAnnouncement >= 0 && posAnnouncement < announcementDTOList().size() && posAnnouncement == i) {
-
-                return announcementDTOList().get(posAnnouncement);
-            }
-        }
-        return null;
+        return AnnouncementMapper.getAnnouncementDTOById(posAnnouncement);
     }
 }

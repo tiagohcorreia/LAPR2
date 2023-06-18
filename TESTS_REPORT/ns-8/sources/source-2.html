@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > NegativeNumberException</title>
+  <title>Coverage Report > AuthenticationRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.exceptions</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.repository</a>
 </div>
 
-<h1>Coverage Summary for Class: NegativeNumberException (pt.ipp.isep.dei.esoft.project.exceptions)</h1>
+<h1>Coverage Summary for Class: AuthenticationRepository (pt.ipp.isep.dei.esoft.project.domain.repository)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">NegativeNumberException</td>
+  <td class="name">AuthenticationRepository</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -54,7 +54,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/1)
+    (0/6)
   </span>
 </td>
 <td class="coverageStat">
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/1)
+    (0/7)
   </span>
 </td>
 </tr>
@@ -74,22 +74,71 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.exceptions;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.repository;
+&nbsp;
+&nbsp;
+&nbsp;import pt.isep.lei.esoft.auth.AuthFacade;
+&nbsp;import pt.isep.lei.esoft.auth.UserSession;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Negative number exception.
+&nbsp; * The type Authentication repository.
 &nbsp; */
-&nbsp;public class NegativeNumberException extends Exception {
+<b class="nc">&nbsp;public class AuthenticationRepository {</b>
+<b class="nc">&nbsp;    private final AuthFacade authenticationFacade = new AuthFacade();</b>
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Instantiates a new Negative number exception.
+&nbsp;     * Do login boolean.
 &nbsp;     *
-&nbsp;     * @param message the message
+&nbsp;     * @param email the email
+&nbsp;     * @param pwd   the pwd
+&nbsp;     * @return the boolean
 &nbsp;     */
-&nbsp;    public NegativeNumberException(String message) {
-&nbsp;
-<b class="nc">&nbsp;        super(message);</b>
+&nbsp;    public boolean doLogin(String email, String pwd) {
+<b class="nc">&nbsp;        return authenticationFacade.doLogin(email, pwd).isLoggedIn();</b>
 &nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Do logout.
+&nbsp;     */
+&nbsp;    public void doLogout() {
+<b class="nc">&nbsp;        authenticationFacade.doLogout();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets current user session.
+&nbsp;     *
+&nbsp;     * @return the current user session
+&nbsp;     */
+&nbsp;    public UserSession getCurrentUserSession() {
+<b class="nc">&nbsp;        return authenticationFacade.getCurrentUserSession();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add user role boolean.
+&nbsp;     *
+&nbsp;     * @param id          the id
+&nbsp;     * @param description the description
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean addUserRole(String id, String description) {
+<b class="nc">&nbsp;        return authenticationFacade.addUserRole(id, description);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add user with role boolean.
+&nbsp;     *
+&nbsp;     * @param name   the name
+&nbsp;     * @param email  the email
+&nbsp;     * @param pwd    the pwd
+&nbsp;     * @param roleId the role id
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean addUserWithRole(String name, String email, String pwd, String roleId) {
+<b class="nc">&nbsp;        return authenticationFacade.addUserWithRole(name, email, pwd, roleId);</b>
+&nbsp;    }
+&nbsp;
 &nbsp;}
 </code>
 </pre>
@@ -114,7 +163,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

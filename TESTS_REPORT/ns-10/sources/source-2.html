@@ -1,0 +1,192 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RegisterVisitUI</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console.utils</a>
+</div>
+
+<h1>Coverage Summary for Class: RegisterVisitUI (pt.ipp.isep.dei.esoft.project.ui.console.utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegisterVisitUI</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console.utils;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.RegisterVisitController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Visit;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.Rating;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Random;
+&nbsp;import java.util.Scanner;
+&nbsp;
+&nbsp;
+&nbsp;public class RegisterVisitUI implements Runnable {
+&nbsp;
+&nbsp;    private final RegisterVisitController controller;
+&nbsp;
+<b class="nc">&nbsp;    public RegisterVisitUI() {</b>
+<b class="nc">&nbsp;        this.controller = new RegisterVisitController();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void run() {
+&nbsp;
+<b class="nc">&nbsp;        Scanner scanner = new Scanner(System.in);</b>
+&nbsp;
+<b class="nc">&nbsp;        String agentName = controller.getCurrentAgent();</b>
+<b class="nc">&nbsp;        Employee agent = controller.getEmployeeByName(agentName);</b>
+&nbsp;
+<b class="nc">&nbsp;        System.out.println(&quot;=== Visit Registration ===&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        List&lt;Schedule&gt; scheduleList = controller.getScheduleForAgent(agent);</b>
+&nbsp;
+<b class="nc">&nbsp;        System.out.println(&quot;Available Visits:&quot;);</b>
+<b class="nc">&nbsp;        displayScheduleList(scheduleList);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        boolean validInput = false;</b>
+<b class="nc">&nbsp;        while (!validInput) {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                System.out.println(&quot;Enter the index of the visit to register: &quot;);</b>
+<b class="nc">&nbsp;                int selectedIndex = scanner.nextInt();</b>
+&nbsp;
+<b class="nc">&nbsp;                if (selectedIndex &gt;= 0 &amp;&amp; selectedIndex &lt; scheduleList.size()) {</b>
+<b class="nc">&nbsp;                    Schedule selectedSchedule = scheduleList.get(selectedIndex);</b>
+&nbsp;
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter your opinion about the business: &quot;);</b>
+<b class="nc">&nbsp;                    String opinionAboutBusiness = scanner.next();</b>
+&nbsp;
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter the rating (1-5): &quot;);</b>
+<b class="nc">&nbsp;                    for (Rating rating : Rating.values()) {</b>
+<b class="nc">&nbsp;                        System.out.println(rating.ordinal() + &quot;. &quot; + rating.name());</b>
+&nbsp;                    }
+<b class="nc">&nbsp;                    int selectedRating = scanner.nextInt();</b>
+<b class="nc">&nbsp;                    Rating[] ratings = Rating.values();</b>
+&nbsp;
+<b class="nc">&nbsp;                    if (selectedRating &gt;= 0 &amp;&amp; selectedRating &lt; ratings.length) {</b>
+<b class="nc">&nbsp;                        Rating selectedRating2 = ratings[selectedRating];</b>
+<b class="nc">&nbsp;                        controller.registerVisit(selectedSchedule, opinionAboutBusiness, selectedRating2);</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Visit registered successfully.&quot;);</b>
+<b class="nc">&nbsp;                        validInput = true; // A entrada foi válida, sair do loop</b>
+<b class="nc">&nbsp;                    } else {</b>
+<b class="nc">&nbsp;                        throw new IllegalArgumentException(&quot;Invalid rating selected.&quot;);</b>
+&nbsp;                    }
+<b class="nc">&nbsp;                } else {</b>
+<b class="nc">&nbsp;                    throw new IndexOutOfBoundsException(&quot;Invalid index.&quot;);</b>
+&nbsp;                }
+<b class="nc">&nbsp;            } catch (Exception e) {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;An error occurred: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;                scanner.nextLine(); // Limpar a entrada inválida do scanner</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    private void displayScheduleList(List&lt;Schedule&gt; scheduleList) {
+<b class="nc">&nbsp;        for (int i = 0; i &lt; scheduleList.size(); i++) {</b>
+<b class="nc">&nbsp;            Schedule schedule = scheduleList.get(i);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Index: &quot; + i + &quot;, Schedule: &quot; + schedule.toString());</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

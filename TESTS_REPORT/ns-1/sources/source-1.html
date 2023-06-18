@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > CityController</title>
+  <title>Coverage Report > AnalyseDealsController</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -21,15 +21,12 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
 </div>
 
-<h1>Coverage Summary for Class: CityController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+<h1>Coverage Summary for Class: AnalyseDealsController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
 
 <table class="coverageStats">
+
 <tr>
   <th class="name">Class</th>
-<th class="coverageStat 
-">
-  Class, %
-</th>
 <th class="coverageStat 
 ">
   Method, %
@@ -40,13 +37,13 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">CityController</td>
+  <td class="name">AnalyseDealsController</td>
 <td class="coverageStat">
   <span class="percent">
     0%
   </span>
   <span class="absValue">
-    (0/1)
+    (0/8)
   </span>
 </td>
 <td class="coverageStat">
@@ -54,19 +51,48 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/4)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    0%
-  </span>
-  <span class="absValue">
-    (0/6)
+    (0/66)
   </span>
 </td>
 </tr>
-
+  <tr>
+    <td class="name">AnalyseDealsController$PropertyData</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/77)
+  </span>
+</td>
+</tr>
 </table>
 
 <br/>
@@ -76,56 +102,198 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.City;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.CityRepository;
+&nbsp;import javafx.beans.property.*;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.stage.Stage;
+&nbsp;import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Order;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Property;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.PurchaseOrderRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 &nbsp;
 &nbsp;import java.util.List;
 &nbsp;
-&nbsp;/**
-&nbsp; * The type City controller.
-&nbsp; */
-&nbsp;public class CityController {
-&nbsp;    private CityRepository cityRepository;
+&nbsp;import org.apache.commons.math3.stat.regression.SimpleRegression;
+&nbsp;import javafx.collections.FXCollections;
+&nbsp;import javafx.collections.ObservableList;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.control.Button;
+&nbsp;import javafx.scene.control.Label;
+&nbsp;import javafx.scene.control.TableColumn;
+&nbsp;import javafx.scene.control.TableView;
+&nbsp;import javafx.scene.control.cell.PropertyValueFactory;
+&nbsp;import javafx.beans.property.SimpleDoubleProperty;
+&nbsp;import javafx.collections.FXCollections;
+&nbsp;import javafx.collections.ObservableList;
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Instantiates a new City controller.
-&nbsp;     *
-&nbsp;     * @param cityRepository the city repository
-&nbsp;     */
-<b class="nc">&nbsp;    public CityController(CityRepository cityRepository) {</b>
-<b class="nc">&nbsp;        this.cityRepository = cityRepository;</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;public class AnalyseDealsController {</b>
+&nbsp;
+&nbsp;        @FXML
+&nbsp;        private TableView&lt;PropertyData&gt; table;
+&nbsp;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;PropertyData, String&gt; propertyColumn;
+&nbsp;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;PropertyData, Double&gt; salePriceColumn;
+&nbsp;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;PropertyData, Double&gt; forecastPriceSLRColumn;
+&nbsp;
+&nbsp;        @FXML
+&nbsp;        private TableColumn&lt;PropertyData, Double&gt; forecastPriceMLRColumn;
+&nbsp;    @FXML
+&nbsp;    private void handleMinimizeButtonClick(ActionEvent event) {
+<b class="nc">&nbsp;        Stage stage = (Stage) table.getScene().getWindow();</b>
+<b class="nc">&nbsp;        stage.setIconified(true);</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Add city.
-&nbsp;     *
-&nbsp;     * @param name the name
-&nbsp;     */
-&nbsp;    public void addCity(String name) {
-<b class="nc">&nbsp;        City city = new City(name);</b>
-<b class="nc">&nbsp;        cityRepository.save(city);</b>
+&nbsp;    @FXML
+&nbsp;    private void handleCloseButtonClick(ActionEvent event) {
+<b class="nc">&nbsp;        Stage stage = (Stage) table.getScene().getWindow();</b>
+<b class="nc">&nbsp;        stage.close();</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Find city by name city.
-&nbsp;     *
-&nbsp;     * @param name the name
-&nbsp;     * @return the city
-&nbsp;     */
-&nbsp;    public City findCityByName(String name) {
-<b class="nc">&nbsp;        return cityRepository.findByName(name);</b>
-&nbsp;    }
+&nbsp;        private List&lt;Order&gt; housesAndApartmentsList;
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Gets all cities.
-&nbsp;     *
-&nbsp;     * @return the all cities
-&nbsp;     */
-&nbsp;    public List&lt;City&gt; getAllCities() {
-<b class="nc">&nbsp;        return cityRepository.findAll();</b>
-&nbsp;    }
-&nbsp;}
+<b class="nc">&nbsp;        Repositories repositories = Repositories.getInstance();</b>
+<b class="nc">&nbsp;        PurchaseOrderRepository purchaseOrderRepository = repositories.getPurchaseOrderRepository();</b>
 &nbsp;
+&nbsp;        public static class PropertyData {
+&nbsp;            private final StringProperty property;
+&nbsp;            private final DoubleProperty salePrice;
+&nbsp;            private final DoubleProperty forecastPriceSLR;
+&nbsp;            private final DoubleProperty forecastPriceMLR;
+&nbsp;
+<b class="nc">&nbsp;            public PropertyData(String property, double salePrice, double forecastPriceSLR, double forecastPriceMLR) {</b>
+<b class="nc">&nbsp;                this.property = new SimpleStringProperty(property);</b>
+<b class="nc">&nbsp;                this.salePrice = new SimpleDoubleProperty(salePrice);</b>
+<b class="nc">&nbsp;                this.forecastPriceSLR = new SimpleDoubleProperty(forecastPriceSLR);</b>
+<b class="nc">&nbsp;                this.forecastPriceMLR = new SimpleDoubleProperty(forecastPriceMLR);</b>
+&nbsp;            }
+&nbsp;
+&nbsp;
+&nbsp;            public StringProperty propertyProperty() {
+<b class="nc">&nbsp;                return property;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            public String getProperty() {
+<b class="nc">&nbsp;                return property.get();</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            public void setProperty(String value) {
+<b class="nc">&nbsp;                property.setValue(value);</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            public DoubleProperty salePriceProperty() {
+<b class="nc">&nbsp;                return salePrice;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            public DoubleProperty forecastPriceSLRProperty() {
+<b class="nc">&nbsp;                return forecastPriceSLR;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            public DoubleProperty forecastPriceMLRProperty() {
+<b class="nc">&nbsp;                return forecastPriceMLR;</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        public void initialize() {
+<b class="nc">&nbsp;            propertyColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;property&quot;));</b>
+<b class="nc">&nbsp;            salePriceColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;salePrice&quot;));</b>
+<b class="nc">&nbsp;            forecastPriceSLRColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;forecastPriceSLR&quot;));</b>
+<b class="nc">&nbsp;            forecastPriceMLRColumn.setCellValueFactory(new PropertyValueFactory&lt;&gt;(&quot;forecastPriceMLR&quot;));</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        public List&lt;Order&gt; getApartmentsAndHouses() {
+<b class="nc">&nbsp;            List&lt;Order&gt; orderList = purchaseOrderRepository.getAll();</b>
+<b class="nc">&nbsp;            List&lt;Order&gt; housesAndApartmentsList = purchaseOrderRepository.getAll();</b>
+<b class="nc">&nbsp;            for (Order order : orderList) {</b>
+<b class="nc">&nbsp;                if (order.getAnnouncementDTO().getProperty().getClass().toString().equals(&quot;House&quot;) ||</b>
+<b class="nc">&nbsp;                        order.getAnnouncementDTO().getProperty().getClass().toString().equals(&quot;Apartment&quot;)) {</b>
+<b class="nc">&nbsp;                    housesAndApartmentsList.add(order);</b>
+&nbsp;                }
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;            return housesAndApartmentsList;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        @FXML
+&nbsp;        private void calculateSimpleLinearRegression() {
+<b class="nc">&nbsp;            ObservableList&lt;PropertyData&gt; data = FXCollections.observableArrayList();</b>
+&nbsp;
+<b class="nc">&nbsp;            List&lt;Order&gt; housesAndApartmentsList = getApartmentsAndHouses();</b>
+<b class="nc">&nbsp;            SimpleRegression regression = new SimpleRegression();</b>
+&nbsp;
+<b class="nc">&nbsp;            for (Order order : housesAndApartmentsList) {</b>
+<b class="nc">&nbsp;                regression.addData(order.getAnnouncementDTO().getProperty().getArea(), order.getOrderAmount());</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;
+<b class="nc">&nbsp;            double slope = regression.getSlope();</b>
+<b class="nc">&nbsp;            double intercept = regression.getIntercept();</b>
+&nbsp;
+<b class="nc">&nbsp;            for (Order order : housesAndApartmentsList) {</b>
+<b class="nc">&nbsp;                Property property = order.getAnnouncementDTO().getProperty();</b>
+<b class="nc">&nbsp;                double salePrice = order.getAnnouncementDTO().getPrice();</b>
+<b class="nc">&nbsp;                double forecastPriceSLR = slope * property.getArea() + intercept;</b>
+<b class="nc">&nbsp;                double forecastPriceMLR = 0.0;</b>
+&nbsp;
+<b class="nc">&nbsp;                PropertyData propertyData = new PropertyData(property.toString(), salePrice, forecastPriceSLR, forecastPriceMLR);</b>
+<b class="nc">&nbsp;                data.add(propertyData);</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;
+<b class="nc">&nbsp;            table.setItems(data);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        @FXML
+&nbsp;        private void calculateMultilinearRegression() {
+<b class="nc">&nbsp;            ObservableList&lt;PropertyData&gt; data = FXCollections.observableArrayList();</b>
+<b class="nc">&nbsp;            OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();</b>
+<b class="nc">&nbsp;            double[][] predictors = new double[housesAndApartmentsList.size()][5];</b>
+<b class="nc">&nbsp;            double[] salePrices = new double[housesAndApartmentsList.size()];</b>
+&nbsp;
+<b class="nc">&nbsp;            for (int i = 0; i &lt; housesAndApartmentsList.size(); i++) {</b>
+<b class="nc">&nbsp;                Order order = housesAndApartmentsList.get(i);</b>
+<b class="nc">&nbsp;                Property property = order.getAnnouncementDTO().getProperty();</b>
+<b class="nc">&nbsp;                double salePrice = order.getAnnouncementDTO().getPrice();</b>
+&nbsp;
+<b class="nc">&nbsp;                predictors[i][0] = property.getArea();</b>
+<b class="nc">&nbsp;                predictors[i][1] = property.getCityCentreDistance();</b>
+<b class="nc">&nbsp;                predictors[i][2] = property.getNumberOfBedrooms();</b>
+<b class="nc">&nbsp;                predictors[i][3] = property.getNumberOfBathrooms();</b>
+<b class="nc">&nbsp;                predictors[i][4] = property.getNumberOfParkingSpaces();</b>
+<b class="nc">&nbsp;                salePrices[i] = salePrice;</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            regression.newSampleData(salePrices, predictors);</b>
+<b class="nc">&nbsp;            double[] coefficients = regression.estimateRegressionParameters();</b>
+&nbsp;
+<b class="nc">&nbsp;            for (int i = 0; i &lt; housesAndApartmentsList.size(); i++) {</b>
+<b class="nc">&nbsp;                Order order = housesAndApartmentsList.get(i);</b>
+<b class="nc">&nbsp;                Property property = order.getAnnouncementDTO().getProperty();</b>
+<b class="nc">&nbsp;                double salePrice = order.getAnnouncementDTO().getPrice();</b>
+<b class="nc">&nbsp;                double[] predictor = predictors[i];</b>
+<b class="nc">&nbsp;                double forecastPriceMLR = calculateMultilinearForecastPrice(predictor, coefficients);</b>
+<b class="nc">&nbsp;                double forecastPriceSLR = 0.0;</b>
+&nbsp;
+<b class="nc">&nbsp;                PropertyData propertyData = new PropertyData(property.toString(), salePrice, forecastPriceSLR, forecastPriceMLR);</b>
+<b class="nc">&nbsp;                data.add(propertyData);</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            table.setItems(data);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        private double calculateMultilinearForecastPrice(double[] predictor, double[] coefficients) {
+<b class="nc">&nbsp;            double forecastPriceMLR = 0.0;</b>
+&nbsp;
+<b class="nc">&nbsp;            for (int i = 0; i &lt; predictor.length; i++) {</b>
+<b class="nc">&nbsp;                forecastPriceMLR += predictor[i] * coefficients[i];</b>
+&nbsp;            }
+&nbsp;
+<b class="nc">&nbsp;            return forecastPriceMLR;</b>
+&nbsp;        }
+&nbsp;    }
 </code>
 </pre>
 </div>
@@ -149,7 +317,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

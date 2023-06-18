@@ -1,0 +1,299 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > BranchRepository</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.repository</a>
+</div>
+
+<h1>Coverage Summary for Class: BranchRepository (pt.ipp.isep.dei.esoft.project.domain.repository)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BranchRepository</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14,3%
+  </span>
+  <span class="absValue">
+    (2/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4%
+  </span>
+  <span class="absValue">
+    (2/50)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.repository;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Location;
+&nbsp;import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
+&nbsp;
+&nbsp;import java.io.*;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type Register branch repository.
+&nbsp; */
+<b class="fc">&nbsp;public class BranchRepository implements Serializable {</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The constant branches.
+&nbsp;     */
+<b class="fc">&nbsp;    public static List&lt;Branch&gt; branches = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Save branch.
+&nbsp;     *
+&nbsp;     * @param branch the branch
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean saveBranch(Branch branch) {
+&nbsp;
+<b class="nc">&nbsp;        if (validate(branch)) {</b>
+&nbsp;
+<b class="nc">&nbsp;            return addBranch(branch);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Add branch boolean.
+&nbsp;     *
+&nbsp;     * @param branch the branch
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean addBranch(Branch branch) {
+&nbsp;
+<b class="nc">&nbsp;        if (branch != null &amp;&amp; validate(branch)) {</b>
+&nbsp;
+<b class="nc">&nbsp;            return branches.add(branch);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Validate boolean.
+&nbsp;     *
+&nbsp;     * @param branch the branch
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean validate(Branch branch) {
+&nbsp;
+<b class="nc">&nbsp;        for(Branch branch1 : branches) {</b>
+&nbsp;
+<b class="nc">&nbsp;            if(branch1.equals(branch)) {</b>
+&nbsp;
+<b class="nc">&nbsp;                throw new DuplicateDataException(&quot;Branch is already registered&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Find branch int.
+&nbsp;     *
+&nbsp;     * @param branch the branch
+&nbsp;     * @return the int
+&nbsp;     */
+&nbsp;    public int findBranch(Branch branch) {
+<b class="nc">&nbsp;        for (Branch thisBranch : branches) {</b>
+<b class="nc">&nbsp;            if (branch.equals(thisBranch) || branch.getName().equals(thisBranch.getName()))</b>
+<b class="nc">&nbsp;                return branches.indexOf(thisBranch);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return -1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Create branch.
+&nbsp;     *
+&nbsp;     * @param objects the objects
+&nbsp;     * @return the branch
+&nbsp;     */
+&nbsp;    public Branch create(List&lt;?&gt; objects) {
+<b class="nc">&nbsp;        Branch branch = new Branch();</b>
+<b class="nc">&nbsp;        return branch;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Create branch branch.
+&nbsp;     *
+&nbsp;     * @param id          the id
+&nbsp;     * @param name        the name
+&nbsp;     * @param location    the location
+&nbsp;     * @param phoneNumber the phone number
+&nbsp;     * @param email       the email
+&nbsp;     * @return the branch
+&nbsp;     */
+&nbsp;    public Branch createBranch(int id, String name, Location location, String phoneNumber, String email) {
+<b class="nc">&nbsp;        return new Branch(id, name, location, phoneNumber, email);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Checks if a branch has already been added.
+&nbsp;     *
+&nbsp;     * @param branch the branch
+&nbsp;     * @return True if the new branch is valid, False otherwise
+&nbsp;     */
+&nbsp;    public int indexOf(Branch branch) {
+<b class="nc">&nbsp;        for (Branch thisBranch : branches) {</b>
+<b class="nc">&nbsp;            if (branch.equals(thisBranch) || branch.getName().equals(thisBranch.getName()))</b>
+<b class="nc">&nbsp;                return branches.indexOf(thisBranch);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return -1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private int getLowestAvailableID() {
+<b class="nc">&nbsp;        int lowestID = 0;</b>
+&nbsp;        for (Branch branch :
+<b class="nc">&nbsp;                branches) {</b>
+<b class="nc">&nbsp;            if (branch.getID() &gt; lowestID)</b>
+<b class="nc">&nbsp;                lowestID = branch.getID();</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        lowestID++;</b>
+<b class="nc">&nbsp;        return lowestID;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets branch list.
+&nbsp;     *
+&nbsp;     * @return the branch list
+&nbsp;     */
+&nbsp;    public List&lt;Branch&gt; getBranchList() {
+&nbsp;
+<b class="nc">&nbsp;        return new ArrayList&lt;&gt;(branches);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets branch by id.
+&nbsp;     *
+&nbsp;     * @param id the id
+&nbsp;     * @return the branch by id
+&nbsp;     */
+&nbsp;    public static Branch getBranchByID(int id) {
+&nbsp;
+<b class="nc">&nbsp;        if (id &gt;= 0 &amp;&amp; id &lt; branches.size()) {</b>
+&nbsp;
+<b class="nc">&nbsp;            return branches.get(id);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Read object list.
+&nbsp;     *
+&nbsp;     * @return the list
+&nbsp;     */
+&nbsp;    public List&lt;Branch&gt; readObject() {
+&nbsp;
+&nbsp;        try {
+&nbsp;
+<b class="nc">&nbsp;            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;ser/branch.ser&quot;));</b>
+<b class="nc">&nbsp;            branches = (List&lt;Branch&gt;) ois.readObject();</b>
+<b class="nc">&nbsp;            ois.close();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (IOException | ClassNotFoundException e) {</b>
+&nbsp;
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return branches;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Write object.
+&nbsp;     */
+&nbsp;    public void writeObject() {
+&nbsp;
+&nbsp;        try {
+&nbsp;
+<b class="nc">&nbsp;            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;ser/branch.ser&quot;));</b>
+<b class="nc">&nbsp;            oos.writeObject(branches);</b>
+<b class="nc">&nbsp;            oos.close();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (IOException ioe) {</b>
+&nbsp;
+<b class="nc">&nbsp;            ioe.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

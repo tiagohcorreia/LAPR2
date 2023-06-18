@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RegisterClientController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: RegisterClientController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegisterClientController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/19)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.ClientRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
+&nbsp;//import pt.isep.lei.esoft.auth.AuthFacade;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="nc">&nbsp;public class RegisterClientController {</b>
+<b class="nc">&nbsp;    private AuthenticationRepository authenticationRepository = pt.ipp.isep.dei.esoft.project.repository.Repositories.getInstance().getAuthenticationRepository();</b>
+<b class="nc">&nbsp;    private ClientRepository clientRepository = Repositories.getInstance().getUserRepository();</b>
+&nbsp;    //private AuthFacade authFacade = new AuthFacade();
+&nbsp;
+&nbsp;    public Client createClient(List&lt;String&gt; input) {
+<b class="nc">&nbsp;        Client newClient = null;</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            newClient = new Client(input);</b>
+<b class="nc">&nbsp;        } catch (Exception e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Couldn&#39;t create user. &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return newClient;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean saveClient(Client newClient){
+<b class="nc">&nbsp;        boolean success = false;</b>
+&nbsp;        try {
+<b class="nc">&nbsp;             success = clientRepository.add(newClient);</b>
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Couldn&#39;t save user: &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        //authFacade.addUserWithRole(newUser.getName(), newUser.getEmail(), newUser.getPassword(), AuthenticationController.ROLE_CLIENT);
+&nbsp;        try {
+<b class="nc">&nbsp;            authenticationRepository.addUserWithRole(newClient.getName(), newClient.getEmail(), newClient.getPassword(), AuthenticationController.ROLE_CLIENT);</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (Exception e){</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Couldn&#39;t register user with authentication system. &quot; + e.getMessage());</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        //if (success2) System.out.println(&quot;succ&quot;);
+<b class="nc">&nbsp;        return success;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ReadResponseOfAppointmentRequestGUI</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.gui</a>
+</div>
+
+<h1>Coverage Summary for Class: ReadResponseOfAppointmentRequestGUI (pt.ipp.isep.dei.esoft.project.ui.gui)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReadResponseOfAppointmentRequestGUI</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/21)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ReadResponseOfAppointmentRequestGUI$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/30)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.gui;
+&nbsp;
+&nbsp;import javafx.application.Application;
+&nbsp;import javafx.event.EventHandler;
+&nbsp;import javafx.fxml.FXMLLoader;
+&nbsp;import javafx.scene.Scene;
+&nbsp;import javafx.scene.control.Alert;
+&nbsp;import javafx.scene.control.Button;
+&nbsp;import javafx.scene.control.ButtonType;
+&nbsp;import javafx.stage.Stage;
+&nbsp;import javafx.stage.WindowEvent;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.ReadResponseOfAppointmentRequestController;
+&nbsp;
+&nbsp;import java.io.IOException;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type Read response of appointment request gui.
+&nbsp; */
+<b class="nc">&nbsp;public class ReadResponseOfAppointmentRequestGUI extends Application implements Runnable {</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The Controller.
+&nbsp;     */
+<b class="nc">&nbsp;    ReadResponseOfAppointmentRequestController controller = new ReadResponseOfAppointmentRequestController();</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void start(Stage stage) throws IOException {
+&nbsp;
+&nbsp;        try {
+&nbsp;
+<b class="nc">&nbsp;            FXMLLoader fxmlLoader = new FXMLLoader(ReadResponseOfAppointmentRequestGUI.class.getResource(&quot;ReadAppointmentRequest.fxml&quot;));</b>
+<b class="nc">&nbsp;            Scene scene = new Scene(fxmlLoader.load());</b>
+&nbsp;
+<b class="nc">&nbsp;            stage.setTitle(&quot;Read Response Of Appointment Request&quot;);</b>
+<b class="nc">&nbsp;            stage.setScene(scene);</b>
+<b class="nc">&nbsp;            stage.show();</b>
+&nbsp;
+<b class="nc">&nbsp;            stage.setOnCloseRequest(new EventHandler&lt;WindowEvent&gt;() {</b>
+&nbsp;
+&nbsp;                @Override
+&nbsp;                public void handle(WindowEvent event) {
+&nbsp;
+<b class="nc">&nbsp;                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);</b>
+&nbsp;
+<b class="nc">&nbsp;                    alert.setTitle(&quot;Application&quot;);</b>
+<b class="nc">&nbsp;                    alert.setHeaderText(&quot;Confirm&quot;);</b>
+<b class="nc">&nbsp;                    alert.setContentText(&quot;Do you really want to close?&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;                    ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText(&quot;Yes&quot;);</b>
+<b class="nc">&nbsp;                    ((Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL)).setText(&quot;No&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;                    if (alert.showAndWait().get() == ButtonType.CANCEL) {</b>
+&nbsp;
+<b class="nc">&nbsp;                        event.consume();</b>
+&nbsp;                    }
+&nbsp;                }
+&nbsp;            });
+&nbsp;
+<b class="nc">&nbsp;            stage.show();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (IOException ex) {</b>
+&nbsp;
+<b class="nc">&nbsp;            createErrorAlert(ex).show();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (Exception ex) {</b>
+&nbsp;
+<b class="nc">&nbsp;            createErrorAlert(ex).show();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Main.
+&nbsp;     *
+&nbsp;     * @param args the args
+&nbsp;     */
+&nbsp;    public static void main(final String[] args) {
+<b class="nc">&nbsp;        launch();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void run() {
+<b class="nc">&nbsp;        GuiHandler.myLaunch(getClass());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private Alert createErrorAlert(Exception ex) {
+&nbsp;
+<b class="nc">&nbsp;        Alert alert = new Alert(Alert.AlertType.ERROR);</b>
+&nbsp;
+<b class="nc">&nbsp;        alert.setTitle(&quot;Application&quot;);</b>
+<b class="nc">&nbsp;        alert.setHeaderText(&quot;Problems starting application&quot;);</b>
+<b class="nc">&nbsp;        alert.setContentText(ex.getMessage());</b>
+&nbsp;
+<b class="nc">&nbsp;        return alert;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

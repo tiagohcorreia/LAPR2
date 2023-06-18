@@ -1,0 +1,176 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Visit</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Visit (pt.ipp.isep.dei.esoft.project.domain.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Visit</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (6/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (16/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.model;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.Rating;
+&nbsp;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public class Visit {
+&nbsp;
+&nbsp;    private Schedule scheduleVisit;
+&nbsp;    private String opinionAboutBusiness;
+&nbsp;    private Rating rating;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public Visit( Schedule scheduleVisit, String opinionAboutBusiness, Rating rating){</b>
+<b class="fc">&nbsp;        this.scheduleVisit = scheduleVisit;</b>
+<b class="fc">&nbsp;        this.opinionAboutBusiness = opinionAboutBusiness;</b>
+<b class="fc">&nbsp;        this.rating = rating;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public Schedule getScheduleVisit() {
+<b class="fc">&nbsp;        return scheduleVisit;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setScheduleVisit(Schedule scheduleVisit) {
+<b class="nc">&nbsp;        this.scheduleVisit = scheduleVisit;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getOpinionAboutBusiness() {
+<b class="fc">&nbsp;        return opinionAboutBusiness;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setOpinionAboutBusiness(String opinionAboutBusiness) {
+<b class="fc">&nbsp;        if(opinionAboutBusiness.length() &gt; 200){</b>
+<b class="nc">&nbsp;            this.opinionAboutBusiness = opinionAboutBusiness.substring(0, 200);</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            this.opinionAboutBusiness = opinionAboutBusiness;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public Rating getRating() {
+<b class="fc">&nbsp;        return rating;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setRating(Rating rating) {
+<b class="nc">&nbsp;        this.rating = rating;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean equals(Object obj) {
+<b class="fc">&nbsp;        if (this == obj) {</b>
+<b class="fc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (obj == null || getClass() != obj.getClass()) {</b>
+<b class="fc">&nbsp;            return false;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        Visit other = (Visit) obj;</b>
+<b class="fc">&nbsp;        return Objects.equals(scheduleVisit, other.scheduleVisit)</b>
+<b class="fc">&nbsp;                &amp;&amp; Objects.equals(opinionAboutBusiness, other.opinionAboutBusiness)</b>
+&nbsp;                &amp;&amp; rating == other.rating;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Visit:&quot; +</b>
+&nbsp;                scheduleVisit +
+&nbsp;                opinionAboutBusiness +
+&nbsp;                &quot;rating - &quot; + rating
+&nbsp;                ;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > UnregisteredUserUI</title>
+  <title>Coverage Report > DisplayAnnouncementsUI</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console.menu</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
 </div>
 
-<h1>Coverage Summary for Class: UnregisteredUserUI (pt.ipp.isep.dei.esoft.project.ui.console.menu)</h1>
+<h1>Coverage Summary for Class: DisplayAnnouncementsUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">UnregisteredUserUI</td>
+  <td class="name">DisplayAnnouncementsUI</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -54,7 +54,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/2)
+    (0/10)
   </span>
 </td>
 <td class="coverageStat">
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/8)
+    (0/90)
   </span>
 </td>
 </tr>
@@ -74,41 +74,221 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console.menu;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.*;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementLocationComparator;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementPriceComparator;
 &nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
-&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.DisplayAnnouncementsController;
 &nbsp;
 &nbsp;import java.util.ArrayList;
+&nbsp;import java.util.Collections;
 &nbsp;import java.util.List;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Unregistered user ui.
+&nbsp; * The type Display announcements ui.
 &nbsp; */
-&nbsp;public class UnregisteredUserUI implements Runnable {
-&nbsp;    /**
-&nbsp;     * Instantiates a new Unregistered user ui.
-&nbsp;     */
-<b class="nc">&nbsp;    public UnregisteredUserUI() {</b>
+<b class="nc">&nbsp;public class DisplayAnnouncementsUI implements Runnable{</b>
+<b class="nc">&nbsp;    private static final DisplayAnnouncementsController controller = new DisplayAnnouncementsController();</b>
 &nbsp;
+&nbsp;    @Override
+&nbsp;    public void run() {
+<b class="nc">&nbsp;        runUS();</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    public void run() {
+&nbsp;    /**
+&nbsp;     * Get available fields list.
+&nbsp;     *
+&nbsp;     * @return the list
+&nbsp;     */
+&nbsp;    public List&lt;List&lt;Object&gt;&gt; getAvailableFields(){
+<b class="nc">&nbsp;        return controller.getAvailableFields();</b>
+&nbsp;    }
 &nbsp;
-<b class="nc">&nbsp;        List&lt;MenuItem&gt; options = new ArrayList&lt;&gt;();</b>
+&nbsp;    /**
+&nbsp;     * Display available fields boolean.
+&nbsp;     *
+&nbsp;     * @param availableFields the available fields
+&nbsp;     * @return the boolean
+&nbsp;     */
+&nbsp;    public boolean displayAvailableFields(List&lt;List&lt;Object&gt;&gt; availableFields){
+<b class="nc">&nbsp;        if (availableFields.get(0).size() == 0) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;There are no announcements registered in the system.&quot;);</b>
+<b class="nc">&nbsp;            Utils.readLineFromConsole(&quot;Press [Enter] to continue&quot;);</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        System.out.println(&quot;SEARCH FILTER&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;- Select one from the following options&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;- Or press [Enter] to see all available announcements&quot;);</b>
+<b class="nc">&nbsp;        System.out.println();</b>
+<b class="nc">&nbsp;        System.out.print(&quot;Type of business - &quot;);</b>
+<b class="nc">&nbsp;        for (Object fields : availableFields.get(0)) {</b>
+<b class="nc">&nbsp;            System.out.print(fields.toString() + &quot; &quot;);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println();</b>
 &nbsp;
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Display listed properties&quot;, new DisplayAnnouncementsUI()));</b>
-&nbsp;        //options.add(new MenuItem(&quot;Specify states, districts or cities&quot;, new SpecifyStatesDistrictsCitiesUI()));
+<b class="nc">&nbsp;        System.out.print(&quot;Type of property - &quot;);</b>
+<b class="nc">&nbsp;        for (Object fields : availableFields.get(1)) {</b>
+<b class="nc">&nbsp;            System.out.print(fields.toString() + &quot; &quot;);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println();</b>
 &nbsp;
-<b class="nc">&nbsp;        int option = 0;</b>
+<b class="nc">&nbsp;        System.out.print(&quot;Number of bedrooms - &quot;);</b>
+<b class="nc">&nbsp;        for (Object fields : availableFields.get(2)) {</b>
+<b class="nc">&nbsp;            System.out.print(fields.toString() + &quot; &quot;);</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println();</b>
+&nbsp;
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Request filter data string [ ].
+&nbsp;     *
+&nbsp;     * @param availableFields the available fields
+&nbsp;     * @return the string [ ]
+&nbsp;     */
+&nbsp;    public String[] requestFilterData(List&lt;List&lt;Object&gt;&gt; availableFields){
+<b class="nc">&nbsp;        String[] selectedData = new String[3];</b>
+&nbsp;
+&nbsp;        //Getting user data
+&nbsp;        //  -Type of business
+<b class="nc">&nbsp;        String selectedTypeOfBusiness=null;</b>
 &nbsp;        do {
-<b class="nc">&nbsp;            option = Utils.showAndSelectIndex(options, &quot;\n\nUnregistered User Menu:&quot;);</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                selectedTypeOfBusiness = Utils.readLineFromConsole(&quot;Type of business: &quot;).trim().toUpperCase();</b>
+<b class="nc">&nbsp;                selectedData[0] = selectedTypeOfBusiness;</b>
+<b class="nc">&nbsp;            } catch (Exception e){</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage() + &quot;Please try again.&quot;);</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        } while (!availableFields.get(0).contains(selectedTypeOfBusiness) &amp;&amp; !selectedTypeOfBusiness.equals(&quot;&quot;));</b>
 &nbsp;
-<b class="nc">&nbsp;            if ((option &gt;= 0) &amp;&amp; (option &lt; options.size())) {</b>
-<b class="nc">&nbsp;                options.get(option).run();</b>
+&nbsp;        //  -Type of property
+<b class="nc">&nbsp;        String selectedTypeOfProperty=null;</b>
+&nbsp;        do {
+&nbsp;            try {
+<b class="nc">&nbsp;                selectedTypeOfProperty = Utils.readLineFromConsole(&quot;Type of property: &quot;).trim().toUpperCase();</b>
+<b class="nc">&nbsp;                selectedData[1] = selectedTypeOfProperty;</b>
+<b class="nc">&nbsp;            } catch (Exception e){</b>
+<b class="nc">&nbsp;                System.out.println(e.getMessage() + &quot;Please try again.&quot;);</b>
+<b class="nc">&nbsp;            }</b>
+<b class="nc">&nbsp;        } while (!availableFields.get(1).contains(selectedTypeOfProperty) &amp;&amp; !selectedTypeOfProperty.equals(&quot;&quot;));</b>
+&nbsp;
+&nbsp;        //  -Number of bedrooms
+&nbsp;        //(only displayed if the selected property type is not &quot;LAND&quot;)
+<b class="nc">&nbsp;        String selectedNumberOfBedrooms = null;</b>
+<b class="nc">&nbsp;        int bedrooms = -1;</b>
+<b class="nc">&nbsp;        if(!selectedTypeOfProperty.equals(&quot;LAND&quot;)) {</b>
+&nbsp;            do {
+&nbsp;                try {
+<b class="nc">&nbsp;                    selectedNumberOfBedrooms = Utils.readLineFromConsole(&quot;Number of bedrooms: &quot;).trim();</b>
+<b class="nc">&nbsp;                    selectedData[2] = selectedNumberOfBedrooms;</b>
+<b class="nc">&nbsp;                    bedrooms = Integer.parseInt(selectedNumberOfBedrooms);</b>
+<b class="nc">&nbsp;                } catch (Exception e){</b>
+<b class="nc">&nbsp;                    System.out.println(e.getMessage() + &quot;Please try again.&quot;);</b>
+<b class="nc">&nbsp;                }</b>
+<b class="nc">&nbsp;            } while (!availableFields.get(2).contains(bedrooms) &amp;&amp; !selectedNumberOfBedrooms.equals(&quot;&quot;));</b>
+&nbsp;
+&nbsp;        } else
+<b class="nc">&nbsp;            selectedData[2] = &quot;-1&quot;;</b>
+&nbsp;
+<b class="nc">&nbsp;        if (selectedData[0].equals(&quot;&quot;) &amp;&amp; selectedData[1].equals(&quot;&quot;) &amp;&amp; selectedData[2].equals(&quot;&quot;))</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        else
+<b class="nc">&nbsp;            return selectedData;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Get matching announcements list.
+&nbsp;     *
+&nbsp;     * @param selectedData the selected data
+&nbsp;     * @return the list
+&nbsp;     */
+&nbsp;    public List&lt;Announcement&gt; getMatchingAnnouncements(String[] selectedData){
+<b class="nc">&nbsp;        if(selectedData[2].equals(&quot;&quot;))</b>
+<b class="nc">&nbsp;            return controller.getAnnouncements(selectedData[0], selectedData[1], -1);</b>
+&nbsp;        else
+<b class="nc">&nbsp;            return controller.getAnnouncements(selectedData[0], selectedData[1], Integer.parseInt(selectedData[2]));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sort announcements list.
+&nbsp;     *
+&nbsp;     * @param sortingMode   the sorting mode
+&nbsp;     * @param announcements the announcements
+&nbsp;     * @return the list
+&nbsp;     */
+&nbsp;    public List&lt;Announcement&gt; sortAnnouncements(int sortingMode, List&lt;Announcement&gt; announcements){
+<b class="nc">&nbsp;        switch (sortingMode) {</b>
+&nbsp;            case 1 -&gt;
+&nbsp;                    //sort by price
+<b class="nc">&nbsp;                    announcements.sort(new AnnouncementPriceComparator());</b>
+&nbsp;            case 2 -&gt;
+&nbsp;                    //sort by city
+<b class="nc">&nbsp;                    announcements.sort(new AnnouncementLocationComparator());</b>
+&nbsp;            default -&gt; {
 &nbsp;            }
-<b class="nc">&nbsp;        } while (option != -1);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return announcements;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void runUS(){
+<b class="nc">&nbsp;        List&lt;List&lt;Object&gt;&gt; availableFields = getAvailableFields();</b>
+<b class="nc">&nbsp;        if (displayAvailableFields(availableFields))</b>
+&nbsp;            return;
+<b class="nc">&nbsp;        String[] selectedData = requestFilterData(availableFields);</b>
+<b class="nc">&nbsp;        List&lt;Announcement&gt; matchingAnnouncements = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        if (selectedData == null) {</b>
+<b class="nc">&nbsp;            matchingAnnouncements = controller.getAllVisibleAnnouncements();</b>
+&nbsp;        }
+&nbsp;        else {
+<b class="nc">&nbsp;            matchingAnnouncements = getMatchingAnnouncements(selectedData);</b>
+&nbsp;        }
+&nbsp;        //Reverse the list so it shows most recent announcements first
+<b class="nc">&nbsp;        Collections.reverse(matchingAnnouncements);</b>
+<b class="nc">&nbsp;        displayAnnouncements(matchingAnnouncements);</b>
+&nbsp;
+&nbsp;
+&nbsp;        //Set sorting mode
+<b class="nc">&nbsp;        int sortingMode = -1;</b>
+<b class="nc">&nbsp;        while(sortingMode != 0) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Sorting options&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;1 - Price&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;2 - City&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;0 - Exit&quot;);</b>
+&nbsp;
+&nbsp;            do{
+&nbsp;                try{
+<b class="nc">&nbsp;                    sortingMode = Utils.readIntegerFromConsole(&quot;Sorting mode: &quot;);</b>
+<b class="nc">&nbsp;                } catch (Exception e){</b>
+<b class="nc">&nbsp;                    System.out.println(e.getMessage() + &quot;Por favor tente novamente.&quot;);</b>
+<b class="nc">&nbsp;                }</b>
+<b class="nc">&nbsp;            }while(sortingMode != 1 &amp;&amp; sortingMode != 2 &amp;&amp; sortingMode != 0);</b>
+&nbsp;
+<b class="nc">&nbsp;            matchingAnnouncements = sortAnnouncements(sortingMode, matchingAnnouncements);</b>
+<b class="nc">&nbsp;            displayAnnouncements(matchingAnnouncements);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Prints announcements list.
+&nbsp;     *
+&nbsp;     * @param matchingAnnouncements announcement list.
+&nbsp;     */
+&nbsp;    private void displayAnnouncements(List&lt;Announcement&gt; matchingAnnouncements) {
+<b class="nc">&nbsp;        System.out.println(&quot;Type\tProperty\tPrice\tLocation\tArea\tCenterDist\tNoBedrooms\tPhotographs\tAgent&quot;);</b>
+<b class="nc">&nbsp;        for(Announcement announcement : matchingAnnouncements){</b>
+&nbsp;            //System.out.println(announcement.toString());
+&nbsp;//            System.out.println(
+&nbsp;//                    announcement.getTypeOfBusiness().toString() + &quot;\t&quot;
+&nbsp;//                    + announcement.getProperty().getClass().getSimpleName() + &quot;\t&quot;
+&nbsp;//                    + announcement.getPrice() + &quot;\t&quot;
+&nbsp;//                    + announcement.getProperty().getArea() + &quot;\t&quot;
+&nbsp;//
+&nbsp;//            );
+<b class="nc">&nbsp;            System.out.println(announcement.getAnnouncementAsString());</b>
+<b class="nc">&nbsp;        }</b>
 &nbsp;    }
 &nbsp;}
 </code>
@@ -134,7 +314,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

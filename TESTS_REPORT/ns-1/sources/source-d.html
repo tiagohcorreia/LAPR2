@@ -1,0 +1,266 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ReadResponseOfAppointmentRequestController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: ReadResponseOfAppointmentRequestController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReadResponseOfAppointmentRequestController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/41)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
+&nbsp;
+&nbsp;import javafx.beans.value.ObservableValue;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.Initializable;
+&nbsp;import javafx.scene.control.*;
+&nbsp;import javafx.stage.Stage;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
+&nbsp;
+&nbsp;import java.io.File;
+&nbsp;import java.io.FileWriter;
+&nbsp;import java.io.IOException;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type Read response of appointment request controller.
+&nbsp; */
+<b class="nc">&nbsp;public class ReadResponseOfAppointmentRequestController implements Initializable {</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The Schedule repository.
+&nbsp;     */
+<b class="nc">&nbsp;    ScheduleRepository scheduleRepository = Repositories.getInstance().getScheduleRepository();</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The Current schedule.
+&nbsp;     */
+<b class="nc">&nbsp;    Schedule currentSchedule = new Schedule();</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button btnAccept;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TextField txtSchedule;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private ListView&lt;Schedule&gt; lstSchedules;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button btnReject;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button btnClear;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Accept request.
+&nbsp;     *
+&nbsp;     * @param event the event
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    void acceptRequest(ActionEvent event) {
+&nbsp;
+<b class="nc">&nbsp;        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);</b>
+&nbsp;
+<b class="nc">&nbsp;        confirmation.setTitle(&quot;CONFIRMATION&quot;);</b>
+<b class="nc">&nbsp;        confirmation.setHeaderText(&quot;Accept Appointment Request&quot;);</b>
+<b class="nc">&nbsp;        confirmation.setContentText(&quot;Are you sure you want to accept this request?&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        confirmation.showAndWait().ifPresent(reponse -&gt; {</b>
+&nbsp;
+<b class="nc">&nbsp;            if (reponse == ButtonType.OK) {</b>
+&nbsp;
+<b class="nc">&nbsp;                currentSchedule.setClientApproval(true);</b>
+<b class="nc">&nbsp;                scheduleRepository.saveSchedule(currentSchedule);</b>
+<b class="nc">&nbsp;                scheduleRepository.writeObjectScheduleRequest();</b>
+<b class="nc">&nbsp;                closeProgram();</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Reject request.
+&nbsp;     *
+&nbsp;     * @param event the event
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    void rejectRequest(ActionEvent event) {
+&nbsp;
+<b class="nc">&nbsp;        TextInputDialog dialog = new TextInputDialog();</b>
+&nbsp;
+<b class="nc">&nbsp;        dialog.setTitle(&quot;Reason&quot;);</b>
+<b class="nc">&nbsp;        dialog.setHeaderText(&quot;Enter the reason for rejection:&quot;);</b>
+<b class="nc">&nbsp;        dialog.setContentText(&quot;Reason:&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        Optional&lt;String&gt; result = dialog.showAndWait();</b>
+&nbsp;
+<b class="nc">&nbsp;        if (result.isPresent()) {</b>
+&nbsp;
+<b class="nc">&nbsp;            String reason = result.get();</b>
+&nbsp;
+<b class="nc">&nbsp;            currentSchedule.setNoteFromClient(reason);</b>
+<b class="nc">&nbsp;            scheduleRepository.saveSchedule(currentSchedule);</b>
+<b class="nc">&nbsp;            scheduleRepository.writeObjectScheduleRequest();</b>
+<b class="nc">&nbsp;            closeProgram();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+&nbsp;
+<b class="nc">&nbsp;        sendNotificationToAgent();</b>
+<b class="nc">&nbsp;        lstSchedules.getItems().addAll(getScheduleList());</b>
+<b class="nc">&nbsp;        lstSchedules.getSelectionModel().selectedItemProperty().addListener(this::selectionChanged);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Clear.
+&nbsp;     *
+&nbsp;     * @param event the event
+&nbsp;     */
+&nbsp;    @FXML
+&nbsp;    void clear(ActionEvent event) {
+<b class="nc">&nbsp;        txtSchedule.clear();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets schedule list.
+&nbsp;     *
+&nbsp;     * @return the schedule list
+&nbsp;     */
+&nbsp;    public List&lt;Schedule&gt; getScheduleList() {
+&nbsp;
+<b class="nc">&nbsp;        return scheduleRepository.readObjectScheduleRequest();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void selectionChanged(ObservableValue&lt;? extends Schedule&gt; observable, Schedule oldVal, Schedule newVal) {
+&nbsp;
+<b class="nc">&nbsp;        currentSchedule = lstSchedules.getSelectionModel().getSelectedItem();</b>
+<b class="nc">&nbsp;        txtSchedule.setText(currentSchedule.getNoteFromAgent());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void closeProgram() {
+&nbsp;
+<b class="nc">&nbsp;        Stage stage = (Stage) btnAccept.getScene().getWindow();</b>
+<b class="nc">&nbsp;        stage.close();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Send notification to agent.
+&nbsp;     */
+&nbsp;    public void sendNotificationToAgent() {
+&nbsp;
+<b class="nc">&nbsp;        String conteudo = &quot;A client have just view the response for a schedule&quot;;</b>
+&nbsp;
+&nbsp;        try {
+&nbsp;
+<b class="nc">&nbsp;            FileWriter file = new FileWriter(new File(&quot;APP_FILES/Agent_Notification.txt&quot;), true);</b>
+<b class="nc">&nbsp;            file.write(conteudo + &quot;\n&quot;);</b>
+<b class="nc">&nbsp;            file.close();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (IOException e) {</b>
+&nbsp;
+<b class="nc">&nbsp;            System.out.println(&quot;Error creating file&quot;);</b>
+<b class="nc">&nbsp;            e.printStackTrace();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

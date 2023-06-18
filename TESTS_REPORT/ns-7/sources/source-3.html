@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > PasswordGenerator</title>
+  <title>Coverage Report > Apartment</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.shared</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.model</a>
 </div>
 
-<h1>Coverage Summary for Class: PasswordGenerator (pt.ipp.isep.dei.esoft.project.domain.shared)</h1>
+<h1>Coverage Summary for Class: Apartment (pt.ipp.isep.dei.esoft.project.domain.model)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,29 +40,29 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">PasswordGenerator</td>
+  <td class="name">Apartment</td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    100%
   </span>
   <span class="absValue">
-    (0/1)
+    (1/1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    50%
   </span>
   <span class="absValue">
-    (0/2)
+    (5/10)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    0%
+    44,8%
   </span>
   <span class="absValue">
-    (0/7)
+    (13/29)
   </span>
 </td>
 </tr>
@@ -74,45 +74,146 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.shared;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.model;
 &nbsp;
-&nbsp;import java.util.Random;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.InhabitableProperty;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
 &nbsp;
 &nbsp;/**
-&nbsp; * The type Password generator.
+&nbsp; * The type Apartment.
 &nbsp; */
-&nbsp;public class PasswordGenerator {
+&nbsp;public class Apartment extends Property implements InhabitableProperty {
+&nbsp;    private int numberOfBedrooms;
+&nbsp;    private int numberOfBathrooms;
+&nbsp;    private int numberOfParkingSpaces;
+&nbsp;    private ArrayList&lt;String&gt; equipment;
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Instantiates a new Password generator.
+&nbsp;     * Instantiates a new Apartment.
+&nbsp;     *
+&nbsp;     * @param area                  the area
+&nbsp;     * @param location              the location
+&nbsp;     * @param cityCentreDistance    the city centre distance
+&nbsp;     * @param photographs           the photographs
+&nbsp;     * @param numberOfBedrooms      the number of bedrooms
+&nbsp;     * @param numberOfBathrooms     the number of bathrooms
+&nbsp;     * @param numberOfParkingSpaces the number of parking spaces
+&nbsp;     * @param equipment             the equipment
 &nbsp;     */
-<b class="nc">&nbsp;    public PasswordGenerator() {</b>
+&nbsp;//Constructor
+&nbsp;    public Apartment(float area, Location location, float cityCentreDistance, ArrayList&lt;String&gt; photographs, int numberOfBedrooms,int numberOfBathrooms, int numberOfParkingSpaces, ArrayList&lt;String&gt; equipment) {
+<b class="fc">&nbsp;        super(area, location, cityCentreDistance, photographs);</b>
+<b class="fc">&nbsp;        this.numberOfBedrooms=numberOfBedrooms;</b>
+<b class="fc">&nbsp;        this.numberOfBathrooms=numberOfBathrooms;</b>
+<b class="fc">&nbsp;        this.numberOfParkingSpaces=numberOfParkingSpaces;</b>
+<b class="fc">&nbsp;        this.equipment=equipment;</b>
+&nbsp;
 &nbsp;    }
 &nbsp;
-&nbsp;    private static final int PASSWORD_SIZE = 7;
+&nbsp;    //Getters and Setters
+&nbsp;
+&nbsp;    public int getNumberOfBedrooms() {
+<b class="nc">&nbsp;        return numberOfBedrooms;</b>
+&nbsp;    }
+&nbsp;
 &nbsp;
 &nbsp;    /**
-&nbsp;     * Generate password string.
+&nbsp;     * Gets number of bathrooms.
 &nbsp;     *
-&nbsp;     * @return the string
+&nbsp;     * @return the number of bathrooms
 &nbsp;     */
-&nbsp;    public static String generatePassword() {
+&nbsp;    public int getNumberOfBathrooms() {
+<b class="nc">&nbsp;        return numberOfBathrooms;</b>
+&nbsp;    }
 &nbsp;
-<b class="nc">&nbsp;        String allowedCharacters = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;;</b>
-<b class="nc">&nbsp;        Random random = new Random();</b>
-<b class="nc">&nbsp;        StringBuilder password = new StringBuilder();</b>
 &nbsp;
-<b class="nc">&nbsp;        for (int i = 0; i &lt; PASSWORD_SIZE; i++) {</b>
+&nbsp;    /**
+&nbsp;     * Gets number of parking spaces.
+&nbsp;     *
+&nbsp;     * @return the number of parking spaces
+&nbsp;     */
+&nbsp;    public int getNumberOfParkingSpaces() {
+<b class="nc">&nbsp;        return numberOfParkingSpaces;</b>
+&nbsp;    }
 &nbsp;
-<b class="nc">&nbsp;            password.append(allowedCharacters.charAt(random.nextInt(allowedCharacters.length())));</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Gets equipment.
+&nbsp;     *
+&nbsp;     * @return the equipment
+&nbsp;     */
+&nbsp;    public ArrayList&lt;String&gt; getEquipment() {
+<b class="nc">&nbsp;        return equipment;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets number of bedrooms.
+&nbsp;     *
+&nbsp;     * @param numberOfBedrooms the number of bedrooms
+&nbsp;     * @return the number of bedrooms
+&nbsp;     */
+&nbsp;    public int setNumberOfBedrooms(int numberOfBedrooms) {
+<b class="fc">&nbsp;        if (numberOfBedrooms&lt;0){</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Please insert a number &gt;=0&quot;);</b>
 &nbsp;        }
+<b class="nc">&nbsp;        return numberOfBedrooms;</b>
+&nbsp;    }
 &nbsp;
-<b class="nc">&nbsp;        return password.toString();</b>
+&nbsp;    /**
+&nbsp;     * Sets number of bathrooms.
+&nbsp;     *
+&nbsp;     * @param numberOfBathrooms the number of bathrooms
+&nbsp;     * @return the number of bathrooms
+&nbsp;     */
+&nbsp;    public int setNumberOfBathrooms(int numberOfBathrooms) {
+<b class="fc">&nbsp;        if (numberOfBathrooms&lt;0){</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Please insert a number &gt;=0&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return numberOfBathrooms;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets number of parking spaces.
+&nbsp;     *
+&nbsp;     * @param numberOfParkingSpaces the number of parking spaces
+&nbsp;     * @return the number of parking spaces
+&nbsp;     */
+&nbsp;    public int setNumberOfParkingSpaces(int numberOfParkingSpaces) {
+<b class="fc">&nbsp;        if (numberOfParkingSpaces&lt;0){</b>
+<b class="fc">&nbsp;            throw new IllegalArgumentException(&quot;Please insert a number &gt;=0&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return numberOfParkingSpaces;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sets equipment.
+&nbsp;     *
+&nbsp;     * @param equipment the equipment
+&nbsp;     * @return the equipment
+&nbsp;     */
+&nbsp;    public List&lt;String&gt; setEquipment(List&lt;String&gt; equipment) {
+<b class="fc">&nbsp;        if (equipment == null) {</b>
+<b class="fc">&nbsp;            throw new NullPointerException(&quot;You need to insert at least 1 equipment.&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return equipment;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //ToString
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        StringBuilder sb = new StringBuilder();</b>
+<b class="nc">&nbsp;        sb.append(&quot;Apartment \n&quot;);</b>
+<b class="nc">&nbsp;        sb.append(super.toString());</b>
+<b class="nc">&nbsp;        sb.append(String.format(&quot;Number of Bedrooms:      %s\n&quot;, numberOfBedrooms));</b>
+<b class="nc">&nbsp;        sb.append(String.format(&quot;Number of Bathrooms:     %s\n&quot;, numberOfBathrooms));</b>
+<b class="nc">&nbsp;        sb.append(String.format(&quot;Number of Parking Spaces: %s\n&quot;, numberOfParkingSpaces));</b>
+<b class="nc">&nbsp;        sb.append(String.format(&quot;Equipment:               %s\n&quot;, equipment));</b>
+<b class="nc">&nbsp;        return sb.toString();</b>
 &nbsp;    }
 &nbsp;}
-&nbsp;
-&nbsp;
-&nbsp;
 </code>
 </pre>
 </div>
@@ -136,7 +237,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

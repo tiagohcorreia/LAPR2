@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > AgentUI</title>
+  <title>Coverage Report > ChooseRoleUI</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -18,10 +18,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console.menu</a>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
 </div>
 
-<h1>Coverage Summary for Class: AgentUI (pt.ipp.isep.dei.esoft.project.ui.console.menu)</h1>
+<h1>Coverage Summary for Class: ChooseRoleUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">AgentUI</td>
+  <td class="name">ChooseRoleUI</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/10)
+    (0/18)
   </span>
 </td>
 </tr>
@@ -74,53 +74,53 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;
-&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console.menu;
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.PublishAnnouncementController;
-&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.RegisterPropertyController;
-&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.PublishAnnouncementUI;
-&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.RegisterPropertyUI;
+&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.AdminUI;
+&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.AgentUI;
+&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.OwnerUI;
+&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.menu.UnregisteredUserUI;
 &nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 &nbsp;
-&nbsp;import java.util.ArrayList;
-&nbsp;import java.util.List;
-&nbsp;import java.util.Scanner;
-&nbsp;
 &nbsp;/**
-&nbsp; * The type Agent ui.
+&nbsp; * The type Choose role ui.
 &nbsp; */
-&nbsp;public class AgentUI implements Runnable{
+<b class="nc">&nbsp;public class ChooseRoleUI implements Runnable {</b>
 &nbsp;
-&nbsp;    private Scanner scanner;
-&nbsp;
-&nbsp;    /**
-&nbsp;     * Instantiates a new Agent ui.
-&nbsp;     */
-<b class="nc">&nbsp;    public AgentUI() {</b>
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;    }
-&nbsp;
+&nbsp;    @Override
 &nbsp;    public void run() {
-<b class="nc">&nbsp;        List&lt;MenuItem&gt; options = new ArrayList&lt;MenuItem&gt;();</b>
-<b class="nc">&nbsp;        System.out.println(&quot;=============== Real Estate USA ===============\n &quot;);</b>
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Publish announcement&quot;,  new PublishAnnouncementUI(new PublishAnnouncementController(new AnnouncementRepository(), new AuthenticationController()),new AuthenticationController())));</b>
-<b class="nc">&nbsp;        options.add(new MenuItem(&quot;Exit&quot;, (Runnable) new MainMenuUI()));</b>
-<b class="nc">&nbsp;        int option = 0;</b>
-&nbsp;        do {
-<b class="nc">&nbsp;            option = Utils.showAndSelectIndex(options, &quot;\n                     Menu\n&quot;);</b>
 &nbsp;
-<b class="nc">&nbsp;            if ((option &gt;= 0) &amp;&amp; (option &lt; options.size())) {</b>
-<b class="nc">&nbsp;                options.get(option).run();</b>
-&nbsp;            }
-<b class="nc">&nbsp;        } while (option != -1);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;1.Administrator&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;2.Owner&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;3.Agent&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;4.Unregistered User&quot;);</b>
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        int option = Utils.readIntegerFromConsole(&quot;Choose your role&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        switch (option) {</b>
+&nbsp;
+&nbsp;            case 1:
+<b class="nc">&nbsp;                AdminUI adminUI = new AdminUI();</b>
+<b class="nc">&nbsp;                adminUI.run();</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 2:
+&nbsp;                //TO DO - Create a UI for the owner
+<b class="nc">&nbsp;                OwnerUI ownerUI = new OwnerUI();</b>
+<b class="nc">&nbsp;                ownerUI.run();</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 3:
+&nbsp;                //TO DO - Create a UI for the agent
+<b class="nc">&nbsp;                AgentUI agentUI = new AgentUI();</b>
+<b class="nc">&nbsp;                agentUI.run();</b>
+<b class="nc">&nbsp;                break;</b>
+&nbsp;            case 4:
+<b class="nc">&nbsp;                UnregisteredUserUI unregisteredUserUI = new UnregisteredUserUI();</b>
+<b class="nc">&nbsp;                unregisteredUserUI.run();</b>
+&nbsp;                break;
+&nbsp;        }
 &nbsp;    }
 &nbsp;}
-&nbsp;
 </code>
 </pre>
 </div>
@@ -144,7 +144,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

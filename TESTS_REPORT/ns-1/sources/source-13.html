@@ -1,0 +1,197 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ScheduleVisitController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: ScheduleVisitController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ScheduleVisitController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33,3%
+  </span>
+  <span class="absValue">
+    (2/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    44,2%
+  </span>
+  <span class="absValue">
+    (19/43)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementMapper;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.*;
+&nbsp;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.LocalTime;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;public class ScheduleVisitController {
+&nbsp;
+<b class="fc">&nbsp;    Repositories repositories = Repositories.getInstance();</b>
+<b class="fc">&nbsp;    private AnnouncementRepository announcementRepository = repositories.getAnnouncementRepository();</b>
+<b class="fc">&nbsp;    private ScheduleRepository scheduleRepository= repositories.getScheduleRepository();</b>
+<b class="fc">&nbsp;    private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();</b>
+<b class="fc">&nbsp;    private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();</b>
+<b class="fc">&nbsp;    private ClientRepository clientRepository= repositories.getClientRepository();</b>
+&nbsp;    AuthenticationController authenticationController;
+&nbsp;    private AnnouncementMapper announcementMapper;
+&nbsp;
+<b class="fc">&nbsp;    public ScheduleVisitController() {</b>
+<b class="fc">&nbsp;        this.scheduleRepository = scheduleRepository;</b>
+<b class="fc">&nbsp;        this.announcementMapper = new AnnouncementMapper();</b>
+<b class="fc">&nbsp;        authenticationController = new AuthenticationController();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;AnnouncementDTO&gt; announcementDTOList() {
+&nbsp;
+<b class="nc">&nbsp;        List&lt;Announcement&gt; announcements = announcementRepository.readObject();</b>
+&nbsp;
+<b class="nc">&nbsp;        return AnnouncementMapper.convert(announcements);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String createSchedule(AnnouncementDTO announcement, LocalDate day, LocalTime beginHour, LocalTime endHour, String note) {
+<b class="nc">&nbsp;        pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();</b>
+<b class="nc">&nbsp;        String clientEmail= userSession.getUserEmail();</b>
+<b class="nc">&nbsp;        Client client= clientRepository.findByEmail(clientEmail);</b>
+<b class="nc">&nbsp;        String name= client.getName();</b>
+<b class="nc">&nbsp;        long phoneNumber= client.getTelephoneNumber();</b>
+<b class="nc">&nbsp;        Schedule schedule = new Schedule(name, (int) phoneNumber, announcement,day,beginHour,endHour,note,false,false);</b>
+&nbsp;
+&nbsp;        try {
+&nbsp;
+<b class="nc">&nbsp;            this.scheduleRepository.saveSchedule(schedule);</b>
+<b class="nc">&nbsp;            this.scheduleRepository.writeObjectScheduleRequest();</b>
+<b class="nc">&nbsp;            return schedule.toString();</b>
+&nbsp;
+<b class="nc">&nbsp;        } catch (Exception e) {</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(e.getMessage().toString());</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean validateScheduleHour(AnnouncementDTO announcementDTO, LocalDate day, LocalTime beginTime, LocalTime endTime) {
+<b class="fc">&nbsp;        boolean isOverlap = false;</b>
+<b class="fc">&nbsp;        for(Schedule schedule : scheduleRepository.getScheduleList()) {</b>
+<b class="fc">&nbsp;            if (schedule.getAnnouncementDTO().equals(announcementDTO) &amp;&amp; schedule.getDay().equals(day)){</b>
+<b class="fc">&nbsp;                if (beginTime.isBefore(schedule.getEndHour()) &amp;&amp; endTime.isAfter(schedule.getBeginHour())) {</b>
+<b class="fc">&nbsp;                    isOverlap = true;</b>
+<b class="fc">&nbsp;                    throw new IllegalArgumentException(&quot;That hour is already scheduled, please insert data again.&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;                } else if (beginTime.equals(schedule.getBeginHour()) || endTime.equals(schedule.getEndHour())) {</b>
+<b class="nc">&nbsp;                    isOverlap = true;</b>
+&nbsp;
+<b class="nc">&nbsp;                    throw new IllegalArgumentException(&quot;That hour is already scheduled, please insert data again.&quot;);</b>
+<b class="fc">&nbsp;                }else return true;</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public AnnouncementDTO getAnnouncementByPos(int posAnnouncement) {
+<b class="nc">&nbsp;        List&lt;AnnouncementDTO&gt; announcements= getAnnouncementsList();</b>
+<b class="nc">&nbsp;        return announcements.get(posAnnouncement);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;AnnouncementDTO&gt; getAnnouncementsList() {
+<b class="nc">&nbsp;        List&lt;AnnouncementDTO&gt; dtoList = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        for (Announcement announcement : this.announcementRepository.readObject()) {</b>
+<b class="nc">&nbsp;            AnnouncementDTO dto = this.announcementMapper.toDto2(announcement);</b>
+<b class="nc">&nbsp;            dtoList.add(dto);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="nc">&nbsp;        return dtoList;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

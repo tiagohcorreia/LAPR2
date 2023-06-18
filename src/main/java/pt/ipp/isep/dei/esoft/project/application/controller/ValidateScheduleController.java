@@ -59,8 +59,8 @@ public class ValidateScheduleController implements Initializable {
     }
     public void getRequestScheduleListByResponsibleAgent(Employee agent){
 
-        //List<Schedule> scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
-        lvschedules.getItems().addAll(getScheduleList());
+        List<Schedule> scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
+        lvschedules.getItems().addAll(scheduleList);
 
     }
     @FXML

@@ -1,0 +1,219 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Location</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.domain.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Location (pt.ipp.isep.dei.esoft.project.domain.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Location</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (7/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    63,8%
+  </span>
+  <span class="absValue">
+    (30/47)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.domain.model;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.ui.console.utils.Validator;
+&nbsp;
+&nbsp;import java.io.Serializable;
+&nbsp;
+&nbsp;
+&nbsp;public class Location implements Serializable, Validator {
+&nbsp;    int doorNumber;
+&nbsp;    String street;
+&nbsp;    City city;
+&nbsp;    District district;
+&nbsp;    State state;
+&nbsp;    int zipCode;
+&nbsp;
+<b class="fc">&nbsp;    public Location(String street, City city, int zipCode) {</b>
+<b class="fc">&nbsp;        if(</b>
+&nbsp;        //doorNumberIsValid(doorNumber) &amp;&amp;
+<b class="fc">&nbsp;            streetIsValid(street) &amp;&amp;</b>
+<b class="fc">&nbsp;            cityIsValid(city) &amp;&amp;</b>
+<b class="fc">&nbsp;            zipCodeIsValid(zipCode)) {</b>
+&nbsp;
+&nbsp;            //this.doorNumber = doorNumber;
+<b class="fc">&nbsp;            this.street = street;</b>
+<b class="fc">&nbsp;            this.city = city;</b>
+<b class="fc">&nbsp;            this.zipCode = zipCode;</b>
+&nbsp;        }
+&nbsp;        else
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Couldn&#39;t register location&quot;);</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public Location(int doorNumber, String street, City city, int zipCode) {</b>
+<b class="fc">&nbsp;        this.doorNumber = doorNumber;</b>
+<b class="fc">&nbsp;        this.street = street;</b>
+<b class="fc">&nbsp;        this.city = city;</b>
+<b class="fc">&nbsp;        this.zipCode = zipCode;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    public Location(){</b>
+<b class="fc">&nbsp;        doorNumber = 0;</b>
+<b class="fc">&nbsp;        street = &quot;Street Zero&quot;;</b>
+<b class="fc">&nbsp;        city = new City(&quot;City Zero&quot;);</b>
+<b class="fc">&nbsp;        zipCode = 0;</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public Location(int doorNumber, String street, City city, District district, State state, int zipCode){</b>
+<b class="nc">&nbsp;        this.doorNumber = doorNumber;</b>
+<b class="nc">&nbsp;        this.street = street;</b>
+<b class="nc">&nbsp;        this.city = city;</b>
+<b class="nc">&nbsp;        this.district = district;</b>
+<b class="nc">&nbsp;        this.state = state;</b>
+<b class="nc">&nbsp;        this.zipCode = zipCode;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isValid(){
+<b class="nc">&nbsp;        return (</b>
+<b class="nc">&nbsp;                validateZipCode(zipCode) &amp;&amp;</b>
+<b class="nc">&nbsp;                validateString(street) &amp;&amp;</b>
+<b class="nc">&nbsp;                validateObject(city) &amp;&amp;</b>
+<b class="nc">&nbsp;                validateObject(state)</b>
+&nbsp;        );
+&nbsp;    }
+&nbsp;
+&nbsp;//    private boolean doorNumberIsValid(int doorNumber){
+&nbsp;//        if (doorNumber &lt; 1)
+&nbsp;//            throw new IllegalArgumentException(&quot;Door number must be greater than zero&quot;);
+&nbsp;//        return true;
+&nbsp;//    }
+&nbsp;
+&nbsp;    public boolean streetIsValid(String street){
+<b class="fc">&nbsp;        if (street.isBlank())</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Street can&#39;t be blank&quot;);</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean cityIsValid(City city){
+<b class="fc">&nbsp;        if (city == null)</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;City is invalid&quot;);</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean zipCodeIsValid(int zipCode){
+<b class="fc">&nbsp;        if (zipCode &lt; 10000 || zipCode &gt; 99999)</b>
+<b class="nc">&nbsp;            throw new IllegalArgumentException(&quot;Zip code must have 5 digits&quot;);</b>
+<b class="fc">&nbsp;        return true;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getStreet() {
+<b class="nc">&nbsp;        return street;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /*public String toString() {
+&nbsp;        StringBuilder sb = new StringBuilder();
+&nbsp;        sb.append(String.format(&quot;Door Number: %s\n&quot;, doorNumber));
+&nbsp;        sb.append(String.format(&quot;Street:      %s\n&quot;, street));
+&nbsp;        sb.append(String.format(&quot;City:        %s\n&quot;, city));
+&nbsp;        sb.append(String.format(&quot;Zip Code:    %s\n&quot;, zipCode));
+&nbsp;        return sb.toString();
+&nbsp;    }*/
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        final StringBuilder sb = new StringBuilder();</b>
+<b class="fc">&nbsp;        sb.append(&quot;Door Number:&quot;).append(doorNumber).append(&quot;\t&quot;);</b>
+<b class="fc">&nbsp;        sb.append(&quot;Street:&quot;).append(street).append(&quot;\t&quot;);</b>
+<b class="fc">&nbsp;        sb.append(&quot;&quot;).append(city).append(&quot;&quot;);</b>
+<b class="fc">&nbsp;        sb.append(&quot;Zip Code:&quot;).append(zipCode);</b>
+<b class="fc">&nbsp;        return sb.toString();</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>

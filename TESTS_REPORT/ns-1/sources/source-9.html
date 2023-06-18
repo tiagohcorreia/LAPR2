@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > StateController</title>
+  <title>Coverage Report > ListDealsController</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -21,7 +21,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">pt.ipp.isep.dei.esoft.project.application.controller</a>
 </div>
 
-<h1>Coverage Summary for Class: StateController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
+<h1>Coverage Summary for Class: ListDealsController (pt.ipp.isep.dei.esoft.project.application.controller)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -40,7 +40,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">StateController</td>
+  <td class="name">ListDealsController</td>
 <td class="coverageStat">
   <span class="percent">
     0%
@@ -62,7 +62,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     0%
   </span>
   <span class="absValue">
-    (0/7)
+    (0/11)
   </span>
 </td>
 </tr>
@@ -76,66 +76,53 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.application.controller;
 &nbsp;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.District;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.State;
-&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.StateRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.dto.DealsDto;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.shared.SortingOrder;
 &nbsp;
 &nbsp;import java.util.ArrayList;
 &nbsp;import java.util.List;
 &nbsp;
-&nbsp;/**
-&nbsp; * The type State controller.
-&nbsp; */
-&nbsp;public class StateController {
-&nbsp;    private StateRepository stateRepository;
+<b class="nc">&nbsp;public class ListDealsController {</b>
+<b class="nc">&nbsp;    static AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();</b>
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Instantiates a new State controller.
-&nbsp;     *
-&nbsp;     * @param stateRepository the state repository
-&nbsp;     */
-<b class="nc">&nbsp;    public StateController(StateRepository stateRepository) {</b>
-<b class="nc">&nbsp;        this.stateRepository = stateRepository;</b>
+&nbsp;//    public static List&lt;Announcement&gt; getDeals() {
+&nbsp;//        List&lt;DealsDto&gt; deals = new ArrayList&lt;&gt;();
+&nbsp;//        List&lt;Announcement&gt; announcements = new ArrayList&lt;&gt;();
+&nbsp;//        announcements.addAll(announcementRepository.getSoldAnnouncements());
+&nbsp;//        //announcements.sort(new AnnouncementDateComparator());
+&nbsp;//        AnnouncementRepository.sortAnnouncements(announcements, &quot;date&quot;, SortingOrder.DESCENDING);
+&nbsp;//
+&nbsp;//        return announcements;
+&nbsp;//    }
+&nbsp;    public static List&lt;DealsDto&gt; getDeals() {
+<b class="nc">&nbsp;        List&lt;DealsDto&gt; deals = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;        List&lt;Announcement&gt; announcements = announcementRepository.getSoldAnnouncements();</b>
+&nbsp;        for (Announcement a:
+<b class="nc">&nbsp;             announcements) {</b>
+<b class="nc">&nbsp;            DealsDto newDto = new DealsDto(a);</b>
+<b class="nc">&nbsp;            deals.add(newDto);</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;        //announcements.sort(new AnnouncementDateComparator());
+&nbsp;        //AnnouncementRepository.sortAnnouncements(announcements, &quot;date&quot;, SortingOrder.DESCENDING);
+<b class="nc">&nbsp;        return deals;</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Add state.
-&nbsp;     *
-&nbsp;     * @param name the name
-&nbsp;     */
-&nbsp;    public void addState(String name) {
-<b class="nc">&nbsp;        State state = new State(name, new ArrayList&lt;&gt;());</b>
-<b class="nc">&nbsp;        stateRepository.save(state);</b>
+&nbsp;    public static void sortDealsByDate(List&lt;DealsDto&gt; dealsDtoList, SortingOrder sortingOrder){
+<b class="nc">&nbsp;        DealsDto.sortDealsByDate(dealsDtoList, sortingOrder);</b>
 &nbsp;    }
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Find state by name state.
-&nbsp;     *
-&nbsp;     * @param name the name
-&nbsp;     * @return the state
-&nbsp;     */
-&nbsp;    public State findStateByName(String name) {
-<b class="nc">&nbsp;        return stateRepository.findByName(name);</b>
-&nbsp;    }
+&nbsp;    public static void sortDealsWithAlgorithm(List&lt;DealsDto&gt; dealsDtoList, String algorithm, SortingOrder sortingOrder){
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Gets all states.
-&nbsp;     *
-&nbsp;     * @return the all states
-&nbsp;     */
-&nbsp;    public List&lt;State&gt; getAllStates() {
-<b class="nc">&nbsp;        return stateRepository.findAll();</b>
-&nbsp;    }
+<b class="nc">&nbsp;    }</b>
 &nbsp;
-&nbsp;    /**
-&nbsp;     * Add district to state.
-&nbsp;     *
-&nbsp;     * @param state    the state
-&nbsp;     * @param district the district
-&nbsp;     */
-&nbsp;    public void addDistrictToState(State state, District district) {
-<b class="nc">&nbsp;        stateRepository.addDistrictToState(state, district);</b>
-&nbsp;    }
+&nbsp;//    public static List&lt;Announcement&gt; sortByAreaWithAlgorithm(List&lt;Announcement&gt; announcements, String sortingAlgorithm, SortingOrder sortingorder){
+&nbsp;//        return AnnouncementRepository.sortByAreaWithAlgoritm(announcements, sortingAlgorithm, sortingorderorder);
+&nbsp;//    }
 &nbsp;}
 </code>
 </pre>
@@ -160,7 +147,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-04-30 23:35</div>
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
 </div>
 </body>
 </html>

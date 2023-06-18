@@ -1,0 +1,169 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SpecifyStatesDistrictsCitiesUI</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">pt.ipp.isep.dei.esoft.project.ui.console</a>
+</div>
+
+<h1>Coverage Summary for Class: SpecifyStatesDistrictsCitiesUI (pt.ipp.isep.dei.esoft.project.ui.console)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SpecifyStatesDistrictsCitiesUI</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/30)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package pt.ipp.isep.dei.esoft.project.ui.console;
+&nbsp;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.CityController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.DistrictController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.application.controller.StateController;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.CityRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.DistrictRepository;
+&nbsp;import pt.ipp.isep.dei.esoft.project.domain.repository.StateRepository;
+&nbsp;
+&nbsp;import java.util.Scanner;
+&nbsp;
+&nbsp;/**
+&nbsp; * The type Specify states districts cities ui.
+&nbsp; */
+<b class="nc">&nbsp;public class SpecifyStatesDistrictsCitiesUI implements Runnable {</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void run() {
+<b class="nc">&nbsp;        CityRepository cityRepository = new CityRepository();</b>
+<b class="nc">&nbsp;        DistrictRepository districtRepository = new DistrictRepository();</b>
+<b class="nc">&nbsp;        StateRepository stateRepository = new StateRepository();</b>
+&nbsp;
+<b class="nc">&nbsp;        CityController cityController = new CityController(cityRepository);</b>
+<b class="nc">&nbsp;        DistrictController districtController = new DistrictController(districtRepository);</b>
+<b class="nc">&nbsp;        StateController stateController = new StateController(stateRepository);</b>
+&nbsp;
+<b class="nc">&nbsp;        CityUI cityUI = new CityUI(cityController);</b>
+<b class="nc">&nbsp;        DistrictUI districtUI = new DistrictUI(districtController, cityController);</b>
+<b class="nc">&nbsp;        StateUI stateUI = new StateUI(stateController, districtController);</b>
+<b class="nc">&nbsp;        DisplayAnnouncementsUI displayAnnouncementsUI = new DisplayAnnouncementsUI();</b>
+&nbsp;
+<b class="nc">&nbsp;        Scanner scanner = new Scanner(System.in);</b>
+&nbsp;        int option;
+&nbsp;
+&nbsp;        while (true) {
+<b class="nc">&nbsp;            System.out.println(&quot;Welcome to the Real State USA Company System!&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Choose an option:&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;1. Manage Cities&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;2. Manage Districts&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;3. Manage States&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;4. Display listings&quot;);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;0. Exit&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            option = scanner.nextInt();</b>
+&nbsp;
+<b class="nc">&nbsp;            switch (option) {</b>
+&nbsp;                case 1:
+<b class="nc">&nbsp;                    cityUI.run();</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                case 2:
+<b class="nc">&nbsp;                    districtUI.run();</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                case 3:
+<b class="nc">&nbsp;                    stateUI.run();</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                case 4:
+<b class="nc">&nbsp;                    displayAnnouncementsUI.run();</b>
+<b class="nc">&nbsp;                    break;</b>
+&nbsp;                case 0:
+&nbsp;                   return;
+&nbsp;                default:
+<b class="nc">&nbsp;                    System.out.println(&quot;Invalid option. Please try again.&quot;);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-06-18 23:35</div>
+</div>
+</body>
+</html>
