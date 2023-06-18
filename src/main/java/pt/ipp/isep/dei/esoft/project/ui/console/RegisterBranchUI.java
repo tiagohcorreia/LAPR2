@@ -4,7 +4,6 @@ import pt.ipp.isep.dei.esoft.project.application.controller.RegisterBranchContro
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Branch;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
-import pt.ipp.isep.dei.esoft.project.domain.repository.BranchRepository;
 import pt.ipp.isep.dei.esoft.project.exceptions.DuplicateDataException;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
@@ -28,7 +27,7 @@ public class RegisterBranchUI implements Runnable {
         String branchDoorNumber = String.valueOf(Utils.readIntegerFromConsole("Branch door number: "));
         //int branchDoorNumber = Utils.readIntegerFromConsole("Branch door number: ");
         String branchStreet = Utils.readLineFromConsole("Branch street: ");
-        String branchState =  Utils.readLineFromConsole("Branch state: ");
+        String branchState = Utils.readLineFromConsole("Branch state: ");
         String branchDistrict = Utils.readLineFromConsole("Branch district: ");
         String branchCity = Utils.readLineFromConsole("Branch city: ");
         String branchZipCode = String.valueOf(Utils.readIntegerFromConsole("Branch zip code: "));
@@ -43,47 +42,46 @@ public class RegisterBranchUI implements Runnable {
         String branchEmail = Utils.readLineFromConsole("Insert Branch email: ");
 
 
-        try {
+        int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
-            Branch branch = controller.createBranch(branchID, branchName, branchLocation, branchPhoneNumber, branchEmail);
-            System.out.println(branch);
+        if (optValidation == 1) {
 
-            int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
+            try {
 
-            if (optValidation == 1) {
+                Branch branch = controller.createBranch(branchID, branchName, branchLocation, branchPhoneNumber, branchEmail);
+                System.out.println(branch);
 
-                if (controller.saveBranch(branch))
+            } catch (DuplicateDataException e) {
 
-                    System.out.println("Branch created!");
+                System.err.println(e.getMessage());
 
-                else
+            } catch (NullPointerException e) {
 
-                    System.err.println("Failed to create branch!");
+                System.err.println(e.getMessage());
 
-            } else {
+            } catch (IllegalArgumentException e) {
 
-                System.err.println("Operation Canceled!");
+                System.err.println(e.getMessage());
+
+            } catch (IllegalStateException e) {
+
+                e.printStackTrace();
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
             }
 
+        } else {
 
-        } catch (DuplicateDataException e) {
-
-            System.err.println(e.getMessage());
-
-        } catch (NullPointerException e) {
-
-            System.err.println(e.getMessage());
-
-        } catch (IllegalArgumentException e) {
-
-            System.err.println(e.getMessage());
-
-        } catch (IllegalStateException e) {
-
-
+            System.err.println("Operation Canceled!");
         }
+
 
     }
 
 
 }
+
+
+

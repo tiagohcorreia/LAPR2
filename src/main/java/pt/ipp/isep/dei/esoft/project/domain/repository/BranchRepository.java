@@ -21,12 +21,32 @@ public class BranchRepository implements Serializable {
      * @param branch the branch
      */
     public boolean saveBranch(Branch branch) {
-        if (findBranch(branch) != -1)
-            throw new DuplicateDataException("This branch is already registered in the system at position "
-                    + findBranch(branch));
-        //System.out.println("Saving branch...");
-        //does nothing for now
-        branches.add(branch);
+
+        if (validate(branch)) {
+
+            return addBranch(branch);
+        }
+        return false;
+    }
+
+    public boolean addBranch(Branch branch) {
+
+        if (branch != null && validate(branch)) {
+
+            return branches.add(branch);
+        }
+        return false;
+    }
+
+    public boolean validate(Branch branch) {
+
+        for(Branch branch1 : branches) {
+
+            if(branch1.equals(branch)) {
+
+                throw new DuplicateDataException("Branch is already registered");
+            }
+        }
         return true;
     }
 
@@ -47,21 +67,13 @@ public class BranchRepository implements Serializable {
         return new Branch(id, name, location, phoneNumber, email);
     }
 
-    public boolean save(Branch branch) {
-        if (validate(branch))
-            return branches.add(branch);
-
-        return false;
-    }
 
     /**
      * Checks if a branch has already been added.
      *
      * @return True if the new branch is valid, False otherwise
      */
-    public boolean validate(Branch branch) {
-        return (indexOf(branch) == -1);
-    }
+
 
     public int indexOf(Branch branch) {
         for (Branch thisBranch : branches) {

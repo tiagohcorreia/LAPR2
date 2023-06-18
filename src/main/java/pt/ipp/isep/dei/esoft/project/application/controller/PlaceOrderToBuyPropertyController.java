@@ -49,7 +49,7 @@ public class PlaceOrderToBuyPropertyController {
 
             this.orderRepository.saveOrder(newOrder);
             this.orderRepository.writeObject();
-
+            System.out.println(newOrder);
             return newOrder.toString();
 
         } catch (Exception e) {

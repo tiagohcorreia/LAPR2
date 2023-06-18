@@ -1,9 +1,11 @@
 package pt.ipp.isep.dei.esoft.project.ui.console;
 
 import pt.ipp.isep.dei.esoft.project.application.controller.PlaceOrderToBuyPropertyController;
+import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
+import pt.isep.lei.esoft.auth.domain.model.User;
 
 
 import java.util.List;
@@ -15,10 +17,6 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
     private PlaceOrderToBuyPropertyController controller = new PlaceOrderToBuyPropertyController();
 
-
-    public PlaceOrderToBuyPropertyUI() {
-
-    }
 
     @Override
     public void run() {
@@ -37,7 +35,6 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
             Double orderAmount = Utils.readDoubleFromConsole("Insert order amount: ");
 
             //Client
-
 
             //Status
             boolean status = false;

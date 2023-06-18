@@ -67,8 +67,6 @@ C
 APP_FILES/email.txt,6\c\6cc5cd8f7f8c046eed62aee2a0fb3aa1bcf8090f
 t
 Dsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Client.java,7\b\7b1d1b5c3900635eb647b41e7776828ca940f3ad
-v
-Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Employee.java,4\8\48f30ab01b7b962563047a5e0e06ae264232a46e
 ‰
 Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepository.java,c\8\c805ca1cbd80f0ac94482e0d78c0adf7bc47eeb0
 ^
@@ -101,8 +99,6 @@ v
 Fsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Property.java,1\d\1d552c1006ef511d6f57b98c18b4837269e359d4
 •
 esrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/PublishAnnouncementController.java,5\a\5aa707f0b07a84d4c69be7429e1838ed656307e8
-…
-Usrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/EmployeeRepository.java,2\3\23141fe36a1069590dc1b5ec75fa10ac189ee118
 l
 <docs/sprintD/US020/01.requirements-engineering/puml/SSD.puml,c\1\c174a4293913f87b618eeed762d691bce916a619
 z
@@ -135,8 +131,6 @@ V
 &docs/sprintD/US020/03.design/Design.md,a\8\a8d1849be434bb7603fbc4ce1b2fbbdbee48d816
 E
 ser/announcements.ser,e\1\e1ae287c9e65eae5c117c270cadae6c77a770d7b
-ƒ
-Ssrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/BranchRepository.java,8\2\829fbd7133c10ef8651d0c7e9545e6c03d4fcbd2
 {
 Ksrc/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/ValidateScheduleGUI.java,1\3\1305dbd2a6de3326464149c68708d5f72f4de587
 x
@@ -147,8 +141,6 @@ m
 Wsrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/ApplicationSession.java,a\c\acb248068f9cd4ccc70f217ea33f1973dbe4dd6e
 z
 Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
-~
-Nsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/RegisterEmployeeUI.java,0\8\085e886d2d90a6c4a560a975d27f9ad7c6f63565
 €
 Psrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/UserSession.java,3\a\3ad8f79dc5d9e6193112010503c93310b92234d1
 ‹
