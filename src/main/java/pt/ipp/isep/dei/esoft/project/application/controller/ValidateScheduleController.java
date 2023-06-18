@@ -4,7 +4,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+import pt.ipp.isep.dei.esoft.project.domain.model.Client;
+import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
@@ -31,6 +34,7 @@ public class ValidateScheduleController implements Initializable {
     private ScheduleRepository scheduleRepository= repositories.getScheduleRepository();
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
     private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
+    AuthenticationController authenticationController;
 
     @FXML
     private ToggleGroup ScheduleAnswer;
@@ -113,8 +117,9 @@ public class ValidateScheduleController implements Initializable {
 
     public List<Schedule> getRequestScheduleListByResponsibleAgent(){
         scheduleRepository.readObjectScheduleRequest();
-        String agentName=String.valueOf(authenticationRepository.getCurrentUserSession().getUserName());
-        pt.ipp.isep.dei.esoft.project.domain.model.Employee agent= employeeRepository.findByName(agentName);
+        pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();
+        String agentEmail= String.valueOf(userSession.getUserEmail());
+        Employee agent= employeeRepository.findByEmail(agentEmail);
         List<Schedule> scheduleList= scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
         return scheduleList;
     }

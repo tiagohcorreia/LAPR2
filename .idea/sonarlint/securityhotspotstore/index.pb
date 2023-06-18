@@ -21,20 +21,12 @@ k
 ;docs/sprintD/US003/02.analysis/puml/US003-Domain Model.puml,0\b\0bb4cfed2e08aa07f00cfa690f15ac84bf40eda8
 Y
 )docs/sprintD/US009/03.design/puml/CD.puml,e\a\ea8f307cc0b2064e3a2b47b9647d8580e8a6ac6b
-ã
-[src/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AuthenticationRepository.java,1\7\1720d6ff593ca0ef6086cab4c10507516a643e8d
-á
-Wsrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/ApplicationSession.java,a\c\acb248068f9cd4ccc70f217ea33f1973dbe4dd6e
-û
-nsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/authorization/AuthenticationController.java,9\2\924cc26509fe56f70bcb36cee23fcc0cfec42aff
 x
 Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AdminUI.java,5\6\56e0b5ce6530e817cb5beddc7029295eb5a8cfb0
 x
 Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/OwnerUI.java,8\7\879643df093eb812d6e520ad981e3e2701d4f84d
 É
 Ssrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/UnregisteredUserUI.java,c\9\c964057f18ef346a52108db7b638179362f2c92f
-x
-Hsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/AgentUI.java,4\d\4db040abbfc19875a8da8604f243d6234dfa18ad
 ä
 Zsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/authorization/AuthenticationUI.java,1\e\1e58d5046835c83c9a97f20625ba76d96410c528
 í
@@ -67,8 +59,6 @@ Ksrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MainMenuUI.java,2\
 	Readme.md,0\c\0c1945d7443c2e154bd3e421c0d438bd4086d8c3
 w
 Gsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/OrderTest.java,e\9\e92b1115be037b10477776a12196d88c5ae58345
-Ä
-Psrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/UserSession.java,3\a\3ad8f79dc5d9e6193112010503c93310b92234d1
 t
 Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTest.java,1\0\1009d2015c9fc4a9f50d9b819006a88ce2e99b09
 t
@@ -89,8 +79,6 @@ Ysrc/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AnnouncementRepos
 _src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ScheduleVisitController.java,d\e\def9dc4b28edd3634d956f9bdfafb8d5652465d1
 h
 8src/main/java/pt/ipp/isep/dei/esoft/project/ui/Main.java,c\9\c94ae3eefc44bf4778c1b1c7de640658b9d015a7
-í
-bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ValidateScheduleController.java,c\9\c9d2a4c16c22307d644134a44ab13b829207d164
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 Å
@@ -105,12 +93,6 @@ y
 Isrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MenuItem.java,4\4\44d6df232cccbbbcadf2c5f04efd539b5cf2deee
 Å
 Qsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/NetworkManagerUI.java,b\9\b9d7f9cddf0a7eab5f9c4e941a71c5d9d714c1ed
-m
-=src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
-ã
-[src/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ListDealsController.java,a\e\aebf1b2fe612e1666c5dbe5c0d8e44a56da905cd
-z
-Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
 {
 Ksrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/ScheduleVisitUI.java,a\5\a5befd3fc6a8a90e1cff21fabbc449d52c414df7
 y

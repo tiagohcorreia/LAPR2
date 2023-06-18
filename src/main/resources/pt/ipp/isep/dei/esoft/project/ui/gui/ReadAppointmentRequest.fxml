@@ -10,35 +10,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<?xml version="1.0" encoding="UTF-8"?>
-
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500" prefWidth="1004.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.application.controller.ReadResponseOfAppointmentRequestController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="966.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.application.controller.ReadResponseOfAppointmentRequestController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="76.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="795.0" minWidth="10.0" prefWidth="795.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="190.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="820.0" minWidth="10.0" prefWidth="814.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-    <RowConstraints maxHeight="374.0" minHeight="10.0" prefHeight="242.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="374.0" minHeight="10.0" prefHeight="252.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="99.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="275.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Schedule List:" GridPane.rowIndex="1" />
-      <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Label alignment="CENTER" contentDisplay="CENTER" text="Schedule List:" GridPane.rowIndex="1">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
             <Button fx:id="btnAccept" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#acceptRequest" text="Accept" textAlignment="JUSTIFY" />
             <Button fx:id="btnReject" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rejectRequest" text="Reject" textAlignment="JUSTIFY" />
-            <Button fx:id="btnCancel" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancel" text="Cancel" textAlignment="JUSTIFY" />
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </HBox>
-      <Label text="Selected Schedule Message:" GridPane.rowIndex="2" />
-      <Text fx:id="txtScheduleMessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="791.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Label text="Reason" GridPane.rowIndex="4" />
-      <Text fx:id="txtReason" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="793.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label text="Schedule Message:" GridPane.rowIndex="2">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label text="Reason:" GridPane.rowIndex="4">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextField fx:id="txtSchedule" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="txtClientReason" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <ListView fx:id="lstSchedules" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>
