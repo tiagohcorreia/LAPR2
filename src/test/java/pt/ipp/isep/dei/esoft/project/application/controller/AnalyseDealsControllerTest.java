@@ -1,5 +1,8 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
@@ -11,6 +14,8 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -30,8 +35,20 @@ class AnalyseDealsControllerTest {
     AnnouncementDTO DTOHouse;
     AnnouncementDTO DTOApartment;
     AnnouncementDTO DTOLand;
+
+    private AnalyseDealsController controller;
+    private TableView<AnalyseDealsController.PropertyData> table;
+
     @BeforeEach
-    void setup(){
+    void setup() throws Exception {
+
+
+        analyseDealsController = new AnalyseDealsController();
+        table = new TableView<>();
+        setPrivateField(analyseDealsController, "table", table);
+        analyseDealsController.initialize();
+
+
         analyseDealsController = new AnalyseDealsController();
         ArrayList<String> photographs = new ArrayList<String>();
         Branch branch = new Branch();
@@ -72,4 +89,34 @@ class AnalyseDealsControllerTest {
 
 
     }*/
+
+    @Test
+    public void testCalculateSimpleLinearRegression() throws Exception {
+        try {
+            // Act
+            Method method = AnalyseDealsController.class.getDeclaredMethod("calculateSimpleLinearRegression");
+            method.setAccessible(true);
+            method.invoke(analyseDealsController);
+
+            Field field = AnalyseDealsController.class.getDeclaredField("table");
+            field.setAccessible(true);
+            TableView<AnalyseDealsController.PropertyData> privateTable = (TableView<AnalyseDealsController.PropertyData>) field.get(analyseDealsController);
+
+            ObservableList<AnalyseDealsController.PropertyData> data = privateTable.getItems();
+
+            // Assert
+            Assertions.assertNotNull(data);
+            // Faça asserções relevantes para os dados e resultados esperados
+        } catch (Exception e) {
+            // Lida com a exceção lançada durante a execução do teste
+            throw new Exception("Erro ao testar calculateSimpleLinearRegression()", e);
+        }
+    }
+
+    private void setPrivateField(Object object, String fieldName, Object value) throws Exception {
+        Field field = object.getClass().getDeclaredField(fieldName);
+        field.setAccessible(true);
+        field.set(object, value);
+    }
 }
+

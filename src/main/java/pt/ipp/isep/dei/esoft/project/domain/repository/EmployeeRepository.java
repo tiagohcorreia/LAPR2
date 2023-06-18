@@ -79,6 +79,7 @@ public class EmployeeRepository implements Serializable {
         for (Employee emp : employeeList) {
 
             if (emp.equals(employee)) {
+
                 throw new DuplicateDataException("Employee is already registered");
             }
         }

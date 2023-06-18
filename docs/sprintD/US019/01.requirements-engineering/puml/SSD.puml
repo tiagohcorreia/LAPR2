@@ -1,0 +1,25 @@
+@startuml
+        skinparam monochrome true
+        skinparam packageStyle rectangle
+        skinparam shadowing false
+
+        title System Sequence Diagram (SSD) - US 019
+
+        autonumber
+
+        actor "Client" as client
+        participant ":System" as system
+
+        client -> system : Starts the program
+        activate system
+        system --> client : asks for the input file
+        deactivate system
+        client -> system : inputs the file location
+        activate system
+        system --> client : reads the file, stores its values and runs the algorthim
+        system --> client : prints the input size,the sub lists containing the best partition, the difference between them, and the execution time, informing operation sucess
+        deactivate system
+
+
+
+        @enduml

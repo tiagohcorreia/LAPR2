@@ -194,8 +194,8 @@ public class Branch implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Branch branch = (Branch) o;
-        return ID == branch.ID && phoneNumber == branch.phoneNumber && Objects.equals(name, branch.name) && Objects.equals(location, branch.location) && Objects.equals(email, branch.email);
+        Branch otherBranch = (Branch) o;
+        return Objects.equals(phoneNumber, otherBranch.phoneNumber) && Objects.equals(email, otherBranch.email);
     }
 
     @Override

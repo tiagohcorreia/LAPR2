@@ -1,7 +1,5 @@
 package pt.ipp.isep.dei.esoft.project.application.controller;
 
-
-
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.*;
 
@@ -37,23 +35,23 @@ public class RegisterBranchController {
      */
     public Branch createBranch(int id, String name, Location location, String phoneNumber, String email) {
 
-        //Branch newBranch = new Branch(ID, name, location, phoneNumber, email);
         Branch newBranch = branchRepository.createBranch(id, name, location, phoneNumber, email);
 
         try {
 
-            branchRepository.saveBranch(newBranch);
-            branchRepository.writeObject();
+            this.branchRepository.saveBranch(newBranch);
+            this.branchRepository.writeObject();
+            System.out.println();
 
         } catch (Exception e) {
 
             throw new IllegalStateException(e.getMessage());
         }
-
         return newBranch;
     }
 
-    public Location createLocation(String doorNumberString, String street, String cityString, String districtString, String stateString, String zipCodeString){
+    public Location createLocation(String doorNumberString, String street, String cityString, String districtString, String stateString, String zipCodeString) {
+
         int doorNumber = Integer.parseInt(doorNumberString);
         int zipCode = Integer.parseInt(zipCodeString);
 
@@ -61,7 +59,8 @@ public class RegisterBranchController {
         District district = districtRepository.findByName(districtString);
         City city = cityRepository.findByName(cityString);
 
-        if (state == null){
+        if (state == null) {
+
             state = stateRepository.createState(stateString);
             stateRepository.save(state);
 
@@ -72,7 +71,9 @@ public class RegisterBranchController {
             city = cityRepository.createCity(stateString);
             cityRepository.save(city);
             districtRepository.addCity(districtString, city);
-        } else if (district == null){
+
+        } else if (district == null) {
+
             district = new District(districtString, new ArrayList<>());
             districtRepository.save(district);
             stateRepository.addDistrictToState(state, district);
@@ -80,17 +81,14 @@ public class RegisterBranchController {
             city = cityRepository.createCity(stateString);
             cityRepository.save(city);
             districtRepository.addCity(districtString, city);
-        } else if(city == null){
+
+        } else if (city == null) {
+
             city = cityRepository.createCity(stateString);
             cityRepository.save(city);
             districtRepository.addCity(districtString, city);
         }
-
         return new Location(doorNumber, street, city, district, state, zipCode);
-    }
-
-    public boolean saveBranch(Branch branch){
-       return branchRepository.saveBranch(branch);
     }
 
 }

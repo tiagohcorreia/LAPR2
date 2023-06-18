@@ -49,9 +49,14 @@ public class ReadResponseOfAppointmentRequestGUI extends Application implements 
                     }
                 }
             });
+
             stage.show();
 
         } catch (IOException ex) {
+
+            createErrorAlert(ex).show();
+
+        } catch (Exception ex) {
 
             createErrorAlert(ex).show();
         }
@@ -76,6 +81,5 @@ public class ReadResponseOfAppointmentRequestGUI extends Application implements 
 
         return alert;
     }
-
 
 }

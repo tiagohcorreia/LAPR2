@@ -276,7 +276,6 @@ public class Employee implements Serializable, Validator {
         sb.append(" Role:").append(role);
         sb.append(" Branch:").append(branch);
 
-
         return sb.toString();
     }
 

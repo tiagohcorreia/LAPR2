@@ -311,7 +311,14 @@ public class CsvHandler {
         Employee employee;
         int contractDuration;
 
-        date = parseYyyyMmDdDate(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_DATE)));
+        //date = parseYyyyMmDdDate(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_DATE)));
+       String dateStr = String.valueOf(line.get(COLUMN_ANNOUNCEMENT_DATE));
+       String[] dateParts = dateStr.split("/");
+        int year = Integer.parseInt(dateParts[0]);
+        int month = Integer.parseInt(dateParts[1]);
+        int day = Integer.parseInt(dateParts[2]);
+        date = LocalDate.of(year, month, day);
+
         //typeOfBusiness = TypeOfBusiness.valueOf(String.valueOf(line.get(COLUMN_ANNOUNCEMENT_TYPE_BUSINESS)));
         String typeOfBusinessString = String.valueOf(line.get(COLUMN_ANNOUNCEMENT_TYPE_BUSINESS));
         switch (typeOfBusinessString){

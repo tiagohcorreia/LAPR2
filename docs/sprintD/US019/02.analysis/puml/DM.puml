@@ -1,0 +1,98 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+'left to right direction
+
+skinparam classAttributeIconSize 0
+
+hide circle
+hide methods
+
+class "Network Manager" as NetworkMan
+class Agent
+
+
+class Employee{
+name
+taxNumber
+passportNumber
+address
+email
+phoneNumber
+}
+
+class Announcement{
+price
+typeOfBusiness
+status
+date
+commission
+}
+
+class Store{
+id
+address
+email
+phoneNumber
+numProperties
+}
+
+class Property{
+location
+area
+cityCenterDistance
+photographs
+}
+
+class House{
+numberOfBedrooms
+numberOfBathrooms
+numberOfParkingSpaces
+equipment
+hasBasement
+hasInhabitableLoft
+sunExposure
+}
+
+class Apartment{
+numberOfBedrooms
+numberOfBathrooms
+numberOfParkingSpaces
+equipment
+}
+
+class Land{
+}
+
+class Client{
+name
+email
+password
+cCNumber
+taxNumber
+phoneNumber
+address
+}
+
+class "Real Estate USA"
+
+"Real Estate USA" <-- Employee: works at <
+"Real Estate USA" "1" <-- "1..*" Store: owns >
+Employee <|-- NetworkMan
+Employee <|-- Agent
+Store "1" --> "*" Announcement: publishes >
+Announcement "1" --> "1" Property: contains >
+Client "1" --> "*" Property: owns/buys >
+Agent "1" <- "*" Announcement: managed by
+'Agent "*" <- "1" Store: assigned to >
+Store "1" <-- "*" Agent: assigned to <
+
+Property <|-- House
+Property <|-- Apartment
+Property <|-- Land
+
+
+
+@enduml

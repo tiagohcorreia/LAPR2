@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="914px" preserveAspectRatio="none" style="width:1054px;height:914px;background:#FFFFFF;" version="1.1" viewBox="0 0 1054 914" width="1054px" zoomAndPan="magnify"><defs/><g><!--MD5=[9681dc6e01e10c6b4fe06895ae94f592]
+cluster UI--><g id="cluster_UI"><path d="M396.5,6 L411.5,6 A3.75,3.75 0 0 1 414,8.5 L421,31.0791 L567.5,31.0791 A2.5,2.5 0 0 1 570,33.5791 L570,143.5 A2.5,2.5 0 0 1 567.5,146 L396.5,146 A2.5,2.5 0 0 1 394,143.5 L394,8.5 A2.5,2.5 0 0 1 396.5,6 " style="stroke:#000000;stroke-width:1.5;fill:none;"/><line style="stroke:#000000;stroke-width:1.5;fill:none;" x1="394" x2="421" y1="31.0791" y2="31.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="14" x="398" y="23.6953">UI</text></g><!--MD5=[1f2cfc53d9d308f53762fd0fcbaa4873]
+cluster Controller--><g id="cluster_Controller"><path d="M125.5,218 L197.5,218 A3.75,3.75 0 0 1 200,220.5 L207,243.0791 L663.5,243.0791 A2.5,2.5 0 0 1 666,245.5791 L666,355.5 A2.5,2.5 0 0 1 663.5,358 L125.5,358 A2.5,2.5 0 0 1 123,355.5 L123,220.5 A2.5,2.5 0 0 1 125.5,218 " style="stroke:#000000;stroke-width:1.5;fill:none;"/><line style="stroke:#000000;stroke-width:1.5;fill:none;" x1="123" x2="207" y1="243.0791" y2="243.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="71" x="127" y="235.6953">Controller</text></g><!--MD5=[7e40339c58605559321960399585b560]
+cluster Utils--><g id="cluster_Utils"><path d="M8.5,430 L40.5,430 A3.75,3.75 0 0 1 43,432.5 L50,455.0791 L702.5,455.0791 A2.5,2.5 0 0 1 705,457.5791 L705,904.5 A2.5,2.5 0 0 1 702.5,907 L8.5,907 A2.5,2.5 0 0 1 6,904.5 L6,432.5 A2.5,2.5 0 0 1 8.5,430 " style="stroke:#000000;stroke-width:1.5;fill:none;"/><line style="stroke:#000000;stroke-width:1.5;fill:none;" x1="6" x2="50" y1="455.0791" y2="455.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="31" x="10" y="447.6953">Utils</text></g><!--MD5=[600c2d25b6889bd4e9f6b335204b22ae]
+cluster Repositories--><g id="cluster_Repositories"><path d="M731.5,170 L822.5,170 A3.75,3.75 0 0 1 825,172.5 L832,195.0791 L1044.5,195.0791 A2.5,2.5 0 0 1 1047,197.5791 L1047,403.5 A2.5,2.5 0 0 1 1044.5,406 L731.5,406 A2.5,2.5 0 0 1 729,403.5 L729,172.5 A2.5,2.5 0 0 1 731.5,170 " style="stroke:#000000;stroke-width:1.5;fill:none;"/><line style="stroke:#000000;stroke-width:1.5;fill:none;" x1="729" x2="832" y1="195.0791" y2="195.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="90" x="733" y="187.6953">Repositories</text></g><!--MD5=[121a8bf1197281ab89ed693fab589f94]
+cluster Domain--><g id="cluster_Domain"><path d="M731.5,516 L784.5,516 A3.75,3.75 0 0 1 787,518.5 L794,541.0791 L1044.5,541.0791 A2.5,2.5 0 0 1 1047,543.5791 L1047,634.5 A2.5,2.5 0 0 1 1044.5,637 L731.5,637 A2.5,2.5 0 0 1 729,634.5 L729,518.5 A2.5,2.5 0 0 1 731.5,516 " style="stroke:#000000;stroke-width:1.5;fill:none;"/><line style="stroke:#000000;stroke-width:1.5;fill:none;" x1="729" x2="794" y1="541.0791" y2="541.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="52" x="733" y="533.6953">Domain</text></g><!--MD5=[3f9b1efe7d07ed3ecd76bc1dc123076b]
+class OptimalPartitionUI--><g id="elem_OptimalPartitionUI"><rect codeLine="6" fill="#F1F1F1" height="86.1582" id="OptimalPartitionUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="144" x="410" y="44"/><ellipse cx="425" cy="60" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M428.4375,65.0781 Q426.8594,66.25 424.7656,66.25 Q422.0625,66.25 420.4063,64.5313 Q418.75,62.8125 418.75,60.125 Q418.75,57.2813 420.5625,55.4219 Q422.3906,53.5625 425.25,53.5625 Q427.0938,53.5625 428.4375,54.75 L428.4375,56.5781 Q426.625,55.25 425.0781,55.25 Q422.9531,55.25 421.6875,56.5938 Q420.4375,57.9375 420.4375,60.0469 Q420.4375,62.0781 421.6094,63.3281 Q422.7813,64.5625 424.7656,64.5625 Q426.5781,64.5625 428.4375,63.2344 L428.4375,65.0781 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="439" y="66.1558">OptimalPartitionUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="411" x2="553" y1="76" y2="76"/><line style="stroke:#181818;stroke-width:0.5;" x1="411" x2="553" y1="84" y2="84"/><ellipse cx="421" cy="95" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="430" y="103.6953">run()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="418" y="111.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="430" y="122.7744">getFilePath()</text></g><!--MD5=[34b0f703a69e9b75e24effe36d90f147]
+class LegacyController--><g id="elem_LegacyController"><rect codeLine="13" fill="#F1F1F1" height="67.0791" id="LegacyController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="140" x="139" y="265.5"/><ellipse cx="154" cy="281.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M157.4375,286.5781 Q155.8594,287.75 153.7656,287.75 Q151.0625,287.75 149.4063,286.0313 Q147.75,284.3125 147.75,281.625 Q147.75,278.7813 149.5625,276.9219 Q151.3906,275.0625 154.25,275.0625 Q156.0938,275.0625 157.4375,276.25 L157.4375,278.0781 Q155.625,276.75 154.0781,276.75 Q151.9531,276.75 150.6875,278.0938 Q149.4375,279.4375 149.4375,281.5469 Q149.4375,283.5781 150.6094,284.8281 Q151.7813,286.0625 153.7656,286.0625 Q155.5781,286.0625 157.4375,284.7344 L157.4375,286.5781 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108" x="168" y="287.6558">LegacyController</text><line style="stroke:#181818;stroke-width:0.5;" x1="140" x2="278" y1="297.5" y2="297.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="140" x2="278" y1="305.5" y2="305.5"/><ellipse cx="150" cy="316.5" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="159" y="325.1953">importFile()</text></g><!--MD5=[6116e1c709b80663d450b07097509a36]
+class OptimalPartitionController--><g id="elem_OptimalPartitionController"><rect codeLine="17" fill="#F1F1F1" height="86.1582" id="OptimalPartitionController" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="335" x="314.5" y="256"/><ellipse cx="396.75" cy="272" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M400.1875,277.0781 Q398.6094,278.25 396.5156,278.25 Q393.8125,278.25 392.1563,276.5313 Q390.5,274.8125 390.5,272.125 Q390.5,269.2813 392.3125,267.4219 Q394.1406,265.5625 397,265.5625 Q398.8438,265.5625 400.1875,266.75 L400.1875,268.5781 Q398.375,267.25 396.8281,267.25 Q394.7031,267.25 393.4375,268.5938 Q392.1875,269.9375 392.1875,272.0469 Q392.1875,274.0781 393.3594,275.3281 Q394.5313,276.5625 396.5156,276.5625 Q398.3281,276.5625 400.1875,275.2344 L400.1875,277.0781 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="417.25" y="278.1558">OptimalPartitionController</text><line style="stroke:#181818;stroke-width:0.5;" x1="315.5" x2="648.5" y1="288" y2="288"/><line style="stroke:#181818;stroke-width:0.5;" x1="315.5" x2="648.5" y1="296" y2="296"/><ellipse cx="325.5" cy="307" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="259" x="334.5" y="315.6953">OptimalPartition(numStores,storeCounts)</text><ellipse cx="325.5" cy="326.0791" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="309" x="334.5" y="334.7744">printResults(sublist1,sublist2,difference,exeTime)</text></g><!--MD5=[b28373ad2dae4f65b7338bf5dd4b621b]
+class CsvHandler--><g id="elem_CsvHandler"><rect codeLine="25" fill="#F1F1F1" height="238.791" id="CsvHandler" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="296" x="22" y="468"/><ellipse cx="129.25" cy="484" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M132.6875,489.0781 Q131.1094,490.25 129.0156,490.25 Q126.3125,490.25 124.6563,488.5313 Q123,486.8125 123,484.125 Q123,481.2813 124.8125,479.4219 Q126.6406,477.5625 129.5,477.5625 Q131.3438,477.5625 132.6875,478.75 L132.6875,480.5781 Q130.875,479.25 129.3281,479.25 Q127.2031,479.25 125.9375,480.5938 Q124.6875,481.9375 124.6875,484.0469 Q124.6875,486.0781 125.8594,487.3281 Q127.0313,488.5625 129.0156,488.5625 Q130.8281,488.5625 132.6875,487.2344 L132.6875,489.0781 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="149.75" y="490.1558">CsvHandler</text><line style="stroke:#181818;stroke-width:0.5;" x1="23" x2="317" y1="500" y2="500"/><line style="stroke:#181818;stroke-width:0.5;" x1="23" x2="317" y1="508" y2="508"/><ellipse cx="33" cy="519" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="42" y="527.6953">readCsv(File):List&lt;&gt;</text><ellipse cx="33" cy="538.0791" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="173" x="42" y="546.7744">csvIsEmpty(List&lt;&gt;):boolean</text><ellipse cx="33" cy="557.1582" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="209" x="42" y="565.8535">getDataFromCSVFile(File):List&lt;&gt;</text><ellipse cx="33" cy="576.2373" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="42" y="584.9326">parseCSV()</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="30" y="592.3164"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="159" x="42" y="604.0117">extensionIsCsv():boolean</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="30" y="611.3955"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="170" x="42" y="623.0908">parseBranchData():Branch</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="30" y="630.4746"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="42" y="642.1699">parseClientData():Client</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="30" y="649.5537"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="188" x="42" y="661.249">parsePropertyData():Property</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="30" y="668.6328"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="270" x="42" y="680.3281">parseAnnouncementData():Announcement</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="30" y="687.7119"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="158" x="42" y="699.4072">parseLocation():Location</text></g><!--MD5=[40d00155a463640e487a399d47f47feb]
+class FileHandler--><g id="elem_FileHandler"><rect codeLine="38" fill="#F1F1F1" height="124.3164" id="FileHandler" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="261" x="39.5" y="767"/><ellipse cx="129.75" cy="783" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M133.1875,788.0781 Q131.6094,789.25 129.5156,789.25 Q126.8125,789.25 125.1563,787.5313 Q123.5,785.8125 123.5,783.125 Q123.5,780.2813 125.3125,778.4219 Q127.1406,776.5625 130,776.5625 Q131.8438,776.5625 133.1875,777.75 L133.1875,779.5781 Q131.375,778.25 129.8281,778.25 Q127.7031,778.25 126.4375,779.5938 Q125.1875,780.9375 125.1875,783.0469 Q125.1875,785.0781 126.3594,786.3281 Q127.5313,787.5625 129.5156,787.5625 Q131.3281,787.5625 133.1875,786.2344 L133.1875,788.0781 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="150.25" y="789.1558">FileHandler</text><line style="stroke:#181818;stroke-width:0.5;" x1="40.5" x2="299.5" y1="799" y2="799"/><line style="stroke:#181818;stroke-width:0.5;" x1="40.5" x2="299.5" y1="807" y2="807"/><ellipse cx="50.5" cy="818" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="59.5" y="826.6953">readFile(String):File</text><ellipse cx="50.5" cy="837.0791" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="235" x="59.5" y="845.7744">appendToFile(String, String):boolean</text><ellipse cx="50.5" cy="856.1582" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="210" x="59.5" y="864.8535">createFile(String, String):boolean</text><ellipse cx="50.5" cy="875.2373" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="164" x="59.5" y="883.9326">deleteFile(String):boolean</text></g><!--MD5=[294e006e4a51025638ac49120e4603af]
+class OptimalPartitionDTO--><g id="elem_OptimalPartitionDTO"><rect codeLine="46" fill="#F1F1F1" height="143.3955" id="OptimalPartitionDTO" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="335" x="353.5" y="516"/><ellipse cx="451.75" cy="532" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M455.1875,537.0781 Q453.6094,538.25 451.5156,538.25 Q448.8125,538.25 447.1563,536.5313 Q445.5,534.8125 445.5,532.125 Q445.5,529.2813 447.3125,527.4219 Q449.1406,525.5625 452,525.5625 Q453.8438,525.5625 455.1875,526.75 L455.1875,528.5781 Q453.375,527.25 451.8281,527.25 Q449.7031,527.25 448.4375,528.5938 Q447.1875,529.9375 447.1875,532.0469 Q447.1875,534.0781 448.3594,535.3281 Q449.5313,536.5625 451.5156,536.5625 Q453.3281,536.5625 455.1875,535.2344 L455.1875,537.0781 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="472.25" y="538.1558">OptimalPartitionDTO</text><line style="stroke:#181818;stroke-width:0.5;" x1="354.5" x2="687.5" y1="548" y2="548"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="361.5" y="556"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="373.5" y="567.6953">sublist1</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="361.5" y="575.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="373.5" y="586.7744">sublist2</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="361.5" y="594.1582"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="373.5" y="605.8535">difference</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="361.5" y="613.2373"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="373.5" y="624.9326">exeTime</text><line style="stroke:#181818;stroke-width:0.5;" x1="354.5" x2="687.5" y1="632.3164" y2="632.3164"/><ellipse cx="364.5" cy="643.3164" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="309" x="373.5" y="652.0117">printResults(sublist1,sublist2,difference,exeTime)</text></g><!--MD5=[6181e3ea65f5cc0632b7c5a116f7637f]
+class OptimalPartitionRepository--><g id="elem_OptimalPartitionRepository"><rect codeLine="59" fill="#F1F1F1" height="181.5537" id="OptimalPartitionRepository" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="285" x="745.5" y="208"/><ellipse cx="799.75" cy="224" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M803.1875,229.0781 Q801.6094,230.25 799.5156,230.25 Q796.8125,230.25 795.1563,228.5313 Q793.5,226.8125 793.5,224.125 Q793.5,221.2813 795.3125,219.4219 Q797.1406,217.5625 800,217.5625 Q801.8438,217.5625 803.1875,218.75 L803.1875,220.5781 Q801.375,219.25 799.8281,219.25 Q797.7031,219.25 796.4375,220.5938 Q795.1875,221.9375 795.1875,224.0469 Q795.1875,226.0781 796.3594,227.3281 Q797.5313,228.5625 799.5156,228.5625 Q801.3281,228.5625 803.1875,227.2344 L803.1875,229.0781 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="168" x="820.25" y="230.1558">OptimalPartitionRepository</text><line style="stroke:#181818;stroke-width:0.5;" x1="746.5" x2="1029.5" y1="240" y2="240"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="753.5" y="248"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="765.5" y="259.6953">sublist1</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="753.5" y="267.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="765.5" y="278.7744">sublist2</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="753.5" y="286.1582"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="765.5" y="297.8535">difference</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="753.5" y="305.2373"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="765.5" y="316.9326">exeTime</text><line style="stroke:#181818;stroke-width:0.5;" x1="746.5" x2="1029.5" y1="324.3164" y2="324.3164"/><ellipse cx="756.5" cy="335.3164" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="765.5" y="344.0117">save()</text><ellipse cx="756.5" cy="354.3955" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="765.5" y="363.0908">validate()</text><ellipse cx="756.5" cy="373.4746" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="259" x="765.5" y="382.1699">OptimalPartition(numStores,storeCounts)</text></g><!--MD5=[1de234cd38eb5691bed132f9f412ff1c]
+class OptimalPartition--><g id="elem_OptimalPartition"><rect codeLine="73" fill="#F1F1F1" height="67.0791" id="OptimalPartition" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="285" x="745.5" y="554"/><ellipse cx="833.75" cy="570" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M837.1875,575.0781 Q835.6094,576.25 833.5156,576.25 Q830.8125,576.25 829.1563,574.5313 Q827.5,572.8125 827.5,570.125 Q827.5,567.2813 829.3125,565.4219 Q831.1406,563.5625 834,563.5625 Q835.8438,563.5625 837.1875,564.75 L837.1875,566.5781 Q835.375,565.25 833.8281,565.25 Q831.7031,565.25 830.4375,566.5938 Q829.1875,567.9375 829.1875,570.0469 Q829.1875,572.0781 830.3594,573.3281 Q831.5313,574.5625 833.5156,574.5625 Q835.3281,574.5625 837.1875,573.2344 L837.1875,575.0781 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="854.25" y="576.1558">OptimalPartition</text><line style="stroke:#181818;stroke-width:0.5;" x1="746.5" x2="1029.5" y1="586" y2="586"/><line style="stroke:#181818;stroke-width:0.5;" x1="746.5" x2="1029.5" y1="594" y2="594"/><ellipse cx="756.5" cy="605" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="259" x="765.5" y="613.6953">OptimalPartition(numStores,storeCounts)</text></g><!--MD5=[d054b8d8b3b2b55ad2622eb04d527386]
+link OptimalPartitionUI to OptimalPartitionController--><g id="link_OptimalPartitionUI_OptimalPartitionController"><path codeLine="81" d="M482,130.24 C482,165.06 482,214.42 482,250.59 " fill="none" id="OptimalPartitionUI-to-OptimalPartitionController" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="482,255.82,486,246.82,482,250.82,478,246.82,482,255.82" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[11574de122c5d9835f1f667acc640431]
+link LegacyController to CsvHandler--><g id="link_LegacyController_CsvHandler"><path codeLine="83" d="M204.56,332.59 C200.23,364.43 193.36,414.91 186.88,462.51 " fill="none" id="LegacyController-to-CsvHandler" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="186.17,467.7,191.3418,459.3183,186.8411,462.7452,183.4142,458.2446,186.17,467.7" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[ce12fdd2e593532317a12f159897c3a0]
+link OptimalPartitionController to OptimalPartition--><g id="link_OptimalPartitionController_OptimalPartition"><path codeLine="85" d="M569.77,342.03 C612.03,363.74 662.6,391.96 705,422 C760.16,461.08 817.04,514.7 852.45,549.95 " fill="none" id="OptimalPartitionController-to-OptimalPartition" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="856.23,553.73,852.6945,544.5376,852.6945,550.1945,847.0376,550.1945,856.23,553.73" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[90583c136457ab10ae9acd2bc45f0cd5]
+link OptimalPartitionController to OptimalPartitionDTO--><g id="link_OptimalPartitionController_OptimalPartitionDTO"><path codeLine="86" d="M487.75,342.27 C493.78,386.53 503.36,456.95 510.7,510.83 " fill="none" id="OptimalPartitionController-to-OptimalPartitionDTO" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="511.4,515.99,514.1558,506.5346,510.7289,511.0352,506.2282,507.6083,511.4,515.99" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[3e120905e55be11abf0753fcf969acff]
+link OptimalPartitionController to CsvHandler--><g id="link_OptimalPartitionController_CsvHandler"><path codeLine="87" d="M429.4,342.15 C401.21,365.18 366.17,394.54 336,422 C321.2,435.47 305.94,449.86 290.95,464.3 " fill="none" id="OptimalPartitionController-to-CsvHandler" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="287.15,467.98,296.3984,464.5938,290.7423,464.5022,290.8339,458.8461,287.15,467.98" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[3e97665ad3d017ef4ed0a24238463126]
+link CsvHandler to FileHandler--><g id="link_CsvHandler_FileHandler"><path codeLine="89" d="M170,707.2 C170,725.96 170,744.75 170,761.74 " fill="none" id="CsvHandler-to-FileHandler" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="170,766.95,174,757.95,170,761.95,166,757.95,170,766.95" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[5fa8b978bd3014c133c6208ba41c896d]
+link OptimalPartitionRepository to OptimalPartition--><g id="link_OptimalPartitionRepository_OptimalPartition"><path codeLine="91" d="M888,390.26 C888,443.63 888,508.42 888,548.57 " fill="none" id="OptimalPartitionRepository-to-OptimalPartition" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="888,553.82,892,544.82,888,548.82,884,544.82,888,553.82" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[c010bf158d758dab51a88466a9750a96]
+@startuml
+'https://plantuml.com/class-diagram
+skinparam shadowing false
+allowmixing
+
+package UI {
+    class OptimalPartitionUI{
+        +run()
+        -getFilePath()
+    }
+}
+
+package Controller {
+    class LegacyController{
+        +importFile()
+    }
+
+     class OptimalPartitionController{
+       +OptimalPartition(numStores,storeCounts)
+       +printResults(sublist1,sublist2,difference,exeTime)
+
+        }
+}
+
+package Utils{
+    class CsvHandler{
+        +readCsv(File):List<>
+        +csvIsEmpty(List<>):boolean
+        +getDataFromCSVFile(File):List<>
+        +parseCSV()
+        -extensionIsCsv():boolean
+        -parseBranchData():Branch
+        -parseClientData():Client
+        -parsePropertyData():Property
+        -parseAnnouncementData():Announcement
+        -parseLocation():Location
+    }
+
+    class FileHandler{
+    +readFile(String):File
+    +appendToFile(String, String):boolean
+    +createFile(String, String):boolean
+    +deleteFile(String):boolean
+
+    }
+
+    class OptimalPartitionDTO{
+    +printResults(sublist1,sublist2,difference,exeTime)
+    -sublist1
+    -sublist2
+    -difference
+    -exeTime
+    }
+
+
+}
+
+package Repositories {
+
+class OptimalPartitionRepository{
++save()
++validate()
++OptimalPartition(numStores,storeCounts)
+-sublist1
+-sublist2
+-difference
+-exeTime
+
+}
+}
+
+
+package Domain{
+    class OptimalPartition{
+    +OptimalPartition(numStores,storeCounts)
+    }
+
+
+}
+
+
+OptimalPartitionUI -[dashed]-> OptimalPartitionController
+
+LegacyController -[dashed]-> CsvHandler
+
+OptimalPartitionController - -> OptimalPartition
+OptimalPartitionController -[dashed]-> OptimalPartitionDTO
+OptimalPartitionController -[dashed]-> CsvHandler
+
+CsvHandler -[dashed]-> FileHandler
+
+OptimalPartitionRepository - -> OptimalPartition
+
+
+
+@enduml
+
+@startuml
+skinparam shadowing false
+allowmixing
+
+package UI {
+    class OptimalPartitionUI{
+        +run()
+        -getFilePath()
+    }
+}
+
+package Controller {
+    class LegacyController{
+        +importFile()
+    }
+
+     class OptimalPartitionController{
+       +OptimalPartition(numStores,storeCounts)
+       +printResults(sublist1,sublist2,difference,exeTime)
+
+        }
+}
+
+package Utils{
+    class CsvHandler{
+        +readCsv(File):List<>
+        +csvIsEmpty(List<>):boolean
+        +getDataFromCSVFile(File):List<>
+        +parseCSV()
+        -extensionIsCsv():boolean
+        -parseBranchData():Branch
+        -parseClientData():Client
+        -parsePropertyData():Property
+        -parseAnnouncementData():Announcement
+        -parseLocation():Location
+    }
+
+    class FileHandler{
+    +readFile(String):File
+    +appendToFile(String, String):boolean
+    +createFile(String, String):boolean
+    +deleteFile(String):boolean
+
+    }
+
+    class OptimalPartitionDTO{
+    +printResults(sublist1,sublist2,difference,exeTime)
+    -sublist1
+    -sublist2
+    -difference
+    -exeTime
+    }
+
+
+}
+
+package Repositories {
+
+class OptimalPartitionRepository{
++save()
++validate()
++OptimalPartition(numStores,storeCounts)
+-sublist1
+-sublist2
+-difference
+-exeTime
+
+}
+}
+
+
+package Domain{
+    class OptimalPartition{
+    +OptimalPartition(numStores,storeCounts)
+    }
+
+
+}
+
+
+OptimalPartitionUI -[dashed]-> OptimalPartitionController
+
+LegacyController -[dashed]-> CsvHandler
+
+OptimalPartitionController - -> OptimalPartition
+OptimalPartitionController -[dashed]-> OptimalPartitionDTO
+OptimalPartitionController -[dashed]-> CsvHandler
+
+CsvHandler -[dashed]-> FileHandler
+
+OptimalPartitionRepository - -> OptimalPartition
+
+
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: MS949
+Language: en
+Country: US
+--></g></svg>
