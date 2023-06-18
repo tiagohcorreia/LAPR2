@@ -1,7 +1,9 @@
 package pt.ipp.isep.dei.esoft.project.ui.console;
 
+import pt.ipp.isep.dei.esoft.project.application.controller.AnnouncementRequestsController;
 import pt.ipp.isep.dei.esoft.project.application.controller.ScheduleVisitController;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementRequestDTO;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
 import pt.ipp.isep.dei.esoft.project.ui.console.utils.Utils;
 
@@ -11,10 +13,14 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class ScheduleVisitUI implements Runnable {
-    private ScheduleVisitController controller = new ScheduleVisitController(new ScheduleRepository());
 
-    public ScheduleVisitUI(ScheduleVisitController scheduleVisitController) {
+    private final ScheduleVisitController controller;
+    public ScheduleVisitUI() {
+        this.controller = new ScheduleVisitController();
     }
+
+
+
 
     @Override
     public void run() {
@@ -22,10 +28,10 @@ public class ScheduleVisitUI implements Runnable {
         while (success == true) {
 
             //List of anouncements
-            List<AnnouncementDTO> x = this.controller.announcementDTOList();
+            List<AnnouncementDTO> x = this.controller.getAnnouncementsList();
             Utils.showList(x, "Anouncements");
-            Integer posAnouncement = Utils.readIntegerFromConsole("Select the anouncement with the desire property");
-
+            Integer posAnouncement = Utils.readIntegerFromConsole("Select the anouncement with the desire property")-1;
+            AnnouncementDTO announcement = controller.getAnnouncementByPos(posAnouncement);
 
             //Day
             String stringDay = Utils.readLineFromConsole("Insert the day you want to schedule: (yyyy-mm-dd)");
@@ -54,9 +60,9 @@ public class ScheduleVisitUI implements Runnable {
             if (optValidation == 1) {
 
                 try {
-                    if (controller.validateScheduleHour(controller.getAnnouncementDTO(posAnouncement), day, beginTime, endTime) == true) {
-                        this.controller.createSchedule(posAnouncement, day, beginTime, endTime, note);
-                        System.out.println("Announcement Number:\n" + posAnouncement);
+                    if (controller.validateScheduleHour(announcement, day, beginTime, endTime) == true) {
+                        this.controller.createSchedule(announcement, day, beginTime, endTime, note);
+                        System.out.println("Announcement:\n" + announcement);
                         System.out.println("Day: " + day);
                         System.out.println("Begin Time: " + beginTime);
                         System.out.println("End Hour: " + endTime);

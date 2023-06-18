@@ -1,5 +1,5 @@
 You are sending this email with gmail.com service.
-Hi, the request to schedule a visit to the property with the location Door Number:0	Street:Rua	City:Porto	Zip Code:12345, on the day 2025-05-20, starting at 12:30 and ending at 13:30, was Accepted.
+Hi, the request to schedule a visit to the property with the location Door Number:0	Street:null	nullZip Code:0, on the day 2025-04-30, starting at 10:00 and ending at 11:00, was accepted.
 With best regards, 
-Joao2 - 123456789, responsible agent.
+vitor - 1234567890, responsible agent.
 

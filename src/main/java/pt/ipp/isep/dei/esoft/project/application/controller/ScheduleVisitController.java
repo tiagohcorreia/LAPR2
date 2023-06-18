@@ -13,6 +13,7 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import java.util.ArrayList;
 import java.util.List;
 public class ScheduleVisitController {
 
@@ -25,8 +26,9 @@ public class ScheduleVisitController {
     AuthenticationController authenticationController;
     private AnnouncementMapper announcementMapper;
 
-    public ScheduleVisitController(ScheduleRepository scheduleRepository) {
+    public ScheduleVisitController() {
         this.scheduleRepository = scheduleRepository;
+        this.announcementMapper = new AnnouncementMapper();
         authenticationController = new AuthenticationController();
     }
 
@@ -37,13 +39,13 @@ public class ScheduleVisitController {
         return AnnouncementMapper.convert(announcements);
     }
 
-    public String createSchedule(Integer posAnnouncement, LocalDate day, LocalTime beginHour, LocalTime endHour, String note) {
+    public String createSchedule(AnnouncementDTO announcement, LocalDate day, LocalTime beginHour, LocalTime endHour, String note) {
         pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();
         String clientEmail= userSession.getUserEmail();
         Client client= clientRepository.findByEmail(clientEmail);
         String name= client.getName();
         long phoneNumber= client.getTelephoneNumber();
-        Schedule schedule = new Schedule(name, (int) phoneNumber, AnnouncementMapper.getAnnouncementDTOById(posAnnouncement),day,beginHour,endHour,note,false,false);
+        Schedule schedule = new Schedule(name, (int) phoneNumber, announcement,day,beginHour,endHour,note,false,false);
 
         try {
 
@@ -75,9 +77,18 @@ public class ScheduleVisitController {
         return true;
     }
 
-    public AnnouncementDTO getAnnouncementDTO(int posAnnouncement) {
-        return AnnouncementMapper.getAnnouncementDTOById(posAnnouncement);
+    public AnnouncementDTO getAnnouncementByPos(int posAnnouncement) {
+        List<AnnouncementDTO> announcements= getAnnouncementsList();
+        return announcements.get(posAnnouncement);
     }
 
+    public List<AnnouncementDTO> getAnnouncementsList() {
+        List<AnnouncementDTO> dtoList = new ArrayList<>();
+        for (Announcement announcement : this.announcementRepository.readObject()) {
+            AnnouncementDTO dto = this.announcementMapper.toDto2(announcement);
+            dtoList.add(dto);
+        }
 
+        return dtoList;
+    }
 }

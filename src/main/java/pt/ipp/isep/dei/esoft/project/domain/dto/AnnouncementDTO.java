@@ -1,11 +1,14 @@
 package pt.ipp.isep.dei.esoft.project.domain.dto;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
+import pt.ipp.isep.dei.esoft.project.domain.model.Client;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Property;
+import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -39,7 +42,6 @@ public class AnnouncementDTO implements Serializable {
         this.property = property;
         this.agent = agent;
     }
-
     /**
      * Instantiates a new Announcement dto.
      */
@@ -95,6 +97,22 @@ public class AnnouncementDTO implements Serializable {
 
     public Employee getAgent() {
         return agent;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setTypeOfBusiness(TypeOfBusiness typeOfBusiness) {
+        this.typeOfBusiness = typeOfBusiness;
+    }
+
+    public void setProperty(Property property) {
+        this.property = property;
+    }
+
+    public void setAgent(Employee agent) {
+        this.agent = agent;
     }
 
     @Override

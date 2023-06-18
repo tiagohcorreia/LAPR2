@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.domain.mappers;
 
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
+import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementRequestDTO;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
@@ -45,6 +46,16 @@ public class AnnouncementMapper {
         return dtoList;
     }
 
+    public AnnouncementDTO toDto2(Announcement announcement) {
+
+        AnnouncementDTO dto = new AnnouncementDTO();
+        dto.setPrice(announcement.getPrice());
+        dto.setTypeOfBusiness(announcement.getTypeOfBusiness());
+        dto.setProperty(announcement.getProperty());
+        dto.setAgent(announcement.getAgent());
+
+        return dto;
+    }
     /**
      * Gets all announcements.
      *

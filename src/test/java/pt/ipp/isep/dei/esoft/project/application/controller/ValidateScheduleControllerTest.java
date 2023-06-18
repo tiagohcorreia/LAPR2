@@ -57,7 +57,7 @@ class ValidateScheduleControllerTest {
 
         authenticationRepository = Repositories.getInstance().getAuthenticationRepository();
         employeeRepository= Repositories.getInstance().getEmployeeRepository();
-        scheduleVisitController = new ScheduleVisitController(scheduleRepository);
+        scheduleVisitController = new ScheduleVisitController();
         validateScheduleController = new ValidateScheduleController();
         Branch branch = new Branch();
         ArrayList<String> photographs = new ArrayList<String>();

@@ -37,7 +37,7 @@ class ScheduleVisitControllerTest {
 
     @BeforeEach
     void init() {
-        scheduleVisitController = new ScheduleVisitController(scheduleRepository);
+        scheduleVisitController = new ScheduleVisitController();
 
         Branch branch = new Branch();
         ArrayList<String> photographs = new ArrayList<String>();
