@@ -5,12 +5,8 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.SunExposure;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 import java.io.Serializable;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.time.LocalDate;
-import java.text.SimpleDateFormat;
-import java.time.ZoneId;
 import java.util.List;
 
 
@@ -18,7 +14,6 @@ import java.util.List;
  * The type Announcement.
  */
 public class Announcement implements Serializable {
-    // private boolean visible;
 
     private LocalDate date;
     private AnnouncementStatus status;
@@ -27,13 +22,9 @@ public class Announcement implements Serializable {
     private TypeOfBusiness typeOfBusiness;
     private Property property;
     private Employee agent;
-
     private Client owner;
-
     private int numberOfMonthsRent;
-
     private List<Order> orders;
-
     private Branch branch;
 
     /**
@@ -123,7 +114,7 @@ public class Announcement implements Serializable {
     /**
      * Instantiates a new Announcement.
      */
-//Default constructor
+    //Default constructor
     public Announcement() {
         this.setStatus(AnnouncementStatus.PENDENT);
         this.setPrice(0);
@@ -138,7 +129,7 @@ public class Announcement implements Serializable {
      *
      * @param anotherAnnouncement the another announcement
      */
-//Copy constructor
+    //Copy constructor
     public Announcement(Announcement anotherAnnouncement) {
         this.setDate(anotherAnnouncement.getDate());
         this.setStatus(anotherAnnouncement.getStatus());
@@ -176,8 +167,6 @@ public class Announcement implements Serializable {
         }
         return null;
     }
-
-
 
     /**
      * Gets price.
@@ -277,30 +266,6 @@ public class Announcement implements Serializable {
     }
 
 
-    //TO-FIX
-   /* public String toString(){
-            String status = (this.status == AnnouncementStatus.PUBLISHED) ? "Published" : "Not Published";
-            String formattedDate = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-
-
-        return String.format("Announcement - " +
-                    "Date: %s\t" +
-            "Status: %s\t" +
-            "Business Type: %s\t" +
-             "Property: %s\t" +
-             "Price: %.2f\t" +
-             "Commission: %.2f\t" +
-              "Agent: %s\t",
-                formattedDate,
-               this.status,
-               this.typeOfBusiness.toString(),
-               this.property.toString(),
-                this.price,
-                this.commission,
-               this.agent.toString());
-        }*/
-
     /*public String toString() {
         String status = (this.status == AnnouncementStatus.PUBLISHED) ? "Published" : "Not Published";
         String formattedDate = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -318,15 +283,18 @@ public class Announcement implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Announcement");
-        sb.append("date:").append(date);
-        sb.append(", status:").append(status);
-        sb.append(", price:").append(price);
-        sb.append(", commission:").append(commission);
-        sb.append(", typeOfBusiness:").append(typeOfBusiness);
-        sb.append(", property:").append(property);
-        sb.append(", agent:").append(agent);
-        sb.append(", owner: ").append(owner).append("\n");
+
+        final StringBuilder sb = new StringBuilder("Announcement = ");
+
+        sb.append("Date:").append(date);
+        sb.append(", Status:").append(status);
+        sb.append(", Price:").append(price);
+        sb.append(", Commission:").append(commission);
+        sb.append(", Type Of Business:").append(typeOfBusiness);
+        sb.append(", Property:").append(property);
+        sb.append(", Agent:").append(agent);
+        sb.append(", Owner: ").append(owner).append("\n");
+
         return sb.toString();
     }
 
