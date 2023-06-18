@@ -22,8 +22,6 @@ public class AnnouncementRequestsUI implements Runnable{
 
 
             public AnnouncementRequestsUI() {
-
-
                 this.controller = new AnnouncementRequestsController();
             }
 
