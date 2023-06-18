@@ -72,10 +72,8 @@ public class PublishAnnouncementUI implements Runnable {
         //String agent = Utils.readLineFromConsole("Agent, insert your name:: ");
         // Employee agentResp = this.controller.getEmployee(agent);
 
-        String agentName = controller.getCurrentAgent();
-        Employee agent = controller.getEmployeeByName(agentName);
 
-
+        Employee agent = controller.getCurrentAgent();
 
 
 
@@ -122,29 +120,6 @@ public class PublishAnnouncementUI implements Runnable {
             }
         }
 
-
-        //TypeOfProperty
-        /*List<TypeOfProperty> types = this.controller.getTypeOfPropertyAsList();
-        System.out.println("Select the property type:");
-        for (int i = 0; i < types.size(); i++) {
-            System.out.println((i + 1) + " - " + types.get(i));
-        }
-
-        Scanner scanner = new Scanner(System.in);
-        int posTypeOfProperty = 0;
-        boolean validInput = false;
-        while (!validInput) {
-            if (scanner.hasNextInt()) {
-                posTypeOfProperty = scanner.nextInt();
-                if (posTypeOfProperty > 0 && posTypeOfProperty <= types.size()) {
-                    validInput = true;
-                } else {
-                    System.out.println("Invalid, choose between 1 - 3 " + types.size() + ".");
-
-                    scanner.next();
-                }
-            }
-            TypeOfProperty selectedType = types.get(posTypeOfProperty - 1); */
 
         List<TypeOfProperty> types = this.controller.getTypeOfPropertyAsList();
         System.out.println("Select the property type:");
@@ -218,7 +193,9 @@ public class PublishAnnouncementUI implements Runnable {
             }
         }
 
-        street = null;
+         location = new Location(); // Inicializa o objeto Location
+
+         street = null;
         boolean validStreet = false;
 
         while (!validStreet) {
@@ -252,7 +229,13 @@ public class PublishAnnouncementUI implements Runnable {
         }
 
 
-            //distanceFromCityCenter
+
+
+
+
+
+
+                //distanceFromCityCenter
             System.out.println("Distance from city center(km):");
             distance = scanner.nextInt();
             scanner.nextLine();
@@ -423,6 +406,7 @@ public class PublishAnnouncementUI implements Runnable {
                 }
                 System.out.println("Sun exposure: " + sunExposure);
             }
+        String agentName  = agent.getName();
             System.out.println("Agent: " + agentName +"\n\n");
 
 
@@ -433,6 +417,8 @@ public class PublishAnnouncementUI implements Runnable {
                 String ownerEmail = Utils.readLineFromConsole("Enter the owner's email: ");
                 Client owner = controller.getClientByEmail(ownerEmail);
 
+
+
                 this.controller.createAnnouncement(date,sellOrRent, posTypeOfProperty, bedrooms, bathrooms, parkingSpaces, availableEquipment, hasBasement, hasLoft,
                         sunExposure, area, location, distance, commission, price, photographs, agent, owner, rentalMonths );
                 System.out.println("Announcement created successfully!\n");
@@ -440,18 +426,19 @@ public class PublishAnnouncementUI implements Runnable {
                 if (owner != null) {
 
                     String ownerName = owner.getName();
+                    long ownerPhonenumber = owner.getTelephoneNumber();
 
                     String notificationSubject = "New Announcement Published";
-                    String notificationMessage = "Dear " + ownerName + ",\n\n"
+                    String notificationMessage = "Dear " + ownerName + ",\n"
                             + "Your property has been published with the following details:\n"
                             + "Announcement ID: " + location.toString() + "\n"
                             + "Publication Date: " + date.toString() + "\n"
                             + "Responsible Agent: " + agent.getName() + "\n"
                             + "Agent Phone Number: " + agent.getTelephoneNumber() + "\n";
 
-                    // Enviar a notificação para o EmailService
+                    //
                     NotificationService notificationService = new NotificationService();
-                    notificationService.sendNotification(ownerEmail, notificationSubject, notificationMessage);
+                    notificationService.sendNotification(String.valueOf(ownerPhonenumber), notificationSubject, notificationMessage);
 
                     System.out.println("Notification sent to owner: " + ownerEmail);
                 } else {
@@ -465,12 +452,6 @@ public class PublishAnnouncementUI implements Runnable {
                     confirmed = true;
                 }
             }
-
-         String ownerEmail = Utils.readLineFromConsole("Enter the owner's email: ");
-            Client owner = controller.getClientByEmail(ownerEmail);
-
-
-
 
     }
     }

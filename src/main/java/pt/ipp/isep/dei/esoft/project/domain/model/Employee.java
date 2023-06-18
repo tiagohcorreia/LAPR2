@@ -266,17 +266,16 @@ public class Employee implements Serializable, Validator {
     @Override
     public String toString() {
 
-        final StringBuilder sb = new StringBuilder("Employee{ ");
+        final StringBuilder sb = new StringBuilder("");
+        sb.append("Name:").append(name).append('\'');
+        sb.append(" Passport Number:").append(passportNumber);
+        sb.append(" Tax Number:").append(taxNumber);
+        sb.append(" Address:'").append(address).append('\'');
+        sb.append(" E-mail Adress:'").append(emailAddress).append('\'');
+        sb.append(" Contact Number:").append(telephoneNumber);
+        sb.append(" Role:").append(role);
+        sb.append(" Branch:").append(branch);
 
-        sb.append("Name:'").append(name).append('\'');
-        sb.append(", Passport Number:").append(passportNumber);
-        sb.append(", Tax Number:").append(taxNumber);
-        sb.append(", Address='").append(address).append('\'');
-        sb.append(", E-mail Adress:'").append(emailAddress).append('\'');
-        sb.append(", Contact Number:").append(telephoneNumber);
-        sb.append(", Role:").append(role);
-        sb.append(", Branch:").append(branch);
-        sb.append('}');
 
         return sb.toString();
     }

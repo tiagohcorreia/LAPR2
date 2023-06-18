@@ -44,7 +44,9 @@ public class RegisterPropertyController implements Serializable {
     CityRepository cityRepository=repositories.getCityRepository();
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
     ClientRepository clientRepository = repositories.getInstance().getClientRepository();
-    AuthenticationController authenticationController;
+
+    private AuthenticationController authenticationController=new AuthenticationController();
+
     /**
      * Instantiates a new Register property controller.
      *

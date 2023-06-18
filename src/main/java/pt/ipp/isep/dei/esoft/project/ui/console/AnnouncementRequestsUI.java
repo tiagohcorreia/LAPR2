@@ -3,9 +3,11 @@ import pt.ipp.isep.dei.esoft.project.application.controller.authorization.Authen
 import pt.ipp.isep.dei.esoft.project.application.session.UserSession;
 import pt.ipp.isep.dei.esoft.project.domain.model.Announcement;
 import pt.ipp.isep.dei.esoft.project.application.controller.AnnouncementRequestsController;
+import pt.ipp.isep.dei.esoft.project.domain.model.Client;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementRequestDTO;
 import pt.ipp.isep.dei.esoft.project.domain.mappers.AnnouncementRequestMapper;
+import pt.ipp.isep.dei.esoft.project.domain.model.NotificationService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -29,13 +31,12 @@ public class AnnouncementRequestsUI implements Runnable{
 
         Scanner scanner = new Scanner(System.in);
 
+        Employee agent = controller.getCurrentAgent();
+        String agentName = agent.getName();
 
         System.out.print("======Requests======\n\n ");
-        System.out.print("Enter agent name: ");
-        String agentName = scanner.nextLine();
 
         if (controller.isEmployee(agentName)) {
-            Employee agent = controller.getEmployee(agentName);
 
             List<AnnouncementRequestDTO> announcements = controller.getAnnouncementRequests(agent);
             if (!announcements.isEmpty()) {
@@ -44,6 +45,7 @@ public class AnnouncementRequestsUI implements Runnable{
                 System.out.println("Index: " + i);
                 System.out.println(announcements.get(i).toString());
             }
+
 
                 System.out.print("Enter the index of the announcement to view details: ");
                 int index = scanner.nextInt();
@@ -60,6 +62,8 @@ public class AnnouncementRequestsUI implements Runnable{
                     System.out.print("Enter your choice: ");
                     int choice = scanner.nextInt();
                     scanner.nextLine();
+                    Client owner = announcement.getOwner();
+
 
                     switch (choice) {
                         case 1:
@@ -73,6 +77,13 @@ public class AnnouncementRequestsUI implements Runnable{
                             System.out.print("Enter the reason for rejection: ");
                             String reason = scanner.nextLine();
                             controller.rejectAnnouncementRequest(index, reason, agent);
+
+
+                            String subject = "Rejection of Announcement";
+                            String message = "Dear " + owner.getName() + "\nYour announcement has been rejected for the following reason: " + reason;
+                            NotificationService notificationService = new NotificationService();
+                            notificationService.sendNotification(owner.getEmail(), subject, message);
+
                             System.out.println("Announcement rejected and reason saved.");
                             break;
                         default:
