@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+                 xmlns:fx="http://javafx.com/fxml"
+                 fx:controller="pt.ipp.isep.dei.esoft.project.application.controller.AnalyseDealsController"
+                 prefHeight="400.0" prefWidth="600.0">
+
+<TableView fx:id="table" layoutX="50" layoutY="50" prefHeight="300" prefWidth="500">
+    <columns>
+        <TableColumn text="Area" fx:id="areaColumn" />
+        <TableColumn text="Distance" fx:id="distanceColumn" />
+        <TableColumn text="Bedrooms" fx:id="bedroomsColumn" />
+        <TableColumn text="Bathrooms" fx:id="bathroomsColumn" />
+        <TableColumn text="Parking Spaces" fx:id="parkingSpacesColumn" />
+        <TableColumn text="Sale Price" fx:id="salePriceColumn" />
+        <TableColumn text="Estimated Price (SLR)" fx:id="estimatedPriceSLRColumn" />
+        <TableColumn text="Estimated Price (MLR)" fx:id="estimatedPriceMLRColumn" />
+    </columns>
+</TableView>
+
+<Button layoutX="50" layoutY="360" onAction="#calculateSimpleLinearRegression" text="SLR" />
+<Button layoutX="150" layoutY="360" onAction="#calculateMultilinearRegression" text="MLR" />
+
+</AnchorPane>
+
+
+
