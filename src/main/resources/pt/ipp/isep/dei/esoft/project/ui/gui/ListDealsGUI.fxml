@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,9 +12,6 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ipp.isep.dei.esoft.project.ui.gui.ListDealsGUI">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0">
-         <center>
-            <TableView fx:id="tblView" prefHeight="274.0" prefWidth="577.0" BorderPane.alignment="CENTER" />
-         </center>
          <top>
             <HBox alignment="BOTTOM_CENTER" prefHeight="67.0" prefWidth="600.0" spacing="100.0">
                <children>
@@ -28,13 +25,16 @@
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Label text="Sorting order" />
-                        <Button fx:id="btnAsc" mnemonicParsing="false" text="Ascending" />
-                        <Button fx:id="btnDsc" mnemonicParsing="false" text="Descending" />
+                        <Button fx:id="btnAsc" mnemonicParsing="false" onAction="#sortWithAlgorithm" text="Ascending" />
+                        <Button fx:id="btnDsc" mnemonicParsing="false" onAction="#sortWithAlgorithm" text="Descending" />
                      </children>
                   </VBox>
                </children>
             </HBox>
          </top>
+         <center>
+            <TextArea fx:id="txtArea" editable="false" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
