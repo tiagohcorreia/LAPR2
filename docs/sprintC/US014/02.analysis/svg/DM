@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="646px" preserveAspectRatio="none" style="width:652px;height:646px;background:#FFFFFF;" version="1.1" viewBox="0 0 652 646" width="652px" zoomAndPan="magnify"><defs/><g><rect height="29.0791" style="stroke:#00000000;stroke-width:1.0;fill:none;" width="157" x="240.775" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="147" x="245.775" y="25.6953">US014 Domain Model</text><g id="elem_Client"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="50" x="100.05" y="165.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="107.05" y="182.7744">Client</text><line style="stroke:#181818;stroke-width:0.5;" x1="101.05" x2="149.05" y1="188.1582" y2="188.1582"/></g><g id="elem_AppointmentRequest"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="146" x="230.05" y="165.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="237.05" y="182.7744">AppointmentRequest</text><line style="stroke:#181818;stroke-width:0.5;" x1="231.05" x2="375.05" y1="188.1582" y2="188.1582"/></g><g id="elem_Property"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="68" x="256.05" y="401.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="263.05" y="418.7744">Property</text><line style="stroke:#181818;stroke-width:0.5;" x1="257.05" x2="323.05" y1="424.1582" y2="424.1582"/></g><g id="elem_House"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="54" x="342.05" y="501.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="349.05" y="518.7744">House</text><line style="stroke:#181818;stroke-width:0.5;" x1="343.05" x2="395.05" y1="524.1582" y2="524.1582"/></g><g id="elem_Apartment"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="79" x="146.55" y="501.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="153.55" y="518.7744">Apartment</text><line style="stroke:#181818;stroke-width:0.5;" x1="147.55" x2="224.55" y1="524.1582" y2="524.1582"/></g><g id="elem_Land"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="46" x="261.05" y="501.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="268.05" y="518.7744">Land</text><line style="stroke:#181818;stroke-width:0.5;" x1="262.05" x2="306.05" y1="524.1582" y2="524.1582"/></g><g id="elem_Agent"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="51" x="277.55" y="47.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="284.55" y="64.7744">Agent</text><line style="stroke:#181818;stroke-width:0.5;" x1="278.55" x2="327.55" y1="70.1582" y2="70.1582"/></g><g id="elem_Announcement"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="109" x="378.55" y="283.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="385.55" y="300.7744">Announcement</text><line style="stroke:#181818;stroke-width:0.5;" x1="379.55" x2="486.55" y1="306.1582" y2="306.1582"/></g><g id="elem_Commission"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="90" x="431.05" y="501.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="438.05" y="518.7744">Commission</text><line style="stroke:#181818;stroke-width:0.5;" x1="432.05" x2="520.05" y1="524.1582" y2="524.1582"/></g><g id="elem_FixedCommission"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="124" x="324.05" y="601.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="331.05" y="618.7744">FixedCommission</text><line style="stroke:#181818;stroke-width:0.5;" x1="325.05" x2="447.05" y1="624.1582" y2="624.1582"/></g><g id="elem_PercentageCommission"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="163" x="483.55" y="601.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="490.55" y="618.7744">PercentageCommission</text><line style="stroke:#181818;stroke-width:0.5;" x1="484.55" x2="645.55" y1="624.1582" y2="624.1582"/></g><g id="elem_Response"><rect fill="#F1F1F1" height="39.0791" style="stroke:#181818;stroke-width:0.5;" width="78" x="86.05" y="283.0791"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="93.05" y="300.7744">Response</text><line style="stroke:#181818;stroke-width:0.5;" x1="87.05" x2="163.05" y1="306.1582" y2="306.1582"/></g><!--MD5=[e0414d649a3c55668dad8e7a55899505]
+link Client to AppointmentRequest--><g id="link_Client_AppointmentRequest"><path codeLine="50" d="M150.17,184.5791 C169.75,184.5791 198.04,184.5791 224.98,184.5791 " fill="none" id="Client-to-AppointmentRequest" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="229.99,184.5791,220.99,180.5791,224.99,184.5791,220.99,188.5791,229.99,184.5791" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="43" x="168.55" y="178.1533">creates</text></g><!--MD5=[aea1389efdb83ffcfbcee92a5e402b14]
+link AppointmentRequest to Announcement--><g id="link_AppointmentRequest_Announcement"><path codeLine="51" d="M311.4,204.2791 C318.66,218.9291 330.33,239.1191 345.05,253.0791 C357.7,265.0791 373.9,275.1091 388.94,282.8691 " fill="none" id="AppointmentRequest-Announcement" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="353.5617,247.4965,349.3011,238.9937,345.1169,243.1219,353.5617,247.4965" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="60" x="359.05" y="249.6533">belongs to</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="305.7641" y="226.8742">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="367.3594" y="271.9016">1</text></g><!--MD5=[850071a18dc7ad6c377b2032da142e97]
+reverse link Property to House--><g id="link_Property_House"><path codeLine="52" d="M318.06,456.3291 C330.22,471.4091 343.97,488.4791 354.13,501.0691 " fill="none" id="Property-backto-House" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="312.38,460.4391,305.28,440.4791,323.28,451.6491,312.38,460.4391" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[71833479a25abe5b48a215f80abb6d80]
+reverse link Property to Apartment--><g id="link_Property_Apartment"><path codeLine="53" d="M255.23,454.3891 C238.73,469.9391 219.63,487.9391 205.69,501.0691 " fill="none" id="Property-backto-Apartment" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="250.64,449.0991,270,440.4791,260.24,459.2891,250.64,449.0991" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1df9c5af9dc88862e781d75dcf66ac89]
+reverse link Property to Land--><g id="link_Property_Land"><path codeLine="54" d="M287.65,460.7591 C286.8,474.6791 285.88,489.6991 285.18,501.0691 " fill="none" id="Property-backto-Land" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="280.68,460.0091,288.89,440.4791,294.66,460.8691,280.68,460.0091" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[58f110d10bef19b2e22e7e4e58369efa]
+link Agent to Announcement--><g id="link_Agent_Announcement"><path codeLine="55" d="M328.89,79.7491 C344.32,88.1191 363.34,100.5291 376.05,116.0791 C415.38,164.1891 427.62,239.2591 431.4,277.4691 " fill="none" id="Agent-to-Announcement" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="431.89,282.8291,435.0225,273.4917,431.418,277.8514,427.0582,274.2469,431.89,282.8291" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="424.3514,189.3761,422.7972,179.9934,417.579,182.6988,424.3514,189.3761" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="431.05" y="190.6533">assigned to</text></g><!--MD5=[3a8b1008c60232832cfabf708a22e85c]
+link Client to Response--><g id="link_Client_Response"><path codeLine="57" d="M125.05,204.2191 C125.05,224.2591 125.05,256.1691 125.05,277.9591 " fill="none" id="Client-to-Response" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="125.05,282.9891,129.05,273.9891,125.05,277.9891,121.05,273.9891,125.05,282.9891" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="47" x="126.05" y="249.6533">receives</text></g><!--MD5=[d6c0a9db8862587c6e7fecab77d6854e]
+link AppointmentRequest to Response--><g id="link_AppointmentRequest_Response"><path codeLine="58" d="M274.17,204.1891 C260.22,213.1991 243.25,224.1791 228.05,234.0791 C204.46,249.4291 177.9,266.8491 157.65,280.1391 " fill="none" id="AppointmentRequest-to-Response" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="153.43,282.9091,163.1501,281.3219,157.6121,280.1686,158.7654,274.6306,153.43,282.9091" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="228.8613,246.6676,238.0436,244.1905,234.8339,239.2663,228.8613,246.6676" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="242.05" y="249.6533">has</text></g><!--MD5=[c40e99726b8888f3e466af52d884fa00]
+link Agent to Response--><g id="link_Agent_Response"><path codeLine="59" d="M277.42,67.8891 C221.87,70.1191 90.8,84.1391 34.05,165.0791 C6,205.0791 56.39,252.7591 92.7,279.8691 " fill="none" id="Agent-to-Response" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="97.05,283.0691,92.1618,274.519,93.0193,280.1104,87.4279,280.968,97.05,283.0691" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="47" x="35.05" y="190.6533">provides</text></g><!--MD5=[744e2e0baadd2550e0cca601b5006160]
+link AppointmentRequest to Property--><g id="link_AppointmentRequest_Property"><path codeLine="62" d="M302.01,204.3291 C299.66,246.6291 293.95,349.3591 291.36,395.9291 " fill="none" id="AppointmentRequest-to-Property" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="291.08,401.0591,295.5884,392.3027,291.3661,396.0673,287.6015,391.845,291.08,401.0591" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="301.7725,307.9295,305.2089,299.0615,299.3401,298.7353,301.7725,307.9295" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="37" x="311.05" y="308.6533">to visit</text></g><!--MD5=[25cbe063909df1e52e9ccab8f1b55922]
+link Agent to AppointmentRequest--><g id="link_Agent_AppointmentRequest"><path codeLine="63" d="M303.05,86.2191 C303.05,106.2591 303.05,138.1691 303.05,159.9591 " fill="none" id="Agent-to-AppointmentRequest" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="303.05,164.9891,307.05,155.9891,303.05,159.9891,299.05,155.9891,303.05,164.9891" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="308.05,130.9373,310.9889,121.8922,305.1111,121.8922,308.05,130.9373" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="50" x="317.05" y="131.6533">validates</text></g><!--MD5=[a363a729a326534fa72ee010b5a18559]
+link Announcement to Property--><g id="link_Announcement_Property"><path codeLine="65" d="M410.07,322.2191 C383.39,343.8591 339.63,379.3591 312.97,400.9891 " fill="none" id="Announcement-Property" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="371.167,365.0872,380.0429,361.6712,376.3399,357.1065,371.167,365.0872" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="49" x="384.05" y="367.6533">contains</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="395.6225" y="344.7973">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="311.9174" y="390.0583">1</text></g><!--MD5=[a39ed1df5cccef5e67f222af5f38964f]
+link Announcement to Commission--><g id="link_Announcement_Commission"><path codeLine="66" d="M436.79,322.3691 C444.62,361.7191 462.74,452.7291 471.35,495.9591 " fill="none" id="Announcement-to-Commission" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="472.35,500.9891,474.5288,491.3843,471.3804,496.084,466.6806,492.9356,472.35,500.9891" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#000000" points="466.0263,425.841,467.1425,416.3962,461.3778,417.5439,466.0263,425.841" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="32" x="474.05" y="426.6533">has a</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="429.8545" y="344.6319">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="463.145" y="490.0583">1</text></g><!--MD5=[700255553749c290e03ddfad1db43c97]
+reverse link Commission to FixedCommission--><g id="link_Commission_FixedCommission"><path codeLine="68" d="M445.03,555.3591 C430.96,570.6791 414.86,588.2091 403.04,601.0691 " fill="none" id="Commission-backto-FixedCommission" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="440.01,550.4691,458.69,540.4791,450.32,559.9391,440.01,550.4691" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[ef3ad7b3db23a8f3947b39ed967078b8]
+reverse link Commission to PercentageCommission--><g id="link_Commission_PercentageCommission"><path codeLine="69" d="M506.72,555.3591 C520.64,570.6791 536.56,588.2091 548.24,601.0691 " fill="none" id="Commission-backto-PercentageCommission" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="none" points="501.47,559.9891,493.21,540.4791,511.84,550.5691,501.47,559.9891" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[3370e86259956002d44cf77f8a540cf3]
+@startuml
+skinparam monochrome true
+        skinparam packageStyle rectangle
+        skinparam shadowing false
+
+        'left to right direction
+
+        skinparam classAttributeIconSize 0
+
+        hide circle
+        hide methods
+
+        title US014 Domain Model
+
+        object Client {
+        }
+
+        object AppointmentRequest {
+        }
+
+        object Property {
+        }
+
+        object House {
+        }
+
+        object Apartment {
+        }
+
+        object Land {
+        }
+
+        object Agent {
+        }
+
+        object Announcement {
+        }
+
+        object Commission {
+        }
+
+        object FixedCommission {
+        }
+
+        object PercentageCommission {
+        }
+
+        object Response {
+        }
+
+        Client -> AppointmentRequest: creates
+        AppointmentRequest "1" - - "1" Announcement: belongs to >
+        Property <|- - House
+        Property <|- - Apartment
+        Property <|- - Land
+        Agent - -> Announcement: assigned to >
+
+        Client - -> Response: receives
+        AppointmentRequest - -> Response: has >
+        Agent - -> Response: provides
+
+
+        AppointmentRequest - -> Property: to visit >
+        Agent - -> AppointmentRequest: validates >
+
+        Announcement "1" - - "1" Property: contains >
+        Announcement "1" - - -> "1" Commission: has a >
+
+        Commission <|- - FixedCommission
+        Commission <|- - PercentageCommission
+
+@enduml
+
+@startuml
+skinparam monochrome true
+        skinparam packageStyle rectangle
+        skinparam shadowing false
+
+
+        skinparam classAttributeIconSize 0
+
+        hide circle
+        hide methods
+
+        title US014 Domain Model
+
+        object Client {
+        }
+
+        object AppointmentRequest {
+        }
+
+        object Property {
+        }
+
+        object House {
+        }
+
+        object Apartment {
+        }
+
+        object Land {
+        }
+
+        object Agent {
+        }
+
+        object Announcement {
+        }
+
+        object Commission {
+        }
+
+        object FixedCommission {
+        }
+
+        object PercentageCommission {
+        }
+
+        object Response {
+        }
+
+        Client -> AppointmentRequest: creates
+        AppointmentRequest "1" - - "1" Announcement: belongs to >
+        Property <|- - House
+        Property <|- - Apartment
+        Property <|- - Land
+        Agent - -> Announcement: assigned to >
+
+        Client - -> Response: receives
+        AppointmentRequest - -> Response: has >
+        Agent - -> Response: provides
+
+
+        AppointmentRequest - -> Property: to visit >
+        Agent - -> AppointmentRequest: validates >
+
+        Announcement "1" - - "1" Property: contains >
+        Announcement "1" - - -> "1" Commission: has a >
+
+        Commission <|- - FixedCommission
+        Commission <|- - PercentageCommission
+
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 14:29:17 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: MS949
+Language: en
+Country: US
+--></g></svg>

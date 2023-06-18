@@ -1,0 +1,67 @@
+@startuml
+
+interface Runnable {
+
+    + run()
+}
+
+class AppointmentRequestUI {
+    - controller
+}
+
+class AppointmentRequestController {
+
+    - AppointmentRequestRepository
+    + rescheduleAppointment(time,date,announcementId)
+    + getAppointmentRequestList()
+    + acceptAppointment(appointmentRequestId)
+    + rejectAppointment(appointmentRequestId)
+
+
+}
+
+class AppointmentRequest {
+
+    -date
+    -time
+    -announcementId
+    -agent
+}
+
+
+class AppointmentRequestRepository {
+
+    + save()
+    + rescheduleAppointment(time,date,announcementId)
+    + addAppointmentRequest()
+    + getAllVisibleAppointmentRequests()
+    + getAppointmentRequests()
+}
+
+class AppointmentRequestDTO {
+
+    - time
+    - date
+    - announcementId
+    - agent
+}
+class AppointmentRequestMapper {
+
+    - appointmentRequestDTOList
+    + convert()
+    + toDto()
+    + getAllAppointmentRequests()
+    + getAllAppointmentRequestsRecentToOldest()
+    + toDtoAppointmentRequest()
+}
+
+
+Runnable -left-|> AppointmentRequestUI
+AppointmentRequestUI ..> AppointmentRequestController
+AppointmentRequestController -> AppointmentRequestMapper
+AppointmentRequestMapper -> AppointmentRequestDTO
+AppointmentRequestDTO -> AppointmentRequestRepository
+AppointmentRequestController ..> AppointmentRequest
+AppointmentRequest --> AppointmentRequestRepository
+
+@enduml

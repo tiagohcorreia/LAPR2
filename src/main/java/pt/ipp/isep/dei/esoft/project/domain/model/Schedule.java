@@ -48,6 +48,10 @@ public class Schedule implements Serializable {
         this.noteFromClient = "";
     }
 
+    public Schedule() {
+
+    }
+
     public String getName() {
         return name;
     }
