@@ -12,6 +12,7 @@ import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
 import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.time.LocalDate;
@@ -22,7 +23,7 @@ import static pt.ipp.isep.dei.esoft.project.domain.model.Announcement.createProp
 /**
  * The type Publish announcement controller.
  */
-public class PublishAnnouncementController {
+public class PublishAnnouncementController implements Serializable {
 
     Repositories repositories = Repositories.getInstance();
     private AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();

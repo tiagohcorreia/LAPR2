@@ -12,6 +12,7 @@ import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -19,7 +20,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-public class AnnouncementRequestsController {
+
+public class AnnouncementRequestsController implements Serializable {
     public  AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
 
     public EmployeeRepository employeeRepository=Repositories.getInstance().getEmployeeRepository();;
@@ -28,6 +30,8 @@ public class AnnouncementRequestsController {
 
 
     public AnnouncementRequestMapper announcementRequestMapper = new AnnouncementRequestMapper();
+
+
 
 
     public Employee getCurrentAgent() {
@@ -57,7 +61,7 @@ public class AnnouncementRequestsController {
 
     public List<AnnouncementRequestDTO> getAnnouncementRequests(Employee agent) {
         List<AnnouncementRequestDTO> requestsForAgent = new ArrayList<>();
-        for (Announcement announcement : this.announcementRepository.getAllAnnouncements()) {
+        for (Announcement announcement : this.announcementRepository.readObject()) {
             if (announcement.getStatus() == AnnouncementStatus.REQUESTED && announcement.getAgent().equals(agent)) {
                 AnnouncementRequestDTO dto = this.announcementRequestMapper.toDto(announcement);
                 requestsForAgent.add(dto);
@@ -84,6 +88,7 @@ public class AnnouncementRequestsController {
             announcement.setCommission(commission);
             announcement.setStatus(AnnouncementStatus.PUBLISHED);
             this.announcementRepository.saveAnnouncement(announcement);
+            this.announcementRepository.writeObject();
         }
     }
 
@@ -93,6 +98,7 @@ public class AnnouncementRequestsController {
             Announcement announcement = this.announcementRequestMapper.toEntity(dto);
             announcement.setStatus(AnnouncementStatus.REJECTED);
             this.announcementRepository.saveAnnouncement(announcement);
+            this.announcementRepository.writeObject();
         }
     }
 

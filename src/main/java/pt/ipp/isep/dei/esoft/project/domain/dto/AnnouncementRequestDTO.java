@@ -96,6 +96,7 @@ public class AnnouncementRequestDTO {
             sb.append("Status: ").append(String.format("%-10s", status));
             sb.append("Business Type: ").append(String.format("%-10s", typeOfBusiness));
             sb.append("Property: ").append(property.toString());
+            sb.append("Owner: ").append(owner.toString());
             return sb.toString();
         }
 
