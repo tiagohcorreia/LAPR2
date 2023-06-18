@@ -67,4 +67,4 @@ As a client, I want to read the response for the appointment requests, to accept
 
 #### Alternative One
 
-![System Sequence Diagram](svg/SSD.svg)
+![System Sequence Diagram](svg/ssd.svg)
