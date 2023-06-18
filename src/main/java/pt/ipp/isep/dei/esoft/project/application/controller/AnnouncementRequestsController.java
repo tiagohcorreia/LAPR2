@@ -24,9 +24,20 @@ public class AnnouncementRequestsController {
 
     public EmployeeRepository employeeRepository=Repositories.getInstance().getEmployeeRepository();;
 
-    private AuthenticationController authenticationController;
+    private AuthenticationController authenticationController=new AuthenticationController();
+
 
     public AnnouncementRequestMapper announcementRequestMapper = new AnnouncementRequestMapper();
+
+
+    public Employee getCurrentAgent() {
+
+        pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();
+        String agentEmail= String.valueOf(userSession.getUserEmail());
+        Employee agent= employeeRepository.findByEmail(agentEmail);
+
+        return agent;
+    }
 
     public Employee getEmployee(String name) {
         for (Employee employee : employeeRepository.getEmployeeList()) {
@@ -37,53 +48,12 @@ public class AnnouncementRequestsController {
         return null; //
     }
 
-    // ...
 
     public boolean isEmployee(String agentName) {
-        Employee agent = getEmployee(agentName); // Obtem o objeto Employee correspondente ao nome
-        return agent != null; // Verifica se o objeto Employee foi encontrado
+        Employee agent = getEmployee(agentName);
+        return agent != null;
     }
 
-
-  /*  public List<Announcement> getAnnouncementRequests(Employee agent) {
-        List<Announcement> requestsForAgent = new ArrayList<>();
-        for (Announcement announcement : this.announcementRepository.getAllAnnouncements()) {
-            if (announcement.getStatus() == AnnouncementStatus.REQUESTED && announcement.getAgent().equals(agent)) {
-                requestsForAgent.add(announcement);
-            }
-        }
-
-        Collections.sort(requestsForAgent, Comparator.comparing(Announcement::getDate).reversed());
-
-        return requestsForAgent;
-    }
-   public Announcement getAnnouncementByIndex(int index, Employee agent) {
-        List<Announcement> announcements = getAnnouncementRequests(agent);
-        if (index >= 0 && index < announcements.size()) {
-            return announcements.get(index);
-        }
-        return null;
-    }
-
-
-        public void acceptAnnouncementRequest(int index, float commission, Employee agent) {
-            Announcement announcement = getAnnouncementByIndex(index, agent);
-            if (announcement != null) {
-                announcement.setCommission(commission);
-                announcement.setStatus(AnnouncementStatus.PUBLISHED);
-                this.announcementRepository.saveAnnouncement(announcement);
-            }
-        }
-
-            public void rejectAnnouncementRequest(int index, String reason, Employee agent) {
-                Announcement announcement = getAnnouncementByIndex(index, agent);
-                if (announcement != null) {
-                    announcement.setRejectionReason(reason);
-                    announcement.setStatus(AnnouncementStatus.REJECTED);
-                    this.announcementRepository.saveAnnouncement(announcement);
-                }
-            }
-            */
 
     public List<AnnouncementRequestDTO> getAnnouncementRequests(Employee agent) {
         List<AnnouncementRequestDTO> requestsForAgent = new ArrayList<>();
@@ -121,7 +91,6 @@ public class AnnouncementRequestsController {
         AnnouncementRequestDTO dto = getAnnouncementByIndex(index, agent);
         if (dto != null) {
             Announcement announcement = this.announcementRequestMapper.toEntity(dto);
-            //announcement.setRejectionReason(reason);
             announcement.setStatus(AnnouncementStatus.REJECTED);
             this.announcementRepository.saveAnnouncement(announcement);
         }

@@ -1,80 +1,35 @@
-[2023-06-15T12:14:29.039781]
-Recipient: john@example.com
-Subject: Test Notification
-Message: This is a test notification.
 
-[2023-06-15T12:20:11.084993]
-Recipient: john@example.com
-Subject: Test Notification
-Message: This is a test notification.
+[2023-06-17T20:35:29.936405]
+Recipient: tiago@this.app
+Subject: New Announcement Published
+Message: Dear tiago,
 
-[2023-06-15T12:29:53.545314]
-Recipient: test@example.com
-Subject: Test Subject
-Message: Test Message
+Your property has been published with the following details:
+Announcement ID: Door Number:0	Street:rr	City:porto	Zip Code:12345
+Publication Date: 2023-06-17
+Responsible Agent: nilsa
+Agent Phone Number: 1111111111
 
-[2023-06-15T21:40:05.370437]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
 
-[2023-06-16T01:24:21.991526700]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
+[2023-06-18T00:58:41.861618]
+Recipient: 1111111111
+Subject: New Announcement Published
+Message: Dear pat,
+Your property has been published with the following details:
+Announcement ID: Door Number:0	Street:rr	City:porto	Zip Code:12345
+Publication Date: 2023-06-18
+Responsible Agent: nilsa
+Agent Phone Number: 1111111111
 
-[2023-06-16T01:25:26.169935300]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
 
-[2023-06-16T01:25:54.026354500]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
+[2023-06-18T01:06:02.990645]
+Recipient: 1111111111
+Subject: New Announcement Published
+Message: Dear nilson@this.app,
+Your property has been published with the following details:
+Announcement ID: Door Number:0	Street:rr	City:porto	Zip Code:12345
+Publication Date: 2023-06-18
+Responsible Agent: chila
+Agent Phone Number: 1111111111
 
-[2023-06-16T01:26:18.966177500]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
-
-[2023-06-16T01:27:45.051692500]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
-
-[2023-06-16T01:43:09.576912900]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
-
-[2023-06-16T01:44:57.238976200]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
-
-[2023-06-16T04:12:49.441279400]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
-
-[2023-06-16T11:25:09.592189900]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
-
-[2023-06-16T12:22:45.628612700]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
-
-[2023-06-16T23:31:19.413664900]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
-
-[2023-06-16T23:32:37.913691]
-Recipient: Nilsa Gil
-Subject: ANNOUNCEMENT NOTIFICATION
-Message: D
 

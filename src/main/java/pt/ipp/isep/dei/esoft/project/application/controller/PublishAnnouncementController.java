@@ -8,6 +8,8 @@ import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfProperty;
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
 import pt.isep.lei.esoft.auth.UserSession;
+import pt.isep.lei.esoft.auth.mappers.dto.UserRoleDTO;
+import pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository;
 
 
 import java.util.ArrayList;
@@ -169,19 +171,30 @@ public class PublishAnnouncementController {
 
     } */
 
-    public String getCurrentAgent() {
+   /* public String getCurrentAgent() {
         pt.isep.lei.esoft.auth.UserSession userSession = authenticationRepository.getCurrentUserSession();
-        if (userSession.getUserRoles() == Role.AGENT) {
-            return userSession.getUserName();
-        } else {
-            throw new IllegalStateException("Current user is not an employee (agent).");
-        }
+
+        if (userSession != null && userSession.getUserRoles() != null) {
+            List<UserRoleDTO> userRoles = userSession.getUserRoles();
+
+            for (UserRoleDTO userRole : userRoles) {
+                if ("AGENT".equals(userRole.getId())) {
+                    return userSession.getUserName();
+                }
+            }
+        }*/
+
+
+
+    public Employee getCurrentAgent() {
+
+        pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();
+        String agentEmail= String.valueOf(userSession.getUserEmail());
+        Employee agent= employeeRepository.findByEmail(agentEmail);
+
+        return agent;
     }
 
-    public Employee getEmployeeByName(String employeeName) {
-
-        return employeeRepository.findByEmail(employeeName);
-    }
 
     public Client getClientByEmail(String email) {
         return clientRepository.findByEmail(email);
