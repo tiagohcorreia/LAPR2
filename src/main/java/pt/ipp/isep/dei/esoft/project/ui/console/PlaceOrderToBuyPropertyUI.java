@@ -43,7 +43,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
             System.out.println("Client: ");
             System.out.println("Status: " + status);
             System.out.println("Order amount: " + orderAmount + "$");
-            System.out.println("Selected Announcement:\n" + this.controller.showSelectedAnnouncement(posAnouncement));
+            System.out.println("Selected Announcement:\n" + this.controller.getAnnouncementDTO(posAnouncement));
 
             int optValidation = Utils.readIntegerFromConsole("1-CONFIRM\n0-CANCEL");
 
@@ -51,7 +51,7 @@ public class PlaceOrderToBuyPropertyUI implements Runnable {
 
                 try {
 
-                    this.controller.createOrder(orderAmount, posAnouncement);
+                    this.controller.createOrder(orderAmount, posAnouncement, status);
                     success = false;
 
                 } catch (IllegalArgumentException e) {
