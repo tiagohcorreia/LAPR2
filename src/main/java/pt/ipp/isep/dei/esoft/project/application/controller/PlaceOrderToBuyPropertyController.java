@@ -43,7 +43,9 @@ public class PlaceOrderToBuyPropertyController {
      */
     public String createOrder(Double orderAmount, Integer posAnnouncement) {
 
-        Order newOrder = new Order(orderAmount, AnnouncementMapper.getAnnouncementDTOById(posAnnouncement));
+        boolean status = false;
+
+        Order newOrder = new Order(orderAmount, AnnouncementMapper.getAnnouncementDTOById(posAnnouncement), status);
 
         try {
 

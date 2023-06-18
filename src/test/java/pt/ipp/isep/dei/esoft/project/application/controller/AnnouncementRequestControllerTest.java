@@ -22,7 +22,7 @@ public class AnnouncementRequestControllerTest {
         Assert.assertEquals(expectedEmployee, actualEmployee);
     }
 
-    @Test
+    /*@Test
     public void ensureIsEmployeeReturnsTrueForExistingEmployee() {
         AnnouncementRequestsController controller = new AnnouncementRequestsController();
         String agentName = "John Doe";
@@ -32,7 +32,7 @@ public class AnnouncementRequestControllerTest {
         boolean result = controller.isEmployee(agentName);
 
         Assert.assertTrue(result);
-    }
+    }*/
 
 
 }

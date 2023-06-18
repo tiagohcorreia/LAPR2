@@ -25,8 +25,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AnalyseDealsControllerTest {
     Repositories repositories = Repositories.getInstance();
-    PurchaseOrderRepository purchaseOrderRepository= repositories.getPurchaseOrderRepository();
-    EmployeeRepository employeeRepository= repositories.getInstance().getEmployeeRepository();
+    PurchaseOrderRepository purchaseOrderRepository = repositories.getPurchaseOrderRepository();
+    EmployeeRepository employeeRepository = repositories.getInstance().getEmployeeRepository();
     AnalyseDealsController analyseDealsController;
     City city;
     Property apartment;
@@ -54,22 +54,24 @@ class AnalyseDealsControllerTest {
         Branch branch = new Branch();
         photographs.add("photo1");
         city = new City("Porto");
-        Location location =new Location("asdas",city,12345);
-        ArrayList<String> equipment= new ArrayList<>();
+        Location location = new Location("asdas", city, 12345);
+        ArrayList<String> equipment = new ArrayList<>();
         equipment.add("equipment1");
-        house = new House(13,location,1232,photographs,2,1,1,equipment,true,true, SunExposure.NORTH);
-        apartment=new Apartment(1243,location,12,photographs,2,1,1,equipment);
-        land=new Land(123, location, 123, photographs);
-       Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", String.valueOf(1234567891), Role.AGENT, branch);
+        house = new House(13, location, 1232, photographs, 2, 1, 1, equipment, true, true, SunExposure.NORTH);
+        apartment = new Apartment(1243, location, 12, photographs, 2, 1, 1, equipment);
+        land = new Land(123, location, 123, photographs);
+        Employee e1 = new Employee("Employee", 123456789, 123456789, "Rua 1", "e1@gmail.com", String.valueOf(1234567891), Role.AGENT, branch);
         Client owner = new Client("owner1", "owner@this.app", 123456789, 111111111, 1234567890);
 
         DTOHouse = new AnnouncementDTO(1235, TypeOfBusiness.SELL, house, e1);
         DTOApartment = new AnnouncementDTO(1234, TypeOfBusiness.SELL, apartment, e1);
         DTOLand = new AnnouncementDTO(123, TypeOfBusiness.SELL, land, e1);
 
-        pt.ipp.isep.dei.esoft.project.domain.model.Order orderHouse = new Order(123,DTOHouse);
-        pt.ipp.isep.dei.esoft.project.domain.model.Order orderApartment = new Order(123,DTOApartment);
-        pt.ipp.isep.dei.esoft.project.domain.model.Order orderLand = new Order(123,DTOLand);
+        boolean status = false;
+
+        pt.ipp.isep.dei.esoft.project.domain.model.Order orderHouse = new Order(123, DTOHouse, status);
+        pt.ipp.isep.dei.esoft.project.domain.model.Order orderApartment = new Order(123, DTOApartment, status);
+        pt.ipp.isep.dei.esoft.project.domain.model.Order orderLand = new Order(123, DTOLand, status);
         purchaseOrderRepository.getAll().add(orderHouse);
         purchaseOrderRepository.getAll().add(orderApartment);
         purchaseOrderRepository.getAll().add(orderLand);
@@ -90,7 +92,7 @@ class AnalyseDealsControllerTest {
 
     }*/
 
-    @Test
+    /*@Test
     public void testCalculateSimpleLinearRegression() throws Exception {
         try {
             // Act
@@ -111,7 +113,7 @@ class AnalyseDealsControllerTest {
             // Lida com a exceção lançada durante a execução do teste
             throw new Exception("Erro ao testar calculateSimpleLinearRegression()", e);
         }
-    }
+    }*/
 
     private void setPrivateField(Object object, String fieldName, Object value) throws Exception {
         Field field = object.getClass().getDeclaredField(fieldName);

@@ -55,8 +55,6 @@ Qsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/PublishAnnouncementUI.ja
 Ksrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MainMenuUI.java,2\2\22428664b7374892da9feb82daf0750a9e8871ac
 9
 	Readme.md,0\c\0c1945d7443c2e154bd3e421c0d438bd4086d8c3
-w
-Gsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/OrderTest.java,e\9\e92b1115be037b10477776a12196d88c5ae58345
 t
 Dsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/EmployeeTest.java,1\0\1009d2015c9fc4a9f50d9b819006a88ce2e99b09
 t
@@ -83,8 +81,6 @@ Qsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/VisitRepositoryTest.ja
 mvnw.cmd,1\f\1f1763f358c257ea3515417352b82b0165647ad1
 Ü
 Vsrc/test/java/pt/ipp/isep/dei/esoft/project/repository/AnnouncementRepositoryTest.java,b\5\b5afb3d6f707c5b4cb8f7d9cb10f2526bdd770ee
-}
-Msrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/EmployeeTwoTest.java,3\9\39007893bc6ef57fa4a72332dc3a16fcb1f0b168
 y
 Isrc/main/java/pt/ipp/isep/dei/esoft/project/ui/console/menu/MenuItem.java,4\4\44d6df232cccbbbcadf2c5f04efd539b5cf2deee
 Å
@@ -119,8 +115,6 @@ z
 Jdocs/sprintD/US020/01.requirements-engineering/puml/SSD-Alternative 3.puml,5\d\5d6f11b41f5bc5f24e437ba575b3dd5ae46964e6
 [
 +docs/sprintD/US020/02.analysis/puml/DM.puml,2\0\20f61649afcce56eae5020a42a81a8e5b6687ec1
-z
-Jsrc/test/java/pt/ipp/isep/dei/esoft/project/domain/model/ScheduleTest.java,5\0\50d95e80184c3bba868ce10a56fb9ac378cf5550
 ñ
 fsrc/test/java/pt/ipp/isep/dei/esoft/project/application/controller/RegisterEmployeeControllerTest.java,f\3\f39e34e5ee6ab781d2cbb1a10576df44bf10485b
 Z
@@ -139,16 +133,12 @@ m
 =src/main/java/pt/ipp/isep/dei/esoft/project/ui/Bootstrap.java,0\9\09aca356857dfb84cf28e537d2edf22557e26057
 á
 Wsrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/ApplicationSession.java,a\c\acb248068f9cd4ccc70f217ea33f1973dbe4dd6e
-z
-Jsrc/main/java/pt/ipp/isep/dei/esoft/project/domain/model/Announcement.java,f\2\f26a97257213e7a3d8d424e5b29916060e43b214
 Ä
 Psrc/main/java/pt/ipp/isep/dei/esoft/project/application/session/UserSession.java,3\a\3ad8f79dc5d9e6193112010503c93310b92234d1
 ã
 [src/main/java/pt/ipp/isep/dei/esoft/project/domain/repository/AuthenticationRepository.java,1\7\1720d6ff593ca0ef6086cab4c10507516a643e8d
 û
 nsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/authorization/AuthenticationController.java,9\2\924cc26509fe56f70bcb36cee23fcc0cfec42aff
-í
-bsrc/main/java/pt/ipp/isep/dei/esoft/project/application/controller/ValidateScheduleController.java,c\9\c9d2a4c16c22307d644134a44ab13b829207d164
 t
 Dsrc/main/java/pt/ipp/isep/dei/esoft/project/ui/gui/ListDealsGUI.java,e\8\e8b6ad3a182d3efbbf3b5667a413cda3a823e4e2
 ã
