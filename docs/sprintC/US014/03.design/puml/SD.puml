@@ -1,0 +1,158 @@
+@startuml
+skinparam monochrome true
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+title Sequence Diagram - Read Appointment Response
+
+actor "Client" as client
+
+participant "AppointmentRequestUI" as ui
+participant "AppointmentResquestController" as controller
+participant "AppointmentRequestMapper" as mapper
+participant "AppointmentRequestDTO" as dto
+participant "AppointmentRequestRepository" as repository
+
+activate client
+
+client -> ui : check the responses to the appointment requests
+activate ui
+ui -> controller : getAppointmentRequestList()
+deactivate ui
+activate controller
+controller -> dto : getAppointmentRequestList()
+deactivate controller
+activate dto
+dto -> repository : getAppointmentRequestList()
+deactivate dto
+activate repository
+repository -> dto : return getAppointmentRequestList
+deactivate repository
+activate dto
+dto -> mapper : return getAppointmentRequestList
+deactivate dto
+activate mapper
+
+mapper -> controller : return getAppointmentRequestList
+deactivate mapper
+activate controller
+controller -> ui : return getAppointmentRequestList
+deactivate controller
+activate ui
+ui -> client : shows the sorted list of appointment requests
+deactivate ui
+client -> ui : selects one of the appointment requests
+activate ui
+ui -> controller : getAppointmentRequest(appointmentRequestId)
+deactivate ui
+activate controller
+controller -> dto : getAppointmentRequest(appointmentRequestId)
+deactivate controller
+activate dto
+dto -> repository : getAppointmentRequest(appointmentRequestId)
+deactivate dto
+activate repository
+repository -> dto : return getAppointmentRequest
+deactivate repository
+activate dto
+dto -> mapper : return getAppointmentRequest
+deactivate dto
+activate mapper
+mapper -> controller : return getAppointmentRequest
+deactivate mapper
+activate controller
+controller -> ui : return getAppointmentRequest with response
+deactivate controller
+activate ui
+ui -> client : display the response along with the appointment request
+deactivate ui
+alt if the user accepts the appointment
+    client -> ui : accepts the appointment
+    activate ui
+    ui -> controller : acceptAppointment(appointmentRequestId)
+    deactivate ui
+    activate controller
+    controller -> dto : acceptAppointment(appointmentRequestId)
+    deactivate controller
+    activate dto
+    dto -> repository : acceptAppointment(appointmentRequestId)
+    deactivate dto
+    activate repository
+    repository -> repository : deleteOtherRequests(ClientId,announcementId)
+    repository -> dto : return acceptAppointment
+            deactivate repository
+            activate dto
+            dto -> controller : return acceptAppointment
+            deactivate dto
+            activate controller
+            controller -> ui : return acceptAppointment
+            deactivate controller
+            activate ui
+            ui -> client : informs operation success
+            deactivate ui
+    else if the user rejects the appointment
+
+
+
+    client -> ui : reject the appointment
+    activate ui
+    ui -> client : asks if the user wants to reschedule
+    deactivate ui
+    alt if if the user wants to reschedule
+    client -> ui : wants to reschedule
+    activate ui
+        ui -> client : asks for a new time and date for the appointment request
+        deactivate ui
+        client -> ui : types the relevant information
+        activate ui
+        ui -> controller : rescheduleAppointment(time,date,announcementId)
+        deactivate ui
+        activate controller
+        controller -> dto : rescheduleAppointment(time,date,announcementId)
+        deactivate controller
+        activate dto
+        dto -> repository : rescheduleAppointment(time,date,announcementId)
+        deactivate dto
+        activate repository
+        repository -> dto : return rescheduleappointment
+        deactivate repository
+        activate dto
+        dto -> controller : return rescheduleappointment
+        deactivate dto
+        activate controller
+        controller -> ui : return rescheduleappointment
+        deactivate controller
+        activate ui
+        ui -> client : informs operation success
+        deactivate ui
+
+
+    else if the user does not want to reschedule
+    client -> ui : declines the rescheduling
+    activate ui
+    ui -> controller : rejectAppointment(appointmentRequestId)
+    deactivate ui
+    activate controller
+    controller -> dto : rejectAppointment(appointmentRequestId)
+    deactivate controller
+    activate dto
+    dto -> repository : rejectAppointment(appointmentRequestId)
+    deactivate dto
+    activate repository
+     repository -> dto : return rejectAppointment
+            deactivate repository
+            activate dto
+            dto -> controller : return rejectAppointment
+            deactivate dto
+            activate controller
+            controller -> ui : return rejectAppointment
+            deactivate controller
+            activate ui
+            ui -> client : informs operation success
+            deactivate ui
+
+    end alt
+    end alt
+
+
+@enduml
