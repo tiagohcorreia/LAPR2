@@ -1,0 +1,96 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam shadowing false
+allowmixing
+
+package UI {
+    class OptimalPartitionUI{
+        +run()
+        -getFilePath()
+    }
+}
+
+package Controller {
+    class LegacyController{
+        +importFile()
+    }
+
+     class OptimalPartitionController{
+       +OptimalPartition(numStores,storeCounts)
+       +printResults(sublist1,sublist2,difference,exeTime)
+
+        }
+}
+
+package Utils{
+    class CsvHandler{
+        +readCsv(File):List<>
+        +csvIsEmpty(List<>):boolean
+        +getDataFromCSVFile(File):List<>
+        +parseCSV()
+        -extensionIsCsv():boolean
+        -parseBranchData():Branch
+        -parseClientData():Client
+        -parsePropertyData():Property
+        -parseAnnouncementData():Announcement
+        -parseLocation():Location
+    }
+
+    class FileHandler{
+    +readFile(String):File
+    +appendToFile(String, String):boolean
+    +createFile(String, String):boolean
+    +deleteFile(String):boolean
+
+    }
+
+    class OptimalPartitionDTO{
+    +printResults(sublist1,sublist2,difference,exeTime)
+    -sublist1
+    -sublist2
+    -difference
+    -exeTime
+    }
+
+
+}
+
+package Repositories {
+
+class OptimalPartitionRepository{
++save()
++validate()
++OptimalPartition(numStores,storeCounts)
+-sublist1
+-sublist2
+-difference
+-exeTime
+
+}
+}
+
+
+package Domain{
+    class OptimalPartition{
+    +OptimalPartition(numStores,storeCounts)
+    }
+
+
+}
+
+
+OptimalPartitionUI -[dashed]-> OptimalPartitionController
+
+LegacyController -[dashed]-> CsvHandler
+
+OptimalPartitionController --> OptimalPartition
+OptimalPartitionController -[dashed]-> OptimalPartitionDTO
+OptimalPartitionController -[dashed]-> CsvHandler
+
+CsvHandler -[dashed]-> FileHandler
+
+OptimalPartitionRepository --> OptimalPartition
+
+
+
+@enduml
