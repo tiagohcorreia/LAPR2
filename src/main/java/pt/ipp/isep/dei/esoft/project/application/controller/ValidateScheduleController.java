@@ -3,14 +3,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import pt.ipp.isep.dei.esoft.project.application.controller.authorization.AuthenticationController;
-import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
-import pt.ipp.isep.dei.esoft.project.domain.model.Client;
 import pt.ipp.isep.dei.esoft.project.domain.model.Employee;
 import pt.ipp.isep.dei.esoft.project.domain.model.Location;
 import pt.ipp.isep.dei.esoft.project.domain.model.Schedule;
-import pt.ipp.isep.dei.esoft.project.domain.repository.AnnouncementRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.EmployeeRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 import pt.ipp.isep.dei.esoft.project.domain.repository.ScheduleRepository;
@@ -25,16 +21,15 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import pt.ipp.isep.dei.esoft.project.domain.shared.TypeOfBusiness;
 
 
 public class ValidateScheduleController implements Initializable {
-
-    Repositories repositories = Repositories.getInstance();
-    private ScheduleRepository scheduleRepository= repositories.getScheduleRepository();
+    private Repositories repositories = Repositories.getInstance();
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
     private EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
-    AuthenticationController authenticationController;
+    private AuthenticationController authenticationController;
+    private ScheduleRepository scheduleRepository = repositories.getScheduleRepository();
+
 
     @FXML
     private ToggleGroup ScheduleAnswer;
@@ -43,64 +38,30 @@ public class ValidateScheduleController implements Initializable {
     private Button btnSubmit;
 
     @FXML
+    private ListView<Schedule> lvschedules;
+
+    @FXML
     private RadioButton rbAcceptSchedule;
 
     @FXML
     private RadioButton rbRejectSchedule;
 
-    @FXML
-    private TableColumn<Schedule, LocalTime> rowBeginHour;
-
-    @FXML
-    private TableColumn<Schedule, String> rowClientName;
-
-    @FXML
-    private TableColumn<Schedule, LocalDate> rowDay;
-
-    @FXML
-    private TableColumn<Schedule, LocalTime> rowEndHour;
-
-    @FXML
-    private TableColumn<Location,String> rowLocation;
-
-    @FXML
-    private TableColumn<Schedule, String> rowNote;
-
-    @FXML
-    private TableColumn<AnnouncementDTO, Float> rowPrice;
-
-    @FXML
-    private TableColumn<TypeOfBusiness, String> rowTypeOfBusiness;
-
-    @FXML
-    private TableView<Schedule> tblScheduleList;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        scheduleRepository.readObjectScheduleRequest();
-
-        rowClientName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        rowTypeOfBusiness.setCellValueFactory(new PropertyValueFactory<>("typeOfBusiness"));
-        rowPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        rowLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
-        rowDay.setCellValueFactory(new PropertyValueFactory<>("day"));
-        rowBeginHour.setCellValueFactory(new PropertyValueFactory<>("beginHour"));
-        rowEndHour.setCellValueFactory(new PropertyValueFactory<>("endHour"));
-        rowNote.setCellValueFactory(new PropertyValueFactory<>("note"));
-
-        List<Schedule> scheduleList = getRequestScheduleListByResponsibleAgent();
-
-        ObservableList<Schedule> observableList = FXCollections.observableArrayList(scheduleList);
-
-        tblScheduleList.setItems(observableList);
+        getScheduleList();
+        authenticationController = new AuthenticationController();
+        getRequestScheduleListByResponsibleAgent();
     }
-    @FXML
-    private void submit() {
-        Schedule selectedSchedule = tblScheduleList.getSelectionModel().getSelectedItem();
+
+   public void submit(javafx.event.ActionEvent actionEvent) {
+       Schedule selectedSchedule = lvschedules.getSelectionModel().getSelectedItem();
+
         if (selectedSchedule != null) {
-            int schedulePos = tblScheduleList.getItems().indexOf(selectedSchedule);
+
+            int schedulePos = lvschedules.getItems().indexOf(selectedSchedule);
             RadioButton selectedRadioButton = (RadioButton) ScheduleAnswer.getSelectedToggle();
+
             if (selectedRadioButton != null) {
                 String radioButtonId = selectedRadioButton.getId();
                 switch (radioButtonId) {
@@ -115,18 +76,22 @@ public class ValidateScheduleController implements Initializable {
         }
     }
 
-    public List<Schedule> getRequestScheduleListByResponsibleAgent(){
-        scheduleRepository.readObjectScheduleRequest();
-        pt.ipp.isep.dei.esoft.project.application.session.UserSession userSession = authenticationController.getCurrentSession();
-        String agentEmail= String.valueOf(userSession.getUserEmail());
-        Employee agent= employeeRepository.findByEmail(agentEmail);
-        List<Schedule> scheduleList= scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
-        return scheduleList;
+    private void getRequestScheduleListByResponsibleAgent(){
+        Employee agent = getLoggedAgent();
+        //ERRO ESTA AQUI -> TESTAR getRequestScheduleListByResponsibleAgent()
+        List<Schedule> scheduleList = scheduleRepository.getRequestScheduleListByResponsibleAgent(agent);
+        lvschedules.getItems().addAll(scheduleList);
     }
-
+    private Employee getLoggedAgent() {
+        String agentEmail = authenticationController.getCurrentSession().getUserEmail();
+        EmployeeRepository employeeRepository = repositories.getEmployeeRepository();
+        return employeeRepository.findByEmail(agentEmail);
+    }
     public boolean addConfirmedSchedule(int schedulePos){
-        if (schedulePos>=0 && schedulePos< scheduleRepository.schedulesByResposibleAgent.size()){
-            Schedule schedule= scheduleRepository.schedulesByResposibleAgent.get(schedulePos);
+
+        if (schedulePos>=0  && schedulePos < lvschedules.getItems().size()) {
+
+            Schedule schedule= lvschedules.getItems().get(schedulePos);
             scheduleRepository.writeObjectScheduleRequest();
             scheduleRepository.addConfirmedSchedule(schedule);
 
@@ -144,11 +109,10 @@ public class ValidateScheduleController implements Initializable {
     }
 
     public boolean addRejectedSchedule(int schedulePos){
-        if (schedulePos>=0 && schedulePos< scheduleRepository.schedulesByResposibleAgent.size()){
-            Schedule schedule= scheduleRepository.schedulesByResposibleAgent.get(schedulePos);
+        if (schedulePos>=0 && schedulePos < lvschedules.getItems().size() ){
+            Schedule schedule= lvschedules.getItems().get(schedulePos);
             scheduleRepository.writeObjectScheduleRequest();
             scheduleRepository.addRejectedSchedule(schedule);
-
             String agentName= schedule.getAnnouncementDTO().getAgent().getName();
             String agentPhoneNumber= schedule.getAnnouncementDTO().getAgent().getTelephoneNumber();
             Location location= schedule.getAnnouncementDTO().getProperty().getLocation();
@@ -184,6 +148,9 @@ public class ValidateScheduleController implements Initializable {
             e.printStackTrace();
         }
         return null;
+    }
+    public List<Schedule> getScheduleList() {
+        return scheduleRepository.readObjectScheduleRequest();
     }
 
 
