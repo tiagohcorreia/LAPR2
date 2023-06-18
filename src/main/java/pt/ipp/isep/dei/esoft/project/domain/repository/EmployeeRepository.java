@@ -21,7 +21,11 @@ public class EmployeeRepository implements Serializable {
      */
     public static List<Employee> employeeList = new ArrayList<>();
 
+    /**
+     * The Authentication repository.
+     */
     AuthenticationRepository authenticationRepository = pt.ipp.isep.dei.esoft.project.repository.Repositories.getInstance().getAuthenticationRepository();
+
     /**
      * Create employee employee.
      *
@@ -33,6 +37,19 @@ public class EmployeeRepository implements Serializable {
         return new Employee(employeeName);
     }
 
+    /**
+     * Create employee employee.
+     *
+     * @param name            the name
+     * @param passportNumber  the passport number
+     * @param taxNumber       the tax number
+     * @param address         the address
+     * @param emailAdress     the email adress
+     * @param telephoneNumber the telephone number
+     * @param role            the role
+     * @param branch          the branch
+     * @return the employee
+     */
     public Employee createEmployee(String name, int passportNumber, int taxNumber, String address, String emailAdress, String telephoneNumber, Role role, Branch branch) {
         return new Employee(name, passportNumber, taxNumber, address, emailAdress, telephoneNumber, role, branch);
     }
@@ -161,6 +178,13 @@ public class EmployeeRepository implements Serializable {
         }
         return null;
     }
+
+    /**
+     * Find by name employee.
+     *
+     * @param name the name
+     * @return the employee
+     */
     public Employee findByName(String name) {
         for (Employee employee : employeeList) {
             if (employee.getName().equals(name)) {
@@ -169,8 +193,11 @@ public class EmployeeRepository implements Serializable {
         }
         return null;
     }
+
     /**
      * Read object.
+     *
+     * @return the list
      */
     public List<Employee> readObject() {
 
@@ -204,6 +231,12 @@ public class EmployeeRepository implements Serializable {
         }
     }
 
+    /**
+     * Save employee in the system.
+     *
+     * @param newEmployee the new employee
+     * @param password    the password
+     */
     public void saveEmployeeInTheSystem(Employee newEmployee, String password) {
 
         if (newEmployee.getRole().equals(Role.ADMNISTRATOR)) {

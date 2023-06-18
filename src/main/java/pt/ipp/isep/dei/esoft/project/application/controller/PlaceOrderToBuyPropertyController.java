@@ -61,6 +61,12 @@ public class PlaceOrderToBuyPropertyController {
 
     }
 
+    /**
+     * Show selected announcement announcement dto.
+     *
+     * @param posAnnouncement the pos announcement
+     * @return the announcement dto
+     */
     public AnnouncementDTO showSelectedAnnouncement(int posAnnouncement) {
 
         for (int i = 0; i < announcementDTOList().size(); i++) {

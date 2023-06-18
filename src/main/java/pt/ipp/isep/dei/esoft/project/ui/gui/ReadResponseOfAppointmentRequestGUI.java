@@ -13,8 +13,14 @@ import pt.ipp.isep.dei.esoft.project.application.controller.ReadResponseOfAppoin
 
 import java.io.IOException;
 
+/**
+ * The type Read response of appointment request gui.
+ */
 public class ReadResponseOfAppointmentRequestGUI extends Application implements Runnable {
 
+    /**
+     * The Controller.
+     */
     ReadResponseOfAppointmentRequestController controller = new ReadResponseOfAppointmentRequestController();
 
     @Override
@@ -62,6 +68,11 @@ public class ReadResponseOfAppointmentRequestGUI extends Application implements 
         }
     }
 
+    /**
+     * Main.
+     *
+     * @param args the args
+     */
     public static void main(final String[] args) {
         launch();
     }

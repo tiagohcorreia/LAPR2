@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
+/**
+ * The type Schedule.
+ */
 public class Schedule implements Serializable {
     private String name;
     private int phoneNumber;
@@ -21,6 +24,19 @@ public class Schedule implements Serializable {
     private boolean clientApproval;
     private String noteFromClient;
 
+    /**
+     * Instantiates a new Schedule.
+     *
+     * @param name            the name
+     * @param phoneNumber     the phone number
+     * @param announcementDTO the announcement dto
+     * @param day             the day
+     * @param beginHour       the begin hour
+     * @param endHour         the end hour
+     * @param note            the note
+     * @param status          the status
+     * @param aproved         the aproved
+     */
     public Schedule(String name, int phoneNumber, AnnouncementDTO announcementDTO, LocalDate day, LocalTime beginHour, LocalTime endHour, String note, boolean status, boolean aproved) {
         this.name = setName(name);
         this.phoneNumber = setPhoneNumber(phoneNumber);
@@ -34,6 +50,21 @@ public class Schedule implements Serializable {
 
     }
 
+    /**
+     * Instantiates a new Schedule.
+     *
+     * @param name            the name
+     * @param phoneNumber     the phone number
+     * @param announcementDTO the announcement dto
+     * @param day             the day
+     * @param beginHour       the begin hour
+     * @param endHour         the end hour
+     * @param noteFromAgent   the note from agent
+     * @param status          the status
+     * @param agentAproved    the agent aproved
+     * @param clientApproval  the client approval
+     * @param noteFromClient  the note from client
+     */
     public Schedule(String name, int phoneNumber, AnnouncementDTO announcementDTO, LocalDate day, LocalTime beginHour, LocalTime endHour, String noteFromAgent, boolean status, boolean agentAproved, boolean clientApproval, String noteFromClient) {
         this.name = setName(name);
         this.phoneNumber = setPhoneNumber(phoneNumber);
@@ -48,62 +79,136 @@ public class Schedule implements Serializable {
         this.noteFromClient = "";
     }
 
+    /**
+     * Instantiates a new Schedule.
+     */
     public Schedule() {
 
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets phone number.
+     *
+     * @return the phone number
+     */
     public int getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * Gets announcement dto.
+     *
+     * @return the announcement dto
+     */
     public AnnouncementDTO getAnnouncementDTO() {
         return announcementDTO;
     }
 
+    /**
+     * Gets day.
+     *
+     * @return the day
+     */
     public LocalDate getDay() {
         return day;
     }
 
+    /**
+     * Gets begin hour.
+     *
+     * @return the begin hour
+     */
     public LocalTime getBeginHour() {
         return beginHour;
     }
 
+    /**
+     * Gets end hour.
+     *
+     * @return the end hour
+     */
     public LocalTime getEndHour() {
         return endHour;
     }
 
+    /**
+     * Gets note from agent.
+     *
+     * @return the note from agent
+     */
     public String getNoteFromAgent() {
         return noteFromAgent;
     }
 
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
     public boolean getStatus() {
         return status;
     }
 
+    /**
+     * Gets agent aproved.
+     *
+     * @return the agent aproved
+     */
     public boolean getAgentAproved() {
         return agentAproved;
     }
 
+    /**
+     * Is status boolean.
+     *
+     * @return the boolean
+     */
     public boolean isStatus() {
         return status;
     }
 
+    /**
+     * Is agent aproved boolean.
+     *
+     * @return the boolean
+     */
     public boolean isAgentAproved() {
         return agentAproved;
     }
 
+    /**
+     * Is client approval boolean.
+     *
+     * @return the boolean
+     */
     public boolean isClientApproval() {
         return clientApproval;
     }
 
+    /**
+     * Gets note from client.
+     *
+     * @return the note from client
+     */
     public String getNoteFromClient() {
         return noteFromClient;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     * @return the name
+     */
     public String setName(String name) {
         if (name == null) {
 
@@ -117,6 +222,12 @@ public class Schedule implements Serializable {
         return this.name = name;
     }
 
+    /**
+     * Sets phone number.
+     *
+     * @param phoneNumber the phone number
+     * @return the phone number
+     */
     public Integer setPhoneNumber(int phoneNumber) {
         if (phoneNumber < 0) {
 
@@ -129,10 +240,22 @@ public class Schedule implements Serializable {
         return this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Sets announcement dto.
+     *
+     * @param announcementDTO the announcement dto
+     * @return the announcement dto
+     */
     public AnnouncementDTO setAnnouncementDTO(AnnouncementDTO announcementDTO) {
         return this.announcementDTO = announcementDTO;
     }
 
+    /**
+     * Sets day.
+     *
+     * @param day the day
+     * @return the day
+     */
     public LocalDate setDay(LocalDate day) {
         if (day.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("You can’t schedule a visit for a day in the past.");
@@ -140,10 +263,22 @@ public class Schedule implements Serializable {
         return this.day = day;
     }
 
+    /**
+     * Sets begin hour.
+     *
+     * @param beginHour the begin hour
+     * @return the begin hour
+     */
     public LocalTime setBeginHour(LocalTime beginHour) {
         return this.beginHour = beginHour;
     }
 
+    /**
+     * Sets end hour.
+     *
+     * @param endHour the end hour
+     * @return the end hour
+     */
     public LocalTime setEndHour(LocalTime endHour) {
         if (endHour.isBefore(beginHour)) {
             throw new IllegalArgumentException("The time the visit ends must be after the time the visit begins.");
@@ -151,30 +286,68 @@ public class Schedule implements Serializable {
         return this.endHour = endHour;
     }
 
+    /**
+     * Sets note.
+     *
+     * @param note the note
+     * @return the note
+     */
     public String setNote(String note) {
         return this.noteFromAgent = note;
     }
 
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     * @return the status
+     */
     public boolean setStatus(boolean status) {
         return this.status = status;
     }
 
+    /**
+     * Sets aproved.
+     *
+     * @param aproved the aproved
+     * @return the aproved
+     */
     public boolean setAproved(boolean aproved) {
         return this.agentAproved = aproved;
     }
 
+    /**
+     * Sets note from agent.
+     *
+     * @param noteFromAgent the note from agent
+     */
     public void setNoteFromAgent(String noteFromAgent) {
         this.noteFromAgent = noteFromAgent;
     }
 
+    /**
+     * Sets agent aproved.
+     *
+     * @param agentAproved the agent aproved
+     */
     public void setAgentAproved(boolean agentAproved) {
         this.agentAproved = agentAproved;
     }
 
+    /**
+     * Sets client approval.
+     *
+     * @param clientApproval the client approval
+     */
     public void setClientApproval(boolean clientApproval) {
         this.clientApproval = clientApproval;
     }
 
+    /**
+     * Sets note from client.
+     *
+     * @param noteFromClient the note from client
+     */
     public void setNoteFromClient(String noteFromClient) {
         this.noteFromClient = noteFromClient;
     }

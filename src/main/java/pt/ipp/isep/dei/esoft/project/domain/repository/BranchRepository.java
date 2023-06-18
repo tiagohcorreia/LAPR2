@@ -13,12 +13,16 @@ import java.util.List;
  */
 public class BranchRepository implements Serializable {
 
+    /**
+     * The constant branches.
+     */
     public static List<Branch> branches = new ArrayList<>();
 
     /**
      * Save branch.
      *
      * @param branch the branch
+     * @return the boolean
      */
     public boolean saveBranch(Branch branch) {
 
@@ -29,6 +33,12 @@ public class BranchRepository implements Serializable {
         return false;
     }
 
+    /**
+     * Add branch boolean.
+     *
+     * @param branch the branch
+     * @return the boolean
+     */
     public boolean addBranch(Branch branch) {
 
         if (branch != null && validate(branch)) {
@@ -38,6 +48,12 @@ public class BranchRepository implements Serializable {
         return false;
     }
 
+    /**
+     * Validate boolean.
+     *
+     * @param branch the branch
+     * @return the boolean
+     */
     public boolean validate(Branch branch) {
 
         for(Branch branch1 : branches) {
@@ -50,6 +66,12 @@ public class BranchRepository implements Serializable {
         return true;
     }
 
+    /**
+     * Find branch int.
+     *
+     * @param branch the branch
+     * @return the int
+     */
     public int findBranch(Branch branch) {
         for (Branch thisBranch : branches) {
             if (branch.equals(thisBranch) || branch.getName().equals(thisBranch.getName()))
@@ -58,11 +80,27 @@ public class BranchRepository implements Serializable {
         return -1;
     }
 
+    /**
+     * Create branch.
+     *
+     * @param objects the objects
+     * @return the branch
+     */
     public Branch create(List<?> objects) {
         Branch branch = new Branch();
         return branch;
     }
 
+    /**
+     * Create branch branch.
+     *
+     * @param id          the id
+     * @param name        the name
+     * @param location    the location
+     * @param phoneNumber the phone number
+     * @param email       the email
+     * @return the branch
+     */
     public Branch createBranch(int id, String name, Location location, String phoneNumber, String email) {
         return new Branch(id, name, location, phoneNumber, email);
     }
@@ -71,10 +109,9 @@ public class BranchRepository implements Serializable {
     /**
      * Checks if a branch has already been added.
      *
+     * @param branch the branch
      * @return True if the new branch is valid, False otherwise
      */
-
-
     public int indexOf(Branch branch) {
         for (Branch thisBranch : branches) {
             if (branch.equals(thisBranch) || branch.getName().equals(thisBranch.getName()))
@@ -94,11 +131,22 @@ public class BranchRepository implements Serializable {
         return lowestID;
     }
 
+    /**
+     * Gets branch list.
+     *
+     * @return the branch list
+     */
     public List<Branch> getBranchList() {
 
         return new ArrayList<>(branches);
     }
 
+    /**
+     * Gets branch by id.
+     *
+     * @param id the id
+     * @return the branch by id
+     */
     public static Branch getBranchByID(int id) {
 
         if (id >= 0 && id < branches.size()) {
@@ -108,6 +156,11 @@ public class BranchRepository implements Serializable {
         return null;
     }
 
+    /**
+     * Read object list.
+     *
+     * @return the list
+     */
     public List<Branch> readObject() {
 
         try {

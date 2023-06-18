@@ -121,6 +121,11 @@ public class Employee implements Serializable, Validator {
     }
 
 
+    /**
+     * Gets branch.
+     *
+     * @return the branch
+     */
     public Branch getBranch() {
         return branch;
     }
@@ -258,6 +263,11 @@ public class Employee implements Serializable, Validator {
         this.role = role;
     }
 
+    /**
+     * Sets branch.
+     *
+     * @param branch the branch
+     */
     public void setBranch(Branch branch) {
         this.branch = branch;
     }
@@ -314,6 +324,12 @@ public class Employee implements Serializable, Validator {
         return true;
     }
 
+    /**
+     * Is numeric boolean.
+     *
+     * @param telephoneNumber the telephone number
+     * @return the boolean
+     */
     public boolean isNumeric(String telephoneNumber) {
 
         Pattern pattern = Pattern.compile("\\d+");

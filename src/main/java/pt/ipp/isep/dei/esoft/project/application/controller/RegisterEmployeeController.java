@@ -23,9 +23,15 @@ public class RegisterEmployeeController {
 
     private BranchRepository branchRepository = Repositories.getInstance().getBranchRepository();
 
+    /**
+     * The Authentication repository.
+     */
     AuthenticationRepository authenticationRepository;
 
 
+    /**
+     * Instantiates a new Register employee controller.
+     */
     public RegisterEmployeeController() {
 
         //this.branchRepository.readObject();
@@ -41,6 +47,11 @@ public class RegisterEmployeeController {
     }
 
 
+    /**
+     * Gets branch list.
+     *
+     * @return the branch list
+     */
     public List<Branch> getBranchList() {
 
         return branchRepository.readObject();
@@ -85,7 +96,8 @@ public class RegisterEmployeeController {
     /**
      * Send email.
      *
-     * @param eMail       the e mail
+     * @param eMail the e mail
+     * @return the string
      */
     public String sendEmail(String eMail) {
 
@@ -107,6 +119,12 @@ public class RegisterEmployeeController {
         return password;
     }
 
+    /**
+     * Show selected branch branch.
+     *
+     * @param posBranch the pos branch
+     * @return the branch
+     */
     public Branch showSelectedBranch(int posBranch) {
 
         for (int i = 0; i < branchRepository.getBranchList().size(); i++) {
