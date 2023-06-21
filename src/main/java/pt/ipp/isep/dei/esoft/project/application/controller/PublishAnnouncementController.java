@@ -84,7 +84,7 @@ public class PublishAnnouncementController implements Serializable {
 
         if (sellOrRent == TypeOfBusiness.SELL) {
             Property property = createProperty(posTypeOfProperty, area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
-            Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, commission, price, sellOrRent, property, agentName, owner);
+            Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED,  price,commission, sellOrRent, property, agentName, owner);
             this.announcementRepository.createAnnouncement(announcement);
             this.announcementRepository.writeObject();
 
@@ -92,7 +92,7 @@ public class PublishAnnouncementController implements Serializable {
             if (rentalMonths != 0 && rentalMonths > 0) {
 
                 Property property = createProperty(posTypeOfProperty, area, location, cityCentreDistance, photographs, bedrooms, bathrooms, parkingSpaces, equipmentList, hasBasement, hasLoft, sunExposure);
-                Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, commission, price, sellOrRent, property, agentName, owner, rentalMonths);
+                Announcement announcement = new Announcement(date, AnnouncementStatus.PUBLISHED, price,commission, sellOrRent, property, agentName, owner, rentalMonths);
                 this.announcementRepository.createAnnouncement(announcement);
                 this.announcementRepository.writeObject();
 
