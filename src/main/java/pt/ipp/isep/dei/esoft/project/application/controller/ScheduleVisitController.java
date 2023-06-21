@@ -15,7 +15,7 @@ import java.time.LocalTime;
 
 import java.util.ArrayList;
 import java.util.List;
-public class ScheduleVisitController {
+public class  ScheduleVisitController {
 
     Repositories repositories = Repositories.getInstance();
     private AnnouncementRepository announcementRepository = repositories.getAnnouncementRepository();

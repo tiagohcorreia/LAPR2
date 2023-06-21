@@ -154,4 +154,17 @@ public class Client implements Serializable {
     public String toString() {
         return name;
     }
+
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Client otherClient = (Client) obj;
+        return email.equals(otherClient.email);
+    }
 }

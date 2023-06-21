@@ -64,12 +64,12 @@ public class AnnouncementDTO implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Announcement {");
+        final StringBuilder sb = new StringBuilder("Announcement ");
         sb.append("Price: ").append(price);
         sb.append(", Type Of Business: ").append(typeOfBusiness);
         sb.append(", Property: ").append(property);
         sb.append(", Agent: ").append(agent);
-        sb.append('}');
+        sb.append("");
         return sb.toString();
     }
 

@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.esoft.project.application.controller;
 
 import pt.ipp.isep.dei.esoft.project.domain.model.Order;
 import pt.ipp.isep.dei.esoft.project.domain.model.Property;
+import pt.ipp.isep.dei.esoft.project.domain.repository.PlaceOrderToBuyPropertyRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.PurchaseOrderRepository;
 import pt.ipp.isep.dei.esoft.project.domain.repository.Repositories;
 
@@ -11,14 +12,15 @@ import java.util.List;
 
 public class PurchaseOrderController {
 
+    private PlaceOrderToBuyPropertyRepository orderToBuyPropertyRepository = Repositories.getInstance().getOrderToBuyPropertyRepository();
     private PurchaseOrderRepository purchaseOrderRepository = Repositories.getInstance().getPurchaseOrderRepository();
 
     public PurchaseOrderController() {
-        this.purchaseOrderRepository = purchaseOrderRepository;
+
     }
 
-    public List<Order> getPurchaseOrdersByProperty(Property property) {
-        List<Order> purchaseOrders = purchaseOrderRepository.getByProperty(property);
+    public List<Order> getPurchaseOrdersByProperty() {
+        List<Order> purchaseOrders = orderToBuyPropertyRepository.getOrderList();
 
         // Sort the purchase orders from oldest to most recent
         Collections.sort(purchaseOrders, Comparator.comparing(Order::getId));
@@ -30,14 +32,17 @@ public class PurchaseOrderController {
     }
 
     public void acceptPurchaseOrder(Order purchaseOrder) {
-        if(!purchaseOrder.isStatus()){
-            purchaseOrderRepository.updatePurchaseOrder(purchaseOrder);
+        if (!purchaseOrder.isStatus()) {
+            purchaseOrder.setStatus(true);
+            purchaseOrderRepository.save(purchaseOrder);
+
         }
     }
 
     public void declinePurchaseOrder(Order purchaseOrder) {
-        if(purchaseOrder.isStatus()){
-            purchaseOrderRepository.updatePurchaseOrder(purchaseOrder);
+        if (purchaseOrder.isStatus()) {
+            purchaseOrder.setStatus(false);
+            purchaseOrderRepository.save(purchaseOrder);
         }
     }
 
@@ -45,11 +50,9 @@ public class PurchaseOrderController {
         List<Order> ordersForProperty = purchaseOrderRepository.getByProperty(property);
         for (Order order : ordersForProperty) {
             if (!order.isStatus()) {
-                order.isStatus();
-                purchaseOrderRepository.updatePurchaseOrder(order);
+                order.setStatus(false);
+                purchaseOrderRepository.save(order);
             }
         }
     }
 }
-
-

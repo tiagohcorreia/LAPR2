@@ -196,12 +196,12 @@ public abstract class Property implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Property{");
+        final StringBuilder sb = new StringBuilder("Property");
         sb.append(", Area:").append(area);
         sb.append(", Location:").append(location);
         sb.append(", City Centre Distance:").append(cityCentreDistance);
         sb.append(", Photographs:").append(photographs);
-        sb.append('}');
+        sb.append("");
         return sb.toString();
     }
 

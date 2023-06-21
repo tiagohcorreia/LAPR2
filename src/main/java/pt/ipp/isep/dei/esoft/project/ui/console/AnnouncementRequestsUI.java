@@ -45,7 +45,7 @@ public class AnnouncementRequestsUI implements Runnable{
             }
 
 
-                System.out.print("Enter the index of the announcement to view details: ");
+                System.out.print("Enter the index of the announcement to view details:\n ");
                 int index = scanner.nextInt();
                 scanner.nextLine();
 
@@ -62,7 +62,6 @@ public class AnnouncementRequestsUI implements Runnable{
                     scanner.nextLine();
                     Client owner = announcement.getOwner();
 
-
                     switch (choice) {
                         case 1:
                             System.out.print("Enter the commission: ");
@@ -70,17 +69,21 @@ public class AnnouncementRequestsUI implements Runnable{
                             scanner.nextLine();
                             controller.acceptAnnouncementRequest(index, commission, agent);
                             System.out.println("Announcement accepted and saved.");
+                            announcements.remove(index);
+
                             break;
                         case 2:
                             System.out.print("Enter the reason for rejection: ");
                             String reason = scanner.nextLine();
                             controller.rejectAnnouncementRequest(index, reason, agent);
+                            announcements.remove(index);
+
 
 
                             String subject = "Rejection of Announcement";
-                            String message = "Dear " + owner.getName() + "\nYour announcement has been rejected for the following reason: " + reason;
+                            String message = "Dear " + owner + "\nYour announcement has been rejected for the following reason: " + reason;
                             NotificationService notificationService = new NotificationService();
-                            notificationService.sendNotification(owner.getEmail(), subject, message);
+                            notificationService.sendNotification(String.valueOf(owner), subject, message);
 
                             System.out.println("Announcement rejected and reason saved.");
                             break;

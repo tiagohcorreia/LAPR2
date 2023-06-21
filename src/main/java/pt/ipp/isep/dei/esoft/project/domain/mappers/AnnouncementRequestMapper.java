@@ -13,6 +13,7 @@ public class AnnouncementRequestMapper {
         dto.setPrice(announcement.getPrice());
         dto.setTypeOfBusiness(announcement.getTypeOfBusiness());
         dto.setProperty(announcement.getProperty());
+        dto.setOwner(announcement.getOwner());
 
         return dto;
     }
@@ -22,6 +23,7 @@ public class AnnouncementRequestMapper {
         announcement.setPrice(dto.getPrice());
         announcement.setTypeOfBusiness(dto.getTypeOfBusiness());
         announcement.setProperty(dto.getProperty());
+        announcement.setOwner(dto.getOwner());
         return announcement;
     }
 

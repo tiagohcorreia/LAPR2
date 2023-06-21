@@ -43,7 +43,7 @@ public class RegisterPropertyController implements Serializable {
      */
     CityRepository cityRepository=repositories.getCityRepository();
     private pt.ipp.isep.dei.esoft.project.repository.AuthenticationRepository authenticationRepository = repositories.getAuthenticationRepository();
-    ClientRepository clientRepository = repositories.getInstance().getClientRepository();
+    ClientRepository clientRepository = repositories.getClientRepository();
 
     private AuthenticationController authenticationController=new AuthenticationController();
 
@@ -84,6 +84,7 @@ public class RegisterPropertyController implements Serializable {
 
             if (sellOrRent == TypeOfBusiness.SELL) {
                 Announcement announcement = new Announcement(date,AnnouncementStatus.REQUESTED,price,0,sellOrRent,property,agent,owner);
+                announcement.setOwner(owner);
                 announcement.setAgent(agent);
                 this.announcementRepository.createAnnouncement(announcement);
                 this.announcementRepository.writeObject();
@@ -91,6 +92,7 @@ public class RegisterPropertyController implements Serializable {
             } else if (sellOrRent == TypeOfBusiness.RENT) {
                 if (rentalMonths != 0 && rentalMonths > 0) {
                     Announcement announcement = new Announcement(date,AnnouncementStatus.REQUESTED,price,0,sellOrRent,property,agent,owner, rentalMonths);
+                    announcement.setOwner(owner);
                     announcement.setAgent(agent);
                     this.announcementRepository.createAnnouncement(announcement);
                     this.announcementRepository.writeObject();
