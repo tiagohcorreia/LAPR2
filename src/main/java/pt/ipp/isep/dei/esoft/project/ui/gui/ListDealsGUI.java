@@ -44,7 +44,7 @@ public class ListDealsGUI extends Application implements Runnable, Initializable
 
     @FXML
     void sortWithAlgorithm(ActionEvent event) {
-        String algorithm = toggleGroup.getSelectedToggle().toString();
+        String algorithm = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
         SortingOrder sortingOrder;
         if (((Button) event.getSource()).getText().equals("Ascending"))
             sortingOrder = SortingOrder.ASCENDING;
@@ -52,6 +52,7 @@ public class ListDealsGUI extends Application implements Runnable, Initializable
             sortingOrder = SortingOrder.DESCENDING;
 
         controller.sortDealsWithAlgorithm(deals, algorithm, sortingOrder);
+        printDeals();
     }
 
     ToggleGroup toggleGroup = new ToggleGroup();
@@ -65,7 +66,7 @@ public class ListDealsGUI extends Application implements Runnable, Initializable
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ListDealsGUI.class.getResource("ListDealsGUI.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 300);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("List deals");
         stage.setScene(scene);
         stage.show();
@@ -83,21 +84,24 @@ public class ListDealsGUI extends Application implements Runnable, Initializable
         rdbBubble.setToggleGroup(toggleGroup);
         rdbInsertion.setToggleGroup(toggleGroup);
 
-
         deals = controller.getDeals();
         controller.sortDealsByDate(deals, SortingOrder.DESCENDING);
 
-        printHeader();
-        for (DealsDto d:
-             deals) {
-            txtArea.appendText(d.toString());
-            txtArea.appendText("\n");
-        }
+        printDeals();
     }
     public void printHeader(){
         txtArea.setText("");
         txtArea.appendText(HEADER_TEXT);
         txtArea.appendText("\n");
+    }
+
+    private void printDeals(){
+        printHeader();
+        for (DealsDto d:
+                deals) {
+            txtArea.appendText(d.toString());
+            txtArea.appendText("\n");
+        }
     }
 
 }

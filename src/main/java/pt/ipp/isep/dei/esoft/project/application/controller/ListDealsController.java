@@ -41,7 +41,7 @@ public class ListDealsController {
     }
 
     public static void sortDealsWithAlgorithm(List<DealsDto> dealsDtoList, String algorithm, SortingOrder sortingOrder){
-
+        DealsDto.sortDealsWithAlgorithm(dealsDtoList, algorithm, sortingOrder);
     }
 
 //    public static List<Announcement> sortByAreaWithAlgorithm(List<Announcement> announcements, String sortingAlgorithm, SortingOrder sortingorder){

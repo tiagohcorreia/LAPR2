@@ -38,9 +38,22 @@ public class DealsDto {
         }
     }
 
+    public DealsDto (DealsDto dealsDto){
+        this.announcement = dealsDto.getAnnouncement();
+        this.order = dealsDto.getOrder();
+    }
+
 //    public DealsDto(List<Announcement> announcementList){
 //        List
 //    }
+
+    private Announcement getAnnouncement(){
+        return this.announcement;
+    }
+
+    private Order getOrder(){
+        return this.order;
+    }
 
     @Override
     public String toString() {
@@ -85,10 +98,59 @@ public class DealsDto {
     }
 
     public static void sortDealsWithBubbleSort(List<DealsDto> dealsDtoList, SortingOrder sortingOrder){
-
+        int i = 0;
+        int j = 0;
+        boolean ordered = true;
+        DealsDto temp = null;
+        for ( i = 0; i < dealsDtoList.size(); i++) {
+            for ( j = 0; j < dealsDtoList.size()-i-1; j++) {
+                if(sortingOrder.equals(SortingOrder.ASCENDING)) {
+                    if (dealsDtoList.get(j).getPrice() > dealsDtoList.get(j + 1).getPrice()) {
+                        ordered = false;
+                        temp = new DealsDto(dealsDtoList.get(j));
+                        dealsDtoList.set(j, dealsDtoList.get(j + 1));
+                        dealsDtoList.set(j + 1, temp);
+                    } else {
+                        ordered = true;
+                    }
+                } else {
+                    if (dealsDtoList.get(j).getPrice() < dealsDtoList.get(j + 1).getPrice()) {
+                        ordered = false;
+                        temp = new DealsDto(dealsDtoList.get(j));
+                        dealsDtoList.set(j, dealsDtoList.get(j + 1));
+                        dealsDtoList.set(j + 1, temp);
+                    } else {
+                        ordered = true;
+                    }
+                }
+            }
+            if(ordered)
+                break;
+        }
     }
     public static void sortDealsWithInsertionSort(List<DealsDto> dealsDtoList, SortingOrder sortingOrder){
+        for (int i = 1; i < dealsDtoList.size(); ++i) {
+            DealsDto temp = dealsDtoList.get(i);
+            int j = i - 1;
 
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            if (sortingOrder.equals(SortingOrder.ASCENDING)) {
+                while (j >= 0 && dealsDtoList.get(j).getPrice() > temp.getPrice()) {
+                    //dealsDtoList.add(j + 1, dealsDtoList.get(j));
+                    dealsDtoList.set(j+1, dealsDtoList.get(j));
+                    j--;
+                }
+            }else{
+                while (j >= 0 && dealsDtoList.get(j).getPrice() < temp.getPrice()) {
+                    //dealsDtoList.add(j + 1, dealsDtoList.get(j));
+                    dealsDtoList.set(j+1, dealsDtoList.get(j));
+                    j--;
+                }
+            }
+            dealsDtoList.set(j+1, temp);
+        }
     }
 
 
