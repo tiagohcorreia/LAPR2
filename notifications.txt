@@ -80,3 +80,48 @@ Subject: Rejection of Announcement
 Message: Dear null
 Your announcement has been rejected for the following reason: jjj
 
+[2023-06-22T16:04:06.177654200]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-22T16:04:28.519980900]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-22T16:06:00.413848400]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-22T16:06:18.731514700]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-22T16:07:12.850605300]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-22T16:08:18.306172300]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-22T16:11:40.798417]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-22T16:31:10.826475100]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+
+[2023-06-22T16:36:49.642057800]
+Recipient: Nilsa Gil
+Subject: ANNOUNCEMENT NOTIFICATION
+Message: Dear client, your announcement was published. 
+

@@ -21,6 +21,8 @@ import java.net.URL;
 import java.util.*;
 
 public class ListDealsGUI extends Application implements Runnable, Initializable {
+    static final String HEADER_TEXT = "DATE \t\tPRICE \t\tSELLER NAME";
+
     private ListDealsController controller = new ListDealsController();
 
     private List<DealsDto> deals = new ArrayList<>();
@@ -84,12 +86,18 @@ public class ListDealsGUI extends Application implements Runnable, Initializable
 
         deals = controller.getDeals();
         controller.sortDealsByDate(deals, SortingOrder.DESCENDING);
-        txtArea.appendText("test");
+
+        printHeader();
         for (DealsDto d:
              deals) {
-            txtArea.appendText(deals.toString());
+            txtArea.appendText(d.toString());
             txtArea.appendText("\n");
         }
+    }
+    public void printHeader(){
+        txtArea.setText("");
+        txtArea.appendText(HEADER_TEXT);
+        txtArea.appendText("\n");
     }
 
 }

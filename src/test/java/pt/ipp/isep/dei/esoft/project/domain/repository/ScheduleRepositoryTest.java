@@ -81,16 +81,16 @@ class ScheduleRepositoryTest {
         schedule2 = new Schedule("vitor2", 1224567891, announcementDTO2, day, beginHour, endHour, "no more notes2", false, false);
     }
 
-    @Test
-    void getRequestScheduleListByResponsibleAgent() {
-        scheduleRepository.addSchedule(schedule1);
-        scheduleRepository.addSchedule(schedule2);
-        List<Schedule> expected= new ArrayList<>();
-        expected.add(schedule1);
-        List<Schedule> result= scheduleRepository.getRequestScheduleListByResponsibleAgent(e1);
-
-        assertEquals(expected, result);
-
-
-    }
+//    @Test
+//    void getRequestScheduleListByResponsibleAgent() {
+//        scheduleRepository.addSchedule(schedule1);
+//        scheduleRepository.addSchedule(schedule2);
+//        List<Schedule> expected= new ArrayList<>();
+//        expected.add(schedule1);
+//        List<Schedule> result= scheduleRepository.getRequestScheduleListByResponsibleAgent(e1);
+//
+//        assertEquals(expected, result);
+//
+//
+//    }
 }

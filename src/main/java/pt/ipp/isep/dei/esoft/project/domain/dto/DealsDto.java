@@ -33,20 +33,29 @@ public class DealsDto {
 
         for (Order o:
              orderRepository.getOrderList()) {
-            if(o.getClient().equals(announcement.getOwner()))
+            if(o.getAnnouncementDTO().getProperty().equals(announcement.getProperty()))
                 this.order = o;
         }
     }
+
+//    public DealsDto(List<Announcement> announcementList){
+//        List
+//    }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         try {
-            sb.append(announcement.toString());
-            sb.append(order.getOrderAmount());
+//            sb.append(announcement.toString());
+//            sb.append(order.getOrderAmount());
 //            sb.append(announcement.getAgent().getBranch().getID());
 //            sb.append(announcement.getAgent().getBranch().getName());
 //            sb.append(announcement.getAgent().getName());
+            sb.append(announcement.getDate().toString());
+            sb.append("\t");
+            sb.append(order.getOrderAmount());
+            sb.append("\t\t");
+            sb.append(announcement.getOwner().getName());
         } catch (Exception e){
             e.printStackTrace();
         }

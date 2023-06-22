@@ -28,7 +28,7 @@ public class Order implements Serializable {
 
         this.orderAmount = setOrderAmount(orderAmount);
         this.announcementDTO = setAnnouncementDTO(announcementDTO);
-        this.status = false;
+        this.status = status;
     }
 
     /**
@@ -104,6 +104,7 @@ public class Order implements Serializable {
 
             throw new IllegalArgumentException("Order amount must be positive");
         }
+        this.orderAmount = orderAmount;
         return this.orderAmount;
     }
 
@@ -114,6 +115,7 @@ public class Order implements Serializable {
      * @return the announcement dto
      */
     public AnnouncementDTO setAnnouncementDTO(AnnouncementDTO announcementDTO) {
+        this.announcementDTO = announcementDTO;
         return this.announcementDTO;
     }
 

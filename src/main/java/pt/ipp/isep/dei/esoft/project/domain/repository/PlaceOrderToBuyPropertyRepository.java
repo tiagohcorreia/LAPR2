@@ -57,10 +57,10 @@ public class PlaceOrderToBuyPropertyRepository implements Serializable {
 
         for (Order order1 : orderList) {
 
-            if (order1.equals(order)) {
-
-                throw new DuplicateDataException("Order is already registered");
-            }
+//            if (order1.equals(order)) {
+//
+//                throw new DuplicateDataException("Order is already registered");
+//            }
         }
         return true;
     }

@@ -1,6 +1,7 @@
 package pt.ipp.isep.dei.esoft.project.utils;
 
 
+import pt.ipp.isep.dei.esoft.project.domain.dto.AnnouncementDTO;
 import pt.ipp.isep.dei.esoft.project.domain.model.*;
 import pt.ipp.isep.dei.esoft.project.domain.repository.*;
 import pt.ipp.isep.dei.esoft.project.domain.shared.AnnouncementStatus;
@@ -66,6 +67,7 @@ public class CsvHandler {
     static ClientRepository clientRepository = Repositories.getInstance().getClientRepository();
     static AnnouncementRepository announcementRepository = Repositories.getInstance().getAnnouncementRepository();
     static EmployeeRepository employeeRepository = Repositories.getInstance().getEmployeeRepository();
+    static PlaceOrderToBuyPropertyRepository orderRepository = Repositories.getInstance().getOrderToBuyPropertyRepository();
 
 
 
@@ -124,6 +126,7 @@ public class CsvHandler {
             Branch branch = parseBranchData((List<?>) line);
             Client client = parseClientData((List<?>) line);
             Announcement announcement = parseAnnouncementData((List<?>) line, client);
+            Order order = parseOrderData((List<?>) line, announcement);
             //System.out.println("here");
             try {
                 //success = branchRepository.saveBranch(branch);
@@ -149,8 +152,15 @@ public class CsvHandler {
                 announcementRepository.saveAnnouncement(announcement);
             }catch (Exception e) {
                 e.printStackTrace();
+            }
+
+            try{
+                orderRepository.saveOrder(order);
+                successfulImportCount++;
+            } catch (Exception e){
+                e.printStackTrace();
             } finally {
-                if (success) successfulImportCount++;
+                //if (success) successfulImportCount++;
             }
         }
 
@@ -430,5 +440,23 @@ public class CsvHandler {
     private static String removeDashes(String string){
         return string.replaceAll("-","");
     }
+
+    private static Order parseOrderData(List<?> line, Announcement announcement){
+        Order order;
+        double amount;
+        AnnouncementDTO announcementDTO;
+        boolean status = true;
+
+        try{
+            amount = Double.valueOf((String) line.get(COLUMN_PROPERTY_REQUESTED_PRICE));
+            announcementDTO = new AnnouncementDTO(announcement);
+            order = new Order(amount, announcementDTO, status);
+            return order;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }
